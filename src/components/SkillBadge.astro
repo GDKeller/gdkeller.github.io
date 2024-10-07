@@ -1,0 +1,13 @@
+---
+ interface Props {
+    text: string;
+}
+
+const { text } = Astro.props;
+---
+
+
+<div class="relative py-8 text-center px-2">
+    <p class="relative text-clip">{text}</p>
+    <span class="absolute bg-gradient-to-tr from-green-900 to-violet-900 opacity-50 top-0 left-0 w-full h-full"></span>
+</div>
