@@ -6,15 +6,14 @@ import fishBallImg from '../images/fish-ball.png';
 ---
 
 
-
-<section class="relative flex flex-col justify-center w-full px-8 pt-32 pb-20 mx-auto overflow-hidden fish-hero bg-green-950">
+<section class="relative flex flex-col justify-center w-full px-4 pt-32 pb-20 mx-auto overflow-hidden fish-hero bg-green-950">
     <!-- <span class="fixed top-0 left-0 z-30 w-full h-full bg-gradient-to-tr from-fuchsia-400 via-purple-800 to-indigo-950 mix-blend-difference"></span> -->
     <div class="fish-hero__container">
-        <div class="relative w-auto pt-2 mx-auto fish-hero__content">
-            <span class="relative flex items-start justify-end w-full pl-8 text-white bg-black bg-opacity-50 rounded-t-2xl">
-                <span class="z-40 mix-blend-difference">
-                    <span class="self-start mr-1 text-lg tracking-widest font-bayon mix-blend-hard-light text-shadow">protect a monster from the </span>
-                    <span class="z-40 mr-2 leading-none font-kings mix-blend-difference filter text-shadow" id="fish-midnight">midnight zone</span>
+        <div class="relative w-auto pt-4 mx-auto fish-hero__content">
+            <span class="relative flex items-start justify-center w-full mb-4 text-white bg-black bg-opacity-100 rounded-t-2xl">
+                <span class="z-40">
+                    <span class="z-40 mr-2 text-6xl leading-none font-bayon filter text-shadow" id="fish-midnight">MISSION:</span>
+                    <span class="self-start mr-1 tracking-normal text-7xl font-kings text-shadow">Protect a Monster</span>
                     <!-- <span class="font-kings mix-blend-hard-light text-shadow" id="fish-zone">zone</span> -->
                     <!-- <span class="text-2xl tracking-widest font-bayon mix-blend-hard-light text-shadow">monster</span> -->
                 </span>
@@ -47,6 +46,8 @@ import fishBallImg from '../images/fish-ball.png';
             <p>In 2021, an intact and undamaged anglerfish floated it's way onto a Southern California beach. It was destined for the National History Museum of Los Angeles, where for a limited time, it would be scientific and sightseeing superstar.</p>
             <p class="mb-4">This is one of only 30 anglerfish that have made their way into study and exhibition in such pristine condition. They planned a special exhibit to display this mythic creature from beyond our grasp. But there was a problem...</p>
             <p>The angler fish lives so deep in the ocean that it can't survive in live - it's tissue breaks down. The museum needed a way to display the fish in a way that ensure only necessary light struck the specimen, and wanted to track the total light exposure over the lifetime of the exhibit. That's where we came in.</p>
+            <br>
+            <p>I was tasked with writing software to run on Arduino inside the museum exhibit. The board drove motion and light sensors, and logged the amount of light that struck the fish to an online Google Sheet. The lights turned on when guests approached, and off after inactivity to minimize light damage to the specimen.</p>
 
         </div>
   </div>
@@ -83,8 +84,8 @@ import fishBallImg from '../images/fish-ball.png';
 .monster-text-shadow {
     text-shadow: 0.02em 0.03em 0.05em rgba(200, 0, 0, 0.9);
 }
-#fish-midnight {
-	font-size: 8vw;
+/* #fish-midnight {
+	font-size: 4vw;
     line-height: 0.7;
     overflow: hidden;
   }
@@ -92,7 +93,7 @@ import fishBallImg from '../images/fish-ball.png';
   #fish-zone {
 	font-size: 8vw;
     line-height:0.6;
-  }
+  } */
 
   #fish-monster {
 	font-size: 16vw;

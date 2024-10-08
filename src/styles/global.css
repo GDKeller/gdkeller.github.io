@@ -10,3 +10,7 @@
     list-style-type: disc;
     list-style-position: inside;
 }
+
+strong {
+    font-weight: bold;
+}

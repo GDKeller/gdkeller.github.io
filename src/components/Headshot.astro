@@ -1,0 +1,164 @@
+---
+import { Image } from "astro:assets";
+
+import grantImg from "../images/headshots/grant-matched.jpg";
+import ai1 from "../images/headshots/Preset1.jpg";
+import ai3 from "../images/headshots/Preset3.jpg";
+import ai4 from "../images/headshots/Preset4.jpg";
+import ai5 from "../images/headshots/Preset5.jpg";
+import ai6 from "../images/headshots/Preset6.jpg";
+import ai7 from "../images/headshots/Preset7.jpg";
+import ai8 from "../images/headshots/Preset8.jpg";
+import ai10 from "../images/headshots/Preset10.jpg";
+import ai12 from "../images/headshots/Preset12.jpg";
+import ai15 from "../images/headshots/Preset15.jpg";
+import ai20 from "../images/headshots/Preset20.jpg";
+import ai22_2 from "../images/headshots/Preset22-2.jpg";
+import ai25 from "../images/headshots/Preset25.jpg";
+---
+
+<div class="relative block">
+  <Image src={grantImg} alt="Grant" class="relative headshot" />
+  <Image
+    src={ai1}
+    alt="AI1"
+    class="absolute top-0 left-0 w-full h-full animate-headshot-1"
+  />
+  <Image
+    src={ai3}
+    alt="AI3"
+    class="absolute top-0 left-0 w-full h-full animate-headshot-2"
+  />
+  <Image src={ai4} alt="AI4" class="absolute top-0 left-0 w-full h-full animate-headshot-3" />
+  <Image src={ai5} alt="AI5" class="absolute top-0 left-0 w-full h-full animate-headshot-4" />
+  <Image src={ai6} alt="AI6" class="absolute top-0 left-0 z-10 w-full h-full animate-headshot-5" />
+  <Image src={ai7} alt="AI7" class="absolute top-0 left-0 z-10 w-full h-full animate-headshot-6" />
+  <Image src={ai8} alt="AI8" class="absolute top-0 left-0 z-10 w-full h-full animate-headshot-7" />
+  <Image
+    src={ai10}
+    alt="AI10"
+    class="absolute top-0 left-0 w-full h-full animate-headshot-8"
+  />
+  <Image
+    src={ai12}
+    alt="AI12"
+    class="absolute top-0 left-0 w-full h-full animate-headshot-9"
+  />
+  <Image
+    src={ai15}
+    alt="AI15"
+    class="absolute top-0 left-0 w-full h-full animate-headshot-10"
+  />
+  <Image
+    src={ai20}
+    alt="AI20"
+    class="absolute top-0 left-0 w-full h-full animate-headshot-11"
+  />
+  <Image
+    src={ai22_2}
+    alt="AI22_2"
+    class="absolute top-0 left-0 w-full h-full animate-headshot-12"
+  />
+  <Image
+    src={ai25}
+    alt="AI25"
+    class="absolute top-0 left-0 w-full h-full animate-headshot-13"
+  />
+</div>
+
+<style>
+    .headshot {
+        z-index: 11;
+        object-fit: cover;    
+    }
+  .animate-headshot-1 {
+    animation: headshot 10s 5s infinite;
+    opacity: 0;
+    z-index: 12;
+  }
+  .animate-headshot-2 {
+    animation: headshot 10s 10s infinite;
+    opacity: 0;
+    z-index: 13;
+  }
+  .animate-headshot-3 {
+    animation: headshot 10s 15s infinite;
+    opacity: 0;
+    z-index: 14;
+  }
+
+  .animate-headshot-4 {
+    animation: headshot 10s 20s infinite;
+    z-index: 15;
+    opacity: 0;
+  }
+
+  .animate-headshot-5 {
+    animation: headshot 10s 25s infinite;
+    z-index: 15;
+    opacity: 0;
+  }
+
+  .animate-headshot-6 {
+    animation: headshot 10s 30s infinite;
+    z-index: 15;
+    opacity: 0;
+  }
+
+  .animate-headshot-7 {
+    animation: headshot 10s 35s infinite;
+    z-index: 15;
+    opacity: 0;
+  }
+
+  .animate-headshot-8 {
+    animation: headshot 10s 40s infinite;
+    z-index: 15;
+    opacity: 0;
+  }
+
+  .animate-headshot-9 {
+    animation: headshot 10s 45s infinite;
+    z-index: 15;
+    opacity: 0;
+  }
+
+  .animate-headshot-10 {
+    animation: headshot 10s 50s infinite;
+    z-index: 15;
+    opacity: 0;
+  }
+
+  .animate-headshot-11 {
+    animation: headshot 10s 55s infinite;
+    z-index: 15;
+    opacity: 0;
+  }
+
+  .animate-headshot-12 {
+    animation: headshot 10s 60s infinite;
+    z-index: 15;
+    opacity: 0;
+  }
+
+  .animate-headshot-13 {
+    animation: headshot 10s 65s infinite;
+    z-index: 15;
+    opacity: 0;
+  }
+
+  @keyframes headshot {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    95% {
+      opacity: .11;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+</style>

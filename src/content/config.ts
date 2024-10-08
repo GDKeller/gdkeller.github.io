@@ -37,6 +37,7 @@ const projects = defineCollection({
         alt: z.string(),
       })
       .optional(),
+    website: z.string().url().optional(),
     subClient: z.string().optional(),
     timeperiod: z.string().optional(),
     tags: z.array(z.string()).optional(),
