@@ -1,14 +1,12 @@
 ---
-import { getEntry } from "astro:content";
 import Link from "./Link.astro";
 
 const { job } = Astro.props;
 console.log(job);
-const { slug, body, data } = job;
+const { data } = job;
 const { company, companyWebsite, position, startMonthYear, endMonthYear } =
   data;
 
-const entry = await getEntry("jobs", slug);
 const { Content } = await job.render();
 ---
 

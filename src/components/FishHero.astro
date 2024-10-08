@@ -3,47 +3,46 @@ import { Image } from 'astro:assets';
 import fishImg from '../images/anglerfish.png';
 import waterImg from '../images/water-reflections.jpg';
 import fishBallImg from '../images/fish-ball.png';
-import cave1Img from '../images/cave1.png';
 ---
 
 
 
-<section class="fish-hero overflow-hidden pt-32 pb-20 w-full mx-auto relative flex px-8 justify-center flex-col bg-green-950">
-    <!-- <span class="bg-gradient-to-tr from-fuchsia-400 via-purple-800 to-indigo-950 fixed top-0 left-0 mix-blend-difference top-0 left-0 w-full h-full z-30"></span> -->
+<section class="relative flex flex-col justify-center w-full px-8 pt-32 pb-20 mx-auto overflow-hidden fish-hero bg-green-950">
+    <!-- <span class="fixed top-0 left-0 z-30 w-full h-full bg-gradient-to-tr from-fuchsia-400 via-purple-800 to-indigo-950 mix-blend-difference"></span> -->
     <div class="fish-hero__container">
-        <div class="fish-hero__content relative w-auto mx-auto pt-2">
-            <span class="bg-black w-full relative bg-opacity-50 rounded-t-2xl text-white pl-8 flex items-start justify-end">
+        <div class="relative w-auto pt-2 mx-auto fish-hero__content">
+            <span class="relative flex items-start justify-end w-full pl-8 text-white bg-black bg-opacity-50 rounded-t-2xl">
                 <span class="z-40 mix-blend-difference">
-                    <span class="font-bayon text-lg tracking-widest mr-1 self-start mix-blend-hard-light text-shadow">protect a monster from the </span>
-                    <span class="font-kings leading-none z-40 mix-blend-difference mr-2 filter text-shadow" id="fish-midnight">midnight zone</span>
+                    <span class="self-start mr-1 text-lg tracking-widest font-bayon mix-blend-hard-light text-shadow">protect a monster from the </span>
+                    <span class="z-40 mr-2 leading-none font-kings mix-blend-difference filter text-shadow" id="fish-midnight">midnight zone</span>
                     <!-- <span class="font-kings mix-blend-hard-light text-shadow" id="fish-zone">zone</span> -->
-                    <!-- <span class="font-bayon text-2xl tracking-widest mix-blend-hard-light text-shadow">monster</span> -->
+                    <!-- <span class="text-2xl tracking-widest font-bayon mix-blend-hard-light text-shadow">monster</span> -->
                 </span>
             </span>            
             <div class="relative z-30">
-                <div class="absolute top-0 left-0 w-full h-full bg-black z-30 opacity-60 mix-blend-difference"></div>
-                <Image src={fishImg} alt="Anglerfish" class="fish-hero__image fish-shadow w-full z-40 mix-blend-difference h-full object-cover relative block" />
-                <div class="fishball animation-fishball absolute z-30">
-                    <Image src={fishBallImg} alt="Sigil" class="fish-hero__ball object-contain" />
+                <div class="absolute top-0 left-0 z-30 w-full h-full bg-black opacity-60 mix-blend-difference"></div>
+                <Image src={fishImg} alt="Anglerfish" class="relative z-40 block object-cover w-full h-full fish-hero__image fish-shadow mix-blend-difference" />
+                <div class="absolute z-30 fishball animation-fishball">
+                    <Image src={fishBallImg} alt="Sigil" class="object-contain fish-hero__ball" />
                 </div>
             </div>
-            <span class="bg-gradient-to-tr from-fuchsia-700 via-violet-900 to-purple-950 absolute top-0 left-0 mix-blend-difference top-0 left-0 w-full h-full z-50"></span>
-            <!-- <span class="absolute bg-teal-500 top-0 left-0 w-full h-full z-0 mix-blend-color-difference" role="decoration"></span> -->
-            <!-- <div class="h-4 relative block overflow-hidden z-50 bg-purple-500 invert">
-                <Image src={waterImg} alt="Water reflections" class="fish-hero__water top-0 left-0 w-full block relative h-full object-cover mix-blend-hard-light" />
+            <span class="absolute top-0 left-0 z-50 w-full h-full bg-gradient-to-tr from-fuchsia-700 via-violet-900 to-purple-950 mix-blend-difference"></span>
+            <!-- <span class="absolute top-0 left-0 z-0 w-full h-full bg-teal-500 mix-blend-color-difference" role="decoration"></span> -->
+            <!-- <div class="relative z-50 block h-4 overflow-hidden bg-purple-500 invert">
+                <Image src={waterImg} alt="Water reflections" class="relative top-0 left-0 block object-cover w-full h-full fish-hero__water mix-blend-hard-light" />
             </div> -->
-            <h2 class="absolute bottom-0 left-1/2 -translate-x-1/3 translate-y-1/2 z-50">
+            <h2 class="absolute bottom-0 z-50 translate-y-1/2 left-1/2 -translate-x-1/3">
                 
-                <!-- <span class="absolute w-full justify-center flex top-0 items-end left-1/2 -translate-x-1/2 z-40 text-white  mix-blend-difference"></span> -->
-                <!-- <span class="mix-blend-screen absolute top-0 translate-y-1/2 left-0 text-4xl tracking-normal text-red-500 font-bokor monster-text-shadow">the</span> -->
-                <span id="fish-monster" class="mix-blend-screen text-red-500 font-bokor monster-text-shadow">anglerfish</span>
+                <!-- <span class="absolute top-0 z-40 flex items-end justify-center w-full text-white -translate-x-1/2 left-1/2 mix-blend-difference"></span> -->
+                <!-- <span class="absolute top-0 left-0 text-4xl tracking-normal text-red-500 translate-y-1/2 mix-blend-screen font-bokor monster-text-shadow">the</span> -->
+                <span id="fish-monster" class="text-red-500 mix-blend-screen font-bokor monster-text-shadow">anglerfish</span>
             </h2>            
         </div>
     </div>
-    <Image src={waterImg} alt="Water reflections" class="fish-hero__water top-0 left-0 absolute h-full object-cover z-0 mix-blend-difference" />
+    <Image src={waterImg} alt="Water reflections" class="absolute top-0 left-0 z-0 object-cover h-full fish-hero__water mix-blend-difference" />
     <div class="relative z-30 prose">
-        <div class="mx-auto bg-black bg-opacity-80 text-lime-100 px-8 pb-14 pt-32 rounded-b-3xl">
-            <h2 class="text-4xl  mb-4">Rare specimen needs special care</h2>
+        <div class="px-8 pt-32 mx-auto bg-black bg-opacity-80 text-lime-100 pb-14 rounded-b-3xl">
+            <h2 class="mb-4 text-4xl">Rare specimen needs special care</h2>
             <p class="mb-4">Anglerfish live deep in the ocean, amongst inky blackness and crushing pressure. If light simply strikes it, it will cause the tissue to begin to break down. When specimens make their way to the surface, the massive pressure changes often distort the fish into a crude facisimile of it's true form.</p>
             <p>In 2021, an intact and undamaged anglerfish floated it's way onto a Southern California beach. It was destined for the National History Museum of Los Angeles, where for a limited time, it would be scientific and sightseeing superstar.</p>
             <p class="mb-4">This is one of only 30 anglerfish that have made their way into study and exhibition in such pristine condition. They planned a special exhibit to display this mythic creature from beyond our grasp. But there was a problem...</p>

@@ -1,7 +1,5 @@
 ---
-import { getCollection, getEntry } from "astro:content";
 import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
 import FishHero from "../components/FishHero.astro";
 import { Image } from "astro:assets";
 import bgImage from "../images/bg_video_glitch.jpg";
@@ -11,7 +9,7 @@ import nhmLogo from "../images/nhmla-logo.png";
 import SkillsGrid from "../components/SkillsGrid.astro";
 import Pill from "../components/Pill.astro";
 import Projects from "../components/Projects.astro";
-import Jobs from "../components/Jobs.astro"
+import Jobs from "../components/Jobs.astro";
 ---
 
 <Layout title="Grant Keller - Software Engineer">
@@ -69,6 +67,14 @@ import Jobs from "../components/Jobs.astro"
                 <Pill>Embedded - C++</Pill>
               </div>
             </div>
+          </div>
+
+          <div class="block mb-12">
+            <Image
+              src={grantImg}
+              alt="Grant Keller"
+              class="w-32 h-32 mx-auto rounded-full"
+            />
           </div>
 
           <div class="block mb-12">
