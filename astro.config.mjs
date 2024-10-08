@@ -5,7 +5,7 @@ import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://GDKeller.github.io',
-  base: 'Portfolio',
+  site: 'https://gdkeller.github.io',
+  // base: 'Portfolio',
   integrations: [tailwind()]
 });
