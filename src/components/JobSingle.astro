@@ -1,0 +1,36 @@
+---
+import { getEntry } from "astro:content";
+import Link from "./Link.astro";
+
+const { job } = Astro.props;
+console.log(job);
+const { slug, body, data } = job;
+const { company, companyWebsite, position, startMonthYear, endMonthYear } =
+  data;
+
+const entry = await getEntry("jobs", slug);
+const { Content } = await job.render();
+---
+
+<div class="job-card">
+  {
+    companyWebsite ? (
+      <Link href={companyWebsite} target="_blank">
+        {position}
+      </Link>
+    ) : (
+      <p class="text-fuchsia-500">{position}</p>
+    )
+  }
+
+  <p>{company}</p>
+
+  <p>
+    {startMonthYear ? startMonthYear : null} -
+    {endMonthYear ? endMonthYear : "Present"}
+  </p>
+
+  <div class="prose job-body">
+    <Content />
+  </div>
+</div>

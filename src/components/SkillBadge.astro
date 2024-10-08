@@ -7,7 +7,9 @@ const { text } = Astro.props;
 ---
 
 
-<div class="relative py-8 text-center px-2">
-    <p class="relative text-clip">{text}</p>
-    <span class="absolute bg-gradient-to-tr from-green-900 to-violet-900 opacity-50 top-0 left-0 w-full h-full"></span>
+<div class="relative px-2 py-8 overflow-hidden text-center rounded-lg mix-blend-color-dodge">
+    <p class="relative z-40 block text-white">{text}</p>
+    <span class="absolute top-0 left-0 z-20 block w-full h-full bg-black opacity-40"></span>
+    <!-- <span class="absolute top-0 left-0 z-10 block w-full h-full opacity-60 bg-gradient-to-tr from-green-900 via-gray-950 to-violet-900"></span>
+    <span class="absolute top-0 left-0 z-10 block w-full h-full shadow-xl shadow-inner shadow-gray-500 opacity-60 bg-gradient-to-tl from-green-900 via-gray-950 to-violet-900"></span> -->
 </div>

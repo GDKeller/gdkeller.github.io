@@ -1,0 +1,19 @@
+---
+import { getCollection } from "astro:content";
+import Link from "./Link.astro";
+import JobSingle from "./JobSingle.astro";
+
+const jobs = await getCollection("jobs");
+const sortedJobs = jobs.sort((a, b) => a.data.order - b.data.order);
+---
+
+<h2 class="mb-4 text-3xl">Positions</h2>
+<ul>
+  {
+    jobs.map((job) => (
+      <li class="mb-4">
+        <JobSingle {job} />
+      </li>
+    ))
+  }
+</ul>

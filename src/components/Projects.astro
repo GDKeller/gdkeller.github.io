@@ -1,0 +1,24 @@
+---
+import { getCollection } from "astro:content";
+import Link from "./Link.astro";
+
+const projectsEntries = await getCollection("projects");
+---
+
+<h2 class="text-3xl">Projects</h2>
+<ul>
+  {
+    projectsEntries.map((project) => (
+      <li>
+        <Link href={`/${project.slug}`} target="blank">
+          {project.data.title}
+        </Link>
+        <p>{project.data.client}</p>
+        {project.data.subClient ?
+          project.data.subClient :
+          null
+        }
+      </li>
+    ))
+  }
+</ul>

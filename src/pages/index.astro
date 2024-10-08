@@ -10,10 +10,12 @@ import nasaLogo from "../images/nasa-jpl-logo.png";
 import nhmLogo from "../images/nhmla-logo.png";
 import SkillsGrid from "../components/SkillsGrid.astro";
 import Pill from "../components/Pill.astro";
+import Projects from "../components/Projects.astro";
+import Jobs from "../components/Jobs.astro"
 ---
 
 <Layout title="Grant Keller - Software Engineer">
-  <main class="text-white">
+  <main class="text-emerald-200">
     <svg
       class="astro-a"
       width="495"
@@ -42,28 +44,38 @@ import Pill from "../components/Pill.astro";
         </linearGradient>
       </defs>
     </svg>
-    <section class="bg-black pt-14 relative block z-0">
-      <!-- <span class="absolute top-0 left-0 bottom-0 right-0 w-full h-full object-cover min-h-full opacity-20 bg-gradient-to-bl from-teal-500 to-indigo-950"></span> -->
-      <!-- <span class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-purple-950 to-blue-950 z-0"></span> -->
-      <div class="container mx-auto relative block z-50">
+    <section class="relative z-0 block bg-black pt-14">
+      <!-- <span class="absolute top-0 bottom-0 left-0 right-0 object-cover w-full h-full min-h-full opacity-20 bg-gradient-to-bl from-teal-500 to-indigo-950"></span> -->
+      <!-- <span class="absolute top-0 left-0 z-0 w-full h-full bg-gradient-to-br from-purple-950 to-blue-950"></span> -->
+      <div class="container relative z-50 block mx-auto">
         <div class="mb-8">
           <div class="mb-12">
-            <!-- <Image src={grantImg} alt="Grant Keller" class="rounded-full w-32 h-32 mx-auto" /> -->
+            <!-- <Image src={grantImg} alt="Grant Keller" class="w-32 h-32 mx-auto rounded-full" /> -->
             <h1 class="text-left">
               <span class="block text-6xl">Grant Keller </span><span
                 class="text-3xl">Senior Software Engineer</span
               >
             </h1>
-            <p class="text-xl mb-8">Hardware Tinkerer & Maker</p>
+            <p class="mb-8 text-xl">+ Hardware Tinkerer & Maker</p>
 
-            <div class="flex">
+            <div class="flex gap-2">
               <Pill>Web - Frontentd & UX</Pill>
               <Pill>AI - Python</Pill>
               <Pill>Embedded - C++</Pill>
             </div>
           </div>
 
-          <SkillsGrid />
+          <div class="block mb-12">
+            <Jobs />
+          </div>
+
+          <div class="block mb-12">
+            <Projects />
+          </div>
+
+          <div class="relative z-50 block">
+            <SkillsGrid />
+          </div>
 
           <div class="grid grid-cols-3">
             <div>
@@ -89,25 +101,25 @@ import Pill from "../components/Pill.astro";
           </p>
         </div>
       </div>
-      <div class="flex flex-row py-4 px-4 bg-black w-full relative">
+      <div class="relative flex flex-row w-full px-4 py-4 bg-black">
         <div>
           <Image
             src={nasaLogo}
             alt="NASA JPL Logo"
-            class="relative block h-20 object-contain"
+            class="relative block object-contain h-20"
           />
         </div>
         <div>
           <Image
             src={nhmLogo}
             alt="Natural History Museum of Los Angeles Logo"
-            class="relative block h-20 object-contain"
+            class="relative block object-contain h-20"
           />
         </div>
       </div>
-      <div class="bg overflow-hidden absolute top-0 left-0 w-full h-full z-0">
+      <div class="absolute top-0 left-0 z-0 w-full h-full overflow-hidden bg">
         <span
-          class="bg-black opacity-80 absolute top-0 left-0 w-full h-full z-10"
+          class="absolute top-0 left-0 z-10 w-full h-full bg-black opacity-80"
         ></span>
         <span class="absolute top-0 left-0 w-full h-full">
           <Image
@@ -119,7 +131,7 @@ import Pill from "../components/Pill.astro";
       </div>
     </section>
 
-    <section class="block relative overflow-hidden z-10">
+    <section class="relative z-10 block overflow-hidden">
       <FishHero />
     </section>
   </main>
