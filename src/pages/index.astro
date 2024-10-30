@@ -15,7 +15,7 @@ import Link from "../components/Link.astro";
 
 <Layout title="Grant Keller - Software Engineer">
   <main class="text-emerald-200 font-prompt">
-    <section class="relative block bg-black">
+    <section class="relative block bg-black z-80">
       <!-- <span class="absolute top-0 bottom-0 left-0 right-0 z-50 object-cover w-full h-full min-h-full mix-blend-difference opacity-20 bg-gradient-to-bl from-teal-500 to-indigo-950"></span> -->
       <!-- <span class="absolute top-0 left-0 z-0 z-50 w-full h-full opacity-50 bg-gradient-to-br from-purple-950 mix-blend-color-dodge to-blue-950"></span> -->
       <div class="relative z-50 block mx-auto">
@@ -24,18 +24,34 @@ import Link from "../components/Link.astro";
           class="w-full px-4 pt-6 pb-12 mb-12 bg-black bg-opacity-75 sm:pt-12 sm:px-8"
         >
           <div
-            class="flex flex-col-reverse items-center max-w-4xl mx-auto sm:justify-center sm:flex-row-reverse hero__title"
+            class="flex flex-col-reverse items-center justify-center max-w-4xl mx-auto sm:justify-end sm:flex-row-reverse sm:items-start hero__title"
           >
-            <div class="flex flex-col justify-center mb-2 hero__text">
-              <h1 class="mb-8 text-center sm:text-left">
-                <span
-                  class="block mb-2 text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-marker"
-                  >Grant Keller
-                </span><span
-                  class="pl-2 text-lg text-center sm:text-lg md:text-2xl"
-                  >AI Founder & Senior Software Engineer</span
-                >
+            <div class="flex max-w-lg flex-col w-full mb-2 hero__text">
+              <h1
+                class="text-center sm:text-left mb-6 text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-marker"
+              >
+                Grant Keller
               </h1>
+              <!-- <span class="sr-only">is a&nbsp;</span> -->
+              <p class="text-md sm:text-lg md:text-md mb-8">
+                Software professional relentlessly driven to dissolve the
+                barriers between us and the machines we use every day.
+              </p>
+              <ul class="list-disc list-outside pl-4 mb-12">
+                <li class="mb-2 list-item">
+                  Over 15 years fullstack experience (6 in agencies)
+                </li>
+                <li class="mb-2 list-item">
+                  Strong focus on front-end/UX for web, mobile, IoT
+                </li>
+                <li class="mb-2 list-item">
+                  Web accessibility & performance expert
+                </li>
+                <li class="mb-2 list-item tab-">
+                  <span class="bold">Code Polyglot: </span>diverse skillset to
+                  solve any problem, in any environment
+                </li>
+              </ul>
               <div
                 class="flex flex-col justify-center gap-2 pl-2 mb-6 sm:flex-row sm:justify-start"
               >
@@ -46,7 +62,7 @@ import Link from "../components/Link.astro";
                   <Pill>Stable Diffusion AI</Pill>
                 </div>
                 <div class="inline-block">
-                  <Pill>Embedded</Pill>
+                  <Pill>Embedded Systems</Pill>
                 </div>
               </div>
               <div class="flex gap-4 pl-4">
@@ -59,10 +75,15 @@ import Link from "../components/Link.astro";
                 >
               </div>
             </div>
-            <div
-              class="block w-48 h-48 mb-8 overflow-hidden shadow-sm sm:mr-6 md:mr-12 sm:mb-2 rounded-xl shadow-teal-900"
-            >
-              <Headshot />
+            <div class="relative w-auto sm:max-w-full sm:mr-6 md:mr-12 sm:mb-2 flex justify-center sm:justify-start">
+              <div
+                class="block h-auto relative max-w-48 sm:max-w-none md:max-w-72 lg:max-w-72 mt-4 mb-8 overflow-hidden shadow-sm rounded-xl shadow-teal-900"
+              >
+                <Headshot />
+              </div>
+              <span
+                class="absolute w-full h-full top-0 left-0 gradient-burst"
+              ></span>
             </div>
           </div>
         </div>
@@ -74,10 +95,9 @@ import Link from "../components/Link.astro";
           <div class="block mb-24">
             <Projects />
           </div>
-
-          <div class="relative z-50 block py-24">
-            <SkillsGrid />
-          </div>
+        </div>
+        <div class="relative z-50 block py-24 max-w-6xl mx-auto p-2">
+          <SkillsGrid />
         </div>
       </div>
       <div class="relative flex flex-row w-full px-4 py-4 bg-black">
@@ -115,3 +135,18 @@ import Link from "../components/Link.astro";
     </section>
   </main>
 </Layout>
+
+<style>
+  .gradient-burst {
+    background: radial-gradient(
+      ellipse at center center,
+      rgba(0, 255, 100, 0.8) 0%,
+      /* rgba(0, 0, 0, 100) 50%, */
+      rgba(0, 255, 200, 0) 60%
+    );
+    bagkground-repeat: no-repeat;
+    transform: scaleY(1.8) scaleX(1.5) translateY(0%);
+    mix-blend-mode: overlay;
+    /* animation: burst 6s infinite; */
+  }
+</style>
