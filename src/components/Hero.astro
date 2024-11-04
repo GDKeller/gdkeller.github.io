@@ -1,0 +1,130 @@
+---
+import Pill from "./Pill.astro";
+import Headshot from "./Headshot.astro";
+import Link from "./Link.astro";
+---
+
+<section
+  id="hero"
+  class="relative z-50 w-full px-4 pt-6 pb-24 sm:pt-12 sm:px-8 lg:pt-32"
+>
+  <div
+    class="relative z-10 flex flex-col items-center justify-start mx-auto max-w-7xl sm:justify-start sm:flex-row"
+  >
+    <div
+      class="flex flex-col items-center justify-center w-auto mb-6 sm:items-start sm:max-w-full sm:mr-6 md:items-center md:mr-8 sm:mb-auto lg:mr-16 xl:mr-24 sm:justify-start"
+    >
+      <div
+        class="relative block h-auto mb-4 overflow-hidden shadow-sm max-w-48 sm:max-w-none md:max-w-72 lg:max-w-sm rounded-xl shadow-teal-900"
+      >
+        <Headshot />
+      </div>
+      <h1
+        class="block mx-auto mb-6 text-4xl leading-none text-center sm:w-min lg:w-full sm:text-left sm:text-6xl md:text-7xl lg:text-center lg:text-4xl xl:text-5xl font-marker hero__name"
+      >
+        Grant Keller
+      </h1>
+      <span class="absolute top-0 left-0 w-full h-full gradient-burst"></span>
+    </div>
+    <div
+      class="sticky top-0 flex flex-col w-full max-w-3xl mb-auto hero__text lg:pt-4"
+    >
+      <!-- <h1
+        class="mb-6 text-4xl text-center sm:text-left sm:text-5xl md:text-6xl xl:text-7xl font-marker"
+      >
+        Grant Keller
+      </h1> -->
+      <!-- <span class="sr-only">is a&nbsp;</span> -->
+      <p
+        class="sticky mb-8 font-bold text-md sm:text-lg md:text-md lg:text-2xl"
+      >
+        Software professional relentlessly driven to dissolve the barriers
+        between the digital machines and the humans that use them every day.
+      </p>
+      <ul class="pl-4 mb-12 text-xs list-disc list-outside md:text-sm lg:text-lg">
+        <li class="mb-2 list-item">
+          Over 15 years fullstack experience (6 in agencies)
+        </li>
+        <li class="mb-2 list-item">
+          Strong focus on front-end/UX for web, mobile, IoT
+        </li>
+        <li class="mb-2 list-item">Web accessibility & performance expert</li>
+        <li class="mb-2 list-item tab-">
+          <span class="bold">Code Polyglot: </span>diverse skillset to solve
+          problems across disciplines
+        </li>
+      </ul>
+      <div
+        class="flex flex-row justify-center gap-1 pl-2 mb-6 sm:gap-2 sm:flex-col md:flex-row md:justify-start sm:items-start"
+      >
+        <Pill>Web UX</Pill>
+        <Pill>Stable Diffusion AI</Pill>
+        <Pill>Embedded Systems</Pill>
+      </div>
+      <div class="flex gap-4 pl-4">
+        <Link href="https://www.linkedin.com/in/grantdkeller/" target="_blank"
+          >LinkedIn</Link
+        >
+        <Link href="https://github.com/gdkeller" target="_blank">GitHub</Link>
+      </div>
+    </div>
+  </div>
+  <!-- <div id="bg__main" class="absolute top-0 left-0 z-0 w-full h-full overflow-hidden bg">
+            <span
+              class="absolute top-0 left-0 z-10 w-full h-full bg-black opacity-90"
+            ></span>
+            <span class="absolute top-0 left-0 w-full h-full">
+              <Image
+                src={bgImage}
+                alt="Background"
+                class="object-cover w-full h-full"
+              />
+            </span>
+          </div> -->
+
+  <div
+    class="opacity-15 huge font-marker text-fuchsia-600 mix-blend-hard-light"
+  >
+    UX
+    <span class="block plus text-emerald-200 font-bokor">+</span>AI
+  </div>
+</section>
+
+<style>
+  #hero {
+    min-height: calc(90vh - 1rem);
+    z-index: 99;
+    overflow: hidden;
+  }
+
+  .hero__name {
+    line-height: 0.8;
+  }
+
+  #hero .huge {
+    font-size: 40vw;
+    display: block;
+    position: absolute;
+    /* text-align: center; */
+    margin-left: -0.05em;
+    bottom: 0;
+    left: 50%;
+    transform: translate3d(-50%, -8%, 0);
+    /* white-space: pre; */
+    width: 100vw;
+    line-height: 0.7;
+    letter-spacing: -0.1em;
+    /* height: 0.8em; */
+  }
+
+  #hero .huge .plus {
+    font-size: 45vw;
+    mix-blend-mode: difference;
+    top: 50%;
+    position: absolute;
+    left: 50%;
+    line-height: 1;
+    z-index: 100;
+    transform: translate3d(-56%, -47%, 0);
+  }
+</style>

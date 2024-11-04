@@ -1,0 +1,88 @@
+---
+import Image from "astro/components/Image.astro";
+import NypSpread from "../images/projects/site-spread.webp";
+import NypostLogo from "../images/nypost-logo.svg?raw";
+import textureRipped1 from "../images/texture-ripped1.jpg";
+import statueOfLiberty from "../images/statue-of-liberty.jpg";
+---
+
+<div
+  class="container flex flex-col items-start justify-center max-w-full py-48 mx-auto mb-24 lg:flex-row color__nyp-red--dark"
+>
+    <span class="absolute top-0 left-0 z-0 w-full h-1/4 bg-gradient-to-b from-black to-transparent opacity-90"></span>
+    <span class="absolute bottom-0 left-0 z-0 w-full h-1/4 bg-gradient-to-t from-black to-transparent opacity-90"></span>    <div class="relative w-full px-12 -mb-24 md:-mb-36 lg:mb-auto lg:py-20 lg:max-w-1/2">
+    <div class="relative lg:top-0 lg:scale-110 lg:-translate-x-16 lg:absolute browser">
+      <div class="nyp">
+        <Image
+          src={NypSpread}
+          alt="New York Post"
+          class="object-cover w-full h-full"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="z-10 flex justify-start w-full content-box">
+    <div class="">
+      <div class="flex-col items-center w-full py-8 lg:py-4 col rounded-tl-md color__nyp-red">
+        <div class="relative w-full px-8 mx-auto max-w-72">
+          <Fragment set:html={NypostLogo} />
+        </div>
+      </div>
+      <div class="w-full p-8 pt-6 bg-black bg-opacity-100">
+        <div class="font-bold text-white stat">
+          <div
+            class="flex items-end m-0 text-9xl font-bokor color__nyp-red--text"
+          >
+            391 <span class="mb-4 ml-3 text-5xl">million</span>
+          </div>
+          <div class="ml-2 -mt-4 text-4xl text-white stat-title font-bayon">monthly pageviews</div>
+        </div>
+        <div
+          class="mb-8 font-bold text-white bg-opacity-0 color__nyp-red--text stat"
+        >
+          <span
+            class="flex items-end m-0 text-9xl font-bokor color__nyp-red--text"
+            >65 <span class="mb-4 ml-2 text-5xl">million</span></span
+          >
+          <div class="ml-2 -mt-4 text-4xl text-white stat-title font-bayon">unique visitors</div>
+        </div>
+        <div
+          class="block w-full font-bold text-white">
+            <p class="mb-8 text-lg font-bold">Embedded with editorial staff as an agency client.</p>
+            <p class="mb-4 text-sm">Analyzed buinsess goals to pitch and lead improvement implementations. Team responsbile for mainting a world-class user experience at massive scale. Developed on custom enterprise stack hosted on <span class="inline-block color__nyp-red--text break-keep">WordPress VIP</span></p>
+            <ul class="text-white list-disc list-inside list">
+                <li>Client collaboration</li>
+                <li>Performance Tuning & Enhancement</li>
+                <li>Extreme Troubleshooting</li>
+            </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="w-full max-w-1/4 image__statueofliberty">
+      <Image
+        src={statueOfLiberty}
+        alt="Statue of Liberty"
+        class="object-cover w-full h-full"
+      />
+    </div>
+  </div>
+
+  <style>
+    .browser {
+        filter: drop-shadow(0.1rem 0.1rem 0.3rem rgba(0, 0, 0, 1.0));
+    }
+    .color__nyp-red {
+      background-color: #c60800;
+    }
+    .color__nyp-red--text {
+      color: #c60800;
+    }
+    .color__nyp-red--dark {
+      background-color: #1e0b09;
+    }
+    .content-box {
+        box-shadow: 0 0 1.2rem -0.4rem rgba(255, 0, 0, 0.1);
+    }
+  </style>
+</div>

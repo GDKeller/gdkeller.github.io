@@ -7,5 +7,10 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   site: 'https://gdkeller.github.io',
   // base: 'Portfolio',
-  integrations: [tailwind()]
+  integrations: [tailwind()],
+  vite: {
+    ssr: {
+      noExternal: ["react-icons"],
+    },
+  },
 });

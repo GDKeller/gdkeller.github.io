@@ -29,11 +29,31 @@ import ai25 from "../images/headshots/Preset25.jpg";
     alt="AI3"
     class="absolute top-0 left-0 w-full h-full animate-headshot-2"
   />
-  <Image src={ai4} alt="AI4" class="absolute top-0 left-0 w-full h-full animate-headshot-3" />
-  <Image src={ai5} alt="AI5" class="absolute top-0 left-0 w-full h-full animate-headshot-4" />
-  <Image src={ai6} alt="AI6" class="absolute top-0 left-0 z-10 w-full h-full animate-headshot-5" />
-  <Image src={ai7} alt="AI7" class="absolute top-0 left-0 z-10 w-full h-full animate-headshot-6" />
-  <Image src={ai8} alt="AI8" class="absolute top-0 left-0 z-10 w-full h-full animate-headshot-7" />
+  <Image
+    src={ai4}
+    alt="AI4"
+    class="absolute top-0 left-0 w-full h-full animate-headshot-3"
+  />
+  <Image
+    src={ai5}
+    alt="AI5"
+    class="absolute top-0 left-0 w-full h-full animate-headshot-4"
+  />
+  <Image
+    src={ai6}
+    alt="AI6"
+    class="absolute top-0 left-0 z-10 w-full h-full animate-headshot-5"
+  />
+  <Image
+    src={ai7}
+    alt="AI7"
+    class="absolute top-0 left-0 z-10 w-full h-full animate-headshot-6"
+  />
+  <Image
+    src={ai8}
+    alt="AI8"
+    class="absolute top-0 left-0 z-10 w-full h-full animate-headshot-7"
+  />
   <Image
     src={ai10}
     alt="AI10"
@@ -67,17 +87,17 @@ import ai25 from "../images/headshots/Preset25.jpg";
 </div>
 
 <style>
-    .headshot {
-        z-index: 11;
-        object-fit: cover;    
-    }
+  .headshot {
+    z-index: 11;
+    object-fit: cover;
+  }
   .animate-headshot-1 {
     animation: headshot 6s 3s infinite;
     opacity: 0;
     z-index: 12;
   }
   .animate-headshot-2 {
-    animation: headshot 6s 6s infinite;
+    animation: headshot 6s 6s infinite; /* Adjusted to avoid overlap */
     opacity: 0;
     z-index: 13;
   }
@@ -89,73 +109,71 @@ import ai25 from "../images/headshots/Preset25.jpg";
 
   .animate-headshot-4 {
     animation: headshot 6s 12s infinite;
-    z-index: 15;
     opacity: 0;
+    z-index: 15;
   }
 
   .animate-headshot-5 {
     animation: headshot 6s 15s infinite;
-    z-index: 15;
     opacity: 0;
+    z-index: 16;
   }
 
   .animate-headshot-6 {
     animation: headshot 6s 18s infinite;
-    z-index: 15;
     opacity: 0;
+    z-index: 17;
   }
 
   .animate-headshot-7 {
     animation: headshot 6s 21s infinite;
-    z-index: 15;
     opacity: 0;
+    z-index: 18;
   }
 
   .animate-headshot-8 {
     animation: headshot 6s 24s infinite;
-    z-index: 15;
     opacity: 0;
+    z-index: 19;
   }
 
   .animate-headshot-9 {
     animation: headshot 6s 27s infinite;
-    z-index: 15;
     opacity: 0;
+    z-index: 20;
   }
 
   .animate-headshot-10 {
     animation: headshot 6s 30s infinite;
-    z-index: 15;
     opacity: 0;
+    z-index: 21;
   }
 
   .animate-headshot-11 {
     animation: headshot 6s 33s infinite;
-    z-index: 15;
     opacity: 0;
+    z-index: 22;
   }
 
   .animate-headshot-12 {
     animation: headshot 6s 36s infinite;
-    z-index: 15;
     opacity: 0;
+    z-index: 23;
   }
 
   .animate-headshot-13 {
-    animation: headshot 6s 39s infinite;
-    z-index: 15;
+    animation: headshot 6s 39s infinite; /* Ends the sequence */
     opacity: 0;
+    z-index: 24;
   }
 
+  /* Updated keyframes remain the same */
   @keyframes headshot {
     0% {
       opacity: 0;
     }
     50% {
       opacity: 1;
-    }
-    95% {
-      opacity: .11;
     }
     100% {
       opacity: 0;
