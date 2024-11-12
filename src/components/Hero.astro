@@ -35,15 +35,19 @@ import Link from "./Link.astro";
         Grant Keller
       </h1> -->
       <!-- <span class="sr-only">is a&nbsp;</span> -->
+      <h2 class="text-2xl font-bold text-center sm:text-left sm:text-3xl md:text-4xl lg:text-5xl mb-2">
+        Software professional
+      </h2>
       <p
-        class="sticky mb-8 font-bold text-md sm:text-lg md:text-md lg:text-2xl"
-      >
-        Software professional driven to dissolve barriers
-        between digital machines and the humans that use them.
+        class="sticky mb-8 font-bold text-md sm:text-lg md:text-md lg:text-2xl max-w-md"
+      > driven to dissolve barriers between digital
+        machines and the humans that use them.
       </p>
-      <ul class="pl-4 mb-12 text-xs list-disc list-outside md:text-sm lg:text-lg">
+      <ul
+        class="pl-4 mb-12 text-xs list-disc list-outside md:text-sm lg:text-lg"
+      >
         <li class="mb-2 list-item">
-          Over 15 years fullstack experience (6 in agencies)
+          15+ years fullstack experience
         </li>
         <li class="mb-2 list-item">
           Strong focus on front-end/UX for web, mobile, IoT
@@ -61,11 +65,32 @@ import Link from "./Link.astro";
         <Pill>Stable Diffusion AI</Pill>
         <Pill>Embedded Systems</Pill>
       </div>
-      <div class="flex gap-4 pl-4">
-        <Link href="https://www.linkedin.com/in/grantdkeller/" target="_blank"
-          >LinkedIn</Link
-        >
-        <Link href="https://github.com/gdkeller" target="_blank">GitHub</Link>
+      <div class="flex pl-2 leading-none items-center justify-between">
+        <div class="mr-8">
+          <Link
+            href="mailto:contact@grantkeller.dev"
+            class="flex items-center leading-none"
+          >
+            <i
+              class="fa-solid fa-envelope text-2xl leading-none inline-block mr-2"
+            ></i><span class="leading-none inline-block"
+              >contact@grantkeller.dev</span
+            >
+          </Link>
+        </div>
+        <div class="flex items-center gap-4">
+          <Link
+            href="https://www.linkedin.com/in/grantdkeller/"
+            target="_blank"
+          >
+            <i class="fa-brands fa-linkedin text-2xl"></i>
+            <span class="sr-only">LinkedIn</span>
+          </Link>
+          <Link href="https://github.com/gdkeller" target="_blank">
+            <i class="fa-brands fa-github text-2xl"></i>
+            <span class="sr-only">GitHub</span>
+          </Link>
+        </div>
       </div>
     </div>
   </div>
