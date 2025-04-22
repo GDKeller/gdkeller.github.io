@@ -9,7 +9,7 @@ order: 2
 
 Collaborated in a fast-paced dev team building highly polished websites for luxury clients in the medical & legal fields.
 
-<div class="relative py-6 pl-8 pr-2 overflow-hidden text-left border-2 rounded-lg border-teal-950 bg-black mb-8 mt-12">
+<div class="relative pt-3 pb-2 pl-6 pr-2 overflow-hidden text-left border-2 rounded-lg border-teal-950 bg-black mb-8 mt-8">
 <span class="font-bold">Tech: </span>Datto Custom CMS, PHP, CSS/Sass, GSAP, Shell scripting
 </div>
 

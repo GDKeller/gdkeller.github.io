@@ -10,7 +10,7 @@ order: 1
 Led frontend development efforts for high-profile clients in a scrum environment. Focused on strategic planning, UX best practices, and WCAG 2.1 accessibility compliance. Ensured a user-centered approach across projects, overseeing frontend strategy from initial planning through deployment. Collaborated closely with backend developers and client stakeholders to deliver cohesive, high-quality websites. Regularly conducted UX, accessibility, and performance audits, delivering actionable recommendations to reduce bounce rates, increase session durations, and ensure compliance, encouraging continued client investment.
 
 
-<div class="relative py-6 pl-8 pr-2 overflow-hidden text-left border-2 rounded-lg border-teal-950 bg-black mb-8 mt-12">
+<div class="relative pt-3 pb-2 pl-6 pr-2 overflow-hidden text-left border-2 rounded-lg border-teal-950 bg-black mb-8 mt-8">
 <span class="font-bold">Tech: </span>WordPress, React, Typescript, SCSS/Sass, PHP
 </div>
 
