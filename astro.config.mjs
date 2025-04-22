@@ -9,5 +9,10 @@ import favicons from 'astro-favicons';
 export default defineConfig({
   site: 'https://gdkeller.github.io',
   // base: 'Portfolio',
-  integrations: [tailwind(), favicons()]
+  integrations: [tailwind(), favicons()],
+  vite: {
+    ssr: {
+      noExternal: ["react-icons"],
+    },
+  },
 });
