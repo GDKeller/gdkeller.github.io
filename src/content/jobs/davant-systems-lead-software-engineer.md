@@ -1,5 +1,5 @@
 ---
-position: Co-Founder & CEO
+position: Lead Software Engineer
 company: Davant Systems
 companyWebsite: https://www.davantsystems.com
 startMonthYear: Feb 2023
