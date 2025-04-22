@@ -1,6 +1,6 @@
 ---
 company: Keller Digital
-position: WordPress Developer & Solutions Architect
+position: WordPress Developer & Strategist
 startMonthYear: Aug 2011
 endMonthYear: May 2019
 order: 3
