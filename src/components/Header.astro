@@ -3,34 +3,39 @@ import Link from "./Link.astro";
 ---
 
 <div
-  class="px-8 py-2 top-0 left-0 w-full z-50 bg-black border-b justify-between border-emerald-200 border-opacity-10 sticky flex bg-opacity-85 backdrop-blur transition-shadow duration-100 [transform:translate3d(0,0,0)] shadow-sm"
+  class="block px-4 sm:px-8 py-2 border-box top-0 left-0 w-full z-50 bg-black border-b justify-between border-emerald-200 border-opacity-10 sticky bg-opacity-85 backdrop-blur transition-shadow duration-100 [transform:translate3d(0,0,0)] shadow-sm"
 >
-  <nav
-    class="flex gap-4 text-2xl font-bold text-emerald-200 font-bokor mr-auto"
-  >
-    <a href="#projects">Projects</a>
-    <a href="#skills">Skills</a>
-    <a href="#jobs">Jobs</a>
-  </nav>
-  <div class="">
-    <div class="ml-8 flex items-center gap-4">
-      <Link
-        href="mailto:contact@grantkeller.dev"
-        class="flex items-center leading-none no-underline"
+  <div class="flex justify-between w-full relative">
+    <div class="block box-border">
+      <nav
+        class="flex gap-4 text-lg sm:text-2xl font-bold text-emerald-200 font-bokor mr-auto"
       >
-        <i class="fa-solid fa-envelope text-2xl leading-none inline-block mr-2"
-        ></i><span class="leading-none inline-block"
-          >contact@grantkeller.dev</span
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#jobs">Jobs</a>
+      </nav>
+    </div>
+    <div class="block">
+      <div class="ml-8 flex items-center gap-4">
+        <Link
+          href="mailto:contact@grantkeller.dev"
+          class="flex items-center leading-none no-underline"
         >
-      </Link>
-      <Link href="https://www.linkedin.com/in/grantdkeller/" target="_blank">
-        <i class="fa-brands fa-linkedin text-2xl"></i>
-        <span class="sr-only">LinkedIn</span>
-      </Link>
-      <Link href="https://github.com/gdkeller" target="_blank">
-        <i class="fa-brands fa-github text-2xl"></i>
-        <span class="sr-only">GitHub</span>
-      </Link>
+          <i
+            class="fa-solid fa-envelope text-2xl leading-none inline-block mr-2"
+          ></i><span class="leading-none hidden sm:inline-block"
+            >contact@grantkeller.dev</span
+          >
+        </Link>
+        <Link href="https://www.linkedin.com/in/grantdkeller/" target="_blank">
+          <i class="fa-brands fa-linkedin text-2xl"></i>
+          <span class="sr-only">LinkedIn</span>
+        </Link>
+        <Link href="https://github.com/gdkeller" target="_blank">
+          <i class="fa-brands fa-github text-2xl"></i>
+          <span class="sr-only">GitHub</span>
+        </Link>
+      </div>
     </div>
   </div>
 </div>
