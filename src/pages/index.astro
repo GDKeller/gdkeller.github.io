@@ -17,11 +17,9 @@ import Nypost from "../components/Nypost.astro";
 import Footer from "../components/Footer.astro";
 ---
 
-
 <Layout title="Grant Keller - Senior UX Software Engineer">
-  <main class="relative z-0 text-emerald-200 font-prompt block">
+  <main class="relative z-0 block font-prompt text-emerald-200">
     <div class="relative block bg-black">
-
       <!-- <span class="absolute top-0 bottom-0 left-0 right-0 z-50 object-cover w-full h-full min-h-full mix-blend-difference opacity-20 bg-gradient-to-bl from-teal-500 to-indigo-950"></span> -->
       <!-- <span class="absolute top-0 left-0 z-0 z-50 w-full h-full opacity-50 bg-gradient-to-br from-purple-950 mix-blend-color-dodge to-blue-950"></span> -->
 
@@ -36,31 +34,26 @@ import Footer from "../components/Footer.astro";
         <FishHero />
       </section>
 
-      <section id="skills" class="relative block max-w-6xl p-2 py-24 mx-auto">
+      <section id="skills" class="relative mx-auto block max-w-6xl p-2 py-24">
         <SkillsGrid />
       </section>
 
-      <section id="jobs" class="container block max-w-4xl px-8 pb-48 mx-auto">
+      <section id="jobs" class="container mx-auto block max-w-4xl px-8 pb-48">
         <Jobs />
       </section>
 
-      <section id="projects" class="container block max-w-4xl px-8 mx-auto mb-48">
+      <section id="projects" class="container mx-auto mb-48 block max-w-4xl px-8">
         <Projects />
       </section>
     </div>
   </main>
   <div
     id="bg__main"
-    class="fixed top-0 left-0 z-50 w-full h-full overflow-hidden pointer-events-none mix-blend-difference opacity-60 bg"
+    class="bg pointer-events-none fixed left-0 top-0 z-50 h-full w-full overflow-hidden opacity-60 mix-blend-difference"
   >
-    <span class="absolute top-0 left-0 z-10 w-full h-full bg-black opacity-90"
-    ></span>
-    <span class="absolute top-0 left-0 w-full h-full">
-      <Image
-        src={bgImage}
-        alt="Background"
-        class="object-cover w-full h-full"
-      />
+    <span class="absolute left-0 top-0 z-10 h-full w-full bg-black opacity-90"></span>
+    <span class="absolute left-0 top-0 h-full w-full">
+      <Image src={bgImage} alt="Background" class="h-full w-full object-cover" />
     </span>
   </div>
   <Footer />

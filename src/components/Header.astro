@@ -3,13 +3,11 @@ import Link from "./Link.astro";
 ---
 
 <div
-  class="block px-4 sm:px-8 py-2 border-box top-0 left-0 w-full z-50 bg-black border-b justify-between border-emerald-200 border-opacity-10 sticky bg-opacity-85 backdrop-blur transition-shadow duration-100 [transform:translate3d(0,0,0)] shadow-sm"
+  class="border-box sticky left-0 top-0 z-50 block w-full justify-between border-b border-emerald-200 border-opacity-10 bg-black bg-opacity-85 px-4 py-2 shadow-sm backdrop-blur transition-shadow duration-100 [transform:translate3d(0,0,0)] sm:px-8"
 >
-  <div class="flex justify-between w-full relative">
-    <div class="block box-border">
-      <nav
-        class="flex gap-4 text-lg sm:text-2xl font-bold text-emerald-200 font-bokor mr-auto"
-      >
+  <div class="relative flex w-full justify-between">
+    <div class="box-border block">
+      <nav class="mr-auto flex gap-4 font-bokor text-lg font-bold text-emerald-200 sm:text-2xl">
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
         <a href="#jobs">Jobs</a>
@@ -21,10 +19,8 @@ import Link from "./Link.astro";
           href="mailto:contact@grantkeller.dev"
           class="flex items-center leading-none no-underline"
         >
-          <i
-            class="fa-solid fa-envelope text-2xl leading-none inline-block mr-2"
-          ></i><span class="leading-none hidden sm:inline-block"
-            >contact@grantkeller.dev</span
+          <i class="fa-solid fa-envelope mr-2 inline-block text-2xl leading-none"></i><span
+            class="hidden leading-none sm:inline-block">contact@grantkeller.dev</span
           >
         </Link>
         <Link href="https://www.linkedin.com/in/grantdkeller/" target="_blank">
