@@ -1,31 +1,30 @@
 ---
 import Link from "./Link.astro";
+import ProjectSingleImage from "./ProjectSingleImage.astro";
 
 const { project } = Astro.props;
+
 const { data } = project;
-const { title, client, startMonthYear, endMonthYear, clientWebsite } =
-  data;
+const { title, client, startMonthYear, endMonthYear, clientWebsite, image } = data;
 
 const { Content } = await project.render();
-console.log(client)
 ---
 
-<div class="mb-20 job-card block relative">
-  <!-- <div class="flex justify-start mb-2 text-xl">
+<div class="job-card relative mb-20 block">
+  <div
+    class="mb-2 flex flex-col justify-start font-bayon text-2xl sm:flex-row sm:text-xl md:text-2xl lg:text-3xl"
+  >
     <h3 class="font-bold text-fuchsia-500">{title}</h3>
-    <span class="block mx-2"> @ </span>
-      {client}
-  </div> -->
-  <div class="flex sm:flex-row flex-col justify-start mb-2 text-2xl sm:text-xl md:text-2xl lg:text-3xl font-bayon">
-    <h3 class="font-bold text-fuchsia-500">{title}</h3>
-    <span class="sm:block hidden mx-2 font-bokor"> @ </span>
-    { clientWebsite ? (
-    <Link href={clientWebsite} target="_blank">
-      {client}
-    </Link>
-    ) : (
-      <span>{client}</span>
-    )}
+    <span class="mx-2 hidden font-bokor sm:block"> @ </span>
+    {
+      clientWebsite ? (
+        <Link href={clientWebsite} target="_blank">
+          {client}
+        </Link>
+      ) : (
+        <span>{client}</span>
+      )
+    }
   </div>
 
   <p class="mb-8 italic">
@@ -33,7 +32,11 @@ console.log(client)
     {endMonthYear ? endMonthYear : "Present"}
   </p>
 
-  <div class="prose job-body">
+  <div class="mb-8">
+    <ProjectSingleImage imagePath={image} altText={title} />
+  </div>
+
+  <div class="job-body prose">
     <Content />
   </div>
 </div>

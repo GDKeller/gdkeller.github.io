@@ -10,20 +10,22 @@ const blog = defineCollection({
 });
 
 const jobs = defineCollection({
-    type: "content",
-    schema: z.object({
-        company: z.string(),
-        position: z.string(),
-        startMonthYear: z.string().optional(),
-        endMonthYear: z.string().optional(),
-        companyWebsite: z.string().url().optional(),
-        companyLogo: z.object({
-            src: z.string(),
-            alt: z.string(),
-        }).optional(),
-        order: z.number().optional(),
-    })
-})
+  type: "content",
+  schema: z.object({
+    company: z.string(),
+    position: z.string(),
+    startMonthYear: z.string().optional(),
+    endMonthYear: z.string().optional(),
+    companyWebsite: z.string().url().optional(),
+    companyLogo: z
+      .object({
+        src: z.string(),
+        alt: z.string(),
+      })
+      .optional(),
+    order: z.number().optional(),
+  }),
+});
 
 const projects = defineCollection({
   type: "content",

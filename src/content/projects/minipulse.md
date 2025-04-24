@@ -5,7 +5,7 @@ client: "NASA's Jet Propulsion Library"
 endMonthYear: Oct 2022
 startMonthYear: Jan 2022
 subClient: Stratin Engineering
-order: 4
+image: /src/images/projects/nhmla-anglerfish/specimen.jpg
 ---
 
 Collaborated with Stratin Engineering to develop the software for a replica of the 'Pulse' installation in JPL's lobby.
