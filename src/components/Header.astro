@@ -1,5 +1,6 @@
 ---
 import Link from "./Link.astro";
+import Nav from "./Nav.astro";
 ---
 
 <div
@@ -7,32 +8,29 @@ import Link from "./Link.astro";
 >
   <div class="relative flex w-full justify-between">
     <div class="box-border block">
-      <nav class="mr-auto flex gap-4 font-bokor text-lg font-bold text-emerald-200 sm:text-2xl">
-        <a href="#highlights">Highlights</a>
-        <a href="#skills">Skills</a>
-        <a href="#jobs">Jobs</a>
-        <a href="#projects">Projects</a>
-      </nav>
+      <Nav class="" />
     </div>
-    <div class="block">
-      <div class="ml-8 flex items-center gap-4">
-        <Link
-          href="mailto:contact@grantkeller.dev"
-          class="flex items-center leading-none no-underline"
-        >
-          <i class="fa-solid fa-envelope mr-2 inline-block text-2xl leading-none"></i><span
-            class="hidden leading-none sm:inline-block">contact@grantkeller.dev</span
-          >
-        </Link>
-        <Link href="https://www.linkedin.com/in/grantdkeller/" target="_blank">
-          <i class="fa-brands fa-linkedin text-2xl"></i>
-          <span class="sr-only">LinkedIn</span>
-        </Link>
-        <Link href="https://github.com/gdkeller" target="_blank">
-          <i class="fa-brands fa-github text-2xl"></i>
-          <span class="sr-only">GitHub</span>
-        </Link>
-      </div>
+    <div class="flex gap-4">
+      <Link
+        href="/Grant Keller Senior UX Engineer Resume 2025.pdf"
+        target="_blank"
+        class="mr-2 pt-2 leading-none no-underline hover:underline">Resume PDF</Link
+      >
+      <Link
+        class="flex items-center gap-2 no-underline hover:underline"
+        href="mailto:contact@grantkeller.dev"
+      >
+        <span class="hidden leading-none sm:inline-block">contact@grantkeller.dev</span>
+        <i class="fa-solid fa-envelope inline-block text-2xl leading-none"></i>
+      </Link>
+      <Link href="https://www.linkedin.com/in/grantdkeller/" target="_blank">
+        <i class="fa-brands fa-linkedin text-2xl"></i>
+        <span class="sr-only">LinkedIn</span>
+      </Link>
+      <Link href="https://github.com/gdkeller" target="_blank">
+        <i class="fa-brands fa-github text-2xl"></i>
+        <span class="sr-only">GitHub</span>
+      </Link>
     </div>
   </div>
 </div>
