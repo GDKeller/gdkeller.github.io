@@ -1,11 +1,13 @@
 ---
 import Link from "./Link.astro";
 import ProjectSingleImage from "./ProjectSingleImage.astro";
+import Pill from "./Pill.astro";
 
 const { project } = Astro.props;
 
 const { data } = project;
-const { title, client, startMonthYear, endMonthYear, clientWebsite, image } = data;
+const { title, client, startMonthYear, endMonthYear, clientWebsite, image, imageAlign, tech } =
+  data;
 
 const { Content } = await project.render();
 ---
@@ -26,27 +28,59 @@ const { Content } = await project.render();
       )
     }
   </div>
-
   <p class="mb-8 italic">
     {startMonthYear ? startMonthYear : null} -
     {endMonthYear ? endMonthYear : "Present"}
   </p>
 
-  <div class="mb-8">
-    <ProjectSingleImage imagePath={image} altText={title} />
-  </div>
+  {
+    tech && (
+      <div class="mb-8 mt-0 text-xs">
+        <p>
+          <span class="sr-only">Technology used:&nbsp;</span>
+          {tech.map((t: string, i: number) => (
+            <>
+              <Pill tag="span" key={i}>
+                {t}
+              </Pill>
+              {i !== tech.length - 1 && " "}
+            </>
+          ))}
+        </p>
+      </div>
+    )
+  }
 
-  <div class="job-body prose">
-    <Content />
+  <div
+    class:list={[
+      "relative",
+      { "flex flex-col": imageAlign !== undefined },
+      { "md:flex-row-reverse": imageAlign === "right" },
+      { "md:flex-row": imageAlign === "left" },
+    ]}
+  >
+    <div
+      class:list={["mb-8", { "mr-8": imageAlign === "left" }, { "ml-8": imageAlign === "right" }]}
+    >
+      <ProjectSingleImage imagePath={image} altText={title} />
+    </div>
+
+    <div class="job-body prose">
+      <Content />
+    </div>
   </div>
 </div>
 
 <style>
   .job-body {
-    /* line-height: 1.2; */
     p {
       @apply mb-5;
+
+      &:last-child {
+        @apply mb-0;
+      }
     }
+
     li {
       list-style-type: disc;
       list-style-position: outside;

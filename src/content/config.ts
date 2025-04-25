@@ -16,6 +16,7 @@ const jobs = defineCollection({
     position: z.string(),
     startMonthYear: z.string().optional(),
     endMonthYear: z.string().optional(),
+    tech: z.array(z.string()).optional(),
     companyWebsite: z.string().url().optional(),
     companyLogo: z
       .object({
@@ -45,6 +46,8 @@ const projects = defineCollection({
     endMonthYear: z.string().optional(),
     tags: z.array(z.string()).optional(),
     image: z.string().optional().optional(),
+    imageAlign: z.enum(["left", "right"]).optional(),
+    tech: z.array(z.string()).optional(),
   }),
 });
 

@@ -4,13 +4,10 @@ company: Davant Systems
 companyWebsite: https://www.davantsystems.com
 startMonthYear: Feb 2023
 endMonthYeaer: Present
+tech: [Python, Stable Diffusion AI, Shell scripting]
 ---
 
 Building next-generation software for professional visual creatives powered by Stable Diffusion AI.
-
-<div class="relative pt-3 pb-2 pl-6 pr-2 overflow-hidden text-left border-2 rounded-lg border-teal-950 bg-black mb-8 mt-8">
-<span class="font-bold">Tech: </span>Python, Stable Diffusion AI, Shell scripting
-</div>
 
 - Python GUI application using tkinter, QT
 - Wrote extensive integration with Stable Diffusion engine via APIs, with QoL UX

@@ -2,14 +2,18 @@
 import SkillBadge from "./SkillBadge.astro";
 ---
 
-<div class="max-w-4xl px-8 pt-24 mx-auto mb-24 text-center">
-    <!-- <hr class="mb-32"> -->
-  <h2 class="mb-4 text-4xl md:text-5xl sm:text-4xl lg:text-6xl font-bokor">Tools of the Trade</h2>
-  <p class="mb-6 "><span class="max-w-xs mx-auto text-xs divider divider-neutral">at home on</span>&nbsp;<span class="text-4xl font-bayon">Mac, Linux & Windows</span></p>
+<div class="mx-auto mb-24 max-w-4xl px-8 pt-24 text-center">
+  <h2 class="sr-only">Skills</h2>
+  <p class="mb-4 font-bokor text-4xl sm:text-4xl md:text-5xl lg:text-6xl">Tools of the Trade</p>
+  <p class="mb-6">
+    <span class="divider divider-neutral mx-auto max-w-xs text-xs">at home on</span>&nbsp;<span
+      class="font-bayon text-4xl">Mac, Linux & Windows</span
+    >
+  </p>
 </div>
 <div class="flex flex-col gap-2 sm:grid sm:grid-cols-2 lg:grid-cols-3">
   <SkillBadge text="Javascript">
-    <ul class="pl-4 list-disc list-outside list">
+    <ul class="list list-outside list-disc pl-4">
       <li>Typescript</li>
       <li>React</li>
       <li>GSAP</li>
@@ -20,19 +24,20 @@ import SkillBadge from "./SkillBadge.astro";
       <li>Express / Fastify</li>
     </ul>
   </SkillBadge>
-  <SkillBadge text="HTML">
-    <ul class="pl-4 list-disc list-outside list">
-      <li>Information Architecture</li>
-      <li>Technical SEO</li>
-      <li>Advanced Accessibility / WCAG 2.2</li>
-      <li>Advanced Performance</li>
-      <li>Analytics (GA4, Custom)</li>
-      <li>Google Ads / Adslot</li>
-      <li>CRO / Heatmaps / A/B Testing</li>
+  <SkillBadge text="WordPress/PHP">
+    <ul class="list list-outside list-disc pl-4">
+      <li>Custom theme development</li>
+      <li>Custom plugin development</li>
+      <li>WordPress VIP hosting platform</li>
+      <li>Advanced Custom Fields</li>
+      <li>WooCommerce</li>
+      <li>Custom membership systems</li>
+      <li>WP-specific performance</li>
+      <li>Custom post types</li>
     </ul>
   </SkillBadge>
   <SkillBadge text="CSS">
-    <ul class="pl-4 list-disc list-outside list">
+    <ul class="list list-outside list-disc pl-4">
       <li>Sass/SCSS</li>
       <li>CSS Animations</li>
       <li>Tailwind / Bootstrap</li>
@@ -42,8 +47,19 @@ import SkillBadge from "./SkillBadge.astro";
       <li>Cross-browser compatibility</li>
     </ul>
   </SkillBadge>
+  <SkillBadge text="HTML">
+    <ul class="list list-outside list-disc pl-4">
+      <li>Information Architecture</li>
+      <li>Technical SEO</li>
+      <li>Advanced Accessibility / WCAG 2.2</li>
+      <li>Advanced Performance</li>
+      <li>Analytics (GA4, Custom)</li>
+      <li>Google Ads / Adslot</li>
+      <li>CRO / Heatmaps / A/B Testing</li>
+    </ul>
+  </SkillBadge>
   <SkillBadge text="Python">
-    <ul class="pl-4 list-disc list-outside list">
+    <ul class="list list-outside list-disc pl-4">
       <li>Stable Diffusion / Comfy UI</li>
       <li>Computer Vision / OpenCV</li>
       <li>Tensorflow / PyTorch</li>
@@ -55,7 +71,7 @@ import SkillBadge from "./SkillBadge.astro";
     </ul>
   </SkillBadge>
   <SkillBadge text="C++">
-    <ul class="pl-4 list-disc list-outside list">
+    <ul class="list list-outside list-disc pl-4">
       <li>Arduino Ecosystem</li>
       <li>ESP32 / Espressif toolchain</li>
       <li>PlatformIO</li>
@@ -64,18 +80,6 @@ import SkillBadge from "./SkillBadge.astro";
       <li>API fetching</li>
       <li>Data parsing</li>
       <li>LED and peripherals</li>
-    </ul>
-  </SkillBadge>
-  <SkillBadge text="WordPress/PHP">
-    <ul class="pl-4 list-disc list-outside list">
-      <li>Custom theme development</li>
-      <li>Custom plugin development</li>
-      <li>WordPress VIP hosting platform</li>
-      <li>Advanced Custom Fields</li>
-      <li>WooCommerce</li>
-      <li>Custom membership systems</li>
-      <li>WP-specific performance</li>
-      <li>Custom post types</li>
     </ul>
   </SkillBadge>
 </div>

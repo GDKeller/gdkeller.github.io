@@ -8,7 +8,7 @@ interface Props {
 }
 
 const { imagePath, altText } = Astro.props;
-console.log("thiajsdtf", imagePath);
+
 const images: any = import.meta.glob<{ default: ImageMetadata }>(
   "/src/images/projects/*/*.{jpeg,jpg,png,gif}",
 );

@@ -4,16 +4,13 @@ companyWebsite: https://www.studio3marketing.com/
 position: Web Developer
 startMonthYear: May 2018
 endMonthYear: July 2020
+tech: [Datto Custom CMS, PHP, CSS/Sass, GSAP, Shell scripting]
 order: 2
 ---
 
-Collaborated in a fast-paced dev team building highly polished websites for luxury clients in the medical & legal fields.
+Collaborated in a fast-paced dev team building highly polished websites for luxury clients in the medical and legal industries.
 
-<div class="relative pt-3 pb-2 pl-6 pr-2 overflow-hidden text-left border-2 rounded-lg border-teal-950 bg-black mb-8 mt-8">
-<span class="font-bold">Tech: </span>Datto Custom CMS, PHP, CSS/Sass, GSAP, Shell scripting
-</div>
-
-- Designed and built reusable components for an in-house DattoCMS-driven system, streamlining development cycles and editorial workflows.
+- Built reusable components for an in-house DattoCMS-driven system, streamlining development cycles and editorial workflows.
 - Achieved perfect Google PageSpeed scores on multiple client websites through advanced web performance optimization.
 - Led the implementation of custom GSAP animations, elevating user experience and positioning client websites as premium, high-end solutions.
 - Trusted to develop the website for sister company Studio 3 Enterprise

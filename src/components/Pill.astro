@@ -1,3 +1,11 @@
-<div class="block px-2 py-1 text-xs border rounded-full break-keep sm:w-auto sm:inline-block sm:text-sm sm:px-3 w-max flex-nowrap pill bg-fuchsia-950 border-fuchsia-900">
-    <slot />
-</div>
+---
+let { tag } = Astro.props;
+
+const Element = tag || "div";
+---
+
+<Element
+  class="pill block w-max flex-nowrap break-keep rounded-full border border-fuchsia-900 bg-fuchsia-950 px-2 py-1 text-xs sm:inline-block sm:w-auto sm:px-3 sm:text-sm"
+>
+  <slot />
+</Element>
