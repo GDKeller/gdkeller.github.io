@@ -4,185 +4,233 @@ import fishImg from "../images/anglerfish.png";
 import waterImg from "../images/water-reflections.jpg";
 import fishBallImg from "../images/fish-ball.png";
 import nhmLogo from "../images/nhmla-logo.png";
+import Link from "./Link.astro";
+
+import anglerfishDisplayClose from "../images/projects/nhmla-anglerfish/display-close.jpg";
+import anglerfishDisplayFront from "../images/projects/nhmla-anglerfish/display-front.jpg";
+import anglerfishDisplaySide from "../images/projects/nhmla-anglerfish/display-side.jpg";
+import anglerfishDisplayFull from "../images/projects/nhmla-anglerfish/exhibit-full.jpg";
+import anglerfishSpecimen from "../images/projects/nhmla-anglerfish/specimen.jpg";
 ---
 
 <section
-  class="relative flex flex-col justify-center w-full px-4 pt-32 pb-20 mx-auto overflow-hidden fish-hero bg-black"
+  class="relative flex flex-col justify-center w-full px-4 pt-32 pb-20 mx-auto overflow-hidden bg-black fish-hero"
 >
   <div
-    class="water-blurred blur-sm z-0 opacity-40 absolute top-0 left-0 w-full h-full fish-hero__water-blurred mix-blend-hard-light"
+    class="absolute top-0 left-0 z-0 w-full h-full water-blurred fish-hero__water-blurred opacity-40 mix-blend-hard-light blur-sm"
   >
     <span
-      class="absolute top-0 left-0 z-0 opacity-30 w-full h-full bg-gradient-to-tr from-green-500 via-purple-700 to-slate-700 mix-blend-color-difference"
+      class="absolute top-0 left-0 z-0 w-full h-full mix-blend-color-difference bg-gradient-to-tr from-green-500 via-purple-700 to-slate-700 opacity-30"
     ></span>
-    <Image
-      src={waterImg}
-      alt="Water reflections"
-      class="object-cover w-full h-full"
-    />
+    <Image src={waterImg} alt="Water reflections" class="object-cover w-full h-full" />
   </div>
   <!-- <span class="fixed top-0 left-0 z-30 w-full h-full bg-gradient-to-tr from-fuchsia-400 via-purple-800 to-indigo-950 mix-blend-difference"></span> -->
-  <div class="fish relative">
-    <div
-      class="absolute max-w-24 w-full fishball animation-fishball"
-    >
-      <Image
-        src={fishBallImg}
-        alt="Sigil"
-        class="object-contain fish-hero__ball"
-      />
+  <div class="relative fish">
+    <div class="absolute w-full fishball animation-fishball max-w-24">
+      <Image src={fishBallImg} alt="Sigil" class="object-contain fish-hero__ball" />
     </div>
-    <div
-      class="w-auto max-w-none max-h-none fish-body z-40 overflow-visible relative"
-    >
+    <div class="relative z-40 w-auto overflow-visible fish-body max-h-none max-w-none">
       <!-- <div class="absolute top-0 left-0 z-30 w-full h-full bg-black opacity-60 mix-blend-difference"></div> -->
       <Image
         src={fishImg}
         alt="Anglerfish"
-        class="overflow-visible relative block object-cover object-left w-full h-full fish-hero__image"
+        class="relative block object-cover object-left w-full h-full overflow-visible fish-hero__image"
       />
     </div>
-    <h2 class="relative z-50">
-        <span class="relative -mb-12 overflow-visible inline-block shadow-lg shadow-fuchsia-950">
-            <Image
-              src={nhmLogo}
-              alt="Natural History Museum of Los Angeles logo"
-              class="object-contain w-60 h-60"
-            />
-          </span>
+    <div class="relative z-50">
+      <span class="relative inline-block -mb-12 overflow-visible shadow-lg shadow-fuchsia-950">
+        <Image
+          src={nhmLogo}
+          alt="Natural History Museum of Los Angeles logo"
+          class="object-contain h-60 w-60"
+        />
+      </span>
       <!-- <span class="absolute top-0 z-40 flex items-end justify-center w-full text-white -translate-x-1/2 left-1/2 mix-blend-difference"></span> -->
       <!-- <span class="absolute top-0 left-0 text-4xl tracking-normal text-red-500 translate-y-1/2 mix-blend-screen font-bokor monster-text-shadow">the</span> -->
-      <span
-        id="fish-monster"
-        class="text-fuchsia-400 relative z-40 font-bokor leading-none block monster-text-shadow"
-        >Anglerfish Exhibit</span
-      >
-      <span class="sr-only">at the Natural History Museum of Los Angeles.</span>
-    </h2>
-    <div
-      class="water absolute bottom-0 z-0 block w-5/6 fish-hero__water"
-    >
+      <h3>
+        <span
+          id="fish-monster"
+          class="relative z-40 block leading-none monster-text-shadow font-bokor text-fuchsia-400"
+          >Anglerfish Exhibit</span
+        >
+        <span class="sr-only">at the Natural History Museum of Los Angeles.</span>
+      </h3>
+    </div>
+    <div class="absolute bottom-0 z-0 block w-5/6 water fish-hero__water">
       <span
         class="absolute top-0 left-0 z-30 w-full h-full bg-gradient-to-tr from-fuchsia-400 via-purple-800 to-indigo-950 mix-blend-difference"
       ></span>
       <Image
         src={waterImg}
         alt="Water reflections"
-        class="object-cover object-top-right w-full h-full"
+        class="object-cover w-full h-full object-top-right"
       />
     </div>
   </div>
-  <div class="fish-hero__container pt-24 z-40 bg-black bg-opacity-80">
-    <div class="relative z-30 prose">
-      <div class="relative flex items-center w-full text-fuchsia-500">
-        <!-- <span
-          class="self-start mr-1 tracking-normal text-7xl font-kings text-shadow"
-          >Anglerfish&nbsp;
-        </span> -->
-        <!-- <span class="font-kings mix-blend-hard-light text-shadow" id="fish-zone">zone</span> -->
-        <!-- <span class="text-2xl tracking-widest font-bayon mix-blend-hard-light text-shadow">monster</span> -->
+  <div
+    class="z-40 flex flex-col px-4 pt-4 text-lg prose bg-black fish-hero__container bg-opacity-80 pb-14 text-lime-100"
+  >
+    <div class="max-w-full py-24 pl-8 ml-auto mr-auto">
+      <p class="mb-32 text-2xl">
+        In 2021, an intact and undamaged anglerfish floated it's way onto a Southern California
+        beach.
+      </p>
+      <p class="text-2xl mb-72">It was destined for the National History Museum of Los Angeles.</p>
+      <p class="text-2xl text-center">
+        For a limited time, it would be a scientific and sightseeing <span class="font-bold"
+          >superstar.</span
+        >
+      </p>
+    </div>
+
+    <div class="flex flex-col items-center justify-center gap-4 mb-32 md:flex-row">
+      <div class="relative z-30 max-w-sm">
+        <Image
+          src={anglerfishDisplayClose}
+          alt="Anglerfish display closeup"
+          class="col-start-2 row-span-1 row-start-2"
+        />
+        <!-- <Image src={anglerfishSpecimen} alt="Anglerfish specimen" class="col-start-2 row-start-3" /> -->
+      </div>
+      <div class="max-w-xl pt-4 pl-8 mb-32">
+        <!-- <p class="mb-12 text-4xl font-bayon">Protecting a priceless museum specimen</p> -->
+        <!-- <p class="mb-4">
+          In 2021, an intact and undamaged anglerfish floated it's way onto a Southern California
+          beach. It was destined for the National History Museum of Los Angeles, where for a limited
+          time, it would be scientific and sightseeing superstar.
+        </p> -->
+        <p class="mb-8">
+          Most anglerfish specimen are found distorted and disfigured due to pressure changes, but
+          this one was nearly pristine.
+        </p>
+        <p class="mb-8">
+          One of only 30 speciments to be retrieved in a condition suitable for study and
+          exhibition.
+        </p>
+        <p class="mb-20">But there was a problem...</p>
+        <p class="mb-8">
+          The angler fish lives so deep in the darkest depths of the ocean, that it's tissue is
+          unaccustomed to the sun. If light touches it, it begins to break down.
+        </p>
+        <p class="mb-12">
+          The museum needed to display the fish in a way that ensured only necessary light struck
+          the specimen, and wanted to track the total light exposure over the lifetime of the
+          exhibit.
+        </p>
+        <p>This is where software came to the rescue.</p>
       </div>
     </div>
-    <div class="px-8 mx-auto text-lime-100 pb-14 rounded-b-3xl">
-      <h2 class="mb-12 text-4xl font-bayon">
-        Protecting a priceless museum specimen
-      </h2>
-      <p class="mb-4">
-        Anglerfish live deep in the ocean, amongst inky blackness and crushing
-        pressure. If light simply strikes it, it will cause the tissue to begin
-        to break down. When specimens make their way to the surface, the massive
-        pressure changes often distort the fish into a crude facisimile of it's
-        true form.
-      </p>
-      <p>
-        In 2021, an intact and undamaged anglerfish floated it's way onto a
-        Southern California beach. It was destined for the National History
-        Museum of Los Angeles, where for a limited time, it would be scientific
-        and sightseeing superstar.
-      </p>
-      <p class="mb-4">
-        This is one of only 30 anglerfish that have made their way into study
-        and exhibition in such pristine condition. They planned a special
-        exhibit to display this mythic creature from beyond our grasp. But there
-        was a problem...
-      </p>
-      <p>
-        The angler fish lives so deep in the ocean that it can't survive in live
-        - it's tissue breaks down. The museum needed a way to display the fish
-        in a way that ensure only necessary light struck the specimen, and
-        wanted to track the total light exposure over the lifetime of the
-        exhibit. That's where we came in.
-      </p>
-      <br />
-      <p>
-        I was tasked with writing software to run on Arduino inside the museum
-        exhibit. The board drove motion and light sensors, and logged the amount
-        of light that struck the fish to an online Google Sheet. The lights
-        turned on when guests approached, and off after inactivity to minimize
-        light damage to the specimen.
-      </p>
+    <div class="flex flex-col items-center justify-center mb-64 md:flex-row">
+      <div class="max-w-xl pr-8">
+        <p class="mb-12">
+          I was tasked with writing software to run on an Arduino inside the museum exhibit.
+        </p>
+        <p class="mb-8">
+          The board drove motion and light sensors, and logged the amount of light that struck the
+          fish to an online Google Sheet.
+        </p>
+        <p class="mb-32">
+          The lights turned on when guests approached, and off after inactivity to minimize light
+          damage to the specimen.
+        </p>
+        <p class="mb-0">
+          With the science team able to monitor the light exposure via real readings, and safeguards
+          in place to protect the specimen, the public wa able to get up close and personal with
+          this mythical fish.
+        </p>
+      </div>
+      <div class="relative z-30 w-auto max-w-sm">
+        <Image
+          src={anglerfishDisplayFront}
+          alt="Anglerfish display front"
+          class="col-start-1 row-span-2 row-start-2"
+        />
+      </div>
+    </div>
+    <div class="relative z-30">
+      <div class="flex flex-col items-center w-auto mx-auto mb-80">
+        <div class="pr-8">
+          <p class="mb-12">
+            The exhibit was open to the public from August 25th to November 29th, 2021.
+          </p>
+        </div>
+        <div>
+          <Image
+            src={anglerfishDisplayFull}
+            alt="Anglerfish display closeup"
+            class="object-contain w-full max-w-4xl"
+          />
+        </div>
+      </div>
+      <div class="block max-w-4xl mx-auto text-center">
+        <p class="block mt-32 mb-24 text-2xl">The ultra-rare anglerfish was safe.</p>
+        <Image src={anglerfishSpecimen} alt="Anglerfish specimen" class="block object-contain" />
+        <p class="">
+          More information can be found <Link
+            href="https://nhm.org/anglerfish"
+            class="inline-block mt-4">on the museum's website.</Link
+          >
+        </p>
+      </div>
     </div>
   </div>
-</section>
 
-<style>
-  .fish-body {
-    filter: drop-shadow(0 0 0.4rem rgba(0, 10, 20, 0.9));
-    height: 100vh;
-    margin-bottom: -30vh;
-  }
-  .fish-hero__image {
-    transform: translate(-20%, 0);
-  }
-  @media screen and (min-width: 640px) {
-    .fish-hero__image {
-      transform: translate(-10%, 0);
+  <style>
+    .fish-body {
+      filter: drop-shadow(0 0 0.4rem rgba(0, 10, 20, 0.9));
+      height: 100vh;
+      margin-bottom: -30vh;
     }
-  }
-  @media screen and (min-width: 768px) {
     .fish-hero__image {
-      transform: translate(20%, 0);
+      transform: translate(-20%, 0);
     }
-    
-  }
+    @media screen and (min-width: 640px) {
+      .fish-hero__image {
+        transform: translate(-10%, 0);
+      }
+    }
+    @media screen and (min-width: 768px) {
+      .fish-hero__image {
+        transform: translate(20%, 0);
+      }
+    }
 
-  .fish-hero__water {
-    height: 30vw;
-    left: -20px;
-    transform: translateY(30%)
-  }
-  /* .fishball {
+    .fish-hero__water {
+      height: 30vw;
+      left: -20px;
+      transform: translateY(30%);
+    }
+    /* .fishball {
     width: 15vw;
     height: 15vw;
     top: 45%;
     left: 6vw;
   } */
-  .animation-fishball {
-    filter: drop-shadow(0 0 0.1rem rgba(0, 250, 230, 0.9));
-    animation: fishball 10s ease-in-out infinite alternate;
-    /* bottom: 55vw; */
-    top: 40%;
-    left: 15vw;
-    /* mix-blend-mode: screen; */
-  }
-
-  @keyframes fishball {
-    0% {
-      transform: rotate(0deg);
+    .animation-fishball {
+      filter: drop-shadow(0 0 0.1rem rgba(0, 250, 230, 0.9));
+      animation: fishball 10s ease-in-out infinite alternate;
+      /* bottom: 55vw; */
+      top: 40%;
+      left: 15vw;
+      /* mix-blend-mode: screen; */
     }
-    100% {
-      transform: rotate(360deg);
+
+    @keyframes fishball {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
     }
-  }
 
-
-  .text-shadow {
-    text-shadow: 0.03em 0.04em 0.02em rgba(250, 0, 130, 0.6);
-  }
-  .monster-text-shadow {
-    text-shadow: 0.02em 0.03em 0.05em rgba(200, 0, 140, 0.9);
-  }
-  /* #fish-midnight {
+    .text-shadow {
+      text-shadow: 0.03em 0.04em 0.02em rgba(250, 0, 130, 0.6);
+    }
+    .monster-text-shadow {
+      text-shadow: 0.02em 0.03em 0.05em rgba(200, 0, 140, 0.9);
+    }
+    /* #fish-midnight {
 	font-size: 4vw;
     line-height: 0.7;
     overflow: hidden;
@@ -193,10 +241,11 @@ import nhmLogo from "../images/nhmla-logo.png";
     line-height:0.6;
   } */
 
-  #fish-monster {
-    font-size: 14vw;
-    /* line-height:0.0; */
-    /* padding: 0; */
-    /* height: 0; */
-  }
-</style>
+    #fish-monster {
+      font-size: 14vw;
+      /* line-height:0.0; */
+      /* padding: 0; */
+      /* height: 0; */
+    }
+  </style>
+</section>

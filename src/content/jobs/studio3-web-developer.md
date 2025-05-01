@@ -1,7 +1,7 @@
 ---
 company: Studio 3 Marketing
 companyWebsite: https://www.studio3marketing.com/
-position: Web Developer
+position: Frontend Web Developer
 startMonthYear: May 2018
 endMonthYear: July 2020
 tech: [Datto Custom CMS, PHP, CSS/SCSS, GSAP, Shell scripting]
