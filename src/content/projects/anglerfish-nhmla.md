@@ -1,9 +1,11 @@
 ---
 title: Embedded Software Engineer
+projectName: Anglerfish Exhibit
 client: Natural History Museum of Los Angeles
 startMonthYear: Jun 2021
 endMonthYear: Aug 2021
 image: "/src/images/projects/nhmla-anglerfish/exhibit-full.jpg"
+imageAlt: Anglerfish museum exhibit.
 imageAlign: left
 tech: [C++, Arduino, Platform I/O, Sensors integration, Google Sheets API]
 ---

@@ -6,19 +6,29 @@ import Pill from "./Pill.astro";
 const { project } = Astro.props;
 
 const { data } = project;
-const { title, client, startMonthYear, endMonthYear, clientWebsite, image, imageAlign, tech } =
-  data;
+const {
+  title,
+  projectName,
+  client,
+  startMonthYear,
+  endMonthYear,
+  clientWebsite,
+  image,
+  imageAlt,
+  imageAlign,
+  tech,
+} = data;
 
 const { Content } = await project.render();
 ---
 
-<div class="job-card relative mb-20 block">
+<div class="relative block mb-20 job-card">
   <div
-    class="mb-2 flex flex-col justify-start font-bayon text-2xl sm:flex-row sm:text-xl md:text-2xl lg:text-3xl"
+    class="flex flex-col justify-start mb-2 text-2xl font-bayon sm:flex-row sm:text-xl md:text-2xl lg:text-3xl"
   >
     <h3>
       <span class="block font-bold text-fuchsia-500 sm:inline-block">{title}</span>
-      <span class="mx-1 hidden font-bokor sm:inline-block"> - </span>
+      <span class="hidden mx-1 font-bokor sm:inline-block"> - </span>
       {
         clientWebsite ? (
           <Link href={clientWebsite} target="_blank" class="no-underline">
@@ -30,6 +40,7 @@ const { Content } = await project.render();
       }
     </h3>
   </div>
+  {projectName && <p class="mb-2 text-lg font-bayon sm:text-4xl">{projectName}</p>}
   <p class="mb-8 italic">
     {startMonthYear ? startMonthYear : null} -
     {endMonthYear ? endMonthYear : "Present"}
@@ -37,7 +48,7 @@ const { Content } = await project.render();
 
   {
     tech && (
-      <div class="mb-8 mt-0 text-xs">
+      <div class="mt-0 mb-8 text-xs">
         <p class="sr-only">Skills:&nbsp;</p>
         <ul>
           {tech.map((t: string, i: number) => (
@@ -64,10 +75,10 @@ const { Content } = await project.render();
     <div
       class:list={["mb-8", { "mr-8": imageAlign === "left" }, { "ml-8": imageAlign === "right" }]}
     >
-      <ProjectSingleImage imagePath={image} altText={title} />
+      <ProjectSingleImage imagePath={image} altText={imageAlt || projectName} />
     </div>
 
-    <div class="job-body prose">
+    <div class="prose job-body">
       <Content />
     </div>
   </div>

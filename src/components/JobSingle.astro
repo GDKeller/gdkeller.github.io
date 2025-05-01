@@ -5,17 +5,16 @@ import Pill from "./Pill.astro";
 const { job } = Astro.props;
 const { data } = job;
 const { company, companyWebsite, position, startMonthYear, endMonthYear, tech } = data;
-console.log("tech", tech);
 const { Content } = await job.render();
 ---
 
 <div class="job-card mb-52">
   <div
-    class="mb-2 flex flex-col justify-start font-bayon text-2xl sm:flex-row md:text-3xl lg:text-4xl"
+    class="flex flex-col justify-start mb-2 text-2xl font-bayon sm:flex-row md:text-3xl lg:text-4xl"
   >
     <h3>
       <span class="block font-bold text-fuchsia-500 sm:inline-block">{position}</span>
-      <span class="mx-1 hidden font-bokor sm:inline-block"> - </span>
+      <span class="hidden mx-1 font-bokor sm:inline-block"> - </span>
       <Link href={companyWebsite} target="_blank" class="no-underline">
         {company}
       </Link>
@@ -29,7 +28,7 @@ const { Content } = await job.render();
 
   {
     tech && (
-      <div class="mb-8 mt-0 text-xs">
+      <div class="mt-0 mb-8 text-xs">
         <p class="sr-only">Skills:&nbsp;</p>
         <ul>
           {tech.map((t: string, i: number) => (
@@ -45,7 +44,7 @@ const { Content } = await job.render();
     )
   }
 
-  <div class="job-body prose">
+  <div class="prose job-body">
     <Content />
   </div>
 </div>

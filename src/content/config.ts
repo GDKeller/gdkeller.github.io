@@ -32,6 +32,7 @@ const projects = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
+    projectName: z.string(),
     client: z.string(),
     clientLogo: z
       .object({
@@ -46,6 +47,7 @@ const projects = defineCollection({
     endMonthYear: z.string().optional(),
     tags: z.array(z.string()).optional(),
     image: z.string().optional().optional(),
+    imageAlt: z.string().optional(),
     imageAlign: z.enum(["left", "right"]).optional(),
     tech: z.array(z.string()).optional(),
   }),
