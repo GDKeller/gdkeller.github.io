@@ -4,58 +4,47 @@ import Headshot from "./Headshot.astro";
 import Link from "./Link.astro";
 ---
 
-<section
-  id="hero"
-  class="relative z-50 w-full px-4 pt-6 pb-24 sm:pt-12 sm:px-8 lg:pt-32"
->
+<section id="hero" class="relative z-50 w-full px-4 pb-24 pt-6 sm:px-8 sm:pt-12 lg:pt-32">
   <div
-    class="relative z-10 flex flex-col items-center justify-start mx-auto max-w-7xl sm:justify-start sm:flex-row"
+    class="relative z-10 mx-auto flex max-w-7xl flex-col items-center justify-start sm:flex-row sm:justify-start"
   >
     <div
-      class="flex flex-col items-center justify-center w-auto mb-6 sm:items-start sm:max-w-full sm:mr-6 md:items-center md:mr-8 sm:mb-auto lg:mr-16 xl:mr-24 sm:justify-start"
+      class="mb-6 flex w-auto flex-col items-center justify-center sm:mb-auto sm:mr-6 sm:max-w-full sm:items-start sm:justify-start md:mr-8 md:items-center lg:mr-16 xl:mr-24"
     >
       <div
-        class="relative block h-auto mb-4 overflow-hidden shadow-sm max-w-48 sm:max-w-none md:max-w-72 lg:max-w-sm rounded-xl shadow-teal-900"
+        class="relative mb-4 block h-auto max-w-48 overflow-hidden rounded-xl shadow-sm shadow-teal-900 sm:max-w-none md:max-w-72 lg:max-w-sm"
       >
         <Headshot />
       </div>
       <h1
-        class="block mx-auto mb-6 text-4xl leading-none text-center sm:w-min lg:w-full sm:text-left sm:text-6xl md:text-7xl lg:text-center lg:text-4xl xl:text-5xl font-marker hero__name"
+        class="hero__name mx-auto mb-6 block text-center font-marker text-4xl leading-none sm:w-min sm:text-left sm:text-6xl md:text-7xl lg:w-full lg:text-center lg:text-4xl xl:text-5xl"
       >
         Grant Keller
       </h1>
-      <span class="absolute top-0 left-0 w-full h-full gradient-burst"></span>
+      <span class="gradient-burst absolute left-0 top-0 h-full w-full"></span>
     </div>
-    <div
-      class="sticky top-0 flex flex-col w-full max-w-3xl mb-auto hero__text lg:pt-4"
-    >
+    <div class="hero__text sticky top-0 mb-auto flex w-full max-w-3xl flex-col lg:pt-4">
       <p
-        class="text-2xl font-bold text-center sm:text-left sm:text-3xl md:text-4xl lg:text-5xl mb-2"
+        class="mb-2 text-center text-2xl font-bold sm:text-left sm:text-3xl md:text-4xl lg:text-5xl"
       >
-        Software professional
-      </p>
-      <p
-        class="sticky mb-8 font-bold text-md sm:text-lg md:text-md lg:text-3xl max-w-md"
-      >
-        dissolving barriers between <span class="inline-block"
-          >digital machines and humans.</span
+        Software professional&nbsp;
+        <span
+          class="text-md md:text-md sticky mb-8 block max-w-md font-bold sm:text-lg lg:text-3xl"
         >
+          dissolving barriers between <span class="inline-block">digital machines and humans.</span>
+        </span>
       </p>
-      <ul
-        class="pl-4 mb-12 text-xs list-disc list-outside md:text-sm lg:text-lg"
-      >
+      <ul class="mb-12 list-outside list-disc pl-4 text-xs md:text-sm lg:text-lg">
         <li class="mb-2 list-item">15+ years fullstack experience</li>
-        <li class="mb-2 list-item">
-          Strong focus on front-end/UX for web, mobile, IoT
-        </li>
+        <li class="mb-2 list-item">Strong focus on front-end/UX for web, mobile, IoT</li>
         <li class="mb-2 list-item">Web accessibility & performance expert</li>
-        <li class="mb-2 list-item tab-">
-          <span class="bold">Code Polyglot: </span>diverse skillset to solve
-          problems across disciplines
+        <li class="tab- mb-2 list-item">
+          <span class="bold">Code Polyglot: </span>diverse skillset to solve problems across
+          disciplines
         </li>
       </ul>
       <div
-        class="flex flex-row justify-center gap-1 pl-2 mb-6 sm:gap-2 sm:flex-col md:flex-row md:justify-start sm:items-start"
+        class="mb-6 flex flex-row justify-center gap-1 pl-2 sm:flex-col sm:items-start sm:gap-2 md:flex-row md:justify-start"
       >
         <Pill>Web UX</Pill>
         <Pill>Stable Diffusion AI</Pill>
@@ -64,11 +53,9 @@ import Link from "./Link.astro";
     </div>
   </div>
 
-  <div
-    class="opacity-15 huge font-marker text-fuchsia-600 mix-blend-hard-light"
-  >
+  <div class="huge font-marker text-fuchsia-600 opacity-15 mix-blend-hard-light">
     UX
-    <span class="block plus text-emerald-200 font-bokor">+</span>AI
+    <span class="plus block font-bokor text-emerald-200">+</span>AI
   </div>
 </section>
 

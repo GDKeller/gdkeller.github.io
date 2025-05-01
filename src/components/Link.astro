@@ -1,11 +1,14 @@
 ---
 const { href, target, class: className } = Astro.props;
 
-const classNames = className ? className : 'text=fuchsia-500 hover:text-fuchsia-300';
+const classNames = className ? className : "text=fuchsia-500 hover:text-fuchsia-300";
 ---
 
-
 <a
-  class={`inline-block underline ${classNames}`}
-  href={href} target={target}><slot /></a
+  class:list={[
+    "text=fuchsia-500 inline-block underline hover:cursor-pointer hover:text-fuchsia-300",
+    className,
+  ]}
+  href={href}
+  target={target}><slot /></a
 >

@@ -13,11 +13,13 @@ const { Content } = await job.render();
   <div
     class="mb-2 flex flex-col justify-start font-bayon text-2xl sm:flex-row md:text-3xl lg:text-4xl"
   >
-    <h3 class="font-bold text-fuchsia-500">{position}</h3>
-    <span class="mx-2 hidden font-bokor sm:block"> @ </span>
-    <Link href={companyWebsite} target="_blank">
-      {company}
-    </Link>
+    <h3>
+      <span class="block font-bold text-fuchsia-500 sm:inline-block">{position}</span>
+      <span class="mx-1 hidden font-bokor sm:inline-block"> - </span>
+      <Link href={companyWebsite} target="_blank" class="no-underline">
+        {company}
+      </Link>
+    </h3>
   </div>
 
   <p class="mb-8 italic">
@@ -28,17 +30,17 @@ const { Content } = await job.render();
   {
     tech && (
       <div class="mb-8 mt-0 text-xs">
-        <p>
-          <span class="sr-only">Skills:&nbsp;</span>
+        <p class="sr-only">Skills:&nbsp;</p>
+        <ul>
           {tech.map((t: string, i: number) => (
             <>
-              <Pill tag="span" class="mb-2" key={i}>
+              <Pill tag="li" class="mb-2" key={i}>
                 {t}
               </Pill>
               {i !== tech.length - 1 && " "}
             </>
           ))}
-        </p>
+        </ul>
       </div>
     )
   }

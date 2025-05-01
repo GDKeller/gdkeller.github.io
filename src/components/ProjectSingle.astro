@@ -16,17 +16,19 @@ const { Content } = await project.render();
   <div
     class="mb-2 flex flex-col justify-start font-bayon text-2xl sm:flex-row sm:text-xl md:text-2xl lg:text-3xl"
   >
-    <h3 class="font-bold text-fuchsia-500">{title}</h3>
-    <span class="mx-2 hidden font-bokor sm:block"> @ </span>
-    {
-      clientWebsite ? (
-        <Link href={clientWebsite} target="_blank">
-          {client}
-        </Link>
-      ) : (
-        <span>{client}</span>
-      )
-    }
+    <h3>
+      <span class="block font-bold text-fuchsia-500 sm:inline-block">{title}</span>
+      <span class="mx-1 hidden font-bokor sm:inline-block"> - </span>
+      {
+        clientWebsite ? (
+          <Link href={clientWebsite} target="_blank" class="no-underline">
+            {client}
+          </Link>
+        ) : (
+          <span>{client}</span>
+        )
+      }
+    </h3>
   </div>
   <p class="mb-8 italic">
     {startMonthYear ? startMonthYear : null} -
@@ -36,17 +38,17 @@ const { Content } = await project.render();
   {
     tech && (
       <div class="mb-8 mt-0 text-xs">
-        <p>
-          <span class="sr-only">Technology used:&nbsp;</span>
+        <p class="sr-only">Skills:&nbsp;</p>
+        <ul>
           {tech.map((t: string, i: number) => (
             <>
-              <Pill tag="span" key={i}>
+              <Pill tag="li" class="mb-2" key={i}>
                 {t}
               </Pill>
               {i !== tech.length - 1 && " "}
             </>
           ))}
-        </p>
+        </ul>
       </div>
     )
   }

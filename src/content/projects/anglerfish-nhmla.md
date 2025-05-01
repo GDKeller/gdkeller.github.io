@@ -1,5 +1,5 @@
 ---
-title: Embeded Software Engineer
+title: Embedded Software Engineer
 client: Natural History Museum of Los Angeles
 startMonthYear: Jun 2021
 endMonthYear: Aug 2021
