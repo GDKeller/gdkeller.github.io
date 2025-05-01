@@ -4,7 +4,7 @@ companyWebsite: https://www.studio3marketing.com/
 position: Web Developer
 startMonthYear: May 2018
 endMonthYear: July 2020
-tech: [Datto Custom CMS, PHP, CSS/Sass, GSAP, Shell scripting]
+tech: [Datto Custom CMS, PHP, CSS/SCSS, GSAP, Shell scripting]
 order: 2
 ---
 

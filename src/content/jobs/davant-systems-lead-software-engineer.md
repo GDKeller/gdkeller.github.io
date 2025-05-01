@@ -4,7 +4,21 @@ company: Davant Systems
 companyWebsite: https://www.davantsystems.com
 startMonthYear: Feb 2023
 endMonthYeaer: Present
-tech: [Python, Stable Diffusion AI, Shell scripting]
+tech:
+  [
+    Python,
+    Stable Diffusion AI,
+    React,
+    Typescript,
+    Node.js,
+    Fastify,
+    CSS,
+    Tailwind,
+    DaisyUI,
+    Shell scripting,
+    AWS,
+    Cloudflare,
+  ]
 ---
 
 Building next-generation software for professional visual creatives powered by Stable Diffusion AI.

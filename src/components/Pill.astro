@@ -1,11 +1,13 @@
 ---
-let { tag } = Astro.props;
-
+const { tag, class: className } = Astro.props;
 const Element = tag || "div";
 ---
 
 <Element
-  class="pill block w-max flex-nowrap break-keep rounded-full border border-fuchsia-900 bg-fuchsia-950 px-2 py-1 text-xs sm:inline-block sm:w-auto sm:px-3 sm:text-sm"
+  class:list={[
+    "pill block w-max flex-nowrap break-keep rounded-full border border-fuchsia-900 bg-fuchsia-950 px-2 py-1 text-xs sm:inline-block sm:w-auto sm:px-3 sm:text-sm",
+    className,
+  ]}
 >
   <slot />
 </Element>

@@ -29,10 +29,10 @@ const { Content } = await job.render();
     tech && (
       <div class="mb-8 mt-0 text-xs">
         <p>
-          <span class="sr-only">Technology used:&nbsp;</span>
+          <span class="sr-only">Skills:&nbsp;</span>
           {tech.map((t: string, i: number) => (
             <>
-              <Pill tag="span" key={i}>
+              <Pill tag="span" class="mb-2" key={i}>
                 {t}
               </Pill>
               {i !== tech.length - 1 && " "}

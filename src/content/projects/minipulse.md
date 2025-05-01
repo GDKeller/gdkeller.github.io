@@ -7,7 +7,8 @@ startMonthYear: Jan 2022
 subClient: Stratin Engineering
 image: /src/images/projects/jpl-minipulse/minipulse.jpg
 imageAlign: right
-tech: [C++, ESP32, PlatformIO, APIs, XML, Hardware Integration, LEDs]
+tech:
+  [C++, ESP32, PlatformIO, APIs, XML, Hardware Integration, NeoPixel WS2812B LEDs, FastLED, Wifi]
 ---
 
 Collaborated with Stratin Engineering to develop the software for a replica of the 'Pulse' installation in JPL's lobby.
