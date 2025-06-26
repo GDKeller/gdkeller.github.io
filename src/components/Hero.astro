@@ -2,6 +2,7 @@
 import Pill from "./Pill.astro";
 import Headshot from "./Headshot.astro";
 import Link from "./Link.astro";
+import HireMe from "./HireMe.astro";
 ---
 
 <section id="hero" class="relative z-50 w-full px-4 pt-6 pb-24 sm:px-8 sm:pt-12 lg:pt-32">
@@ -50,12 +51,16 @@ import Link from "./Link.astro";
         <Pill>Stable Diffusion AI</Pill>
         <Pill>Embedded Systems</Pill>
       </div>
+      
+      <div class="flex justify-center sm:justify-start pl-2">
+        <HireMe />
+      </div>
     </div>
   </div>
 
   <div
     role="presentation"
-    class="select-none huge font-marker text-fuchsia-600 opacity-15 mix-blend-hard-light"
+    class="select-none huge font-marker text-fuchsia-600 opacity-15 mix-blend-hard-light hidden sm:block"
   >
     UX<span class="block plus font-bokor text-emerald-200">+</span>AI
   </div>

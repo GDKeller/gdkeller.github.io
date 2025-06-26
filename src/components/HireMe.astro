@@ -1,0 +1,105 @@
+---
+---
+
+<div class="hire-me-container">
+  <!-- Hire Me Button -->
+  <button
+    onclick="hire_me_modal.showModal()"
+    class="group relative overflow-hidden border border-emerald-400/30 bg-black/40 px-6 py-3 font-prompt text-emerald-200 backdrop-blur-sm transition-all duration-300 hover:border-emerald-400/60 hover:bg-emerald-400/10 hover:text-emerald-100 hover:shadow-lg hover:shadow-emerald-400/20"
+  >
+    <span class="relative z-10 flex items-center gap-2">
+      <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 7.89a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+      </svg>
+      Contact Me
+    </span>
+    <div class="absolute inset-0 -z-10 bg-gradient-to-r from-emerald-400/0 via-emerald-400/5 to-emerald-400/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+  </button>
+
+  <!-- Modal -->
+  <dialog id="hire_me_modal" class="modal">
+    <div class="modal-box bg-slate-900 border border-emerald-400/20 max-w-md">
+      <form method="dialog">
+        <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 text-emerald-200 hover:text-white">✕</button>
+      </form>
+      
+      <div class="text-center mb-6">
+        <h3 class="font-bold text-2xl text-emerald-300 mb-2">Let's Work Together!</h3>
+        <p class="text-emerald-100 text-sm">Ready to build something amazing?</p>
+      </div>
+
+      <div class="space-y-4">
+        <!-- Email -->
+        <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-800/50 hover:bg-slate-800 transition-colors">
+          <div class="text-emerald-400 text-xl">📧</div>
+          <div class="flex-1">
+            <div class="text-xs text-emerald-300 font-medium">Email</div>
+            <a href="mailto:contact@grantkeller.dev" class="text-emerald-100 hover:text-emerald-300 transition-colors">
+              contact@grantkeller.dev
+            </a>
+          </div>
+        </div>
+
+        <!-- LinkedIn -->
+        <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-800/50 hover:bg-slate-800 transition-colors">
+          <div class="text-emerald-400 text-xl">💼</div>
+          <div class="flex-1">
+            <div class="text-xs text-emerald-300 font-medium">LinkedIn</div>
+            <a href="https://www.linkedin.com/in/grantdkeller/" target="_blank" class="text-emerald-100 hover:text-emerald-300 transition-colors">
+              linkedin.com/in/grantdkeller
+            </a>
+          </div>
+        </div>
+
+        <!-- GitHub -->
+        <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-800/50 hover:bg-slate-800 transition-colors">
+          <div class="text-emerald-400 text-xl">🐙</div>
+          <div class="flex-1">
+            <div class="text-xs text-emerald-300 font-medium">GitHub</div>
+            <a href="https://github.com/gdkeller" target="_blank" class="text-emerald-100 hover:text-emerald-300 transition-colors">
+              github.com/gdkeller
+            </a>
+          </div>
+        </div>
+
+        <!-- Resume -->
+        <div class="flex items-center gap-3 p-3 rounded-lg bg-slate-800/50 hover:bg-slate-800 transition-colors">
+          <div class="text-emerald-400 text-xl">📄</div>
+          <div class="flex-1">
+            <div class="text-xs text-emerald-300 font-medium">Resume</div>
+            <a href="/Grant Keller Senior UX Engineer Resume 2025.pdf" target="_blank" class="text-emerald-100 hover:text-emerald-300 transition-colors">
+              Download PDF
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 text-center">
+        <p class="text-xs text-emerald-200/70">
+          15+ years experience • Senior UX Engineer • Available for hire
+        </p>
+      </div>
+    </div>
+    
+    <!-- Modal backdrop -->
+    <form method="dialog" class="modal-backdrop">
+      <button>close</button>
+    </form>
+  </dialog>
+</div>
+
+<style>
+  .hire-me-container {
+    display: inline-block;
+  }
+  
+  .modal-box {
+    backdrop-filter: blur(10px);
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.4), 0 10px 10px -5px rgb(0 0 0 / 0.2);
+  }
+  
+  .modal::backdrop {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+  }
+</style>
