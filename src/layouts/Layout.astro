@@ -35,8 +35,9 @@ const { title } = Astro.props;
         try {
           const { gsap } = await import('gsap');
           const { ScrollTrigger } = await import('gsap/ScrollTrigger');
+          const { ScrollToPlugin } = await import('gsap/ScrollToPlugin');
           
-          gsap.registerPlugin(ScrollTrigger);
+          gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
           console.log('GSAP loaded successfully:', gsap.version);
           
           // Wait a bit for all elements to be rendered
@@ -98,48 +99,48 @@ const { title } = Astro.props;
           });
         }
 
-        // Hero name - subtle fade up
+        // Hero name - immediate subtle fade up
         const heroName = document.querySelector('.hero__name');
         console.log('Hero name element found:', heroName);
         if (heroName) {
           fadeUp(heroName, {
-            duration: 1,
-            delay: 0.3,
+            duration: 0.8,
+            delay: 0,
             y: 15
           });
         }
 
-        // Hero subtitle - gentle fade from left
+        // Hero subtitle - immediate fade from left
         const heroSubtitle = document.querySelector('.hero__text p');
         console.log('Hero subtitle element found:', heroSubtitle);
         if (heroSubtitle) {
           fadeInFromSide(heroSubtitle, {
-            duration: 0.9,
-            delay: 0.6,
+            duration: 0.8,
+            delay: 0,
             x: 20
           });
         }
 
-        // Hero list items - staggered fade up
+        // Hero list items - immediate staggered fade up
         const heroListItems = document.querySelectorAll('.hero__text li');
         console.log('Hero list items found:', heroListItems.length);
         if (heroListItems.length > 0) {
           fadeUp(heroListItems, {
-            duration: 0.7,
-            delay: 0.9,
-            stagger: 0.08,
+            duration: 0.6,
+            delay: 0,
+            stagger: 0.06,
             y: 12
           });
         }
 
-        // Pills - subtle fade in
-        const pills = document.querySelectorAll('.pill');
-        console.log('Pills found:', pills.length);
-        if (pills.length > 0) {
-          fadeUp(pills, {
-            duration: 0.6,
-            delay: 1.2,
-            stagger: 0.04,
+        // Pills - immediate fade in
+        const heroPills = document.querySelectorAll('.hero__text .pill');
+        console.log('Hero pills found:', heroPills.length);
+        if (heroPills.length > 0) {
+          fadeUp(heroPills, {
+            duration: 0.5,
+            delay: 0,
+            stagger: 0.03,
             y: 8
           });
         }
@@ -165,26 +166,118 @@ const { title } = Astro.props;
           });
         });
 
-        // Skill items - gentle scale and fade
-        const skillItems = document.querySelectorAll('.skill-item');
-        console.log('Skill items found:', skillItems.length);
-        if (skillItems.length > 0) {
-          gsap.set(skillItems, { y: 15, opacity: 0 });
-          
-          ScrollTrigger.create({
-            trigger: '.skills-grid',
-            start: "top 75%",
-            onEnter: () => {
-              gsap.to(skillItems, {
-                y: 0,
-                opacity: 1,
-                duration: 0.7,
-                stagger: 0.06,
-                ease: "power1.out"
+        // Tools of the Trade section animations
+        const skillsSection = document.querySelector('#skills');
+        if (skillsSection) {
+          console.log('Setting up Tools of the Trade animations...');
+
+          // "Tools of the Trade" heading
+          const toolsHeading = skillsSection.querySelector('p.font-bokor');
+          if (toolsHeading) {
+            gsap.set(toolsHeading, { y: 30, opacity: 0 });
+            
+            ScrollTrigger.create({
+              trigger: toolsHeading,
+              start: "top 100%",
+              onEnter: () => {
+                gsap.to(toolsHeading, {
+                  y: 0,
+                  opacity: 1,
+                  duration: 1,
+                  ease: "power1.out"
+                });
+              },
+              once: true
+            });
+          }
+
+          // Platform text ("at home on Mac, Linux & Windows")
+          const platformText = skillsSection.querySelector('.divider');
+          if (platformText) {
+            gsap.set(platformText.parentElement, { y: 20, opacity: 0 });
+            
+            ScrollTrigger.create({
+              trigger: platformText,
+              start: "top 100%",
+              onEnter: () => {
+                gsap.to(platformText.parentElement, {
+                  y: 0,
+                  opacity: 1,
+                  duration: 0.8,
+                  ease: "power1.out",
+                  delay: 0.2
+                });
+              },
+              once: true
+            });
+          }
+
+          // Skill boxes with enhanced animations
+          const skillItems = document.querySelectorAll('.skill-item');
+          console.log('Skill items found:', skillItems.length);
+          if (skillItems.length > 0) {
+            gsap.set(skillItems, { y: 25, opacity: 0, scale: 0.95 });
+            
+            ScrollTrigger.create({
+              trigger: '.skills-grid',
+              start: "top 90%",
+              onEnter: () => {
+                gsap.to(skillItems, {
+                  y: 0,
+                  opacity: 1,
+                  scale: 1,
+                  duration: 0.8,
+                  stagger: 0.08,
+                  ease: "power1.out",
+                  delay: 0.3
+                });
+              },
+              once: true
+            });
+
+            // Individual skill box hover enhancements
+            skillItems.forEach(item => {
+              item.addEventListener('mouseenter', () => {
+                gsap.to(item, {
+                  y: -5,
+                  scale: 1.02,
+                  duration: 0.3,
+                  ease: "power1.out"
+                });
               });
-            },
-            once: true
-          });
+
+              item.addEventListener('mouseleave', () => {
+                gsap.to(item, {
+                  y: 0,
+                  scale: 1,
+                  duration: 0.3,
+                  ease: "power1.out"
+                });
+              });
+            });
+          }
+
+          // Skills list items inside each box
+          const skillLists = skillsSection.querySelectorAll('.skill-item ul li');
+          if (skillLists.length > 0) {
+            gsap.set(skillLists, { x: -10, opacity: 0 });
+            
+            ScrollTrigger.create({
+              trigger: '.skills-grid',
+              start: "top 80%",
+              onEnter: () => {
+                gsap.to(skillLists, {
+                  x: 0,
+                  opacity: 1,
+                  duration: 0.6,
+                  stagger: 0.02,
+                  ease: "power1.out",
+                  delay: 0.8
+                });
+              },
+              once: true
+            });
+          }
         }
 
         // Project cards - elegant fade up with slight stagger
@@ -423,7 +516,229 @@ const { title } = Astro.props;
           });
         }
 
-        console.log('Subtle GSAP animations initialized successfully!');
+        // Header/Navigation animations
+        const header = document.querySelector('.sticky');
+        if (header) {
+          gsap.set(header, { y: -100, opacity: 0 });
+          gsap.to(header, {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: "power1.out",
+            delay: 0.8 // After hero animations complete
+          });
+
+          // Header links subtle hover animations
+          const headerLinks = header.querySelectorAll('a');
+          headerLinks.forEach(link => {
+            link.addEventListener('mouseenter', () => {
+              gsap.to(link, { 
+                scale: 1.05, 
+                duration: 0.2, 
+                ease: "power1.out" 
+              });
+            });
+            
+            link.addEventListener('mouseleave', () => {
+              gsap.to(link, { 
+                scale: 1, 
+                duration: 0.2, 
+                ease: "power1.out" 
+              });
+            });
+          });
+        }
+
+        // NY Post section animations
+        const nypostSection = document.querySelector('.color__nyp-red--dark');
+        if (nypostSection) {
+          console.log('Setting up NY Post section animations...');
+
+          // Statistics dramatic reveal
+          const stats = nypostSection.querySelectorAll('.stat');
+          stats.forEach((stat, index) => {
+            gsap.set(stat, { scale: 0.8, opacity: 0 });
+            
+            ScrollTrigger.create({
+              trigger: stat,
+              start: "top 100%",
+              onEnter: () => {
+                gsap.to(stat, {
+                  scale: 1,
+                  opacity: 1,
+                  duration: 1.2,
+                  ease: "power1.out",
+                  delay: index * 0.2
+                });
+              },
+              once: true
+            });
+          });
+
+          // Browser mockup reveal
+          const browser = nypostSection.querySelector('.browser');
+          if (browser) {
+            gsap.set(browser, { y: 40, opacity: 0, rotateX: 10 });
+            
+            ScrollTrigger.create({
+              trigger: browser,
+              start: "top 100%",
+              onEnter: () => {
+                gsap.to(browser, {
+                  y: 0,
+                  opacity: 1,
+                  rotateX: 0,
+                  duration: 1.4,
+                  ease: "power1.out"
+                });
+              },
+              once: true
+            });
+          }
+
+          // NY Post logo reveal
+          const nypostLogo = nypostSection.querySelector('svg, .color__nyp-red');
+          if (nypostLogo) {
+            gsap.set(nypostLogo, { x: -30, opacity: 0 });
+            
+            ScrollTrigger.create({
+              trigger: nypostLogo,
+              start: "top 100%",
+              onEnter: () => {
+                gsap.to(nypostLogo, {
+                  x: 0,
+                  opacity: 1,
+                  duration: 1,
+                  ease: "power1.out",
+                  delay: 0.3
+                });
+              },
+              once: true
+            });
+          }
+
+          // Content text sections
+          const contentSections = nypostSection.querySelectorAll('.content-box p, .content-box ul');
+          contentSections.forEach((section, index) => {
+            gsap.set(section, { y: 20, opacity: 0 });
+            
+            ScrollTrigger.create({
+              trigger: section,
+              start: "top 100%",
+              onEnter: () => {
+                gsap.to(section, {
+                  y: 0,
+                  opacity: 1,
+                  duration: 0.8,
+                  ease: "power1.out",
+                  delay: index * 0.1
+                });
+              },
+              once: true
+            });
+          });
+
+          // Statue of Liberty image
+          const statueImage = nypostSection.querySelector('.image__statueofliberty img');
+          if (statueImage) {
+            gsap.set(statueImage, { x: 50, opacity: 0 });
+            
+            ScrollTrigger.create({
+              trigger: statueImage,
+              start: "top 100%",
+              onEnter: () => {
+                gsap.to(statueImage, {
+                  x: 0,
+                  opacity: 1,
+                  duration: 1.2,
+                  ease: "power1.out",
+                  delay: 0.5
+                });
+              },
+              once: true
+            });
+          }
+        }
+
+        // Jobs section animations
+        const jobCards = document.querySelectorAll('.job-card');
+        console.log('Job cards found:', jobCards.length);
+        jobCards.forEach((card, index) => {
+          gsap.set(card, { y: 30, opacity: 0 });
+          
+          ScrollTrigger.create({
+            trigger: card,
+            start: "top 100%",
+            onEnter: () => {
+              gsap.to(card, {
+                y: 0,
+                opacity: 1,
+                duration: 1,
+                ease: "power1.out",
+                delay: index * 0.15
+              });
+            },
+            once: true
+          });
+        });
+
+        // Background image subtle parallax
+        const bgImage = document.querySelector('#bg__main img');
+        if (bgImage) {
+          gsap.to(bgImage, {
+            yPercent: -10,
+            ease: "none",
+            scrollTrigger: {
+              trigger: 'main',
+              start: "top bottom",
+              end: "bottom top",
+              scrub: 1
+            }
+          });
+        }
+
+        // Footer simple reveal (no separate element animations)
+        const footer = document.querySelector('footer, .relative.z-0.pt-64');
+        if (footer) {
+          gsap.set(footer, { y: 20, opacity: 0 });
+          
+          ScrollTrigger.create({
+            trigger: footer,
+            start: "top 100%",
+            onEnter: () => {
+              gsap.to(footer, {
+                y: 0,
+                opacity: 1,
+                duration: 0.8,
+                ease: "power1.out"
+              });
+            },
+            once: true
+          });
+        }
+
+        // Navigation smooth scroll enhancements
+        const navLinks = document.querySelectorAll('nav a[href^="#"]');
+        navLinks.forEach(link => {
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href').substring(1);
+            const target = document.getElementById(targetId);
+            
+            if (target) {
+              gsap.to(window, {
+                duration: 1.2,
+                scrollTo: {
+                  y: target,
+                  offsetY: 80
+                },
+                ease: "power2.inOut"
+              });
+            }
+          });
+        });
+
+        console.log('All GSAP animations initialized successfully!');
       }
     </script>
   </body>
