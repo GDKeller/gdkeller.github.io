@@ -30,6 +30,25 @@ const { title } = Astro.props;
   <body class="bg-black">
     <slot />
     <script>
+      // Immediate smooth scroll for navigation - no delay
+      document.addEventListener('DOMContentLoaded', function() {
+        const navLinks = document.querySelectorAll('nav a[href^="#"]');
+        navLinks.forEach(link => {
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href').substring(1);
+            const target = document.getElementById(targetId);
+            
+            if (target) {
+              target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              });
+            }
+          });
+        });
+      });
+
       // Inline GSAP initialization to ensure compatibility with Astro
       window.addEventListener('load', async function() {
         try {
@@ -717,26 +736,7 @@ const { title } = Astro.props;
           });
         }
 
-        // Navigation smooth scroll enhancements
-        const navLinks = document.querySelectorAll('nav a[href^="#"]');
-        navLinks.forEach(link => {
-          link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = link.getAttribute('href').substring(1);
-            const target = document.getElementById(targetId);
-            
-            if (target) {
-              gsap.to(window, {
-                duration: 1.2,
-                scrollTo: {
-                  y: target,
-                  offsetY: 80
-                },
-                ease: "power2.inOut"
-              });
-            }
-          });
-        });
+        // Navigation smooth scroll is handled by DOMContentLoaded event above
 
         console.log('All GSAP animations initialized successfully!');
       }
