@@ -29,6 +29,403 @@ const { title } = Astro.props;
   </head>
   <body class="bg-black">
     <slot />
+    <script>
+      // Inline GSAP initialization to ensure compatibility with Astro
+      window.addEventListener('load', async function() {
+        try {
+          const { gsap } = await import('gsap');
+          const { ScrollTrigger } = await import('gsap/ScrollTrigger');
+          
+          gsap.registerPlugin(ScrollTrigger);
+          console.log('GSAP loaded successfully:', gsap.version);
+          
+          // Wait a bit for all elements to be rendered
+          setTimeout(() => {
+            initGSAPAnimations(gsap, ScrollTrigger);
+          }, 100);
+          
+        } catch (error) {
+          console.error('Failed to load GSAP:', error);
+        }
+      });
+      
+      function initGSAPAnimations(gsap, ScrollTrigger) {
+        console.log('Initializing subtle GSAP animations...');
+        
+        // Subtle fade up animation
+        function fadeUp(elements, options = {}) {
+          const defaults = {
+            duration: 0.8,
+            ease: "power1.out",
+            y: 20,
+            opacity: 0,
+            stagger: 0.1
+          };
+          
+          const config = { ...defaults, ...options };
+          
+          gsap.set(elements, { y: config.y, opacity: config.opacity });
+          return gsap.to(elements, {
+            y: 0,
+            opacity: 1,
+            duration: config.duration,
+            ease: config.ease,
+            stagger: config.stagger,
+            delay: config.delay || 0
+          });
+        }
+        
+        // Subtle fade in from side
+        function fadeInFromSide(elements, options = {}) {
+          const defaults = {
+            duration: 0.8,
+            ease: "power1.out",
+            x: 30,
+            opacity: 0,
+            stagger: 0.08
+          };
+          
+          const config = { ...defaults, ...options };
+          
+          gsap.set(elements, { x: config.x, opacity: config.opacity });
+          return gsap.to(elements, {
+            x: 0,
+            opacity: 1,
+            duration: config.duration,
+            ease: config.ease,
+            stagger: config.stagger,
+            delay: config.delay || 0
+          });
+        }
+
+        // Hero name - subtle fade up
+        const heroName = document.querySelector('.hero__name');
+        console.log('Hero name element found:', heroName);
+        if (heroName) {
+          fadeUp(heroName, {
+            duration: 1,
+            delay: 0.3,
+            y: 15
+          });
+        }
+
+        // Hero subtitle - gentle fade from left
+        const heroSubtitle = document.querySelector('.hero__text p');
+        console.log('Hero subtitle element found:', heroSubtitle);
+        if (heroSubtitle) {
+          fadeInFromSide(heroSubtitle, {
+            duration: 0.9,
+            delay: 0.6,
+            x: 20
+          });
+        }
+
+        // Hero list items - staggered fade up
+        const heroListItems = document.querySelectorAll('.hero__text li');
+        console.log('Hero list items found:', heroListItems.length);
+        if (heroListItems.length > 0) {
+          fadeUp(heroListItems, {
+            duration: 0.7,
+            delay: 0.9,
+            stagger: 0.08,
+            y: 12
+          });
+        }
+
+        // Pills - subtle fade in
+        const pills = document.querySelectorAll('.pill');
+        console.log('Pills found:', pills.length);
+        if (pills.length > 0) {
+          fadeUp(pills, {
+            duration: 0.6,
+            delay: 1.2,
+            stagger: 0.04,
+            y: 8
+          });
+        }
+
+        // Section headings - scroll triggered fade up
+        const sectionHeadings = document.querySelectorAll('h2');
+        console.log('Section headings found:', sectionHeadings.length);
+        sectionHeadings.forEach(heading => {
+          gsap.set(heading, { y: 20, opacity: 0 });
+          
+          ScrollTrigger.create({
+            trigger: heading,
+            start: "top 85%",
+            onEnter: () => {
+              gsap.to(heading, {
+                y: 0,
+                opacity: 1,
+                duration: 0.8,
+                ease: "power1.out"
+              });
+            },
+            once: true
+          });
+        });
+
+        // Skill items - gentle scale and fade
+        const skillItems = document.querySelectorAll('.skill-item');
+        console.log('Skill items found:', skillItems.length);
+        if (skillItems.length > 0) {
+          gsap.set(skillItems, { y: 15, opacity: 0 });
+          
+          ScrollTrigger.create({
+            trigger: '.skills-grid',
+            start: "top 75%",
+            onEnter: () => {
+              gsap.to(skillItems, {
+                y: 0,
+                opacity: 1,
+                duration: 0.7,
+                stagger: 0.06,
+                ease: "power1.out"
+              });
+            },
+            once: true
+          });
+        }
+
+        // Project cards - elegant fade up with slight stagger
+        const projectCards = document.querySelectorAll('.project-card');
+        console.log('Project cards found:', projectCards.length);
+        projectCards.forEach((card, index) => {
+          gsap.set(card, { y: 25, opacity: 0 });
+          
+          ScrollTrigger.create({
+            trigger: card,
+            start: "top 85%",
+            onEnter: () => {
+              gsap.to(card, {
+                y: 0,
+                opacity: 1,
+                duration: 0.8,
+                ease: "power1.out",
+                delay: index * 0.05
+              });
+            },
+            once: true
+          });
+        });
+
+        // Subtle hover effects for interactive elements
+        const interactiveElements = document.querySelectorAll('.btn, .pill');
+        console.log('Interactive elements found:', interactiveElements.length);
+        interactiveElements.forEach(element => {
+          element.addEventListener('mouseenter', () => {
+            gsap.to(element, { 
+              scale: 1.02, 
+              duration: 0.3, 
+              ease: "power1.out" 
+            });
+          });
+          
+          element.addEventListener('mouseleave', () => {
+            gsap.to(element, { 
+              scale: 1, 
+              duration: 0.3, 
+              ease: "power1.out" 
+            });
+          });
+        });
+
+        // Very subtle parallax for background text
+        const hugeText = document.querySelector('.huge');
+        if (hugeText) {
+          gsap.to(hugeText, {
+            yPercent: -5,
+            ease: "none",
+            scrollTrigger: {
+              trigger: hugeText,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: 2
+            }
+          });
+        }
+
+        // Anglerfish Scrollytelling Animations
+        const fishHero = document.querySelector('.fish-hero');
+        if (fishHero) {
+          console.log('Setting up Anglerfish scrollytelling animations...');
+          
+          // Anglerfish image parallax
+          const fishImage = fishHero.querySelector('.fish-hero__image');
+          if (fishImage) {
+            gsap.to(fishImage, {
+              yPercent: -15,
+              ease: "none",
+              scrollTrigger: {
+                trigger: fishHero,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 1
+              }
+            });
+          }
+
+          // Fish ball floating animation enhancement
+          const fishBall = fishHero.querySelector('.animation-fishball');
+          if (fishBall) {
+            gsap.to(fishBall, {
+              y: -20,
+              ease: "sine.inOut",
+              scrollTrigger: {
+                trigger: fishHero,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 2
+              }
+            });
+          }
+
+          // Museum logo reveal
+          const museumLogo = fishHero.querySelector('img[alt*="Natural History Museum"]');
+          if (museumLogo) {
+            gsap.set(museumLogo, { scale: 0.8, opacity: 0 });
+            ScrollTrigger.create({
+              trigger: museumLogo,
+              start: "top 95%",
+              onEnter: () => {
+                gsap.to(museumLogo, {
+                  scale: 1,
+                  opacity: 1,
+                  duration: 1.4,
+                  ease: "power1.out"
+                });
+              },
+              once: true
+            });
+          }
+
+          // Anglerfish title dramatic reveal
+          const fishTitle = fishHero.querySelector('#fish-monster');
+          if (fishTitle) {
+            gsap.set(fishTitle, { y: 30, opacity: 0 });
+            ScrollTrigger.create({
+              trigger: fishTitle,
+              start: "top 95%",
+              onEnter: () => {
+                gsap.to(fishTitle, {
+                  y: 0,
+                  opacity: 1,
+                  duration: 1.6,
+                  ease: "power1.out"
+                });
+              },
+              once: true
+            });
+          }
+
+          // Water background subtle movement
+          const waterElements = fishHero.querySelectorAll('.fish-hero__water, .fish-hero__water-blurred');
+          waterElements.forEach(water => {
+            gsap.to(water, {
+              yPercent: 5,
+              ease: "none",
+              scrollTrigger: {
+                trigger: fishHero,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 3
+              }
+            });
+          });
+
+          // Story paragraphs sequential reveal
+          const storyParagraphs = fishHero.querySelectorAll('.fish-hero__container p');
+          console.log('Story paragraphs found:', storyParagraphs.length);
+          
+          storyParagraphs.forEach((paragraph, index) => {
+            gsap.set(paragraph, { y: 25, opacity: 0 });
+            
+            ScrollTrigger.create({
+              trigger: paragraph,
+              start: "top 100%",
+              onEnter: () => {
+                gsap.to(paragraph, {
+                  y: 0,
+                  opacity: 1,
+                  duration: 1.1,
+                  ease: "power1.out",
+                  delay: index * 0.1
+                });
+              },
+              once: true
+            });
+          });
+
+          // Display images staggered reveal
+          const displayImages = fishHero.querySelectorAll('img[alt*="Anglerfish display"], img[alt*="Anglerfish specimen"]');
+          console.log('Display images found:', displayImages.length);
+          
+          displayImages.forEach((image, index) => {
+            gsap.set(image, { y: 30, opacity: 0, scale: 0.95 });
+            
+            ScrollTrigger.create({
+              trigger: image,
+              start: "top 100%",
+              onEnter: () => {
+                gsap.to(image, {
+                  y: 0,
+                  opacity: 1,
+                  scale: 1,
+                  duration: 1.2,
+                  ease: "power1.out",
+                  delay: index * 0.15
+                });
+              },
+              once: true
+            });
+          });
+
+          // Final specimen image dramatic reveal
+          const specimenImage = fishHero.querySelector('img[alt="Anglerfish specimen"]');
+          if (specimenImage) {
+            // Override the previous animation for the final specimen image
+            gsap.set(specimenImage, { y: 40, opacity: 0, scale: 0.9 });
+            
+            ScrollTrigger.create({
+              trigger: specimenImage,
+              start: "top 100%",
+              onEnter: () => {
+                gsap.to(specimenImage, {
+                  y: 0,
+                  opacity: 1,
+                  scale: 1,
+                  duration: 1.6,
+                  ease: "power1.out"
+                });
+              },
+              once: true
+            });
+          }
+
+          // Content sections fade in as user scrolls
+          const contentSections = fishHero.querySelectorAll('.flex.flex-col.items-center.justify-center');
+          contentSections.forEach((section, index) => {
+            gsap.set(section, { y: 20, opacity: 0 });
+            
+            ScrollTrigger.create({
+              trigger: section,
+              start: "top 100%",
+              onEnter: () => {
+                gsap.to(section, {
+                  y: 0,
+                  opacity: 1,
+                  duration: 1.0,
+                  ease: "power1.out"
+                });
+              },
+              once: true
+            });
+          });
+        }
+
+        console.log('Subtle GSAP animations initialized successfully!');
+      }
+    </script>
   </body>
 </html>
 <style is:global>
@@ -57,5 +454,28 @@ const { title } = Astro.props;
       Bitstream Vera Sans Mono,
       Courier New,
       monospace;
+  }
+
+  /* GSAP Animation Styles */
+  .word, .char {
+    display: inline-block;
+  }
+  
+  .word {
+    margin-right: 0.2em;
+  }
+  
+  .char {
+    line-height: 1;
+  }
+  
+  /* Smooth transitions for hover states */
+  .link-card, .skill-badge, .project-card {
+    will-change: transform, opacity;
+  }
+  
+  /* Prevent FOUC (Flash of Unstyled Content) */
+  .gsap-loading * {
+    visibility: hidden;
   }
 </style>
