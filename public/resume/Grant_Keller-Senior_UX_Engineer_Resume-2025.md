@@ -1,0 +1,131 @@
+# Grant Keller
+
+Senior Frontend Developer, UX Engineer, Accessibility & Performance Specialist, Gen AI Tools Developer
+
+## Contact Information
+
+LinkedIn: [https://www.linkedin.com/in/grantdkeller/](https://www.linkedin.com/in/grantdkeller/)  
+Website: [https://grantkeller.dev](https://grantkeller.dev)  
+Email: [contact@grantkeller.dev](mailto:contact@grantkeller.dev)  
+Phone: (323)379-9765
+
+## Summary
+
+Senior frontend web developer with a decade of experience building fast, accessible, user-centered interfaces. Known for translating complex needs into elegant, performant solutions through close collaboration with stakeholders, creatives and engineers. Strong in accessibility, information architecture, and leading cross-functional projects across web, desktop and AI.
+
+## Skills
+
+React, TypeScript, JavaScript, Node.js, Gatsby, Next.js, WordPress (custom themes, plugins, Gutenberg, ACF, WP-CLI, WooCommerce, VIP), Bootstrap, Tailwind, CSS/Sass/SCSS, Semantic HTML, Responsive Design, UX Audits, Usability Testing, Accessibility (WCAG 2.1, Axe, Lighthouse), Figma, Sketch, Design Systems, Information Architecture, A/B Testing, Google Analytics, GSAP, REST API, MySQL, NoSQL, DattoCMS, Astro, Testing (Puppeteer, Ghost Inspector, ESLint, Prettier, Stylelint, PHPCS), Git, GitHub Actions, Docker, AWS (S3), GCP, CI/CD, Python (Flask, Tkinter, PyInstaller), OpenCV, Stable Diffusion, ComfyUI, XML, Bash, Linux, C++, Arduino, ESP32, PlatformIO, FastLED
+
+## Work Experience
+
+### DAVANT SYSTEMS
+
+Lead Software Engineer  
+February 2023 \- Present, Los Angeles CA (Remote)
+
+- Led development of Davant Studio, a cross-platform GUI for Stable Diffusion that empowers non-technical creatives to use AI tools locally.  
+- Designed a portable Python distribution system for Mac, PC, NVIDIA, AMD, and Apple Silicon — zero install dependencies.  
+- Built intuitive frontend workflows, integrated cutting-edge open-source extensions, and evaluated AI models for flexibility and control.  
+- Collaborated closely with creatives and technical stakeholders to align product direction with real-world needs.  
+- Ran demo booths for AMD & ASUS at SIGGRAPH, Adobe MAX, NAB and CES; awarded Silver Edge at SIGGRAPH 2023\.  
+- Invented and launched the first real-time AI photo booth (“Magic Mirror”) for experiential marketing activations.
+
+
+### ALLEY INTERACTIVE
+
+Senior User Experience Developer  
+July 2021 \- December 2023,  Los Angeles CA (Remote)
+
+- Led frontend development for high-traffic editorial websites hosted on WordPress VIP, including the New York Post (65M+ monthly users).  
+- Built fully custom block-based themes using React/TypeScript and the Gutenberg framework, tailored to complex editorial and design needs.  
+- Partnered with stakeholders to define content goals, plan UX strategy, and deliver accessible, scalable interfaces.  
+- Delivered WCAG 2.1-compliant rebuilds, UX audits, and information architecture overhauls to improve usability and engagement.
+
+Key Projects
+
+- New York Post: Developed custom Gutenberg blocks and performance-tuned themes on WordPress VIP; collaborated directly with the editorial team.  
+- Reporters Committee: Led UX and IA redesign based on persona research and stakeholder interviews.  
+- ADDitude Magazine: Produced neurodivergent-accessible UX audit; enhanced navigation and ad performance.  
+- Mariners’ Museum: Managed WCAG 2.1 rebuild; coordinated consultant reviews and compliance QA.
+
+Leadership & Mentorship
+
+- Led Alley’s Accessibility Community of Practice to standardize inclusive development practices across the org.  
+- Mentored junior developers, strengthening technical, strategic, and communication skills across the UX team.
+
+### STUDIO III MARKETING
+
+Frontend Web Developer  
+May 2019 \- July 2021, Los Angeles CA (Remote)
+
+- Built custom frontend components for client websites using a DattoCMS-driven architecture, streamlining dev cycles and editorial workflows.  
+- Achieved perfect Google PageSpeed scores through advanced performance tuning and optimization.  
+- Led the implementation of high-impact GSAP animations to elevate UX and reinforce premium brand positioning.  
+- Trusted to develop the corporate site for Studio 3 Enterprise, a key internal initiative.  
+- Created a CLI tool to batch-process and optimize large image galleries for the web.
+
+
+### KELLER DIGITAL (SELF-EMPLOYED)
+
+WordPress Developer & Solutions Architect  
+June 2011 \- August 2021, Los Angeles CA (Remote)
+
+- Led full-scope WordPress projects for government, nonprofit, and commercial clients — from client intake through strategy, design, and implementation.  
+- Built custom themes and plugins, handled third-party integrations, and ensured long-term maintainability for each deployment.  
+- Served as the primary point of contact with clients, translating complex requirements into scalable, performant systems.
+
+Selected Projects
+
+- LA Department of Public Health: Designed and launched a custom curriculum delivery platform for 29,000+ students across 60+ schools.  
+- NorCal POCIS: Developed a membership-based jobs board for 66+ Bay Area schools using Paid Memberships Pro.  
+- Dun & Bradstreet: Consulted on UX and performance improvements for their corporate site.  
+- Hawke Media: Subcontracted for frontend performance audits and tuning.
+
+
+### FREELANCE VIDEOGRAPHY
+
+Video Editor & Motion Graphics Artist  
+2007 \- 2013 | Muncie, IN / Los Angeles, CA
+
+- Directed and edited award-winning video projects across documentary, commercial, and narrative formats.  
+- Earned two regional Emmy Awards for excellence in storytelling and visual direction.  
+- Developed a foundation in pacing, composition, and narrative clarity that informs UX and product design sensibilities.
+
+
+## Notable Technical Collaborations
+
+### NASA JET PROPULSION LABORATORY
+
+Embedded Software Engineer, MiniPulse Visualizer  
+Jan 2022 \- Oct 2022, Los Angeles CA
+
+- Developed ESP32-based firmware for a public LED installation visualizing live Deep Space Network transmissions from active spacecraft.  
+- Parsed XML data, built custom character maps, and implemented animation patterns based on real-time telemetry.  
+- Engineered a WiFi configuration portal for remote setup and OTA updates; deployed as a production-ready package.
+
+### NATURAL HISTORY MUSEUM OF LOS ANGELES COUNTY
+
+Embedded Software Engineer, Anglerfish Exhibit  
+Jun 2021 \- Aug 2021, Los Angeles CA
+
+- Designed an Arduino-based motion and light sensor system to protect a light-sensitive specimen and log data to the cloud.  
+- Implemented proximity-triggered lighting and continuous lux monitoring for archival analysis.  
+- Created a full-scale 3D-printed replica from LiDAR scans to enable tactile interaction for visitors.
+
+
+## Education
+
+### BFA in Telecommunications
+
+Ball State University, 2007 \- 2011, Muncie IN	
+
+- Member: Technical Association of the Graphic Arts
+
+## Awards
+
+Emmy Award, 2011 \- Health/Science Program or Special \- “Seeing Stars In Indiana”  
+Emmy Award, 2010 \- Short Narrative, Lighting \- “Color of Deceit”  
+ADDY Awards, 2012, Best of Show & Gold ADDY \- “Visit Indiana” Tourism Marketing Campaign
+
+- Category: Internet Commercials, Role: Editor, Post-production Manager
