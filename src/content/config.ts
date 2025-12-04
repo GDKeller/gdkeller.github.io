@@ -62,9 +62,20 @@ const skills = defineCollection({
   }),
 });
 
+const featured = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    tags: z.array(z.string()).optional(),
+    image: z.string().optional(),
+  }),
+});
+
 export const collections = {
   blog: blog,
   jobs: jobs,
   projects: projects,
   skills: skills,
+  featured: featured,
 };

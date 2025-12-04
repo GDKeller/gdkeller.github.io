@@ -1,54 +1,87 @@
-# Astro Starter Kit: Basics
+# Grant Keller Portfolio
 
-```sh
-npm create astro@latest -- --template basics
+A modern, performant portfolio website built with Astro, TypeScript, and Tailwind CSS showcasing frontend development expertise and creative technical projects.
+
+## 🚀 Tech Stack
+
+- **Framework:** [Astro](https://astro.build) v5.7.4
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS + DaisyUI
+- **Animation:** GSAP
+- **Build Tool:** Vite
+- **Deployment:** GitHub Pages
+
+## 📁 Project Structure
+
 ```
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
+portfolio/
 ├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── components/      # Reusable Astro components
+│   ├── content/         # Content collections (jobs, projects, skills)
+│   ├── images/          # Image assets
+│   ├── layouts/         # Page layouts
+│   ├── pages/           # Route pages
+│   └── styles/          # Global styles
+├── public/              # Static assets
+├── docs/                # Project documentation
+├── CLAUDE.md           # AI assistant context
+└── tailwind.config.mjs  # Tailwind configuration
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 🛠️ Development
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+### Prerequisites
 
-Any static assets, like images, can be placed in the `public/` directory.
+- Node.js 18+
+- npm or yarn
 
-## 🧞 Commands
+### Setup
 
-All commands are run from the root of the project, from a terminal:
+```bash
+# Install dependencies
+npm install
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+# Start development server
+npm run dev
 
-## 👀 Want to learn more?
+# Build for production
+npm run build
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+# Preview production build
+npm run preview
+```
+
+### Available Scripts
+
+- `npm run dev` - Start development server on port 3333
+- `npm run build` - Type check and build for production
+- `npm run preview` - Preview production build locally
+- `npm run astro check` - Run Astro type checking
+
+## 📝 Content Management
+
+Content is managed through Astro's content collections:
+
+- **Jobs** (`src/content/jobs/`) - Professional experience
+- **Projects** (`src/content/projects/`) - Featured work
+- **Skills** (`src/content/skills/`) - Technical competencies
+- **Featured** (`src/content/featured/`) - Special content pieces
+
+## 🎨 Component Architecture
+
+Components follow a modular architecture pattern:
+
+- **Layout Components** - Page structure and navigation
+- **Content Components** - Display content from collections
+- **UI Components** - Reusable interface elements
+
+## 🚦 Performance
+
+- Static site generation for optimal performance
+- Image optimization with Astro's Image component
+- Lazy loading for below-fold content
+- Minimal JavaScript bundle
+
+## 📄 License
+
+© 2025 Grant Keller. All rights reserved.

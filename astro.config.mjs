@@ -10,6 +10,9 @@ export default defineConfig({
   site: 'https://gdkeller.github.io',
   // base: 'Portfolio',
   integrations: [tailwind(), favicons()],
+  server: {
+    port: 3111,
+  },
   vite: {
     ssr: {
       noExternal: ["react-icons"],
