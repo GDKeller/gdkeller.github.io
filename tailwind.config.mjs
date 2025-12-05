@@ -5,9 +5,7 @@ export default {
 		extend: {
 			fontFamily: {
 				bayon: ['Bayon', 'sans-serif'],
-				kings: ['Kings', 'sans-serif'],
 				bokor: ['Bokor', 'serif'],
-				medieval: ['MedievalSharp', 'sans-serif'],
 				marker: ['Permanent Marker', 'sans-serif'],
 				prompt: ['Prompt', 'sans-serif'],
 			},

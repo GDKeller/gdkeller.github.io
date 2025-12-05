@@ -2,28 +2,59 @@
 
 ---
 
-<div class="relative z-0 pt-64 font-prompt text-emerald-200">
-  <div class="container mx-auto px-8 py-6 text-center">
-    <p class="text-sm">
+<footer class="relative z-0 pt-32 pb-8 font-prompt text-emerald-200">
+  <!-- CTA Section -->
+  <div class="container mx-auto px-8 mb-16 text-center max-w-2xl">
+    <h3 class="font-bokor text-4xl md:text-5xl text-emerald-300 mb-4">Ready to build something great?</h3>
+    <p class="text-emerald-200/70 mb-8 text-lg">
+      I'm currently open to senior frontend roles, contract work, and interesting collaborations.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <button
+        onclick="document.getElementById('hire_me_modal').showModal()"
+        class="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-black bg-emerald-400 rounded-lg hover:bg-emerald-300 transition-all duration-200 shadow-lg shadow-emerald-400/25 hover:shadow-emerald-400/40"
+      >
+        Get in Touch
+        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+        </svg>
+      </button>
+      <a
+        href="/Grant Keller Senior UX Engineer Resume 2025.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-emerald-300 border border-emerald-400/50 rounded-lg hover:bg-emerald-400/10 hover:border-emerald-400 transition-all duration-200"
+      >
+        Download Resume
+        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- Site Info -->
+  <div class="container mx-auto px-8 py-6 text-center border-t border-emerald-400/10">
+    <p class="text-sm text-emerald-200/60">
       <span class="inline-block"
-        >Built with <a class="hover:underline" href="https://astro.build/" target="_blank" rel="noopener noreferrer">Astro</a
+        >Built with <a class="hover:underline hover:text-emerald-300" href="https://astro.build/" target="_blank" rel="noopener noreferrer">Astro</a
         >,
-        <a class="hover:underline" href="https://react.dev/" target="_blank" rel="noopener noreferrer">React</a>,
-        <a class="hover:underline" href="https://tailwindcss.com/" target="_blank" rel="noopener noreferrer">Tailwind</a> & <a
-          class="hover:underline"
+        <a class="hover:underline hover:text-emerald-300" href="https://react.dev/" target="_blank" rel="noopener noreferrer">React</a>,
+        <a class="hover:underline hover:text-emerald-300" href="https://tailwindcss.com/" target="_blank" rel="noopener noreferrer">Tailwind</a> & <a
+          class="hover:underline hover:text-emerald-300"
           href="https://daisyui.com/"
           target="_blank"
           rel="noopener noreferrer">DaisyUI</a
-        > in Los Angeles, CA</span
-      >
-      <span class="mx-4"> | </span>
-      <span class="mx-4"
-        ><a href="https://github.com/GDKeller/gdkeller.github.io" target="_blank" rel="noopener noreferrer"
-          >View site code on GitHub</a
         ></span
       >
-      <span class="mx-4"> | </span>
+      <span class="mx-3 text-emerald-400/30">•</span>
+      <span class="inline-block"
+        ><a class="hover:underline hover:text-emerald-300" href="https://github.com/GDKeller/gdkeller.github.io" target="_blank" rel="noopener noreferrer"
+          >View source</a
+        ></span
+      >
+      <span class="mx-3 text-emerald-400/30">•</span>
       <span class="inline-block">© 2025 Grant Keller</span>
     </p>
   </div>
-</div>
+</footer>

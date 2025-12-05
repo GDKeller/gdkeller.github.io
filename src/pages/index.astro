@@ -2,7 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import FishHero from "../components/FishHero.astro";
 import { Image } from "astro:assets";
-import bgImage from "../images/bg_video_glitch.jpg";
+import bgImage from "../images/bg_video_glitch.webp";
 import SkillsGrid from "../components/SkillsGrid.astro";
 import Projects from "../components/Projects.astro";
 import Jobs from "../components/Jobs.astro";
@@ -21,18 +21,16 @@ import Footer from "../components/Footer.astro";
       <Hero />
       <Header />
 
+      <!-- Featured Work: NY Post -->
       <div class="container relative z-20 mx-auto -mb-32 mt-32 max-w-4xl px-8">
-        <h2 id="highlights" class="mb-12 pt-32 text-center font-bokor text-6xl">Highlights</h2>
+        <h2 id="featured" class="mb-12 pt-32 text-center font-bokor text-6xl">Featured Work</h2>
       </div>
 
       <section class="relative">
         <Nypost />
       </section>
 
-      <section class="relative z-10 block overflow-hidden">
-        <FishHero />
-      </section>
-
+      <!-- Skills - moved up for visibility -->
       <section id="skills" class="relative mx-auto mb-32 block max-w-6xl p-2 py-48">
         <SkillsGrid />
       </section>
@@ -43,6 +41,17 @@ import Footer from "../components/Footer.astro";
 
       <section id="projects" class="container mx-auto mb-48 block max-w-6xl px-8">
         <Projects />
+      </section>
+
+      <!-- Passion Projects: Anglerfish Exhibit - moved to bottom -->
+      <section class="relative z-10 block overflow-hidden">
+        <div class="container relative z-20 mx-auto max-w-4xl px-8">
+          <h2 id="passion-projects" class="mb-8 pt-16 text-center font-bokor text-5xl text-emerald-300/80">Beyond the Screen</h2>
+          <p class="text-center text-emerald-200/60 mb-16 max-w-2xl mx-auto">
+            When I'm not building web applications, I explore the intersection of hardware, software, and physical experiences.
+          </p>
+        </div>
+        <FishHero />
       </section>
     </div>
   </main>
