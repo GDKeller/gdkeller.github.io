@@ -12,7 +12,7 @@ Led frontend development for high-profile editorial and museum clients in a scru
 
 Collaborated with editorial stakeholders to identify priorities and deliver solutions. Focused on UX best practices, WCAG 2.1 accessibility, and performance optimization.
 
-- Shipped code daily to 300M+ monthly pageviews across NY Post properties on WordPress VIP
+- Shipped code daily to 390M+ monthly pageviews across NY Post properties on WordPress VIP
 - Built custom Gutenberg blocks to improve editorial workflows and content creation UX
 - Contributed to unified theme system serving NYP, Page Six, and Decider
 - Developed team planning processes that improved velocity and delivery
