@@ -1,12 +1,20 @@
 ---
+interface Props {
+  href: string;
+  target?: '_blank' | '_self' | '_parent' | '_top';
+  class?: string;
+}
+
 const { href, target, class: className } = Astro.props;
+const relAttr = target === '_blank' ? 'noopener noreferrer' : undefined;
 ---
 
 <a
   class:list={[
-    "text=fuchsia-500 inline-block underline hover:cursor-pointer hover:text-fuchsia-300",
+    "text-fuchsia-500 inline-block underline hover:cursor-pointer hover:text-fuchsia-300",
     className,
   ]}
   href={href}
-  target={target}><slot /></a
+  target={target}
+  rel={relAttr}><slot /></a
 >

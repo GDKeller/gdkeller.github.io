@@ -1,14 +1,5 @@
 import { z, defineCollection } from "astro:content";
 
-const blog = defineCollection({
-  type: "content",
-  schema: z.object({
-    title: z.string(),
-    tags: z.array(z.string()),
-    image: z.string().optional(),
-  }),
-});
-
 const jobs = defineCollection({
   type: "content",
   schema: z.object({
@@ -46,7 +37,7 @@ const projects = defineCollection({
     startMonthYear: z.string().optional(),
     endMonthYear: z.string().optional(),
     tags: z.array(z.string()).optional(),
-    image: z.string().optional().optional(),
+    image: z.string().optional(),
     imageAlt: z.string().optional(),
     imageAlign: z.enum(["left", "right"]).optional(),
     tech: z.array(z.string()).optional(),
@@ -58,7 +49,7 @@ const skills = defineCollection({
   schema: z.object({
     title: z.string(),
     tags: z.array(z.string()).optional(),
-    image: z.string().optional().optional(),
+    image: z.string().optional(),
   }),
 });
 
@@ -73,7 +64,6 @@ const featured = defineCollection({
 });
 
 export const collections = {
-  blog: blog,
   jobs: jobs,
   projects: projects,
   skills: skills,

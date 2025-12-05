@@ -58,20 +58,34 @@ const { title } = Astro.props;
           const { ScrollToPlugin } = await import('gsap/ScrollToPlugin');
           
           gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
-          console.log('GSAP loaded successfully:', gsap.version);
-          
+
           // Wait a bit for all elements to be rendered
           setTimeout(() => {
             initGSAPAnimations(gsap, ScrollTrigger);
           }, 100);
           
         } catch (error) {
-          console.error('Failed to load GSAP:', error);
+          // GSAP failed to load - site will still function without animations
         }
       });
       
       function initGSAPAnimations(gsap: any, ScrollTrigger: any) {
-        console.log('Initializing subtle GSAP animations...');
+        // Respect user's motion preferences for accessibility (WCAG 2.3.3)
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        if (prefersReducedMotion) {
+          // For users who prefer reduced motion, show content immediately without animations
+          const allAnimatedElements = document.querySelectorAll(
+            '.hero__name, .hero__text p, .hero__text li, .hero__text .pill, h2, ' +
+            '.skill-item, .project-card, .job-card, .stat, .browser, .sticky, ' +
+            '.fish-hero__image, img, p, footer, .relative.z-0.pt-64'
+          );
+          allAnimatedElements.forEach(el => {
+            (el as HTMLElement).style.opacity = '1';
+            (el as HTMLElement).style.transform = 'none';
+          });
+          return; // Skip all animations
+        }
         
         // Subtle fade up animation
         function fadeUp(elements: any, options: any = {}) {
@@ -123,7 +137,6 @@ const { title } = Astro.props;
 
         // Hero name - immediate subtle fade up
         const heroName = document.querySelector('.hero__name');
-        console.log('Hero name element found:', heroName);
         if (heroName) {
           fadeUp(heroName, {
             duration: 0.8,
@@ -134,7 +147,6 @@ const { title } = Astro.props;
 
         // Hero subtitle - immediate fade from left
         const heroSubtitle = document.querySelector('.hero__text p');
-        console.log('Hero subtitle element found:', heroSubtitle);
         if (heroSubtitle) {
           fadeInFromSide(heroSubtitle, {
             duration: 0.8,
@@ -145,7 +157,6 @@ const { title } = Astro.props;
 
         // Hero list items - immediate staggered fade up
         const heroListItems = document.querySelectorAll('.hero__text li');
-        console.log('Hero list items found:', heroListItems.length);
         if (heroListItems.length > 0) {
           fadeUp(heroListItems, {
             duration: 0.6,
@@ -157,7 +168,6 @@ const { title } = Astro.props;
 
         // Pills - immediate fade in
         const heroPills = document.querySelectorAll('.hero__text .pill');
-        console.log('Hero pills found:', heroPills.length);
         if (heroPills.length > 0) {
           fadeUp(heroPills, {
             duration: 0.5,
@@ -169,7 +179,6 @@ const { title } = Astro.props;
 
         // Section headings - scroll triggered fade up
         const sectionHeadings = document.querySelectorAll('h2');
-        console.log('Section headings found:', sectionHeadings.length);
         sectionHeadings.forEach(heading => {
           gsap.set(heading, { y: 20, opacity: 0 });
           
@@ -191,7 +200,6 @@ const { title } = Astro.props;
         // Tools of the Trade section animations
         const skillsSection = document.querySelector('#skills');
         if (skillsSection) {
-          console.log('Setting up Tools of the Trade animations...');
 
           // "Tools of the Trade" heading
           const toolsHeading = skillsSection.querySelector('p.font-bokor');
@@ -236,7 +244,6 @@ const { title } = Astro.props;
 
           // Skill boxes with enhanced animations
           const skillItems = document.querySelectorAll('.skill-item');
-          console.log('Skill items found:', skillItems.length);
           if (skillItems.length > 0) {
             gsap.set(skillItems, { y: 25, opacity: 0, scale: 0.95 });
             
@@ -304,7 +311,6 @@ const { title } = Astro.props;
 
         // Project cards - elegant fade up with slight stagger
         const projectCards = document.querySelectorAll('.project-card');
-        console.log('Project cards found:', projectCards.length);
         projectCards.forEach((card, index) => {
           gsap.set(card, { y: 25, opacity: 0 });
           
@@ -326,7 +332,6 @@ const { title } = Astro.props;
 
         // Subtle hover effects for interactive elements
         const interactiveElements = document.querySelectorAll('.btn, .pill');
-        console.log('Interactive elements found:', interactiveElements.length);
         interactiveElements.forEach(element => {
           element.addEventListener('mouseenter', () => {
             gsap.to(element, { 
@@ -363,7 +368,6 @@ const { title } = Astro.props;
         // Anglerfish Scrollytelling Animations
         const fishHero = document.querySelector('.fish-hero');
         if (fishHero) {
-          console.log('Setting up Anglerfish scrollytelling animations...');
           
           // Anglerfish image parallax
           const fishImage = fishHero.querySelector('.fish-hero__image');
@@ -450,8 +454,6 @@ const { title } = Astro.props;
 
           // Story paragraphs sequential reveal
           const storyParagraphs = fishHero.querySelectorAll('.fish-hero__container p');
-          console.log('Story paragraphs found:', storyParagraphs.length);
-          
           storyParagraphs.forEach((paragraph, index) => {
             gsap.set(paragraph, { y: 25, opacity: 0 });
             
@@ -473,8 +475,6 @@ const { title } = Astro.props;
 
           // Display images staggered reveal
           const displayImages = fishHero.querySelectorAll('img[alt*="Anglerfish display"], img[alt*="Anglerfish specimen"]');
-          console.log('Display images found:', displayImages.length);
-          
           displayImages.forEach((image, index) => {
             gsap.set(image, { y: 30, opacity: 0, scale: 0.95 });
             
@@ -574,7 +574,6 @@ const { title } = Astro.props;
         // NY Post section animations
         const nypostSection = document.querySelector('.color__nyp-red--dark');
         if (nypostSection) {
-          console.log('Setting up NY Post section animations...');
 
           // Statistics dramatic reveal
           const stats = nypostSection.querySelectorAll('.stat');
@@ -684,7 +683,6 @@ const { title } = Astro.props;
 
         // Jobs section animations
         const jobCards = document.querySelectorAll('.job-card');
-        console.log('Job cards found:', jobCards.length);
         jobCards.forEach((card, index) => {
           gsap.set(card, { y: 30, opacity: 0 });
           
@@ -740,8 +738,6 @@ const { title } = Astro.props;
         }
 
         // Navigation smooth scroll is handled by DOMContentLoaded event above
-
-        console.log('All GSAP animations initialized successfully!');
       }
     </script>
   </body>
