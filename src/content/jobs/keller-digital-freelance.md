@@ -7,9 +7,9 @@ tech: [WordPress, Javascript, CSS, PHP, Cloudflare, cPanel]
 order: 3
 ---
 
-Partnered with clients across industries, including government, nonprofits, and private companies, to develop and maintain custom WordPress themes and plugins tailored to their needs.
+Co-founded 3-person agency handling development, design, and client strategy for government, nonprofits, and private companies.
 
-- Los Angeles Department of Public Health: Led a small team to plan, design, and build a custom WordPress system delivering curricula to 29,000+ students across 60+ Los Angeles schools.
-- NorCal POCIS (Nonprofit): Developed a custom WordPress jobs board using Paid Memberships Pro, enabling job opportunities across members in 66+ Bay Area schools.
-- Dun & Bradstreet: Collaborated with stakeholders to identify pain points and deliver strategic improvements to their WordPress site.
-- Hawke Media: Subcontracted with a leading marketing agency to optimize web performance, improving load times and user experience.
+- **LA Dept. of Public Health:** Led team to build custom WordPress system delivering curricula to 29,000+ students across 60+ LA schools
+- **NorCal POCIS (Nonprofit):** Built custom jobs board with Paid Memberships Pro, connecting 66+ Bay Area schools
+- **Dun & Bradstreet:** Collaborated with stakeholders to identify pain points and deliver strategic site improvements
+- **Hawke Media:** Subcontracted with marketing agency to optimize web performance and user experience
