@@ -1,6 +1,47 @@
-/* Global variables */
-:root {
-  scroll-behavior: smooth;
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Disable GSAP animations */
+  [data-animate] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Focus Indicators - WCAG 2.2 Compliant */
+:focus-visible {
+  outline: 2px solid theme('colors.emerald.400');
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid theme('colors.emerald.400');
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(52, 211, 153, 0.2);
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :focus-visible {
+    outline-width: 3px;
+    outline-offset: 3px;
+  }
 }
 
 .bg {

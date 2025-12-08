@@ -40,6 +40,7 @@ const projects = defineCollection({
     image: z.string().optional(),
     imageAlt: z.string().optional(),
     imageAlign: z.enum(["left", "right"]).optional(),
+    imageMaxHeight: z.string().optional(),
     tech: z.array(z.string()).optional(),
   }),
 });

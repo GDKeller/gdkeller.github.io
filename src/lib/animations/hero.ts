@@ -66,26 +66,6 @@ export function initHeaderAnimations(
       ease: 'power1.out',
       delay: 0.8
     });
-
-    // Header links subtle hover animations
-    const headerLinks = header.querySelectorAll('a');
-    headerLinks.forEach(link => {
-      link.addEventListener('mouseenter', () => {
-        gsap.to(link, {
-          scale: 1.05,
-          duration: 0.2,
-          ease: 'power1.out'
-        });
-      });
-
-      link.addEventListener('mouseleave', () => {
-        gsap.to(link, {
-          scale: 1,
-          duration: 0.2,
-          ease: 'power1.out'
-        });
-      });
-    });
   }
 }
 

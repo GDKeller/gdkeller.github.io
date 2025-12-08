@@ -79,8 +79,8 @@ export function initFooterAnimations(
 }
 
 export function initInteractiveAnimations(gsap: GSAPInstance): void {
-  // Subtle hover effects for interactive elements
-  const interactiveElements = document.querySelectorAll('.btn, .pill');
+  // Subtle hover effects for interactive elements (buttons only)
+  const interactiveElements = document.querySelectorAll('.btn');
   interactiveElements.forEach(element => {
     element.addEventListener('mouseenter', () => {
       gsap.to(element, {

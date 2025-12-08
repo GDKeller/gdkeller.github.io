@@ -10,10 +10,11 @@ import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
 import Nypost from "../components/Nypost.astro";
 import Footer from "../components/Footer.astro";
+import SectionDivider from "../components/SectionDivider.astro";
 ---
 
 <Layout title="Grant Keller - Senior UX Software Engineer">
-  <main class="relative z-0 block font-prompt text-emerald-200">
+  <main class="relative z-0 block font-prompt text-emerald-200" aria-label="Portfolio content">
     <div class="relative block bg-black">
       <!-- <span class="absolute top-0 bottom-0 left-0 right-0 z-50 object-cover w-full h-full min-h-full mix-blend-difference opacity-20 bg-gradient-to-bl from-teal-500 to-indigo-950"></span> -->
       <!-- <span class="absolute top-0 left-0 z-0 z-50 w-full h-full opacity-50 bg-gradient-to-br from-purple-950 mix-blend-color-dodge to-blue-950"></span> -->
@@ -22,32 +23,39 @@ import Footer from "../components/Footer.astro";
       <Header />
 
       <!-- Featured Work: NY Post -->
-      <div class="container relative z-20 mx-auto -mb-32 mt-32 max-w-4xl px-8">
-        <h2 id="featured" class="mb-12 pt-32 text-center font-bokor text-6xl">Featured Work</h2>
-      </div>
-
-      <section class="relative">
+      <section class="relative py-20 md:py-28">
+        <div class="container relative z-20 mx-auto max-w-6xl px-8">
+          <h2 id="featured" class="mb-20 text-center font-bokor text-5xl md:text-6xl">Featured Work</h2>
+        </div>
         <Nypost />
       </section>
 
-      <!-- Skills - moved up for visibility -->
-      <section id="skills" class="relative mx-auto mb-32 block max-w-6xl p-2 py-48">
+      <!-- Skills -->
+      <section id="skills" class="relative mx-auto block max-w-6xl px-2 py-20 md:py-28">
         <SkillsGrid />
       </section>
 
-      <section id="jobs" class="container mx-auto block max-w-6xl px-8 pb-64">
+      <SectionDivider />
+
+      <!-- Experience -->
+      <section id="jobs" class="container mx-auto block max-w-6xl px-8 py-20 md:py-28">
         <Jobs />
       </section>
 
-      <section id="projects" class="container mx-auto mb-48 block max-w-6xl px-8">
+      <SectionDivider />
+
+      <!-- Projects -->
+      <section id="projects" class="container mx-auto block max-w-6xl px-8 py-20 md:py-28">
         <Projects />
       </section>
 
-      <!-- Passion Projects: Anglerfish Exhibit - moved to bottom -->
-      <section class="relative z-10 block overflow-hidden">
-        <div class="container relative z-20 mx-auto max-w-4xl px-8">
-          <h2 id="passion-projects" class="mb-8 pt-16 text-center font-bokor text-5xl text-emerald-300/80">Beyond the Screen</h2>
-          <p class="text-center text-emerald-200/60 mb-16 max-w-2xl mx-auto">
+      <SectionDivider />
+
+      <!-- Passion Projects: Anglerfish Exhibit -->
+      <section class="relative z-10 block overflow-hidden py-20 md:py-28">
+        <div class="container relative z-20 mx-auto max-w-6xl px-8">
+          <h2 id="passion-projects" class="mb-12 text-center font-bokor text-5xl md:text-6xl text-emerald-300/80">Beyond the Screen</h2>
+          <p class="mx-auto mb-20 max-w-2xl text-center text-emerald-200/70">
             When I'm not building web applications, I explore the intersection of hardware, software, and physical experiences.
           </p>
         </div>
@@ -70,7 +78,7 @@ import Footer from "../components/Footer.astro";
   <dialog id="hire_me_modal" class="modal">
     <div class="modal-box bg-black/95 border border-emerald-400/30 backdrop-blur-xl max-w-md">
       <form method="dialog">
-        <button class="btn btn-sm btn-circle btn-ghost absolute right-3 top-3 text-emerald-200/60 hover:text-emerald-200 hover:bg-emerald-400/10 border-0">
+        <button class="btn btn-sm btn-circle btn-ghost absolute right-3 top-3 text-emerald-200/70 hover:text-emerald-200 hover:bg-emerald-400/10 border-0">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
           </svg>
@@ -145,7 +153,7 @@ import Footer from "../components/Footer.astro";
       </div>
 
       <div class="mt-8 text-center">
-        <p class="text-xs text-emerald-200/60 font-prompt">
+        <p class="text-xs text-emerald-200/70 font-prompt">
           15+ years experience • Senior UX Engineer • Available for hire
         </p>
       </div>

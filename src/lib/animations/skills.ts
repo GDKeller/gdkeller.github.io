@@ -74,26 +74,6 @@ export function initSkillsAnimations(
       once: true
     });
 
-    // Individual skill box hover enhancements
-    skillItems.forEach(item => {
-      item.addEventListener('mouseenter', () => {
-        gsap.to(item, {
-          y: -5,
-          scale: 1.02,
-          duration: 0.3,
-          ease: 'power1.out'
-        });
-      });
-
-      item.addEventListener('mouseleave', () => {
-        gsap.to(item, {
-          y: 0,
-          scale: 1,
-          duration: 0.3,
-          ease: 'power1.out'
-        });
-      });
-    });
   }
 
   // Skills list items inside each box

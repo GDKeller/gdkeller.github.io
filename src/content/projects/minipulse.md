@@ -9,6 +9,7 @@ subClient: Stratin Engineering
 image: /src/images/projects/jpl-minipulse/minipulse.jpg
 imageAlt: NASA JPL MiniPulse LED Sculpture.
 imageAlign: right
+imageMaxHeight: 16rem
 tech:
   [C++, ESP32, PlatformIO, APIs, XML, Hardware Integration, NeoPixel WS2812B LEDs, FastLED, Wifi]
 ---

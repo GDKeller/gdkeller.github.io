@@ -1,0 +1,35 @@
+---
+interface Props {
+  spacing?: 'default' | 'large';
+  opacity?: 'subtle' | 'default' | 'strong';
+}
+
+const { spacing = 'default', opacity = 'default' } = Astro.props;
+
+const spacingClasses = {
+  default: 'my-16',
+  large: 'my-20',
+};
+
+const opacityClasses = {
+  subtle: 'via-emerald-400/20',
+  default: 'via-emerald-400/40',
+  strong: 'via-emerald-400/60',
+};
+---
+
+<div
+  role="separator"
+  aria-hidden="true"
+  class:list={[
+    'mx-auto max-w-6xl px-8',
+    spacingClasses[spacing]
+  ]}
+>
+  <div
+    class:list={[
+      'h-px bg-gradient-to-r from-transparent to-transparent',
+      opacityClasses[opacity]
+    ]}
+  />
+</div>

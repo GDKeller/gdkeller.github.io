@@ -5,7 +5,7 @@ import ProjectSingle from "./ProjectSingle.astro";
 const projects = await getCollection("projects");
 ---
 
-<h2 class="mb-12 pt-32 font-bokor text-6xl">Projects</h2>
+<h2 class="mb-16 font-bokor text-5xl md:text-6xl">Projects</h2>
 <ul>
   {
     projects.map((project) => (
