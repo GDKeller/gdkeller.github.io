@@ -1,19 +1,16 @@
 ---
-interface Props {
-  text: string;
-}
-
-const { text } = Astro.props;
+const { tag, class: className } = Astro.props;
+const Element = tag || "div";
 ---
 
-<div class="skill-item relative py-6 pl-8 pr-2 overflow-hidden text-left border-2 rounded-lg border-teal-950">
-  <div class="relative z-20 block">
-    <p class="mb-8 text-2xl font-extrabold">{text}</p>
-    <!-- <span class="absolute top-0 left-0 z-10 block w-full h-full opacity-60 bg-gradient-to-tr from-green-900 via-gray-950 to-violet-900"></span>
-    <span class="absolute top-0 left-0 z-10 block w-full h-full shadow-xl shadow-inner shadow-gray-500 opacity-60 bg-gradient-to-tl from-green-900 via-gray-950 to-violet-900"></span> -->
-    <slot />
-  </div>
+<Element
+  class:list={[
+    "pill relative block w-max border-l-2 border-emerald-500/80 px-3 py-1 text-body-xs text-emerald-200 sm:inline-block sm:w-auto sm:px-4",
+    className,
+  ]}
+>
+  <slot />
   <span
-    class="absolute top-0 left-0 z-0 block w-full h-full bg-black opacity-80"
+    class="absolute left-1 top-0 -z-10 h-full w-full bg-gradient-to-r from-emerald-900/40 via-teal-500/15 to-blue-950/20"
   ></span>
-</div>
+</Element>

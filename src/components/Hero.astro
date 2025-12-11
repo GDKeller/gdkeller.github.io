@@ -1,35 +1,41 @@
 ---
-import Pill from "./Pill.astro";
+import SkillBadge from "./SkillBadge.astro";
 import Headshot from "./Headshot.astro";
 ---
 
-<section id="hero" class="relative z-50 w-full px-4 pt-8 pb-32 sm:px-8 sm:pt-16 lg:pt-40">
+<section id="hero" class="relative z-50 w-full px-4 pb-32 pt-8 sm:px-8 sm:pt-16 lg:pt-40">
   <div
-    class="relative z-10 flex flex-col items-center justify-start mx-auto max-w-7xl sm:flex-row sm:justify-start"
+    class="relative z-10 mx-auto flex max-w-7xl flex-col items-center justify-start sm:flex-row sm:justify-start"
   >
     <div
-      class="flex flex-col items-center justify-center w-auto mb-6 sm:mb-auto sm:mr-6 sm:max-w-full sm:items-start sm:justify-start md:mr-8 md:items-center lg:mr-16 xl:mr-24"
+      class="mb-6 flex w-auto flex-col items-center justify-center sm:mb-auto sm:mr-6 sm:max-w-full sm:items-start sm:justify-start md:mr-8 md:items-center lg:mr-16 xl:mr-24"
     >
       <div
-        class="relative block h-auto mb-6 overflow-hidden shadow-sm max-w-48 rounded-xl shadow-teal-900 sm:max-w-none md:max-w-72 lg:max-w-sm"
+        class="relative mb-6 block h-auto max-w-48 overflow-hidden rounded-xl shadow-sm shadow-teal-900 sm:max-w-none md:max-w-72 lg:max-w-sm"
       >
         <Headshot />
       </div>
       <h1
-        class="block mx-auto mb-6 text-4xl leading-none text-center hero__name font-marker sm:w-min sm:text-left sm:text-6xl md:text-7xl lg:w-full lg:text-center lg:text-4xl xl:text-5xl"
+        class="hero__name mx-auto mb-6 block text-center font-marker text-4xl leading-none sm:w-min sm:text-left sm:text-6xl md:text-7xl lg:w-full lg:text-center lg:text-4xl xl:text-5xl"
       >
         Grant Keller
       </h1>
-      <span class="absolute top-0 left-0 w-full h-full gradient-burst"></span>
+      <span class="gradient-burst absolute left-0 top-0 h-full w-full"></span>
     </div>
-    <div class="sticky top-0 flex flex-col w-full max-w-3xl mb-auto hero__text lg:pt-4">
-      <p class="mb-4 text-xl font-bold text-center sm:text-left sm:text-2xl md:text-3xl lg:text-4xl text-emerald-100">
+    <div class="hero__text sticky top-0 mb-auto flex w-full max-w-3xl flex-col lg:pt-4">
+      <p
+        class="mb-4 text-center text-xl font-bold text-emerald-100 sm:text-left sm:text-2xl md:text-3xl lg:text-4xl"
+      >
         Senior Frontend Engineer
       </p>
-      <p class="mb-8 text-base text-center sm:text-left sm:text-lg md:text-xl lg:text-2xl text-emerald-200/80 max-w-xl">
+      <p
+        class="mb-8 max-w-xl text-center text-base text-emerald-200/80 sm:text-left sm:text-lg md:text-xl lg:text-2xl"
+      >
         I build accessible, high-performance web applications that scale to millions of users.
       </p>
-      <ul class="pl-6 mb-10 text-xs list-disc list-outside md:text-sm lg:text-base text-emerald-200/90">
+      <ul
+        class="mb-10 list-outside list-disc pl-6 text-xs text-emerald-200/90 md:text-sm lg:text-base"
+      >
         <li class="mb-3 list-item">15+ years shipping production software</li>
         <li class="mb-3 list-item">React, TypeScript, Node.js, Python</li>
         <li class="mb-3 list-item">WCAG accessibility & Core Web Vitals optimization</li>
@@ -37,23 +43,32 @@ import Headshot from "./Headshot.astro";
       </ul>
 
       <!-- CTA Buttons -->
-      <div class="flex flex-col sm:flex-row gap-4 mb-10">
+      <div class="mb-10 flex flex-col gap-4 sm:flex-row">
         <a
           href="#featured"
-          class="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-black bg-emerald-400 rounded-lg hover:bg-emerald-300 transition-all duration-200 shadow-lg shadow-emerald-400/20 hover:shadow-emerald-400/40"
+          class="inline-flex items-center justify-center rounded-lg bg-emerald-400 px-6 py-3 text-sm font-semibold text-black shadow-lg shadow-emerald-400/20 transition-all duration-200 hover:bg-emerald-300 hover:shadow-emerald-400/40"
         >
           View My Work
-          <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+          <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
           </svg>
         </a>
         <button
           onclick="document.getElementById('hire_me_modal').showModal()"
-          class="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-emerald-300 border border-emerald-400/50 rounded-lg hover:bg-emerald-400/10 hover:border-emerald-400 transition-all duration-200"
+          class="inline-flex items-center justify-center rounded-lg border border-emerald-400/50 px-6 py-3 text-sm font-semibold text-emerald-300 transition-all duration-200 hover:border-emerald-400 hover:bg-emerald-400/10"
         >
           Let's Talk
-          <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+          <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+            ></path>
           </svg>
         </button>
       </div>
@@ -61,18 +76,18 @@ import Headshot from "./Headshot.astro";
       <div
         class="flex flex-row justify-center gap-2 pl-2 sm:flex-col sm:items-start sm:gap-3 md:flex-row md:justify-start"
       >
-        <Pill>React / TypeScript</Pill>
-        <Pill>Accessibility</Pill>
-        <Pill>Performance</Pill>
+        <SkillBadge>React / TypeScript</SkillBadge>
+        <SkillBadge>Accessibility</SkillBadge>
+        <SkillBadge>Performance</SkillBadge>
       </div>
     </div>
   </div>
 
   <div
     role="presentation"
-    class="select-none huge font-marker text-fuchsia-600 opacity-15 mix-blend-hard-light hidden sm:block"
+    class="huge hidden select-none font-marker text-fuchsia-600 opacity-15 mix-blend-hard-light sm:block"
   >
-    UX<span class="block plus font-bokor text-emerald-200">+</span>AI
+    UX<span class="plus block font-bokor text-emerald-200">+</span>AI
   </div>
 </section>
 

@@ -31,6 +31,7 @@ export default {
 				'body': ['1rem', { lineHeight: '1.5rem' }],            // 16px/24px
 				'body-sm': ['0.875rem', { lineHeight: '1.25rem' }],    // 14px/20px
 				'body-xs': ['0.75rem', { lineHeight: '1rem' }],        // 12px/16px
+				'body-2xs': ['0.6875rem', { lineHeight: '1rem' }],     // 11px/16px
 			},
 		},
 	},

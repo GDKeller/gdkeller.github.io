@@ -1,5 +1,5 @@
 ---
-import SkillBadge from "./SkillBadge.astro";
+import SkillsCard from "./SkillsCard.astro";
 ---
 
 <div class="mx-auto mb-16 max-w-3xl px-8 text-center">
@@ -11,9 +11,9 @@ import SkillBadge from "./SkillBadge.astro";
     >
   </p>
 </div>
-<div class="skills-grid flex flex-col gap-4 sm:grid sm:grid-cols-2 lg:grid-cols-3">
-  <SkillBadge text="Javascript">
-    <ul class="list list-outside list-disc pl-4">
+<div class="skills-grid flex flex-col gap-6 pb-4 pr-4 sm:grid sm:grid-cols-2 lg:grid-cols-3">
+  <SkillsCard text="Javascript">
+    <ul class="list flex flex-col gap-2">
       <li>Typescript</li>
       <li>React</li>
       <li>GSAP</li>
@@ -23,9 +23,9 @@ import SkillBadge from "./SkillBadge.astro";
       <li>NextJS</li>
       <li>Express / Fastify</li>
     </ul>
-  </SkillBadge>
-  <SkillBadge text="WordPress/PHP">
-    <ul class="list list-outside list-disc pl-4">
+  </SkillsCard>
+  <SkillsCard text="WordPress/PHP">
+    <ul class="list flex flex-col gap-2">
       <li>Custom theme development</li>
       <li>Custom plugin development</li>
       <li>WordPress VIP hosting platform</li>
@@ -35,9 +35,9 @@ import SkillBadge from "./SkillBadge.astro";
       <li>WP-specific performance</li>
       <li>Custom post types</li>
     </ul>
-  </SkillBadge>
-  <SkillBadge text="CSS">
-    <ul class="list list-outside list-disc pl-4">
+  </SkillsCard>
+  <SkillsCard text="CSS">
+    <ul class="list flex flex-col gap-2">
       <li>Sass/SCSS</li>
       <li>CSS Animations</li>
       <li>Tailwind / Bootstrap</li>
@@ -46,9 +46,9 @@ import SkillBadge from "./SkillBadge.astro";
       <li>Responsive at all sizes</li>
       <li>Cross-browser compatibility</li>
     </ul>
-  </SkillBadge>
-  <SkillBadge text="HTML">
-    <ul class="list list-outside list-disc pl-4">
+  </SkillsCard>
+  <SkillsCard text="HTML">
+    <ul class="list flex flex-col gap-2">
       <li>Information Architecture</li>
       <li>Technical SEO</li>
       <li>Advanced Accessibility / WCAG 2.2</li>
@@ -57,9 +57,9 @@ import SkillBadge from "./SkillBadge.astro";
       <li>Google Ads / Adslot</li>
       <li>CRO / Heatmaps / A/B Testing</li>
     </ul>
-  </SkillBadge>
-  <SkillBadge text="Python">
-    <ul class="list list-outside list-disc pl-4">
+  </SkillsCard>
+  <SkillsCard text="Python">
+    <ul class="list flex flex-col gap-2">
       <li>Stable Diffusion / Comfy UI</li>
       <li>Computer Vision / OpenCV</li>
       <li>Tensorflow / PyTorch</li>
@@ -69,9 +69,9 @@ import SkillBadge from "./SkillBadge.astro";
       <li>Portable Distribution</li>
       <li>Anaconda / Virtual Env</li>
     </ul>
-  </SkillBadge>
-  <SkillBadge text="C++">
-    <ul class="list list-outside list-disc pl-4">
+  </SkillsCard>
+  <SkillsCard text="C++">
+    <ul class="list flex flex-col gap-2">
       <li>Arduino Ecosystem</li>
       <li>ESP32 / Espressif toolchain</li>
       <li>PlatformIO</li>
@@ -81,5 +81,5 @@ import SkillBadge from "./SkillBadge.astro";
       <li>Data parsing</li>
       <li>LED and peripherals</li>
     </ul>
-  </SkillBadge>
+  </SkillsCard>
 </div>

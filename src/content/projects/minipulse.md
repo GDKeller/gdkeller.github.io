@@ -1,7 +1,7 @@
 ---
 title: Embedded Software Engineer
 tags: [nasa, esp32, c++]
-projectName: MiniPulse DSN Visualizer
+projectName: Realtime Satellite Data Visualizer
 client: "NASA's Jet Propulsion Laboratory"
 endMonthYear: Oct 2022
 startMonthYear: Jan 2022

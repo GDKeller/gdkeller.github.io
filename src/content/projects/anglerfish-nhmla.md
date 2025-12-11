@@ -1,6 +1,6 @@
 ---
 title: Embedded Software Engineer
-projectName: Anglerfish Exhibit
+projectName: Anglerfish Specimen Exhibit
 client: Natural History Museum of Los Angeles
 startMonthYear: Jun 2021
 endMonthYear: Aug 2021

@@ -24,8 +24,12 @@ export interface GSAPVars {
   x?: number;
   opacity?: number;
   scale?: number;
+  rotate?: number;
   rotateX?: number;
+  xPercent?: number;
   yPercent?: number;
+  repeat?: number;
+  yoyo?: boolean;
 }
 
 export interface GSAPTweenVars extends GSAPVars {

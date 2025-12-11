@@ -1,7 +1,7 @@
 ---
 import Link from "./Link.astro";
 import ProjectSingleImage from "./ProjectSingleImage.astro";
-import Pill from "./Pill.astro";
+import SkillBadge from "./SkillBadge.astro";
 
 const { project } = Astro.props;
 
@@ -23,25 +23,25 @@ const {
 const { Content } = await project.render();
 ---
 
-<div class="relative block mb-24 job-card project-card">
+<div class="job-card project-card relative mb-24 block">
   <div
-    class="flex flex-col justify-start mb-4 text-2xl font-bayon sm:flex-row sm:text-xl md:text-2xl lg:text-3xl"
+    class="mb-2 flex flex-col justify-start font-bayon text-2xl sm:flex-row sm:text-xl md:text-2xl lg:text-3xl"
   >
     <h3>
       <span class="block font-bold text-fuchsia-500 sm:inline-block">{title}</span>
-      <span class="hidden mx-1 font-bokor sm:inline-block"> - </span>
+      <span class="mx-1 hidden font-bokor sm:inline-block"> - </span>
       {
         clientWebsite ? (
           <Link href={clientWebsite} target="_blank" class="no-underline">
             {client}
           </Link>
         ) : (
-          <span>{client}</span>
+          <span class="text-fuchsia-500">{client}</span>
         )
       }
     </h3>
   </div>
-  {projectName && <p class="mb-4 text-lg font-bayon sm:text-4xl">{projectName}</p>}
+  {projectName && <p class="mb-2 font-bayon text-lg sm:text-2xl">{projectName}</p>}
   <p class="mb-8 italic">
     {startMonthYear ? startMonthYear : null} -
     {endMonthYear ? endMonthYear : "Present"}
@@ -49,14 +49,14 @@ const { Content } = await project.render();
 
   {
     tech && (
-      <div class="mt-0 mb-10 text-xs">
+      <div class="mb-10 mt-0 text-xs">
         <p class="sr-only">Skills:&nbsp;</p>
         <ul>
           {tech.map((t: string, i: number) => (
             <>
-              <Pill tag="li" class="mb-2" key={i}>
+              <SkillBadge tag="li" class="mb-2" key={i}>
                 {t}
-              </Pill>
+              </SkillBadge>
               {i !== tech.length - 1 && " "}
             </>
           ))}
@@ -74,12 +74,20 @@ const { Content } = await project.render();
     ]}
   >
     <div
-      class:list={["mb-10 shrink-0 md:w-1/3", { "mr-10": imageAlign === "left" }, { "ml-10": imageAlign === "right" }]}
+      class:list={[
+        "mb-10 shrink-0 md:w-1/3",
+        { "mr-10": imageAlign === "left" },
+        { "ml-10": imageAlign === "right" },
+      ]}
     >
-      <ProjectSingleImage imagePath={image} altText={imageAlt || projectName} maxHeight={imageMaxHeight} />
+      <ProjectSingleImage
+        imagePath={image}
+        altText={imageAlt || projectName}
+        maxHeight={imageMaxHeight}
+      />
     </div>
 
-    <div class="prose max-w-none job-body">
+    <div class="job-body prose max-w-none">
       <Content />
     </div>
   </div>

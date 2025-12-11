@@ -24,14 +24,14 @@
 
 /* Focus Indicators - WCAG 2.2 Compliant */
 :focus-visible {
-  outline: 2px solid theme('colors.emerald.400');
+  outline: 2px solid theme("colors.emerald.400");
   outline-offset: 4px;
   border-radius: 4px;
 }
 
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid theme('colors.emerald.400');
+  outline: 2px solid theme("colors.emerald.400");
   outline-offset: 2px;
   box-shadow: 0 0 0 4px rgba(52, 211, 153, 0.2);
 }
@@ -62,4 +62,19 @@ strong {
 }
 .color__nyp-red--text:hover {
   color: #ffffff;
+}
+
+.list-custom-wrapper > ul > li,
+.list-custom li {
+  position: relative;
+  list-style-type: none;
+  padding-left: 1.25rem;
+}
+.list-custom-wrapper ul li::before,
+.list-custom li::before {
+  content: "▹";
+  color: theme("colors.emerald.500");
+  position: absolute;
+  left: 0;
+  top: 0.125em;
 }

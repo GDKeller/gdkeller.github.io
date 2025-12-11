@@ -1,0 +1,728 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SkillBadge from "../components/SkillBadge.astro";
+---
+
+<Layout title="Skills Badge Design Options - Mockup">
+  <main class="relative z-0 block min-h-screen bg-black py-16 font-prompt text-emerald-200">
+    <div class="container mx-auto max-w-6xl px-8">
+      <h1 class="mb-4 text-center font-bokor text-4xl">Skill Badge Design Options</h1>
+      <p class="mb-16 text-center text-sm text-emerald-200/60">
+        Alternatives to the current pill/button style badges
+      </p>
+
+      <!-- CURRENT DESIGN -->
+      <section class="mb-16 rounded-lg border border-gray-800 bg-gray-950/50 p-8">
+        <h2 class="mb-2 font-bokor text-2xl text-gray-400">Current Design</h2>
+        <p class="mb-6 text-sm text-gray-500">The existing rounded-full pill style</p>
+        <div class="flex flex-wrap gap-2">
+          <SkillBadge>React / TypeScript</SkillBadge>
+          <SkillBadge>Accessibility</SkillBadge>
+          <SkillBadge>Performance</SkillBadge>
+        </div>
+      </section>
+
+      <!-- BADGE OPTION 1: Sharp Tags -->
+      <section class="mb-16 rounded-lg border border-emerald-900/30 p-8">
+        <h2 class="mb-2 font-bokor text-2xl text-emerald-400">Option 1: Sharp Tags</h2>
+        <p class="mb-6 text-sm text-emerald-200/60">
+          No rounding, subtle left accent, more technical feel
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <span class="badge-sharp">React / TypeScript</span>
+          <span class="badge-sharp">Accessibility</span>
+          <span class="badge-sharp">Performance</span>
+        </div>
+      </section>
+
+      <!-- BADGE OPTION 2: Outlined/Ghost -->
+      <section class="mb-16 rounded-lg border border-emerald-900/30 p-8">
+        <h2 class="mb-2 font-bokor text-2xl text-emerald-400">Option 2: Ghost Outline</h2>
+        <p class="mb-6 text-sm text-emerald-200/60">
+          Transparent background, subtle border, less button-like
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <span class="badge-ghost">React / TypeScript</span>
+          <span class="badge-ghost">Accessibility</span>
+          <span class="badge-ghost">Performance</span>
+        </div>
+      </section>
+
+      <!-- BADGE OPTION 3: Underline Only -->
+      <section class="mb-16 rounded-lg border border-emerald-900/30 p-8">
+        <h2 class="mb-2 font-bokor text-2xl text-emerald-400">Option 3: Underline Only</h2>
+        <p class="mb-6 text-sm text-emerald-200/60">Minimal - just text with an accent underline</p>
+        <div class="flex flex-wrap gap-4">
+          <span class="badge-underline">React / TypeScript</span>
+          <span class="badge-underline">Accessibility</span>
+          <span class="badge-underline">Performance</span>
+        </div>
+      </section>
+
+      <!-- BADGE OPTION 4: Slash Separated -->
+      <section class="mb-16 rounded-lg border border-emerald-900/30 p-8">
+        <h2 class="mb-2 font-bokor text-2xl text-emerald-400">Option 4: Slash Separated</h2>
+        <p class="mb-6 text-sm text-emerald-200/60">Inline text flow with decorative separators</p>
+        <div class="flex flex-wrap items-center gap-1">
+          <span class="badge-slash">React / TypeScript</span>
+          <span class="badge-separator">//</span>
+          <span class="badge-slash">Accessibility</span>
+          <span class="badge-separator">//</span>
+          <span class="badge-slash">Performance</span>
+        </div>
+      </section>
+
+      <!-- BADGE OPTION 5: Gradient Border -->
+      <section class="mb-16 rounded-lg border border-emerald-900/30 p-8">
+        <h2 class="mb-2 font-bokor text-2xl text-emerald-400">Option 5: Gradient Border</h2>
+        <p class="mb-6 text-sm text-emerald-200/60">
+          Subtle gradient border, slight rounding, more refined
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <span class="badge-gradient">React / TypeScript</span>
+          <span class="badge-gradient">Accessibility</span>
+          <span class="badge-gradient">Performance</span>
+        </div>
+      </section>
+
+      <!-- BADGE OPTION 6: Monospace/Code -->
+      <section class="mb-16 rounded-lg border border-emerald-900/30 p-8">
+        <h2 class="mb-2 font-bokor text-2xl text-emerald-400">Option 6: Code Style</h2>
+        <p class="mb-6 text-sm text-emerald-200/60">Monospace font, terminal-inspired</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="badge-code">&lt;React /&gt;</span>
+          <span class="badge-code">&lt;TypeScript /&gt;</span>
+          <span class="badge-code">&lt;a11y /&gt;</span>
+          <span class="badge-code">&lt;perf /&gt;</span>
+        </div>
+      </section>
+
+      <!-- BADGE OPTION 7: Soft Chips -->
+      <section class="mb-16 rounded-lg border border-emerald-900/30 p-8">
+        <h2 class="mb-2 font-bokor text-2xl text-emerald-400">Option 7: Soft Chips</h2>
+        <p class="mb-6 text-sm text-emerald-200/60">
+          Rounded but with softer colors, less saturated, more subtle
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <span class="badge-soft">React / TypeScript</span>
+          <span class="badge-soft">Accessibility</span>
+          <span class="badge-soft">Performance</span>
+        </div>
+      </section>
+
+      <!-- BADGE OPTION 8: Bracket Style -->
+      <section class="mb-16 rounded-lg border border-emerald-900/30 p-8">
+        <h2 class="mb-2 font-bokor text-2xl text-emerald-400">Option 8: Bracket Style</h2>
+        <p class="mb-6 text-sm text-emerald-200/60">Decorative brackets, no background</p>
+        <div class="flex flex-wrap gap-4">
+          <span class="badge-bracket">React / TypeScript</span>
+          <span class="badge-bracket">Accessibility</span>
+          <span class="badge-bracket">Performance</span>
+        </div>
+      </section>
+
+      <hr class="my-16 border-gray-800" />
+
+      <!-- OPTION 1: Terminal/CLI Style -->
+      <section class="mb-24">
+        <h2 class="mb-2 font-bokor text-3xl text-emerald-400">Option 1: Terminal/CLI Style</h2>
+        <p class="mb-8 text-sm text-emerald-200/60">
+          Developer-focused aesthetic with command-line styling
+        </p>
+
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div class="terminal-card group">
+            <div class="terminal-header">
+              <span class="terminal-dot bg-red-500"></span>
+              <span class="terminal-dot bg-yellow-500"></span>
+              <span class="terminal-dot bg-green-500"></span>
+              <span class="terminal-title">javascript.sh</span>
+            </div>
+            <div class="terminal-body font-mono text-sm">
+              <p class="mb-3 text-emerald-400">$ ls ./skills/</p>
+              <ul class="space-y-1 text-emerald-200/80">
+                <li>→ typescript</li>
+                <li>→ react</li>
+                <li>→ gsap</li>
+                <li>→ threejs</li>
+                <li>→ astro</li>
+                <li>→ node</li>
+                <li>→ nextjs</li>
+                <li>→ fastify</li>
+              </ul>
+              <p class="mt-3 animate-pulse text-emerald-400/60">█</p>
+            </div>
+          </div>
+
+          <div class="terminal-card group">
+            <div class="terminal-header">
+              <span class="terminal-dot bg-red-500"></span>
+              <span class="terminal-dot bg-yellow-500"></span>
+              <span class="terminal-dot bg-green-500"></span>
+              <span class="terminal-title">wordpress.sh</span>
+            </div>
+            <div class="terminal-body font-mono text-sm">
+              <p class="mb-3 text-emerald-400">$ ls ./skills/</p>
+              <ul class="space-y-1 text-emerald-200/80">
+                <li>→ custom-themes</li>
+                <li>→ plugin-dev</li>
+                <li>→ wp-vip</li>
+                <li>→ acf</li>
+                <li>→ woocommerce</li>
+                <li>→ memberships</li>
+                <li>→ performance</li>
+                <li>→ custom-post-types</li>
+              </ul>
+              <p class="mt-3 animate-pulse text-emerald-400/60">█</p>
+            </div>
+          </div>
+
+          <div class="terminal-card group">
+            <div class="terminal-header">
+              <span class="terminal-dot bg-red-500"></span>
+              <span class="terminal-dot bg-yellow-500"></span>
+              <span class="terminal-dot bg-green-500"></span>
+              <span class="terminal-title">css.sh</span>
+            </div>
+            <div class="terminal-body font-mono text-sm">
+              <p class="mb-3 text-emerald-400">$ ls ./skills/</p>
+              <ul class="space-y-1 text-emerald-200/80">
+                <li>→ sass-scss</li>
+                <li>→ animations</li>
+                <li>→ tailwind</li>
+                <li>→ advanced-css</li>
+                <li>→ webpack-vite</li>
+                <li>→ responsive</li>
+                <li>→ cross-browser</li>
+              </ul>
+              <p class="mt-3 animate-pulse text-emerald-400/60">█</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- OPTION 2: Stacked Cards with Depth -->
+      <section class="mb-24">
+        <h2 class="mb-2 font-bokor text-3xl text-emerald-400">
+          Option 2: Stacked Cards with Depth
+        </h2>
+        <p class="mb-8 text-sm text-emerald-200/60">
+          Editorial/magazine feel with layered shadows, no rounded corners
+        </p>
+
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div class="depth-card">
+            <div class="depth-card-inner">
+              <h3
+                class="mb-4 border-b border-emerald-400/30 pb-2 text-xl font-bold text-emerald-100"
+              >
+                Javascript
+              </h3>
+              <ul class="space-y-2 text-sm text-emerald-200/70">
+                <li>Typescript</li>
+                <li>React</li>
+                <li>GSAP</li>
+                <li>ThreeJS</li>
+                <li>Astro / Gatsby</li>
+                <li>Node</li>
+                <li>NextJS</li>
+                <li>Express / Fastify</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="depth-card">
+            <div class="depth-card-inner">
+              <h3
+                class="mb-4 border-b border-emerald-400/30 pb-2 text-xl font-bold text-emerald-100"
+              >
+                WordPress/PHP
+              </h3>
+              <ul class="space-y-2 text-sm text-emerald-200/70">
+                <li>Custom theme development</li>
+                <li>Custom plugin development</li>
+                <li>WordPress VIP</li>
+                <li>Advanced Custom Fields</li>
+                <li>WooCommerce</li>
+                <li>Custom memberships</li>
+                <li>Performance optimization</li>
+                <li>Custom post types</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="depth-card">
+            <div class="depth-card-inner">
+              <h3
+                class="mb-4 border-b border-emerald-400/30 pb-2 text-xl font-bold text-emerald-100"
+              >
+                CSS
+              </h3>
+              <ul class="space-y-2 text-sm text-emerald-200/70">
+                <li>Sass/SCSS</li>
+                <li>CSS Animations</li>
+                <li>Tailwind / Bootstrap</li>
+                <li>Advanced techniques</li>
+                <li>Webpack / Vite</li>
+                <li>Responsive design</li>
+                <li>Cross-browser</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- OPTION 3: Minimal List with Accent Lines -->
+      <section class="mb-24">
+        <h2 class="mb-2 font-bokor text-3xl text-emerald-400">
+          Option 3: Minimal List with Accent Lines
+        </h2>
+        <p class="mb-8 text-sm text-emerald-200/60">
+          Clean typography-focused layout, vertical accent bars, no enclosing boxes
+        </p>
+
+        <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div class="accent-line-card">
+            <h3 class="mb-4 text-lg font-bold text-emerald-100">Javascript</h3>
+            <ul class="space-y-2 text-sm text-emerald-200/60">
+              <li>Typescript</li>
+              <li>React</li>
+              <li>GSAP</li>
+              <li>ThreeJS</li>
+              <li>Astro / Gatsby</li>
+              <li>Node</li>
+              <li>NextJS</li>
+              <li>Express / Fastify</li>
+            </ul>
+          </div>
+
+          <div class="accent-line-card">
+            <h3 class="mb-4 text-lg font-bold text-emerald-100">WordPress/PHP</h3>
+            <ul class="space-y-2 text-sm text-emerald-200/60">
+              <li>Custom theme development</li>
+              <li>Custom plugin development</li>
+              <li>WordPress VIP platform</li>
+              <li>Advanced Custom Fields</li>
+              <li>WooCommerce</li>
+              <li>Custom memberships</li>
+              <li>Performance optimization</li>
+              <li>Custom post types</li>
+            </ul>
+          </div>
+
+          <div class="accent-line-card">
+            <h3 class="mb-4 text-lg font-bold text-emerald-100">CSS</h3>
+            <ul class="space-y-2 text-sm text-emerald-200/60">
+              <li>Sass/SCSS</li>
+              <li>CSS Animations</li>
+              <li>Tailwind / Bootstrap</li>
+              <li>Advanced CSS techniques</li>
+              <li>Webpack / Vite</li>
+              <li>Responsive at all sizes</li>
+              <li>Cross-browser compatibility</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- OPTION 4: Floating Tags with Hierarchy -->
+      <section class="mb-24">
+        <h2 class="mb-2 font-bokor text-3xl text-emerald-400">
+          Option 4: Floating Tags with Hierarchy
+        </h2>
+        <p class="mb-8 text-sm text-emerald-200/60">
+          Prominent headings with organic flowing sub-skills
+        </p>
+
+        <div class="space-y-12">
+          <div class="hierarchy-group">
+            <h3 class="hierarchy-heading">Javascript</h3>
+            <div class="hierarchy-tags">
+              <span class="hierarchy-tag">Typescript</span>
+              <span class="hierarchy-tag">React</span>
+              <span class="hierarchy-tag">GSAP</span>
+              <span class="hierarchy-tag">ThreeJS</span>
+              <span class="hierarchy-tag">Astro</span>
+              <span class="hierarchy-tag">Gatsby</span>
+              <span class="hierarchy-tag">Node</span>
+              <span class="hierarchy-tag">NextJS</span>
+              <span class="hierarchy-tag">Express</span>
+              <span class="hierarchy-tag">Fastify</span>
+            </div>
+          </div>
+
+          <div class="hierarchy-group">
+            <h3 class="hierarchy-heading">WordPress/PHP</h3>
+            <div class="hierarchy-tags">
+              <span class="hierarchy-tag">Custom Themes</span>
+              <span class="hierarchy-tag">Plugin Development</span>
+              <span class="hierarchy-tag">WordPress VIP</span>
+              <span class="hierarchy-tag">ACF</span>
+              <span class="hierarchy-tag">WooCommerce</span>
+              <span class="hierarchy-tag">Memberships</span>
+              <span class="hierarchy-tag">Performance</span>
+              <span class="hierarchy-tag">Custom Post Types</span>
+            </div>
+          </div>
+
+          <div class="hierarchy-group">
+            <h3 class="hierarchy-heading">CSS</h3>
+            <div class="hierarchy-tags">
+              <span class="hierarchy-tag">Sass/SCSS</span>
+              <span class="hierarchy-tag">Animations</span>
+              <span class="hierarchy-tag">Tailwind</span>
+              <span class="hierarchy-tag">Bootstrap</span>
+              <span class="hierarchy-tag">Webpack</span>
+              <span class="hierarchy-tag">Vite</span>
+              <span class="hierarchy-tag">Responsive</span>
+              <span class="hierarchy-tag">Cross-browser</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- OPTION 5: Gradient Glass Panels -->
+      <section class="mb-24">
+        <h2 class="mb-2 font-bokor text-3xl text-emerald-400">Option 5: Gradient Glass Panels</h2>
+        <p class="mb-8 text-sm text-emerald-200/60">
+          Modern glassmorphism with blurred backgrounds and subtle gradients
+        </p>
+
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div class="glass-card">
+            <div class="glass-glow"></div>
+            <div class="glass-content">
+              <h3 class="mb-4 text-xl font-bold text-emerald-100">Javascript</h3>
+              <ul class="space-y-2 text-sm text-emerald-200/70">
+                <li>Typescript</li>
+                <li>React</li>
+                <li>GSAP</li>
+                <li>ThreeJS</li>
+                <li>Astro / Gatsby</li>
+                <li>Node</li>
+                <li>NextJS</li>
+                <li>Express / Fastify</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="glass-card">
+            <div class="glass-glow"></div>
+            <div class="glass-content">
+              <h3 class="mb-4 text-xl font-bold text-emerald-100">WordPress/PHP</h3>
+              <ul class="space-y-2 text-sm text-emerald-200/70">
+                <li>Custom theme development</li>
+                <li>Custom plugin development</li>
+                <li>WordPress VIP</li>
+                <li>Advanced Custom Fields</li>
+                <li>WooCommerce</li>
+                <li>Custom memberships</li>
+                <li>Performance optimization</li>
+                <li>Custom post types</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="glass-card">
+            <div class="glass-glow"></div>
+            <div class="glass-content">
+              <h3 class="mb-4 text-xl font-bold text-emerald-100">CSS</h3>
+              <ul class="space-y-2 text-sm text-emerald-200/70">
+                <li>Sass/SCSS</li>
+                <li>CSS Animations</li>
+                <li>Tailwind / Bootstrap</li>
+                <li>Advanced techniques</li>
+                <li>Webpack / Vite</li>
+                <li>Responsive design</li>
+                <li>Cross-browser</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Current Design for comparison -->
+      <section class="mb-24 opacity-50">
+        <h2 class="mb-2 font-bokor text-3xl text-gray-400">Current Design (for comparison)</h2>
+        <p class="mb-8 text-sm text-gray-500">The existing pill/button style</p>
+
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div
+            class="relative overflow-hidden rounded-lg border-2 border-teal-950 py-6 pl-8 pr-2 text-left"
+          >
+            <div class="relative z-20 block">
+              <p class="mb-4 text-2xl font-extrabold">Javascript</p>
+              <ul class="list list-outside list-disc pl-4 text-sm">
+                <li>Typescript</li>
+                <li>React</li>
+                <li>GSAP</li>
+                <li>ThreeJS</li>
+                <li>Astro / Gatsby</li>
+                <li>Node</li>
+                <li>NextJS</li>
+                <li>Express / Fastify</li>
+              </ul>
+            </div>
+            <span class="absolute left-0 top-0 z-0 block h-full w-full bg-black opacity-80"></span>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  /* Option 1: Terminal Style */
+  .terminal-card {
+    background: #0d1117;
+    border: 1px solid #30363d;
+    overflow: hidden;
+  }
+
+  .terminal-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    background: #161b22;
+    border-bottom: 1px solid #30363d;
+  }
+
+  .terminal-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+
+  .terminal-title {
+    margin-left: auto;
+    font-family: monospace;
+    font-size: 11px;
+    color: #8b949e;
+  }
+
+  .terminal-body {
+    padding: 16px;
+  }
+
+  /* Option 2: Depth Cards */
+  .depth-card {
+    position: relative;
+  }
+
+  .depth-card::before {
+    content: "";
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: -8px;
+    bottom: -8px;
+    background: linear-gradient(135deg, #064e3b 0%, #0f172a 100%);
+    z-index: 0;
+  }
+
+  .depth-card-inner {
+    position: relative;
+    z-index: 1;
+    background: #000;
+    padding: 24px;
+    border-left: 3px solid #10b981;
+  }
+
+  /* Option 3: Accent Lines */
+  .accent-line-card {
+    padding-left: 20px;
+    border-left: 2px solid #10b981;
+    position: relative;
+  }
+
+  .accent-line-card::before {
+    content: "";
+    position: absolute;
+    left: -6px;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    background: #10b981;
+    border-radius: 50%;
+  }
+
+  /* Option 4: Hierarchy/Tags */
+  .hierarchy-group {
+    position: relative;
+  }
+
+  .hierarchy-heading {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: #6ee7b7;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+
+  .hierarchy-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .hierarchy-tag {
+    padding: 6px 14px;
+    font-size: 13px;
+    color: #a7f3d0;
+    background: transparent;
+    border-bottom: 1px solid #065f4630;
+    transition: all 0.2s ease;
+  }
+
+  .hierarchy-tag:hover {
+    color: #ecfdf5;
+    border-bottom-color: #10b981;
+  }
+
+  /* Option 5: Glass Panels */
+  .glass-card {
+    position: relative;
+    padding: 24px;
+    background: rgba(16, 185, 129, 0.05);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(16, 185, 129, 0.15);
+    overflow: hidden;
+  }
+
+  .glass-glow {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 30% 30%, rgba(16, 185, 129, 0.15) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .glass-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ===== BADGE STYLES ===== */
+
+  /* Option 1: Sharp Tags */
+  .badge-sharp {
+    display: inline-block;
+    padding: 8px 14px;
+    font-size: 13px;
+    color: #a7f3d0;
+    border-left: 2px solid #10b981;
+    background: linear-gradient(
+      90deg,
+      rgba(16, 185, 129, 0.15) 0%,
+      rgba(16, 185, 129, 0.05) 60%,
+      transparent 100%
+    );
+  }
+
+  /* Option 2: Ghost Outline */
+  .badge-ghost {
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 13px;
+    color: #a7f3d0;
+    background: transparent;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: 4px;
+  }
+
+  /* Option 3: Underline Only */
+  .badge-underline {
+    display: inline-block;
+    padding: 4px 0;
+    font-size: 14px;
+    color: #a7f3d0;
+    border-bottom: 2px solid #10b981;
+  }
+
+  /* Option 4: Slash Separated */
+  .badge-slash {
+    display: inline-block;
+    padding: 4px 8px;
+    font-size: 14px;
+    color: #a7f3d0;
+  }
+
+  .badge-separator {
+    color: #065f46;
+    font-weight: bold;
+    padding: 0 4px;
+  }
+
+  /* Option 5: Gradient Border */
+  .badge-gradient {
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 13px;
+    color: #d1fae5;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 6px;
+    position: relative;
+    border: 1px solid transparent;
+    background-clip: padding-box;
+  }
+
+  .badge-gradient::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 6px;
+    padding: 1px;
+    background: linear-gradient(135deg, #10b981 0%, #6366f1 50%, #a855f7 100%);
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* Option 6: Code Style */
+  .badge-code {
+    display: inline-block;
+    padding: 6px 12px;
+    font-family: "Monaco", "Consolas", monospace;
+    font-size: 12px;
+    color: #6ee7b7;
+    background: #0d1117;
+    border: 1px solid #30363d;
+  }
+
+  /* Option 7: Soft Chips */
+  .badge-soft {
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 13px;
+    color: #d1fae5;
+    background: rgba(16, 185, 129, 0.15);
+    border-radius: 9999px;
+    border: 1px solid rgba(16, 185, 129, 0.2);
+  }
+
+  /* Option 8: Bracket Style */
+  .badge-bracket {
+    display: inline-block;
+    padding: 4px 0;
+    font-size: 14px;
+    color: #a7f3d0;
+  }
+
+  .badge-bracket::before {
+    content: "[ ";
+    color: #10b981;
+    font-weight: 300;
+  }
+
+  .badge-bracket::after {
+    content: " ]";
+    color: #10b981;
+    font-weight: 300;
+  }
+</style>

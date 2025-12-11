@@ -13,35 +13,37 @@ import anglerfishSpecimen from "../images/projects/nhmla-anglerfish/specimen.jpg
 ---
 
 <section
-  class="relative flex flex-col justify-center w-full px-4 pt-32 pb-20 mx-auto overflow-hidden bg-black fish-hero"
+  class="fish-hero relative mx-auto flex w-full flex-col justify-center overflow-hidden bg-black px-4 pb-20 pt-32"
 >
   <div
-    class="absolute top-0 left-0 z-0 w-full h-full water-blurred fish-hero__water-blurred opacity-40 mix-blend-hard-light blur-sm"
+    class="water-blurred fish-hero__water-blurred absolute left-0 top-0 z-0 h-full w-full opacity-40 mix-blend-hard-light blur-sm"
   >
     <span
-      class="absolute top-0 left-0 z-0 w-full h-full mix-blend-color-difference bg-gradient-to-tr from-green-500 via-purple-700 to-slate-700 opacity-30"
+      class="mix-blend-color-difference absolute left-0 top-0 z-0 h-full w-full bg-gradient-to-tr from-green-500 via-purple-700 to-slate-700 opacity-30"
     ></span>
-    <Image src={waterImg} alt="Water reflections" class="object-cover w-full h-full" />
+    <Image src={waterImg} alt="Water reflections" class="h-full w-full object-cover" />
   </div>
   <!-- <span class="fixed top-0 left-0 z-30 w-full h-full bg-gradient-to-tr from-fuchsia-400 via-purple-800 to-indigo-950 mix-blend-difference"></span> -->
-  <div class="relative fish">
-    <div class="absolute w-full fishball animation-fishball max-w-24">
-      <Image src={fishBallImg} alt="Sigil" class="object-contain fish-hero__ball" />
+  <div class="fish relative">
+    <div class="fishball animation-fishball absolute z-10 w-full max-w-24">
+      <Image src={fishBallImg} alt="Sigil" class="fish-hero__ball object-contain" />
     </div>
-    <div class="relative z-40 w-auto overflow-visible fish-body max-h-none max-w-none">
+    <div class="fish-body relative z-40 max-h-none w-auto max-w-none overflow-visible">
       <!-- <div class="absolute top-0 left-0 z-30 w-full h-full bg-black opacity-60 mix-blend-difference"></div> -->
       <Image
         src={fishImg}
         alt="Anglerfish"
-        class="relative block object-cover object-left w-full h-full overflow-visible fish-hero__image"
+        class="fish-hero__image relative block h-full w-full overflow-visible object-cover object-left"
       />
     </div>
     <div class="relative z-50">
-      <span class="relative inline-block -mb-12 overflow-visible shadow-lg shadow-fuchsia-950">
+      <span
+        class="nhmla-logo relative -mb-4 inline-block overflow-visible shadow-md shadow-emerald-900/80"
+      >
         <Image
           src={nhmLogo}
           alt="Natural History Museum of Los Angeles logo"
-          class="object-contain h-60 w-60"
+          class="h-60 w-60 object-contain"
         />
       </span>
       <!-- <span class="absolute top-0 z-40 flex items-end justify-center w-full text-white -translate-x-1/2 left-1/2 mix-blend-difference"></span> -->
@@ -49,40 +51,40 @@ import anglerfishSpecimen from "../images/projects/nhmla-anglerfish/specimen.jpg
       <h3>
         <span
           id="fish-monster"
-          class="relative z-40 block leading-none monster-text-shadow font-bokor text-fuchsia-400"
+          class="monster-text-shadow relative z-40 -mb-20 ml-4 block font-bokor leading-none text-fuchsia-400"
           >Anglerfish Exhibit</span
         >
         <span class="sr-only">at the Natural History Museum of Los Angeles.</span>
       </h3>
     </div>
-    <div class="absolute bottom-0 z-0 block w-5/6 water fish-hero__water">
+    <div class="water fish-hero__water absolute bottom-0 z-0 block w-5/6">
       <span
-        class="absolute top-0 left-0 z-30 w-full h-full bg-gradient-to-tr from-fuchsia-400 via-purple-800 to-indigo-950 mix-blend-difference"
+        class="absolute left-0 top-0 z-30 h-full w-full bg-gradient-to-tr from-fuchsia-400 via-purple-800 to-indigo-950 mix-blend-difference"
       ></span>
       <Image
         src={waterImg}
         alt="Water reflections"
-        class="object-cover w-full h-full object-top-right"
+        class="object-top-right h-full w-full object-cover"
       />
     </div>
   </div>
   <div
-    class="z-40 flex flex-col px-4 pt-4 text-lg prose bg-black fish-hero__container bg-opacity-80 pb-14 text-lime-100"
+    class="fish-hero__container prose z-40 flex flex-col bg-black bg-opacity-80 px-4 pb-14 pt-4 text-lg text-lime-100"
   >
-    <div class="max-w-full py-24 pl-8 ml-auto mr-auto">
+    <div class="ml-auto mr-auto max-w-full py-24 pl-8">
       <p class="mb-32 text-2xl">
         In 2021, an intact and undamaged anglerfish floated it's way onto a Southern California
         beach.
       </p>
-      <p class="text-2xl mb-72">It was destined for the National History Museum of Los Angeles.</p>
-      <p class="text-2xl text-center">
+      <p class="mb-72 text-2xl">It was destined for the National History Museum of Los Angeles.</p>
+      <p class="text-center text-2xl">
         For a limited time, it would be a scientific and sightseeing <span class="font-bold"
           >superstar.</span
         >
       </p>
     </div>
 
-    <div class="flex flex-col items-center justify-center gap-4 mb-32 md:flex-row">
+    <div class="mb-32 flex flex-col items-center justify-center gap-4 md:flex-row">
       <div class="relative z-30 max-w-sm">
         <Image
           src={anglerfishDisplayClose}
@@ -91,7 +93,7 @@ import anglerfishSpecimen from "../images/projects/nhmla-anglerfish/specimen.jpg
         />
         <!-- <Image src={anglerfishSpecimen} alt="Anglerfish specimen" class="col-start-2 row-start-3" /> -->
       </div>
-      <div class="max-w-xl pt-4 pl-8 mb-32">
+      <div class="mb-32 max-w-xl pl-8 pt-4">
         <!-- <p class="mb-12 text-4xl font-bayon">Protecting a priceless museum specimen</p> -->
         <!-- <p class="mb-4">
           In 2021, an intact and undamaged anglerfish floated it's way onto a Southern California
@@ -119,7 +121,7 @@ import anglerfishSpecimen from "../images/projects/nhmla-anglerfish/specimen.jpg
         <p>This is where software came to the rescue.</p>
       </div>
     </div>
-    <div class="flex flex-col items-center justify-center mb-64 md:flex-row">
+    <div class="mb-64 flex flex-col items-center justify-center md:flex-row">
       <div class="max-w-xl pr-8">
         <p class="mb-12">
           I was tasked with writing software to run on an Arduino inside the museum exhibit.
@@ -147,7 +149,7 @@ import anglerfishSpecimen from "../images/projects/nhmla-anglerfish/specimen.jpg
       </div>
     </div>
     <div class="relative z-30">
-      <div class="flex flex-col items-center w-auto mx-auto mb-80">
+      <div class="mx-auto mb-80 flex w-auto flex-col items-center">
         <div class="pr-8">
           <p class="mb-12">
             The exhibit was open to the public from August 25th to November 29th, 2021.
@@ -157,17 +159,17 @@ import anglerfishSpecimen from "../images/projects/nhmla-anglerfish/specimen.jpg
           <Image
             src={anglerfishDisplayFull}
             alt="Anglerfish display closeup"
-            class="object-contain w-full max-w-4xl"
+            class="w-full max-w-4xl object-contain"
           />
         </div>
       </div>
-      <div class="block max-w-4xl mx-auto text-center">
-        <p class="block mt-32 mb-24 text-2xl">The ultra-rare anglerfish was safe.</p>
+      <div class="mx-auto block max-w-4xl text-center">
+        <p class="mb-24 mt-32 block text-2xl">The ultra-rare anglerfish was safe.</p>
         <Image src={anglerfishSpecimen} alt="Anglerfish specimen" class="block object-contain" />
         <p class="">
           More information can be found <Link
             href="https://nhm.org/anglerfish"
-            class="inline-block mt-4">on the museum's website.</Link
+            class="mt-4 inline-block">on the museum's website.</Link
           >
         </p>
       </div>
@@ -207,7 +209,7 @@ import anglerfishSpecimen from "../images/projects/nhmla-anglerfish/specimen.jpg
   } */
     .animation-fishball {
       filter: drop-shadow(0 0 0.1rem rgba(0, 250, 230, 0.9));
-      animation: fishball 10s ease-in-out infinite alternate;
+      /* animation: fishball 10s ease-in-out infinite alternate; */
       /* bottom: 55vw; */
       top: 40%;
       left: 15vw;
