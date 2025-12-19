@@ -14,14 +14,14 @@ const { Content } = await job.render();
   >
     <h3>
       <span class="block font-bold text-fuchsia-500 sm:inline-block">{position}</span>
-      <span class="mx-1 hidden font-bokor sm:inline-block"> - </span>
+      <span class="mx-1 hidden font-bokor sm:inline-block">&nbsp;᠅&nbsp;</span>
       <Link href={companyWebsite} target="_blank" class="no-underline">
         {company}
       </Link>
     </h3>
   </div>
 
-  <p class="mb-8 italic">
+  <p class="mb-6 italic">
     {startMonthYear ? startMonthYear : null} -
     {endMonthYear ? endMonthYear : "Present"}
   </p>
@@ -63,7 +63,11 @@ const { Content } = await job.render();
       @apply mt-8;
     }
     li {
-      @apply mb-3 pl-6;
+      @apply mb-2 pl-6;
+    }
+
+    a {
+      @apply underline hover:text-fuchsia-500;
     }
   }
 </style>

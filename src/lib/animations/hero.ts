@@ -18,6 +18,14 @@ export function initHeroAnimations(
       y: 15,
     });
   }
+  const heroTitle = document.querySelector(".hero__title");
+  if (heroTitle) {
+    fadeUp(gsap, heroTitle, {
+      duration: 0.8,
+      delay: 0,
+      y: 15,
+    });
+  }
 
   // Hero subtitle - immediate fade from left
   const heroSubtitle = document.querySelector(".hero__text p");
