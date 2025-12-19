@@ -56,11 +56,11 @@ export function initHeaderAnimations(
   gsap: GSAPInstance,
   _ScrollTrigger: ScrollTriggerInstance,
 ): void {
-  const header = document.querySelector(".sticky");
+  const header = document.querySelector(".animate__header");
   if (header) {
-    gsap.set(header, { y: -100, opacity: 0 });
+    gsap.set(header, { yPercent: 30, opacity: 0 });
     gsap.to(header, {
-      y: 0,
+      yPercent: 0,
       opacity: 1,
       duration: 0.8,
       ease: "power1.out",

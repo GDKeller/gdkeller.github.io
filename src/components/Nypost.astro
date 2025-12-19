@@ -7,61 +7,62 @@ import Link from "./Link.astro";
 ---
 
 <div
-  class="container flex flex-col items-start justify-center max-w-full py-48 mx-auto mb-24 color__nyp-red--dark lg:flex-row"
+  class="container relative z-0 mx-auto mb-24 flex max-w-full flex-col items-start justify-center overflow-x-hidden py-24 lg:flex-row"
 >
   <span
-    class="absolute top-0 left-0 z-0 w-full h-1/4 bg-gradient-to-b from-black to-transparent opacity-90"
+    class="absolute left-0 top-0 z-10 h-1/4 w-full bg-gradient-to-b from-black to-transparent opacity-100"
   ></span>
   <span
-    class="absolute bottom-0 left-0 z-0 w-full h-1/4 bg-gradient-to-t from-black to-transparent opacity-90"
+    class="absolute bottom-0 left-0 z-10 h-1/4 w-full bg-gradient-to-t from-black to-transparent opacity-90"
   ></span>
-  <div class="relative w-full px-12 -mb-24 lg:max-w-1/2 md:-mb-36 lg:mb-auto">
+  <span class="color__nyp-red--dark absolute left-0 top-0 z-0 h-full w-full"></span>
+  <div class="lg:max-w-1/2 relative z-20 -mb-24 w-full px-12 md:-mb-36 lg:mb-auto">
     <h3 class="sr-only">New York Post</h3>
-    <div class="flex flex-col items-center mb-8 sm:flex-row">
-      <div class="mx-auto max-w-1/2 sm:ml-auto">
-        <div class="w-auto mx-auto font-bold text-white stat">
+    <div class="mb-8 flex flex-col items-center sm:flex-row">
+      <div class="max-w-1/2 mx-auto sm:ml-auto">
+        <div class="stat mx-auto w-auto font-bold text-white">
           <div
-            class="flex items-end m-0 color__nyp-red--text font-bokor text-8xl sm:text-8xl md:text-7xl lg:text-7xl xl:text-9xl"
+            class="color__nyp-red--text m-0 flex items-end font-bokor text-8xl sm:text-8xl md:text-7xl lg:text-7xl xl:text-9xl"
           >
             391 <span class="mb-4 ml-2 text-xl lg:text-3xl xl:text-5xl">million</span>
           </div>
           <div
-            class="ml-2 -mt-4 text-2xl text-white stat-title font-bayon md:text-3xl lg:text-xl xl:text-4xl"
+            class="stat-title -mt-4 ml-2 font-bayon text-2xl text-white md:text-3xl lg:text-xl xl:text-4xl"
           >
             monthly pageviews
           </div>
         </div>
       </div>
-      <div class="mx-auto max-w-1/2 sm:mr-auto">
-        <div class="w-auto mx-auto font-bold text-white bg-opacity-0 color__nyp-red--text stat">
+      <div class="max-w-1/2 mx-auto sm:mr-auto">
+        <div class="color__nyp-red--text stat mx-auto w-auto bg-opacity-0 font-bold text-white">
           <span
-            class="flex items-end m-0 color__nyp-red--text font-bokor text-8xl sm:text-8xl md:text-7xl lg:text-7xl xl:text-9xl"
+            class="color__nyp-red--text m-0 flex items-end font-bokor text-8xl sm:text-8xl md:text-7xl lg:text-7xl xl:text-9xl"
             >65 <span class="mb-4 ml-2 text-xl lg:text-3xl xl:text-5xl">million</span></span
           >
           <div
-            class="ml-2 -mt-4 text-2xl text-white stat-title font-bayon md:text-3xl lg:text-xl xl:text-4xl"
+            class="stat-title -mt-4 ml-2 font-bayon text-2xl text-white md:text-3xl lg:text-xl xl:text-4xl"
           >
             unique visitors
           </div>
         </div>
       </div>
     </div>
-    <div class="relative browser lg:top-0 lg:scale-110">
+    <div class="browser relative lg:top-0 lg:scale-110">
       <div class="nyp">
-        <Image src={NypSpread} alt="New York Post" class="object-cover w-full h-full" />
+        <Image src={NypSpread} alt="New York Post" class="h-full w-full object-cover" />
       </div>
     </div>
   </div>
-  <div class="z-10 flex justify-start w-full content-box">
+  <div class="content-box z-10 flex w-full justify-start">
     <div class="flex">
       <div class="">
-        <div class="flex-col items-center w-full py-8 col color__nyp-red rounded-tl-md lg:py-4">
-          <div class="relative w-full px-8 mx-auto max-w-72">
+        <div class="col color__nyp-red w-full flex-col items-center rounded-tl-md py-8 lg:py-4">
+          <div class="relative mx-auto w-full max-w-72 px-8">
             <Fragment set:html={NypostLogo} />
           </div>
         </div>
-        <div class="w-full p-8 pt-6 bg-black bg-opacity-100">
-          <div class="block w-full mb-8 font-bold text-white">
+        <div class="w-full bg-black bg-opacity-100 p-8 pt-6">
+          <div class="mb-8 block w-full font-bold text-white">
             <p class="mb-4 text-lg">
               Senior User Experience Developer @ <Link
                 href="https://alley.com/"
@@ -69,15 +70,17 @@ import Link from "./Link.astro";
                 target="_blank">Alley Interactive</Link
               >
             </p>
-            <p class="mb-8 font-bold text-md">
-              Primary development team for all NYP digital properties, working directly with editorial stakeholders.
+            <p class="text-md mb-8 font-bold">
+              Primary development team for all NYP digital properties, working directly with
+              editorial stakeholders.
             </p>
             <p class="mb-4 text-sm">
               Delivered UX improvements at massive scale on a custom enterprise stack hosted on <span
-                class="inline-block color__nyp-red--text break-keep">WordPress VIP</span
-              >. Built custom Gutenberg blocks, crafted responsive SCSS component styles, and maintained the unified theme system serving NYP, Page Six, and Decider.
+                class="color__nyp-red--text inline-block break-keep">WordPress VIP</span
+              >. Built custom Gutenberg blocks, crafted responsive SCSS component styles, and
+              maintained the unified theme system serving NYP, Page Six, and Decider.
             </p>
-            <ul class="text-white list-disc list-inside list">
+            <ul class="list list-inside list-disc text-white">
               <li>Component styling & responsive layouts</li>
               <li>Editorial workflow improvements</li>
               <li>Performance optimization</li>
@@ -86,9 +89,9 @@ import Link from "./Link.astro";
           </div>
           <span class="divider"></span>
           <div class="flex flex-col flex-wrap text-white sm:flex-row sm:items-center">
-            <p class="font-bold text-md sm:text-md sm:mr-4">Technologies:</p>
+            <p class="text-md sm:text-md font-bold sm:mr-4">Technologies:</p>
             <ul
-              class="flex flex-row gap-2 text-sm italic list sm:text-md sm:flex-row sm:flex-wrap sm:gap-4"
+              class="list sm:text-md flex flex-row gap-2 text-sm italic sm:flex-row sm:flex-wrap sm:gap-4"
             >
               <li>WordPress</li>
               <li>React</li>
@@ -100,8 +103,8 @@ import Link from "./Link.astro";
         </div>
       </div>
 
-      <div class="hidden w-full max-w-1/4 image__statueofliberty sm:block">
-        <Image src={statueOfLiberty} alt="Statue of Liberty" class="object-cover w-full h-full" />
+      <div class="max-w-1/4 image__statueofliberty hidden w-full sm:block">
+        <Image src={statueOfLiberty} alt="Statue of Liberty" class="h-full w-full object-cover" />
       </div>
     </div>
 

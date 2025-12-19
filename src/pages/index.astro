@@ -8,6 +8,7 @@ import Projects from "../components/Projects.astro";
 import Jobs from "../components/Jobs.astro";
 import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
+import TextBillboard from "../components/TextBillboard.astro";
 import Nypost from "../components/Nypost.astro";
 import Footer from "../components/Footer.astro";
 import SectionDivider from "../components/SectionDivider.astro";
@@ -20,43 +21,55 @@ import SectionDivider from "../components/SectionDivider.astro";
       <!-- <span class="absolute top-0 left-0 z-0 z-50 w-full h-full opacity-50 bg-gradient-to-br from-purple-950 mix-blend-color-dodge to-blue-950"></span> -->
 
       <Hero />
+      <TextBillboard />
       <Header />
 
       <!-- Featured Work: NY Post -->
-      <section class="relative py-20 md:py-28">
-        <div class="container relative z-20 mx-auto max-w-6xl px-8">
-          <h2 id="featured" class="mb-20 text-center font-bokor text-5xl md:text-6xl">Featured Work</h2>
+      <section class="relative block py-20 md:py-28">
+        <div class="container mx-auto block max-w-6xl px-8">
+          <h2
+            id="featured"
+            class="relative mb-0 block pt-20 text-center font-bokor text-5xl md:text-6xl"
+          >
+            Featured Work
+          </h2>
         </div>
         <Nypost />
       </section>
 
       <!-- Skills -->
-      <section id="skills" class="relative mx-auto block max-w-6xl px-2 py-20 md:py-28">
+      <section id="skills" class="relative mx-auto block max-w-6xl px-2 py-20 md:py-20">
         <SkillsGrid />
       </section>
 
       <SectionDivider />
 
       <!-- Experience -->
-      <section id="jobs" class="container mx-auto block max-w-6xl px-8 py-20 md:py-28">
+      <section id="jobs" class="container mx-auto block max-w-6xl px-8 py-20 md:py-20">
         <Jobs />
       </section>
 
       <SectionDivider />
 
       <!-- Projects -->
-      <section id="projects" class="container mx-auto block max-w-6xl px-8 py-20 md:py-28">
+      <section id="projects" class="container mx-auto block max-w-6xl px-8 py-20 md:py-20">
         <Projects />
       </section>
 
       <SectionDivider />
 
       <!-- Passion Projects: Anglerfish Exhibit -->
-      <section class="relative z-10 block overflow-hidden py-20 md:py-28">
+      <section class="relative z-10 block overflow-hidden py-20 md:py-20">
         <div class="container relative z-20 mx-auto max-w-6xl px-8">
-          <h2 id="passion-projects" class="mb-12 text-center font-bokor text-5xl md:text-6xl text-emerald-300/80">Beyond the Screen</h2>
+          <h2
+            id="passion-projects"
+            class="mb-12 text-center font-bokor text-5xl text-emerald-300/80 md:text-6xl"
+          >
+            Beyond the Screen
+          </h2>
           <p class="mx-auto mb-20 max-w-2xl text-center text-emerald-200/70">
-            When I'm not building web applications, I explore the intersection of hardware, software, and physical experiences.
+            When I'm not building web applications, I explore the intersection of hardware,
+            software, and physical experiences.
           </p>
         </div>
         <FishHero />
@@ -73,79 +86,145 @@ import SectionDivider from "../components/SectionDivider.astro";
     </span>
   </div>
   <Footer />
-  
+
   <!-- Contact Modal (hidden, triggered by nav button) -->
   <dialog id="hire_me_modal" class="modal">
-    <div class="modal-box bg-black/95 border border-emerald-400/30 backdrop-blur-xl max-w-md">
+    <div class="modal-box max-w-md border border-emerald-400/30 bg-black/95 backdrop-blur-xl">
       <form method="dialog">
-        <button class="btn btn-sm btn-circle btn-ghost absolute right-3 top-3 text-emerald-200/70 hover:text-emerald-200 hover:bg-emerald-400/10 border-0">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        <button
+          class="btn btn-circle btn-ghost btn-sm absolute right-3 top-3 border-0 text-emerald-200/70 hover:bg-emerald-400/10 hover:text-emerald-200"
+        >
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"></path>
           </svg>
         </button>
       </form>
-      
-      <div class="text-center mb-8 pt-2">
-        <h3 class="font-bokor text-3xl text-emerald-300 mb-3">Let's Connect</h3>
-        <p class="text-emerald-200/80 text-sm font-prompt">Ready to build something extraordinary?</p>
+
+      <div class="mb-8 pt-2 text-center">
+        <h3 class="mb-3 font-bokor text-3xl text-emerald-300">Let's Connect</h3>
+        <p class="font-prompt text-sm text-emerald-200/80">
+          Ready to build something extraordinary?
+        </p>
       </div>
 
       <div class="space-y-3">
         <!-- Email -->
-        <div class="group flex items-center gap-4 p-4 rounded-lg bg-emerald-950/20 border border-emerald-400/20 hover:border-emerald-400/40 hover:bg-emerald-950/30 transition-all duration-200">
-          <div class="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-emerald-400/10 group-hover:bg-emerald-400/20 transition-colors">
-            <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 7.89a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+        <div
+          class="group flex items-center gap-4 rounded-lg border border-emerald-400/20 bg-emerald-950/20 p-4 transition-all duration-200 hover:border-emerald-400/40 hover:bg-emerald-950/30"
+        >
+          <div
+            class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-emerald-400/10 transition-colors group-hover:bg-emerald-400/20"
+          >
+            <svg
+              class="h-4 w-4 text-emerald-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 8l7.89 7.89a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+              ></path>
             </svg>
           </div>
           <div class="flex-1">
-            <div class="text-xs text-emerald-300/80 font-medium mb-1">Email</div>
-            <a href="mailto:contact@grantkeller.dev" class="text-emerald-100 hover:text-emerald-300 transition-colors text-sm font-prompt">
+            <div class="mb-1 text-xs font-medium text-emerald-300/80">Email</div>
+            <a
+              href="mailto:contact@grantkeller.dev"
+              class="font-prompt text-sm text-emerald-100 transition-colors hover:text-emerald-300"
+            >
               contact@grantkeller.dev
             </a>
           </div>
         </div>
 
         <!-- LinkedIn -->
-        <div class="group flex items-center gap-4 p-4 rounded-lg bg-emerald-950/20 border border-emerald-400/20 hover:border-emerald-400/40 hover:bg-emerald-950/30 transition-all duration-200">
-          <div class="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-emerald-400/10 group-hover:bg-emerald-400/20 transition-colors">
-            <svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+        <div
+          class="group flex items-center gap-4 rounded-lg border border-emerald-400/20 bg-emerald-950/20 p-4 transition-all duration-200 hover:border-emerald-400/40 hover:bg-emerald-950/30"
+        >
+          <div
+            class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-emerald-400/10 transition-colors group-hover:bg-emerald-400/20"
+          >
+            <svg class="h-4 w-4 text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+              ></path>
             </svg>
           </div>
           <div class="flex-1">
-            <div class="text-xs text-emerald-300/80 font-medium mb-1">LinkedIn</div>
-            <a href="https://www.linkedin.com/in/grantdkeller/" target="_blank" rel="noopener noreferrer" class="text-emerald-100 hover:text-emerald-300 transition-colors text-sm font-prompt">
+            <div class="mb-1 text-xs font-medium text-emerald-300/80">LinkedIn</div>
+            <a
+              href="https://www.linkedin.com/in/grantdkeller/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="font-prompt text-sm text-emerald-100 transition-colors hover:text-emerald-300"
+            >
               linkedin.com/in/grantdkeller
             </a>
           </div>
         </div>
 
         <!-- GitHub -->
-        <div class="group flex items-center gap-4 p-4 rounded-lg bg-emerald-950/20 border border-emerald-400/20 hover:border-emerald-400/40 hover:bg-emerald-950/30 transition-all duration-200">
-          <div class="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-emerald-400/10 group-hover:bg-emerald-400/20 transition-colors">
-            <svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+        <div
+          class="group flex items-center gap-4 rounded-lg border border-emerald-400/20 bg-emerald-950/20 p-4 transition-all duration-200 hover:border-emerald-400/40 hover:bg-emerald-950/30"
+        >
+          <div
+            class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-emerald-400/10 transition-colors group-hover:bg-emerald-400/20"
+          >
+            <svg class="h-4 w-4 text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+              ></path>
             </svg>
           </div>
           <div class="flex-1">
-            <div class="text-xs text-emerald-300/80 font-medium mb-1">GitHub</div>
-            <a href="https://github.com/gdkeller" target="_blank" rel="noopener noreferrer" class="text-emerald-100 hover:text-emerald-300 transition-colors text-sm font-prompt">
+            <div class="mb-1 text-xs font-medium text-emerald-300/80">GitHub</div>
+            <a
+              href="https://github.com/gdkeller"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="font-prompt text-sm text-emerald-100 transition-colors hover:text-emerald-300"
+            >
               github.com/gdkeller
             </a>
           </div>
         </div>
 
         <!-- Resume -->
-        <div class="group flex items-center gap-4 p-4 rounded-lg bg-emerald-950/20 border border-emerald-400/20 hover:border-emerald-400/40 hover:bg-emerald-950/30 transition-all duration-200">
-          <div class="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-emerald-400/10 group-hover:bg-emerald-400/20 transition-colors">
-            <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+        <div
+          class="group flex items-center gap-4 rounded-lg border border-emerald-400/20 bg-emerald-950/20 p-4 transition-all duration-200 hover:border-emerald-400/40 hover:bg-emerald-950/30"
+        >
+          <div
+            class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-emerald-400/10 transition-colors group-hover:bg-emerald-400/20"
+          >
+            <svg
+              class="h-4 w-4 text-emerald-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+              ></path>
             </svg>
           </div>
           <div class="flex-1">
-            <div class="text-xs text-emerald-300/80 font-medium mb-1">Resume</div>
-            <a href="/Grant Keller Senior UX Engineer Resume 2025.pdf" target="_blank" rel="noopener noreferrer" class="text-emerald-100 hover:text-emerald-300 transition-colors text-sm font-prompt">
+            <div class="mb-1 text-xs font-medium text-emerald-300/80">Resume</div>
+            <a
+              href="/Grant Keller Senior UX Engineer Resume 2025.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="font-prompt text-sm text-emerald-100 transition-colors hover:text-emerald-300"
+            >
               Download PDF
             </a>
           </div>
@@ -153,12 +232,12 @@ import SectionDivider from "../components/SectionDivider.astro";
       </div>
 
       <div class="mt-8 text-center">
-        <p class="text-xs text-emerald-200/70 font-prompt">
+        <p class="font-prompt text-xs text-emerald-200/70">
           15+ years experience • Senior UX Engineer • Available for hire
         </p>
       </div>
     </div>
-    
+
     <!-- Modal backdrop -->
     <form method="dialog" class="modal-backdrop">
       <button>close</button>
@@ -182,13 +261,13 @@ import SectionDivider from "../components/SectionDivider.astro";
   /* Modal Styles */
   .modal-box {
     backdrop-filter: blur(20px);
-    box-shadow: 
+    box-shadow:
       0 25px 50px -12px rgba(0, 0, 0, 0.6),
       0 0 0 1px rgba(5, 150, 105, 0.3),
       0 0 30px rgba(5, 150, 105, 0.2);
     background: rgba(0, 0, 0, 0.95);
   }
-  
+
   .modal::backdrop {
     background: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(8px);

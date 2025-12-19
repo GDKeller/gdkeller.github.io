@@ -1,11 +1,15 @@
 ---
-import SkillBadge from "./SkillBadge.astro";
 import Headshot from "./Headshot.astro";
+import LogoCarousel from "./LogoCarousel.astro";
 ---
 
-<section id="hero" class="relative z-50 w-full px-4 pb-32 pt-8 sm:px-8 sm:pt-16 lg:pt-40">
+<section
+  id="hero"
+  class="relative z-50 flex w-full max-w-full flex-col justify-center overflow-x-hidden px-4 pb-8 pt-8 sm:px-8 sm:pt-10 lg:pt-16"
+>
   <div
-    class="relative z-10 mx-auto flex max-w-7xl flex-col items-center justify-start sm:flex-row sm:justify-start"
+    id="hero__content"
+    class="relative z-20 mx-auto mb-8 flex max-w-7xl flex-col items-center justify-start sm:flex-row sm:items-stretch sm:justify-center"
   >
     <div
       class="mb-6 flex w-auto flex-col items-center justify-center sm:mb-auto sm:mr-6 sm:max-w-full sm:items-start sm:justify-start md:mr-8 md:items-center lg:mr-16 xl:mr-24"
@@ -16,34 +20,40 @@ import Headshot from "./Headshot.astro";
         <Headshot />
       </div>
       <h1
-        class="hero__name mx-auto mb-6 block text-center font-marker text-4xl leading-none sm:w-min sm:text-left sm:text-6xl md:text-7xl lg:w-full lg:text-center lg:text-4xl xl:text-5xl"
+        class="hero__name mx-auto mb-4 block text-center font-marker text-4xl leading-none sm:w-min sm:text-left sm:text-6xl md:text-7xl lg:w-full lg:text-center lg:text-4xl xl:text-4xl"
       >
         Grant Keller
       </h1>
+      <p
+        class="mb-4 text-center text-xl font-bold text-emerald-100 sm:text-2xl md:text-3xl lg:text-xl"
+      >
+        Senior Software Engineer
+      </p>
       <span class="gradient-burst absolute left-0 top-0 h-full w-full"></span>
     </div>
-    <div class="hero__text sticky top-0 mb-auto flex w-full max-w-3xl flex-col lg:pt-4">
-      <p
+    <div class="hero__text flex w-full max-w-3xl flex-col lg:pt-2">
+      <!-- <p
         class="mb-4 text-center text-xl font-bold text-emerald-100 sm:text-left sm:text-2xl md:text-3xl lg:text-4xl"
       >
-        Senior Frontend Engineer
-      </p>
+        Senior Software Engineer
+      </p> -->
       <p
-        class="mb-8 max-w-xl text-center text-base text-emerald-200/80 sm:text-left sm:text-lg md:text-xl lg:text-2xl"
+        class="mb-8 max-w-2xl break-keep text-center text-base text-emerald-200/80 sm:text-left sm:text-lg md:text-xl lg:text-2xl"
       >
-        I build accessible, high-performance web applications that scale to millions of users.
+        I build user-focused, accessible, high-performance web and desktop applications that scale
+        to millions of users.
       </p>
       <ul
         class="mb-10 list-outside list-disc pl-6 text-xs text-emerald-200/90 md:text-sm lg:text-base"
       >
-        <li class="mb-3 list-item">15+ years shipping production software</li>
+        <li class="mb-3 list-item">15+ years fullstack with strong frontend/UX focus</li>
         <li class="mb-3 list-item">React, TypeScript, Node.js, Python</li>
         <li class="mb-3 list-item">WCAG accessibility & Core Web Vitals optimization</li>
         <li class="mb-3 list-item">Led frontend for products serving 390M+ monthly pageviews</li>
       </ul>
 
       <!-- CTA Buttons -->
-      <div class="mb-10 flex flex-col gap-4 sm:flex-row">
+      <div class="relative mt-auto flex flex-col gap-4 sm:flex-row">
         <a
           href="#featured"
           class="inline-flex items-center justify-center rounded-lg bg-emerald-400 px-6 py-3 text-sm font-semibold text-black shadow-lg shadow-emerald-400/20 transition-all duration-200 hover:bg-emerald-300 hover:shadow-emerald-400/40"
@@ -73,29 +83,32 @@ import Headshot from "./Headshot.astro";
         </button>
       </div>
 
-      <div
+      <!-- <div
         class="flex flex-row justify-center gap-2 pl-2 sm:flex-col sm:items-start sm:gap-3 md:flex-row md:justify-start"
       >
         <SkillBadge>React / TypeScript</SkillBadge>
         <SkillBadge>Accessibility</SkillBadge>
         <SkillBadge>Performance</SkillBadge>
-      </div>
+      </div> -->
     </div>
   </div>
 
-  <div
-    role="presentation"
-    class="huge hidden select-none font-marker text-fuchsia-600 opacity-15 mix-blend-hard-light sm:block"
-  >
-    UX<span class="plus block font-bokor text-emerald-200">+</span>AI
+  <div class="relative z-10 max-w-full overflow-hidden">
+    <LogoCarousel />
   </div>
+
+  <!-- <div
+    role="presentation"
+    class="header__billboard huge absolute left-1/2 top-1/3 z-0 hidden w-full -translate-x-1/2 -translate-y-1/2 select-none text-center font-marker text-fuchsia-600 opacity-15 mix-blend-hard-light sm:block"
+  >
+    UX<span class="plus font-bokor text-emerald-200">+</span>AI
+  </div> -->
 </section>
 
 <style>
   #hero {
-    min-height: calc(90vh - 1rem);
-    z-index: 99;
-    overflow: hidden;
+    /* min-height: calc(90vh - 1rem); */
+    min-height: calc(100vh - 50px);
   }
 
   .hero__name {
@@ -103,14 +116,8 @@ import Headshot from "./Headshot.astro";
   }
 
   #hero .huge {
-    font-size: 40vw;
-    display: block;
-    position: absolute;
-    margin-left: -0.05em;
-    bottom: 0;
-    left: 50%;
-    transform: translate3d(-50%, -8%, 0);
-    width: 100vw;
+    font-size: 30vw;
+    margin-left: -0.1em;
     line-height: 0.7;
     letter-spacing: -0.1em;
   }
@@ -118,11 +125,11 @@ import Headshot from "./Headshot.astro";
   #hero .huge .plus {
     font-size: 45vw;
     mix-blend-mode: difference;
-    top: 50%;
+    /* top: 50%;
     position: absolute;
-    left: 50%;
+    left: 50%; */
     line-height: 1;
     z-index: 100;
-    transform: translate3d(-56%, -47%, 0);
+    /* transform: translate3d(-56%, -47%, 0); */
   }
 </style>
