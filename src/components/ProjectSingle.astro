@@ -29,7 +29,7 @@ const { Content } = await project.render();
   >
     <h3>
       <span class="block font-bold text-fuchsia-500 sm:inline-block">{title}</span>
-      <span class="mx-1 hidden font-bokor sm:inline-block"> - </span>
+      <span class="mx-1 hidden font-bokor sm:inline-block">&nbsp;᠅&nbsp;</span>
       {
         clientWebsite ? (
           <Link href={clientWebsite} target="_blank" class="no-underline">
@@ -69,25 +69,29 @@ const { Content } = await project.render();
     class:list={[
       "relative",
       { "flex flex-col": imageAlign !== undefined },
-      { "md:flex-row-reverse": imageAlign === "right" },
-      { "md:flex-row": imageAlign === "left" },
+      { "lg:flex-row-reverse": imageAlign === "right" },
+      { "lg:flex-row": imageAlign === "left" },
     ]}
   >
-    <div
-      class:list={[
-        "mb-10 shrink-0 md:w-1/3",
-        { "mr-10": imageAlign === "left" },
-        { "ml-10": imageAlign === "right" },
-      ]}
-    >
-      <ProjectSingleImage
-        imagePath={image}
-        altText={imageAlt || projectName}
-        maxHeight={imageMaxHeight}
-      />
-    </div>
+    {
+      image && (
+        <div
+          class:list={[
+            "mb-10 shrink-0 lg:w-1/4",
+            { "lg:mr-10": imageAlign === "left" },
+            { "lg:ml-10": imageAlign === "right" },
+          ]}
+        >
+          <ProjectSingleImage
+            imagePath={image}
+            altText={imageAlt || projectName}
+            maxHeight={imageMaxHeight}
+          />
+        </div>
+      )
+    }
 
-    <div class="job-body prose max-w-none">
+    <div class="job-body list-custom-wrapper prose max-w-none lg:flex-1">
       <Content />
     </div>
   </div>
@@ -104,9 +108,24 @@ const { Content } = await project.render();
     }
 
     li {
-      list-style-type: disc;
-      list-style-position: outside;
-      @apply mb-2 ml-4 pl-2;
+      @apply mb-2 pl-6;
     }
+
+    a {
+      @apply underline hover:text-fuchsia-500;
+    }
+
+    blockquote {
+      @apply bg-gradient-to-br from-emerald-800/20 via-teal-600/20 to-blue-800/15 px-10 py-12 text-xl italic leading-loose text-emerald-200;
+
+      cite {
+        @apply mt-8 block text-right text-sm font-semibold text-emerald-300;
+      }
+    }
+  }
+
+  /* When image is aligned, allow content images to span full width */
+  .job-body :global(img) {
+    @apply w-full;
   }
 </style>

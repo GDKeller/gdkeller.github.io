@@ -64,7 +64,7 @@ strong {
   color: #ffffff;
 }
 
-.list-custom-wrapper > ul > li,
+.list-custom-wrapper ul > li,
 .list-custom li {
   position: relative;
   list-style-type: none;
