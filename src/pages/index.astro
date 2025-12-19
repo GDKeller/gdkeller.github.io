@@ -12,6 +12,7 @@ import TextBillboard from "../components/TextBillboard.astro";
 import Nypost from "../components/Nypost.astro";
 import Footer from "../components/Footer.astro";
 import SectionDivider from "../components/SectionDivider.astro";
+import Awards from "../components/Awards.astro";
 ---
 
 <Layout title="Grant Keller - Senior UX Software Engineer">
@@ -23,6 +24,11 @@ import SectionDivider from "../components/SectionDivider.astro";
       <Hero />
       <TextBillboard />
       <Header />
+
+      <!-- Awards -->
+      <section class="relative py-16 md:py-24">
+        <Awards />
+      </section>
 
       <!-- Featured Work: NY Post -->
       <section class="relative block py-20 md:py-28">
