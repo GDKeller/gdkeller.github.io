@@ -68,7 +68,7 @@ const logos: Logo[] = [
             <Image
               src={logo.src}
               alt={logo.alt}
-              class="max-h-16 w-auto max-w-[160px] object-contain md:max-h-24 md:max-w-[200px]"
+              class="max-h-12 w-auto max-w-[160px] object-contain md:max-h-16 md:max-w-[200px]"
               loading="eager"
             />
           </div>
@@ -77,7 +77,7 @@ const logos: Logo[] = [
       {/* Duplicated logos for seamless scroll - hidden from screen readers */}
       {
         logos.map((logo) => (
-          <div class="carousel-item carousel-item--duplicate flex-shrink-0" aria-hidden="true">
+          <div class="carousel-item--duplicate carousel-item flex-shrink-0" aria-hidden="true">
             <Image
               src={logo.src}
               alt=""

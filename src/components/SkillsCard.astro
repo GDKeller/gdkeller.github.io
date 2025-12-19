@@ -7,10 +7,8 @@ const { text } = Astro.props;
 ---
 
 <div class="mb-4">
-  <div class="skill-item relative h-full">
-    <div
-      class="skill-item__inner shadow-xs relative z-10 h-full border-l-2 border-t-0 border-emerald-500/50 bg-black/90 p-6 pl-8 pt-8"
-    >
+  <div class="skill-item relative h-full border-2 border-emerald-500/10">
+    <div class="skill-item__inner shadow-xs relative z-10 h-full bg-black/90 p-6 pl-8 pt-8">
       <h3 class="mb-6 border-b border-emerald-400/30 pb-2 text-xl font-bold text-emerald-100">
         {text}
       </h3>
@@ -20,6 +18,19 @@ const { text } = Astro.props;
       class="skill-item__shadow absolute -bottom-3 -right-3 left-4 top-4 z-0 bg-gradient-to-br from-emerald-700/70 via-teal-700 to-blue-950/40"
     >
     </span>
-    <span class="absolute left-0.5 top-0 z-10 h-0.5 w-3 bg-emerald-500/50"></span>
+    <!-- <span class="absolute left-0.5 top-0 z-10 h-0.5 w-3 bg-emerald-500/50"></span> -->
   </div>
 </div>
+
+<style>
+  .skill-item {
+    &::before {
+      @apply absolute left-0 top-0 z-20 h-full w-1 bg-gradient-to-b from-emerald-400/20 via-teal-500/15 to-blue-950/20;
+      content: "";
+    }
+    &::after {
+      @apply absolute left-1 top-0 z-20 h-1 w-24 bg-gradient-to-r from-emerald-400/20 via-teal-500/15 to-blue-950/20;
+      content: "";
+    }
+  }
+</style>

@@ -8,7 +8,7 @@ const { company, companyWebsite, position, startMonthYear, endMonthYear, tech } 
 const { Content } = await job.render();
 ---
 
-<div class="job-card mb-24">
+<div class="job-card relative z-20 mb-24 pt-8">
   <div
     class="mb-2 flex flex-col justify-start font-bayon text-2xl sm:flex-row md:text-2xl lg:text-3xl"
   >
@@ -44,12 +44,26 @@ const { Content } = await job.render();
     )
   }
 
-  <div class="job-body list-custom-wrapper prose max-w-none">
+  <div class="job-body list-custom-wrapper prose relative z-20 max-w-none bg-black pb-8 pr-8">
     <Content />
   </div>
+  <span
+    class="absolute -bottom-1 -right-1 -z-40 h-24 w-48 bg-gradient-to-br from-blue-900/10 via-teal-800/10 to-emerald-400/20 opacity-40"
+  >
+  </span>
 </div>
 
 <style>
+  .job-card {
+    &::before {
+      @apply absolute -left-8 top-1 z-0 h-full max-h-96 w-1 bg-gradient-to-b from-emerald-400/20 via-teal-500/15 to-blue-950/20;
+      content: "";
+    }
+    &::after {
+      @apply absolute -left-8 -top-0 z-0 h-1 w-12 bg-gradient-to-r from-emerald-400/20 via-teal-500/15 to-blue-950/20;
+      content: "";
+    }
+  }
   .job-body {
     p {
       @apply mb-5;

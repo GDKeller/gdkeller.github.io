@@ -22,7 +22,7 @@ import Awards from "../components/Awards.astro";
       <!-- <span class="absolute top-0 left-0 z-0 z-50 w-full h-full opacity-50 bg-gradient-to-br from-purple-950 mix-blend-color-dodge to-blue-950"></span> -->
 
       <Hero />
-      <TextBillboard />
+      <!-- <TextBillboard /> -->
       <Header />
 
       <!-- Awards -->
@@ -67,15 +67,12 @@ import Awards from "../components/Awards.astro";
       <!-- Passion Projects: Anglerfish Exhibit -->
       <section class="relative z-10 block overflow-hidden py-20 md:py-20">
         <div class="container relative z-20 mx-auto max-w-6xl px-8">
-          <h2
-            id="passion-projects"
-            class="mb-12 text-center font-bokor text-5xl text-emerald-300/80 md:text-6xl"
-          >
+          <h2 id="passion-projects" class="mb-12 text-center font-bokor text-5xl md:text-6xl">
             Beyond the Screen
           </h2>
-          <p class="mx-auto mb-20 max-w-2xl text-center text-emerald-200/70">
-            When I'm not building web applications, I explore the intersection of hardware,
-            software, and physical experiences.
+          <p class="mx-auto mb-20 max-w-2xl text-center text-xl">
+            When not building web applications, I explore the intersection of hardware, software,
+            and physical experiences.
           </p>
         </div>
         <FishHero />
@@ -112,9 +109,7 @@ import Awards from "../components/Awards.astro";
 
       <div class="mb-8 pt-2 text-center">
         <h3 class="mb-3 font-bokor text-3xl text-emerald-300">Let's Connect</h3>
-        <p class="font-prompt text-sm text-emerald-200/80">
-          Ready to build something extraordinary?
-        </p>
+        <p class="font-prompt text-sm text-emerald-200/80">Let's build something great</p>
       </div>
 
       <div class="space-y-3">
@@ -252,18 +247,6 @@ import Awards from "../components/Awards.astro";
 </Layout>
 
 <style>
-  .gradient-burst {
-    background: radial-gradient(
-      ellipse at center center,
-      rgba(0, 255, 100, 0.8) 0%,
-      /* rgba(0, 0, 0, 100) 50%, */ rgba(0, 255, 200, 0) 60%
-    );
-    background-repeat: no-repeat;
-    transform: scaleY(1.8) scaleX(1.5) translateY(0%);
-    mix-blend-mode: overlay;
-    /* animation: burst 6s infinite; */
-  }
-
   /* Modal Styles */
   .modal-box {
     backdrop-filter: blur(20px);
