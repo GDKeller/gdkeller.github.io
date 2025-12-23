@@ -19,6 +19,10 @@ const images: any = import.meta.glob<{ default: ImageMetadata }>(
 //   );
 ---
 
-<div class="relative">
-  {images[imagePath] ? <Image src={images[imagePath]()} alt={altText ?? "Project"} class="w-auto object-contain" style={maxHeight ? `max-height: ${maxHeight}` : "max-height: 28rem"} /> : null}
+<div class="logo relative">
+  {
+    images[imagePath] ? (
+      <Image src={images[imagePath]()} alt={altText ?? "Project"} class="w-auto object-contain" />
+    ) : null
+  }
 </div>

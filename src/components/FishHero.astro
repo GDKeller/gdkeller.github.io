@@ -13,10 +13,10 @@ import anglerfishSpecimen from "../images/projects/nhmla-anglerfish/specimen.jpg
 ---
 
 <section
-  class="fish-hero relative mx-auto flex w-full flex-col justify-center overflow-hidden bg-black px-4 pb-20 pt-32"
+  class="fish-hero relative mx-auto flex w-full flex-col justify-center overflow-hidden bg-black px-8 pb-20 pt-32"
 >
   <div
-    class="water-blurred fish-hero__water-blurred absolute left-0 top-0 z-0 h-full w-full opacity-40 mix-blend-hard-light blur-sm"
+    class="water-blurred fish-hero__water-blurred absolute left-0 top-0 z-0 h-full w-full opacity-80 mix-blend-hard-light blur-sm"
   >
     <span
       class="mix-blend-color-difference absolute left-0 top-0 z-0 h-full w-full bg-gradient-to-tr from-green-500 via-purple-700 to-slate-700 opacity-30"
@@ -38,7 +38,7 @@ import anglerfishSpecimen from "../images/projects/nhmla-anglerfish/specimen.jpg
     </div>
     <div class="relative z-50">
       <span
-        class="nhmla-logo relative -mb-4 inline-block overflow-visible shadow-md shadow-emerald-900/80"
+        class="nhmla-logo relative -mb-4 inline-block overflow-visible shadow-xl shadow-black/60"
       >
         <Image
           src={nhmLogo}
@@ -69,14 +69,16 @@ import anglerfishSpecimen from "../images/projects/nhmla-anglerfish/specimen.jpg
     </div>
   </div>
   <div
-    class="fish-hero__container prose z-40 flex flex-col bg-black bg-opacity-80 px-4 pb-14 pt-4 text-lg text-lime-100"
+    class="fish-hero__container prose z-40 flex flex-col bg-gradient-to-b from-[rgb(3,3,20)]/50 via-[rgb(2,2,20)]/80 to-[rgb(0,5,15)] px-4 pb-14 pt-4 text-lg text-emerald-200 backdrop-blur-sm"
   >
     <div class="ml-auto mr-auto max-w-full py-24 pl-8">
       <p class="mb-32 text-2xl">
         In 2021, an intact and undamaged anglerfish floated it's way onto a Southern California
         beach.
       </p>
-      <p class="mb-72 text-2xl">It was destined for the National History Museum of Los Angeles.</p>
+      <p class="mb-32 pl-8 text-2xl">
+        It was destined for the National History Museum of Los Angeles.
+      </p>
       <p class="text-center text-2xl">
         For a limited time, it would be a scientific and sightseeing <span class="font-bold"
           >superstar.</span
@@ -84,7 +86,7 @@ import anglerfishSpecimen from "../images/projects/nhmla-anglerfish/specimen.jpg
       </p>
     </div>
 
-    <div class="mb-32 flex flex-col items-center justify-center gap-4 md:flex-row">
+    <div class="mb-12 flex flex-col items-center justify-center gap-4 md:flex-row">
       <div class="relative z-30 max-w-sm">
         <Image
           src={anglerfishDisplayClose}
@@ -93,7 +95,7 @@ import anglerfishSpecimen from "../images/projects/nhmla-anglerfish/specimen.jpg
         />
         <!-- <Image src={anglerfishSpecimen} alt="Anglerfish specimen" class="col-start-2 row-start-3" /> -->
       </div>
-      <div class="mb-32 max-w-xl pl-8 pt-4">
+      <div class="mb-auto mt-auto max-w-xl pl-8 pt-4 md:pr-4">
         <!-- <p class="mb-12 text-4xl font-bayon">Protecting a priceless museum specimen</p> -->
         <!-- <p class="mb-4">
           In 2021, an intact and undamaged anglerfish floated it's way onto a Southern California
@@ -101,27 +103,25 @@ import anglerfishSpecimen from "../images/projects/nhmla-anglerfish/specimen.jpg
           time, it would be scientific and sightseeing superstar.
         </p> -->
         <p class="mb-8">
-          Most anglerfish specimen are found distorted and disfigured due to pressure changes, but
-          this one was nearly pristine.
+          Most specimens are distorted and disfigured due to pressure changes, but this one was in
+          near-perfect condition.
         </p>
-        <p class="mb-8">
-          One of only 30 speciments to be retrieved in a condition suitable for study and
-          exhibition.
+        <p class="mb-24">
+          One of only 30 retrieved in a condition suitable for study and exhibition.
         </p>
-        <p class="mb-20">But there was a problem...</p>
+        <p class="mb-4 font-bokor text-4xl">The Problem</p>
         <p class="mb-8">
-          The angler fish lives so deep in the darkest depths of the ocean, that it's tissue is
-          unaccustomed to the sun. If light touches it, it begins to break down.
+          The anglerfish lives so deep in the ocean that it's tissue begins to break down when
+          exposed to light.
         </p>
         <p class="mb-12">
-          The museum needed to display the fish in a way that ensured only necessary light struck
-          the specimen, and wanted to track the total light exposure over the lifetime of the
-          exhibit.
+          The museum needed a display that limited light exposure and kept track of the amount of
+          light the fish was exposed to.
         </p>
         <p>This is where software came to the rescue.</p>
       </div>
     </div>
-    <div class="mb-64 flex flex-col items-center justify-center md:flex-row">
+    <div class="mb-32 flex flex-col items-center justify-center md:flex-row md:pl-4">
       <div class="max-w-xl pr-8">
         <p class="mb-12">
           I was tasked with writing software to run on an Arduino inside the museum exhibit.
@@ -148,42 +148,39 @@ import anglerfishSpecimen from "../images/projects/nhmla-anglerfish/specimen.jpg
         />
       </div>
     </div>
-    <div class="relative z-30">
-      <div class="mx-auto mb-80 flex w-auto flex-col items-center">
-        <div class="pr-8">
-          <p class="mb-12">
+    <div class="relative z-30 mx-auto max-w-4xl">
+      <div class="flex w-auto flex-col items-center gap-4">
+        <Image
+          src={anglerfishDisplayFull}
+          alt="Anglerfish display closeup"
+          class="w-full object-contain"
+        />
+        <Image src={anglerfishSpecimen} alt="Anglerfish specimen" class="w-full object-contain" />
+        <div
+          class="w-full rounded-lg border-4 border-blue-950 border-opacity-10 bg-gradient-to-br from-teal-950/20 via-blue-800/10 to-blue-950/5 px-4 py-24 text-center"
+        >
+          <p class="mb-8">
             The exhibit was open to the public from August 25th to November 29th, 2021.
           </p>
+          <p>
+            More information can be found <Link href="https://nhm.org/anglerfish"
+              >on the museum's website.</Link
+            >
+          </p>
         </div>
-        <div>
-          <Image
-            src={anglerfishDisplayFull}
-            alt="Anglerfish display closeup"
-            class="w-full max-w-4xl object-contain"
-          />
-        </div>
-      </div>
-      <div class="mx-auto block max-w-4xl text-center">
-        <p class="mb-24 mt-32 block text-2xl">The ultra-rare anglerfish was safe.</p>
-        <Image src={anglerfishSpecimen} alt="Anglerfish specimen" class="block object-contain" />
-        <p class="">
-          More information can be found <Link
-            href="https://nhm.org/anglerfish"
-            class="mt-4 inline-block">on the museum's website.</Link
-          >
-        </p>
       </div>
     </div>
   </div>
 
   <style>
     .fish-body {
-      filter: drop-shadow(0 0 0.4rem rgba(0, 10, 20, 0.9));
+      /* filter: drop-shadow(0 0 0.4rem rgba(0, 10, 20, 0.9)); */
       height: 100vh;
       margin-bottom: -30vh;
     }
     .fish-hero__image {
       transform: translate(-20%, 0);
+      filter: drop-shadow(-0.3em 0.3rem 0.8rem rgba(0, 10, 20, 0.9));
     }
     @media screen and (min-width: 640px) {
       .fish-hero__image {
@@ -197,9 +194,9 @@ import anglerfishSpecimen from "../images/projects/nhmla-anglerfish/specimen.jpg
     }
 
     .fish-hero__water {
-      height: 30vw;
+      height: 20vw;
       left: -20px;
-      transform: translateY(30%);
+      transform: translateY(10%);
     }
     /* .fishball {
     width: 15vw;
@@ -229,7 +226,7 @@ import anglerfishSpecimen from "../images/projects/nhmla-anglerfish/specimen.jpg
       text-shadow: 0.03em 0.04em 0.02em rgba(250, 0, 130, 0.6);
     }
     .monster-text-shadow {
-      text-shadow: 0.02em 0.03em 0.05em rgba(200, 0, 140, 0.9);
+      text-shadow: 0.02em 0.01em 0.05em rgba(200, 0, 140, 0.7);
     }
     /* #fish-midnight {
 	font-size: 4vw;

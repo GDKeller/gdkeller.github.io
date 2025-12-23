@@ -15,9 +15,10 @@ export function initAnglerfishAnimations(
   // Anglerfish image parallax
   const fishImage = fishHero.querySelector(".fish-hero__image");
   if (fishImage) {
-    gsap.set(fishImage, { yPercent: 25, opacity: 1 });
+    gsap.set(fishImage, { yPercent: 35, xPercent: 0, opacity: 1 });
     gsap.to(fishImage, {
-      yPercent: -20,
+      yPercent: -15,
+      xPercent: -40,
       opacity: 1,
       ease: "sine.out",
       scrollTrigger: {

@@ -9,13 +9,13 @@ import LogoCarousel from "./LogoCarousel.astro";
 >
   <div
     id="hero__content"
-    class="relative z-50 mx-auto mb-8 flex max-w-7xl flex-col items-center justify-start overflow-hidden rounded-xl bg-gradient-to-br from-emerald-950/20 via-teal-800/10 to-blue-950/20 px-6 pb-4 pt-4 shadow-2xl shadow-teal-950/50 sm:ml-0 sm:mr-0 sm:w-full sm:max-w-none sm:items-center sm:pl-4 sm:pr-4 md:flex-row md:pl-6 md:pr-6 md:pt-6 lg:ml-auto lg:mr-auto lg:w-auto lg:pb-12 lg:pl-12 lg:pr-8 lg:pt-12"
+    class="relative z-50 mx-auto mb-8 flex max-w-7xl flex-col items-center justify-start overflow-hidden rounded-xl bg-gradient-to-br from-emerald-950/20 via-teal-800/10 to-blue-950/20 px-6 pb-4 pt-4 shadow-2xl shadow-teal-950/50 sm:ml-0 sm:mr-0 sm:w-full sm:max-w-none sm:items-center sm:pl-4 sm:pr-4 md:ml-auto md:mr-auto md:w-auto md:flex-row md:pl-6 md:pr-6 md:pt-6 lg:mr-auto lg:pb-12 lg:pl-12 lg:pr-8 lg:pt-12"
   >
     <div
       class="relative mb-6 flex w-full flex-col items-center justify-center sm:mb-auto sm:ml-auto sm:mr-auto sm:w-auto sm:flex-row sm:justify-start md:mr-6 md:w-auto md:flex-col md:items-center lg:mr-12 lg:max-w-80 xl:mr-12"
     >
       <div
-        class="relative z-20 mb-6 block h-auto w-full max-w-48 overflow-hidden rounded-xl border-2 border-teal-950/30 sm:mr-6 sm:w-1/2 md:mr-auto md:w-auto md:max-w-72 lg:max-w-md"
+        class="relative z-20 mb-6 block h-auto w-full max-w-48 overflow-hidden rounded-xl border-2 border-teal-950/30 sm:mr-6 sm:w-1/3 md:mr-8 md:w-full md:max-w-64 lg:max-w-md"
       >
         <Headshot />
       </div>
@@ -33,7 +33,7 @@ import LogoCarousel from "./LogoCarousel.astro";
       </div>
     </div>
     <div
-      class="hero__text list-custom-wrapper flex w-full max-w-2xl flex-col justify-center sm:w-auto lg:mr-auto"
+      class="hero__text list-custom-wrapper flex w-full max-w-2xl flex-col justify-center sm:w-auto md:py-4 lg:mr-auto lg:py-0"
     >
       <!-- <p
         class="mb-4 text-center text-xl font-bold text-emerald-100 sm:text-left sm:text-2xl md:text-3xl lg:text-4xl"
@@ -41,16 +41,18 @@ import LogoCarousel from "./LogoCarousel.astro";
         Senior Software Engineer
       </p> -->
       <p
-        class="mb-8 max-w-xl break-keep text-center text-base font-extrabold text-emerald-200 sm:text-left sm:text-lg md:text-xl lg:text-4xl/normal"
+        class="mb-12 ml-auto mr-auto max-w-xs break-keep text-center text-xl font-extrabold text-emerald-200 sm:ml-0 sm:max-w-xl sm:text-left sm:text-lg md:mb-12 md:max-w-[16em] md:text-2xl lg:mb-20 lg:text-4xl/tight"
       >
         <!-- Building digital experiences that solve problems, drive metrics and scale to millions. -->
-        I build thoughtful digital experiences used by millions.
+        Builds thoughtful digital experiences used by millions.
       </p>
       <p
-        class="mb-8 max-w-xl break-keep text-center text-base text-emerald-200 sm:text-left sm:text-lg md:text-xl lg:text-xl/normal"
+        class="mb-8 flex w-full max-w-xl justify-center break-keep text-xs font-bold text-emerald-200 sm:max-w-full sm:justify-start sm:text-left sm:text-lg md:gap-0 md:text-base lg:gap-2 lg:text-xl/normal"
       >
         <!-- I build user-focused, highly accessible digital experiences that scale to millions of users. -->
-        UX-focused, accessibility-first, proven at scale.
+        <span>UX Focused</span><span>&nbsp;·&nbsp;</span><span>Accessibility First</span><span
+          >&nbsp;·&nbsp;</span
+        ><span>Proven at Scale</span>
       </p>
       <ul class="text-xs text-emerald-200 md:text-sm lg:text-base">
         <li class="mb-3 list-item">15+ years fullstack with strong frontend/UX focus</li>

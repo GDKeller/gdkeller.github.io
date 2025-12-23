@@ -56,7 +56,7 @@ const awards: Award[] = [
             <Image
               src={award.src}
               alt={award.alt}
-              class="h-full w-full object-contain drop-shadow-[0_0_15px_rgba(52,211,153,0.3)] transition-transform duration-300 group-hover:scale-105"
+              class="transition-drop-shadow h-full w-full object-contain drop-shadow-[0_0_1rem_rgba(80,211,193,0.5)] transition-transform duration-300 hover:drop-shadow-[0_0_1rem_rgba(80,211,193,0.7)] group-hover:scale-105"
               loading="eager"
             />
             {award.count > 1 && (
@@ -66,7 +66,7 @@ const awards: Award[] = [
             )}
           </div>
           <h3 class="mb-1 text-lg font-semibold text-emerald-100 md:text-xl">{award.name}</h3>
-          <p class="text-sm text-emerald-200/50">{award.subtitle}</p>
+          <p class="text-sm text-emerald-200">{award.subtitle}</p>
         </div>
       ))
     }
