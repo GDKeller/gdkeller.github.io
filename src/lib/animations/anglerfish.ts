@@ -10,21 +10,23 @@ export function initAnglerfishAnimations(
 ): void {
   const fishHero = document.querySelector(".fish-hero");
   const fishEl = document.querySelector(".fish");
+  const fishBody = document.querySelector(".fish-body");
+  const fishMonster = document.querySelector("#fish-monster");
   if (!fishHero) return;
 
   // Anglerfish image parallax
   const fishImage = fishHero.querySelector(".fish-hero__image");
   if (fishImage) {
-    gsap.set(fishImage, { yPercent: 35, xPercent: 0, opacity: 1 });
+    gsap.set(fishImage, { yPercent: 30, xPercent: 20, opacity: 1 });
     gsap.to(fishImage, {
-      yPercent: -15,
-      xPercent: -40,
+      yPercent: 15,
+      xPercent: 0,
       opacity: 1,
       ease: "sine.out",
       scrollTrigger: {
-        trigger: fishHero,
-        start: "top bottom",
-        end: "bottom top",
+        trigger: fishMonster,
+        start: "top 150%",
+        end: "top center",
         scrub: 1,
       },
     });

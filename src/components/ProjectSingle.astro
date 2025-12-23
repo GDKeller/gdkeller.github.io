@@ -17,7 +17,6 @@ const {
   image,
   imageAlt,
   imageAlign,
-  imageMaxHeight,
   tech,
 } = data;
 
@@ -32,7 +31,6 @@ const { Content } = await project.render();
           <ProjectSingleImage
             imagePath={clientLogo.src}
             altText={clientLogo.alt}
-            maxHeight="7rem"
           />
         </div>
       )
@@ -103,7 +101,6 @@ const { Content } = await project.render();
           <ProjectSingleImage
             imagePath={image}
             altText={imageAlt || projectName}
-            maxHeight={imageMaxHeight}
           />
         </div>
       )
@@ -125,7 +122,7 @@ const { Content } = await project.render();
       content: "";
     }
 
-    .logo img {
+    .project-image img {
       @apply max-h-20 sm:max-h-20 md:max-h-24 lg:max-h-32;
     }
   }
