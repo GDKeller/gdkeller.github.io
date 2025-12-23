@@ -91,92 +91,175 @@ import ai25 from "../images/headshots/grant-headshot-alternate.jpg";
     z-index: 11;
     object-fit: cover;
   }
+
+  /* All images use same 52s cycle (13 images × 4s each), each with unique keyframes */
   .animate-headshot-1 {
-    animation: headshot 6s 3s infinite;
+    animation: headshot-1 52s 3s infinite;
     opacity: 0;
     z-index: 12;
   }
   .animate-headshot-2 {
-    animation: headshot 6s 6s infinite; /* Adjusted to avoid overlap */
+    animation: headshot-2 52s 3s infinite;
     opacity: 0;
-    z-index: 13;
+    z-index: 12;
   }
   .animate-headshot-3 {
-    animation: headshot 6s 9s infinite;
+    animation: headshot-3 52s 3s infinite;
     opacity: 0;
-    z-index: 14;
+    z-index: 12;
   }
-
   .animate-headshot-4 {
-    animation: headshot 6s 12s infinite;
+    animation: headshot-4 52s 3s infinite;
     opacity: 0;
-    z-index: 15;
+    z-index: 12;
   }
-
   .animate-headshot-5 {
-    animation: headshot 6s 15s infinite;
+    animation: headshot-5 52s 3s infinite;
     opacity: 0;
-    z-index: 16;
+    z-index: 12;
   }
-
   .animate-headshot-6 {
-    animation: headshot 6s 18s infinite;
+    animation: headshot-6 52s 3s infinite;
     opacity: 0;
-    z-index: 17;
+    z-index: 12;
   }
-
   .animate-headshot-7 {
-    animation: headshot 6s 21s infinite;
+    animation: headshot-7 52s 3s infinite;
     opacity: 0;
-    z-index: 18;
+    z-index: 12;
   }
-
   .animate-headshot-8 {
-    animation: headshot 6s 24s infinite;
+    animation: headshot-8 52s 3s infinite;
     opacity: 0;
-    z-index: 19;
+    z-index: 12;
   }
-
   .animate-headshot-9 {
-    animation: headshot 6s 27s infinite;
+    animation: headshot-9 52s 3s infinite;
     opacity: 0;
-    z-index: 20;
+    z-index: 12;
   }
-
   .animate-headshot-10 {
-    animation: headshot 6s 30s infinite;
+    animation: headshot-10 52s 3s infinite;
     opacity: 0;
-    z-index: 21;
+    z-index: 12;
   }
-
   .animate-headshot-11 {
-    animation: headshot 6s 33s infinite;
+    animation: headshot-11 52s 3s infinite;
     opacity: 0;
-    z-index: 22;
+    z-index: 12;
   }
-
   .animate-headshot-12 {
-    animation: headshot 6s 36s infinite;
+    animation: headshot-12 52s 3s infinite;
     opacity: 0;
-    z-index: 23;
+    z-index: 12;
   }
-
   .animate-headshot-13 {
-    animation: headshot 6s 39s infinite; /* Ends the sequence */
+    animation: headshot-13 52s 3s infinite;
     opacity: 0;
-    z-index: 24;
+    z-index: 12;
   }
 
-  /* Updated keyframes remain the same */
-  @keyframes headshot {
-    0% {
-      opacity: 0;
-    }
-    50% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
+  /* Each image gets its own keyframes - visible for ~4s window */
+  /* Image 1: 0-8% (0-4s of 52s) */
+  @keyframes headshot-1 {
+    0% { opacity: 0; }
+    4% { opacity: 1; }
+    8% { opacity: 0; }
+    100% { opacity: 0; }
+  }
+  /* Image 2: 8-15% (4-8s) */
+  @keyframes headshot-2 {
+    0% { opacity: 0; }
+    8% { opacity: 0; }
+    12% { opacity: 1; }
+    15% { opacity: 0; }
+    100% { opacity: 0; }
+  }
+  /* Image 3: 15-23% (8-12s) */
+  @keyframes headshot-3 {
+    0% { opacity: 0; }
+    15% { opacity: 0; }
+    19% { opacity: 1; }
+    23% { opacity: 0; }
+    100% { opacity: 0; }
+  }
+  /* Image 4: 23-31% (12-16s) */
+  @keyframes headshot-4 {
+    0% { opacity: 0; }
+    23% { opacity: 0; }
+    27% { opacity: 1; }
+    31% { opacity: 0; }
+    100% { opacity: 0; }
+  }
+  /* Image 5: 31-38% (16-20s) */
+  @keyframes headshot-5 {
+    0% { opacity: 0; }
+    31% { opacity: 0; }
+    35% { opacity: 1; }
+    38% { opacity: 0; }
+    100% { opacity: 0; }
+  }
+  /* Image 6: 38-46% (20-24s) */
+  @keyframes headshot-6 {
+    0% { opacity: 0; }
+    38% { opacity: 0; }
+    42% { opacity: 1; }
+    46% { opacity: 0; }
+    100% { opacity: 0; }
+  }
+  /* Image 7: 46-54% (24-28s) */
+  @keyframes headshot-7 {
+    0% { opacity: 0; }
+    46% { opacity: 0; }
+    50% { opacity: 1; }
+    54% { opacity: 0; }
+    100% { opacity: 0; }
+  }
+  /* Image 8: 54-62% (28-32s) */
+  @keyframes headshot-8 {
+    0% { opacity: 0; }
+    54% { opacity: 0; }
+    58% { opacity: 1; }
+    62% { opacity: 0; }
+    100% { opacity: 0; }
+  }
+  /* Image 9: 62-69% (32-36s) */
+  @keyframes headshot-9 {
+    0% { opacity: 0; }
+    62% { opacity: 0; }
+    65% { opacity: 1; }
+    69% { opacity: 0; }
+    100% { opacity: 0; }
+  }
+  /* Image 10: 69-77% (36-40s) */
+  @keyframes headshot-10 {
+    0% { opacity: 0; }
+    69% { opacity: 0; }
+    73% { opacity: 1; }
+    77% { opacity: 0; }
+    100% { opacity: 0; }
+  }
+  /* Image 11: 77-85% (40-44s) */
+  @keyframes headshot-11 {
+    0% { opacity: 0; }
+    77% { opacity: 0; }
+    81% { opacity: 1; }
+    85% { opacity: 0; }
+    100% { opacity: 0; }
+  }
+  /* Image 12: 85-92% (44-48s) */
+  @keyframes headshot-12 {
+    0% { opacity: 0; }
+    85% { opacity: 0; }
+    88% { opacity: 1; }
+    92% { opacity: 0; }
+    100% { opacity: 0; }
+  }
+  /* Image 13: 92-100% (48-52s) */
+  @keyframes headshot-13 {
+    0% { opacity: 0; }
+    92% { opacity: 0; }
+    96% { opacity: 1; }
+    100% { opacity: 0; }
   }
 </style>
