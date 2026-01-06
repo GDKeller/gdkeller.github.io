@@ -21,6 +21,7 @@ import logoPageSix from "../images/logos/clients/logo_PageSix_horizontal-white.p
 import logoRCFP from "../images/logos/clients/logo_RCFP.webp";
 import logoS3Enterprise from "../images/logos/clients/logo_s3enterprise.jpg";
 import logoStudio3 from "../images/logos/clients/logo_studio3.jpg";
+import logoTedx from "../images/logos/clients/logo_tedx.png";
 
 interface Logo {
   src: ImageMetadata;
@@ -30,21 +31,22 @@ interface Logo {
 const logos: Logo[] = [
   { src: logoRCFP, alt: "Reporters Committee for Freedom of the Press" },
   { src: logoADDitude, alt: "ADDitude Magazine" },
-  { src: logoS3Enterprise, alt: "S3 Enterprise" },
   { src: logoStudio3, alt: "Studio 3" },
-  { src: logoAlley, alt: "Alley" },
-  { src: logoNYP, alt: "New York Post" },
-  { src: logoNHMLA, alt: "Natural History Museum of Los Angeles" },
   { src: logoNASA, alt: "NASA" },
-  { src: logoHealthline, alt: "Healthline" },
+  { src: logoNYP, alt: "New York Post" },
+  { src: logoTedx, alt: "TEDx" },
+  { src: logoNHMLA, alt: "Natural History Museum of Los Angeles" },
   { src: logoLACPH, alt: "LA County Public Health" },
   { src: logoPageSix, alt: "Page Six" },
+  { src: logoHealthline, alt: "Healthline" },
+  { src: logoDunBradstreet, alt: "Dun & Bradstreet" },
+  { src: logoAlley, alt: "Alley" },
   { src: logoAAM, alt: "American Alliance of Museums" },
-  { src: logoKFF, alt: "KFF Health News" },
   { src: logoCPJ, alt: "Committee to Protect Journalists" },
+  { src: logoKFF, alt: "KFF Health News" },
   { src: logoMarinersMuseum, alt: "The Mariners' Museum" },
   { src: logoDecider, alt: "Decider" },
-  { src: logoDunBradstreet, alt: "Dun & Bradstreet" },
+  { src: logoS3Enterprise, alt: "S3 Enterprise" },
   { src: logoCoolGreenScience, alt: "Cool Green Science" },
 ];
 ---
@@ -70,7 +72,7 @@ const logos: Logo[] = [
             <Image
               src={logo.src}
               alt={logo.alt}
-              class="max-h-12 w-auto max-w-[160px] object-contain md:max-h-16 md:max-w-[200px]"
+              class="max-h-12 w-auto max-w-[160px] object-contain md:max-h-14 md:max-w-[220px]"
               loading="eager"
             />
           </div>

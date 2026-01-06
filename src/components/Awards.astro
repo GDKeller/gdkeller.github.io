@@ -4,12 +4,14 @@ import type { ImageMetadata } from "astro";
 import emmyImg from "../images/awards/emmy.webp";
 import addyImg from "../images/awards/addy-gold.webp";
 import cgwImg from "../images/awards/CGW_SIGGRAPH.webp";
+import hackadayImg from "../images/awards/hackaday_gold.png";
 
 interface Award {
   src: ImageMetadata;
   alt: string;
   name: string;
   subtitle: string;
+  level: "gold" | "silver" | "bronze";
   count: number;
 }
 
@@ -19,6 +21,7 @@ const awards: Award[] = [
     alt: "CGW SIGGRAPH Best of Show",
     name: "Computer Graphics World",
     subtitle: "SIGGRAPH Best of Show",
+    level: "silver",
     count: 1,
   },
   {
@@ -26,6 +29,7 @@ const awards: Award[] = [
     alt: "Emmy Award",
     name: "Emmy Awards",
     subtitle: "Science, Narrative Short",
+    level: "gold",
     count: 2,
   },
   {
@@ -33,13 +37,22 @@ const awards: Award[] = [
     alt: "Addy Award",
     name: "Addy Awards",
     subtitle: "Best of Show, Editors' Choice",
+    level: "gold",
     count: 2,
+  },
+  {
+    src: hackadayImg,
+    alt: "Hackaday Superconference Badge Hacking Prize",
+    name: "Hackaday Supercon",
+    subtitle: "Badge Hacking Prize",
+    level: "gold",
+    count: 1,
   },
 ];
 ---
 
 <div
-  class="awards container mx-auto max-w-5xl px-8"
+  class="awards container mx-auto max-w-full px-8 md:max-w-7xl"
   role="region"
   aria-label="Awards and recognition"
 >
@@ -48,15 +61,17 @@ const awards: Award[] = [
     Recognized for excellence in software, TV & Film, and digital advertising
   </p>
 
-  <div class="flex flex-col items-center justify-center gap-12 sm:flex-row sm:gap-16 md:gap-20">
+  <div
+    class="flex flex-col items-center justify-center gap-12 sm:gap-16 md:flex-row md:flex-wrap md:gap-20 lg:flex-nowrap"
+  >
     {
       awards.map((award) => (
-        <div class="award-item group flex flex-col items-center text-center">
-          <div class="relative mb-4 h-28 w-28 md:h-36 md:w-36 lg:h-44 lg:w-44">
+        <div class="award-item group flex w-full flex-col items-center text-center md:max-w-72 lg:w-auto">
+          <div class="relative mb-4 h-28 w-28 md:h-32 md:w-32 lg:h-44 lg:w-44">
             <Image
               src={award.src}
               alt={award.alt}
-              class="transition-drop-shadow h-full w-full object-contain drop-shadow-[0_0_1rem_rgba(80,211,193,0.5)] transition-transform duration-300 hover:drop-shadow-[0_0_1rem_rgba(80,211,193,0.7)] group-hover:scale-105"
+              class={`transition-drop-shadow h-full w-full object-contain ${award.level === "gold" ? "drop-shadow-[0_0_1rem_rgba(250,220,160,0.35)]" : award.level === "silver" ? "drop-shadow-[0_0_1rem_rgba(192,192,192,0.35)]" : "drop-shadow-[0_0_1rem_rgba(205,127,50,0.3)]"}`}
               loading="eager"
             />
             {award.count > 1 && (
@@ -65,7 +80,9 @@ const awards: Award[] = [
               </span>
             )}
           </div>
-          <h3 class="mb-1 text-lg font-semibold text-emerald-100 md:text-xl">{award.name}</h3>
+          <h3 class="mb-1 text-lg font-semibold text-emerald-100 md:text-lg lg:text-lg xl:text-xl">
+            {award.name}
+          </h3>
           <p class="text-sm text-emerald-200">{award.subtitle}</p>
         </div>
       ))

@@ -25,9 +25,15 @@ const { Content } = await job.render();
         <h3>
           <span class="block font-bold text-fuchsia-500 sm:inline-block">{position}</span>
           <span class="mx-1 hidden font-bokor sm:inline-block">&nbsp;᠅&nbsp;</span>
-          <Link href={companyWebsite} target="_blank" class="no-underline">
-            {company}
-          </Link>
+          {
+            companyWebsite ? (
+              <Link href={companyWebsite} target="_blank" class="no-underline">
+                {company}
+              </Link>
+            ) : (
+              company
+            )
+          }
         </h3>
       </div>
 
