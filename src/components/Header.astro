@@ -6,13 +6,15 @@ import HeadshotMini from "./HeadshotMini.astro";
 
 <div
   id="header__main"
-  class="animate__header border-box sticky left-0 top-0 z-40 block w-full justify-between border-b border-emerald-200 border-opacity-10 bg-black bg-opacity-85 px-4 py-2 shadow-sm backdrop-blur transition-shadow duration-100 [transform:translate3d(0,0,0)] sm:px-8"
+  class="animate__header border-box sticky left-0 top-0 z-40 block w-full justify-between overflow-hidden border-b border-emerald-200 border-opacity-10 bg-black bg-opacity-85 px-4 py-2 shadow-sm backdrop-blur transition-shadow duration-100 [transform:translate3d(0,0,0)] sm:px-8"
 >
   <div class="relative flex w-full items-center justify-between">
     <div class="box-border flex items-center gap-4">
       <div class="relative hidden h-8 w-8 shrink-0 md:block">
         <!-- Placeholder shown when hero is visible -->
-        <div class="header-placeholder absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-300">
+        <div
+          class="header-placeholder absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-300"
+        >
           <div class="h-5 w-6 rounded-sm border border-emerald-400/30"></div>
           <div class="mt-0.5 h-1 w-2 rounded-sm border border-emerald-400/30"></div>
         </div>

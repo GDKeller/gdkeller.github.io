@@ -1,15 +1,105 @@
 ---
 const { class: className } = Astro.props;
+
+const navLinks = [
+  { href: "#featured", label: "Work" },
+  { href: "#skills", label: "Skills" },
+  { href: "#jobs", label: "Experience" },
+  { href: "#projects", label: "Projects" },
+];
 ---
 
 <nav
+  id="main-nav"
   class:list={[
     "mr-auto flex gap-2 font-bokor text-base font-bold text-emerald-200 sm:gap-4 sm:text-lg md:text-2xl",
     className,
   ]}
 >
-  <a href="#featured" class="hover:text-emerald-100 transition-colors">Work</a>
-  <a href="#skills" class="hover:text-emerald-100 transition-colors">Skills</a>
-  <a href="#jobs" class="hover:text-emerald-100 transition-colors">Experience</a>
-  <a href="#projects" class="hover:text-emerald-100 transition-colors">Projects</a>
+  {
+    navLinks.map(({ href, label }) => (
+      <a
+        href={href}
+        data-section={href.slice(1)}
+        class="nav-link transition-colors hover:text-emerald-100"
+      >
+        {label}
+      </a>
+    ))
+  }
 </nav>
+
+<style>
+  .nav-link {
+    position: relative;
+    transition:
+      color 0.6s ease,
+      text-shadow 0.6s ease;
+  }
+
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%) translateY(50%) scaleY(0%);
+    width: 40px;
+    height: 10px;
+    background: radial-gradient(
+      circle at top,
+      theme("colors.fuchsia.300") 0%,
+      theme("colors.fuchsia.500") 50%,
+      transparent 100%
+    );
+    transform-origin: bottom;
+    background-color: theme("colors.fuchsia.500");
+    opacity: 0;
+    filter: blur(6px);
+    transition:
+      transform 1.2s ease,
+      opacity 0.3s ease;
+  }
+
+  .nav-link.active {
+    color: theme("colors.fuchsia.400");
+    text-shadow: 0 0 12px theme("colors.fuchsia.500" / 50%);
+  }
+
+  .nav-link.active::after {
+    transform: translateX(-50%) translateY(50%) scaleY(80%);
+    opacity: 1;
+  }
+</style>
+
+<script>
+  const navLinks = document.querySelectorAll<HTMLAnchorElement>("#main-nav .nav-link");
+  const sections = Array.from(navLinks)
+    .map((link) => document.getElementById(link.dataset.section!))
+    .filter(Boolean) as HTMLElement[];
+
+  function setActiveSection() {
+    const scrollY = window.scrollY;
+    const viewportHeight = window.innerHeight;
+    const triggerPoint = scrollY + viewportHeight * 0.3;
+
+    let activeSection: HTMLElement | null = null;
+
+    for (const section of sections) {
+      const rect = section.getBoundingClientRect();
+      const sectionTop = rect.top + scrollY;
+
+      if (sectionTop <= triggerPoint) {
+        activeSection = section;
+      }
+    }
+
+    if (activeSection) {
+      navLinks.forEach((l) => l.classList.remove("active"));
+      const link = document.querySelector(`[data-section="${activeSection.id}"]`);
+      link?.classList.add("active");
+    }
+  }
+
+  window.addEventListener("scroll", setActiveSection, { passive: true });
+  setActiveSection();
+</script>

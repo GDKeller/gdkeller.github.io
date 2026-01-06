@@ -25,61 +25,63 @@ import Awards from "../components/Awards.astro";
       <!-- <TextBillboard /> -->
       <Header />
 
-      <!-- Awards -->
-      <section class="relative py-16 md:py-24">
-        <Awards />
-      </section>
+      <div class="overflow-x-hidden">
+        <!-- Awards -->
+        <section class="relative py-16 md:py-24">
+          <Awards />
+        </section>
 
-      <!-- Featured Work: NY Post -->
-      <section class="relative block py-20 md:py-28">
-        <div class="container mx-auto block max-w-6xl px-8">
-          <h2
-            id="featured"
-            class="relative mb-0 block pt-20 text-center font-bokor text-5xl md:text-6xl"
-          >
-            Featured Work
-          </h2>
-        </div>
-        <Nypost />
-      </section>
+        <!-- Featured Work: NY Post -->
+        <section class="relative block py-20 md:py-28">
+          <div class="container mx-auto flex max-w-6xl justify-center px-8 pt-20">
+            <h2
+              id="featured"
+              class="section-heading__center relative mb-0 block w-auto text-center font-bokor text-5xl md:text-6xl"
+            >
+              Featured Work
+            </h2>
+          </div>
+          <Nypost />
+        </section>
 
-      <!-- Skills -->
-      <section id="skills" class="relative mx-auto block max-w-6xl px-2 py-20 md:py-20">
-        <SkillsGrid />
-      </section>
+        <!-- Skills -->
+        <section id="skills" class="relative mx-auto block max-w-6xl px-2 py-20 md:py-20">
+          <SkillsGrid />
+        </section>
 
-      <SectionDivider />
+        <SectionDivider />
 
-      <!-- Experience -->
-      <section id="jobs" class="container mx-auto block max-w-6xl px-8 py-20 md:py-20">
-        <Jobs />
-      </section>
+        <!-- Experience -->
+        <section id="jobs" class="container mx-auto block max-w-6xl px-8 py-20 md:py-20">
+          <Jobs />
+        </section>
 
-      <SectionDivider />
+        <SectionDivider />
 
-      <!-- Projects -->
-      <section
-        id="projects"
-        class="container mx-auto block max-w-6xl px-4 py-20 sm:px-6 md:px-8 md:py-20"
-      >
-        <Projects />
-      </section>
+        <!-- Projects -->
+        <section
+          id="projects"
+          class="container mx-auto block max-w-6xl px-4 py-20 sm:px-6 md:px-8 md:py-20"
+        >
+          <Projects />
+        </section>
 
-      <SectionDivider />
+        <SectionDivider />
 
-      <!-- Passion Projects: Anglerfish Exhibit -->
-      <section class="relative z-10 block overflow-hidden py-20 md:py-20">
-        <div class="container relative z-20 mx-auto max-w-6xl px-8">
-          <h2 id="passion-projects" class="mb-12 text-center font-bokor text-5xl md:text-6xl">
-            Beyond the Screen
-          </h2>
-          <p class="mx-auto mb-20 max-w-2xl text-center text-xl">
-            When not building web applications, I explore the intersection of hardware, software,
-            and physical experiences.
-          </p>
-        </div>
-        <FishHero />
-      </section>
+        <!-- Passion Projects: Anglerfish Exhibit -->
+        <section class="relative z-10 block overflow-hidden py-20 md:py-20">
+          <div class="container relative z-20 mx-auto max-w-6xl px-8">
+            <h2 id="passion-projects" class="mb-12 text-center font-bokor text-5xl md:text-6xl">
+              Beyond the Screen
+            </h2>
+            <p class="mx-auto mb-20 max-w-2xl text-center text-xl">
+              When not building web applications, I explore the intersection of hardware, software,
+              and physical experiences.
+            </p>
+          </div>
+          <FishHero />
+        </section>
+      </div>
     </div>
   </main>
   <div
@@ -250,6 +252,9 @@ import Awards from "../components/Awards.astro";
 </Layout>
 
 <style>
+  section {
+    /* overflow-x: hidden; */
+  }
   /* Modal Styles */
   .modal-box {
     backdrop-filter: blur(20px);
