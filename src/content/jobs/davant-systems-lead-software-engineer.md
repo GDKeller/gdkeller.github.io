@@ -2,6 +2,9 @@
 position: Lead Software Engineer
 company: Davant Systems
 companyWebsite: https://www.davantsystems.com
+companyLogo:
+  src: /src/images/logos/jobs/logo_davantsystems.jpg
+  alt: Davant Systems logo
 startMonthYear: Feb 2023
 endMonthYear: Present
 tech:

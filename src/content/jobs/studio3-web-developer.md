@@ -1,6 +1,9 @@
 ---
 company: Studio 3 Marketing
 companyWebsite: https://www.studio3marketing.com/
+companyLogo:
+  src: /src/images/logos/jobs/logo_studio3-logomark.png
+  alt: Studio 3 Marketing logo
 position: Frontend Web Developer
 startMonthYear: May 2018
 endMonthYear: July 2020

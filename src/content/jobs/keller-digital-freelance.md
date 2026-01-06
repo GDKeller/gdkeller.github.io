@@ -1,5 +1,8 @@
 ---
 company: Keller Digital
+companyLogo:
+  src: /src/images/logos/jobs/logo_kellerdigital.jpg
+  alt: Keller Digital logo
 position: WordPress Developer & Strategist
 startMonthYear: Aug 2011
 endMonthYear: May 2019

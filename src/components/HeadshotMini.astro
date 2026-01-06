@@ -1,0 +1,147 @@
+---
+import { Image } from "astro:assets";
+
+import grantImg from "../images/headshots/grant-matched.jpg";
+import ai1 from "../images/headshots/grant-headshot-casual-1.jpg";
+import ai3 from "../images/headshots/grant-headshot-casual-2.jpg";
+import ai4 from "../images/headshots/grant-headshot-professional-1.jpg";
+import ai5 from "../images/headshots/grant-headshot-professional-2.jpg";
+import ai6 from "../images/headshots/grant-headshot-professional-3.jpg";
+import ai7 from "../images/headshots/grant-headshot-outdoor-1.jpg";
+import ai8 from "../images/headshots/grant-headshot-outdoor-2.jpg";
+import ai10 from "../images/headshots/grant-headshot-studio-1.jpg";
+import ai12 from "../images/headshots/grant-headshot-studio-2.jpg";
+import ai15 from "../images/headshots/grant-headshot-creative-1.jpg";
+import ai20 from "../images/headshots/grant-headshot-creative-2.jpg";
+import ai22_2 from "../images/headshots/grant-headshot-creative-3.jpg";
+import ai25 from "../images/headshots/grant-headshot-alternate.jpg";
+---
+
+<div class="headshot-mini relative block h-full w-full">
+  <Image src={grantImg} alt="Grant" class="headshot-mini__base h-full w-full object-cover" />
+  <Image src={ai1} alt="" class="headshot-mini__img animate-mini-1" />
+  <Image src={ai3} alt="" class="headshot-mini__img animate-mini-2" />
+  <Image src={ai4} alt="" class="headshot-mini__img animate-mini-3" />
+  <Image src={ai5} alt="" class="headshot-mini__img animate-mini-4" />
+  <Image src={ai6} alt="" class="headshot-mini__img animate-mini-5" />
+  <Image src={ai7} alt="" class="headshot-mini__img animate-mini-6" />
+  <Image src={ai8} alt="" class="headshot-mini__img animate-mini-7" />
+  <Image src={ai10} alt="" class="headshot-mini__img animate-mini-8" />
+  <Image src={ai12} alt="" class="headshot-mini__img animate-mini-9" />
+  <Image src={ai15} alt="" class="headshot-mini__img animate-mini-10" />
+  <Image src={ai20} alt="" class="headshot-mini__img animate-mini-11" />
+  <Image src={ai22_2} alt="" class="headshot-mini__img animate-mini-12" />
+  <Image src={ai25} alt="" class="headshot-mini__img animate-mini-13" />
+</div>
+
+<style>
+  .headshot-mini__base {
+    position: relative;
+    z-index: 1;
+  }
+
+  .headshot-mini__img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    z-index: 2;
+  }
+
+  /* All images use same 52s cycle, each with unique keyframes */
+  .animate-mini-1 { animation: mini-1 52s 3s infinite; }
+  .animate-mini-2 { animation: mini-2 52s 3s infinite; }
+  .animate-mini-3 { animation: mini-3 52s 3s infinite; }
+  .animate-mini-4 { animation: mini-4 52s 3s infinite; }
+  .animate-mini-5 { animation: mini-5 52s 3s infinite; }
+  .animate-mini-6 { animation: mini-6 52s 3s infinite; }
+  .animate-mini-7 { animation: mini-7 52s 3s infinite; }
+  .animate-mini-8 { animation: mini-8 52s 3s infinite; }
+  .animate-mini-9 { animation: mini-9 52s 3s infinite; }
+  .animate-mini-10 { animation: mini-10 52s 3s infinite; }
+  .animate-mini-11 { animation: mini-11 52s 3s infinite; }
+  .animate-mini-12 { animation: mini-12 52s 3s infinite; }
+  .animate-mini-13 { animation: mini-13 52s 3s infinite; }
+
+  /* Each image visible for ~4s window */
+  @keyframes mini-1 {
+    0% { opacity: 0; }
+    4% { opacity: 1; }
+    8% { opacity: 0; }
+    100% { opacity: 0; }
+  }
+  @keyframes mini-2 {
+    0%, 8% { opacity: 0; }
+    12% { opacity: 1; }
+    15% { opacity: 0; }
+    100% { opacity: 0; }
+  }
+  @keyframes mini-3 {
+    0%, 15% { opacity: 0; }
+    19% { opacity: 1; }
+    23% { opacity: 0; }
+    100% { opacity: 0; }
+  }
+  @keyframes mini-4 {
+    0%, 23% { opacity: 0; }
+    27% { opacity: 1; }
+    31% { opacity: 0; }
+    100% { opacity: 0; }
+  }
+  @keyframes mini-5 {
+    0%, 31% { opacity: 0; }
+    35% { opacity: 1; }
+    38% { opacity: 0; }
+    100% { opacity: 0; }
+  }
+  @keyframes mini-6 {
+    0%, 38% { opacity: 0; }
+    42% { opacity: 1; }
+    46% { opacity: 0; }
+    100% { opacity: 0; }
+  }
+  @keyframes mini-7 {
+    0%, 46% { opacity: 0; }
+    50% { opacity: 1; }
+    54% { opacity: 0; }
+    100% { opacity: 0; }
+  }
+  @keyframes mini-8 {
+    0%, 54% { opacity: 0; }
+    58% { opacity: 1; }
+    62% { opacity: 0; }
+    100% { opacity: 0; }
+  }
+  @keyframes mini-9 {
+    0%, 62% { opacity: 0; }
+    65% { opacity: 1; }
+    69% { opacity: 0; }
+    100% { opacity: 0; }
+  }
+  @keyframes mini-10 {
+    0%, 69% { opacity: 0; }
+    73% { opacity: 1; }
+    77% { opacity: 0; }
+    100% { opacity: 0; }
+  }
+  @keyframes mini-11 {
+    0%, 77% { opacity: 0; }
+    81% { opacity: 1; }
+    85% { opacity: 0; }
+    100% { opacity: 0; }
+  }
+  @keyframes mini-12 {
+    0%, 85% { opacity: 0; }
+    88% { opacity: 1; }
+    92% { opacity: 0; }
+    100% { opacity: 0; }
+  }
+  @keyframes mini-13 {
+    0%, 92% { opacity: 0; }
+    96% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+</style>

@@ -1,30 +1,42 @@
 ---
 import Link from "./Link.astro";
+import ProjectSingleImage from "./ProjectSingleImage.astro";
 import SkillBadge from "./SkillBadge.astro";
 
 const { job } = Astro.props;
 const { data } = job;
-const { company, companyWebsite, position, startMonthYear, endMonthYear, tech } = data;
+const { company, companyLogo, companyWebsite, position, startMonthYear, endMonthYear, tech } = data;
 const { Content } = await job.render();
 ---
 
 <div class="job-card relative z-20 mb-24 pt-8">
-  <div
-    class="mb-2 flex flex-col justify-start font-bayon text-2xl sm:flex-row md:text-2xl lg:text-3xl"
-  >
-    <h3>
-      <span class="block font-bold text-fuchsia-500 sm:inline-block">{position}</span>
-      <span class="mx-1 hidden font-bokor sm:inline-block">&nbsp;᠅&nbsp;</span>
-      <Link href={companyWebsite} target="_blank" class="no-underline">
-        {company}
-      </Link>
-    </h3>
-  </div>
+  <div class="mb-6 flex flex-col items-start md:flex-row md:items-center">
+    {
+      companyLogo && (
+        <div class="image relative mb-4 mr-2 shrink-0 lg:-ml-4 lg:mr-8">
+          <ProjectSingleImage imagePath={companyLogo.src} altText={companyLogo.alt} />
+        </div>
+      )
+    }
+    <div class="flex flex-col">
+      <div
+        class="mb-2 flex flex-col justify-start font-bayon text-2xl sm:flex-row md:text-2xl lg:text-3xl"
+      >
+        <h3>
+          <span class="block font-bold text-fuchsia-500 sm:inline-block">{position}</span>
+          <span class="mx-1 hidden font-bokor sm:inline-block">&nbsp;᠅&nbsp;</span>
+          <Link href={companyWebsite} target="_blank" class="no-underline">
+            {company}
+          </Link>
+        </h3>
+      </div>
 
-  <p class="mb-6 italic">
-    {startMonthYear ? startMonthYear : null} -
-    {endMonthYear ? endMonthYear : "Present"}
-  </p>
+      <p class="italic">
+        {startMonthYear ? startMonthYear : null} -
+        {endMonthYear ? endMonthYear : "Present"}
+      </p>
+    </div>
+  </div>
 
   {
     tech && (
@@ -63,6 +75,10 @@ const { Content } = await job.render();
       @apply absolute -left-8 -top-0 z-0 h-1 w-12 bg-gradient-to-r from-emerald-400/20 via-teal-500/15 to-blue-950/20;
       content: "";
     }
+
+    .project-image img {
+      @apply max-h-20 sm:max-h-20 md:max-h-24 lg:max-h-32;
+    }
   }
   .job-body {
     p {
@@ -83,5 +99,22 @@ const { Content } = await job.render();
     a {
       @apply underline hover:text-fuchsia-500;
     }
+  }
+
+  .image:before {
+    z-index: 0;
+    background: radial-gradient(
+      circle,
+      rgba(0, 150, 100, 0.4) 0%,
+      rgba(0, 150, 100, 0.15) 25%,
+      transparent 70%
+    );
+    content: "";
+    top: 50%;
+    left: 50%;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    transform: translate3d(-50%, -50%, 0) scale(3);
   }
 </style>

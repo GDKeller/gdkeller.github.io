@@ -1,6 +1,9 @@
 ---
 company: Alley Interactive
 companyWebsite: https://alley.com/
+companyLogo:
+  src: /src/images/logos/jobs/logo_alley-lettermark.png
+  alt: Alley Interactive logo
 position: Senior User Experience Developer
 startMonthYear: Aug 2020
 endMonthYear: Dec 2023

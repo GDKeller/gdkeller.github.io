@@ -9,9 +9,11 @@ interface Props {
 
 const { imagePath, altText } = Astro.props;
 
-const images = import.meta.glob<{ default: ImageMetadata }>(
-  "/src/images/projects/*/*.{jpeg,jpg,png,gif}",
-);
+const images = import.meta.glob<{ default: ImageMetadata }>([
+  "/src/images/projects/*/*.{jpeg,jpg,png,gif,webp}",
+  "/src/images/logos/clients/*.{jpeg,jpg,png,gif,webp}",
+  "/src/images/logos/jobs/*.{jpeg,jpg,png,gif,webp}",
+]);
 
 if (!images[imagePath]) {
   console.error(`Image not found: ${imagePath}`);
@@ -21,7 +23,11 @@ if (!images[imagePath]) {
 <div class="project-image relative">
   {
     images[imagePath] ? (
-      <Image src={images[imagePath]()} alt={altText ?? "Project"} class="w-auto object-contain" />
+      <Image
+        src={images[imagePath]()}
+        alt={altText ?? "Project"}
+        class="w-auto rounded-lg object-contain"
+      />
     ) : null
   }
 </div>
