@@ -56,9 +56,9 @@ const awards: Award[] = [
   role="region"
   aria-label="Awards and recognition"
 >
-  <h2 class="mb-4 text-center font-bokor text-5xl md:text-6xl">Awards</h2>
+  <h2 class="section-heading__glow mb-4 text-center font-bokor text-5xl md:text-6xl">Awards</h2>
   <p class="mx-auto mb-12 max-w-2xl text-center text-sm md:mb-16 md:text-base">
-    Recognized for excellence in software, TV & Film, and digital advertising
+    Recognized multidisiciplinary excellence
   </p>
 
   <div
@@ -71,7 +71,7 @@ const awards: Award[] = [
             <Image
               src={award.src}
               alt={award.alt}
-              class={`transition-drop-shadow h-full w-full object-contain ${award.level === "gold" ? "drop-shadow-[0_0_1rem_rgba(250,220,160,0.35)]" : award.level === "silver" ? "drop-shadow-[0_0_1rem_rgba(192,192,192,0.35)]" : "drop-shadow-[0_0_1rem_rgba(205,127,50,0.3)]"}`}
+              class={`transition-drop-shadow h-full w-full object-contain ${award.level === "gold" ? "drop-shadow-[0_0_1rem_rgba(250,220,160,0.4)]" : award.level === "silver" ? "drop-shadow-[0_0_1rem_rgba(192,192,192,0.4)]" : "drop-shadow-[0_0_1rem_rgba(205,127,50,0.3)]"}`}
               loading="eager"
             />
             {award.count > 1 && (

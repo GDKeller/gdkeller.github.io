@@ -3,15 +3,22 @@ interface Props {
   href: string;
   target?: '_blank' | '_self' | '_parent' | '_top';
   class?: string;
+  variant?: 'default' | 'subtle';
 }
 
-const { href, target, class: className } = Astro.props;
+const { href, target, class: className, variant = 'default' } = Astro.props;
 const relAttr = target === '_blank' ? 'noopener noreferrer' : undefined;
+
+const variantStyles = {
+  default: 'text-fuchsia-500 underline hover:text-fuchsia-300',
+  subtle: 'text-emerald-200 no-underline hover:text-emerald-100',
+};
 ---
 
 <a
   class:list={[
-    "text-fuchsia-500 inline-block underline hover:cursor-pointer hover:text-fuchsia-300",
+    'inline-block hover:cursor-pointer',
+    variantStyles[variant],
     className,
   ]}
   href={href}

@@ -12,7 +12,7 @@ const navLinks = [
 <nav
   id="main-nav"
   class:list={[
-    "mr-auto flex gap-2 font-bokor text-base font-bold text-emerald-200 sm:gap-4 sm:text-lg md:text-2xl",
+    "md:text-md mr-auto flex gap-2 text-sm font-semibold text-emerald-200 sm:gap-4 sm:text-sm lg:text-lg",
     className,
   ]}
 >
@@ -21,7 +21,7 @@ const navLinks = [
       <a
         href={href}
         data-section={href.slice(1)}
-        class="nav-link transition-colors hover:text-emerald-100"
+        class="nav-link tracking-wide transition-colors hover:text-emerald-100"
       >
         {label}
       </a>
