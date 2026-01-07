@@ -1,20 +1,13 @@
 ---
 interface Props {
   spacing?: "default" | "large";
-  opacity?: "subtle" | "default" | "strong";
 }
 
-const { spacing = "default", opacity = "default" } = Astro.props;
+const { spacing = "default" } = Astro.props;
 
 const spacingClasses = {
   default: "my-16",
   large: "my-20",
-};
-
-const opacityClasses = {
-  subtle: "via-emerald-200/20",
-  default: "via-emerald-700/40",
-  strong: "via-emerald-500/60",
 };
 ---
 
@@ -23,8 +16,4 @@ const opacityClasses = {
   aria-hidden="true"
   class:list={["mx-auto max-w-6xl px-8", spacingClasses[spacing]]}
 >
-  <!-- <div
-    class:list={["h-px bg-gradient-to-r from-transparent to-transparent", opacityClasses[opacity]]}
-  >
-  </div> -->
 </div>
