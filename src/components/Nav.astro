@@ -33,8 +33,46 @@ const navLinks = [
   .nav-link {
     position: relative;
     transition:
-      color 0.6s ease,
-      text-shadow 0.6s ease;
+      color 0.2s ease,
+      text-shadow 0.2s ease;
+  }
+
+  .nav-link::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%) translateY(50%) scaleY(0%);
+    width: 40px;
+    height: 10px;
+    background: radial-gradient(
+      circle at top,
+      theme("colors.emerald.300") 0%,
+      theme("colors.emerald.500") 50%,
+      transparent 100%
+    );
+    transform-origin: bottom;
+    opacity: 0;
+    filter: blur(6px);
+    transition:
+      transform 0.3s ease,
+      opacity 0.2s ease;
+  }
+
+  .nav-link:hover,
+  .nav-link:focus-visible {
+    color: theme("colors.emerald.100");
+    text-shadow: 0 0 8px theme("colors.emerald.500" / 40%);
+  }
+
+  .nav-link:hover::before,
+  .nav-link:focus-visible::before {
+    transform: translateX(-50%) translateY(50%) scaleY(80%);
+    opacity: 1;
+  }
+
+  .nav-link.active::before {
+    opacity: 0;
   }
 
   .nav-link::after {
@@ -52,12 +90,11 @@ const navLinks = [
       transparent 100%
     );
     transform-origin: bottom;
-    background-color: theme("colors.fuchsia.500");
     opacity: 0;
     filter: blur(6px);
     transition:
-      transform 1.2s ease,
-      opacity 0.3s ease;
+      transform 0.3s ease,
+      opacity 0.2s ease;
   }
 
   .nav-link.active {

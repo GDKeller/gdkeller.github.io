@@ -30,9 +30,9 @@ import HeadshotMini from "./HeadshotMini.astro";
       <Nav class="" />
     </div>
     <div class="flex items-center gap-2 text-sm">
-      <Link href="https://github.com/gdkeller" target="_blank" class="hidden md:block">
+      <Link href="https://github.com/gdkeller" target="_blank" class="icon-link group hidden md:block">
         <svg
-          class="h-6 w-6 text-emerald-200"
+          class="h-6 w-6 rounded-full bg-black/60 text-emerald-200 transition-all duration-200 group-hover:text-emerald-100 group-focus-visible:text-emerald-100 group-hover:drop-shadow-[0_0_6px_rgba(16,185,129,0.5)] group-focus-visible:drop-shadow-[0_0_6px_rgba(16,185,129,0.5)]"
           fill="currentColor"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
@@ -46,10 +46,10 @@ import HeadshotMini from "./HeadshotMini.astro";
       <Link
         href="https://www.linkedin.com/in/grantdkeller/"
         target="_blank"
-        class="hidden md:block"
+        class="icon-link group hidden md:block"
       >
         <svg
-          class="h-6 w-6 text-emerald-200"
+          class="h-6 w-6 rounded bg-black/60 text-emerald-200 transition-all duration-200 group-hover:text-emerald-100 group-focus-visible:text-emerald-100 group-hover:drop-shadow-[0_0_6px_rgba(16,185,129,0.5)] group-focus-visible:drop-shadow-[0_0_6px_rgba(16,185,129,0.5)]"
           fill="currentColor"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
@@ -136,3 +136,36 @@ import HeadshotMini from "./HeadshotMini.astro";
     observer.observe(hero);
   }
 </script>
+
+<style>
+  :global(.icon-link) {
+    position: relative;
+  }
+
+  :global(.icon-link)::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    transform: translate3d(-50%, -50%, 0) scale(1);
+    background: radial-gradient(
+      ellipse at center,
+      theme("colors.emerald.400" / 20%) 0%,
+      transparent 70%
+    );
+    border-radius: 50%;
+    opacity: 0;
+    transition:
+      opacity 0.2s ease-in-out,
+      transform 0.4s ease-in-out;
+    pointer-events: none;
+  }
+
+  :global(.icon-link):hover::before,
+  :global(.icon-link):focus-visible::before {
+    opacity: 1;
+    transform: translate3d(-50%, -50%, 0) scale(1.7);
+  }
+</style>
