@@ -1,0 +1,302 @@
+---
+// Layered cyberpunk background for hero section
+---
+
+<div class="hero-bg absolute inset-0 -z-10 overflow-hidden" id="hero-bg">
+  <!-- Layer 1: Deep Grid -->
+  <div class="grid-layer grid-deep absolute inset-0" data-parallax="0.3"></div>
+
+  <!-- Layer 2: Mid Grid -->
+  <div class="grid-layer grid-mid absolute inset-0" data-parallax="0.5"></div>
+
+  <!-- Layer 3: Morphing Blobs -->
+  <div class="blobs absolute inset-0">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <!-- Layer 4: Mouse Spotlight -->
+  <div class="spotlight pointer-events-none absolute inset-0" id="spotlight"></div>
+
+  <!-- Layer 5: Scan Lines -->
+  <div class="scanlines pointer-events-none absolute inset-0"></div>
+
+  <!-- Layer 6: Noise -->
+  <div class="noise pointer-events-none absolute inset-0"></div>
+</div>
+
+<style>
+  /* Layer 1 & 2: Perspective Grids at different depths */
+  .grid-layer {
+    background-image:
+      linear-gradient(to right, theme("colors.emerald.500" / 10%) 1px, transparent 1px),
+      linear-gradient(to bottom, theme("colors.emerald.500" / 10%) 1px, transparent 1px);
+    transform-origin: center 40%;
+    mask-image: linear-gradient(to bottom, transparent 0%, black 30%, black 60%, transparent 90%);
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      black 30%,
+      black 60%,
+      transparent 90%
+    );
+  }
+
+  .grid-deep {
+    background-size: 40px 40px;
+    transform: perspective(600px) rotateX(65deg);
+    opacity: 0.3;
+    animation: grid-drift-slow 40s linear infinite;
+  }
+
+  .grid-mid {
+    background-size: 25px 25px;
+    background-image:
+      linear-gradient(to right, theme("colors.teal.400" / 15%) 1px, transparent 1px),
+      linear-gradient(to bottom, theme("colors.teal.400" / 15%) 1px, transparent 1px);
+    transform: perspective(400px) rotateX(70deg);
+    opacity: 0.5;
+    animation: grid-drift-fast 20s linear infinite;
+  }
+
+  @keyframes grid-drift-slow {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 0 40px;
+    }
+  }
+
+  @keyframes grid-drift-fast {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 0 25px;
+    }
+  }
+
+  /* Layer 3: Morphing Blobs */
+  .blobs {
+    filter: blur(80px);
+    opacity: 0.3;
+  }
+
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    mix-blend-mode: screen;
+  }
+
+  .blob-1 {
+    width: 40vw;
+    height: 40vw;
+    max-width: 500px;
+    max-height: 500px;
+    top: 10%;
+    right: 10%;
+    background: radial-gradient(circle, theme("colors.emerald.500") 0%, transparent 70%);
+    animation: blob-float-1 20s ease-in-out infinite;
+  }
+
+  .blob-2 {
+    width: 35vw;
+    height: 35vw;
+    max-width: 400px;
+    max-height: 400px;
+    top: 40%;
+    right: 15%;
+    background: radial-gradient(circle, theme("colors.teal.400") 0%, transparent 70%);
+    animation: blob-float-2 25s ease-in-out infinite;
+  }
+
+  .blob-3 {
+    width: 30vw;
+    height: 30vw;
+    max-width: 350px;
+    max-height: 350px;
+    top: 5%;
+    left: 5%;
+    background: radial-gradient(circle, theme("colors.fuchsia.500" / 60%) 0%, transparent 70%);
+    animation: blob-float-3 18s ease-in-out infinite;
+  }
+
+  @keyframes blob-float-1 {
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+    25% {
+      transform: translate(80px, -60px) scale(1.2);
+    }
+    50% {
+      transform: translate(120px, 40px) scale(0.9);
+    }
+    75% {
+      transform: translate(-60px, 80px) scale(1.1);
+    }
+  }
+
+  @keyframes blob-float-2 {
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+    25% {
+      transform: translate(-100px, 70px) scale(0.85);
+    }
+    50% {
+      transform: translate(-50px, -80px) scale(1.15);
+    }
+    75% {
+      transform: translate(90px, -40px) scale(1.05);
+    }
+  }
+
+  @keyframes blob-float-3 {
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+    25% {
+      transform: translate(70px, 90px) scale(1.25);
+    }
+    50% {
+      transform: translate(-80px, 50px) scale(0.8);
+    }
+    75% {
+      transform: translate(-40px, -70px) scale(1.1);
+    }
+  }
+
+  /* Layer 4: Mouse Spotlight */
+  .spotlight {
+    background: radial-gradient(
+      600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      theme("colors.emerald.500" / 8%) 0%,
+      transparent 50%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .hero-bg:hover .spotlight {
+    opacity: 1;
+  }
+
+  /* Layer 5: Scan Lines */
+  .scanlines {
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      theme("colors.black" / 3%) 2px,
+      theme("colors.black" / 3%) 4px
+    );
+    opacity: 0.5;
+  }
+
+  /* Layer 6: Noise */
+  .noise {
+    opacity: 0.03;
+    animation: noise-shift 0.2s steps(10) infinite;
+  }
+
+  .noise::before {
+    content: "";
+    position: absolute;
+    inset: -50%;
+    width: 200%;
+    height: 200%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+
+  @keyframes noise-shift {
+    0% {
+      transform: translate(0, 0);
+    }
+    10% {
+      transform: translate(-5%, -5%);
+    }
+    20% {
+      transform: translate(5%, 5%);
+    }
+    30% {
+      transform: translate(-3%, 3%);
+    }
+    40% {
+      transform: translate(3%, -3%);
+    }
+    50% {
+      transform: translate(-5%, 5%);
+    }
+    60% {
+      transform: translate(5%, -5%);
+    }
+    70% {
+      transform: translate(-3%, -3%);
+    }
+    80% {
+      transform: translate(3%, 3%);
+    }
+    90% {
+      transform: translate(-5%, 0);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .grid-layer,
+    .blob,
+    .noise {
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  const heroBg = document.getElementById("hero-bg");
+  const spotlight = document.getElementById("spotlight");
+
+  if (heroBg && spotlight) {
+    heroBg.addEventListener("mousemove", (e) => {
+      const rect = heroBg.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      spotlight.style.setProperty("--mouse-x", `${x}%`);
+      spotlight.style.setProperty("--mouse-y", `${y}%`);
+    });
+  }
+
+  // Parallax on scroll - store original transforms to preserve them
+  const parallaxElements = document.querySelectorAll("[data-parallax]");
+  const originalTransforms = new Map<Element, string>();
+
+  parallaxElements.forEach((el) => {
+    originalTransforms.set(el, getComputedStyle(el).transform);
+  });
+
+  if (parallaxElements.length > 0) {
+    window.addEventListener(
+      "scroll",
+      () => {
+        const scrollY = window.scrollY;
+        parallaxElements.forEach((el) => {
+          const speed = parseFloat(el.getAttribute("data-parallax") || "0");
+          const yPos = scrollY * speed;
+          const original = originalTransforms.get(el);
+          (el as HTMLElement).style.transform =
+            original && original !== "none"
+              ? `translateY(${yPos}px) ${original}`
+              : `translateY(${yPos}px)`;
+        });
+      },
+      { passive: true },
+    );
+  }
+</script>

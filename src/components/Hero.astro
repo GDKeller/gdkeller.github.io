@@ -1,5 +1,6 @@
 ---
 import Headshot from "./Headshot.astro";
+import HeroBackground from "./HeroBackground.astro";
 import LogoCarousel from "./LogoCarousel.astro";
 ---
 
@@ -7,9 +8,10 @@ import LogoCarousel from "./LogoCarousel.astro";
   id="hero"
   class="relative z-50 flex w-full max-w-full flex-col justify-center overflow-x-hidden px-2 pb-2 pt-0 sm:px-8 sm:pt-10 lg:pt-16"
 >
+  <HeroBackground />
   <div
     id="hero__content"
-    class="relative z-50 mx-auto mb-8 flex max-w-7xl flex-col items-center justify-start overflow-hidden rounded-xl bg-gradient-to-br from-emerald-950/20 via-teal-800/10 to-blue-950/20 px-6 pb-4 pt-4 shadow-2xl shadow-teal-950/50 sm:ml-0 sm:mr-0 sm:w-full sm:max-w-none sm:items-center sm:pl-4 sm:pr-4 md:ml-auto md:mr-auto md:w-auto md:flex-row md:pl-6 md:pr-6 md:pt-6 lg:mr-auto lg:pb-12 lg:pl-12 lg:pr-8 lg:pt-12"
+    class="glass relative z-50 mx-auto mb-8 flex max-w-7xl flex-col items-center justify-start overflow-hidden rounded-xl bg-black/70 bg-gradient-to-br from-emerald-950/10 via-teal-800/10 to-blue-950/10 px-6 pb-4 pt-4 shadow-2xl shadow-teal-950/50 sm:ml-0 sm:mr-0 sm:w-full sm:max-w-none sm:items-center sm:pl-4 sm:pr-4 md:ml-auto md:mr-auto md:w-auto md:flex-row md:pl-6 md:pr-6 md:pt-6 lg:mr-auto lg:pb-12 lg:pl-12 lg:pr-8 lg:pt-12"
   >
     <div
       class="relative mb-6 flex w-full flex-col items-center justify-center sm:mb-auto sm:ml-auto sm:mr-auto sm:w-auto sm:flex-row sm:justify-start md:mr-6 md:w-auto md:flex-col md:items-center lg:mr-12 lg:max-w-80 xl:mr-12"
@@ -21,7 +23,7 @@ import LogoCarousel from "./LogoCarousel.astro";
       </div>
       <div class="relative z-20">
         <h1
-          class="hero__name z-40 mx-auto mb-3 block whitespace-nowrap bg-gradient-to-br from-pink-400 via-fuchsia-500 to-fuchsia-600 bg-clip-text text-center font-marker text-4xl leading-[1em] text-transparent sm:text-left sm:text-4xl md:-mt-[0.9em] md:w-min md:text-center md:text-4xl lg:w-full lg:text-center lg:text-5xl xl:text-5xl"
+          class="hero__name z-40 mx-auto mb-3 block whitespace-nowrap bg-gradient-to-b from-pink-200 via-fuchsia-500 to-rose-500 bg-clip-text text-center font-marker text-4xl leading-[1em] text-transparent sm:text-left sm:text-4xl md:-mt-[0.9em] md:w-min md:text-center md:text-4xl lg:w-full lg:text-center lg:text-5xl xl:text-5xl"
         >
           Grant Keller
         </h1>
@@ -127,6 +129,17 @@ import LogoCarousel from "./LogoCarousel.astro";
 
   .hero__name {
     line-height: 0.8;
+    display: block;
+    position: relative;
+
+    &::after {
+      content: "Grant Keller";
+      text-shadow: 0px 0px 0.1em theme(colors.fuchsia.500 / 0.8);
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: -1;
+    }
   }
 
   #hero .huge {
