@@ -145,4 +145,11 @@ import alternate from "../images/headshots/grant-headshot-alternate.jpg";
     96% { opacity: 1; }
     100% { opacity: 0; }
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    .headshot-mini__img {
+      animation: none;
+      opacity: 0;
+    }
+  }
 </style>

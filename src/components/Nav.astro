@@ -106,6 +106,14 @@ const navLinks = [
     transform: translateX(-50%) translateY(50%) scaleY(80%);
     opacity: 1;
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    .nav-link,
+    .nav-link::before,
+    .nav-link::after {
+      transition: none;
+    }
+  }
 </style>
 
 <script>
@@ -137,6 +145,20 @@ const navLinks = [
     }
   }
 
-  window.addEventListener("scroll", setActiveSection, { passive: true });
+  // Throttle scroll handler with requestAnimationFrame
+  let ticking = false;
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setActiveSection();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    },
+    { passive: true },
+  );
   setActiveSection();
 </script>
