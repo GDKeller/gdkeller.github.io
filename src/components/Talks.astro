@@ -50,7 +50,11 @@ const appearances: Appearance[] = [
 ---
 
 <div class="talks container mx-auto max-w-6xl px-4 sm:px-6 md:px-8">
-  <h2 class="section-heading__glow mb-4 text-center font-bokor text-5xl md:text-6xl">Appearances</h2>
+  <h2
+    class="section-heading__glow section-heading__center mb-4 ml-auto mr-auto w-min text-center font-bokor text-5xl md:text-6xl"
+  >
+    Appearances
+  </h2>
   <p class="mx-auto mb-12 max-w-2xl text-center text-sm md:mb-16 md:text-base">
     Conference talks, podcasts, and hardware hacking
   </p>
@@ -59,7 +63,9 @@ const appearances: Appearance[] = [
     {
       appearances.map((item) => (
         <article class="group relative bg-gradient-to-br from-emerald-800/15 via-teal-950/20 to-emerald-950/20 px-4 py-4">
-          <div class={`relative mb-4 overflow-hidden ${item.type === "audio" ? "h-48" : "aspect-video"}`}>
+          <div
+            class={`relative mb-4 overflow-hidden ${item.type === "audio" ? "h-48" : "aspect-video"}`}
+          >
             {item.type === "youtube" ? (
               <iframe
                 src={`https://www.youtube.com/embed/${item.videoId}${item.startTime ? `?start=${item.startTime}` : ""}`}
