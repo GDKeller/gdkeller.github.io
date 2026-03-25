@@ -9,6 +9,7 @@ import Jobs from "../components/Jobs.astro";
 import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
 import Nypost from "../components/Nypost.astro";
+import OfflineBgRemover from "../components/OfflineBgRemover.astro";
 import Footer from "../components/Footer.astro";
 import SectionDivider from "../components/SectionDivider.astro";
 import Awards from "../components/Awards.astro";
@@ -26,7 +27,7 @@ import Talks from "../components/Talks.astro";
 
       <div class="overflow-x-hidden">
         <!-- Awards -->
-        <section class="relative py-16 md:py-24">
+        <section class="relative py-16 md:pb-24 md:pt-48">
           <Awards />
         </section>
 
@@ -43,10 +44,11 @@ import Talks from "../components/Talks.astro";
             </h2>
           </div>
           <Nypost />
+          <OfflineBgRemover />
         </section>
 
         <!-- Skills -->
-        <section id="skills" class="relative mx-auto block max-w-6xl px-2 py-20 md:py-20">
+        <section id="skills" class="relative mx-auto block max-w-6xl px-2 py-20 md:py-20 lg:pb-64">
           <SkillsGrid />
         </section>
 

@@ -1,0 +1,86 @@
+---
+
+---
+
+<div
+  class="relative z-0 mx-auto mb-32 grid max-w-full grid-cols-1 items-center overflow-x-hidden border-b-2 border-blue-950/30 pt-24 md:grid-cols-2"
+>
+  <span
+    class="absolute left-0 top-0 z-10 h-1/4 w-full bg-gradient-to-b from-black to-transparent opacity-100"
+  ></span>
+  <span
+    class="absolute bottom-0 left-0 z-10 h-1/4 w-full bg-gradient-to-t from-black to-transparent opacity-90"
+  ></span>
+  <span class="absolute left-0 top-0 z-0 h-full w-full bg-blue-950/30"></span>
+
+  <!-- Content Column -->
+  <div class="z-20 flex w-full flex-col justify-center px-8 pb-4 pt-12 md:pt-0 xl:px-12">
+    <h3
+      class="mb-2 font-bayon text-4xl text-white md:mb-0 md:text-2xl lg:mb-2 lg:text-4xl xl:text-5xl"
+    >
+      Offline Background Remover
+    </h3>
+    <p class="mb-6 text-xl text-sky-400 md:text-sm lg:text-lg xl:text-xl">macOS App</p>
+    <div class="lg:max-w-xl">
+      <p class="mtext-sm mb-4 font-bold text-white">
+        Built on Tauri v2 with React and a CoreML-optimized ONNX pipeline that runs AI models
+        entirely on-device.
+      </p>
+      <p class="mb-8 text-sm text-white md:mb-0">
+        Designed the full architecture and drag-and-drop UI. Includes 13 on-device segmentation
+        models, a real-time four-view comparison interface, and advanced mask editing controls. Zero
+        user dependencies.
+      </p>
+    </div>
+  </div>
+
+  <!-- Video Column -->
+  <div class="relative z-20 mb-0 mt-auto w-full px-8 lg:pr-4">
+    <div class="mx-auto max-w-lg overflow-hidden rounded-t-[3.5%] md:max-w-full">
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        class="block w-full"
+        aria-label="App demonstration showing drag-and-drop background removal with AI models"
+      >
+        <source src="/video/obr-app-preview.mp4" type="video/mp4" />
+      </video>
+    </div>
+  </div>
+
+  <!-- Ribbon: Technologies + CTA -->
+  <div
+    class="z-20 col-span-full flex w-full flex-col items-center justify-between gap-6 border-t-2 border-blue-950/30 bg-black bg-gradient-to-r from-black via-blue-950/30 to-black px-4 py-8 sm:flex-row sm:px-6 md:pl-8 md:pr-6 lg:px-8"
+  >
+    <div class="flex flex-col flex-wrap text-white sm:flex-row sm:items-center">
+      <p class="sm:text-md mb-2 text-xs font-bold sm:mb-0 sm:mr-4 lg:text-base">Technologies:</p>
+      <ul
+        class="list sm:text-md md:text-md flex flex-row flex-wrap gap-2 text-xs italic sm:gap-4 lg:text-base"
+      >
+        <li>Tauri v2</li>
+        <li>React</li>
+        <li>TypeScript</li>
+        <li>Rust</li>
+        <li>CoreML</li>
+        <li>ONNX Runtime</li>
+      </ul>
+    </div>
+    <a
+      href="https://www.davantsystems.com/offline-background-remover/"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-block flex-shrink-0 rounded-md bg-blue-950 px-4 py-3 font-bold text-white transition-all duration-200 hover:bg-blue-900 md:px-6"
+    >
+      View App &rarr;
+    </a>
+  </div>
+</div>
+
+<script>
+  const video = document.querySelector(".video-frame video") as HTMLVideoElement;
+  if (video && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    video.pause();
+  }
+</script>
