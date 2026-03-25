@@ -127,3 +127,14 @@ Each content type has specific required fields:
 - Performance is a current concern - always consider bundle size impact
 - The design aesthetic is creative/cyberpunk - maintain visual consistency
 - Professional tone required - this showcases to potential employers
+
+## Project Board
+
+This project uses a structured board system for project management.
+
+- **Ask before creating new board files** — don't auto-create tasks, ADRs, etc.
+- Follow the board system spec for all documentation artifacts
+- Use `/board:board-show` to see current board state
+- Use `/board:board-add` to create new items
+- Use `/board:board-update` after completing significant work to reconcile the board
+- Use `/board:board-check` when starting work to find related board context

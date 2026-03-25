@@ -1,3 +1,9 @@
+---
+type: note
+status: inbox
+created: 2025-12-05
+---
+
 # Portfolio UX Improvement Plan
 
 **Created:** December 5, 2025
@@ -100,26 +106,12 @@ The portfolio demonstrates strong technical skills but suffers from **inverted i
 - [ ] Position after Skills or before Projects
 - [ ] Style to match site aesthetic
 
-**Example Format:**
-```
-"Grant is the most thoughtful frontend engineer I've worked with. His attention
-to accessibility and performance is unmatched."
-— Jane Doe, Engineering Manager at NY Post
-```
-
 ### Task 2.2: Expand Job Descriptions with STAR Format
 - [ ] Review each job entry in `src/content/jobs/`
 - [ ] Add quantified achievements (metrics, percentages, scale)
 - [ ] Use STAR format: Situation → Task → Action → Result
 - [ ] Add specific dates (Month Year format)
 - [ ] Consider adding company logos
-
-**Example Transformation:**
-```
-Before: "Led frontend development"
-After: "Led frontend architecture for mobile web, achieving 62M monthly visits
-       and 95+ Lighthouse performance score"
-```
 
 ### Task 2.3: Write NY Post Case Study
 - [ ] Create detailed case study (1-2 paragraphs)

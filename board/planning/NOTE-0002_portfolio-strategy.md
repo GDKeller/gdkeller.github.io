@@ -1,3 +1,9 @@
+---
+type: note
+status: inbox
+created: 2025-06-26
+---
+
 # Portfolio Strategy & Structure
 
 **STATUS: DRAFT IDEAS - NOT YET APPROVED**
@@ -13,7 +19,7 @@ Your frontend experience is your strongest foundation and most employable skill.
 ## Key Positioning Strategy
 
 **Primary Differentiator**: Business-to-technical translation ability
-- This is senior IC/tech lead territory 
+- This is senior IC/tech lead territory
 - Applies across all domains (WordPress agencies, AI startups, general frontend)
 - Most developers struggle with stakeholder communication - you don't
 
@@ -42,7 +48,7 @@ Keep it simple with one comprehensive page that tells your complete story withou
 ## Content Principles
 
 - **Every sentence** should reinforce the business-tech translation theme
-- **Concrete examples** over abstract skills lists  
+- **Concrete examples** over abstract skills lists
 - **Business impact** mentioned in every project
 - **Technical depth** shown through project complexity, not buzzword lists
 

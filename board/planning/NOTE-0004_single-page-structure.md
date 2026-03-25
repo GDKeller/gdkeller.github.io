@@ -1,3 +1,9 @@
+---
+type: note
+status: inbox
+created: 2025-06-26
+---
+
 # Single-Page Portfolio Structure
 
 **STATUS: DRAFT IDEAS - NOT YET APPROVED**
@@ -30,7 +36,7 @@ Most developers either speak business or write code well.
 I do both.
 
 • Bridge stakeholder vision with technical implementation
-• Turn abstract requirements into concrete user experiences  
+• Turn abstract requirements into concrete user experiences
 • Communicate technical constraints in business terms
 ```
 
@@ -51,7 +57,7 @@ Project 1: AI Product
 "Built user-facing dashboard for [AI tool] - translated ML outputs into intuitive interface"
 Business impact | Technical approach | Link/visual
 
-Project 2: Client Work  
+Project 2: Client Work
 "Delivered responsive WordPress system for [client] - managed stakeholder requirements through complex technical constraints"
 Business impact | Technical approach | Link/visual
 
@@ -65,7 +71,7 @@ Business impact | Technical approach | Link/visual
 
 ```
 Frontend: React, TypeScript, modern tooling
-AI Integration: LLM APIs, ML product development  
+AI Integration: LLM APIs, ML product development
 Full Stack: Node.js, databases, deployment
 Foundation: Embedded systems, hardware interfaces
 Always: Clean code, performance optimization, user experience
