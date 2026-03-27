@@ -169,7 +169,7 @@ import HeadshotMini from "./HeadshotMini.astro";
     transform: translate3d(-50%, -50%, 0) scale(1);
     background: radial-gradient(
       ellipse at center,
-      theme("colors.emerald.400" / 20%) 0%,
+      color-mix(in oklch, var(--color-emerald-400) 20%, transparent) 0%,
       transparent 70%
     );
     border-radius: 50%;
@@ -187,7 +187,7 @@ import HeadshotMini from "./HeadshotMini.astro";
   }
 
   .oscilloscope-wave {
-    color: theme("colors.emerald.300");
+    color: var(--color-emerald-300);
     filter: blur(0.05rem);
   }
 

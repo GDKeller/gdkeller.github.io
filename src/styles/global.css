@@ -1,3 +1,52 @@
+@import "tailwindcss";
+@import "./jade-theme.css";
+
+@theme {
+  /* Fonts */
+  --font-bayon: "Bayon", sans-serif;
+  --font-bokor: "Bokor", serif;
+  --font-marker: "Permanent Marker", sans-serif;
+  --font-prompt: "Prompt", sans-serif;
+
+  /* Spacing extensions */
+  --spacing-18: 4.5rem;
+  --spacing-28: 7rem;
+  --spacing-36: 9rem;
+  --spacing-40: 10rem;
+
+  /* Display sizes (Hero, major statements) */
+  --text-display-sm: 2rem;
+  --text-display-sm--line-height: 2.5rem;
+  --text-display-md: 3rem;
+  --text-display-md--line-height: 3.5rem;
+  --text-display-lg: 4rem;
+  --text-display-lg--line-height: 4.5rem;
+  --text-display-xl: 5rem;
+  --text-display-xl--line-height: 5.5rem;
+
+  /* Headings (Section titles) */
+  --text-h1: 3rem;
+  --text-h1--line-height: 3.5rem;
+  --text-h2: 2.5rem;
+  --text-h2--line-height: 3rem;
+  --text-h3: 2rem;
+  --text-h3--line-height: 2.5rem;
+  --text-h4: 1.5rem;
+  --text-h4--line-height: 2rem;
+
+  /* Body text */
+  --text-body-lg: 1.25rem;
+  --text-body-lg--line-height: 2rem;
+  --text-body: 1rem;
+  --text-body--line-height: 1.5rem;
+  --text-body-sm: 0.875rem;
+  --text-body-sm--line-height: 1.25rem;
+  --text-body-xs: 0.75rem;
+  --text-body-xs--line-height: 1rem;
+  --text-body-2xs: 0.6875rem;
+  --text-body-2xs--line-height: 1rem;
+}
+
 /* Reduced Motion Support */
 @media (prefers-reduced-motion: no-preference) {
   :root {
@@ -24,16 +73,16 @@
 
 /* Focus Indicators - WCAG 2.2 Compliant */
 :focus-visible {
-  outline: 2px solid theme("colors.emerald.400");
+  outline: 2px solid var(--color-emerald-400);
   outline-offset: 4px;
   border-radius: 0;
 }
 
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid theme("colors.emerald.400");
+  outline: 2px solid var(--color-emerald-400);
   outline-offset: 2px;
-  box-shadow: 0 0 0 4px rgba(52, 211, 153, 0.2);
+  box-shadow: 0 0 0 4px color-mix(in oklch, var(--color-emerald-400) 20%, transparent);
 }
 
 /* High contrast mode support */
@@ -73,7 +122,7 @@ strong {
 .list-custom-wrapper ul li::before,
 .list-custom li::before {
   content: "▹";
-  color: theme("colors.emerald.500");
+  color: var(--color-emerald-500);
   position: absolute;
   left: 0;
   top: 0.125em;
@@ -82,7 +131,7 @@ strong {
 .section-heading {
   position: relative;
   width: min-content;
-  text-shadow: theme("colors.emerald.500") 0px 0px 8px;
+  text-shadow: var(--color-emerald-500) 0px 0px 8px;
 
   &::before {
     content: "";
@@ -94,11 +143,11 @@ strong {
     height: 10px;
     background: linear-gradient(
       to left,
-      theme("colors.emerald.600") 0%,
-      theme("colors.emerald.400") 2%,
-      theme("colors.emerald.200") 5%,
-      theme("colors.emerald.400") 8%,
-      theme("colors.emerald.700") 30%,
+      var(--color-emerald-600) 0%,
+      var(--color-emerald-400) 2%,
+      var(--color-emerald-200) 5%,
+      var(--color-emerald-400) 8%,
+      var(--color-emerald-700) 30%,
       transparent 100%
     );
     transform: translate3d(0, -50%, 0) scaleY(0.05);
@@ -116,12 +165,12 @@ strong {
     transform: translate3d(0, -50%, 0) scaleY(0.05);
     background: linear-gradient(
       to right,
-      theme("colors.emerald.600") 0%,
-      theme("colors.emerald.400") 2%,
-      theme("colors.emerald.200") 5%,
-      theme("colors.emerald.400") 8%,
-      theme("colors.emerald.500") 30%,
-      theme("colors.emerald.700") 70%,
+      var(--color-emerald-600) 0%,
+      var(--color-emerald-400) 2%,
+      var(--color-emerald-200) 5%,
+      var(--color-emerald-400) 8%,
+      var(--color-emerald-500) 30%,
+      var(--color-emerald-700) 70%,
       transparent 80%
     );
     filter: blur(20px);
@@ -129,13 +178,13 @@ strong {
 }
 
 .section-heading__glow {
-  text-shadow: theme("colors.emerald.500") 0px 0px 8px;
+  text-shadow: var(--color-emerald-500) 0px 0px 8px;
 }
 
 .section-heading__center {
   position: relative;
   display: block;
-  text-shadow: theme("colors.emerald.500") 0px 0px 8px;
+  text-shadow: var(--color-emerald-500) 0px 0px 8px;
 
   &::before {
     content: "";
@@ -148,12 +197,12 @@ strong {
     height: 10px;
     background: linear-gradient(
       to left,
-      theme("colors.emerald.600") 0%,
-      theme("colors.emerald.400") 2%,
-      theme("colors.emerald.200") 5%,
-      theme("colors.emerald.400") 8%,
-      theme("colors.emerald.500") 30%,
-      theme("colors.emerald.700") 70%,
+      var(--color-emerald-600) 0%,
+      var(--color-emerald-400) 2%,
+      var(--color-emerald-200) 5%,
+      var(--color-emerald-400) 8%,
+      var(--color-emerald-500) 30%,
+      var(--color-emerald-700) 70%,
       transparent 100%
     );
     transform: translate3d(0, -50%, 0) scaleY(0.05);
@@ -171,12 +220,12 @@ strong {
     transform: translate3d(0, -50%, 0) scaleY(0.05);
     background: linear-gradient(
       to right,
-      theme("colors.emerald.600") 0%,
-      theme("colors.emerald.400") 2%,
-      theme("colors.emerald.200") 5%,
-      theme("colors.emerald.400") 8%,
-      theme("colors.emerald.500") 30%,
-      theme("colors.emerald.700") 70%,
+      var(--color-emerald-600) 0%,
+      var(--color-emerald-400) 2%,
+      var(--color-emerald-200) 5%,
+      var(--color-emerald-400) 8%,
+      var(--color-emerald-500) 30%,
+      var(--color-emerald-700) 70%,
       transparent 100%
     );
     filter: blur(20px);

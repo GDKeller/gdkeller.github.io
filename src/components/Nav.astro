@@ -47,8 +47,8 @@ const navLinks = [
     height: 10px;
     background: radial-gradient(
       circle at top,
-      theme("colors.emerald.300") 0%,
-      theme("colors.emerald.500") 50%,
+      var(--color-emerald-300) 0%,
+      var(--color-emerald-500) 50%,
       transparent 100%
     );
     transform-origin: bottom;
@@ -61,8 +61,8 @@ const navLinks = [
 
   .nav-link:hover,
   .nav-link:focus-visible {
-    color: theme("colors.emerald.100");
-    text-shadow: 0 0 8px theme("colors.emerald.500" / 40%);
+    color: var(--color-emerald-100);
+    text-shadow: 0 0 8px color-mix(in oklch, var(--color-emerald-500) 40%, transparent);
   }
 
   .nav-link:hover::before,
@@ -85,8 +85,8 @@ const navLinks = [
     height: 10px;
     background: radial-gradient(
       circle at top,
-      theme("colors.fuchsia.300") 0%,
-      theme("colors.fuchsia.500") 50%,
+      var(--color-fuchsia-300) 0%,
+      var(--color-fuchsia-500) 50%,
       transparent 100%
     );
     transform-origin: bottom;
@@ -98,8 +98,8 @@ const navLinks = [
   }
 
   .nav-link.active {
-    color: theme("colors.fuchsia.400");
-    text-shadow: 0 0 12px theme("colors.fuchsia.500" / 50%);
+    color: var(--color-fuchsia-400);
+    text-shadow: 0 0 12px color-mix(in oklch, var(--color-fuchsia-500) 50%, transparent);
   }
 
   .nav-link.active::after {

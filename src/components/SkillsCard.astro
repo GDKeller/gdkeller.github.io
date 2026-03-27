@@ -23,6 +23,7 @@ const { text } = Astro.props;
 </div>
 
 <style>
+  @reference "tailwindcss";
   .skill-item {
     &::before {
       @apply absolute left-0 top-0 z-20 h-full w-1 bg-gradient-to-b from-emerald-400/20 via-teal-500/15 to-blue-950/20;

@@ -1,0 +1,54 @@
+---
+// Dev-only theme switcher — toggles between stock Tailwind and Jade palette.
+// Only renders when running `astro dev`.
+---
+
+{import.meta.env.DEV && (
+  <div id="theme-switcher">
+    <button id="theme-toggle" type="button" aria-label="Toggle color theme">
+      <span class="theme-label" id="theme-label">Stock</span>
+    </button>
+  </div>
+)}
+
+<style>
+  #theme-switcher {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 9999;
+  }
+
+  #theme-toggle {
+    font-family: 'Prompt', system-ui, sans-serif;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-emerald-200);
+    background: oklch(0% 0 0 / 0.85);
+    border: 1px solid color-mix(in oklch, var(--color-emerald-400) 30%, transparent);
+    padding: 0.4rem 0.75rem;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  #theme-toggle:hover {
+    border-color: color-mix(in oklch, var(--color-emerald-400) 60%, transparent);
+    background: oklch(0% 0 0 / 0.95);
+  }
+</style>
+
+<script>
+  const toggle = document.getElementById('theme-toggle');
+  const label = document.getElementById('theme-label');
+
+  if (toggle && label) {
+    toggle.addEventListener('click', () => {
+      const html = document.documentElement;
+      const isJade = html.classList.toggle('theme-jade');
+      label.textContent = isJade ? 'Jade' : 'Stock';
+    });
+  }
+</script>
