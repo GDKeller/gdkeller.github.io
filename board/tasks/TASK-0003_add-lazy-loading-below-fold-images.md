@@ -1,6 +1,6 @@
 ---
 type: task
-status: backlog
+status: done
 priority: 1
 created: 2026-03-27
 ---
@@ -9,17 +9,14 @@ created: 2026-03-27
 
 **Source:** Audit H3, M6
 
-## What to do
+## What was done
 
 Set `loading="lazy"` on all images below the hero fold:
 
-- **Awards.astro:** 4 award images currently set to `loading="eager"` — change to `lazy`
-- **FishHero.astro:** 6 large images (anglerfish, water, fish-ball, NHMLA logo, exhibit photos) — all loaded eagerly
-- **LogoCarousel.astro:** 38 logos (19 primary + 19 duplicates) all `loading="eager"` — at minimum, lazy-load the duplicates
-
-Only the hero headshot and hero background need eager loading.
+- **Awards.astro:** 4 award images changed from `loading="eager"` to `lazy`
+- **FishHero.astro:** All 9 images (anglerfish, water x2, fish-ball, NHMLA logo, 4 exhibit photos) — changed to `lazy`
+- **LogoCarousel.astro:** Kept as `loading="eager"` — the carousel is above the fold, immediately visible after the hero
 
 ## Files
 - `src/components/Awards.astro`
 - `src/components/FishHero.astro`
-- `src/components/LogoCarousel.astro`

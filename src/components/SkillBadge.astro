@@ -1,4 +1,10 @@
 ---
+interface Props {
+  tag?: string;
+  class?: string;
+  key?: number;
+}
+
 const { tag, class: className } = Astro.props;
 const Element = tag || "div";
 ---

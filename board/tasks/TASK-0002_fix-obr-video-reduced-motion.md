@@ -1,6 +1,6 @@
 ---
 type: task
-status: backlog
+status: done
 priority: 1
 created: 2026-03-27
 ---
@@ -9,11 +9,11 @@ created: 2026-03-27
 
 **Source:** Audit H4
 
-## What to do
+## What was done
 
-The `<script>` at the bottom of `OfflineBgRemover.astro` targets `.video-frame video` — a CSS class that doesn't exist in the component. The reduced-motion pause never fires.
+The `<script>` at the bottom of `OfflineBgRemover.astro` targeted `.video-frame video` — a CSS class that didn't exist. The reduced-motion pause never fired.
 
-Fix the selector to match the actual DOM structure, or replace with a simpler approach like querying the video element directly.
+Fixed by adding `data-obr-video` attribute to the `<video>` element and selecting with `document.querySelector("video[data-obr-video]")`. Scoped and stable.
 
 ## Files
 - `src/components/OfflineBgRemover.astro`

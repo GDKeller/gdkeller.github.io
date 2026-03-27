@@ -1,6 +1,6 @@
 ---
 type: task
-status: backlog
+status: done
 priority: 1
 created: 2026-03-27
 ---

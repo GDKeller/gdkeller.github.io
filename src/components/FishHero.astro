@@ -21,18 +21,19 @@ import anglerfishSpecimen from "../images/projects/nhmla-anglerfish/specimen.jpg
     <span
       class="mix-blend-color-difference absolute left-0 top-0 z-0 h-full w-full bg-gradient-to-tr from-green-500 via-purple-700 to-slate-700 opacity-30"
     ></span>
-    <Image src={waterImg} alt="Water reflections" class="h-full w-full object-cover" />
+    <Image src={waterImg} alt="Water reflections" loading="lazy" class="h-full w-full object-cover" />
   </div>
   <!-- <span class="fixed top-0 left-0 z-30 w-full h-full bg-gradient-to-tr from-fuchsia-400 via-purple-800 to-indigo-950 mix-blend-difference"></span> -->
   <div class="fish relative">
     <div class="fishball animation-fishball absolute z-10 w-full max-w-24">
-      <Image src={fishBallImg} alt="Sigil" class="fish-hero__ball object-contain" />
+      <Image src={fishBallImg} alt="Sigil" loading="lazy" class="fish-hero__ball object-contain" />
     </div>
     <div class="fish-body relative z-40 max-h-none w-auto max-w-none overflow-visible">
       <!-- <div class="absolute top-0 left-0 z-30 w-full h-full bg-black opacity-60 mix-blend-difference"></div> -->
       <Image
         src={fishImg}
         alt="Anglerfish"
+        loading="lazy"
         class="fish-hero__image relative block h-full w-full overflow-visible object-cover object-left"
       />
     </div>
@@ -43,6 +44,7 @@ import anglerfishSpecimen from "../images/projects/nhmla-anglerfish/specimen.jpg
         <Image
           src={nhmLogo}
           alt="Natural History Museum of Los Angeles logo"
+          loading="lazy"
           class="h-60 w-60 object-contain"
         />
       </span>
@@ -64,6 +66,7 @@ import anglerfishSpecimen from "../images/projects/nhmla-anglerfish/specimen.jpg
       <Image
         src={waterImg}
         alt="Water reflections"
+        loading="lazy"
         class="object-top-right h-full w-full object-cover"
       />
     </div>
@@ -91,6 +94,7 @@ import anglerfishSpecimen from "../images/projects/nhmla-anglerfish/specimen.jpg
         <Image
           src={anglerfishDisplayClose}
           alt="Anglerfish display closeup"
+          loading="lazy"
           class="col-start-2 row-span-1 row-start-2"
         />
         <!-- <Image src={anglerfishSpecimen} alt="Anglerfish specimen" class="col-start-2 row-start-3" /> -->
@@ -111,7 +115,7 @@ import anglerfishSpecimen from "../images/projects/nhmla-anglerfish/specimen.jpg
         </p>
         <p class="mb-4 font-bokor text-4xl">The Problem</p>
         <p class="mb-8">
-          The anglerfish lives so deep in the ocean that it's tissue begins to break down when
+          The anglerfish lives so deep in the ocean that its tissue begins to break down when
           exposed to light.
         </p>
         <p class="mb-12">
@@ -136,7 +140,7 @@ import anglerfishSpecimen from "../images/projects/nhmla-anglerfish/specimen.jpg
         </p>
         <p class="mb-0">
           With the science team able to monitor the light exposure via real readings, and safeguards
-          in place to protect the specimen, the public wa able to get up close and personal with
+          in place to protect the specimen, the public was able to get up close and personal with
           this mythical fish.
         </p>
       </div>
@@ -144,6 +148,7 @@ import anglerfishSpecimen from "../images/projects/nhmla-anglerfish/specimen.jpg
         <Image
           src={anglerfishDisplayFront}
           alt="Anglerfish display front"
+          loading="lazy"
           class="col-start-1 row-span-2 row-start-2"
         />
       </div>
@@ -153,9 +158,10 @@ import anglerfishSpecimen from "../images/projects/nhmla-anglerfish/specimen.jpg
         <Image
           src={anglerfishDisplayFull}
           alt="Anglerfish display closeup"
+          loading="lazy"
           class="w-full object-contain"
         />
-        <Image src={anglerfishSpecimen} alt="Anglerfish specimen" class="w-full object-contain" />
+        <Image src={anglerfishSpecimen} alt="Anglerfish specimen" loading="lazy" class="w-full object-contain" />
         <div
           class="w-full rounded-lg border-4 border-blue-950 border-opacity-10 bg-gradient-to-br from-teal-950/20 via-blue-800/10 to-blue-950/5 px-4 py-24 text-center"
         >

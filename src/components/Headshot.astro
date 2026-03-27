@@ -18,70 +18,83 @@ import ai25 from "../images/headshots/grant-headshot-alternate.jpg";
 ---
 
 <div class="relative block w-full h-full">
-  <Image src={grantImg} alt="Grant" class="relative headshot" />
+  <Image src={grantImg} alt="Grant Keller headshot" class="relative headshot" />
   <Image
     src={ai1}
-    alt="AI1"
+    alt=""
+    loading="lazy"
     class="absolute top-0 left-0 w-full h-full animate-headshot-1"
   />
   <Image
     src={ai3}
-    alt="AI3"
+    alt=""
+    loading="lazy"
     class="absolute top-0 left-0 w-full h-full animate-headshot-2"
   />
   <Image
     src={ai4}
-    alt="AI4"
+    alt=""
+    loading="lazy"
     class="absolute top-0 left-0 w-full h-full animate-headshot-3"
   />
   <Image
     src={ai5}
-    alt="AI5"
+    alt=""
+    loading="lazy"
     class="absolute top-0 left-0 w-full h-full animate-headshot-4"
   />
   <Image
     src={ai6}
-    alt="AI6"
+    alt=""
+    loading="lazy"
     class="absolute top-0 left-0 z-10 w-full h-full animate-headshot-5"
   />
   <Image
     src={ai7}
-    alt="AI7"
+    alt=""
+    loading="lazy"
     class="absolute top-0 left-0 z-10 w-full h-full animate-headshot-6"
   />
   <Image
     src={ai8}
-    alt="AI8"
+    alt=""
+    loading="lazy"
     class="absolute top-0 left-0 z-10 w-full h-full animate-headshot-7"
   />
   <Image
     src={ai10}
-    alt="AI10"
+    alt=""
+    loading="lazy"
     class="absolute top-0 left-0 w-full h-full animate-headshot-8"
   />
   <Image
     src={ai12}
-    alt="AI12"
+    alt=""
+    loading="lazy"
     class="absolute top-0 left-0 w-full h-full animate-headshot-9"
   />
   <Image
     src={ai15}
-    alt="AI15"
+    alt=""
+    loading="lazy"
     class="absolute top-0 left-0 w-full h-full animate-headshot-10"
   />
   <Image
     src={ai20}
-    alt="AI20"
+    alt=""
+    loading="lazy"
     class="absolute top-0 left-0 w-full h-full animate-headshot-11"
   />
   <Image
     src={ai22_2}
-    alt="AI22_2"
+    alt=""
+    loading="lazy"
     class="absolute top-0 left-0 w-full h-full animate-headshot-12"
   />
   <Image
     src={ai25}
-    alt="AI25"
+    alt=""
+    loading="lazy"
     class="absolute top-0 left-0 w-full h-full animate-headshot-13"
   />
 </div>
@@ -261,5 +274,24 @@ import ai25 from "../images/headshots/grant-headshot-alternate.jpg";
     92% { opacity: 0; }
     96% { opacity: 1; }
     100% { opacity: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-headshot-1,
+    .animate-headshot-2,
+    .animate-headshot-3,
+    .animate-headshot-4,
+    .animate-headshot-5,
+    .animate-headshot-6,
+    .animate-headshot-7,
+    .animate-headshot-8,
+    .animate-headshot-9,
+    .animate-headshot-10,
+    .animate-headshot-11,
+    .animate-headshot-12,
+    .animate-headshot-13 {
+      animation: none;
+      opacity: 0;
+    }
   }
 </style>

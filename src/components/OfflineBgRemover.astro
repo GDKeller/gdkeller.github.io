@@ -38,6 +38,7 @@
   <div class="relative z-20 mb-0 mt-auto w-full px-8 lg:pr-4">
     <div class="mx-auto max-w-lg overflow-hidden rounded-t-[3.5%] md:max-w-full">
       <video
+        data-obr-video
         autoplay
         muted
         loop
@@ -79,7 +80,7 @@
 </div>
 
 <script>
-  const video = document.querySelector(".video-frame video") as HTMLVideoElement;
+  const video = document.querySelector("video[data-obr-video]") as HTMLVideoElement;
   if (video && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     video.pause();
   }
