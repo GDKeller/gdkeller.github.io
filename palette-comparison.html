@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Palette Comparison — TASK-0015</title>
+<link href="https://fonts.googleapis.com/css2?family=Bayon&family=Bokor&family=Permanent+Marker&family=Prompt:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --font-body: 'Prompt', sans-serif;
+    --font-display: 'Bayon', sans-serif;
+    --font-decorative: 'Bokor', serif;
+    --font-marker: 'Permanent Marker', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #000;
+    color: #fff;
+    font-family: var(--font-body);
+    padding: 2rem;
+  }
+
+  h1 {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
+  }
+
+  .subtitle {
+    text-align: center;
+    opacity: 0.5;
+    font-size: 0.875rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Toggle bar */
+  .toggle-bar {
+    display: flex;
+    justify-content: center;
+    gap: 2px;
+    margin-bottom: 2rem;
+  }
+  .toggle-btn {
+    font-family: var(--font-body);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: transparent;
+    color: rgba(255,255,255,0.35);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 0.4rem 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .toggle-btn:hover {
+    color: rgba(255,255,255,0.6);
+    border-color: rgba(255,255,255,0.2);
+  }
+  .toggle-btn.active {
+    color: #fff;
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.25);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    transition: gap 0.3s ease;
+  }
+
+  /* Single-view mode */
+  .grid.single-view {
+    grid-template-columns: 1fr;
+    max-width: 720px;
+  }
+  .grid.single-view .palette-card {
+    display: none;
+  }
+  .grid.single-view .palette-card.visible {
+    display: block;
+  }
+
+  .palette-card {
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 1.5rem;
+    position: relative;
+    transition: opacity 0.2s ease;
+  }
+
+  .palette-card h2 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+    letter-spacing: 0.04em;
+  }
+
+  .palette-card .desc {
+    font-size: 0.75rem;
+    opacity: 0.5;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
+
+  .palette-card .shift-label {
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.35;
+    margin-bottom: 0.75rem;
+  }
+
+  /* Swatch rows */
+  .swatch-group {
+    margin-bottom: 1rem;
+  }
+  .swatch-group-label {
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.4;
+    margin-bottom: 0.375rem;
+  }
+  .swatches {
+    display: flex;
+    gap: 2px;
+  }
+  .swatch {
+    flex: 1;
+    height: 32px;
+    position: relative;
+  }
+  .swatch .num {
+    position: absolute;
+    bottom: 1px;
+    left: 2px;
+    font-size: 7px;
+    opacity: 0.7;
+    color: #000;
+    font-weight: 600;
+  }
+  .swatch.light-text .num {
+    color: #fff;
+  }
+
+  /* Demo section */
+  .demo {
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .demo-name {
+    font-family: var(--font-marker);
+    font-size: 2rem;
+    background: linear-gradient(to bottom, var(--pink-200), var(--fuchsia-500), var(--rose-500));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.25rem;
+  }
+
+  .demo-title {
+    font-weight: 700;
+    background: linear-gradient(to bottom right, var(--teal-400), var(--emerald-100), var(--teal-400));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .demo-body {
+    color: var(--emerald-200);
+    font-size: 0.875rem;
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+  }
+
+  .demo-heading {
+    font-family: var(--font-decorative);
+    font-size: 1.75rem;
+    color: var(--emerald-100);
+    text-shadow: var(--emerald-500) 0 0 8px;
+    margin-bottom: 0.5rem;
+  }
+
+  .demo-link {
+    color: var(--fuchsia-500);
+    text-decoration: underline;
+    font-size: 0.875rem;
+  }
+
+  .demo-muted {
+    color: var(--emerald-200);
+    opacity: 0.7;
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+  }
+
+  .demo-card {
+    border: 1px solid color-mix(in srgb, var(--emerald-400) 20%, transparent);
+    background: color-mix(in srgb, var(--emerald-950) 20%, transparent);
+    padding: 0.75rem;
+    margin-top: 0.75rem;
+  }
+  .demo-card:hover {
+    border-color: color-mix(in srgb, var(--emerald-400) 40%, transparent);
+  }
+  .demo-card-title {
+    font-weight: 700;
+    color: var(--fuchsia-500);
+    font-size: 0.875rem;
+  }
+  .demo-card-sub {
+    font-size: 0.75rem;
+    color: var(--emerald-200);
+    opacity: 0.8;
+  }
+
+  .demo-btn-primary {
+    display: inline-block;
+    background: var(--emerald-400);
+    color: #000;
+    padding: 0.5rem 1.25rem;
+    font-weight: 600;
+    font-size: 0.8rem;
+    font-family: var(--font-body);
+    margin-top: 0.75rem;
+    margin-right: 0.5rem;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--emerald-400) 25%, transparent);
+  }
+
+  .demo-btn-outline {
+    display: inline-block;
+    background: transparent;
+    color: var(--emerald-300);
+    padding: 0.5rem 1.25rem;
+    font-weight: 600;
+    font-size: 0.8rem;
+    font-family: var(--font-body);
+    margin-top: 0.75rem;
+    border: 1px solid color-mix(in srgb, var(--emerald-400) 50%, transparent);
+    cursor: pointer;
+  }
+
+  .demo-gradient-bar {
+    height: 4px;
+    margin-top: 0.75rem;
+    filter: blur(8px);
+    transform: scaleY(0.5);
+  }
+
+  .demo-border-accent {
+    border-left: 2px solid color-mix(in srgb, var(--emerald-400) 20%, transparent);
+    padding-left: 0.75rem;
+    margin-top: 0.75rem;
+  }
+  .demo-border-accent .label {
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--emerald-300);
+    opacity: 0.8;
+  }
+  .demo-border-accent .value {
+    color: var(--emerald-100);
+    font-weight: 600;
+    font-size: 0.875rem;
+  }
+
+  /* Glass card demo */
+  .demo-glass {
+    background: linear-gradient(to bottom right,
+      color-mix(in srgb, var(--emerald-950) 10%, transparent),
+      color-mix(in srgb, var(--teal-800) 10%, transparent),
+      color-mix(in srgb, var(--blue-950, #172554) 10%, transparent)
+    );
+    border: 1px solid color-mix(in srgb, var(--teal-950) 30%, transparent);
+    padding: 1rem;
+    margin-top: 0.75rem;
+    backdrop-filter: blur(8px);
+  }
+
+  .demo-badge {
+    display: inline-block;
+    border-left: 2px solid color-mix(in srgb, var(--emerald-950) 80%, transparent);
+    padding: 0.25rem 0.5rem;
+    font-size: 0.6875rem;
+    color: var(--emerald-200);
+    background: linear-gradient(to bottom right,
+      color-mix(in srgb, var(--emerald-900) 30%, transparent),
+      color-mix(in srgb, var(--teal-500) 15%, transparent)
+    );
+    margin-right: 0.25rem;
+    margin-bottom: 0.25rem;
+  }
+
+  /* stock label */
+  .stock-tag {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 0.5625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 0.2rem 0.5rem;
+    border: 1px solid rgba(255,255,255,0.15);
+    opacity: 0.5;
+  }
+</style>
+</head>
+<body>
+
+<h1>PALETTE COMPARISON</h1>
+<p class="subtitle">TASK-0015 — Custom hue-shifted color palette options</p>
+
+<div class="toggle-bar">
+  <button class="toggle-btn active" data-view="all">All</button>
+  <button class="toggle-btn" data-view="stock">Stock</button>
+  <button class="toggle-btn" data-view="a">A · Jade</button>
+  <button class="toggle-btn" data-view="b">B · Phosphor</button>
+  <button class="toggle-btn" data-view="c">C · Verdigris</button>
+  <button class="toggle-btn" data-view="d">D · Inv. Verdigris</button>
+</div>
+
+<div class="grid" id="grid">
+
+  <!-- ==================== STOCK TAILWIND ==================== -->
+  <div class="palette-card" data-option="stock" style="
+    --emerald-50: hsl(152, 81%, 96%);
+    --emerald-100: hsl(149, 80%, 90%);
+    --emerald-200: hsl(152, 76%, 80%);
+    --emerald-300: hsl(156, 72%, 67%);
+    --emerald-400: hsl(158, 64%, 52%);
+    --emerald-500: hsl(160, 84%, 39%);
+    --emerald-600: hsl(161, 94%, 30%);
+    --emerald-700: hsl(163, 94%, 24%);
+    --emerald-800: hsl(163, 88%, 20%);
+    --emerald-900: hsl(164, 86%, 16%);
+    --emerald-950: hsl(166, 91%, 9%);
+    --teal-400: hsl(171, 66%, 50%);
+    --teal-500: hsl(173, 80%, 40%);
+    --teal-700: hsl(175, 77%, 26%);
+    --teal-800: hsl(176, 69%, 22%);
+    --teal-950: hsl(179, 84%, 10%);
+    --fuchsia-300: hsl(293, 93%, 83%);
+    --fuchsia-400: hsl(292, 91%, 73%);
+    --fuchsia-500: hsl(292, 84%, 61%);
+    --pink-200: hsl(326, 85%, 90%);
+    --rose-500: hsl(350, 89%, 60%);
+    --emerald-glow: hsl(160, 84%, 39%);
+  ">
+    <span class="stock-tag">0° — stock tailwind</span>
+    <h2 style="color: hsl(152, 76%, 80%);">Stock Tailwind</h2>
+    <p class="desc">Unshifted reference. Standard Tailwind emerald, teal, fuchsia, pink, rose.</p>
+
+    <div class="swatch-group">
+      <div class="swatch-group-label">Emerald (stock)</div>
+      <div class="swatches">
+        <div class="swatch" style="background:hsl(152,81%,96%)"><span class="num">50</span></div>
+        <div class="swatch" style="background:hsl(149,80%,90%)"><span class="num">100</span></div>
+        <div class="swatch" style="background:hsl(152,76%,80%)"><span class="num">200</span></div>
+        <div class="swatch" style="background:hsl(156,72%,67%)"><span class="num">300</span></div>
+        <div class="swatch" style="background:hsl(158,64%,52%)"><span class="num">400</span></div>
+        <div class="swatch" style="background:hsl(160,84%,39%)"><span class="num light-text">500</span></div>
+        <div class="swatch" style="background:hsl(161,94%,30%)"><span class="num light-text">600</span></div>
+        <div class="swatch" style="background:hsl(163,94%,24%)"><span class="num light-text">700</span></div>
+        <div class="swatch" style="background:hsl(163,88%,20%)"><span class="num light-text">800</span></div>
+        <div class="swatch" style="background:hsl(164,86%,16%)"><span class="num light-text">900</span></div>
+        <div class="swatch" style="background:hsl(166,91%,9%)"><span class="num light-text">950</span></div>
+      </div>
+    </div>
+    <div class="swatch-group">
+      <div class="swatch-group-label">Teal (stock)</div>
+      <div class="swatches">
+        <div class="swatch" style="background:hsl(171,66%,50%)"><span class="num">400</span></div>
+        <div class="swatch" style="background:hsl(173,80%,40%)"><span class="num light-text">500</span></div>
+        <div class="swatch" style="background:hsl(175,77%,26%)"><span class="num light-text">700</span></div>
+        <div class="swatch" style="background:hsl(179,84%,10%)"><span class="num light-text">950</span></div>
+      </div>
+    </div>
+    <div class="swatch-group">
+      <div class="swatch-group-label">Fuchsia / Pink / Rose (stock)</div>
+      <div class="swatches">
+        <div class="swatch" style="background:hsl(326,85%,90%)"><span class="num">pk200</span></div>
+        <div class="swatch" style="background:hsl(293,93%,83%)"><span class="num">fc300</span></div>
+        <div class="swatch" style="background:hsl(292,91%,73%)"><span class="num">fc400</span></div>
+        <div class="swatch" style="background:hsl(292,84%,61%)"><span class="num light-text">fc500</span></div>
+        <div class="swatch" style="background:hsl(350,89%,60%)"><span class="num light-text">rs500</span></div>
+      </div>
+    </div>
+
+    <div class="demo">
+      <div class="demo-name">Grant Keller</div>
+      <div class="demo-title">Lead Software Engineer</div>
+      <div class="demo-body">Building interfaces that bridge technical depth with human intuition.</div>
+      <div class="demo-heading">Experience</div>
+      <div class="demo-card">
+        <div class="demo-card-title">Senior Frontend Engineer</div>
+        <div class="demo-card-sub">Davant Systems · 2022–Present</div>
+      </div>
+      <div class="demo-border-accent">
+        <div class="label">Currently</div>
+        <div class="value">Available for opportunities</div>
+      </div>
+      <div class="demo-muted">Let's build something great</div>
+      <div style="margin-top:0.75rem;">
+        <span class="demo-badge">React</span>
+        <span class="demo-badge">TypeScript</span>
+        <span class="demo-badge">GSAP</span>
+      </div>
+      <div class="demo-glass">
+        <div class="demo-body" style="margin:0;">Glass surface demo with gradient background</div>
+      </div>
+      <div>
+        <span class="demo-btn-primary">Get in Touch</span>
+        <span class="demo-btn-outline">View Resume</span>
+      </div>
+      <div class="demo-gradient-bar" style="background: linear-gradient(to right, hsl(161,94%,30%), hsl(158,64%,52%), hsl(152,76%,80%), hsl(158,64%,52%), hsl(163,94%,24%));"></div>
+      <div style="margin-top:0.75rem;"><a class="demo-link" href="#">View project details →</a></div>
+    </div>
+  </div>
+
+  <!-- ==================== OPTION A: JADE ==================== -->
+  <div class="palette-card visible" data-option="a" style="
+    --emerald-50: hsl(144, 81%, 96%);
+    --emerald-100: hsl(141, 80%, 90%);
+    --emerald-200: hsl(144, 76%, 80%);
+    --emerald-300: hsl(148, 72%, 67%);
+    --emerald-400: hsl(150, 64%, 52%);
+    --emerald-500: hsl(152, 84%, 39%);
+    --emerald-600: hsl(153, 94%, 30%);
+    --emerald-700: hsl(155, 94%, 24%);
+    --emerald-800: hsl(155, 88%, 20%);
+    --emerald-900: hsl(156, 86%, 16%);
+    --emerald-950: hsl(158, 91%, 9%);
+    --teal-400: hsl(163, 66%, 50%);
+    --teal-500: hsl(165, 80%, 40%);
+    --teal-700: hsl(167, 77%, 26%);
+    --teal-800: hsl(168, 80%, 16%);
+    --teal-950: hsl(171, 84%, 10%);
+    --fuchsia-300: hsl(301, 93%, 83%);
+    --fuchsia-400: hsl(300, 91%, 73%);
+    --fuchsia-500: hsl(300, 84%, 61%);
+    --pink-200: hsl(334, 85%, 90%);
+    --rose-500: hsl(358, 89%, 60%);
+    --emerald-glow: hsl(152, 84%, 39%);
+  ">
+    <span class="stock-tag">+8° greens / +8° accents</span>
+    <h2 style="color: hsl(144, 76%, 80%);">A — Jade</h2>
+    <p class="desc">Warm shift. Richer, more organic greens with hotter magenta accents.</p>
+
+    <div class="swatch-group">
+      <div class="swatch-group-label">Emerald (shifted)</div>
+      <div class="swatches">
+        <div class="swatch" style="background:hsl(144,81%,96%)"><span class="num">50</span></div>
+        <div class="swatch" style="background:hsl(141,80%,90%)"><span class="num">100</span></div>
+        <div class="swatch" style="background:hsl(144,76%,80%)"><span class="num">200</span></div>
+        <div class="swatch" style="background:hsl(148,72%,67%)"><span class="num">300</span></div>
+        <div class="swatch" style="background:hsl(150,64%,52%)"><span class="num">400</span></div>
+        <div class="swatch" style="background:hsl(152,84%,39%)"><span class="num light-text">500</span></div>
+        <div class="swatch" style="background:hsl(153,94%,30%)"><span class="num light-text">600</span></div>
+        <div class="swatch" style="background:hsl(155,94%,24%)"><span class="num light-text">700</span></div>
+        <div class="swatch" style="background:hsl(155,88%,20%)"><span class="num light-text">800</span></div>
+        <div class="swatch" style="background:hsl(156,86%,16%)"><span class="num light-text">900</span></div>
+        <div class="swatch" style="background:hsl(158,91%,9%)"><span class="num light-text">950</span></div>
+      </div>
+    </div>
+    <div class="swatch-group">
+      <div class="swatch-group-label">Teal (shifted)</div>
+      <div class="swatches">
+        <div class="swatch" style="background:hsl(163,66%,50%)"><span class="num">400</span></div>
+        <div class="swatch" style="background:hsl(165,80%,40%)"><span class="num light-text">500</span></div>
+        <div class="swatch" style="background:hsl(167,77%,26%)"><span class="num light-text">700</span></div>
+        <div class="swatch" style="background:hsl(171,84%,10%)"><span class="num light-text">950</span></div>
+      </div>
+    </div>
+    <div class="swatch-group">
+      <div class="swatch-group-label">Fuchsia / Pink / Rose (shifted)</div>
+      <div class="swatches">
+        <div class="swatch" style="background:hsl(334,85%,90%)"><span class="num">pk200</span></div>
+        <div class="swatch" style="background:hsl(301,93%,83%)"><span class="num">fc300</span></div>
+        <div class="swatch" style="background:hsl(300,91%,73%)"><span class="num">fc400</span></div>
+        <div class="swatch" style="background:hsl(300,84%,61%)"><span class="num light-text">fc500</span></div>
+        <div class="swatch" style="background:hsl(358,89%,60%)"><span class="num light-text">rs500</span></div>
+      </div>
+    </div>
+
+    <div class="demo">
+      <div class="demo-name">Grant Keller</div>
+      <div class="demo-title">Lead Software Engineer</div>
+      <div class="demo-body">Building interfaces that bridge technical depth with human intuition.</div>
+      <div class="demo-heading">Experience</div>
+      <div class="demo-card">
+        <div class="demo-card-title">Senior Frontend Engineer</div>
+        <div class="demo-card-sub">Davant Systems · 2022–Present</div>
+      </div>
+      <div class="demo-border-accent">
+        <div class="label">Currently</div>
+        <div class="value">Available for opportunities</div>
+      </div>
+      <div class="demo-muted">Let's build something great</div>
+      <div style="margin-top:0.75rem;">
+        <span class="demo-badge">React</span>
+        <span class="demo-badge">TypeScript</span>
+        <span class="demo-badge">GSAP</span>
+      </div>
+      <div class="demo-glass">
+        <div class="demo-body" style="margin:0;">Glass surface demo with gradient background</div>
+      </div>
+      <div>
+        <span class="demo-btn-primary">Get in Touch</span>
+        <span class="demo-btn-outline">View Resume</span>
+      </div>
+      <div class="demo-gradient-bar" style="background: linear-gradient(to right, hsl(153,94%,30%), hsl(150,64%,52%), hsl(144,76%,80%), hsl(150,64%,52%), hsl(155,94%,24%));"></div>
+      <div style="margin-top:0.75rem;"><a class="demo-link" href="#">View project details →</a></div>
+    </div>
+  </div>
+
+  <!-- ==================== OPTION B: PHOSPHOR ==================== -->
+  <div class="palette-card visible" data-option="b" style="
+    --emerald-50: hsl(160, 81%, 96%);
+    --emerald-100: hsl(157, 80%, 90%);
+    --emerald-200: hsl(160, 76%, 80%);
+    --emerald-300: hsl(164, 72%, 67%);
+    --emerald-400: hsl(166, 64%, 52%);
+    --emerald-500: hsl(168, 84%, 39%);
+    --emerald-600: hsl(169, 94%, 30%);
+    --emerald-700: hsl(171, 94%, 24%);
+    --emerald-800: hsl(171, 88%, 20%);
+    --emerald-900: hsl(172, 86%, 16%);
+    --emerald-950: hsl(174, 91%, 9%);
+    --teal-400: hsl(179, 66%, 50%);
+    --teal-500: hsl(181, 80%, 40%);
+    --teal-700: hsl(183, 77%, 26%);
+    --teal-800: hsl(184, 80%, 16%);
+    --teal-950: hsl(187, 84%, 10%);
+    --fuchsia-300: hsl(285, 93%, 83%);
+    --fuchsia-400: hsl(284, 91%, 73%);
+    --fuchsia-500: hsl(284, 84%, 61%);
+    --pink-200: hsl(318, 85%, 90%);
+    --rose-500: hsl(342, 89%, 60%);
+    --emerald-glow: hsl(168, 84%, 39%);
+  ">
+    <span class="stock-tag">−8° greens / −8° accents</span>
+    <h2 style="color: hsl(160, 76%, 80%);">B — Phosphor</h2>
+    <p class="desc">Cool shift. Phosphor-screen greens with electric violet accents. CRT retrofuturism.</p>
+
+    <div class="swatch-group">
+      <div class="swatch-group-label">Emerald (shifted)</div>
+      <div class="swatches">
+        <div class="swatch" style="background:hsl(160,81%,96%)"><span class="num">50</span></div>
+        <div class="swatch" style="background:hsl(157,80%,90%)"><span class="num">100</span></div>
+        <div class="swatch" style="background:hsl(160,76%,80%)"><span class="num">200</span></div>
+        <div class="swatch" style="background:hsl(164,72%,67%)"><span class="num">300</span></div>
+        <div class="swatch" style="background:hsl(166,64%,52%)"><span class="num">400</span></div>
+        <div class="swatch" style="background:hsl(168,84%,39%)"><span class="num light-text">500</span></div>
+        <div class="swatch" style="background:hsl(169,94%,30%)"><span class="num light-text">600</span></div>
+        <div class="swatch" style="background:hsl(171,94%,24%)"><span class="num light-text">700</span></div>
+        <div class="swatch" style="background:hsl(171,88%,20%)"><span class="num light-text">800</span></div>
+        <div class="swatch" style="background:hsl(172,86%,16%)"><span class="num light-text">900</span></div>
+        <div class="swatch" style="background:hsl(174,91%,9%)"><span class="num light-text">950</span></div>
+      </div>
+    </div>
+    <div class="swatch-group">
+      <div class="swatch-group-label">Teal (shifted)</div>
+      <div class="swatches">
+        <div class="swatch" style="background:hsl(179,66%,50%)"><span class="num">400</span></div>
+        <div class="swatch" style="background:hsl(181,80%,40%)"><span class="num light-text">500</span></div>
+        <div class="swatch" style="background:hsl(183,77%,26%)"><span class="num light-text">700</span></div>
+        <div class="swatch" style="background:hsl(187,84%,10%)"><span class="num light-text">950</span></div>
+      </div>
+    </div>
+    <div class="swatch-group">
+      <div class="swatch-group-label">Fuchsia / Pink / Rose (shifted)</div>
+      <div class="swatches">
+        <div class="swatch" style="background:hsl(318,85%,90%)"><span class="num">pk200</span></div>
+        <div class="swatch" style="background:hsl(285,93%,83%)"><span class="num">fc300</span></div>
+        <div class="swatch" style="background:hsl(284,91%,73%)"><span class="num">fc400</span></div>
+        <div class="swatch" style="background:hsl(284,84%,61%)"><span class="num light-text">fc500</span></div>
+        <div class="swatch" style="background:hsl(342,89%,60%)"><span class="num light-text">rs500</span></div>
+      </div>
+    </div>
+
+    <div class="demo">
+      <div class="demo-name">Grant Keller</div>
+      <div class="demo-title">Lead Software Engineer</div>
+      <div class="demo-body">Building interfaces that bridge technical depth with human intuition.</div>
+      <div class="demo-heading">Experience</div>
+      <div class="demo-card">
+        <div class="demo-card-title">Senior Frontend Engineer</div>
+        <div class="demo-card-sub">Davant Systems · 2022–Present</div>
+      </div>
+      <div class="demo-border-accent">
+        <div class="label">Currently</div>
+        <div class="value">Available for opportunities</div>
+      </div>
+      <div class="demo-muted">Let's build something great</div>
+      <div style="margin-top:0.75rem;">
+        <span class="demo-badge">React</span>
+        <span class="demo-badge">TypeScript</span>
+        <span class="demo-badge">GSAP</span>
+      </div>
+      <div class="demo-glass">
+        <div class="demo-body" style="margin:0;">Glass surface demo with gradient background</div>
+      </div>
+      <div>
+        <span class="demo-btn-primary">Get in Touch</span>
+        <span class="demo-btn-outline">View Resume</span>
+      </div>
+      <div class="demo-gradient-bar" style="background: linear-gradient(to right, hsl(169,94%,30%), hsl(166,64%,52%), hsl(160,76%,80%), hsl(166,64%,52%), hsl(171,94%,24%));"></div>
+      <div style="margin-top:0.75rem;"><a class="demo-link" href="#">View project details →</a></div>
+    </div>
+  </div>
+
+  <!-- ==================== OPTION C: VERDIGRIS ==================== -->
+  <div class="palette-card visible" data-option="c" style="
+    --emerald-50: hsl(142, 81%, 96%);
+    --emerald-100: hsl(139, 80%, 90%);
+    --emerald-200: hsl(142, 76%, 80%);
+    --emerald-300: hsl(146, 72%, 67%);
+    --emerald-400: hsl(148, 64%, 52%);
+    --emerald-500: hsl(150, 84%, 39%);
+    --emerald-600: hsl(151, 94%, 30%);
+    --emerald-700: hsl(153, 94%, 24%);
+    --emerald-800: hsl(153, 88%, 20%);
+    --emerald-900: hsl(154, 86%, 16%);
+    --emerald-950: hsl(156, 91%, 9%);
+    --teal-400: hsl(161, 66%, 50%);
+    --teal-500: hsl(163, 80%, 40%);
+    --teal-700: hsl(165, 77%, 26%);
+    --teal-800: hsl(166, 80%, 16%);
+    --teal-950: hsl(169, 84%, 10%);
+    --fuchsia-300: hsl(283, 93%, 83%);
+    --fuchsia-400: hsl(282, 91%, 73%);
+    --fuchsia-500: hsl(282, 84%, 61%);
+    --pink-200: hsl(316, 85%, 90%);
+    --rose-500: hsl(340, 89%, 60%);
+    --emerald-glow: hsl(150, 84%, 39%);
+  ">
+    <span class="stock-tag">+10° greens / −10° accents</span>
+    <h2 style="color: hsl(142, 76%, 80%);">C — Verdigris</h2>
+    <p class="desc">Split shift. Warm oxidized-copper greens meet cool violet accents. Maximum tension.</p>
+
+    <div class="swatch-group">
+      <div class="swatch-group-label">Emerald (shifted warm)</div>
+      <div class="swatches">
+        <div class="swatch" style="background:hsl(142,81%,96%)"><span class="num">50</span></div>
+        <div class="swatch" style="background:hsl(139,80%,90%)"><span class="num">100</span></div>
+        <div class="swatch" style="background:hsl(142,76%,80%)"><span class="num">200</span></div>
+        <div class="swatch" style="background:hsl(146,72%,67%)"><span class="num">300</span></div>
+        <div class="swatch" style="background:hsl(148,64%,52%)"><span class="num">400</span></div>
+        <div class="swatch" style="background:hsl(150,84%,39%)"><span class="num light-text">500</span></div>
+        <div class="swatch" style="background:hsl(151,94%,30%)"><span class="num light-text">600</span></div>
+        <div class="swatch" style="background:hsl(153,94%,24%)"><span class="num light-text">700</span></div>
+        <div class="swatch" style="background:hsl(153,88%,20%)"><span class="num light-text">800</span></div>
+        <div class="swatch" style="background:hsl(154,86%,16%)"><span class="num light-text">900</span></div>
+        <div class="swatch" style="background:hsl(156,91%,9%)"><span class="num light-text">950</span></div>
+      </div>
+    </div>
+    <div class="swatch-group">
+      <div class="swatch-group-label">Teal (shifted warm)</div>
+      <div class="swatches">
+        <div class="swatch" style="background:hsl(161,66%,50%)"><span class="num">400</span></div>
+        <div class="swatch" style="background:hsl(163,80%,40%)"><span class="num light-text">500</span></div>
+        <div class="swatch" style="background:hsl(165,77%,26%)"><span class="num light-text">700</span></div>
+        <div class="swatch" style="background:hsl(169,84%,10%)"><span class="num light-text">950</span></div>
+      </div>
+    </div>
+    <div class="swatch-group">
+      <div class="swatch-group-label">Fuchsia / Pink / Rose (shifted cool)</div>
+      <div class="swatches">
+        <div class="swatch" style="background:hsl(316,85%,90%)"><span class="num">pk200</span></div>
+        <div class="swatch" style="background:hsl(283,93%,83%)"><span class="num">fc300</span></div>
+        <div class="swatch" style="background:hsl(282,91%,73%)"><span class="num">fc400</span></div>
+        <div class="swatch" style="background:hsl(282,84%,61%)"><span class="num light-text">fc500</span></div>
+        <div class="swatch" style="background:hsl(340,89%,60%)"><span class="num light-text">rs500</span></div>
+      </div>
+    </div>
+
+    <div class="demo">
+      <div class="demo-name">Grant Keller</div>
+      <div class="demo-title">Lead Software Engineer</div>
+      <div class="demo-body">Building interfaces that bridge technical depth with human intuition.</div>
+      <div class="demo-heading">Experience</div>
+      <div class="demo-card">
+        <div class="demo-card-title">Senior Frontend Engineer</div>
+        <div class="demo-card-sub">Davant Systems · 2022–Present</div>
+      </div>
+      <div class="demo-border-accent">
+        <div class="label">Currently</div>
+        <div class="value">Available for opportunities</div>
+      </div>
+      <div class="demo-muted">Let's build something great</div>
+      <div style="margin-top:0.75rem;">
+        <span class="demo-badge">React</span>
+        <span class="demo-badge">TypeScript</span>
+        <span class="demo-badge">GSAP</span>
+      </div>
+      <div class="demo-glass">
+        <div class="demo-body" style="margin:0;">Glass surface demo with gradient background</div>
+      </div>
+      <div>
+        <span class="demo-btn-primary">Get in Touch</span>
+        <span class="demo-btn-outline">View Resume</span>
+      </div>
+      <div class="demo-gradient-bar" style="background: linear-gradient(to right, hsl(151,94%,30%), hsl(148,64%,52%), hsl(142,76%,80%), hsl(148,64%,52%), hsl(153,94%,24%));"></div>
+      <div style="margin-top:0.75rem;"><a class="demo-link" href="#">View project details →</a></div>
+    </div>
+  </div>
+
+  <!-- ==================== OPTION D: INVERSE VERDIGRIS ==================== -->
+  <div class="palette-card visible" data-option="d" style="
+    --emerald-50: hsl(162, 81%, 96%);
+    --emerald-100: hsl(159, 80%, 90%);
+    --emerald-200: hsl(162, 76%, 80%);
+    --emerald-300: hsl(166, 72%, 67%);
+    --emerald-400: hsl(168, 64%, 52%);
+    --emerald-500: hsl(170, 84%, 39%);
+    --emerald-600: hsl(171, 94%, 30%);
+    --emerald-700: hsl(173, 94%, 24%);
+    --emerald-800: hsl(173, 88%, 20%);
+    --emerald-900: hsl(174, 86%, 16%);
+    --emerald-950: hsl(176, 91%, 9%);
+    --teal-400: hsl(181, 66%, 50%);
+    --teal-500: hsl(183, 80%, 40%);
+    --teal-700: hsl(185, 77%, 26%);
+    --teal-800: hsl(186, 80%, 16%);
+    --teal-950: hsl(189, 84%, 10%);
+    --fuchsia-300: hsl(303, 93%, 83%);
+    --fuchsia-400: hsl(302, 91%, 73%);
+    --fuchsia-500: hsl(302, 84%, 61%);
+    --pink-200: hsl(336, 85%, 90%);
+    --rose-500: hsl(0, 89%, 60%);
+    --emerald-glow: hsl(170, 84%, 39%);
+  ">
+    <span class="stock-tag">−10° greens / +10° accents</span>
+    <h2 style="color: hsl(162, 76%, 80%);">D — Inverse Verdigris</h2>
+    <p class="desc">Inverted split. Cool minty greens meet hot magenta accents. Digital + neon heat.</p>
+
+    <div class="swatch-group">
+      <div class="swatch-group-label">Emerald (shifted cool)</div>
+      <div class="swatches">
+        <div class="swatch" style="background:hsl(162,81%,96%)"><span class="num">50</span></div>
+        <div class="swatch" style="background:hsl(159,80%,90%)"><span class="num">100</span></div>
+        <div class="swatch" style="background:hsl(162,76%,80%)"><span class="num">200</span></div>
+        <div class="swatch" style="background:hsl(166,72%,67%)"><span class="num">300</span></div>
+        <div class="swatch" style="background:hsl(168,64%,52%)"><span class="num">400</span></div>
+        <div class="swatch" style="background:hsl(170,84%,39%)"><span class="num light-text">500</span></div>
+        <div class="swatch" style="background:hsl(171,94%,30%)"><span class="num light-text">600</span></div>
+        <div class="swatch" style="background:hsl(173,94%,24%)"><span class="num light-text">700</span></div>
+        <div class="swatch" style="background:hsl(173,88%,20%)"><span class="num light-text">800</span></div>
+        <div class="swatch" style="background:hsl(174,86%,16%)"><span class="num light-text">900</span></div>
+        <div class="swatch" style="background:hsl(176,91%,9%)"><span class="num light-text">950</span></div>
+      </div>
+    </div>
+    <div class="swatch-group">
+      <div class="swatch-group-label">Teal (shifted cool)</div>
+      <div class="swatches">
+        <div class="swatch" style="background:hsl(181,66%,50%)"><span class="num">400</span></div>
+        <div class="swatch" style="background:hsl(183,80%,40%)"><span class="num light-text">500</span></div>
+        <div class="swatch" style="background:hsl(185,77%,26%)"><span class="num light-text">700</span></div>
+        <div class="swatch" style="background:hsl(189,84%,10%)"><span class="num light-text">950</span></div>
+      </div>
+    </div>
+    <div class="swatch-group">
+      <div class="swatch-group-label">Fuchsia / Pink / Rose (shifted warm)</div>
+      <div class="swatches">
+        <div class="swatch" style="background:hsl(336,85%,90%)"><span class="num">pk200</span></div>
+        <div class="swatch" style="background:hsl(303,93%,83%)"><span class="num">fc300</span></div>
+        <div class="swatch" style="background:hsl(302,91%,73%)"><span class="num">fc400</span></div>
+        <div class="swatch" style="background:hsl(302,84%,61%)"><span class="num light-text">fc500</span></div>
+        <div class="swatch" style="background:hsl(0,89%,60%)"><span class="num light-text">rs500</span></div>
+      </div>
+    </div>
+
+    <div class="demo">
+      <div class="demo-name">Grant Keller</div>
+      <div class="demo-title">Lead Software Engineer</div>
+      <div class="demo-body">Building interfaces that bridge technical depth with human intuition.</div>
+      <div class="demo-heading">Experience</div>
+      <div class="demo-card">
+        <div class="demo-card-title">Senior Frontend Engineer</div>
+        <div class="demo-card-sub">Davant Systems · 2022–Present</div>
+      </div>
+      <div class="demo-border-accent">
+        <div class="label">Currently</div>
+        <div class="value">Available for opportunities</div>
+      </div>
+      <div class="demo-muted">Let's build something great</div>
+      <div style="margin-top:0.75rem;">
+        <span class="demo-badge">React</span>
+        <span class="demo-badge">TypeScript</span>
+        <span class="demo-badge">GSAP</span>
+      </div>
+      <div class="demo-glass">
+        <div class="demo-body" style="margin:0;">Glass surface demo with gradient background</div>
+      </div>
+      <div>
+        <span class="demo-btn-primary">Get in Touch</span>
+        <span class="demo-btn-outline">View Resume</span>
+      </div>
+      <div class="demo-gradient-bar" style="background: linear-gradient(to right, hsl(171,94%,30%), hsl(168,64%,52%), hsl(162,76%,80%), hsl(168,64%,52%), hsl(173,94%,24%));"></div>
+      <div style="margin-top:0.75rem;"><a class="demo-link" href="#">View project details →</a></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ==================== FULL PALETTE VIEW ==================== -->
+<div id="full-palette" style="display:none; max-width:1400px; margin:2rem auto 0;">
+  <h2 style="font-family:var(--font-display); font-size:1.5rem; margin-bottom:1.5rem; text-align:center; letter-spacing:0.04em;">Full Tailwind Scale Comparison</h2>
+  <div id="full-palette-content"></div>
+</div>
+
+<!-- ==================== SIDE-BY-SIDE COMPARISON VIEW ==================== -->
+<div id="side-by-side" style="display:none; max-width:1400px; margin:2rem auto 0;">
+  <h2 style="font-family:var(--font-display); font-size:1.5rem; margin-bottom:0.75rem; text-align:center; letter-spacing:0.04em;">Side-by-Side Comparison (200 · 500 · 900)</h2>
+  <div id="step-toggle-bar" style="display:flex; justify-content:center; gap:2px; margin-bottom:1.25rem;"></div>
+  <div id="side-by-side-content"></div>
+</div>
+
+<p style="text-align:center; opacity:0.3; font-size:0.75rem; margin-top:3rem;">Open in browser to compare. All demos use the actual portfolio fonts and UI patterns.</p>
+
+<script>
+// Toggle logic
+const grid = document.getElementById('grid');
+const cards = document.querySelectorAll('.palette-card');
+const buttons = document.querySelectorAll('.toggle-btn');
+const fullPalette = document.getElementById('full-palette');
+
+buttons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    buttons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const view = btn.dataset.view;
+
+    if (view === 'all') {
+      grid.classList.remove('single-view');
+      cards.forEach(c => {
+        // Stock card only shows in single view, not in the 2x2 grid
+        c.classList.toggle('visible', c.dataset.option !== 'stock');
+      });
+    } else {
+      grid.classList.add('single-view');
+      cards.forEach(c => {
+        c.classList.toggle('visible', c.dataset.option === view);
+      });
+    }
+  });
+});
+
+// Full Tailwind v3 palette — every chromatic hue, stock HSL values [h, s, l]
+const stocks = {
+  red: {
+    50:[0,86,97],100:[0,93,94],200:[0,96,89],300:[0,94,82],
+    400:[0,91,71],500:[0,84,60],600:[0,72,51],700:[0,74,42],
+    800:[0,70,35],900:[0,63,31],950:[0,75,15]
+  },
+  orange: {
+    50:[33,100,96],100:[34,100,92],200:[32,98,83],300:[31,97,72],
+    400:[27,96,61],500:[25,95,53],600:[21,90,48],700:[17,88,40],
+    800:[15,79,34],900:[15,75,28],950:[13,81,15]
+  },
+  amber: {
+    50:[48,100,96],100:[48,96,89],200:[48,97,77],300:[46,97,65],
+    400:[43,96,56],500:[38,92,50],600:[32,95,44],700:[26,90,37],
+    800:[23,83,31],900:[22,78,26],950:[21,92,14]
+  },
+  yellow: {
+    50:[55,92,95],100:[55,97,88],200:[53,98,77],300:[50,98,64],
+    400:[48,96,53],500:[45,93,47],600:[41,96,40],700:[35,92,33],
+    800:[32,81,29],900:[29,74,26],950:[28,87,14]
+  },
+  lime: {
+    50:[78,92,95],100:[80,89,89],200:[81,88,80],300:[82,85,67],
+    400:[83,78,55],500:[84,81,44],600:[85,85,35],700:[86,78,27],
+    800:[86,69,23],900:[88,61,20],950:[89,80,10]
+  },
+  green: {
+    50:[138,76,97],100:[141,84,93],200:[141,79,85],300:[142,77,73],
+    400:[142,69,58],500:[142,71,45],600:[142,76,36],700:[142,72,29],
+    800:[143,64,24],900:[144,61,20],950:[145,80,10]
+  },
+  emerald: {
+    50:[152,81,96],100:[149,80,90],200:[152,76,80],300:[156,72,67],
+    400:[158,64,52],500:[160,84,39],600:[161,94,30],700:[163,94,24],
+    800:[163,88,20],900:[164,86,16],950:[166,91,9]
+  },
+  teal: {
+    50:[166,76,97],100:[167,85,89],200:[168,84,78],300:[171,77,64],
+    400:[171,66,50],500:[173,80,40],600:[175,84,32],700:[175,77,26],
+    800:[176,69,22],900:[176,61,19],950:[179,84,10]
+  },
+  cyan: {
+    50:[183,100,96],100:[185,96,90],200:[186,94,82],300:[187,92,69],
+    400:[188,86,53],500:[189,94,43],600:[192,91,36],700:[193,82,31],
+    800:[194,70,27],900:[196,64,24],950:[197,79,12]
+  },
+  sky: {
+    50:[204,100,97],100:[204,94,94],200:[201,94,86],300:[199,95,74],
+    400:[198,93,60],500:[199,89,48],600:[200,98,39],700:[201,96,32],
+    800:[201,90,27],900:[202,80,24],950:[204,80,16]
+  },
+  blue: {
+    50:[214,100,97],100:[214,95,93],200:[213,97,87],300:[212,96,78],
+    400:[213,94,68],500:[217,91,60],600:[221,83,53],700:[224,76,48],
+    800:[226,71,40],900:[224,64,33],950:[226,57,21]
+  },
+  indigo: {
+    50:[226,100,97],100:[226,100,94],200:[228,96,89],300:[230,94,82],
+    400:[234,89,74],500:[239,84,67],600:[243,75,59],700:[245,58,51],
+    800:[244,55,41],900:[242,47,34],950:[244,47,20]
+  },
+  violet: {
+    50:[250,100,98],100:[251,91,95],200:[251,95,92],300:[252,95,85],
+    400:[255,92,76],500:[258,90,66],600:[262,83,58],700:[263,70,50],
+    800:[263,69,42],900:[264,67,35],950:[261,73,23]
+  },
+  purple: {
+    50:[270,100,98],100:[269,100,95],200:[269,100,92],300:[269,97,85],
+    400:[270,95,75],500:[271,91,65],600:[271,81,56],700:[272,72,47],
+    800:[273,67,39],900:[274,66,32],950:[274,87,18]
+  },
+  fuchsia: {
+    50:[289,100,98],100:[287,100,95],200:[288,96,91],300:[293,93,83],
+    400:[292,91,73],500:[292,84,61],600:[293,69,49],700:[295,72,40],
+    800:[295,70,33],900:[297,64,28],950:[297,90,16]
+  },
+  pink: {
+    50:[327,73,97],100:[326,78,95],200:[326,85,90],300:[327,87,82],
+    400:[329,86,70],500:[330,81,60],600:[333,71,51],700:[335,78,42],
+    800:[336,74,35],900:[336,69,30],950:[336,84,17]
+  },
+  rose: {
+    50:[356,100,97],100:[356,100,95],200:[353,96,90],300:[353,95,82],
+    400:[351,95,71],500:[350,89,60],600:[347,77,50],700:[345,83,41],
+    800:[343,80,35],900:[342,75,30],950:[343,88,16]
+  }
+};
+
+// Shift definitions: uniform degree shift applied to all hues
+const shifts = {
+  'Stock Tailwind': 0,
+  'A — Jade (−8°)': -8,
+  'B — Phosphor (+8°)': 8,
+  'C — Verdigris (−10°)': -10,
+  'D — Inv. Verdigris (+10°)': 10,
+};
+
+const steps = [50,100,200,300,400,500,600,700,800,900,950];
+
+function buildFullPalette() {
+  const container = document.getElementById('full-palette-content');
+
+  // Clear existing content safely
+  while (container.firstChild) container.removeChild(container.firstChild);
+
+  for (const [label, shift] of Object.entries(shifts)) {
+    const section = document.createElement('div');
+    section.style.marginBottom = '2rem';
+
+    const heading = document.createElement('div');
+    heading.textContent = label;
+    Object.assign(heading.style, {
+      fontSize: '0.75rem', fontWeight: '600', letterSpacing: '0.08em',
+      textTransform: 'uppercase', opacity: '0.5', marginBottom: '0.75rem'
+    });
+    section.appendChild(heading);
+
+    for (const [colorName, baseScale] of Object.entries(stocks)) {
+      const row = document.createElement('div');
+      Object.assign(row.style, { display:'flex', alignItems:'center', marginBottom:'4px' });
+
+      const nameEl = document.createElement('div');
+      nameEl.textContent = colorName;
+      Object.assign(nameEl.style, {
+        width:'60px', fontSize:'0.625rem', textTransform:'uppercase',
+        letterSpacing:'0.08em', opacity:'0.4', flexShrink:'0'
+      });
+      row.appendChild(nameEl);
+
+      const swatchRow = document.createElement('div');
+      Object.assign(swatchRow.style, { display:'flex', flex:'1', gap:'2px' });
+
+      for (const step of steps) {
+        const [h,s,l] = baseScale[step];
+        const newH = (h + shift + 360) % 360;
+        const dark = l < 45;
+
+        const swatch = document.createElement('div');
+        Object.assign(swatch.style, {
+          flex:'1', height:'28px',
+          background: `hsl(${newH},${s}%,${l}%)`,
+          position:'relative'
+        });
+
+        const num = document.createElement('span');
+        num.textContent = String(step);
+        Object.assign(num.style, {
+          position:'absolute', bottom:'1px', left:'2px',
+          fontSize:'6px', opacity:'0.7', fontWeight:'600',
+          color: dark ? '#fff' : '#000'
+        });
+        swatch.appendChild(num);
+        swatchRow.appendChild(swatch);
+      }
+
+      row.appendChild(swatchRow);
+      section.appendChild(row);
+    }
+
+    container.appendChild(section);
+  }
+}
+
+buildFullPalette();
+
+// Side-by-side comparison with per-step toggles
+const sideBySide = document.getElementById('side-by-side');
+const allCompareSteps = [50,100,200,300,400,500,600,700,800,900,950];
+const activeSteps = new Set([200, 500, 900]);
+const shiftEntries = Object.entries(shifts);
+
+function buildStepToggles() {
+  const bar = document.getElementById('step-toggle-bar');
+  while (bar.firstChild) bar.removeChild(bar.firstChild);
+
+  for (const step of allCompareSteps) {
+    const btn = document.createElement('button');
+    btn.textContent = step;
+    btn.className = 'toggle-btn' + (activeSteps.has(step) ? ' active' : '');
+    Object.assign(btn.style, { padding:'0.3rem 0.6rem', fontSize:'0.625rem' });
+    btn.addEventListener('click', () => {
+      if (activeSteps.has(step)) {
+        if (activeSteps.size <= 1) return; // keep at least one
+        activeSteps.delete(step);
+        btn.classList.remove('active');
+      } else {
+        activeSteps.add(step);
+        btn.classList.add('active');
+      }
+      updateSwatchVisibility();
+    });
+    bar.appendChild(btn);
+  }
+}
+
+function updateSwatchVisibility() {
+  const allSwatches = document.querySelectorAll('#side-by-side-content [data-step]');
+  allSwatches.forEach(el => {
+    const step = Number(el.dataset.step);
+    el.style.display = activeSteps.has(step) ? '' : 'none';
+  });
+  // Update heading
+  const heading = sideBySide.querySelector('h2');
+  const sorted = [...activeSteps].sort((a,b) => a - b);
+  heading.textContent = 'Side-by-Side Comparison (' + sorted.join(' \u00b7 ') + ')';
+}
+
+function buildSideBySide() {
+  const container = document.getElementById('side-by-side-content');
+  while (container.firstChild) container.removeChild(container.firstChild);
+
+  // Header row with option labels
+  const header = document.createElement('div');
+  Object.assign(header.style, {
+    display:'grid',
+    gridTemplateColumns: '70px ' + shiftEntries.map(() => '1fr').join(' '),
+    gap: '4px',
+    marginBottom: '8px',
+    paddingBottom: '8px',
+    borderBottom: '1px solid rgba(255,255,255,0.06)'
+  });
+  const spacer = document.createElement('div');
+  header.appendChild(spacer);
+  for (const [label] of shiftEntries) {
+    const lbl = document.createElement('div');
+    lbl.textContent = label;
+    Object.assign(lbl.style, {
+      fontSize:'0.5625rem', fontWeight:'600', letterSpacing:'0.06em',
+      textTransform:'uppercase', opacity:'0.45', textAlign:'center'
+    });
+    header.appendChild(lbl);
+  }
+  container.appendChild(header);
+
+  // One row per hue
+  for (const [colorName, baseScale] of Object.entries(stocks)) {
+    const row = document.createElement('div');
+    Object.assign(row.style, {
+      display:'grid',
+      gridTemplateColumns: '70px ' + shiftEntries.map(() => '1fr').join(' '),
+      gap: '4px',
+      marginBottom: '4px'
+    });
+
+    const nameEl = document.createElement('div');
+    nameEl.textContent = colorName;
+    Object.assign(nameEl.style, {
+      fontSize:'0.625rem', textTransform:'uppercase', letterSpacing:'0.08em',
+      opacity:'0.4', display:'flex', alignItems:'center'
+    });
+    row.appendChild(nameEl);
+
+    for (const [, shift] of shiftEntries) {
+      const cell = document.createElement('div');
+      Object.assign(cell.style, { display:'flex', gap:'2px' });
+
+      for (const step of allCompareSteps) {
+        const [h,s,l] = baseScale[step];
+        const newH = (h + shift + 360) % 360;
+        const dark = l < 45;
+
+        const swatch = document.createElement('div');
+        swatch.dataset.step = step;
+        Object.assign(swatch.style, {
+          flex:'1', height:'32px', position:'relative',
+          background: `hsl(${newH},${s}%,${l}%)`,
+          display: activeSteps.has(step) ? '' : 'none'
+        });
+
+        const num = document.createElement('span');
+        num.textContent = String(step);
+        Object.assign(num.style, {
+          position:'absolute', bottom:'1px', left:'2px',
+          fontSize:'6px', opacity:'0.7', fontWeight:'600',
+          color: dark ? '#fff' : '#000'
+        });
+        swatch.appendChild(num);
+        cell.appendChild(swatch);
+      }
+
+      row.appendChild(cell);
+    }
+
+    container.appendChild(row);
+  }
+}
+
+buildSideBySide();
+buildStepToggles();
+
+// Add toggle buttons for bottom panels
+const toggleBar = document.querySelector('.toggle-bar');
+
+const separator = document.createElement('span');
+separator.style.cssText = 'display:inline-block;width:1px;height:20px;background:rgba(255,255,255,0.15);margin:0 8px;align-self:center;';
+toggleBar.appendChild(separator);
+
+const showPaletteBtn = document.createElement('button');
+showPaletteBtn.className = 'toggle-btn';
+showPaletteBtn.textContent = 'Full Scales';
+toggleBar.appendChild(showPaletteBtn);
+
+const showCompareBtn = document.createElement('button');
+showCompareBtn.className = 'toggle-btn';
+showCompareBtn.textContent = 'Compare';
+toggleBar.appendChild(showCompareBtn);
+
+showPaletteBtn.addEventListener('click', () => {
+  const visible = fullPalette.style.display !== 'none';
+  fullPalette.style.display = visible ? 'none' : 'block';
+  showPaletteBtn.classList.toggle('active', !visible);
+});
+
+showCompareBtn.addEventListener('click', () => {
+  const visible = sideBySide.style.display !== 'none';
+  sideBySide.style.display = visible ? 'none' : 'block';
+  showCompareBtn.classList.toggle('active', !visible);
+});
+</script>
+
+</body>
+</html>
