@@ -6,7 +6,7 @@ This is Grant Keller's professional portfolio website showcasing frontend develo
 
 ## Architecture
 
-**Framework:** Astro 5.7.4 (Static Site Generator)
+**Framework:** Astro 5.16.4 (Static Site Generator)
 **Key Technologies:** TypeScript, Tailwind CSS, DaisyUI, GSAP animations
 **Deployment:** GitHub Pages (https://gdkeller.github.io/portfolio)
 
@@ -14,15 +14,20 @@ This is Grant Keller's professional portfolio website showcasing frontend develo
 
 ```
 src/
-├── components/          # Astro components (19 total)
+├── components/          # Astro components (27 total)
 │   ├── Hero.astro      # Main landing section
 │   ├── Projects.astro  # Project showcase grid
-│   └── Jobs.astro      # Work experience timeline
+│   ├── Jobs.astro      # Work experience timeline
+│   ├── Header.astro    # Site header with GSAP oscilloscope animation
+│   └── ...             # Nav, Footer, Awards, Talks, LogoCarousel, etc.
 ├── content/            # Content collections (Astro's data layer)
 │   ├── config.ts       # Zod schemas for type safety
 │   ├── jobs/           # Professional experience entries
 │   ├── projects/       # Featured project showcases
+│   ├── skills/         # Skill entries
 │   └── featured/       # Special content (anglerfish story, etc.)
+├── lib/
+│   └── animations/     # GSAP animation modules (hero, content, skills, etc.)
 ├── pages/
 │   └── index.astro     # Single-page application entry
 └── styles/
@@ -36,58 +41,60 @@ src/
 - **Projects:** Create `.md` file in `src/content/projects/`
 - All content uses Zod-validated frontmatter schemas defined in `src/content/config.ts`
 
-### Performance Considerations
-- Large background images need optimization (current: 5.6MB unoptimized)
-- Use Astro's `<Image>` component for automatic optimization
-- Implement lazy loading for below-fold content
-- Current build size: ~21MB (needs reduction)
+## Design Context
 
-## Design System
+### Users
+Hiring managers and potential clients evaluating Grant's technical abilities. They're scanning quickly, comparing against other candidates, and looking for evidence of craft, range, and taste.
 
-### Colors
-- Primary: Cyberpunk-inspired neon accents
-- Background: Dark themes with texture overlays
-- Text: High contrast for accessibility
+### Brand Personality
+**Technical, Bold, Creative** — engineering depth with artistic confidence.
 
-### Typography
-- Currently using 6+ fonts (needs consolidation)
-- Target: 2-3 fonts maximum for performance
+### Emotional Goals
+- "They think differently" — surprise and curiosity through creative technical choices
+- "I want to work with them" — approachability and collaborative energy beneath the polish
+- "Wide breadth of skills, I trust them with any problem" — demonstrated range and reliability
 
-### Components Pattern
-- Most components are self-contained Astro files
-- Props passed via Astro.props
-- TypeScript interfaces for type safety
+### Aesthetic Direction
+- **Theme:** Dark only — black base (`bg-black`) with emerald (`emerald-200` through `emerald-950`) as the dominant color
+- **Accents:** Fuchsia/pink for emphasis (name glow, active nav states), teal for gradients
+- **Effects:** Neon glow text-shadows, glass morphism (`bg-black/70 backdrop-blur`), radial gradient bursts, blurred emerald scanlines on section headings
+- **Fonts:** Bayon (display), Bokor (decorative), Permanent Marker (handwritten accent), Prompt (body) — loaded via Google Fonts
+- **Type scale:** Custom display/heading/body sizes defined in `tailwind.config.mjs`
+- **Animation:** GSAP for complex sequences (ScrollTrigger, oscilloscope wave, scroll reveals); CSS transitions for simple hover/focus states
+- **Anti-references:** Generic portfolio templates, cookie-cutter layouts, safe/corporate aesthetics
+- **The current site IS the reference** — evolve and refine, don't reinvent
 
-## Known Issues & Improvements
+### Design Principles
+1. **Craft over convention** — Every interaction should feel intentional and hand-built, not templated
+2. **Atmosphere first** — Use glow, depth, and texture to create a sense of place, not just a page
+3. **Accessible by default** — Full `prefers-reduced-motion` support, WCAG 2.2 focus indicators, `prefers-contrast: high`, semantic HTML, sr-only labels
+4. **Show, don't tell** — The site itself is the portfolio piece; the quality of the code and interactions demonstrates the skills being claimed
+5. **Emerald is the identity** — Emerald neon on black is the signature; fuchsia is the punctuation mark, not the sentence
 
-### High Priority
-- ✅ README.md replaced with professional documentation
-- ✅ Content/misc/ renamed to content/featured/
-- ✅ Generic headshot filenames renamed with descriptive names
+## Known Issues
+
 - No testing infrastructure exists
-
-### Performance
 - Background images need WebP conversion
 - CSS bundle needs purging (37KB → ~15KB possible)
 - Font loading needs optimization
-
-### Documentation
-- ✅ Documentation structure unified (docs/ directory)
-- Component documentation missing
-- No JSDoc comments in components
-- Architecture decision records needed
 
 ## Development Workflow
 
 ```bash
 # Development
-npm run dev          # Starts on port 3333
+npm run dev          # Starts on port 3111
 
 # Production Build
 npm run build        # Type checks + builds to ./dist/
 
 # Preview Production
 npm run preview      # Test production build locally
+
+# Code Quality
+npm run lint         # ESLint on src/**/*.{ts,astro}
+npm run lint:fix     # Auto-fix ESLint issues
+npx prettier --check .   # Check formatting
+npx prettier --write .   # Fix formatting
 ```
 
 ## Component Conventions
@@ -110,10 +117,11 @@ npm run preview      # Test production build locally
 ## Content Guidelines
 
 ### Frontmatter Requirements
-Each content type has specific required fields:
-- **Jobs:** title, company, dateRange, bullets
-- **Projects:** title, description, image, tags
-- **Skills:** name, category, proficiency
+Each content type has specific required fields (see `src/content/config.ts` for full schemas):
+- **Jobs:** company, position (+ optional: startMonthYear, endMonthYear, tech, companyLogo, order)
+- **Projects:** title, projectName, client (+ optional: clientLogo, timeperiod, tags, image, tech)
+- **Skills:** title (+ optional: tags, image)
+- **Featured:** title (+ optional: description, tags, image)
 
 ### Image Assets
 - Store in `src/images/` with logical subdirectories
