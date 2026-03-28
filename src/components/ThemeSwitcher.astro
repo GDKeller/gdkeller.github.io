@@ -1,13 +1,18 @@
 ---
-// Dev-only theme switcher — toggles between stock Tailwind and Jade palette.
+// Dev-only theme switcher — select any palette variant.
 // Only renders when running `astro dev`.
 ---
 
 {import.meta.env.DEV && (
   <div id="theme-switcher">
-    <button id="theme-toggle" type="button" aria-label="Toggle color theme">
-      <span class="theme-label" id="theme-label">Stock</span>
-    </button>
+    <select id="theme-select" aria-label="Select color theme">
+      <option value="">Stock</option>
+      <option value="theme-jade">Jade</option>
+      <option value="theme-phosphor">Phosphor</option>
+      <option value="theme-verdigris">Verdigris</option>
+      <option value="theme-inv-verdigris">Inv. Verdigris</option>
+      <option value="theme-custom">Custom (G-4/A+10)</option>
+    </select>
   </div>
 )}
 
@@ -19,7 +24,7 @@
     z-index: 9999;
   }
 
-  #theme-toggle {
+  #theme-select {
     font-family: 'Prompt', system-ui, sans-serif;
     font-size: 0.6875rem;
     font-weight: 600;
@@ -32,23 +37,31 @@
     cursor: pointer;
     backdrop-filter: blur(8px);
     transition: border-color 0.2s, background 0.2s;
+    appearance: auto;
   }
 
-  #theme-toggle:hover {
+  #theme-select:hover,
+  #theme-select:focus {
     border-color: color-mix(in oklch, var(--color-emerald-400) 60%, transparent);
     background: oklch(0% 0 0 / 0.95);
+    outline: none;
   }
 </style>
 
 <script>
-  const toggle = document.getElementById('theme-toggle');
-  const label = document.getElementById('theme-label');
+  const select = document.getElementById('theme-select') as HTMLSelectElement | null;
+  const html = document.documentElement;
+  const themeClasses = [
+    'theme-jade', 'theme-phosphor', 'theme-verdigris',
+    'theme-inv-verdigris', 'theme-custom',
+  ];
 
-  if (toggle && label) {
-    toggle.addEventListener('click', () => {
-      const html = document.documentElement;
-      const isJade = html.classList.toggle('theme-jade');
-      label.textContent = isJade ? 'Jade' : 'Stock';
+  if (select) {
+    select.addEventListener('change', () => {
+      html.classList.remove(...themeClasses);
+      if (select.value) {
+        html.classList.add(select.value);
+      }
     });
   }
 </script>
