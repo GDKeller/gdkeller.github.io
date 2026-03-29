@@ -29,3 +29,5 @@ screenshots/
 # AI tooling
 .serena/
 .specstory/
+.cache/
+docs/ux-review/

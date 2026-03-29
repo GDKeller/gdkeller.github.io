@@ -52,15 +52,40 @@ export function initSkillsAnimations(
     });
   }
 
-  // Skill boxes with enhanced animations
-  const skillItems = document.querySelectorAll('.skill-item');
-  if (skillItems.length > 0) {
-    gsap.set(skillItems, { y: 25, opacity: 0, scale: 0.95 });
+  // Primary skill pills
+  const primarySkills = skillsSection.querySelectorAll('.primary-skill');
+  if (primarySkills.length > 0) {
+    gsap.set(primarySkills, { y: 15, opacity: 0, scale: 0.9 });
 
     ScrollTrigger.create({
-      trigger: '.skills-grid',
+      trigger: '.primary-skills',
       start: 'top 90%',
       onEnter: () => {
+        gsap.to(primarySkills, {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 0.6,
+          stagger: 0.06,
+          ease: 'power1.out',
+          delay: 0.2
+        });
+      },
+      once: true
+    });
+  }
+
+  // Secondary skill cards — animate on details open
+  const detailsEl = skillsSection.querySelector('.secondary-skills-details');
+  if (detailsEl) {
+    let hasAnimated = false;
+    detailsEl.addEventListener('toggle', () => {
+      if ((detailsEl as HTMLDetailsElement).open && !hasAnimated) {
+        hasAnimated = true;
+        const skillItems = detailsEl.querySelectorAll('.skill-item');
+        const skillLists = detailsEl.querySelectorAll('.skill-item ul li');
+
+        gsap.set(skillItems, { y: 25, opacity: 0, scale: 0.95 });
         gsap.to(skillItems, {
           y: 0,
           opacity: 1,
@@ -68,33 +93,18 @@ export function initSkillsAnimations(
           duration: 0.8,
           stagger: 0.08,
           ease: 'power1.out',
-          delay: 0.3
         });
-      },
-      once: true
-    });
 
-  }
-
-  // Skills list items inside each box
-  const skillLists = skillsSection.querySelectorAll('.skill-item ul li');
-  if (skillLists.length > 0) {
-    gsap.set(skillLists, { x: -10, opacity: 0 });
-
-    ScrollTrigger.create({
-      trigger: '.skills-grid',
-      start: 'top 80%',
-      onEnter: () => {
+        gsap.set(skillLists, { x: -10, opacity: 0 });
         gsap.to(skillLists, {
           x: 0,
           opacity: 1,
           duration: 0.6,
           stagger: 0.02,
           ease: 'power1.out',
-          delay: 0.8
+          delay: 0.4
         });
-      },
-      once: true
+      }
     });
   }
 }
