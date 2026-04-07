@@ -1,133 +1,91 @@
 ---
+import { Image } from "astro:assets";
 import Headshot from "./Headshot.astro";
 import HeroBackground from "./HeroBackground.astro";
 import LogoCarousel from "./LogoCarousel.astro";
+import frame from "../images/frame.webp";
 ---
 
 <section
   id="hero"
-  class="relative z-50 flex w-full max-w-full flex-col justify-center overflow-x-hidden px-2 pb-2 pt-0 sm:px-8 sm:pt-10 lg:pt-16"
+  class="relative z-50 flex w-full max-w-full flex-col justify-center overflow-x-hidden px-2 pt-0 pb-2 sm:px-8 sm:pt-10 lg:pt-16"
 >
   <HeroBackground />
+  <Image
+    src={frame}
+    alt=""
+    class="pointer-events-none absolute top-0 left-0 z-100 h-full w-full object-cover object-top"
+    loading="eager"
+  />
   <div
     id="hero__content"
-    class="glass relative z-50 mx-auto mb-8 flex max-w-7xl flex-col items-center justify-start overflow-hidden bg-black/70 bg-gradient-to-br from-emerald-950/10 via-teal-800/10 to-blue-950/10 px-6 pb-4 pt-4 shadow-2xl shadow-teal-950/50 sm:ml-0 sm:mr-0 sm:w-full sm:max-w-none sm:items-center sm:pl-4 sm:pr-4 md:ml-auto md:mr-auto md:w-auto md:flex-row md:pl-6 md:pr-6 md:pt-6 lg:mr-auto lg:pb-12 lg:pl-12 lg:pr-8 lg:pt-12"
+    class="relative z-50 mx-auto mt-auto mb-8 flex w-full max-w-full flex-col items-center justify-start px-6 pt-4 pb-4 sm:mr-0 sm:ml-0 sm:items-center sm:pr-4 sm:pl-4 md:mr-auto md:ml-auto md:flex-row md:justify-around md:px-0 md:pt-6 md:pr-6 md:pl-6 lg:mr-auto lg:pt-12 lg:pr-8 lg:pb-12 lg:pl-12"
   >
     <div
-      class="relative mb-6 flex w-full flex-col items-center justify-center sm:mb-auto sm:ml-auto sm:mr-auto sm:w-auto sm:flex-row sm:justify-start md:mr-6 md:w-auto md:flex-col md:items-center lg:mr-12 lg:max-w-80 xl:mr-12"
+      class="relative mb-6 flex w-full flex-col items-center justify-center sm:mr-auto sm:mb-auto sm:ml-auto sm:w-auto sm:flex-row sm:justify-start md:ml-auto md:w-auto md:flex-col md:items-center lg:max-w-80"
     >
       <div
-        class="relative z-20 mb-6 block h-auto w-full max-w-48 overflow-hidden border-2 border-teal-950/30 sm:mr-6 sm:w-1/3 md:mr-8 md:w-full md:max-w-64 lg:max-w-md"
+        class="relative z-20 mb-6 block h-auto w-full max-w-48 overflow-hidden border-8 border-black/80 sm:mr-6 sm:w-1/3 md:mr-auto md:w-full md:max-w-64 lg:max-w-md"
       >
         <Headshot />
       </div>
       <div class="relative z-20">
         <h1
-          class="hero__name z-40 mx-auto mb-3 block whitespace-nowrap bg-gradient-to-b from-pink-200 via-fuchsia-500 to-rose-500 bg-clip-text text-center font-marker text-4xl leading-[1em] text-transparent sm:text-left sm:text-4xl md:-mt-[0.9em] md:w-min md:text-center md:text-4xl lg:w-full lg:text-center lg:text-5xl xl:text-5xl"
+          class="hero__name font-marker z-40 mx-auto mb-3 block bg-gradient-to-b from-pink-200 via-fuchsia-500 to-rose-500 bg-clip-text text-center text-4xl leading-[1em] whitespace-nowrap text-transparent sm:text-left sm:text-4xl md:-mt-[0.9em] md:w-min md:text-center md:text-4xl lg:w-full lg:text-center lg:text-4xl xl:text-5xl"
         >
           Grant Keller
         </h1>
         <p
-          class="hero__title mb-4 w-full bg-gradient-to-br from-teal-400 via-emerald-100 to-teal-400 bg-clip-text text-center text-xl font-bold text-transparent sm:text-left sm:text-2xl md:text-center md:text-lg lg:text-xl"
+          class="hero__title mb-4 w-full text-center text-xl font-bold sm:text-left sm:text-2xl md:text-center md:text-lg lg:text-xl"
         >
-          Senior Software Engineer
+          Design Engineer
         </p>
       </div>
     </div>
     <div
-      class="hero__text list-custom-wrapper flex w-full max-w-2xl flex-col justify-center sm:w-auto md:py-4 lg:mr-auto lg:py-0"
+      class="hero__text mt-4 mb-auto flex w-full max-w-2xl flex-col sm:w-auto md:py-4 lg:mr-auto lg:max-w-5xl lg:py-0 xl:mr-auto xl:ml-auto"
     >
       <p
-        class="mb-12 ml-auto mr-auto max-w-xs break-keep text-center text-xl font-extrabold text-white sm:ml-0 sm:max-w-xl sm:text-left sm:text-lg md:mb-12 md:max-w-[16em] md:text-2xl lg:mb-20 lg:text-4xl/tight"
+        class="relative isolate mt-0 mr-auto mb-auto ml-auto flex w-full max-w-xs flex-col flex-wrap items-start text-left text-xl font-extrabold text-emerald-100 sm:ml-0 sm:max-w-xl sm:text-left sm:text-lg md:mb-12 md:max-w-[48em] md:text-2xl lg:text-xl/tight"
       >
-        Builds thoughtful digital experiences used by millions.
+        <span
+          class="relative -left-8 z-30 block w-full text-8xl leading-none font-bold break-keep whitespace-nowrap uppercase"
+          >Deep space</span
+        ><span
+          class="font-bokor relative -left-[1.6em] z-50 -my-5 scale-y-75 self-center text-3xl leading-none tracking-wider text-emerald-200 uppercase drop-shadow-[0_0_6px_rgba(0,0,0,1)] text-shadow-black text-shadow-lg"
+        >
+          to
+        </span><span class="z-30 mb-12 text-8xl leading-none font-bold uppercase">deep sea</span>
+        <span class="block w-full max-w-[18em] text-left text-3xl font-normal text-emerald-200"
+          >Building software that turns ideas into interfaces that just click.</span
+        >
       </p>
-      <p
-        class="mb-8 flex w-full max-w-xl justify-center break-keep text-xs font-bold text-emerald-50 sm:max-w-full sm:justify-start sm:text-left sm:text-lg md:gap-0 md:text-base lg:gap-2 lg:text-xl/normal"
-      >
-        <span>UX Focused</span><span>&nbsp;·&nbsp;</span><span>Accessibility First</span><span
-          >&nbsp;·&nbsp;</span
-        ><span>Proven at Scale</span>
-      </p>
-      <ul class="text-xs text-emerald-50 md:text-sm lg:text-base">
-        <li class="mb-3 list-item">15+ years fullstack with strong frontend/UX focus</li>
-        <li class="mb-3 list-item">React, TypeScript, Node.js, Python</li>
-        <li class="mb-3 list-item">WCAG accessibility & Core Web Vitals optimization</li>
-        <li class="mb-3 list-item">Led frontend for products serving 390M+ monthly pageviews</li>
-      </ul>
-
     </div>
-    <div
-      class="absolute left-0 top-0 -z-10 h-full w-full overflow-hidden border-4 border-teal-950/30 bg-black/10"
-    >
-    </div>
-    <span class="gradient-burst absolute left-0 top-0 -z-20 h-full w-full"></span>
   </div>
 
-  <div class="relative z-10 max-w-full overflow-hidden">
+  <div class="relative z-10 mt-auto max-w-full overflow-hidden pb-8 md:mb-24 lg:mb-12 xl:mb-0">
     <LogoCarousel />
   </div>
 
+  <style>
+    #hero {
+      /* min-height: calc(90vh - 1rem); */
+      min-height: calc(100vh - 50px);
+    }
+
+    .hero__name {
+      line-height: 0.8;
+      display: block;
+      position: relative;
+
+      &::after {
+        content: "Grant Keller";
+        text-shadow: 0px 0px 0.1em color-mix(in oklch, var(--color-fuchsia-500) 80%, transparent);
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: -1;
+      }
+    }
+  </style>
 </section>
-
-<style>
-  #hero {
-    /* min-height: calc(90vh - 1rem); */
-    min-height: calc(100vh - 50px);
-  }
-
-  .hero__name {
-    line-height: 0.8;
-    display: block;
-    position: relative;
-
-    &::after {
-      content: "Grant Keller";
-      text-shadow: 0px 0px 0.1em color-mix(in oklch, var(--color-fuchsia-500) 80%, transparent);
-      position: absolute;
-      left: 0;
-      top: 0;
-      z-index: -1;
-    }
-  }
-
-  #hero .huge {
-    font-size: 30vw;
-    margin-left: -0.1em;
-    line-height: 0.7;
-    letter-spacing: -0.1em;
-  }
-
-  #hero .huge .plus {
-    font-size: 45vw;
-    mix-blend-mode: difference;
-    /* top: 50%;
-    position: absolute;
-    left: 50%; */
-    line-height: 1;
-    z-index: 100;
-    /* transform: translate3d(-56%, -47%, 0); */
-  }
-
-  .gradient-burst {
-    background: radial-gradient(
-      ellipse at center center,
-      rgba(0, 255, 200, 0.3) 0%,
-      rgba(0, 255, 200, 0) 70%
-    );
-    opacity: 0.3;
-    background-repeat: no-repeat;
-    /* mix-blend-mode: overlay; */
-    animation: burst 2s infinite ease-in-out;
-  }
-
-  @keyframes burst {
-    0%,
-    100% {
-      transform: scaleY(1.2) scaleX(1.2) translateY(0%);
-    }
-    50% {
-      transform: scaleY(1.7) scaleX(1.7) translateY(0%);
-    }
-  }
-</style>

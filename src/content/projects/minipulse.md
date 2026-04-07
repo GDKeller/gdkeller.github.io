@@ -33,19 +33,19 @@ tech:
     </ul>
   </div>
   <figure class="md:w-1/3 mt-0 mb-0 relative">
-      <img class="object-cover h-full rounded-lg" src="/images/projects/jpl-minipulse/goldstone-minipulse-cropped.jpg" alt="MiniPulse on display at Goldstone Communications Complex" />
+      <img class="object-cover h-full" src="/images/projects/jpl-minipulse/goldstone-minipulse-cropped.jpg" alt="MiniPulse on display at Goldstone Communications Complex" />
   </figure>
 </div>
 <div class="grid gap-1 mb-6">
-  <div class="block row-start-2 col-start-1 col-span-5 overflow-hidden md:rounded-bl-xl">
+  <div class="block row-start-2 col-start-1 col-span-5 overflow-hidden">
     <img class="w-full h-full object-cover" src="/images/projects/jpl-minipulse/ESU_minipulse_2.jpg" alt="MiniPulse installation at Peterson Planetarium" />
   </div>
-  <div class="row-start-2 col-start-6 col-span-5 overflow-hidden md:rounded-br-xl">
+  <div class="row-start-2 col-start-6 col-span-5 overflow-hidden">
     <img class="w-full h-full object-cover object-[15%_50%]" src="/images/projects/jpl-minipulse/emporia-gazzette-minipulse-2.jpg" alt="MiniPulse installation at Peterson Planetarium" />
   </div>
-  <blockquote class="row-start-1 col-start-1 relative col-span-10 mb-0 rounded-t-xl flex items-center sm:flex-row flex-col">
+  <blockquote class="row-start-1 col-start-1 relative col-span-10 mb-0 flex items-center sm:flex-row flex-col">
     <div class="relative sm:mr-8 md:mr-10 lg:mr-12 h-full w-full">
-      <img class="w-full rounded-md h-full object-cover min-w-52" src="/images/projects/jpl-minipulse/ESU_minipulse_1.jpg" alt="MiniPulse installation at Peterson Planetarium" />
+      <img class="w-full h-full object-cover min-w-52" src="/images/projects/jpl-minipulse/ESU_minipulse_1.jpg" alt="MiniPulse installation at Peterson Planetarium" />
     </div>
     <div class="relative flex flex-col pb-12 w-auto pt-6 sm:px-0 px-4 sm:pt-2 md:pt-0">
       “With our new PULSE display radiating just outside these doors, we send a message to every student, every visitor, and every dreamer — science lives here, and its heartbeat is at Emporia State University,”

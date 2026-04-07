@@ -26,12 +26,12 @@ tech: [C++, Arduino, Platform I/O, Sensors integration, Google Sheets API]
       <li>Full-scale 3D printed tactile model embedded in signage</li>
     </ul>
   </div>
-  <figure class="md:w-1/3 relative overflow-hidden rounded-lg">
+  <figure class="md:w-1/3 relative overflow-hidden">
     <img class="object-cover h-full" src="/images/projects/nhmla-anglerfish/specimen.jpg" alt="Pacific footballfish specimen preserved in jar" loading="lazy" />
   </figure>
 </div>
 <div class="flex flex-col gap-4 mb-6 sm:grid sm:grid-cols-6 sm:gap-1">
-  <blockquote class="sm:row-start-1 sm:col-start-1 sm:col-span-6 mb-0 rounded-t-xl">
+  <blockquote class="sm:row-start-1 sm:col-start-1 sm:col-span-6 mb-0">
     "It's one of only about 30 adult female specimens of this species, and having one washed up in this condition is extraordinary."
     <cite>Dr. William Ludt, <a href="https://nhm.org/anglerfish" target="_blank">NHM Assistant Curator of Ichthyology</a></cite>
   </blockquote>
@@ -41,13 +41,13 @@ tech: [C++, Arduino, Platform I/O, Sensors integration, Google Sheets API]
   <div class="sm:row-start-2 sm:col-start-4 sm:col-span-3 overflow-hidden">
     <img class="w-full h-full object-cover" src="/images/projects/nhmla-anglerfish/display-touch.jpg" alt="Visitor touching 3D printed tactile model embedded in signage" loading="lazy" />
   </div>
-  <div class="sm:row-start-3 sm:col-start-1 sm:col-span-2 overflow-hidden sm:rounded-bl-xl">
+  <div class="sm:row-start-3 sm:col-start-1 sm:col-span-2 overflow-hidden">
     <img class="w-full h-full object-cover" src="/images/projects/nhmla-anglerfish/display-front.jpg" alt="Front view showing Arduino sensor system and cabinet controls" loading="lazy" />
   </div>
   <div class="sm:row-start-3 sm:col-start-3 sm:col-span-2 overflow-hidden">
     <img class="w-full h-full object-cover" src="/images/projects/nhmla-anglerfish/display-close.jpg" alt="Close-up of Pacific footballfish specimen in exhibition case" loading="lazy" />
   </div>
-  <div class="sm:row-start-3 sm:col-start-5 sm:col-span-2 overflow-hidden sm:rounded-br-xl">
+  <div class="sm:row-start-3 sm:col-start-5 sm:col-span-2 overflow-hidden">
     <img class="w-full h-full object-cover" src="/images/projects/nhmla-anglerfish/display-side.jpg" alt="Side angle showing light sensor monitoring equipment" loading="lazy" />
   </div>
 </div>

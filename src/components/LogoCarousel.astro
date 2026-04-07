@@ -56,15 +56,10 @@ const logos: Logo[] = [
   role="region"
   aria-label="Organizations I've worked with"
 >
-  <p
-    id="carousel-heading"
-    class="mb-2 text-center font-bayon text-xs uppercase tracking-widest text-emerald-100"
-  >
-    Trusted by
-  </p>
-
-  <div class="carousel-mask relative overflow-hidden" aria-labelledby="carousel-heading">
-    <div class="carousel-track flex items-center gap-10 md:gap-14">
+  <div class="carousel-mask relative overflow-hidden">
+    <div
+      class="carousel-track flex items-center gap-10 brightness-125 contrast-200 saturate-0 md:gap-14"
+    >
       {/* Primary logos - visible to screen readers */}
       {
         logos.map((logo) => (
