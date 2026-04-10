@@ -8,7 +8,7 @@ import frame from "../images/frame.webp";
 
 <section
   id="hero"
-  class="relative z-50 flex w-full max-w-full flex-col justify-center overflow-x-hidden px-2 pt-0 pb-2 sm:px-8 sm:pt-10 lg:pt-16"
+  class="relative z-50 flex w-full max-w-full flex-col justify-end gap-0 overflow-x-hidden px-2 pt-0 pb-2 sm:px-8 sm:pt-10 lg:pt-12"
 >
   <HeroBackground />
   <Image
@@ -19,26 +19,36 @@ import frame from "../images/frame.webp";
   />
   <div
     id="hero__content"
-    class="relative z-50 mx-auto mt-auto mb-8 flex w-full max-w-full flex-col items-center justify-start px-6 pt-4 pb-4 sm:mr-0 sm:ml-0 sm:items-center sm:pr-4 sm:pl-4 md:mr-auto md:ml-auto md:flex-row md:justify-around md:px-0 md:pt-6 md:pr-6 md:pl-6 lg:mr-auto lg:pt-12 lg:pr-8 lg:pb-12 lg:pl-12"
+    class="relative z-50 mx-auto mt-auto mb-auto flex w-full max-w-full flex-col items-center justify-start px-6 pt-4 pb-4 sm:mr-0 sm:ml-0 sm:items-center sm:pr-4 sm:pl-4 md:mr-auto md:ml-auto md:flex-row md:justify-around md:px-0 md:pt-6 md:pr-6 md:pl-6 lg:mr-auto lg:pt-12 lg:pr-8 lg:pb-12 lg:pl-12"
   >
     <div
-      class="relative mb-6 flex w-full flex-col items-center justify-center sm:mr-auto sm:mb-auto sm:ml-auto sm:w-auto sm:flex-row sm:justify-start md:ml-auto md:w-auto md:flex-col md:items-center lg:max-w-80"
+      class="relative mb-6 flex w-full flex-col items-center justify-center bg-emerald-100 p-0.5 sm:mr-auto sm:mb-auto sm:ml-auto sm:w-auto sm:flex-row sm:justify-start md:ml-auto md:w-auto md:flex-col md:items-center lg:max-w-80"
     >
       <div
-        class="relative z-20 mb-6 block h-auto w-full max-w-48 overflow-hidden border-8 border-black/80 sm:mr-6 sm:w-1/3 md:mr-auto md:w-full md:max-w-64 lg:max-w-md"
+        class="relative z-20 mb-6 block h-auto w-full max-w-48 overflow-hidden border-0 border-black/80 sm:mr-6 sm:w-1/3 md:mr-auto md:w-full md:max-w-64 lg:max-w-md"
       >
         <Headshot />
       </div>
-      <div class="relative z-20">
-        <h1
-          class="hero__name font-marker z-40 mx-auto mb-3 block bg-gradient-to-b from-pink-200 via-fuchsia-500 to-rose-500 bg-clip-text text-center text-4xl leading-[1em] whitespace-nowrap text-transparent sm:text-left sm:text-4xl md:-mt-[0.9em] md:w-min md:text-center md:text-4xl lg:w-full lg:text-center lg:text-4xl xl:text-5xl"
+      <div class="relative z-20 w-full pl-4 text-neutral-900">
+        <!-- <h1
+          class="hero__name font-marker z-40 mx-auto mb-3 block bg-gradient-to-b from-pink-200 via-fuchsia-500 to-rose-500 bg-clip-text text-center text-4xl leading-[1em] whitespace-nowrap text-transparent sm:text-left sm:text-4xl md:-mt-[0.9em] md:w-min md:text-center md:text-4xl lg:w-full lg:text-center lg:text-4xl xl:text-3xl"
         >
           Grant Keller
+        </h1> -->
+        <h1
+          class="z-40 mx-auto ml-0 block w-full pt-2 text-left font-mono text-4xl leading-[1em] font-light whitespace-nowrap sm:text-left sm:text-4xl md:-mt-[0.9em] md:text-4xl lg:w-full lg:text-4xl xl:text-sm"
+        >
+          <span class="font-bold">Specimen:</span> Grant Keller
         </h1>
         <p
-          class="hero__title mb-4 w-full text-center text-xl font-bold sm:text-left sm:text-2xl md:text-center md:text-lg lg:text-xl"
+          class="hero__title md:text-md w-full font-mono text-xl font-light sm:text-left sm:text-2xl lg:text-sm"
         >
-          Design Engineer
+          <span class="font-bold">Capacity:</span> Design Engineer
+        </p>
+        <p
+          class="hero__title md:text-md mb-4 w-full font-mono text-xl font-light sm:text-left sm:text-2xl lg:text-sm"
+        >
+          <span class="font-bold">Habitat:</span> Los Angeles, CA
         </p>
       </div>
     </div>
@@ -46,46 +56,57 @@ import frame from "../images/frame.webp";
       class="hero__text mt-4 mb-auto flex w-full max-w-2xl flex-col sm:w-auto md:py-4 lg:mr-auto lg:max-w-5xl lg:py-0 xl:mr-auto xl:ml-auto"
     >
       <p
-        class="relative isolate mt-0 mr-auto mb-auto ml-auto flex w-full max-w-xs flex-col flex-wrap items-start text-left text-xl font-extrabold text-emerald-100 sm:ml-0 sm:max-w-xl sm:text-left sm:text-lg md:mb-12 md:max-w-[48em] md:text-2xl lg:text-xl/tight"
+        class="relative isolate mt-0 mr-auto mb-auto ml-auto flex w-full max-w-xs flex-col flex-wrap items-start text-left text-xl text-emerald-100 sm:ml-0 sm:max-w-xl sm:text-left sm:text-lg md:mb-12 md:max-w-[48em] md:text-2xl lg:text-xl/tight"
       >
         <span
-          class="relative -left-8 z-30 block w-full text-8xl leading-none font-bold break-keep whitespace-nowrap uppercase"
+          class="relative -left-16 z-30 block w-full text-8xl leading-[0.9] font-bold break-keep whitespace-nowrap uppercase"
           >Deep space</span
-        ><span
+        >
+        <!-- <span
           class="font-bokor relative -left-[1.6em] z-50 -my-5 scale-y-75 self-center text-3xl leading-none tracking-wider text-emerald-200 uppercase drop-shadow-[0_0_6px_rgba(0,0,0,1)] text-shadow-black text-shadow-lg"
         >
           to
-        </span><span class="z-30 mb-12 text-8xl leading-none font-bold uppercase">deep sea</span>
-        <span class="block w-full max-w-[18em] text-left text-3xl font-normal text-emerald-200"
-          >Building software that turns ideas into interfaces that just click.</span
+        </span> -->
+        <span class="relative -left-8 z-30 mb-2 text-8xl leading-[0.9] font-bold uppercase"
+          >deep sea</span
+        >
+        <span
+          class="text-md relative z-30 mt-0 mb-24 font-mono leading-none font-extralight tracking-widest text-emerald-200"
+          >and everywhere in between</span
+        >
+        <span
+          class="block w-full max-w-[20em] text-left text-2xl leading-relaxed font-normal text-emerald-200"
+          >Building software that turns ideas <span class="inline-block"
+            >into interfaces that just click.</span
+          ></span
         >
       </p>
     </div>
   </div>
 
-  <div class="relative z-10 mt-auto max-w-full overflow-hidden pb-8 md:mb-24 lg:mb-12 xl:mb-0">
+  <div class="relative z-10 max-w-full overflow-hidden pb-8">
     <LogoCarousel />
   </div>
-
-  <style>
-    #hero {
-      /* min-height: calc(90vh - 1rem); */
-      min-height: calc(100vh - 50px);
-    }
-
-    .hero__name {
-      line-height: 0.8;
-      display: block;
-      position: relative;
-
-      &::after {
-        content: "Grant Keller";
-        text-shadow: 0px 0px 0.1em color-mix(in oklch, var(--color-fuchsia-500) 80%, transparent);
-        position: absolute;
-        left: 0;
-        top: 0;
-        z-index: -1;
-      }
-    }
-  </style>
 </section>
+
+<style>
+  #hero {
+    /* min-height: calc(90vh - 1rem); */
+    min-height: calc(100vh - 50px);
+  }
+
+  .hero__name {
+    line-height: 0.8;
+    display: block;
+    position: relative;
+
+    &::after {
+      content: "Grant Keller";
+      text-shadow: 0px 0px 0.1em color-mix(in oklch, var(--color-fuchsia-500) 80%, transparent);
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: -1;
+    }
+  }
+</style>
