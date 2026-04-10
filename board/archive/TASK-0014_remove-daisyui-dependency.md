@@ -1,12 +1,15 @@
 ---
 type: task
-status: done
+status: archived
 priority: 2
 created: 2026-03-27
+archived: 2026-04-09
 parent: EPIC-0001
 ---
 
 # Remove DaisyUI dependency
+
+> **Resolved 2026-04-09:** Verified all code-level removal was complete (no dep in `package.json`, no `tailwind.config.*` file after Tailwind v4 migration, no class usage in `src/**`, no mention in `Footer.astro`). Also removed the lingering `DaisyUI` entry from the Davant Systems job `tech` list in `src/content/jobs/davant-systems-lead-software-engineer.md` — it wasn't prominent enough to earn real estate on the resume. Zero DaisyUI references remain anywhere in the repo.
 
 **Source:** NOTE-0008 §3
 

@@ -17,7 +17,6 @@ tech:
     Fastify,
     CSS,
     Tailwind,
-    DaisyUI,
     Shell scripting,
     AWS,
     Cloudflare,
