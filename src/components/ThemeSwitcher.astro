@@ -1,20 +1,35 @@
 ---
-// Dev-only theme switcher — select any palette variant.
-// Only renders when running `astro dev`.
+// Palette picker overlay — dev tool for swapping color themes in real time.
+//
+// Uses the shared dev-flags convention (see `src/lib/dev-flags.ts`).
+//
+// Visibility rules:
+//   - In `npm run dev`: always visible (bottom-right corner).
+//   - In production builds: hidden by default.
+//
+// Production runtime override (no rebuild needed, e.g. for deployed previews):
+//   - Append `?tools=palette` to any URL to enable. Persisted in localStorage
+//     under the `dev-tools` key, so the picker stays visible on return visits
+//     from the same browser.
+//   - Append `?tools=` (empty) to clear all dev tools.
+//   - Or toggle directly in devtools:
+//       localStorage.setItem("dev-tools", "palette")
+//
+// The overlay is kept in the DOM (hidden via the HTML `hidden` attribute) in
+// production so the runtime override can reveal it without an app rebuild.
+const isDev = import.meta.env.DEV;
 ---
 
-{import.meta.env.DEV && (
-  <div id="theme-switcher">
-    <select id="theme-select" aria-label="Select color theme">
-      <option value="">Stock</option>
-      <option value="theme-jade">Jade</option>
-      <option value="theme-phosphor">Phosphor</option>
-      <option value="theme-verdigris">Verdigris</option>
-      <option value="theme-inv-verdigris">Inv. Verdigris</option>
-      <option value="theme-custom">Custom (G-4/A+10)</option>
-    </select>
-  </div>
-)}
+<div id="theme-switcher" hidden={!isDev}>
+  <select id="theme-select" aria-label="Select color theme">
+    <option value="">Stock</option>
+    <option value="theme-jade">Jade</option>
+    <option value="theme-phosphor">Phosphor</option>
+    <option value="theme-verdigris">Verdigris</option>
+    <option value="theme-inv-verdigris">Inv. Verdigris</option>
+    <option value="theme-custom">Custom (G-4/A+10)</option>
+  </select>
+</div>
 
 <style>
   #theme-switcher {
@@ -25,7 +40,7 @@
   }
 
   #theme-select {
-    font-family: 'Prompt', system-ui, sans-serif;
+    font-family: "Prompt", system-ui, sans-serif;
     font-size: 0.6875rem;
     font-weight: 600;
     letter-spacing: 0.06em;
@@ -36,7 +51,9 @@
     padding: 0.4rem 0.75rem;
     cursor: pointer;
     backdrop-filter: blur(8px);
-    transition: border-color 0.2s, background 0.2s;
+    transition:
+      border-color 0.2s,
+      background 0.2s;
     appearance: auto;
   }
 
@@ -49,15 +66,29 @@
 </style>
 
 <script>
-  const select = document.getElementById('theme-select') as HTMLSelectElement | null;
+  import { syncDevFlagsFromUrl, hasTool } from "../lib/dev-flags";
+
+  // Mirror any ?dev= / ?tools= params from the URL into localStorage once per load.
+  syncDevFlagsFromUrl();
+
+  const switcher = document.getElementById("theme-switcher") as HTMLElement | null;
+  const select = document.getElementById("theme-select") as HTMLSelectElement | null;
   const html = document.documentElement;
   const themeClasses = [
-    'theme-jade', 'theme-phosphor', 'theme-verdigris',
-    'theme-inv-verdigris', 'theme-custom',
+    "theme-jade",
+    "theme-phosphor",
+    "theme-verdigris",
+    "theme-inv-verdigris",
+    "theme-custom",
   ];
 
+  // Reveal in production if the "palette" tool is enabled via the dev-flags convention.
+  if (switcher && hasTool("palette")) {
+    switcher.hidden = false;
+  }
+
   if (select) {
-    select.addEventListener('change', () => {
+    select.addEventListener("change", () => {
       html.classList.remove(...themeClasses);
       if (select.value) {
         html.classList.add(select.value);
