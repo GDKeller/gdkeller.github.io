@@ -1,11 +1,20 @@
 ---
 type: task
-status: backlog
+status: archived
 priority: 2
 created: 2026-04-09
+archived: 2026-04-09
 ---
 
 # Fix lint glob so it stops silently skipping nested directories
+
+## Resolution (2026-04-09)
+
+- `package.json` lint scripts now quote the glob (`eslint 'src/**/*.{ts,astro}'`) so ESLint expands `**` itself instead of relying on `/bin/sh` (which lacks `globstar`). Nested files like `src/lib/animations/*.ts` are now actually linted.
+- `eslint.config.js` disables `no-undef` for TS files — TypeScript already resolves identifiers, and the rule was false-firing on type-only names from `lib.dom.d.ts` (e.g. `NodeListOf`).
+- `src/env.d.ts` gets an inline `@typescript-eslint/triple-slash-reference` disable since the triple-slash is the Astro-generated convention.
+- Removed unused locals: `fishBody` in `src/lib/animations/anglerfish.ts`, `heroContent` in `src/lib/animations/content.ts`.
+- Verified: `npm run lint`, `npx eslint 'src/**/*.ts' 'src/**/*.astro'`, and `npm run build` all pass cleanly.
 
 The `npm run lint` script uses a shell glob that only matches one directory level deep, which means everything under `src/lib/animations/` (and likely other nested TS/astro files in `src/content/`, etc.) has been silently skipped by ESLint. The gap was only discovered while working on TASK-0020 because the newly-added `src/lib/dev-flags.ts` happened to sit exactly at the level the glob was matching, which surfaced previously-hidden `no-undef` errors that would also apply to every animation module.
 

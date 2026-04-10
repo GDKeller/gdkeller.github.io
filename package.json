@@ -8,8 +8,8 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "lint": "eslint src/**/*.{ts,astro}",
-    "lint:fix": "eslint src/**/*.{ts,astro} --fix"
+    "lint": "eslint 'src/**/*.{ts,astro}'",
+    "lint:fix": "eslint 'src/**/*.{ts,astro}' --fix"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",

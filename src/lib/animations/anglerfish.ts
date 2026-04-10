@@ -10,7 +10,6 @@ export function initAnglerfishAnimations(
 ): void {
   const fishHero = document.querySelector(".fish-hero");
   const fishEl = document.querySelector(".fish");
-  const fishBody = document.querySelector(".fish-body");
   const fishMonster = document.querySelector("#fish-monster");
   if (!fishHero) return;
 

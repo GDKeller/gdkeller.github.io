@@ -100,7 +100,6 @@ export function initInteractiveAnimations(gsap: GSAPInstance): void {
 export function initBackgroundAnimations(gsap: GSAPInstance): void {
   // Very subtle parallax for background text
   const mainHeader = document.querySelector("#header__main");
-  const heroContent = document.querySelectorAll("#hero__content");
   const hugeText = document.querySelector(".header__billboard");
   if (hugeText) {
     gsap.set(hugeText, { yPercent: 10 });
