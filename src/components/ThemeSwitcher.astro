@@ -2,25 +2,21 @@
 // Palette picker overlay — dev tool for swapping color themes in real time.
 //
 // Uses the shared dev-flags convention (see `src/lib/dev-flags.ts`).
+// Gated on the `palette` tool flag in BOTH dev and production — so the same
+// toggle works everywhere and there's no bimodal codepath.
 //
-// Visibility rules:
-//   - In `npm run dev`: always visible (bottom-right corner).
-//   - In production builds: hidden by default.
-//
-// Production runtime override (no rebuild needed, e.g. for deployed previews):
 //   - Append `?tools=palette` to any URL to enable. Persisted in localStorage
 //     under the `dev-tools` key, so the picker stays visible on return visits
 //     from the same browser.
-//   - Append `?tools=` (empty) to clear all dev tools.
+//   - Append `?tools=off` (or `?tools=`) to clear all dev tools.
 //   - Or toggle directly in devtools:
 //       localStorage.setItem("dev-tools", "palette")
 //
-// The overlay is kept in the DOM (hidden via the HTML `hidden` attribute) in
-// production so the runtime override can reveal it without an app rebuild.
-const isDev = import.meta.env.DEV;
+// The overlay is always rendered into the DOM (hidden via the HTML `hidden`
+// attribute) so the runtime flag can reveal it without an app rebuild.
 ---
 
-<div id="theme-switcher" hidden={!isDev}>
+<div id="theme-switcher" hidden>
   <select id="theme-select" aria-label="Select color theme">
     <option value="">Stock</option>
     <option value="theme-jade">Jade</option>
@@ -82,12 +78,14 @@ const isDev = import.meta.env.DEV;
     "theme-custom",
   ];
 
-  // Reveal in production if the "palette" tool is enabled via the dev-flags convention.
   if (switcher && hasTool("palette")) {
     switcher.hidden = false;
   }
 
   if (select) {
+    const activeTheme = themeClasses.find((cls) => html.classList.contains(cls)) ?? "";
+    select.value = activeTheme;
+
     select.addEventListener("change", () => {
       html.classList.remove(...themeClasses);
       if (select.value) {

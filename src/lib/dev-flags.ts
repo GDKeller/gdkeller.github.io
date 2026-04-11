@@ -1,7 +1,7 @@
 /**
  * Dev feature flags (cross-project convention).
  *   ?dev=<name>     → localStorage "dev-mode"  (single value; "off"/"" clears)
- *   ?tools=<a,b,c>  → localStorage "dev-tools" (comma list; "" clears)
+ *   ?tools=<a,b,c>  → localStorage "dev-tools" (comma list; "off"/"" clears)
  * URL values fully replace stored values; absent params leave storage alone.
  * Call syncDevFlagsFromUrl() once per page load before reading flags.
  */
@@ -59,7 +59,7 @@ export function syncDevFlagsFromUrl(): void {
 
     if (params.has("tools")) {
       const value = params.get("tools") ?? "";
-      const tools = parseToolsList(value);
+      const tools = value === "off" ? new Set<string>() : parseToolsList(value);
       if (tools.size === 0) {
         localStorage.removeItem(TOOLS_KEY);
       } else {
