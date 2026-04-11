@@ -6,27 +6,25 @@
   class="relative z-0 mx-auto mb-32 grid max-w-full grid-cols-1 items-center overflow-x-hidden border-b-2 border-emerald-950/30 pt-24 md:grid-cols-2"
 >
   <span
-    class="absolute left-0 top-0 z-10 h-1/4 w-full bg-gradient-to-b from-black to-transparent opacity-100"
+    class="absolute top-0 left-0 z-10 h-1/4 w-full bg-gradient-to-b from-black to-transparent opacity-100"
   ></span>
   <span
     class="absolute bottom-0 left-0 z-10 h-1/4 w-full bg-gradient-to-t from-black to-transparent opacity-90"
   ></span>
-  <span class="absolute left-0 top-0 z-0 h-full w-full bg-emerald-950/30"></span>
+  <span class="absolute top-0 left-0 z-0 h-full w-full bg-emerald-950/30"></span>
 
   <!-- Content Column -->
-  <div class="z-20 flex w-full flex-col justify-center px-8 pb-4 pt-12 md:pt-0 xl:px-12">
-    <h3
-      class="mb-2 font-bayon text-4xl text-white md:mb-0 md:text-2xl lg:mb-2 lg:text-4xl xl:text-5xl"
-    >
+  <div class="z-20 flex w-full flex-col justify-center px-8 pt-12 pb-4 md:pt-0 xl:px-12">
+    <h3 class="font-bayon mb-2 text-4xl md:mb-0 md:text-2xl lg:mb-2 lg:text-4xl xl:text-5xl">
       Offline Background Remover
     </h3>
-    <p class="mb-6 text-xl text-emerald-400 md:text-sm lg:text-lg xl:text-xl">macOS App</p>
-    <div class="lg:max-w-xl">
-      <p class="mtext-sm mb-4 font-bold text-white">
+    <p class="mb-6 text-xl text-emerald-100 md:text-sm lg:text-lg xl:text-xl">macOS App</p>
+    <div class="text-emerald-100 lg:max-w-xl">
+      <p class="mtext-sm mb-4 font-bold">
         Built on Tauri v2 with React and a CoreML-optimized ONNX pipeline that runs AI models
         entirely on-device.
       </p>
-      <p class="mb-8 text-sm text-white md:mb-0">
+      <p class="mb-8 text-sm md:mb-0">
         Designed the full architecture and drag-and-drop UI. Includes 13 on-device segmentation
         models, a real-time four-view comparison interface, and advanced mask editing controls. Zero
         user dependencies.
@@ -35,7 +33,7 @@
   </div>
 
   <!-- Video Column -->
-  <div class="relative z-20 mb-0 mt-auto w-full px-8 lg:pr-4">
+  <div class="relative z-20 mt-auto mb-0 w-full px-8 lg:pr-4">
     <div class="mx-auto max-w-lg overflow-hidden rounded-t-[3%] md:max-w-full">
       <video
         data-obr-video
@@ -53,14 +51,14 @@
 
   <!-- Ribbon: Technologies + CTA -->
   <div
-    class="z-20 col-span-full flex w-full flex-col items-center justify-between gap-6 border-t-2 border-emerald-950/30 bg-black bg-gradient-to-r from-black via-emerald-950/30 to-black px-4 py-8 sm:flex-row sm:px-6 md:pl-8 md:pr-6 lg:px-8"
+    class="z-20 col-span-full flex w-full flex-col items-center justify-between gap-6 border-t-2 border-emerald-950/30 px-4 py-8 sm:flex-row sm:px-6 md:pr-6 md:pl-8 lg:px-8"
   >
-    <div class="flex flex-col flex-wrap text-white sm:flex-row sm:items-center">
-      <p class="sm:text-md mb-2 text-xs font-bold sm:mb-0 sm:mr-4 lg:text-base">Technologies:</p>
+    <div class="flex flex-col flex-wrap sm:flex-row sm:items-center">
+      <p class="sm:text-md mb-2 text-xs font-bold sm:mr-4 sm:mb-0 lg:text-base">Technologies:</p>
       <ul
         class="list sm:text-md md:text-md flex flex-row flex-wrap gap-2 text-xs italic sm:gap-4 lg:text-base"
       >
-        <li>Tauri v2</li>
+        <li>Tauri</li>
         <li>React</li>
         <li>TypeScript</li>
         <li>Rust</li>
@@ -72,7 +70,7 @@
       href="https://www.davantsystems.com/offline-background-remover/"
       target="_blank"
       rel="noopener noreferrer"
-      class="inline-block flex-shrink-0 bg-blue-950 px-4 py-3 font-bold text-white transition-all duration-200 hover:bg-blue-900 md:px-6"
+      class="inline-flex flex-shrink-0 items-center justify-center bg-emerald-400 px-4 py-3 font-bold text-black shadow-lg shadow-emerald-400/25 transition-all duration-200 hover:bg-emerald-300 hover:shadow-emerald-400/40 md:px-6"
     >
       View App &rarr;
     </a>

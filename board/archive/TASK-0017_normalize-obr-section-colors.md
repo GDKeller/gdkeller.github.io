@@ -1,10 +1,10 @@
 ---
 type: task
-status: backlog
+status: done
 priority: 3
 created: 2026-03-27
+completed: 2026-04-11
 parent: EPIC-0001
-blocked_by: TASK-0015
 ---
 
 # Normalize OBR section to portfolio color system
