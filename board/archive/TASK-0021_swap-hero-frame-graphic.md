@@ -1,9 +1,10 @@
 ---
 type: task
-status: backlog
+status: archived
 priority: 2
 parent: EPIC-0001
 created: 2026-04-09
+archived: 2026-04-09
 ---
 
 # Swap hero frame graphic for new split-frame assets
@@ -34,6 +35,21 @@ Sketch:
 ## Fallback: Full Frame
 
 Only reach for `hero_frame-full` if the split approach produces a problem that can't be solved (e.g., the halves overlap awkwardly on very short viewports and no clean min-height rule fixes it). Document why if the fallback is used.
+
+## Resolution: Fallback Taken (2026-04-10)
+
+The split approach was implemented first and visually verified at several viewport sizes. It broke at wide aspect ratios (typical desktop 16:9 and wider) because of the asset shape: each "half" PNG is the full 1982×1367 canvas with decoration concentrated in its top/bottom ~38% and a transparent/fade middle, rather than a pure top-half or bottom-half crop. At `width: 100%` the natural height of each half is `viewportWidth / 1.45`, which exceeds the hero's height whenever the viewport aspect is wider than ~1.45:1. In that range the top-anchored upper and bottom-anchored lower overlap through the middle, doubling the side frame edges and producing a visible ghost filmstrip.
+
+Measured overlap:
+
+- 1920×805 (2.54:1) — overlap 569px, doubling is very visible
+- 1440×900 (1.60:1) — overlap 143px, hides inside the fade
+- 1280×720 (1.78:1) — overlap 213px, starts to show
+- Below ~1.45:1 (tall / portrait) — no overlap, the split works cleanly
+
+Fixing it properly would require re-exporting `hero_frame-upper.{png,webp}` and `hero_frame-lower.{png,webp}` cropped to only their decorated regions (so each half has a smaller natural aspect ratio and fits in half the hero without overlap). That's out of scope for this task.
+
+Chose the sanctioned fallback: single `hero_frame-full.webp` overlay via the existing `object-cover object-top` pattern — functionally identical to the prior `frame.webp` but using the new artwork. Deleted the unused `hero_frame-upper.*` and `hero_frame-lower.*` assets.
 
 ## Acceptance Criteria
 

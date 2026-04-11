@@ -5,7 +5,7 @@ import heroImg1 from "../images/Texturelabs_LensFX_173L.webp";
 import heroImg2 from "../images/Texturelabs_LensFX_127L.webp";
 ---
 
-<div class="hero-bg absolute inset-0 -z-10 overflow-hidden" id="hero-bg">
+<div class="hero-bg absolute inset-0 -z-10 h-full w-full overflow-hidden" id="hero-bg">
   <!-- Layer 0a: Background Image -->
   <Image
     src={heroImg1}
@@ -22,10 +22,10 @@ import heroImg2 from "../images/Texturelabs_LensFX_127L.webp";
   />
 
   <!-- Scan Lines -->
-  <div class="scanlines pointer-events-none absolute inset-0"></div>
+  <div class="scanlines pointer-events-none absolute inset-0 h-full w-full"></div>
 
   <!-- Noise -->
-  <div class="noise pointer-events-none absolute inset-0"></div>
+  <div class="noise pointer-events-none absolute inset-0 h-full w-full"></div>
 </div>
 
 <style>

@@ -3,18 +3,25 @@ import { Image } from "astro:assets";
 import Headshot from "./Headshot.astro";
 import HeroBackground from "./HeroBackground.astro";
 import LogoCarousel from "./LogoCarousel.astro";
-import frame from "../images/frame.webp";
+import frameUpper from "../images/hero_frame/hero_frame-upper.webp";
+import frameLower from "../images/hero_frame/hero_frame-lower.webp";
 ---
 
 <section
   id="hero"
-  class="relative z-50 flex w-full max-w-full flex-col justify-end gap-0 overflow-x-hidden px-2 pt-0 pb-2 sm:px-8 sm:pt-10 lg:pt-12"
+  class="relative z-50 flex w-full max-w-full flex-col justify-end gap-0 overflow-hidden px-2 pt-0 pb-2 sm:px-8 sm:pt-10 lg:pt-12"
 >
   <HeroBackground />
   <Image
-    src={frame}
+    src={frameUpper}
     alt=""
-    class="pointer-events-none absolute top-0 left-0 z-100 h-full w-full object-cover object-top"
+    class="pointer-events-none absolute top-0 left-0 z-100 w-full select-none"
+    loading="eager"
+  />
+  <Image
+    src={frameLower}
+    alt=""
+    class="pointer-events-none absolute bottom-0 left-0 z-100 w-full select-none"
     loading="eager"
   />
   <div
@@ -84,7 +91,7 @@ import frame from "../images/frame.webp";
     </div>
   </div>
 
-  <div class="relative z-10 max-w-full overflow-hidden pb-8">
+  <div class="absolute right-0 bottom-20 left-0 z-10 max-w-full overflow-hidden">
     <LogoCarousel />
   </div>
 </section>
