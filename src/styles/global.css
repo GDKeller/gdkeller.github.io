@@ -75,6 +75,7 @@
   --color-highlight: var(--color-fuchsia-500);
   --color-highlight-hover: var(--color-fuchsia-300);
   --color-subtle: var(--color-emerald-700);
+  --color-faint: var(--color-emerald-950);
 }
 
 /* Reduced Motion Support */

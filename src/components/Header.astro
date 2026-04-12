@@ -6,17 +6,17 @@ import HeadshotMini from "./HeadshotMini.astro";
 
 <div
   id="header__main"
-  class="animate__header border-box bg-opacity-85 sticky top-0 left-0 z-40 block w-full justify-between overflow-hidden border-b border-emerald-300/10 bg-background px-4 py-2 shadow-sm backdrop-blur transition-shadow duration-100 sm:px-2"
+  class="animate__header border-box bg-opacity-85 bg-background sticky top-0 left-0 z-40 block w-full justify-between overflow-hidden border-b border-emerald-300/10 px-4 shadow-sm backdrop-blur transition-shadow duration-100 sm:px-2"
 >
   <div class="relative flex w-full items-center justify-between">
-    <div class="box-border flex items-center gap-4">
-      <div class="relative hidden h-8 w-8 shrink-0 md:block">
+    <div class="box-border flex items-stretch gap-4">
+      <div class="relative my-2 hidden h-8 w-8 shrink-0 md:block">
         <!-- Placeholder shown when hero is visible -->
         <div
           class="header-placeholder absolute inset-0 flex items-center justify-center transition-opacity duration-700"
         >
           <div
-            class="oscilloscope h-7 w-7 overflow-hidden rounded-sm border border-emerald-400/20 bg-background/50"
+            class="oscilloscope bg-background/50 h-7 w-7 overflow-hidden rounded-sm border border-emerald-400/20"
             aria-hidden="true"
           >
             <svg class="h-full w-full p-0" viewBox="0 0 32 32" preserveAspectRatio="none">
@@ -50,7 +50,7 @@ import HeadshotMini from "./HeadshotMini.astro";
         class="icon-link group hidden md:block"
       >
         <svg
-          class="h-6 w-6 rounded-sm bg-background/60 text-emphasis transition-all duration-200 group-hover:text-emphasis-hover group-hover:drop-shadow-[0_0_6px_rgba(16,185,129,0.5)] group-focus-visible:text-emphasis-hover group-focus-visible:drop-shadow-[0_0_6px_rgba(16,185,129,0.5)]"
+          class="bg-background/60 text-emphasis group-hover:text-emphasis-hover group-focus-visible:text-emphasis-hover h-6 w-6 rounded-sm transition-all duration-200 group-hover:drop-shadow-[0_0_6px_rgba(16,185,129,0.5)] group-focus-visible:drop-shadow-[0_0_6px_rgba(16,185,129,0.5)]"
           fill="currentColor"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
@@ -67,7 +67,7 @@ import HeadshotMini from "./HeadshotMini.astro";
         class="icon-link group hidden md:block"
       >
         <svg
-          class="h-6 w-6 bg-background/60 text-emphasis transition-all duration-200 group-hover:text-emphasis-hover group-hover:drop-shadow-[0_0_6px_rgba(16,185,129,0.5)] group-focus-visible:text-emphasis-hover group-focus-visible:drop-shadow-[0_0_6px_rgba(16,185,129,0.5)]"
+          class="bg-background/60 text-emphasis group-hover:text-emphasis-hover group-focus-visible:text-emphasis-hover h-6 w-6 transition-all duration-200 group-hover:drop-shadow-[0_0_6px_rgba(16,185,129,0.5)] group-focus-visible:drop-shadow-[0_0_6px_rgba(16,185,129,0.5)]"
           fill="currentColor"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
@@ -102,11 +102,11 @@ import HeadshotMini from "./HeadshotMini.astro";
       </Link>
       <button
         data-open-modal="hire_me_modal"
-        class="flex items-center gap-1 border border-emerald-400/30 bg-emerald-900/20 px-2 py-1 text-emphasis transition-all duration-200 hover:border-emerald-400/60 hover:bg-emerald-400/10"
+        class="text-emphasis flex items-center gap-1 border border-emerald-400/30 bg-emerald-900/20 px-2 py-1 transition-all duration-200 hover:border-emerald-400/60 hover:bg-emerald-400/10"
       >
         <span class="hidden leading-none sm:inline-block">Contact</span>
         <svg
-          class="inline-block h-5 w-5 text-emphasis"
+          class="text-emphasis inline-block h-5 w-5"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"

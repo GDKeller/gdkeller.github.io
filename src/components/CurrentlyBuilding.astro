@@ -48,173 +48,156 @@ const itemsWithVisual = await Promise.all(
 ---
 
 <section
-  class="currently-building relative isolate z-0 overflow-hidden"
+  class="bg-background relative isolate z-0 overflow-hidden"
   aria-labelledby="currently-building-label"
 >
   <div
-    class="substrate pointer-events-none absolute inset-0 z-0"
-    style={`background-image: url(${gridTile.src})`}
+    class="pointer-events-none absolute inset-0 z-0 bg-repeat opacity-15"
+    style={`background-image: url(${gridTile.src}); background-size: 50vw auto;`}
   >
   </div>
 
   <div class="relative z-20 mx-auto max-w-7xl px-6 pt-16 pb-24 md:px-10 md:pt-20 md:pb-28">
-    <header class="inscription mb-12 md:mb-16">
-      <div class="inscription-rule" aria-hidden="true"></div>
-      <p
-        class="text-foundation/50 mb-1.5 font-mono text-[0.7rem] font-medium tracking-[0.22em] uppercase md:text-[0.75rem]"
-      >
-        <span>PLATE&nbsp;01</span>
-        <span class="mx-2.5 opacity-40" aria-hidden="true">/</span>
-        <span>ACTIVE&nbsp;WORK</span>
-        <span class="mx-2.5 opacity-40" aria-hidden="true">/</span>
-        <span>SHEET&nbsp;01&nbsp;OF&nbsp;08</span>
-      </p>
-      <h2
-        id="currently-building-label"
-        class="font-bokor text-emphasis text-5xl leading-[0.95] md:text-6xl lg:text-4xl"
-      >
-        Currently Building
-      </h2>
-      <div class="mt-4 opacity-60">
-        <EmbossedText text="ACTIVE OPS" height={20} />
+    <div class="">
+      <header class="mb-12 md:mb-16">
+        <h2
+          id="currently-building-label"
+          class="font-bokor text-emphasis text-5xl md:text-6xl lg:text-4xl"
+        >
+          Currently Building
+        </h2>
+      </header>
+      <div class="flex items-end">
+        <div
+          class="border-faint/80 rounded-tl-lg rounded-tr-lg border-t border-r border-l pt-4 pr-6 pl-2"
+        >
+          <EmbossedText text="Operations" height={20} />
+        </div>
+        <div class="border-faint/80 flex-1 border-b"></div>
+        <div class="border-faint/80 border-b">
+          <p
+            class="text-subtle text-body-2xs pr-2 pb-2 font-mono font-medium tracking-widest uppercase"
+          >
+            <span>Plate&nbsp;01</span>
+            <span class="mx-1" aria-hidden="true">::</span>
+            <span>Active&nbsp;Work</span>
+            <span class="mx-1" aria-hidden="true">::</span>
+            <span>Sheet&nbsp;01&nbsp;OF&nbsp;08</span>
+          </p>
+        </div>
       </div>
-    </header>
 
-    <ul
-      class="workbench relative grid grid-cols-1 gap-y-16 md:grid-cols-12 md:gap-x-10 md:gap-y-14"
-    >
-      {
-        itemsWithVisual.map(({ entry, resolvedImage, rotation, refNum }) => {
-          const { data } = entry;
-          const isFocal = data.focal === true;
-          const isPlaceholder = !resolvedImage;
-          const status = data.status;
-          const brand = data.brand;
+      <ul
+        class="border-faint/80 relative grid grid-cols-1 gap-y-16 border-x border-b bg-black pt-12 md:grid-cols-12 md:gap-x-10 md:gap-y-14"
+      >
+        {
+          itemsWithVisual.map(({ entry, resolvedImage, rotation, refNum }) => {
+            const { data } = entry;
+            const isFocal = data.focal === true;
+            const isPlaceholder = !resolvedImage;
+            const status = data.status;
+            const brand = data.brand;
 
-          return (
-            <li
-              class:list={[
-                "workbench-item group relative",
-                rotation,
-                isFocal ? "md:col-span-6 md:row-span-2" : "md:col-span-3",
-              ]}
-            >
-              <a
-                href={data.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="block h-full w-full no-underline"
-                aria-label={`${data.title} — ${data.description}`}
+            return (
+              <li
+                class:list={[
+                  "workbench-item group relative origin-center",
+                  rotation,
+                  isFocal ? "md:col-span-6 md:row-span-2" : "md:col-span-3",
+                ]}
               >
-                <div class="callout-frame relative">
-                  <span class="bracket tl" aria-hidden="true" />
-                  <span class="bracket tr" aria-hidden="true" />
-                  <span class="bracket bl" aria-hidden="true" />
-                  <span class="bracket br" aria-hidden="true" />
+                <a
+                  href={data.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="block h-full w-full no-underline"
+                  aria-label={`${data.title}: ${data.description}`}
+                >
+                  <div class="callout-frame relative border border-white/10 bg-black">
+                    <span class="bracket tl" aria-hidden="true" />
+                    <span class="bracket tr" aria-hidden="true" />
+                    <span class="bracket bl" aria-hidden="true" />
+                    <span class="bracket br" aria-hidden="true" />
 
-                  <span class="ref-num font-mono">{refNum}</span>
+                    <span class="text-body-2xs absolute top-2 left-2.5 z-2 font-mono font-medium tracking-wider text-white/30">
+                      {refNum}
+                    </span>
 
-                  {brand === "davant" && <span class="brand-label font-mono">DAVANT</span>}
-
-                  {resolvedImage ? (
-                    <Image
-                      src={resolvedImage}
-                      alt={data.imageAlt ?? data.title}
-                      class="block w-full"
-                      loading="lazy"
-                      widths={[400, 800, 1200]}
-                      sizes={
-                        isFocal
-                          ? "(min-width: 1024px) 50vw, 90vw"
-                          : "(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 90vw"
-                      }
-                    />
-                  ) : (
-                    <div class="placeholder-cell" aria-hidden="true">
-                      <span class="text-foundation/45 font-mono text-[0.65rem] tracking-[0.3em] uppercase">
-                        {status ? statusLabel[status] : "IN PROGRESS"}
-                      </span>
-                    </div>
-                  )}
-                </div>
-
-                <div class="entry-meta mt-3">
-                  <div class="meta-header flex items-baseline gap-3">
-                    <h3 class="font-bayon text-emphasis text-xl leading-tight md:text-2xl">
-                      {data.title}
-                    </h3>
-                    {status && (
-                      <span class="text-foundation/45 font-mono text-[0.6rem] tracking-[0.18em] uppercase">
-                        {statusLabel[status]}
+                    {brand === "davant" && (
+                      <span class="text-body-2xs absolute top-2 right-2.5 z-2 font-mono font-medium tracking-widest text-white/20">
+                        DAVANT
                       </span>
                     )}
+
+                    {resolvedImage ? (
+                      <Image
+                        src={resolvedImage}
+                        alt={data.imageAlt ?? data.title}
+                        class="block w-full"
+                        loading="lazy"
+                        widths={[400, 800, 1200]}
+                        sizes={
+                          isFocal
+                            ? "(min-width: 1024px) 50vw, 90vw"
+                            : "(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 90vw"
+                        }
+                      />
+                    ) : (
+                      <div class="placeholder-cell flex aspect-[16/10] items-center justify-center">
+                        <span class="text-foundation text-body-xs font-mono tracking-widest uppercase">
+                          {status ? statusLabel[status] : "IN PROGRESS"}
+                        </span>
+                      </div>
+                    )}
                   </div>
-                  <p class="text-foundation/70 mt-1 text-sm leading-relaxed">{data.description}</p>
-                  {data.tech && data.tech.length > 0 && (
-                    <p class="text-foundation/50 mt-2 font-mono text-[0.65rem] tracking-[0.12em] uppercase">
-                      {data.tech.join(" / ")}
+
+                  <div class="mt-3">
+                    <div class="flex items-baseline gap-3">
+                      <h3 class="font-bayon text-emphasis text-h4">{data.title}</h3>
+                      {status && (
+                        <span class="text-foundation text-body-2xs font-mono tracking-widest uppercase">
+                          {statusLabel[status]}
+                        </span>
+                      )}
+                    </div>
+                    <p class="text-foundation text-body-sm mt-1 leading-relaxed">
+                      {data.description}
                     </p>
-                  )}
-                </div>
-              </a>
-            </li>
-          );
-        })
-      }
-    </ul>
+                    {data.tech && data.tech.length > 0 && (
+                      <p class="text-foundation text-body-2xs mt-2 font-mono tracking-wider uppercase">
+                        {data.tech.join(" / ")}
+                      </p>
+                    )}
+                  </div>
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </div>
   </div>
 </section>
 
 <style>
-  .currently-building {
-    background: var(--color-background);
-  }
-
-  .substrate {
-    background-size: 50vw auto;
-    background-repeat: repeat;
-    opacity: 0.15;
-  }
-
-  .inscription-rule {
-    height: 1px;
-    width: 5rem;
-    background: rgba(255, 255, 255, 0.2);
-    margin-bottom: 0.75rem;
-  }
-
-  @media (min-width: 768px) {
-    .inscription-rule {
-      width: 7rem;
-    }
-  }
-
-  /* --- Workbench items --- */
-
+  /* Hover: lift item and shift frame/bracket colors to emerald */
   .workbench-item {
-    transform-origin: center center;
     transition:
       transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
       rotate 0.3s cubic-bezier(0.22, 1, 0.36, 1);
   }
-
   .workbench-item:hover {
     transform: translateY(-3px);
     rotate: 0deg;
   }
-
-  /* --- Callout frame (diagram box) --- */
-
-  .callout-frame {
-    position: relative;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: border-color 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-
   .workbench-item:hover .callout-frame {
     border-color: rgba(16, 185, 129, 0.3);
   }
+  .workbench-item:hover .bracket {
+    border-color: rgba(16, 185, 129, 0.5);
+  }
 
+  /* Corner registration brackets */
   .bracket {
     position: absolute;
     width: 10px;
@@ -224,11 +207,6 @@ const itemsWithVisual = await Promise.all(
     z-index: 2;
     transition: border-color 0.3s cubic-bezier(0.22, 1, 0.36, 1);
   }
-
-  .workbench-item:hover .bracket {
-    border-color: rgba(16, 185, 129, 0.5);
-  }
-
   .bracket.tl {
     top: -1px;
     left: -1px;
@@ -250,35 +228,8 @@ const itemsWithVisual = await Promise.all(
     border-width: 0 1px 1px 0;
   }
 
-  .ref-num {
-    position: absolute;
-    top: 0.5rem;
-    left: 0.6rem;
-    font-size: 0.6rem;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    color: rgba(255, 255, 255, 0.3);
-    z-index: 2;
-  }
-
-  .brand-label {
-    position: absolute;
-    top: 0.5rem;
-    right: 0.6rem;
-    font-size: 0.55rem;
-    font-weight: 500;
-    letter-spacing: 0.25em;
-    color: rgba(255, 255, 255, 0.2);
-    z-index: 2;
-  }
-
-  /* --- Placeholder (Davant Studio v2) --- */
-
+  /* Placeholder hatching */
   .placeholder-cell {
-    aspect-ratio: 16 / 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     background: repeating-linear-gradient(
       45deg,
       transparent 0px,
@@ -288,8 +239,12 @@ const itemsWithVisual = await Promise.all(
     );
   }
 
-  /* --- Mobile: flatten rotations --- */
+  /* Callout frame transition */
+  .callout-frame {
+    transition: border-color 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
 
+  /* Mobile: flatten rotations */
   @media (max-width: 767px) {
     .workbench-item {
       rotate: 0deg !important;
@@ -297,16 +252,14 @@ const itemsWithVisual = await Promise.all(
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .workbench-item {
+    .workbench-item,
+    .callout-frame,
+    .bracket {
       transition: none;
     }
     .workbench-item:hover {
       transform: none;
       rotate: inherit;
-    }
-    .callout-frame,
-    .bracket {
-      transition: none;
     }
   }
 </style>
