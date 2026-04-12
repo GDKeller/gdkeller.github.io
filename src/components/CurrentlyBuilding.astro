@@ -69,7 +69,7 @@ const itemsWithVisual = await Promise.all(
       </header>
       <div class="flex items-end">
         <div
-          class="border-faint/80 rounded-tl-lg rounded-tr-lg border-t border-r border-l pt-4 pr-6 pl-2"
+          class="border-faint/80 rounded-tl-lg rounded-tr-lg border-t border-r border-l bg-black pt-4 pr-6 pl-2"
         >
           <EmbossedText text="Operations" height={20} />
         </div>
@@ -129,7 +129,18 @@ const itemsWithVisual = await Promise.all(
                       </span>
                     )}
 
-                    {resolvedImage ? (
+                    {data.video ? (
+                      <video
+                        autoplay
+                        loop
+                        muted
+                        playsinline
+                        class="block w-full"
+                        poster={resolvedImage?.src}
+                      >
+                        <source src={`/video/${data.video}`} type="video/mp4" />
+                      </video>
+                    ) : resolvedImage ? (
                       <Image
                         src={resolvedImage}
                         alt={data.imageAlt ?? data.title}

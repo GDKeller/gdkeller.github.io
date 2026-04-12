@@ -17,12 +17,12 @@ import heroImg2 from "../images/Texturelabs_LensFX_127L.webp";
   <Image
     src={heroImg2}
     alt=""
-    class="absolute inset-0 h-full w-[150vw] max-w-none -translate-x-1/8 object-cover opacity-40 brightness-30 contrast-150"
+    class="absolute inset-0 h-full w-[150vw] max-w-none -translate-x-1/8 object-cover opacity-20 brightness-80 contrast-150"
     loading="eager"
   />
 
   <!-- Scan Lines -->
-  <div class="scanlines pointer-events-none absolute inset-0 h-full w-full"></div>
+  <div class="scanlines pointer-events-none absolute inset-0 z-10 h-full w-full"></div>
 
   <!-- Noise -->
   <div class="noise pointer-events-none absolute inset-0 h-full w-full"></div>
@@ -35,15 +35,15 @@ import heroImg2 from "../images/Texturelabs_LensFX_127L.webp";
       0deg,
       transparent,
       transparent 2px,
-      color-mix(in oklch, var(--color-black) 3%, transparent) 2px,
-      color-mix(in oklch, var(--color-black) 3%, transparent) 4px
+      color-mix(in oklch, var(--color-black) 30%, transparent) 2px,
+      color-mix(in oklch, var(--color-black) 30%, transparent) 4px
     );
     opacity: 0.5;
   }
 
   /* Noise */
   .noise {
-    opacity: 0.03;
+    opacity: 0.07;
     animation: noise-shift 0.2s steps(10) infinite;
   }
 
