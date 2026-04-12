@@ -13,18 +13,18 @@ const { Content } = await job.render();
   <div class="mb-6 flex flex-col items-start md:flex-row md:items-center">
     {
       companyLogo && (
-        <div class="image relative mb-4 mr-2 shrink-0 lg:-ml-4 lg:mr-8">
+        <div class="image relative mr-2 mb-4 shrink-0 lg:mr-8 lg:-ml-4">
           <ProjectSingleImage imagePath={companyLogo.src} altText={companyLogo.alt} />
         </div>
       )
     }
     <div class="flex flex-col">
       <div
-        class="mb-2 flex flex-col justify-start font-bayon text-2xl sm:flex-row md:text-2xl lg:text-3xl"
+        class="font-bayon mb-2 flex flex-col justify-start text-2xl sm:flex-row md:text-2xl lg:text-3xl"
       >
-        <h3>
-          <span class="block font-bold text-fuchsia-500 sm:inline-block">{position}</span>
-          <span class="mx-1 hidden font-bokor sm:inline-block">&nbsp;᠅&nbsp;</span>
+        <h3 class="text-emphasis">
+          <span class="text-highlight block font-bold sm:inline-block">{position}</span>
+          <span class="font-bokor mx-1 hidden sm:inline-block">&nbsp;᠅&nbsp;</span>
           {
             companyWebsite ? (
               <Link href={companyWebsite} target="_blank" class="no-underline">
@@ -37,7 +37,7 @@ const { Content } = await job.render();
         </h3>
       </div>
 
-      <p class="italic text-emerald-300">
+      <p class="text-emphasis font-light">
         {startMonthYear ? startMonthYear : null} -
         {endMonthYear ? endMonthYear : "Present"}
       </p>
@@ -46,7 +46,7 @@ const { Content } = await job.render();
 
   {
     tech && (
-      <div class="mb-10 mt-0 text-xs">
+      <div class="mt-0 mb-10 text-xs">
         <p class="sr-only">Skills:&nbsp;</p>
         <ul class="flex flex-wrap gap-2">
           {tech.map((t: string, i: number) => (
@@ -62,24 +62,24 @@ const { Content } = await job.render();
     )
   }
 
-  <div class="job-body list-custom-wrapper prose relative z-20 max-w-none bg-background pb-8 pr-8">
+  <div class="job-body list-custom-wrapper prose bg-background relative z-20 max-w-none pr-8 pb-8">
     <Content />
   </div>
   <span
-    class="absolute -bottom-1 -right-1 -z-40 h-24 w-48 bg-gradient-to-br from-blue-900/10 via-teal-800/10 to-emerald-400/20 opacity-40"
+    class="absolute -right-1 -bottom-1 -z-40 h-24 w-48 bg-gradient-to-br from-blue-900/10 via-teal-800/10 to-emerald-400/20 opacity-40"
   >
   </span>
 </div>
 
 <style>
-  @reference "tailwindcss";
+  @reference "../styles/global.css";
   .job-card {
     &::before {
-      @apply absolute -left-8 top-1 z-0 h-full max-h-96 w-1 bg-gradient-to-b from-emerald-400/20 via-teal-500/15 to-blue-950/20;
+      @apply absolute top-1 -left-8 z-0 h-full max-h-96 w-1 bg-gradient-to-b from-emerald-400/20 via-teal-500/15 to-blue-950/20;
       content: "";
     }
     &::after {
-      @apply absolute -left-8 -top-0 z-0 h-1 w-12 bg-gradient-to-r from-emerald-400/20 via-teal-500/15 to-blue-950/20;
+      @apply absolute -top-0 -left-8 z-0 h-1 w-12 bg-gradient-to-r from-emerald-400/20 via-teal-500/15 to-blue-950/20;
       content: "";
     }
 
@@ -104,7 +104,7 @@ const { Content } = await job.render();
     }
 
     a {
-      @apply underline hover:text-fuchsia-500;
+      @apply hover:text-highlight underline;
     }
   }
 

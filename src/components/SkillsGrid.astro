@@ -14,72 +14,133 @@ const primarySkills = [
 const secondaryCategories = [
   {
     title: "Javascript",
-    items: ["React Native", "Framer Motion", "Astro / Gatsby", "Next.js", "Express / Fastify", "ThreeJS", "TUI"],
+    items: [
+      "React Native",
+      "Framer Motion",
+      "Astro / Gatsby",
+      "Next.js",
+      "Express / Fastify",
+      "ThreeJS",
+      "TUI",
+    ],
   },
   {
     title: "CSS",
-    items: ["Sass/SCSS", "Advanced CSS Animations", "Semantic Systems", "BEM / Component Systems", "Vite / Turbo / Webpack", "Responsive at all sizes", "Cross-browser compatibility"],
+    items: [
+      "Sass/SCSS",
+      "Advanced CSS Animations",
+      "Semantic Systems",
+      "BEM / Component Systems",
+      "Vite / Turbo / Webpack",
+      "Responsive at all sizes",
+      "Cross-browser compatibility",
+    ],
   },
   {
     title: "HTML",
-    items: ["Information Architecture (IA)", "Technical SEO", "Core Web Vitals", "Analytics (GA4, Custom)", "Google Ads / Adslot", "CRO / Heatmaps / A/B Testing"],
+    items: [
+      "Information Architecture (IA)",
+      "Technical SEO",
+      "Core Web Vitals",
+      "Analytics (GA4, Custom)",
+      "Google Ads / Adslot",
+      "CRO / Heatmaps / A/B Testing",
+    ],
   },
   {
     title: "WordPress / PHP",
-    items: ["Custom themes & plugins", "WordPress VIP hosting", "Advanced Custom Fields", "WooCommerce", "Custom membership systems", "WP-specific performance"],
+    items: [
+      "Custom themes & plugins",
+      "WordPress VIP hosting",
+      "Advanced Custom Fields",
+      "WooCommerce",
+      "Custom membership systems",
+      "WP-specific performance",
+    ],
   },
   {
     title: "Python",
-    items: ["Stable Diffusion / Comfy UI", "Computer Vision / OpenCV", "Tensorflow / PyTorch", "Flask", "Tkinter / Qt", "PyInstaller / Portable Distribution"],
+    items: [
+      "Stable Diffusion / Comfy UI",
+      "Computer Vision / OpenCV",
+      "Tensorflow / PyTorch",
+      "Flask",
+      "Tkinter / Qt",
+      "PyInstaller / Portable Distribution",
+    ],
   },
   {
     title: "C++",
-    items: ["ESP32 / Espressif toolchain", "Arduino Ecosystem", "PlatformIO", "OTA Updates", "Captive WiFi portal", "LED and peripherals"],
+    items: [
+      "ESP32 / Espressif toolchain",
+      "Arduino Ecosystem",
+      "PlatformIO",
+      "OTA Updates",
+      "Captive WiFi portal",
+      "LED and peripherals",
+    ],
   },
 ];
 ---
 
 <div class="mx-auto mb-16 flex max-w-3xl flex-col items-center px-8 text-center">
   <h2 class="sr-only">Skills</h2>
-  <p class="section-heading__center relative block font-bokor text-5xl/[0.8em] md:text-6xl/[0.8em]">
+  <p
+    class="section-heading__center text-emphasis font-bokor relative block text-5xl/[0.8em] md:text-6xl/[0.8em]"
+  >
     Tools of the Trade
   </p>
   <p class="mb-8">
-    <span class="mx-auto flex max-w-xs items-center gap-4 text-xs text-emerald-200 before:h-px before:flex-1 before:bg-emerald-200/20 after:h-px after:flex-1 after:bg-emerald-200/20">at home on</span>&nbsp;<span
-      class="font-bayon text-4xl">Mac, Linux & Windows</span
-    >
+    <span
+      class="text-emphasis mx-auto flex max-w-xs items-center gap-4 text-xs before:h-px before:flex-1 before:bg-emerald-200/20 after:h-px after:flex-1 after:bg-emerald-200/20"
+      >at home on</span
+    >&nbsp;<span class="font-bayon text-4xl">Mac, Linux & Windows</span>
   </p>
 </div>
 
 <!-- Primary Skills — Core Expertise -->
 <div class="primary-skills mx-auto mb-12 max-w-3xl px-4">
-  <p class="mb-5 text-center font-bayon text-sm tracking-widest text-emerald-400/80 uppercase">Core Expertise</p>
+  <p class="font-bayon mb-5 text-center text-sm tracking-widest text-emerald-400/80 uppercase">
+    Core Expertise
+  </p>
   <ul class="flex flex-wrap justify-center gap-3">
-    {primarySkills.map((skill) => (
-      <li class="primary-skill border border-emerald-400/30 bg-emerald-950/40 px-5 py-2.5 font-bayon text-lg tracking-wide text-emerald-100 shadow-[0_0_12px_rgba(52,211,153,0.08)]">
-        {skill}
-      </li>
-    ))}
+    {
+      primarySkills.map((skill) => (
+        <li class="primary-skill font-bayon text-foundation border border-emerald-400/30 bg-emerald-950/40 px-5 py-2.5 text-lg tracking-wide shadow-[0_0_12px_rgba(52,211,153,0.08)]">
+          {skill}
+        </li>
+      ))
+    }
   </ul>
 </div>
 
 <!-- Secondary Skills — Full Range by Category -->
 <details class="secondary-skills-details group mx-auto max-w-4xl">
-  <summary class="mb-6 flex cursor-pointer select-none items-center justify-center gap-2 text-center font-bayon text-sm tracking-widest text-emerald-300/50 uppercase transition-colors hover:text-emerald-300/80">
+  <summary
+    class="font-bayon mb-6 flex cursor-pointer items-center justify-center gap-2 text-center text-sm tracking-widest text-emerald-300/50 uppercase transition-colors select-none hover:text-emerald-300/80"
+  >
     <span>Also experienced with</span>
-    <svg class="h-4 w-4 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+    <svg
+      class="h-4 w-4 transition-transform group-open:rotate-180"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      stroke-width="2"
+    >
+      <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
     </svg>
   </summary>
-  <div class="skills-grid flex flex-col gap-4 pb-4 pr-4 sm:grid sm:grid-cols-2 lg:grid-cols-3">
-    {secondaryCategories.map((cat) => (
-      <SkillsCard text={cat.title}>
-        <ul class="list flex flex-col gap-1.5">
-          {cat.items.map((item) => (
-            <li class="text-sm text-emerald-200/60">{item}</li>
-          ))}
-        </ul>
-      </SkillsCard>
-    ))}
+  <div class="skills-grid flex flex-col gap-4 pr-4 pb-4 sm:grid sm:grid-cols-2 lg:grid-cols-3">
+    {
+      secondaryCategories.map((cat) => (
+        <SkillsCard text={cat.title}>
+          <ul class="list flex flex-col gap-1.5">
+            {cat.items.map((item) => (
+              <li class="text-sm text-emerald-200/60">{item}</li>
+            ))}
+          </ul>
+        </SkillsCard>
+      ))
+    }
   </div>
 </details>

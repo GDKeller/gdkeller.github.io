@@ -17,8 +17,8 @@ import Talks from "../components/Talks.astro";
 ---
 
 <Layout title="Grant Keller - Senior UX Software Engineer">
-  <main class="relative z-0 block font-prompt text-emerald-200" aria-label="Portfolio content">
-    <div class="relative block bg-background">
+  <main class="font-prompt text-foundation relative z-0 block" aria-label="Portfolio content">
+    <div class="bg-background relative block">
       <!-- <span class="absolute top-0 bottom-0 left-0 right-0 z-50 object-cover w-full h-full min-h-full mix-blend-difference opacity-20 bg-gradient-to-bl from-teal-500 to-indigo-950"></span> -->
       <!-- <span class="absolute top-0 left-0 z-0 z-50 w-full h-full opacity-50 bg-gradient-to-br from-purple-950 mix-blend-color-dodge to-blue-950"></span> -->
 
@@ -27,7 +27,7 @@ import Talks from "../components/Talks.astro";
 
       <div class="overflow-x-hidden">
         <!-- Awards -->
-        <section class="relative py-16 md:pb-24 md:pt-48">
+        <section class="relative py-16 md:pt-48 md:pb-24">
           <Awards />
         </section>
 
@@ -38,7 +38,7 @@ import Talks from "../components/Talks.astro";
           <div class="container mx-auto flex max-w-6xl justify-center px-8 pt-20">
             <h2
               id="featured"
-              class="section-heading__center relative mb-0 block w-auto text-center font-bokor text-5xl md:text-6xl"
+              class="section-heading__center font-bokor text-emphasis relative mb-0 block w-auto text-center text-5xl md:text-6xl"
             >
               Featured Work
             </h2>
@@ -80,14 +80,13 @@ import Talks from "../components/Talks.astro";
 
         <!-- Passion Projects: Anglerfish Exhibit -->
         <section class="relative z-10 block overflow-hidden py-20 md:py-20">
-          <div class="container relative z-20 mx-auto max-w-6xl px-8">
-            <h2 id="passion-projects" class="mb-12 text-center font-bokor text-5xl md:text-6xl">
+          <div class="relative z-20 container mx-auto max-w-6xl px-8">
+            <h2
+              id="passion-projects"
+              class="font-bokor text-emphasis mb-12 text-center text-5xl md:text-6xl"
+            >
               Beyond the Screen
             </h2>
-            <p class="mx-auto mb-20 max-w-2xl text-center text-xl">
-              When not building web applications, I explore the intersection of hardware, software,
-              and physical experiences.
-            </p>
           </div>
           <FishHero />
         </section>
@@ -96,10 +95,10 @@ import Talks from "../components/Talks.astro";
   </main>
   <div
     id="bg__main"
-    class="bg pointer-events-none fixed left-0 top-0 z-50 h-full w-full overflow-hidden opacity-60 mix-blend-difference"
+    class="bg pointer-events-none fixed top-0 left-0 z-50 h-full w-full overflow-hidden opacity-60 mix-blend-difference"
   >
-    <span class="absolute left-0 top-0 z-10 h-full w-full bg-background opacity-90"></span>
-    <span class="absolute left-0 top-0 h-full w-full">
+    <span class="bg-background absolute top-0 left-0 z-10 h-full w-full opacity-90"></span>
+    <span class="absolute top-0 left-0 h-full w-full">
       <Image src={bgImage} alt="Background" class="h-full w-full object-cover" />
     </span>
   </div>
@@ -107,10 +106,12 @@ import Talks from "../components/Talks.astro";
 
   <!-- Contact Modal (hidden, triggered by nav button) -->
   <dialog id="hire_me_modal" class="hire-modal open:flex">
-    <div class="hire-modal__box relative max-w-md border border-emerald-400/30 bg-background/95 p-6 backdrop-blur-xl">
+    <div
+      class="hire-modal__box bg-background/95 relative max-w-md border border-emerald-400/30 p-6 backdrop-blur-xl"
+    >
       <form method="dialog">
         <button
-          class="absolute right-3 top-3 flex h-8 w-8 items-center justify-center border-0 bg-transparent text-emerald-200/70 hover:bg-emerald-400/10 hover:text-emerald-200"
+          class="hover:text-emphasis absolute top-3 right-3 flex h-8 w-8 items-center justify-center border-0 bg-transparent text-emerald-200/70 hover:bg-emerald-400/10"
         >
           <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
@@ -123,7 +124,7 @@ import Talks from "../components/Talks.astro";
       </form>
 
       <div class="mb-8 pt-2 text-center">
-        <h3 class="mb-3 font-bokor text-3xl text-emerald-300">Let's Connect</h3>
+        <h3 class="font-bokor mb-3 text-3xl text-emerald-300">Let's Connect</h3>
         <p class="font-prompt text-sm text-emerald-200/80">Let's build something great</p>
       </div>
 
@@ -135,12 +136,7 @@ import Talks from "../components/Talks.astro";
           <div
             class="flex h-8 w-8 flex-shrink-0 items-center justify-center bg-emerald-400/10 transition-colors group-hover:bg-emerald-400/20"
           >
-            <svg
-              class="h-4 w-4 text-emerald-400"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
+            <svg class="text-accent h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -153,7 +149,7 @@ import Talks from "../components/Talks.astro";
             <div class="mb-1 text-xs font-medium text-emerald-300/80">Email</div>
             <a
               href="mailto:contact@grantkeller.dev"
-              class="font-prompt text-sm text-emerald-100 transition-colors hover:text-emerald-300"
+              class="font-prompt text-foundation text-sm transition-colors hover:text-emerald-300"
             >
               contact@grantkeller.dev
             </a>
@@ -167,7 +163,7 @@ import Talks from "../components/Talks.astro";
           <div
             class="flex h-8 w-8 flex-shrink-0 items-center justify-center bg-emerald-400/10 transition-colors group-hover:bg-emerald-400/20"
           >
-            <svg class="h-4 w-4 text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
+            <svg class="text-accent h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
               <path
                 d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
               ></path>
@@ -179,7 +175,7 @@ import Talks from "../components/Talks.astro";
               href="https://www.linkedin.com/in/grantdkeller/"
               target="_blank"
               rel="noopener noreferrer"
-              class="font-prompt text-sm text-emerald-100 transition-colors hover:text-emerald-300"
+              class="font-prompt text-foundation text-sm transition-colors hover:text-emerald-300"
             >
               linkedin.com/in/grantdkeller
             </a>
@@ -193,7 +189,7 @@ import Talks from "../components/Talks.astro";
           <div
             class="flex h-8 w-8 flex-shrink-0 items-center justify-center bg-emerald-400/10 transition-colors group-hover:bg-emerald-400/20"
           >
-            <svg class="h-4 w-4 text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
+            <svg class="text-accent h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
               <path
                 d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
               ></path>
@@ -205,7 +201,7 @@ import Talks from "../components/Talks.astro";
               href="https://github.com/gdkeller"
               target="_blank"
               rel="noopener noreferrer"
-              class="font-prompt text-sm text-emerald-100 transition-colors hover:text-emerald-300"
+              class="font-prompt text-foundation text-sm transition-colors hover:text-emerald-300"
             >
               github.com/gdkeller
             </a>
@@ -219,12 +215,7 @@ import Talks from "../components/Talks.astro";
           <div
             class="flex h-8 w-8 flex-shrink-0 items-center justify-center bg-emerald-400/10 transition-colors group-hover:bg-emerald-400/20"
           >
-            <svg
-              class="h-4 w-4 text-emerald-400"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
+            <svg class="text-accent h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -239,7 +230,7 @@ import Talks from "../components/Talks.astro";
               href="/Grant Keller Senior UX Engineer Resume 2025.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              class="font-prompt text-sm text-emerald-100 transition-colors hover:text-emerald-300"
+              class="font-prompt text-foundation text-sm transition-colors hover:text-emerald-300"
             >
               Download PDF
             </a>

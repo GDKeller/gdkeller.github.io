@@ -15,7 +15,6 @@ import Link from "./Link.astro";
   <span
     class="absolute bottom-0 left-0 z-10 h-1/4 w-full bg-gradient-to-t from-black to-transparent opacity-90"
   ></span>
-  <!-- <span class="color__nyp-red--dark absolute top-0 left-0 z-0 h-full w-full"></span> -->
   <div class="relative z-10 w-full px-12 lg:max-w-1/2">
     <h3 class="sr-only">New York Post</h3>
     <div class="relative mb-4 max-w-92">
@@ -32,7 +31,7 @@ import Link from "./Link.astro";
   <div class="content-box relative z-20 flex w-full justify-start">
     <div class="flex">
       <div class="">
-        <div class="mb-4 flex flex-col items-center sm:flex-row">
+        <div class="text-emphasis mb-4 flex flex-col items-center sm:flex-row">
           <div class="mr-12 font-bold">
             <div
               class="font-bokor mb-2 flex items-end text-8xl sm:text-8xl md:text-7xl lg:text-7xl xl:text-9xl"
@@ -51,14 +50,14 @@ import Link from "./Link.astro";
               >65 <span class="mb-4 ml-2 text-xl lg:text-3xl xl:text-5xl">million</span></span
             >
             <div
-              class="font-bayon -mt-4 ml-2 text-2xl text-emerald-100 md:text-3xl lg:text-xl xl:text-4xl"
+              class="font-bayon text-foundation -mt-4 ml-2 text-2xl md:text-3xl lg:text-xl xl:text-4xl"
             >
               unique visitors
             </div>
           </div>
         </div>
         <div class="bg-background/80 pr-8">
-          <div class="mb-8 block w-full text-emerald-100">
+          <div class="mb-8 block w-full">
             <p class="mb-4 text-lg font-bold">
               Senior User Experience Developer ᠅ <Link
                 href="https://alley.com/"
@@ -76,7 +75,7 @@ import Link from "./Link.astro";
               >. Built custom Gutenberg blocks, crafted responsive SCSS component styles, and
               maintained the unified theme system serving NYP, Page Six, and Decider.
             </p>
-            <ul class="list list-inside list-disc text-emerald-100">
+            <ul class="list list-inside list-disc">
               <li>Component styling & responsive layouts</li>
               <li>Editorial workflow improvements</li>
               <li>Performance optimization</li>
@@ -85,9 +84,9 @@ import Link from "./Link.astro";
           </div>
           <span class="divider"></span>
           <div class="text-100 flex flex-col flex-wrap sm:flex-row sm:items-center">
-            <p class="text-md sm:text-md font-bold sm:mr-4">Technologies:</p>
+            <p class="text-md sm:text-md text-emphasis font-bold sm:mr-4">Technologies:</p>
             <ul
-              class="list sm:text-md flex flex-row gap-2 text-sm font-light text-emerald-100 sm:flex-row sm:flex-wrap sm:gap-4"
+              class="list sm:text-md flex flex-row gap-2 text-sm font-light sm:flex-row sm:flex-wrap sm:gap-4"
             >
               <li>WordPress</li>
               <li>React</li>
@@ -107,15 +106,6 @@ import Link from "./Link.astro";
     <style>
       .browser {
         filter: drop-shadow(0.1rem 0.1rem 0.3rem rgba(0, 0, 0, 1));
-      }
-      .color__nyp-red {
-        background-color: #c60800;
-      }
-      .color__nyp-red--text {
-        color: #c60800;
-      }
-      .color__nyp-red--dark {
-        background-color: #1e0b09;
       }
       .content-box {
         box-shadow: 0 0 1.2rem -0.4rem rgba(255, 0, 0, 0.1);
