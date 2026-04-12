@@ -47,6 +47,35 @@
   --text-body-2xs--line-height: 1rem;
 }
 
+/* Semantic color tokens — named by role along a single axis: attention
+   intensity. Tailwind v4 strips the `--color-` prefix when generating
+   utilities, so `--color-foundation` becomes `text-foundation`, etc.
+
+   Attention hierarchy (for content the user should read/see):
+     foundation — baseline reading copy
+     emphasis   — gentle lift above foundation
+     accent     — clearly prominent (buttons, active states, etc.)
+     highlight  — maximum demand (fuchsia; the hammer)
+
+   Structural (scaffolding, not competing for attention):
+     background — the page backdrop
+     subtle     — dividers, borders, decoration; never used on text
+
+   `-hover` variants mark state transitions — use in `hover:` modifiers,
+   not as base colors. Roles without a hover variant (foundation, subtle,
+   background) are not interactive. */
+@theme inline {
+  --color-background: var(--color-black);
+  --color-foundation: var(--color-emerald-100);
+  --color-emphasis: var(--color-emerald-200);
+  --color-emphasis-hover: var(--color-emerald-100);
+  --color-accent: var(--color-emerald-400);
+  --color-accent-hover: var(--color-emerald-300);
+  --color-highlight: var(--color-fuchsia-500);
+  --color-highlight-hover: var(--color-fuchsia-300);
+  --color-subtle: var(--color-emerald-700);
+}
+
 /* Reduced Motion Support */
 @media (prefers-reduced-motion: no-preference) {
   :root {
