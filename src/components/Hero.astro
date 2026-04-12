@@ -9,7 +9,7 @@ import frameLower from "../images/hero_frame/hero_frame-lower.webp";
 
 <section
   id="hero"
-  class="relative z-50 flex w-full max-w-full flex-col justify-end gap-0 overflow-hidden px-2 pt-0 pb-2 sm:px-8 sm:pt-10 lg:pt-12"
+  class="relative z-50 flex min-h-[calc(100vh-50px)] w-full max-w-full flex-col justify-end gap-0 overflow-hidden px-2 pt-0 pb-2 sm:px-8 sm:pt-10 lg:pt-12"
 >
   <HeroBackground />
   <Image
@@ -58,14 +58,14 @@ import frameLower from "../images/hero_frame/hero_frame-lower.webp";
       class="hero__text mt-4 mb-auto flex w-full max-w-2xl flex-col sm:w-auto md:py-4 lg:mr-auto lg:max-w-5xl lg:py-0 xl:mr-auto xl:ml-auto"
     >
       <p
-        class="relative isolate mt-0 mr-auto mb-auto ml-auto flex w-full max-w-xs flex-col flex-wrap items-start text-left text-xl text-emerald-100 sm:ml-0 sm:max-w-xl sm:text-left sm:text-lg md:mb-12 md:max-w-[48em] md:text-2xl lg:text-xl/tight"
+        class="text-foundation relative isolate mt-0 mr-auto mb-auto ml-auto flex w-full max-w-xs flex-col flex-wrap items-start text-left text-xl sm:ml-0 sm:max-w-xl sm:text-left sm:text-lg md:mb-12 md:max-w-[48em] md:text-2xl lg:text-xl/tight"
       >
         <span
           class="relative -left-16 z-30 block w-full text-8xl leading-[0.9] font-bold break-keep whitespace-nowrap uppercase"
           >Deep space</span
         >
         <span
-          class="font-bokor sr-only relative -left-[3.8em] z-50 -my-5 inline-flex h-8 w-8 items-center justify-center place-self-center rounded-full bg-emerald-300 text-xl leading-none tracking-widest text-emerald-200 uppercase drop-shadow-[0_0_6px_rgba(0,0,0,0.6)] text-shadow-black text-shadow-lg"
+          class="font-bokor text-emphasis sr-only relative -left-[3.8em] z-50 -my-5 inline-flex h-8 w-8 items-center justify-center place-self-center rounded-full bg-emerald-300 text-xl leading-none tracking-widest uppercase drop-shadow-[0_0_6px_rgba(0,0,0,0.6)] text-shadow-black text-shadow-lg"
         >
           &nbsp;to&nbsp;
         </span>
@@ -73,11 +73,11 @@ import frameLower from "../images/hero_frame/hero_frame-lower.webp";
           >deep sea</span
         >
         <span
-          class="text-md relative -left-[0.75em] z-30 mt-0 mb-24 leading-none font-extralight tracking-widest text-emerald-200"
+          class="text-md text-emphasis relative -left-[0.75em] z-30 mt-0 mb-24 leading-none font-extralight tracking-widest"
           >&nbsp;and everywhere in between</span
         >
         <span
-          class="block w-full max-w-[20em] text-left text-2xl leading-relaxed font-normal text-emerald-200"
+          class="text-emphasis block w-full max-w-[20em] text-left text-2xl leading-relaxed font-normal"
           >Building software that turns ideas <span class="inline-block"
             >into interfaces that just click.</span
           ></span
@@ -85,30 +85,7 @@ import frameLower from "../images/hero_frame/hero_frame-lower.webp";
       </p>
     </div>
   </div>
-
   <div class="left-0 z-10 mb-20 max-w-full overflow-hidden">
     <LogoCarousel />
   </div>
 </section>
-
-<style>
-  #hero {
-    /* min-height: calc(90vh - 1rem); */
-    min-height: calc(100vh - 50px);
-  }
-
-  .hero__name {
-    line-height: 0.8;
-    display: block;
-    position: relative;
-
-    &::after {
-      content: "Grant Keller";
-      text-shadow: 0px 0px 0.1em color-mix(in oklch, var(--color-fuchsia-500) 80%, transparent);
-      position: absolute;
-      left: 0;
-      top: 0;
-      z-index: -1;
-    }
-  }
-</style>

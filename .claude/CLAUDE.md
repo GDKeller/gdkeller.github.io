@@ -55,14 +55,28 @@ Hiring managers and potential clients evaluating Grant's technical abilities. Th
 - "Wide breadth of skills, I trust them with any problem" — demonstrated range and reliability
 
 ### Aesthetic Direction
-- **Theme:** Dark only — black base (`bg-black`) with emerald (`emerald-200` through `emerald-950`) as the dominant color
-- **Accents:** Fuchsia/pink for emphasis (name glow, active nav states), teal for gradients
-- **Effects:** Neon glow text-shadows, glass morphism (`bg-black/70 backdrop-blur`), radial gradient bursts, blurred emerald scanlines on section headings
+- **Theme:** Dark only — black backdrop with emerald as the dominant color, fuchsia as punctuation
+- **Effects:** Neon glow text-shadows, glass morphism (translucent backgrounds with `backdrop-blur`), radial gradient bursts, blurred emerald scanlines on section headings
 - **Fonts:** Bayon (display), Bokor (decorative), Permanent Marker (handwritten accent), Prompt (body) — loaded via Google Fonts
 - **Type scale:** Custom display/heading/body sizes defined in `tailwind.config.mjs`
 - **Animation:** GSAP for complex sequences (ScrollTrigger, oscilloscope wave, scroll reveals); CSS transitions for simple hover/focus states
 - **Anti-references:** Generic portfolio templates, cookie-cutter layouts, safe/corporate aesthetics
 - **The current site IS the reference** — evolve and refine, don't reinvent
+
+### Color tokens
+Colors are expressed through semantic tokens defined in `src/styles/global.css`, named by role along a single axis — **attention intensity**. See the comment block in that file for the authoritative list; don't reach for raw `emerald-*` or `fuchsia-*` classes in new code.
+
+**Attention hierarchy** (content the user should read/see):
+- `foundation` — baseline reading copy
+- `emphasis` (+hover) — gentle lift above foundation (headings, labels, decorators)
+- `accent` (+hover) — clearly prominent (buttons, active states, interactive elements)
+- `highlight` (+hover) — fuchsia, maximum demand; used sparingly
+
+**Structural** (scaffolding, not competing for attention):
+- `background` — the page backdrop
+- `subtle` — dividers, borders, decoration; never used on text
+
+Tokens encode *decisions*, not *elements*. If changing a token's value should update every use of it together, it's a valid token. Avoid element-named tokens like `button-bg` or `link-color` — they collapse the moment the same element needs different values in different contexts.
 
 ### Design Principles
 1. **Craft over convention** — Every interaction should feel intentional and hand-built, not templated
