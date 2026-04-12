@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
+import gridTile from "../images/ui/grid-tile.webp";
 
 const entries = (await getCollection("current")).sort(
   (a, b) => (a.data.order ?? 99) - (b.data.order ?? 99),
@@ -14,17 +15,22 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 const resolveImage = (filename?: string) => {
   if (!filename) return null;
   const key = `/src/images/current/${filename}`;
-  const loader = images[key];
-  return loader ?? null;
+  return images[key] ?? null;
 };
 
 const statusLabel = {
-  live: "live",
-  beta: "beta",
-  "launching-soon": "launching soon",
+  live: "LIVE",
+  beta: "BETA",
+  "launching-soon": "LAUNCHING SOON",
 } as const;
 
-const rotationByOrder = ["-rotate-[1.5deg]", "rotate-[1deg]", "-rotate-[0.8deg]", "rotate-[1.8deg]", "-rotate-[1.2deg]"];
+const rotations = [
+  "-rotate-[3.5deg]",
+  "rotate-[2.8deg]",
+  "-rotate-[2.2deg]",
+  "rotate-[4deg]",
+  "-rotate-[3deg]",
+];
 
 const itemsWithVisual = await Promise.all(
   entries.map(async (entry, idx) => {
@@ -33,38 +39,48 @@ const itemsWithVisual = await Promise.all(
     return {
       entry,
       resolvedImage,
-      rotation: rotationByOrder[idx] ?? "",
+      rotation: rotations[idx] ?? "",
+      refNum: `01.${String(idx + 1).padStart(2, "0")}`,
     };
   }),
 );
 ---
 
 <section
-  class="currently-building relative z-0 overflow-hidden"
+  class="currently-building relative isolate z-0 overflow-hidden"
   aria-labelledby="currently-building-label"
 >
-  <!-- Brushed-metal surface -->
-  <div class="surface pointer-events-none absolute inset-0 -z-10"></div>
-  <!-- Emerald rim-light bleeding in from edges -->
-  <div class="rim-light pointer-events-none absolute inset-0 -z-10"></div>
-  <!-- Subtle corner vignette -->
-  <div class="vignette pointer-events-none absolute inset-0 -z-10"></div>
+  <div
+    class="substrate pointer-events-none absolute inset-0 z-0"
+    style={`background-image: url(${gridTile.src})`}
+  >
+  </div>
 
-  <div class="relative mx-auto max-w-7xl px-6 pt-20 pb-28 md:px-10 md:pt-24 md:pb-32">
-    <!-- Handwritten tag label -->
-    <h2
-      id="currently-building-label"
-      class="tag-label font-marker text-accent -rotate-[3deg] text-3xl md:text-4xl lg:text-5xl"
-    >
-      Currently Building
-    </h2>
+  <div class="relative z-20 mx-auto max-w-7xl px-6 pt-16 pb-24 md:px-10 md:pt-20 md:pb-28">
+    <header class="inscription mb-12 md:mb-16">
+      <div class="inscription-rule" aria-hidden="true"></div>
+      <p
+        class="text-foundation/50 mb-1.5 font-mono text-[0.7rem] font-medium tracking-[0.22em] uppercase md:text-[0.75rem]"
+      >
+        <span>PLATE&nbsp;01</span>
+        <span class="mx-2.5 opacity-40" aria-hidden="true">/</span>
+        <span>ACTIVE&nbsp;WORK</span>
+        <span class="mx-2.5 opacity-40" aria-hidden="true">/</span>
+        <span>SHEET&nbsp;01&nbsp;OF&nbsp;08</span>
+      </p>
+      <h2
+        id="currently-building-label"
+        class="font-bokor text-emphasis text-5xl leading-[0.95] md:text-6xl lg:text-7xl"
+      >
+        Currently Building
+      </h2>
+    </header>
 
-    <!-- Workbench grid -->
     <ul
-      class="workbench relative mt-10 grid grid-cols-1 gap-y-14 md:mt-14 md:grid-cols-12 md:gap-x-8 md:gap-y-12"
+      class="workbench relative grid grid-cols-1 gap-y-16 md:grid-cols-12 md:gap-x-10 md:gap-y-14"
     >
       {
-        itemsWithVisual.map(({ entry, resolvedImage, rotation }) => {
+        itemsWithVisual.map(({ entry, resolvedImage, rotation, refNum }) => {
           const { data } = entry;
           const isFocal = data.focal === true;
           const isPlaceholder = !resolvedImage;
@@ -83,63 +99,57 @@ const itemsWithVisual = await Promise.all(
                 href={data.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="object block h-full w-full"
+                class="block h-full w-full no-underline"
                 aria-label={`${data.title} — ${data.description}`}
               >
-                <div class="object-frame relative overflow-hidden">
+                <div class="callout-frame relative">
+                  <span class="bracket tl" aria-hidden="true" />
+                  <span class="bracket tr" aria-hidden="true" />
+                  <span class="bracket bl" aria-hidden="true" />
+                  <span class="bracket br" aria-hidden="true" />
+
+                  <span class="ref-num font-mono">{refNum}</span>
+
+                  {brand === "davant" && <span class="brand-label font-mono">DAVANT</span>}
+
                   {resolvedImage ? (
                     <Image
                       src={resolvedImage}
                       alt={data.imageAlt ?? data.title}
-                      class="h-full w-full object-cover"
+                      class="block w-full"
                       loading="lazy"
                       widths={[400, 800, 1200]}
-                      sizes="(min-width: 1024px) 40vw, (min-width: 768px) 60vw, 90vw"
+                      sizes={
+                        isFocal
+                          ? "(min-width: 1024px) 50vw, 90vw"
+                          : "(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 90vw"
+                      }
                     />
                   ) : (
-                    <div
-                      class="placeholder flex aspect-[16/10] h-full w-full items-center justify-center"
-                      aria-hidden="true"
-                    >
-                      <span class="font-marker text-accent -rotate-[4deg] text-xl md:text-2xl">
-                        {status ? statusLabel[status] : "in progress"}
+                    <div class="placeholder-cell" aria-hidden="true">
+                      <span class="text-foundation/45 font-mono text-[0.65rem] tracking-[0.3em] uppercase">
+                        {status ? statusLabel[status] : "IN PROGRESS"}
                       </span>
                     </div>
                   )}
-
-                  {brand === "davant" && (
-                    <span class="davant-mark font-bayon text-emphasis/70 absolute top-2 right-2 text-[0.65rem] tracking-[0.2em] uppercase">
-                      Davant
-                    </span>
-                  )}
-
-                  {status && !isPlaceholder && (
-                    <span
-                      class:list={[
-                        "status-pill absolute bottom-2 left-2 px-2 py-0.5 text-[0.6rem] font-bold tracking-widest uppercase",
-                        status === "live" && "is-live",
-                        status === "beta" && "is-beta",
-                        status === "launching-soon" && "is-launching",
-                      ]}
-                    >
-                      {statusLabel[status]}
-                    </span>
-                  )}
                 </div>
 
-                <div class="object-meta mt-4">
-                  <h3 class="font-bayon text-emphasis text-2xl leading-tight md:text-3xl">
-                    {data.title}
-                  </h3>
-                  <p class="text-foundation mt-1 text-sm leading-snug md:text-base">
-                    {data.description}
-                  </p>
+                <div class="entry-meta mt-3">
+                  <div class="meta-header flex items-baseline gap-3">
+                    <h3 class="font-bayon text-emphasis text-xl leading-tight md:text-2xl">
+                      {data.title}
+                    </h3>
+                    {status && (
+                      <span class="text-foundation/45 font-mono text-[0.6rem] tracking-[0.18em] uppercase">
+                        {statusLabel[status]}
+                      </span>
+                    )}
+                  </div>
+                  <p class="text-foundation/70 mt-1 text-sm leading-relaxed">{data.description}</p>
                   {data.tech && data.tech.length > 0 && (
-                    <ul class="tech mt-3 flex flex-wrap gap-x-3 gap-y-1 text-[0.7rem] tracking-wider uppercase">
-                      {data.tech.map((t) => (
-                        <li class="text-emphasis/70">{t}</li>
-                      ))}
-                    </ul>
+                    <p class="text-foundation/50 mt-2 font-mono text-[0.65rem] tracking-[0.12em] uppercase">
+                      {data.tech.join(" / ")}
+                    </p>
                   )}
                 </div>
               </a>
@@ -153,129 +163,129 @@ const itemsWithVisual = await Promise.all(
 
 <style>
   .currently-building {
-    /* Base surface color — near-black with a hint of cool green */
-    background: oklch(0.14 0.01 180);
+    background: var(--color-background);
   }
 
-  .surface {
-    /* Dark brushed-steel: near-black base with horizontal streaks */
-    background:
-      repeating-linear-gradient(
-        90deg,
-        rgba(255, 255, 255, 0.015) 0px,
-        rgba(255, 255, 255, 0.015) 1px,
-        transparent 1px,
-        transparent 3px
-      ),
-      repeating-linear-gradient(
-        90deg,
-        rgba(0, 0, 0, 0.15) 0px,
-        rgba(0, 0, 0, 0.15) 1px,
-        transparent 1px,
-        transparent 7px
-      ),
-      linear-gradient(180deg, oklch(0.16 0.01 180) 0%, oklch(0.11 0.005 180) 100%);
-    mix-blend-mode: screen;
-    opacity: 0.6;
+  .substrate {
+    background-size: 50vw auto;
+    background-repeat: repeat;
+    opacity: 0.15;
   }
 
-  .rim-light {
-    background:
-      radial-gradient(ellipse at top left, var(--color-emerald-500) 0%, transparent 35%),
-      radial-gradient(ellipse at bottom right, var(--color-emerald-600) 0%, transparent 40%);
-    mix-blend-mode: screen;
-    opacity: 0.18;
+  .inscription-rule {
+    height: 1px;
+    width: 5rem;
+    background: rgba(255, 255, 255, 0.2);
+    margin-bottom: 0.75rem;
   }
 
-  .vignette {
-    background: radial-gradient(ellipse at center, transparent 40%, rgba(0, 0, 0, 0.85) 100%);
+  @media (min-width: 768px) {
+    .inscription-rule {
+      width: 7rem;
+    }
   }
 
-  .tag-label {
-    display: inline-block;
-    transform-origin: left center;
-    text-shadow:
-      0 0 1rem rgba(16, 185, 129, 0.5),
-      0 0 0.3rem rgba(16, 185, 129, 0.9);
-  }
+  /* --- Workbench items --- */
 
   .workbench-item {
     transform-origin: center center;
     transition:
-      transform 0.35s ease-out,
-      rotate 0.35s ease-out,
-      filter 0.35s ease-out;
-  }
-
-  .workbench-item .object {
-    display: block;
-    color: inherit;
-    text-decoration: none;
-  }
-
-  .workbench-item .object-frame {
-    position: relative;
-    background: rgba(0, 0, 0, 0.6);
-    border: 1px solid rgba(16, 185, 129, 0.2);
-    box-shadow:
-      0 0.75rem 2rem -0.5rem rgba(0, 0, 0, 0.8),
-      0 0.25rem 0.75rem -0.25rem rgba(0, 0, 0, 0.9);
-    transition:
-      box-shadow 0.35s ease-out,
-      border-color 0.35s ease-out;
+      transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+      rotate 0.3s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .workbench-item:hover {
-    transform: translateY(-4px);
+    transform: translateY(-3px);
     rotate: 0deg;
   }
 
-  .workbench-item:hover .object-frame {
-    border-color: rgba(16, 185, 129, 0.6);
-    box-shadow:
-      0 1.25rem 2.5rem -0.5rem rgba(0, 0, 0, 0.9),
-      0 0.5rem 1rem -0.25rem rgba(0, 0, 0, 1),
-      0 0 2rem -0.25rem rgba(16, 185, 129, 0.4);
+  /* --- Callout frame (diagram box) --- */
+
+  .callout-frame {
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: border-color 0.3s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
-  .placeholder {
-    background:
-      repeating-linear-gradient(
-        135deg,
-        rgba(16, 185, 129, 0.05) 0px,
-        rgba(16, 185, 129, 0.05) 8px,
-        transparent 8px,
-        transparent 16px
-      ),
-      linear-gradient(135deg, oklch(0.18 0.03 180) 0%, oklch(0.1 0.015 180) 100%);
+  .workbench-item:hover .callout-frame {
+    border-color: rgba(16, 185, 129, 0.3);
   }
 
-  .davant-mark {
-    background: rgba(0, 0, 0, 0.6);
-    padding: 0.2rem 0.45rem;
-    backdrop-filter: blur(4px);
+  .bracket {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-color: rgba(255, 255, 255, 0.25);
+    border-style: solid;
+    z-index: 2;
+    transition: border-color 0.3s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
-  .status-pill {
-    backdrop-filter: blur(6px);
-  }
-  .status-pill.is-live {
-    color: oklch(0.92 0.18 150);
-    background: rgba(16, 185, 129, 0.2);
-    border: 1px solid rgba(16, 185, 129, 0.5);
-  }
-  .status-pill.is-beta {
-    color: oklch(0.92 0.18 80);
-    background: rgba(234, 179, 8, 0.2);
-    border: 1px solid rgba(234, 179, 8, 0.5);
-  }
-  .status-pill.is-launching {
-    color: oklch(0.9 0.18 340);
-    background: rgba(217, 70, 239, 0.18);
-    border: 1px solid rgba(217, 70, 239, 0.5);
+  .workbench-item:hover .bracket {
+    border-color: rgba(16, 185, 129, 0.5);
   }
 
-  /* Mobile: flatter, less rotation */
+  .bracket.tl {
+    top: -1px;
+    left: -1px;
+    border-width: 1px 0 0 1px;
+  }
+  .bracket.tr {
+    top: -1px;
+    right: -1px;
+    border-width: 1px 1px 0 0;
+  }
+  .bracket.bl {
+    bottom: -1px;
+    left: -1px;
+    border-width: 0 0 1px 1px;
+  }
+  .bracket.br {
+    bottom: -1px;
+    right: -1px;
+    border-width: 0 1px 1px 0;
+  }
+
+  .ref-num {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.6rem;
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    color: rgba(255, 255, 255, 0.3);
+    z-index: 2;
+  }
+
+  .brand-label {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.6rem;
+    font-size: 0.55rem;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    color: rgba(255, 255, 255, 0.2);
+    z-index: 2;
+  }
+
+  /* --- Placeholder (Davant Studio v2) --- */
+
+  .placeholder-cell {
+    aspect-ratio: 16 / 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent 0px,
+      transparent 14px,
+      rgba(255, 255, 255, 0.02) 14px,
+      rgba(255, 255, 255, 0.02) 15px
+    );
+  }
+
+  /* --- Mobile: flatten rotations --- */
+
   @media (max-width: 767px) {
     .workbench-item {
       rotate: 0deg !important;
@@ -283,13 +293,16 @@ const itemsWithVisual = await Promise.all(
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .workbench-item,
-    .workbench-item .object-frame {
+    .workbench-item {
       transition: none;
     }
     .workbench-item:hover {
       transform: none;
       rotate: inherit;
+    }
+    .callout-frame,
+    .bracket {
+      transition: none;
     }
   }
 </style>
