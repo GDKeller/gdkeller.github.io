@@ -68,7 +68,8 @@ const current = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
-    url: z.string().url(),
+    url: z.string().url().optional(),
+    type: z.string().optional(),
     description: z.string(),
     image: z.string().optional(),
     imageAlt: z.string().optional(),

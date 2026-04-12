@@ -1,11 +1,12 @@
 ---
 title: Davant Studio
 url: https://www.davantsystems.com/davant-studio/
-description: Real-time AI art & design assistant for creative professionals. v2 release candidate landing soon.
+type: "PC/macOS"
+description: Real-time AI image suite for creative professionals.
 tech:
-  - Swift
-  - CoreML
-  - Metal
+  - Stable Diffusion
+  - React
+  - Python
 status: launching-soon
 brand: davant
 order: 2

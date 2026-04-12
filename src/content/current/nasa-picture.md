@@ -1,13 +1,14 @@
 ---
-title: NASA Picture
+title: NASA Picture Proxy
 url: https://nasapicture.com/
-description: Static proxy of NASA's Astronomy Picture of the Day — a clean gallery display and a developer-friendly API.
+type: Web
+description: Static proxy API of NASA's Astronomy Picture of the Day.
 image: nasapicture.webp
 imageAlt: NASA Picture astronomy photo gallery
 tech:
-  - Astro
-  - Cloudflare
+  - CF Workers
   - API
+  - Astro
 status: live
 order: 5
 ---

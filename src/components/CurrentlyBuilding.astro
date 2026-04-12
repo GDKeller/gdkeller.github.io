@@ -95,6 +95,7 @@ const itemsWithVisual = await Promise.all(
             const { data } = entry;
             const isFocal = data.focal === true;
             const isPlaceholder = !resolvedImage;
+            const type = data.type;
             const status = data.status;
             const brand = data.brand;
 
@@ -119,27 +120,23 @@ const itemsWithVisual = await Promise.all(
                     <span class="bracket bl" aria-hidden="true" />
                     <span class="bracket br" aria-hidden="true" />
 
-                    <span class="text-body-2xs absolute top-2 left-2.5 z-2 font-mono font-medium tracking-wider text-white/30">
+                    {/* <span class="text-body-2xs absolute top-0 left-0 z-2 px-2 py-0.5 font-mono font-medium tracking-wider text-white">
                       {refNum}
-                    </span>
-
-                    {brand === "davant" && (
-                      <span class="text-body-2xs absolute top-2 right-2.5 z-2 font-mono font-medium tracking-widest text-white/20">
-                        DAVANT
-                      </span>
-                    )}
+                    </span> */}
 
                     {data.video ? (
-                      <video
-                        autoplay
-                        loop
-                        muted
-                        playsinline
-                        class="block w-full"
-                        poster={resolvedImage?.src}
-                      >
-                        <source src={`/video/${data.video}`} type="video/mp4" />
-                      </video>
+                      <div class="p-2">
+                        <video
+                          autoplay
+                          loop
+                          muted
+                          playsinline
+                          class="block w-full rounded-t-[3%]"
+                          poster={resolvedImage?.src}
+                        >
+                          <source src={`/video/${data.video}`} type="video/mp4" />
+                        </video>
+                      </div>
                     ) : resolvedImage ? (
                       <Image
                         src={resolvedImage}
@@ -162,20 +159,16 @@ const itemsWithVisual = await Promise.all(
                     )}
                   </div>
 
-                  <div class="mt-3">
-                    <div class="flex items-baseline gap-3">
-                      <h3 class="font-bayon text-emphasis text-h4">{data.title}</h3>
-                      {status && (
-                        <span class="text-foundation text-body-2xs font-mono tracking-widest uppercase">
-                          {statusLabel[status]}
-                        </span>
-                      )}
+                  <div class="relative mt-1 border border-white/15 bg-black pt-4 pr-4 pb-4 pl-4">
+                    <div class="flex items-baseline justify-between gap-3">
+                      <h3 class="font-bayon text-emphasis text-xl">{data.title}</h3>
+                      <span class="text-accent absolute top-0 right-0 border-b border-l border-white/15 px-2 py-1 text-xs">
+                        {data.type}
+                      </span>
                     </div>
-                    <p class="text-foundation text-body-sm mt-1 leading-relaxed">
-                      {data.description}
-                    </p>
+                    <p class="text-foundation text-body-sm mt-1 max-w-[48ch]">{data.description}</p>
                     {data.tech && data.tech.length > 0 && (
-                      <p class="text-foundation text-body-2xs mt-2 font-mono tracking-wider uppercase">
+                      <p class="text-emphasis text-body-2xs mt-4 font-mono font-light tracking-wider uppercase">
                         {data.tech.join(" / ")}
                       </p>
                     )}
