@@ -42,45 +42,49 @@ const thumbItems = itemsWithVisual.slice(1);
 ---
 
 <section
-  class="bg-background relative isolate z-0 overflow-hidden"
+  class="bg-background relative isolate z-0 overflow-hidden py-32"
   aria-labelledby="currently-building-label"
 >
   <div
-    class="pointer-events-none absolute inset-0 z-0 bg-repeat opacity-15"
+    class="pointer-events-none absolute inset-0 z-0 bg-repeat opacity-15 contrast-25"
     style={`background-image: url(${gridTile.src}); background-size: 50vw auto;`}
   >
   </div>
 
   <div class="relative z-20 mx-auto max-w-7xl px-6 pt-16 pb-24 md:px-10 md:pt-20 md:pb-28">
-    <header class="mb-12 md:mb-16">
+    <!-- <header class="mb-12 md:mb-4">
       <h2
         id="currently-building-label"
-        class="font-bokor text-emphasis text-5xl md:text-6xl lg:text-4xl"
+        class="font-bokor text-emphasis text-5xl md:text-6xl lg:text-6xl"
       >
         Currently Building
       </h2>
-    </header>
+    </header> -->
     <div class="flex items-end">
-      <div
-        class="border-faint/80 rounded-tl-lg rounded-tr-lg border-t border-r border-l bg-black pt-4 pr-6 pl-2"
+      <h2
+        id="currently-building-label"
+        class="font-bokor text-emphasis mr-auto translate-y-[0.5em] text-5xl md:text-6xl lg:text-6xl"
       >
-        <EmbossedText text="Operations" height={20} />
-      </div>
+        Currently Building
+      </h2>
       <div class="border-faint/80 flex-1 border-b"></div>
-      <div class="border-faint/80 border-b">
+      <!-- <div class="border-faint/80 mr-0 ml-auto border-b pt-3 pr-6 pl-4">
+        <EmbossedText text="Operations" height={20} />
+      </div> -->
+      <div class="border-faint/80 rounded-t-xl border-t border-r border-l py-2 pr-6 pl-4">
         <p
-          class="text-subtle text-body-2xs pr-2 pb-2 font-mono font-medium tracking-widest uppercase"
+          class="text-subtle text-body-2xs font-mono leading-none font-medium tracking-widest uppercase"
         >
-          <span>Plate&nbsp;01</span>
-          <span class="mx-1" aria-hidden="true">::</span>
-          <span>Active&nbsp;Work</span>
-          <span class="mx-1" aria-hidden="true">::</span>
-          <span>Sheet&nbsp;01&nbsp;OF&nbsp;08</span>
+          <span>Plate&nbsp;001</span>
+          <span class="tracking-tighter" aria-hidden="true">::</span>
+          <span>Active</span>
+          <span class="tracking-tighter" aria-hidden="true">::</span>
+          <span>5 items</span>
         </p>
       </div>
     </div>
 
-    <div class="border-faint/80 border-x border-b bg-black" data-cb-root>
+    <div class="border-faint/80 border-x border-b bg-black pt-8" data-cb-root>
       <!-- Active viewer -->
       <div class="p-6 md:p-8" data-cb-viewer>
         {
@@ -127,30 +131,34 @@ const thumbItems = itemsWithVisual.slice(1);
                   </div>
 
                   <div class="flex flex-col justify-center md:w-2/5">
-                    <div class="flex items-baseline justify-between gap-3">
+                    <div class="">
                       <h3 class="font-bayon text-emphasis text-2xl md:text-3xl">{data.title}</h3>
                       {data.type && (
-                        <span class="text-accent text-body-2xs font-mono tracking-widest uppercase">
+                        <span class="text-emphasis border-faint text-body-2xs mt-2 block w-full border-t pt-2 font-mono tracking-widest">
                           {data.type}
                         </span>
                       )}
                     </div>
-                    <p class="text-foundation text-body-sm mt-3 max-w-[48ch]">{data.description}</p>
+                    <p class="text-foundation text-body-sm mt-12 max-w-[48ch]">
+                      {data.description}
+                    </p>
                     {data.tech && data.tech.length > 0 && (
-                      <p class="text-emphasis text-body-2xs mt-4 font-mono font-light tracking-wider uppercase">
+                      <p class="text-emphasis text-body-2xs mt-8 font-mono font-extralight tracking-wider uppercase">
                         {data.tech.join(" / ")}
                       </p>
                     )}
-                    {data.url && (
-                      <a
-                        href={data.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="text-accent text-body-xs mt-6 inline-block font-mono tracking-wider uppercase transition-colors hover:text-emerald-300"
-                      >
-                        View Project &rarr;
-                      </a>
-                    )}
+                    <div class="mt-8 mr-0 ml-auto">
+                      {data.url && (
+                        <a
+                          href={data.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="bg-accent text-body-xs hover:bg-accent-hover mt-6 inline-block px-4 py-2 font-mono tracking-wider text-black uppercase transition-colors"
+                        >
+                          View Site &rarr;
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>

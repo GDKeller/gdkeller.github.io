@@ -102,11 +102,15 @@ import CurrentlyBuilding from "../components/CurrentlyBuilding.astro";
     class="bg pointer-events-none fixed top-0 left-0 z-50 h-full w-full overflow-hidden opacity-60 mix-blend-difference"
   >
     <!-- Scrim overlay -->
-    <span class="bg-background absolute top-0 left-0 z-10 h-full w-full opacity-90"></span>
+    <span class="bg-background absolute top-0 left-0 z-10 h-full w-full opacity-80"></span>
     <!--Glitch overlay -->
-    <!-- <span class="absolute top-0 left-0 h-full w-full">
-      <Image src={bgImage} alt="Background" class="h-full w-full object-cover" />
-    </span> -->
+    <span class="absolute top-0 left-0 h-full w-full">
+      <Image
+        src={bgImage}
+        alt="Background"
+        class="h-full w-full object-cover opacity-50 brightness-50"
+      />
+    </span>
     <!-- Noise -->
     <div class="noise pointer-events-none absolute inset-0 top-0 left-0 z-50 h-full w-full"></div>
   </div>

@@ -34,7 +34,7 @@ export function initAllAnimations(
   // Hero and header animations (immediate)
   initHeroAnimations(gsap, ScrollTrigger);
   initHeaderAnimations(gsap, ScrollTrigger);
-  initSectionHeadingAnimations(gsap, ScrollTrigger);
+  // initSectionHeadingAnimations(gsap, ScrollTrigger);
 
   // Section-specific animations (scroll-triggered)
   initSkillsAnimations(gsap, ScrollTrigger);
