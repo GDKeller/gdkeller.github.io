@@ -1,8 +1,9 @@
 ---
 type: task
-status: backlog
+status: done
 priority: 2
 created: 2026-04-11
+completed: 2026-04-11
 ---
 
 # Fix NY Post section vertical scroll caused by spread image

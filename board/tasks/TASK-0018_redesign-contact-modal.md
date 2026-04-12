@@ -4,7 +4,6 @@ status: backlog
 priority: 3
 created: 2026-03-27
 parent: EPIC-0001
-blocked_by: TASK-0013, TASK-0014
 ---
 
 # Redesign contact modal

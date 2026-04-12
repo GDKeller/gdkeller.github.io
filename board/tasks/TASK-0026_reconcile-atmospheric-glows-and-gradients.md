@@ -4,7 +4,6 @@ status: backlog
 priority: 4
 created: 2026-04-11
 parent: EPIC-0001
-blocked_by: TASK-0016
 ---
 
 # Reconcile atmospheric glows and gradients with the token system

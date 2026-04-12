@@ -4,7 +4,6 @@ status: backlog
 priority: 3
 created: 2026-04-11
 parent: EPIC-0001
-blocked_by: TASK-0016
 ---
 
 # Introduce a secondary-emphasis token for the `emerald-300` role
