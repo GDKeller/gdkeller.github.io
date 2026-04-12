@@ -1,0 +1,295 @@
+---
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+const entries = (await getCollection("current")).sort(
+  (a, b) => (a.data.order ?? 99) - (b.data.order ?? 99),
+);
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/images/current/*.{webp,jpg,jpeg,png}",
+);
+
+const resolveImage = (filename?: string) => {
+  if (!filename) return null;
+  const key = `/src/images/current/${filename}`;
+  const loader = images[key];
+  return loader ?? null;
+};
+
+const statusLabel = {
+  live: "live",
+  beta: "beta",
+  "launching-soon": "launching soon",
+} as const;
+
+const rotationByOrder = ["-rotate-[1.5deg]", "rotate-[1deg]", "-rotate-[0.8deg]", "rotate-[1.8deg]", "-rotate-[1.2deg]"];
+
+const itemsWithVisual = await Promise.all(
+  entries.map(async (entry, idx) => {
+    const loader = resolveImage(entry.data.image);
+    const resolvedImage = loader ? (await loader()).default : null;
+    return {
+      entry,
+      resolvedImage,
+      rotation: rotationByOrder[idx] ?? "",
+    };
+  }),
+);
+---
+
+<section
+  class="currently-building relative z-0 overflow-hidden"
+  aria-labelledby="currently-building-label"
+>
+  <!-- Brushed-metal surface -->
+  <div class="surface pointer-events-none absolute inset-0 -z-10"></div>
+  <!-- Emerald rim-light bleeding in from edges -->
+  <div class="rim-light pointer-events-none absolute inset-0 -z-10"></div>
+  <!-- Subtle corner vignette -->
+  <div class="vignette pointer-events-none absolute inset-0 -z-10"></div>
+
+  <div class="relative mx-auto max-w-7xl px-6 pt-20 pb-28 md:px-10 md:pt-24 md:pb-32">
+    <!-- Handwritten tag label -->
+    <h2
+      id="currently-building-label"
+      class="tag-label font-marker text-accent -rotate-[3deg] text-3xl md:text-4xl lg:text-5xl"
+    >
+      Currently Building
+    </h2>
+
+    <!-- Workbench grid -->
+    <ul
+      class="workbench relative mt-10 grid grid-cols-1 gap-y-14 md:mt-14 md:grid-cols-12 md:gap-x-8 md:gap-y-12"
+    >
+      {
+        itemsWithVisual.map(({ entry, resolvedImage, rotation }) => {
+          const { data } = entry;
+          const isFocal = data.focal === true;
+          const isPlaceholder = !resolvedImage;
+          const status = data.status;
+          const brand = data.brand;
+
+          return (
+            <li
+              class:list={[
+                "workbench-item group relative",
+                rotation,
+                isFocal ? "md:col-span-6 md:row-span-2" : "md:col-span-3",
+              ]}
+            >
+              <a
+                href={data.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="object block h-full w-full"
+                aria-label={`${data.title} — ${data.description}`}
+              >
+                <div class="object-frame relative overflow-hidden">
+                  {resolvedImage ? (
+                    <Image
+                      src={resolvedImage}
+                      alt={data.imageAlt ?? data.title}
+                      class="h-full w-full object-cover"
+                      loading="lazy"
+                      widths={[400, 800, 1200]}
+                      sizes="(min-width: 1024px) 40vw, (min-width: 768px) 60vw, 90vw"
+                    />
+                  ) : (
+                    <div
+                      class="placeholder flex aspect-[16/10] h-full w-full items-center justify-center"
+                      aria-hidden="true"
+                    >
+                      <span class="font-marker text-accent -rotate-[4deg] text-xl md:text-2xl">
+                        {status ? statusLabel[status] : "in progress"}
+                      </span>
+                    </div>
+                  )}
+
+                  {brand === "davant" && (
+                    <span class="davant-mark font-bayon text-emphasis/70 absolute top-2 right-2 text-[0.65rem] tracking-[0.2em] uppercase">
+                      Davant
+                    </span>
+                  )}
+
+                  {status && !isPlaceholder && (
+                    <span
+                      class:list={[
+                        "status-pill absolute bottom-2 left-2 px-2 py-0.5 text-[0.6rem] font-bold tracking-widest uppercase",
+                        status === "live" && "is-live",
+                        status === "beta" && "is-beta",
+                        status === "launching-soon" && "is-launching",
+                      ]}
+                    >
+                      {statusLabel[status]}
+                    </span>
+                  )}
+                </div>
+
+                <div class="object-meta mt-4">
+                  <h3 class="font-bayon text-emphasis text-2xl leading-tight md:text-3xl">
+                    {data.title}
+                  </h3>
+                  <p class="text-foundation mt-1 text-sm leading-snug md:text-base">
+                    {data.description}
+                  </p>
+                  {data.tech && data.tech.length > 0 && (
+                    <ul class="tech mt-3 flex flex-wrap gap-x-3 gap-y-1 text-[0.7rem] tracking-wider uppercase">
+                      {data.tech.map((t) => (
+                        <li class="text-emphasis/70">{t}</li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .currently-building {
+    /* Base surface color — near-black with a hint of cool green */
+    background: oklch(0.14 0.01 180);
+  }
+
+  .surface {
+    /* Dark brushed-steel: near-black base with horizontal streaks */
+    background:
+      repeating-linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.015) 0px,
+        rgba(255, 255, 255, 0.015) 1px,
+        transparent 1px,
+        transparent 3px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.15) 0px,
+        rgba(0, 0, 0, 0.15) 1px,
+        transparent 1px,
+        transparent 7px
+      ),
+      linear-gradient(180deg, oklch(0.16 0.01 180) 0%, oklch(0.11 0.005 180) 100%);
+    mix-blend-mode: screen;
+    opacity: 0.6;
+  }
+
+  .rim-light {
+    background:
+      radial-gradient(ellipse at top left, var(--color-emerald-500) 0%, transparent 35%),
+      radial-gradient(ellipse at bottom right, var(--color-emerald-600) 0%, transparent 40%);
+    mix-blend-mode: screen;
+    opacity: 0.18;
+  }
+
+  .vignette {
+    background: radial-gradient(ellipse at center, transparent 40%, rgba(0, 0, 0, 0.85) 100%);
+  }
+
+  .tag-label {
+    display: inline-block;
+    transform-origin: left center;
+    text-shadow:
+      0 0 1rem rgba(16, 185, 129, 0.5),
+      0 0 0.3rem rgba(16, 185, 129, 0.9);
+  }
+
+  .workbench-item {
+    transform-origin: center center;
+    transition:
+      transform 0.35s ease-out,
+      rotate 0.35s ease-out,
+      filter 0.35s ease-out;
+  }
+
+  .workbench-item .object {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .workbench-item .object-frame {
+    position: relative;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    box-shadow:
+      0 0.75rem 2rem -0.5rem rgba(0, 0, 0, 0.8),
+      0 0.25rem 0.75rem -0.25rem rgba(0, 0, 0, 0.9);
+    transition:
+      box-shadow 0.35s ease-out,
+      border-color 0.35s ease-out;
+  }
+
+  .workbench-item:hover {
+    transform: translateY(-4px);
+    rotate: 0deg;
+  }
+
+  .workbench-item:hover .object-frame {
+    border-color: rgba(16, 185, 129, 0.6);
+    box-shadow:
+      0 1.25rem 2.5rem -0.5rem rgba(0, 0, 0, 0.9),
+      0 0.5rem 1rem -0.25rem rgba(0, 0, 0, 1),
+      0 0 2rem -0.25rem rgba(16, 185, 129, 0.4);
+  }
+
+  .placeholder {
+    background:
+      repeating-linear-gradient(
+        135deg,
+        rgba(16, 185, 129, 0.05) 0px,
+        rgba(16, 185, 129, 0.05) 8px,
+        transparent 8px,
+        transparent 16px
+      ),
+      linear-gradient(135deg, oklch(0.18 0.03 180) 0%, oklch(0.1 0.015 180) 100%);
+  }
+
+  .davant-mark {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 0.2rem 0.45rem;
+    backdrop-filter: blur(4px);
+  }
+
+  .status-pill {
+    backdrop-filter: blur(6px);
+  }
+  .status-pill.is-live {
+    color: oklch(0.92 0.18 150);
+    background: rgba(16, 185, 129, 0.2);
+    border: 1px solid rgba(16, 185, 129, 0.5);
+  }
+  .status-pill.is-beta {
+    color: oklch(0.92 0.18 80);
+    background: rgba(234, 179, 8, 0.2);
+    border: 1px solid rgba(234, 179, 8, 0.5);
+  }
+  .status-pill.is-launching {
+    color: oklch(0.9 0.18 340);
+    background: rgba(217, 70, 239, 0.18);
+    border: 1px solid rgba(217, 70, 239, 0.5);
+  }
+
+  /* Mobile: flatter, less rotation */
+  @media (max-width: 767px) {
+    .workbench-item {
+      rotate: 0deg !important;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .workbench-item,
+    .workbench-item .object-frame {
+      transition: none;
+    }
+    .workbench-item:hover {
+      transform: none;
+      rotate: inherit;
+    }
+  }
+</style>

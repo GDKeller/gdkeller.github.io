@@ -64,9 +64,26 @@ const featured = defineCollection({
   }),
 });
 
+const current = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    url: z.string().url(),
+    description: z.string(),
+    image: z.string().optional(),
+    imageAlt: z.string().optional(),
+    tech: z.array(z.string()).optional(),
+    status: z.enum(["live", "beta", "launching-soon"]).optional(),
+    brand: z.enum(["davant"]).optional(),
+    order: z.number().optional(),
+    focal: z.boolean().optional(),
+  }),
+});
+
 export const collections = {
   jobs: jobs,
   projects: projects,
   skills: skills,
   featured: featured,
+  current: current,
 };
