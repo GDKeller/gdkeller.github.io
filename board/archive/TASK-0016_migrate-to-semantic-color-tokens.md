@@ -1,8 +1,9 @@
 ---
 type: task
-status: in_progress
+status: done
 priority: 2
 created: 2026-03-27
+completed: 2026-04-11
 parent: EPIC-0001
 blocked_by: TASK-0015
 ---
@@ -55,15 +56,25 @@ Style-block CSS variable references (`var(--color-emerald-300)` inside gradients
 - [x] `bg-black` → `bg-background` sitewide (10 files)
 - [x] `Layout.astro` body defaults to `bg-background text-foundation`
 - [x] `Link.astro` variants use `text-highlight` / `text-emphasis`
-- [ ] Phase 1: Header + Nav
-- [ ] Phase 2: Hero
-- [ ] Phase 3: Skills
-- [ ] Phase 4: Experience + Projects
-- [ ] Phase 5: Talks
-- [ ] Phase 6: FishHero
-- [ ] Phase 7: Footer + Modal
-- [ ] Follow-up: opacity-as-shade audit
-- [ ] Follow-up: atmospheric glow/gradient reconciliation
+- [x] `@reference "../styles/global.css"` pattern proven for component style blocks (ProjectSingle, JobSingle)
+- [x] Phase 1: Header + Nav
+- [x] Phase 2: Hero
+- [x] Phase 3: Skills
+- [x] Phase 4: Experience + Projects
+- [x] Phase 5: Talks (zero migrations — all atmospheric or off-palette)
+- [x] Phase 6: FishHero (zero template migrations — intentional `text-fuchsia-400` on monster title, atmospheric gradients otherwise)
+- [x] Phase 7: Footer + Modal (modal copy text deferred to TASK-0018 redesign)
+
+## Spun-off follow-up tasks
+- **TASK-0025** — Audit opacity-as-shade usages. Every `*-emerald-*/N` and `*-fuchsia-*/N` case-by-case: keep if genuine translucency, replace with opaque token/shade if intent was "dimmer".
+- **TASK-0026** — Reconcile atmospheric glows and gradients with the token system. Decides whether hardcoded glows/gradients stay hardcoded, get their own token layer, or use `color-mix()` of palette tokens.
+- **TASK-0027** — Introduce a secondary-emphasis token for the `emerald-300` role that kept appearing as a distinct intensity between `emphasis` and `accent`.
+
+## Known outstanding raw references (by design, not oversight)
+- **Modal copy in `index.astro`** — `text-emerald-300` heading + hover states; pending full redesign in TASK-0018.
+- **Opacity-modified shades** — handled by TASK-0025.
+- **Atmospheric effects** — handled by TASK-0026.
+- **`text-fuchsia-400` on FishHero anglerfish title** — confirmed intentional (one shade dimmer than `highlight`, design choice).
 
 ## Files
 - `src/styles/global.css`
