@@ -1,0 +1,48 @@
+---
+import spriteSheet from "../images/elements/embossed_letters-sprite-A-Z.png";
+
+interface Props {
+  text: string;
+  height?: number;
+  class?: string;
+}
+
+const { text, height = 32, class: className } = Astro.props;
+
+const COLS = 26;
+const SHEET_W = 3105;
+const SHEET_H = 127;
+const CELL_W = SHEET_W / COLS;
+const ASPECT = CELL_W / SHEET_H;
+const charWidth = Math.round(height * ASPECT * 0.85);
+const scale = height / SHEET_H;
+
+const chars = text.toUpperCase().split("").map((ch) => {
+  const code = ch.charCodeAt(0) - 65;
+  if (code < 0 || code > 25) return null;
+  const offsetX = Math.round(code * CELL_W * scale);
+  return { ch, offsetX };
+});
+---
+
+<span
+  class:list={["embossed-text inline-flex items-center", className]}
+  aria-label={text}
+  role="img"
+>
+  {chars.map((c) =>
+    c ? (
+      <span
+        class="embossed-char inline-block flex-shrink-0"
+        style={`width: ${charWidth}px; height: ${height}px; background: url(${spriteSheet.src}) no-repeat; background-size: ${Math.round(SHEET_W * scale)}px ${height}px; background-position: -${c.offsetX}px 0;`}
+        aria-hidden="true"
+      />
+    ) : (
+      <span
+        class="inline-block flex-shrink-0"
+        style={`width: ${Math.round(charWidth * 0.85)}px; height: ${height}px;`}
+        aria-hidden="true"
+      />
+    )
+  )}
+</span>
