@@ -1,6 +1,6 @@
 ---
 type: task
-status: archived
+status: done
 priority: 2
 parent: EPIC-0001
 created: 2026-04-09

@@ -1,0 +1,274 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+// Pulled directly from src/styles/global.css. Keep in sync when adding tokens.
+const colorTokens = [
+  { name: "background", group: "structural" },
+  { name: "foundation", group: "attention" },
+  { name: "emphasis", group: "attention" },
+  { name: "emphasis-hover", group: "attention" },
+  { name: "accent", group: "attention" },
+  { name: "accent-hover", group: "attention" },
+  { name: "highlight", group: "attention" },
+  { name: "highlight-hover", group: "attention" },
+  { name: "subtle", group: "structural" },
+  { name: "faint", group: "structural" },
+  { name: "reduced", group: "structural" },
+  { name: "secondary-emphasis", group: "secondary" },
+  { name: "secondary-faint", group: "secondary" },
+  { name: "gradient-deepblue", group: "gradient" },
+  { name: "gradient-alarmred", group: "gradient" },
+];
+
+const fontTokens = [
+  { name: "bayon", label: "Bayon", role: "Display" },
+  { name: "bokor", label: "Bokor", role: "Decorative (legacy)" },
+  { name: "blackletter", label: "Manufacturing Consent", role: "Blackletter alias" },
+  { name: "karantina", label: "Karantina", role: "Display (compressed)" },
+  { name: "marker", label: "Permanent Marker", role: "Handwritten accent" },
+  { name: "prompt", label: "Prompt", role: "Body" },
+  { name: "mono", label: "IBM Plex Mono", role: "Monospace" },
+];
+
+const displaySizes = [
+  { name: "display-xl", size: "5rem" },
+  { name: "display-lg", size: "4rem" },
+  { name: "display-md", size: "3rem" },
+  { name: "display-sm", size: "2rem" },
+];
+
+const headingSizes = [
+  { name: "h1", size: "3rem" },
+  { name: "h2", size: "2.5rem" },
+  { name: "h3", size: "2rem" },
+  { name: "h4", size: "1.5rem" },
+];
+
+const bodySizes = [
+  { name: "body-lg", size: "1.25rem" },
+  { name: "body", size: "1rem" },
+  { name: "body-sm", size: "0.875rem" },
+  { name: "body-xs", size: "0.75rem" },
+  { name: "body-2xs", size: "0.6875rem" },
+];
+
+const spacingTokens = [
+  { name: "18", size: "4.5rem" },
+  { name: "28", size: "7rem" },
+  { name: "36", size: "9rem" },
+  { name: "40", size: "10rem" },
+];
+
+const groupLabels: Record<string, string> = {
+  attention: "Attention hierarchy",
+  structural: "Structural",
+  secondary: "Secondary family",
+  gradient: "Gradients",
+};
+
+const groupedColors = Object.keys(groupLabels).map((group) => ({
+  group,
+  label: groupLabels[group],
+  tokens: colorTokens.filter((t) => t.group === group),
+}));
+---
+
+<Layout title="Style Reference — Grant Keller">
+  <main class="bg-background text-foundation min-h-screen px-6 pt-16 pb-32 md:px-12 lg:px-20">
+    <header class="border-emphasis/30 mx-auto mb-16 flex max-w-6xl items-end border-b pb-6">
+      <div class="mr-auto">
+        <p
+          class="text-reduced font-mono text-body-2xs tracking-widest uppercase"
+        >
+          Plate 002 ::: Style Reference ::: Design Tokens
+        </p>
+        <h1
+          class="font-blackletter text-emphasis mt-4 scale-y-90 text-6xl leading-none tracking-tight md:text-7xl"
+        >
+          Style Reference
+        </h1>
+      </div>
+      <a
+        href="/"
+        class="text-accent border-accent hover:bg-accent font-mono text-body-xs tracking-widest uppercase hover:text-black transition-colors border-y px-4 py-2"
+      >
+        &larr; Return to Dossier
+      </a>
+    </header>
+
+    <div class="mx-auto max-w-6xl space-y-24">
+      <!-- COLORS -->
+      <section aria-labelledby="colors-heading">
+        <div class="mb-8 flex items-baseline gap-4">
+          <h2
+            id="colors-heading"
+            class="font-blackletter text-emphasis scale-y-90 text-4xl leading-none tracking-tight md:text-5xl"
+          >
+            Color
+          </h2>
+          <span class="text-reduced font-mono text-body-2xs tracking-widest uppercase">
+            {colorTokens.length} tokens
+          </span>
+        </div>
+
+        {
+          groupedColors.map((g) => (
+            <div class="mb-12">
+              <h3 class="text-reduced font-mono text-body-xs mb-4 tracking-widest uppercase">
+                {g.label}
+              </h3>
+              <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+                {g.tokens.map((t) => (
+                  <div class="border-emphasis/20 group relative flex items-stretch border">
+                    <div
+                      class="h-20 w-20 flex-shrink-0 border-r border-black/40"
+                      style={`background-color: var(--color-${t.name});`}
+                    />
+                    <div class="flex flex-col justify-center px-4 py-3">
+                      <code class="text-emphasis font-mono text-body-sm leading-tight">
+                        --color-{t.name}
+                      </code>
+                      <code
+                        class="text-reduced font-mono text-body-2xs mt-1 leading-tight"
+                        data-color-value={t.name}
+                      >
+                        …
+                      </code>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))
+        }
+      </section>
+
+      <!-- FONTS -->
+      <section aria-labelledby="fonts-heading">
+        <div class="mb-8 flex items-baseline gap-4">
+          <h2
+            id="fonts-heading"
+            class="font-blackletter text-emphasis scale-y-90 text-4xl leading-none tracking-tight md:text-5xl"
+          >
+            Typography
+          </h2>
+          <span class="text-reduced font-mono text-body-2xs tracking-widest uppercase">
+            {fontTokens.length} families
+          </span>
+        </div>
+
+        <div class="space-y-6">
+          {
+            fontTokens.map((f) => (
+              <div class="border-emphasis/20 border-b pb-6">
+                <div class="mb-3 flex items-baseline gap-4">
+                  <code class="text-emphasis font-mono text-body-sm">--font-{f.name}</code>
+                  <span class="text-reduced font-mono text-body-2xs tracking-widest uppercase">
+                    {f.label} / {f.role}
+                  </span>
+                </div>
+                <p
+                  class="text-foundation text-5xl leading-tight md:text-6xl"
+                  style={`font-family: var(--font-${f.name});`}
+                >
+                  The quick brown fox jumps over the lazy dog.
+                </p>
+                <p
+                  class="text-reduced mt-2 text-2xl"
+                  style={`font-family: var(--font-${f.name});`}
+                >
+                  ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 ᠅
+                </p>
+              </div>
+            ))
+          }
+        </div>
+      </section>
+
+      <!-- TYPE SCALE -->
+      <section aria-labelledby="scale-heading">
+        <div class="mb-8 flex items-baseline gap-4">
+          <h2
+            id="scale-heading"
+            class="font-blackletter text-emphasis scale-y-90 text-4xl leading-none tracking-tight md:text-5xl"
+          >
+            Type Scale
+          </h2>
+        </div>
+
+        <div class="grid gap-8 md:grid-cols-3">
+          {
+            [
+              { label: "Display", items: displaySizes },
+              { label: "Heading", items: headingSizes },
+              { label: "Body", items: bodySizes },
+            ].map((col) => (
+              <div>
+                <h3 class="text-reduced font-mono text-body-xs mb-4 tracking-widest uppercase">
+                  {col.label}
+                </h3>
+                <div class="space-y-4">
+                  {col.items.map((s) => (
+                    <div class="border-emphasis/20 border-b pb-3">
+                      <div class="text-reduced font-mono text-body-2xs mb-1">
+                        text-{s.name} · {s.size}
+                      </div>
+                      <div class="text-foundation" style={`font-size: ${s.size}; line-height: 1;`}>
+                        Aa
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </section>
+
+      <!-- SPACING -->
+      <section aria-labelledby="spacing-heading">
+        <div class="mb-8 flex items-baseline gap-4">
+          <h2
+            id="spacing-heading"
+            class="font-blackletter text-emphasis scale-y-90 text-4xl leading-none tracking-tight md:text-5xl"
+          >
+            Spacing Extensions
+          </h2>
+        </div>
+
+        <div class="space-y-4">
+          {
+            spacingTokens.map((s) => (
+              <div class="flex items-center gap-6">
+                <code class="text-emphasis font-mono text-body-sm w-32 flex-shrink-0">
+                  spacing-{s.name}
+                </code>
+                <code class="text-reduced font-mono text-body-2xs w-16 flex-shrink-0">
+                  {s.size}
+                </code>
+                <div
+                  class="bg-accent h-6"
+                  style={`width: var(--spacing-${s.name});`}
+                  aria-hidden="true"
+                />
+              </div>
+            ))
+          }
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    // Resolve the computed value for each color token so the card shows the actual oklch string.
+    const nodes = document.querySelectorAll<HTMLElement>("[data-color-value]");
+    for (const node of nodes) {
+      const token = node.dataset.colorValue;
+      if (!token) continue;
+      const value = getComputedStyle(document.documentElement)
+        .getPropertyValue(`--color-${token}`)
+        .trim();
+      node.textContent = value || "(unset)";
+    }
+  </script>
+</Layout>

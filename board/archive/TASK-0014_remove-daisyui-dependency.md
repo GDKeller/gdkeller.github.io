@@ -1,6 +1,6 @@
 ---
 type: task
-status: archived
+status: done
 priority: 2
 created: 2026-03-27
 archived: 2026-04-09

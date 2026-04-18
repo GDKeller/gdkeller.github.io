@@ -1,7 +1,7 @@
 ---
 type: task
 status: backlog
-priority: 4
+priority: 3
 created: 2026-04-11
 parent: EPIC-0001
 ---

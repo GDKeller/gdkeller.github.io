@@ -1,6 +1,7 @@
 ---
 type: task
-status: superseded
+status: done
+resolution: superseded
 priority: 3
 created: 2026-03-27
 ---

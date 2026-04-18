@@ -52,22 +52,22 @@ const logos: Logo[] = [
 ---
 
 <div
-  class="logo-carousel relative mt-12 overflow-hidden md:mt-16"
+  class="logo-carousel relative h-full overflow-hidden"
   role="region"
   aria-label="Organizations I've worked with"
 >
-  <div class="carousel-mask relative overflow-hidden">
+  <div class="carousel-mask relative h-full overflow-hidden">
     <div
-      class="carousel-track flex items-center gap-10 brightness-125 contrast-200 saturate-0 md:gap-14"
+      class="carousel-track flex h-full items-center gap-10 brightness-125 contrast-200 saturate-0 md:gap-14"
     >
       {/* Primary logos - visible to screen readers */}
       {
         logos.map((logo) => (
-          <div class="carousel-item flex-shrink-0">
+          <div class="carousel-item flex h-full flex-shrink-0 items-center">
             <Image
               src={logo.src}
               alt={logo.alt}
-              class="max-h-12 w-auto max-w-[160px] object-contain md:max-h-14 md:max-w-[220px]"
+              class="h-full max-h-full w-auto max-w-[160px] object-contain md:max-w-[220px]"
               loading="eager"
             />
           </div>
@@ -76,11 +76,14 @@ const logos: Logo[] = [
       {/* Duplicated logos for seamless scroll - hidden from screen readers */}
       {
         logos.map((logo) => (
-          <div class="carousel-item--duplicate carousel-item flex-shrink-0" aria-hidden="true">
+          <div
+            class="carousel-item--duplicate carousel-item flex h-full flex-shrink-0 items-center"
+            aria-hidden="true"
+          >
             <Image
               src={logo.src}
               alt=""
-              class="max-h-12 w-auto max-w-[160px] object-contain md:max-h-14 md:max-w-[220px]"
+              class="h-full max-h-full w-auto max-w-[160px] object-contain md:max-w-[220px]"
               loading="eager"
             />
           </div>
@@ -112,6 +115,11 @@ const logos: Logo[] = [
 
   /* Reduced motion: show static grid instead of scrolling duplicates */
   @media (prefers-reduced-motion: reduce) {
+    .logo-carousel,
+    .carousel-mask {
+      height: auto;
+    }
+
     .carousel-mask {
       mask-image: none;
       -webkit-mask-image: none;
@@ -124,7 +132,17 @@ const logos: Logo[] = [
       justify-content: center;
       gap: 1.5rem 2rem;
       width: 100%;
+      height: auto;
       padding: 0 1rem;
+    }
+
+    .carousel-item {
+      height: auto;
+    }
+
+    .carousel-item :global(img) {
+      height: auto;
+      max-height: 3.5rem;
     }
 
     /* Hide duplicate logos in reduced motion mode */

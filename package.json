@@ -9,7 +9,9 @@
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint 'src/**/*.{ts,astro}'",
-    "lint:fix": "eslint 'src/**/*.{ts,astro}' --fix"
+    "lint:fix": "eslint 'src/**/*.{ts,astro}' --fix",
+    "check:colors": "node scripts/check-oklch.mjs",
+    "check:colors:fix": "node scripts/check-oklch.mjs --fix"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -22,11 +24,13 @@
     "@tailwindcss/vite": "^4.2.2",
     "@typescript-eslint/eslint-plugin": "^8.48.1",
     "@typescript-eslint/parser": "^8.48.1",
+    "culori": "^4.0.2",
     "eslint": "^9.39.1",
     "eslint-plugin-astro": "^1.5.0",
     "prettier": "3.5.3",
     "prettier-plugin-astro": "0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.11",
+    "sass-embedded": "^1.99.0",
     "tailwindcss": "^4.2.2"
   }
 }

@@ -7,7 +7,12 @@
   --font-bokor: "Bokor", serif;
   --font-marker: "Permanent Marker", sans-serif;
   --font-prompt: "Prompt", sans-serif;
+  --font-karantina: "Karantina", system-ui;
+  --font-manufacturing_consent: "Manufacturing Consent", system-ui;
+
   --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Monaco, monospace;
+  /* --font-blackletter: var(--font-bokor); */
+  --font-blackletter: var(--font-manufacturing_consent);
 
   /* Spacing extensions */
   --spacing-18: 4.5rem;
@@ -67,16 +72,41 @@
    background) are not interactive. */
 @theme inline {
   --color-background: var(--color-black);
-  --color-foundation: var(--color-emerald-100);
-  --color-emphasis: var(--color-emerald-200);
-  --color-emphasis-hover: var(--color-emerald-100);
-  --color-accent: var(--color-emerald-400);
-  --color-accent-hover: var(--color-emerald-300);
-  --color-highlight: var(--color-fuchsia-500);
-  --color-highlight-hover: var(--color-fuchsia-300);
-  --color-subtle: var(--color-emerald-700);
-  --color-faint: var(--color-emerald-950);
+  /* --color-foundation: var(--color-emerald-100); */
+  /* --color-emphasis: var(--color-emerald-200); */
+  /* --color-emphasis-hover: var(--color-emerald-100); */
+  /* --color-accent: var(--color-emerald-400); */
+  /* --color-accent-hover: var(--color-emerald-300); */
+  /* --color-highlight: var(--color-fuchsia-500); */
+  /* --color-highlight-hover: var(--color-fuchsia-300); */
+  /* --color-subtle: var(--color-emerald-700); */
+  /* --color-faint: var(--color-emerald-950); */
+
+  --color-foundation: oklch(96% 0.05 120);
+  --color-emphasis: oklch(88% 0.1 130);
+  --color-emphasis-hover: oklch(95% 0.0507 156);
+  --color-accent: oklch(60% 0.19 180);
+  --color-accent-hover: oklch(85% 0.13 160);
+  --color-highlight: oklch(66.68% 0.2591 332);
+  --color-highlight-hover: oklch(83.3% 0.1322 332);
+  --color-subtle: oklch(50.81% 0.1049 160);
+  --color-faint: oklch(28% 0.06 200);
+  --color-reduced: oklch(70% 0.05 100);
+
+  --color-secondary-emphasis: oklch(80% 0.1 170);
+  --color-secondary-faint: oklch(28% 0.06 200);
+
+  --color-gradient-deepblue: oklch(0.138 0.034 270.27);
+  --color-gradient-alarmred: oklch(0.2404 0.0767 17.48);
 }
+
+/** Default breakpoints reference
+* sm	40rem (640px)	@media (width >= 40rem) { ... }
+* md	48rem (768px)	@media (width >= 48rem) { ... }
+* lg	64rem (1024px)	@media (width >= 64rem) { ... }
+* xl	80rem (1280px)	@media (width >= 80rem) { ... }
+* 2xl	96rem (1536px)	@media (width >= 96rem) { ... }
+**/
 
 /* Reduced Motion Support */
 @media (prefers-reduced-motion: no-preference) {
@@ -162,7 +192,7 @@ strong {
 .section-heading {
   position: relative;
   width: min-content;
-  text-shadow: var(--color-emerald-500) 0px 0px 8px;
+  /* text-shadow: var(--color-emerald-500) 0px 0px 8px; */
 
   &::before {
     content: "";
@@ -215,7 +245,7 @@ strong {
 .section-heading__center {
   position: relative;
   display: block;
-  text-shadow: var(--color-emerald-500) 0px 0px 8px;
+  /* text-shadow: var(--color-emerald-500) 0px 0px 8px; */
 
   &::before {
     content: "";

@@ -1,0 +1,60 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+type Align = "left" | "center";
+type Size = "sm" | "md" | "lg";
+type Treatment = "none" | "scanline" | "glow";
+
+interface Props {
+  text: string;
+  headingLevel?: 2 | 3;
+  align?: Align;
+  size?: Size;
+  treatment?: Treatment;
+  id?: HTMLAttributes<"h2">["id"];
+  class?: HTMLAttributes<"h2">["class"];
+}
+
+const {
+  text,
+  headingLevel = 2,
+  align = "center",
+  size = "lg",
+  treatment = "none",
+  id,
+  class: className,
+} = Astro.props;
+
+const Tag = `h${headingLevel}` as "h2" | "h3";
+
+const alignClasses: Record<Align, string> = {
+  left: "text-left",
+  center: "text-center",
+};
+
+const sizeClasses: Record<Size, string> = {
+  sm: "text-3xl md:text-4xl",
+  md: "text-5xl md:text-6xl",
+  lg: "text-5xl md:text-6xl lg:text-7xl xl:text-8xl",
+};
+
+const treatmentClasses: Record<Treatment, string> = {
+  none: "",
+  scanline: "section-heading",
+  glow: "section-heading__glow",
+};
+---
+
+<Tag
+  id={id}
+  class:list={[
+    "font-blackletter text-emphasis mb-4",
+    alignClasses[align],
+    sizeClasses[size],
+    treatmentClasses[treatment],
+    treatment !== "none" && align === "center" && "section-heading__center",
+    className,
+  ]}
+>
+  {text}
+</Tag>

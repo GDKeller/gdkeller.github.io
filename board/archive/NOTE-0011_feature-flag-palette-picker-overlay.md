@@ -1,6 +1,6 @@
 ---
 type: note
-status: archived
+status: processed
 created: 2026-04-09
 archived: 2026-04-09
 processed_into: TASK-0020
