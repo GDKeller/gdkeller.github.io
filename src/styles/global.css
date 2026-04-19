@@ -1,6 +1,18 @@
 @import "tailwindcss";
 @import "./jade-theme.css";
 
+/* Force-emit every semantic token's utility so its CSS variable is always
+   available at runtime, even for tokens not yet consumed elsewhere. Required
+   for the /styles reference page and for `var(--color-*)` access from custom
+   CSS or JS without depending on incidental utility usage. */
+@source inline(
+  "{bg,text,border}-{background,foundation,emphasis,emphasis-hover,accent,accent-hover,highlight,highlight-hover,subtle,faint,reduced,secondary-emphasis,secondary-faint,gradient-deepblue,gradient-alarmred}"
+);
+@source inline(
+  "text-{display-xl,display-lg,display-md,display-sm,h1,h2,h3,h4,body-lg,body,body-sm,body-xs,body-2xs}"
+);
+@source inline("p-{18,28,36,40}");
+
 @theme {
   /* Fonts */
   --font-bayon: "Bayon", sans-serif;
@@ -70,7 +82,7 @@
    `-hover` variants mark state transitions — use in `hover:` modifiers,
    not as base colors. Roles without a hover variant (foundation, subtle,
    background) are not interactive. */
-@theme inline {
+@theme {
   --color-background: var(--color-black);
   /* --color-foundation: var(--color-emerald-100); */
   /* --color-emphasis: var(--color-emerald-200); */
@@ -85,7 +97,8 @@
   --color-foundation: oklch(96% 0.05 120);
   --color-emphasis: oklch(88% 0.1 130);
   --color-emphasis-hover: oklch(95% 0.0507 156);
-  --color-accent: oklch(60% 0.19 180);
+  /* --color-accent: oklch(60% 0.19 180); */
+  --color-accent: oklch(0.7809 0.1436 177.88);
   --color-accent-hover: oklch(85% 0.13 160);
   --color-highlight: oklch(66.68% 0.2591 332);
   --color-highlight-hover: oklch(83.3% 0.1322 332);
