@@ -4,20 +4,22 @@ import Layout from "../layouts/Layout.astro";
 // Pulled directly from src/styles/global.css. Keep in sync when adding tokens.
 const colorTokens = [
   { name: "background", group: "structural" },
+  // Non-interactive singles first so base+hover pairs land on even-column starts.
   { name: "foundation", group: "attention" },
+  { name: "subtle", group: "attention" },
+  { name: "faint", group: "attention" },
+  { name: "reduced", group: "attention" },
   { name: "emphasis", group: "attention" },
   { name: "emphasis-hover", group: "attention" },
   { name: "accent", group: "attention" },
   { name: "accent-hover", group: "attention" },
   { name: "highlight", group: "attention" },
   { name: "highlight-hover", group: "attention" },
-  { name: "subtle", group: "structural" },
-  { name: "faint", group: "structural" },
-  { name: "reduced", group: "structural" },
+  { name: "secondary-light", group: "secondary" },
   { name: "secondary-emphasis", group: "secondary" },
   { name: "secondary-faint", group: "secondary" },
-  { name: "gradient-deepblue", group: "gradient" },
-  { name: "gradient-alarmred", group: "gradient" },
+  { name: "tertiary-highlight", group: "tertiary" },
+  { name: "tertiary-highlight-hover", group: "tertiary" },
 ];
 
 const fontTokens = [
@@ -39,7 +41,7 @@ const groupLabels: Record<string, string> = {
   attention: "Attention hierarchy",
   structural: "Structural",
   secondary: "Secondary family",
-  gradient: "Gradients",
+  tertiary: "Tertiary family",
 };
 
 const groupedColors = Object.keys(groupLabels).map((group) => ({
@@ -91,7 +93,7 @@ const groupedColors = Object.keys(groupLabels).map((group) => ({
               <h3 class="text-reduced text-body-xs mb-4 font-mono tracking-widest uppercase">
                 {g.label}
               </h3>
-              <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+              <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4">
                 {g.tokens.map((t) => (
                   <div class="border-emphasis/20 group relative flex items-stretch border">
                     <div
