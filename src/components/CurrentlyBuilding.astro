@@ -12,10 +12,10 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
   "/src/images/current/*.{webp,jpg,jpeg,png}",
 );
 
-const resolveImage = (filename?: string) => {
+const resolveImage = async (filename?: string) => {
   if (!filename) return null;
-  const key = `/src/images/current/${filename}`;
-  return images[key] ?? null;
+  const loader = images[`/src/images/current/${filename}`];
+  return loader ? (await loader()).default : null;
 };
 
 const statusLabel = {
@@ -24,20 +24,12 @@ const statusLabel = {
   "launching-soon": "LAUNCHING SOON",
 } as const;
 
-const itemsWithVisual = await Promise.all(
-  entries.map(async (entry, idx) => {
-    const loader = resolveImage(entry.data.image);
-    const resolvedImage = loader ? (await loader()).default : null;
-    return {
-      entry,
-      resolvedImage,
-      refNum: `01.${String(idx + 1).padStart(2, "0")}`,
-    };
-  }),
+const items = await Promise.all(
+  entries.map(async (entry) => ({
+    entry,
+    image: await resolveImage(entry.data.image),
+  })),
 );
-
-const activeItem = itemsWithVisual[0];
-const thumbItems = itemsWithVisual.slice(1);
 ---
 
 <section
@@ -51,14 +43,6 @@ const thumbItems = itemsWithVisual.slice(1);
   </div>
 
   <div class="relative z-20 mx-auto max-w-7xl px-6 pt-16 pb-24 md:px-10 md:pt-20 md:pb-28">
-    <!-- <header class="mb-12 md:mb-4">
-      <h2
-        id="currently-building-label"
-        class="font-blackletter text-emphasis text-5xl md:text-6xl lg:text-6xl"
-      >
-        Currently Building
-      </h2>
-    </header> -->
     <div class="flex items-end">
       <h2
         id="currently-building-label"
@@ -66,13 +50,10 @@ const thumbItems = itemsWithVisual.slice(1);
       >
         Currently Building
       </h2>
-      <div class="border-emphasis/30 flex-1 border-b"></div>
-      <!-- <div class="border-faint/80 mr-0 ml-auto border-b pt-3 pr-6 pl-4">
-        <EmbossedText text="Operations" height={20} />
-      </div> -->
-      <div class="border-emphasis/30 border-t border-r border-l bg-black pt-4 pr-6 pb-2 pl-4">
+      <div class="border-faint/80 flex-1 border-b-2"></div>
+      <div class="border-faint/80 bg-background border-2 border-b-0 pt-4 pr-6 pb-2 pl-4">
         <p
-          class="text-reduced text-body-2xs font-mono leading-none font-extralight tracking-widest uppercase"
+          class="text-faint text-body-2xs font-mono leading-none font-extralight tracking-widest uppercase"
         >
           <span>Plate&nbsp;001</span>
           <span class="tracking-tighter" aria-hidden="true">:::</span>
@@ -83,16 +64,16 @@ const thumbItems = itemsWithVisual.slice(1);
       </div>
     </div>
 
-    <div class="border-emphasis/30 border-x border-b bg-black pt-8" data-cb-root>
+    <div class="border-faint/80 border-2 border-t-0 bg-black pt-8" data-builds>
       <!-- Active viewer -->
-      <div class="p-6 md:p-8" data-cb-viewer>
+      <div class="p-6 md:p-8">
         {
-          itemsWithVisual.map(({ entry, resolvedImage }, idx) => {
+          items.map(({ entry, image }, idx) => {
             const { data } = entry;
             return (
-              <div class:list={["cb-viewer-panel", idx > 0 && "hidden"]} data-cb-panel={entry.slug}>
+              <div class:list={[idx > 0 && "hidden"]} data-panel={entry.slug}>
                 <div class="flex flex-col gap-6 md:flex-row md:items-stretch md:gap-10">
-                  <div class="callout-frame border-emphasis/30 relative aspect-video flex-1 overflow-hidden border bg-black">
+                  <div class="callout-frame border-faint/80 bg-background relative aspect-video flex-1 border-0">
                     <span class="bracket tl" aria-hidden="true" />
                     <span class="bracket tr" aria-hidden="true" />
                     <span class="bracket bl" aria-hidden="true" />
@@ -106,14 +87,14 @@ const thumbItems = itemsWithVisual.slice(1);
                           muted
                           playsinline
                           class="block h-full w-full rounded-t-[3%] object-cover object-top"
-                          poster={resolvedImage?.src}
+                          poster={image?.src}
                         >
                           <source src={`/video/${data.video}`} type="video/mp4" />
                         </video>
                       </div>
-                    ) : resolvedImage ? (
+                    ) : image ? (
                       <Image
-                        src={resolvedImage}
+                        src={image}
                         alt={data.imageAlt ?? data.title}
                         class="h-full w-full object-cover object-top"
                         loading="lazy"
@@ -172,41 +153,42 @@ const thumbItems = itemsWithVisual.slice(1);
 
       <!-- Thumbnail row -->
       <div
-        class="border-emphasis/30 grid grid-cols-2 gap-4 border-t p-6 sm:grid-cols-3 md:grid-cols-5 md:p-8"
-        data-cb-thumbs
+        class="border-faint/80 grid grid-cols-2 gap-4 border-t-2 p-6 sm:grid-cols-3 md:grid-cols-5 md:p-8"
       >
         {
-          itemsWithVisual.map(({ entry, resolvedImage }, idx) => {
+          items.map(({ entry, image }, idx) => {
             const { data } = entry;
             return (
               <button
                 type="button"
                 class:list={[
-                  "cb-thumb group relative cursor-pointer border bg-black p-2 transition-all",
-                  idx === 0 ? "border-accent/30" : "border-emphasis/30 hover:border-accent",
+                  "thumb group relative flex cursor-pointer flex-col border transition-all duration-200",
+                  idx === 0 && "is-active",
                 ]}
-                data-cb-thumb={entry.slug}
+                data-thumb={entry.slug}
                 aria-label={`View ${data.title}`}
                 aria-pressed={idx === 0 ? "true" : "false"}
               >
-                {resolvedImage ? (
+                {image ? (
                   <Image
-                    src={resolvedImage}
+                    src={image}
                     alt=""
-                    class="block w-full"
+                    class="block aspect-16/10 w-full object-cover"
                     loading="lazy"
                     widths={[200, 400]}
                     sizes="(min-width: 768px) 15vw, 40vw"
                   />
                 ) : (
-                  <div class="placeholder-cell flex aspect-[16/10] items-center justify-center">
+                  <div class="placeholder-cell flex aspect-16/10 flex-1 items-center justify-center">
                     <span class="text-foundation text-body-2xs font-mono tracking-widest uppercase">
                       {data.title}
                     </span>
                   </div>
                 )}
-                <div class="p-2">
-                  <p class="text-emphasis text-body-2xs font-mono tracking-wider">{data.title}</p>
+                <div class="thumb-title bg-emphasis group-hover:bg-accent m-0 mt-auto flex h-12 p-2 transition-colors duration-200">
+                  <p class="text-background text-body-2xs m-auto font-mono font-medium tracking-normal">
+                    {data.title}
+                  </p>
                 </div>
               </button>
             );
@@ -217,21 +199,25 @@ const thumbItems = itemsWithVisual.slice(1);
   </div>
 </section>
 
-<style>
-  .cb-thumb {
-    transition:
-      border-color 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-      transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-  .cb-thumb:hover {
-    transform: rotate(0.25deg) translateY(-0.2rem);
-    /* animation-name: attention-bounce;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
-    transform-origin: bottom; */
-  }
-  .cb-thumb:nth-child(even):hover {
-    transform: rotate(-0.25deg) translateY(-0.2rem);
+<style lang="scss">
+  @reference "../styles/global.css";
+
+  .thumb {
+    @apply border-faint/80;
+
+    &:hover {
+      @apply border-accent;
+      transform: translateY(-0.1rem);
+    }
+
+    &.is-active,
+    &.is-active:hover {
+      @apply border-accent;
+    }
+
+    &.is-active .thumb-title {
+      @apply bg-accent;
+    }
   }
 
   @keyframes attention-bounce {
@@ -289,7 +275,7 @@ const thumbItems = itemsWithVisual.slice(1);
     position: absolute;
     width: 10px;
     height: 10px;
-    border-color: rgba(255, 255, 255, 0.25);
+    @apply border-accent;
     border-style: solid;
     z-index: 2;
   }
@@ -319,17 +305,17 @@ const thumbItems = itemsWithVisual.slice(1);
       45deg,
       transparent 0px,
       transparent 14px,
-      rgba(255, 255, 255, 0.02) 14px,
-      rgba(255, 255, 255, 0.02) 15px
+      rgba(255, 255, 255, 0.2) 14px,
+      rgba(255, 255, 255, 0.2) 15px
     );
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .cb-thumb {
+    .thumb {
       transition: border-color 0.3s;
     }
-    .cb-thumb:hover,
-    .cb-thumb:nth-child(even):hover {
+    .thumb:hover,
+    .thumb:nth-child(even):hover {
       transform: none;
     }
   }
@@ -337,33 +323,25 @@ const thumbItems = itemsWithVisual.slice(1);
 
 <script>
   function initCurrentlyBuilding() {
-    const root = document.querySelector("[data-cb-root]");
+    const root = document.querySelector<HTMLElement>("[data-builds]");
     if (!root) return;
 
-    const panels = root.querySelectorAll<HTMLElement>("[data-cb-panel]");
-    const thumbs = root.querySelectorAll<HTMLButtonElement>("[data-cb-thumb]");
-    let activeSlug = panels[0]?.dataset.cbPanel;
+    const panels = root.querySelectorAll<HTMLElement>("[data-panel]");
+    const thumbs = root.querySelectorAll<HTMLButtonElement>("[data-thumb]");
+
+    const setActive = (slug: string) => {
+      panels.forEach((p) => p.classList.toggle("hidden", p.dataset.panel !== slug));
+      thumbs.forEach((t) => {
+        const active = t.dataset.thumb === slug;
+        t.classList.toggle("is-active", active);
+        t.setAttribute("aria-pressed", String(active));
+      });
+    };
 
     thumbs.forEach((thumb) => {
       thumb.addEventListener("click", () => {
-        const slug = thumb.dataset.cbThumb;
-        if (!slug || slug === activeSlug) return;
-
-        const currentPanel = root.querySelector<HTMLElement>(`[data-cb-panel="${activeSlug}"]`);
-        const nextPanel = root.querySelector<HTMLElement>(`[data-cb-panel="${slug}"]`);
-        if (!currentPanel || !nextPanel) return;
-
-        currentPanel.classList.add("hidden");
-        nextPanel.classList.remove("hidden");
-
-        thumbs.forEach((t) => {
-          const isActive = t.dataset.cbThumb === slug;
-          t.classList.toggle("border-emerald-500/50", isActive);
-          t.classList.toggle("border-white/10", !isActive);
-          t.setAttribute("aria-pressed", String(isActive));
-        });
-
-        activeSlug = slug;
+        const slug = thumb.dataset.thumb;
+        if (slug) setActive(slug);
       });
     });
   }
