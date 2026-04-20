@@ -15,15 +15,14 @@
 
 @theme {
   /* Fonts */
-  --font-bayon: "Bayon", sans-serif;
-  --font-bokor: "Bokor", serif;
-  --font-marker: "Permanent Marker", sans-serif;
+  /* --font-blackletter: "Bokor", serif; */
   --font-prompt: "Prompt", sans-serif;
-  --font-karantina: "Karantina", system-ui;
+  /* --font-display: "Karantina", system-ui; */
   --font-manufacturing_consent: "Manufacturing Consent", system-ui;
 
+  --font-display: var(--font-prompt);
   --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Monaco, monospace;
-  /* --font-blackletter: var(--font-bokor); */
+  /* --font-blackletter: var(--font-blackletter); */
   --font-blackletter: var(--font-manufacturing_consent);
 
   /* Spacing extensions */
