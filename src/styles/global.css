@@ -52,6 +52,7 @@
   --text-h4--line-height: 2rem;
 
   /* Body text */
+  --text-2xs: 0.625rem;
   --text-body-lg: 1.25rem;
   --text-body-lg--line-height: 2rem;
   --text-body: 1rem;
