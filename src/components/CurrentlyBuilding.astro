@@ -37,12 +37,12 @@ const items = await Promise.all(
   aria-labelledby="currently-building-label"
 >
   <div
-    class="pointer-events-none absolute inset-0 z-0 bg-repeat opacity-30 mix-blend-screen blur-[0.02rem] contrast-50"
+    class="pointer-events-none absolute inset-0 z-0 bg-repeat opacity-10 mix-blend-screen blur-[0.02rem] contrast-50"
     style={`background-image: url(${gridTile.src}); background-size: 50vw auto;`}
   >
   </div>
 
-  <div class="relative z-20 mx-auto max-w-7xl px-6 pt-16 pb-24 md:px-10 md:pt-20 md:pb-28">
+  <div class="relative z-40 mx-auto max-w-7xl px-6 pt-16 pb-24 md:px-10 md:pt-20 md:pb-28">
     <div class="flex items-end">
       <h2
         id="currently-building-label"
@@ -51,15 +51,14 @@ const items = await Promise.all(
         Currently Building
       </h2>
       <div class="border-faint/80 flex-1 border-b-2"></div>
-      <div class="border-faint/80 bg-background border-2 border-b-0 pt-4 pr-6 pb-2 pl-4">
+      <div class="border-faint/80 border-2 border-b-0 bg-black pt-4 pr-6 pb-2 pl-4">
         <p
           class="text-faint text-body-2xs font-mono leading-none font-extralight tracking-widest uppercase"
         >
-          <span>Plate&nbsp;001</span>
           <span class="tracking-tighter" aria-hidden="true">:::</span>
           <span>Active Operations</span>
           <span class="tracking-tighter" aria-hidden="true">:::</span>
-          <span>5</span>
+          <span>qty 5</span>
         </p>
       </div>
     </div>
