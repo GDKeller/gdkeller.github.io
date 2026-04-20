@@ -103,17 +103,18 @@ import HeadingSection from "../components/HeadingSection.astro";
     class="bg pointer-events-none fixed top-0 left-0 z-50 h-full w-full overflow-hidden opacity-60 mix-blend-difference"
   >
     <!-- Scrim overlay -->
-    <span class="bg-background absolute top-0 left-0 z-10 h-full w-full opacity-80"></span>
+    <!-- <div class="fixed top-0 left-0 w-full h-full bg-scrim z-100 opacity-80 mix-blend-overlay"></div> -->
+    <!-- <span class="absolute top-0 left-0 z-10 w-full h-full bg-background opacity-80"></span> -->
     <!--Glitch overlay -->
-    <span class="absolute top-0 left-0 h-full w-full">
+    <!-- <span class="absolute top-0 left-0 w-full h-full">
       <Image
         src={bgImage}
         alt="Background"
-        class="h-full w-full object-cover opacity-50 brightness-50"
+        class="object-cover w-full h-full opacity-50 brightness-50"
       />
-    </span>
+    </span> -->
     <!-- Noise -->
-    <div class="noise pointer-events-none absolute inset-0 top-0 left-0 z-50 h-full w-full"></div>
+    <!-- <div class="absolute inset-0 top-0 left-0 z-50 w-full h-full pointer-events-none noise"></div> -->
   </div>
   <Footer />
 

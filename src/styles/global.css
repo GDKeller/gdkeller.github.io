@@ -6,7 +6,7 @@
    for the /styles reference page and for `var(--color-*)` access from custom
    CSS or JS without depending on incidental utility usage. */
 @source inline(
-  "{bg,text,border}-{background,foundation,emphasis,emphasis-hover,accent,accent-hover,highlight,highlight-hover,subtle,faint,reduced,secondary-light,secondary-emphasis,secondary-faint,tertiary-highlight,tertiary-highlight-hover,gradient-deepblue,gradient-alarmred}"
+  "{bg,text,border}-{background,foundation,emphasis,emphasis-hover,accent,accent-hover,highlight,highlight-hover,subtle,faint,reduced,secondary-light,secondary-emphasis,secondary-dark,tertiary-highlight,tertiary-highlight-hover,gradient-deepblue,gradient-alarmred}"
 );
 @source inline(
   "text-{display-xl,display-lg,display-md,display-sm,h1,h2,h3,h4,body-lg,body,body-sm,body-xs,body-2xs}"
@@ -93,10 +93,21 @@
   /* --color-subtle: var(--color-emerald-700); */
   /* --color-faint: var(--color-emerald-950); */
 
-  --color-background: oklch(0.12 0.02 200);
+  --color-background: oklch(0.13 0.0355 150);
+  --color-scrim: oklch(0.53 0.05 150);
   --color-foundation: oklch(0.968 0.06 130);
-  --color-emphasis: oklch(88% 0.1 130);
-  --color-emphasis-hover: oklch(0.88 0.155 130);
+  --color-emphasis: oklch(88% 0.1 130); /* #c2e59f */
+  --color-emphasis-hover: oklch(0.88 0.155 130); /* #b5ec79 */
+  --color-emphasis-analogous1: oklch(0.85 0.185 143); /* #7dec78 */
+  --color-emphasis-analogous2: oklch(0.916 0.136 108); /* #ecea79 */
+
+  /* Triadic
+  bg: #110024
+  fg: #E1FCD9
+  accent: #03FA76
+  highlight: #FF0389
+  */
+
   --color-accent: oklch(0.777 0.17 161);
   --color-accent-hover: oklch(0.8764 0.229 151.94);
   --color-highlight: oklch(66.68% 0.2591 332);
@@ -110,7 +121,7 @@
   --color-secondary-emphasis: oklch(0.8 0.136 190);
   /* --color-secondary-accent: oklch(0.7809 0.1436 177.88); */
   /* --color-secondary-accent: oklch(0.8 0.136 190); */
-  --color-secondary-faint: oklch(0.57 0.0968 195);
+  --color-secondary-dark: oklch(0.57 0.0968 195);
   /* --color-secondary-faint: oklch(0.565 0.035 190); */
 
   --color-tertiary-highlight: oklch(66.68% 0.2591 332);
@@ -169,10 +180,6 @@ button:focus-visible {
     outline-width: 3px;
     outline-offset: 3px;
   }
-}
-
-.bg {
-  /* overflow: hidden; */
 }
 
 .prose li {

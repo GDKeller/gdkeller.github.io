@@ -9,12 +9,6 @@ import Link from "./Link.astro";
 <div
   class="relative z-0 container mx-auto mb-24 flex max-w-full flex-col items-start justify-center overflow-x-hidden py-24 font-light lg:flex-row"
 >
-  <span
-    class="absolute top-0 left-0 z-10 h-1/4 w-full bg-gradient-to-b from-black to-transparent opacity-100"
-  ></span>
-  <span
-    class="absolute bottom-0 left-0 z-10 h-1/4 w-full bg-gradient-to-t from-black to-transparent opacity-90"
-  ></span>
   <div class="relative z-10 w-full px-12 lg:max-w-1/2">
     <h3 class="sr-only">New York Post</h3>
     <div class="relative mb-4 max-w-92">
@@ -107,8 +101,8 @@ import Link from "./Link.astro";
         </div>
       </div>
 
-      <!-- <div class="image__statueofliberty hidden w-full max-w-1/4 sm:block">
-        <Image src={statueOfLiberty} alt="Statue of Liberty" class="h-full w-full object-cover" />
+      <!-- <div class="hidden w-full image__statueofliberty max-w-1/4 sm:block">
+        <Image src={statueOfLiberty} alt="Statue of Liberty" class="object-cover w-full h-full" />
       </div> -->
     </div>
 
