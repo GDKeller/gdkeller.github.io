@@ -1,4 +1,5 @@
 ---
+import DateRange from "./DateRange.astro";
 import Link from "./Link.astro";
 import ProjectSingleImage from "./ProjectSingleImage.astro";
 import SkillBadge from "./SkillBadge.astro";
@@ -9,80 +10,82 @@ const { company, companyLogo, companyWebsite, position, startMonthYear, endMonth
 const { Content } = await job.render();
 ---
 
-<div class="job-card relative z-20 mb-24 pt-8">
-  <div class="mb-6 flex flex-col items-start md:flex-row md:items-center">
+<div class="job-frame relative mb-24">
+  <div class="job-card relative z-10 flex items-stretch pr-0 pl-8">
+    <span class="job-backdrop" aria-hidden="true"></span>
+    <div class="flex-1">
+      <div class="mb-6 flex flex-col items-start md:flex-row md:items-center">
+        {
+          companyLogo && (
+            <div class="image logo relative mr-2 mb-4 shrink-0 lg:-top-4 lg:mr-8 lg:-ml-12">
+              <ProjectSingleImage imagePath={companyLogo.src} altText={companyLogo.alt} />
+            </div>
+          )
+        }
+        <div class="relative flex w-full justify-between">
+          <div class="flex flex-col justify-start">
+            <h3
+              class="text-accent font-display mb-2 text-2xl tracking-wider md:text-2xl lg:text-3xl"
+            >
+              {position}
+            </h3>
+
+            <div class="flex items-center">
+              <p class="block font-extralight tracking-wider lg:text-xl">
+                {
+                  companyWebsite ? (
+                    <Link href={companyWebsite} target="_blank" variant="subtle">
+                      {company}
+                    </Link>
+                  ) : (
+                    company
+                  )
+                }
+              </p>
+              <span class="text-accent mx-4 hidden sm:inline-block">&nbsp;᠅&nbsp;</span>
+              <DateRange
+                start={startMonthYear}
+                end={endMonthYear}
+                class="font-mono text-sm font-extralight"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="job-body list-custom-wrapper prose relative z-20 max-w-none pr-8 pb-8">
+        <Content />
+      </div>
+    </div>
+
     {
-      companyLogo && (
-        <div class="image relative mr-2 mb-4 shrink-0 lg:mr-8 lg:-ml-4">
-          <ProjectSingleImage imagePath={companyLogo.src} altText={companyLogo.alt} />
+      tech && (
+        <div class="skills-list text-emphasis border-faint text-2xs mr-0 ml-auto w-full max-w-56 border-l-2 pt-20 pr-4 pb-4 pl-4">
+          <p class="sr-only">Skills:&nbsp;</p>
+          <ul class="flex max-w-40 flex-col text-left font-mono">
+            {tech.map((t: string) => (
+              <li class="mb-2 flex items-start">
+                <span
+                  aria-hidden="true"
+                  class="decorator text-emphasis mr-4 text-sm leading-none font-extralight"
+                >
+                  :::
+                </span>
+                <SkillBadge tag="span" class="font-extralight whitespace-nowrap uppercase">
+                  {t}
+                </SkillBadge>
+              </li>
+            ))}
+          </ul>
         </div>
       )
     }
-    <div class="flex flex-col">
-      <div
-        class="font-display mb-2 flex flex-col justify-start text-2xl sm:flex-row md:text-2xl lg:text-3xl"
-      >
-        <h3 class="text-emphasis">
-          <span class="text-highlight block font-bold sm:inline-block">{position}</span>
-          <span class="font-blackletter mx-1 hidden sm:inline-block">&nbsp;᠅&nbsp;</span>
-          {
-            companyWebsite ? (
-              <Link href={companyWebsite} target="_blank" class="no-underline">
-                {company}
-              </Link>
-            ) : (
-              company
-            )
-          }
-        </h3>
-      </div>
-
-      <p class="text-emphasis font-light">
-        {startMonthYear ? startMonthYear : null} -
-        {endMonthYear ? endMonthYear : "Present"}
-      </p>
-    </div>
   </div>
-
-  {
-    tech && (
-      <div class="mt-0 mb-10 text-xs">
-        <p class="sr-only">Skills:&nbsp;</p>
-        <ul class="flex flex-wrap gap-2">
-          {tech.map((t: string, i: number) => (
-            <>
-              <SkillBadge tag="li" class="mb-1" key={i}>
-                {t}
-              </SkillBadge>
-              {i !== tech.length - 1 && " "}
-            </>
-          ))}
-        </ul>
-      </div>
-    )
-  }
-
-  <div class="job-body list-custom-wrapper prose bg-background relative z-20 max-w-none pr-8 pb-8">
-    <Content />
-  </div>
-  <span
-    class="absolute -right-1 -bottom-1 -z-40 h-24 w-48 bg-gradient-to-br from-blue-900/10 via-teal-800/10 to-emerald-400/20 opacity-40"
-  >
-  </span>
 </div>
 
 <style>
   @reference "../styles/global.css";
   .job-card {
-    &::before {
-      @apply absolute top-1 -left-8 z-0 h-full max-h-96 w-1 bg-gradient-to-b from-emerald-400/20 via-teal-500/15 to-blue-950/20;
-      content: "";
-    }
-    &::after {
-      @apply absolute -top-0 -left-8 z-0 h-1 w-12 bg-gradient-to-r from-emerald-400/20 via-teal-500/15 to-blue-950/20;
-      content: "";
-    }
-
     .project-image img {
       @apply max-h-20 sm:max-h-20 md:max-h-24 lg:max-h-32;
     }
@@ -108,20 +111,55 @@ const { Content } = await job.render();
     }
   }
 
-  .image:before {
+  .job-backdrop {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: black;
+    clip-path: polygon(0 0, calc(100% - 10rem) 0, 100% 4rem, 100% 100%, 0 100%);
+  }
+
+  .job-frame::after {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    z-index: 1;
+    pointer-events: none;
+    background: color-mix(in oklch, var(--color-emphasis) 80%, transparent);
+    clip-path: polygon(0 0, calc(100% - 5rem) 0, 100% 4rem, 100% 100%, 0 100%);
+  }
+
+  .job-frame::before {
     z-index: 0;
+    filter: blur(2rem);
     background: radial-gradient(
       circle,
-      rgba(0, 150, 100, 0.4) 0%,
-      rgba(0, 150, 100, 0.15) 25%,
-      transparent 70%
+      color-mix(in oklch, var(--color-accent) 100%, transparent) 0%,
+      transparent 100%
     );
     content: "";
-    top: 50%;
-    left: 50%;
-    height: 100%;
-    width: 100%;
+    top: 0;
+    left: 0;
+    height: 10rem;
+    width: 10rem;
     position: absolute;
-    transform: translate3d(-50%, -50%, 0) scale(3);
+    opacity: 0.4;
+    transform: translate3d(-25%, -25%, 0);
+  }
+
+  .skills-list {
+    .decorator {
+      margin-top: 0.025em;
+      letter-spacing: -0.25em;
+    }
+  }
+
+  @media (prefers-contrast: more) {
+    .job-frame::after {
+      background: var(--color-emphasis);
+    }
+    .job-frame::before {
+      display: none;
+    }
   }
 </style>

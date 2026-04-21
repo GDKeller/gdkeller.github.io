@@ -1,18 +1,17 @@
 ---
 import { getCollection } from "astro:content";
 import JobSingle from "./JobSingle.astro";
+import HeadingSection from "./HeadingSection.astro";
 
 const jobs = await getCollection("jobs");
 const sortedJobs = jobs.sort((a, b) => (a.data.order ?? 0) - (b.data.order ?? 0));
 ---
 
-<h2 class="section-heading font-blackletter text-emphasis mb-16 text-5xl md:text-6xl">
-  Experience
-</h2>
+<HeadingSection text="Experience" as="h2" align="left" treatment="scanline" class="mb-16" />
 <ul>
   {
     sortedJobs.map((job) => (
-      <li class="mb-4">
+      <li class="mb-4 w-full">
         <JobSingle {job} />
       </li>
     ))
