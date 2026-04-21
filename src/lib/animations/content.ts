@@ -4,31 +4,6 @@
 
 import type { GSAPInstance, ScrollTriggerInstance } from "./types";
 
-export function initProjectAnimations(
-  gsap: GSAPInstance,
-  ScrollTrigger: ScrollTriggerInstance,
-): void {
-  const projectCards = document.querySelectorAll(".project-card");
-  projectCards.forEach((card, index) => {
-    gsap.set(card, { y: 25, opacity: 0 });
-
-    ScrollTrigger.create({
-      trigger: card,
-      start: "top 85%",
-      onEnter: () => {
-        gsap.to(card, {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          ease: "power1.out",
-          delay: index * 0.05,
-        });
-      },
-      once: true,
-    });
-  });
-}
-
 export function initJobAnimations(gsap: GSAPInstance, ScrollTrigger: ScrollTriggerInstance): void {
   const jobCards = document.querySelectorAll(".job-card");
   jobCards.forEach((card, index) => {

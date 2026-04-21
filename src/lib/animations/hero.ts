@@ -47,17 +47,6 @@ export function initHeroAnimations(
       y: 12,
     });
   }
-
-  // SkillBadges - immediate fade in
-  const heroSkillBadges = document.querySelectorAll(".hero__text .pill");
-  if (heroSkillBadges.length > 0) {
-    fadeUp(gsap, heroSkillBadges, {
-      duration: 0.5,
-      delay: 0,
-      stagger: 0.03,
-      y: 8,
-    });
-  }
 }
 
 export function initHeaderAnimations(

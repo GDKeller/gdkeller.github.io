@@ -10,7 +10,6 @@ import { initSkillsAnimations } from './skills';
 import { initAnglerfishAnimations } from './anglerfish';
 import { initNypostAnimations } from './nypost';
 import {
-  initProjectAnimations,
   initJobAnimations,
   initFooterAnimations,
   initInteractiveAnimations,
@@ -42,7 +41,6 @@ export function initAllAnimations(
   initNypostAnimations(gsap, ScrollTrigger);
 
   // Content animations
-  initProjectAnimations(gsap, ScrollTrigger);
   initJobAnimations(gsap, ScrollTrigger);
   initFooterAnimations(gsap, ScrollTrigger);
 

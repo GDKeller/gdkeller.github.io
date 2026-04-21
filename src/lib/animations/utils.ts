@@ -16,7 +16,7 @@ export function prefersReducedMotion(): boolean {
  */
 export function showAllElementsImmediately(): void {
   const allAnimatedElements = document.querySelectorAll(
-    '.hero__name, .hero__text p, .hero__text li, .hero__text .pill, h2, ' +
+    '.hero__name, .hero__text p, .hero__text li, h2, ' +
     '.skill-item, .project-card, .job-card, .stat, .browser, .sticky, ' +
     '.fish-hero__image, img, p, footer, .relative.z-0.pt-64'
   );

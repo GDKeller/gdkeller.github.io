@@ -4,10 +4,11 @@ import type { HTMLAttributes } from "astro/types";
 type Align = "left" | "center";
 type Size = "sm" | "md" | "lg";
 type Treatment = "none" | "scanline" | "glow";
+type As = "h2" | "h3" | "p";
 
 interface Props {
   text: string;
-  headingLevel?: 2 | 3;
+  as?: As;
   align?: Align;
   size?: Size;
   treatment?: Treatment;
@@ -17,15 +18,14 @@ interface Props {
 
 const {
   text,
-  headingLevel = 2,
+  as: Tag = "h2",
   align = "center",
   size = "lg",
   treatment = "none",
   id,
   class: className,
-} = Astro.props;
-
-const Tag = `h${headingLevel}` as "h2" | "h3";
+  ...rest
+} = Astro.props as Props;
 
 const alignClasses: Record<Align, string> = {
   left: "text-left",
@@ -40,7 +40,7 @@ const sizeClasses: Record<Size, string> = {
 
 const treatmentClasses: Record<Treatment, string> = {
   none: "",
-  scanline: "section-heading",
+  scanline: "section-heading w-auto block",
   glow: "section-heading__glow",
 };
 ---
@@ -48,13 +48,14 @@ const treatmentClasses: Record<Treatment, string> = {
 <Tag
   id={id}
   class:list={[
-    "font-blackletter text-emphasis mb-4",
+    "font-blackletter text-emphasis mb-8",
     alignClasses[align],
     sizeClasses[size],
     treatmentClasses[treatment],
     treatment !== "none" && align === "center" && "section-heading__center",
     className,
   ]}
+  {...rest}
 >
   {text}
 </Tag>
