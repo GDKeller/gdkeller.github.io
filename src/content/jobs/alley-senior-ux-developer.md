@@ -7,7 +7,7 @@ companyLogo:
 position: Senior User Experience Developer
 startMonthYear: Aug 2020
 endMonthYear: Dec 2023
-tech: [WordPress, React, Typescript, CSS/SCSS, PHP, Gutenberg]
+tech: [Accessibility, React, Typescript, WordPress, CSS/SCSS, PHP, Gutenberg]
 order: 1
 ---
 

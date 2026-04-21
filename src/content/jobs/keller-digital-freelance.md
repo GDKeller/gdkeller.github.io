@@ -6,7 +6,7 @@ companyLogo:
 position: WordPress Developer & Strategist
 startMonthYear: Aug 2011
 endMonthYear: May 2019
-tech: [WordPress, Javascript, CSS, PHP, Cloudflare, cPanel]
+tech: [WordPress, PHP, jQuery, CSS, Project Management, Client Relations]
 order: 3
 ---
 
