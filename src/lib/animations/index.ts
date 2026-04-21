@@ -3,37 +3,31 @@
  * Coordinates all GSAP animations across the portfolio
  */
 
-import type { GSAPInstance, ScrollTriggerInstance } from './types';
-import { prefersReducedMotion, showAllElementsImmediately } from './utils';
-import { initHeroAnimations, initHeaderAnimations, initSectionHeadingAnimations } from './hero';
-import { initSkillsAnimations } from './skills';
-import { initAnglerfishAnimations } from './anglerfish';
-import { initNypostAnimations } from './nypost';
+import type { GSAPInstance, ScrollTriggerInstance } from "./types";
+import { prefersReducedMotion, showAllElementsImmediately } from "./utils";
+import { initSectionHeadingAnimations } from "./hero";
+import { initSkillsAnimations } from "./skills";
+import { initAnglerfishAnimations } from "./anglerfish";
+import { initNypostAnimations } from "./nypost";
 import {
   initJobAnimations,
   initFooterAnimations,
   initInteractiveAnimations,
-  initBackgroundAnimations
-} from './content';
+  initBackgroundAnimations,
+} from "./content";
 
 /**
  * Initialize all GSAP animations
  * Respects user's motion preferences for accessibility
  */
-export function initAllAnimations(
-  gsap: GSAPInstance,
-  ScrollTrigger: ScrollTriggerInstance
-): void {
+export function initAllAnimations(gsap: GSAPInstance, ScrollTrigger: ScrollTriggerInstance): void {
   // Respect user's motion preferences (WCAG 2.3.3)
   if (prefersReducedMotion()) {
     showAllElementsImmediately();
     return;
   }
 
-  // Hero and header animations (immediate)
-  initHeroAnimations(gsap, ScrollTrigger);
-  initHeaderAnimations(gsap, ScrollTrigger);
-  // initSectionHeadingAnimations(gsap, ScrollTrigger);
+  initSectionHeadingAnimations(gsap, ScrollTrigger);
 
   // Section-specific animations (scroll-triggered)
   initSkillsAnimations(gsap, ScrollTrigger);
@@ -50,4 +44,4 @@ export function initAllAnimations(
 }
 
 // Re-export types for convenience
-export type { GSAPInstance, ScrollTriggerInstance } from './types';
+export type { GSAPInstance, ScrollTriggerInstance } from "./types";

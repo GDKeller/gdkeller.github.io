@@ -32,17 +32,14 @@ const items = await Promise.all(
 );
 ---
 
-<section
-  class="relative isolate z-40 overflow-hidden py-32"
-  aria-labelledby="currently-building-label"
->
+<section class="relative overflow-hidden py-32" aria-labelledby="currently-building-label">
   <div
-    class="pointer-events-none absolute inset-0 z-0 bg-repeat opacity-10 mix-blend-screen blur-[0.02rem] contrast-50"
+    class="border-emphasis/70 pointer-events-none absolute inset-0 border-b-2 bg-repeat opacity-10 mix-blend-screen blur-[0.02rem] contrast-50"
     style={`background-image: url(${gridTile.src}); background-size: 50vw auto;`}
   >
   </div>
 
-  <div class="relative z-40 mx-auto max-w-7xl px-6 pt-16 pb-24 md:px-10 md:pt-20 md:pb-28">
+  <div class="relative mx-auto max-w-7xl px-6 pt-16 pb-24 md:px-10 md:pt-20 md:pb-28">
     <div class="flex items-end">
       <h2
         id="currently-building-label"
@@ -65,7 +62,7 @@ const items = await Promise.all(
 
     <div class="border-faint/80 border-2 border-t-0 bg-black pt-8" data-builds>
       <!-- Active viewer -->
-      <div class="p-6 md:p-8">
+      <div class="relative z-80 p-6 md:p-8">
         {
           items.map(({ entry, image }, idx) => {
             const { data } = entry;
@@ -102,7 +99,7 @@ const items = await Promise.all(
                       />
                     ) : (
                       <div class="placeholder-cell flex h-full items-center justify-center">
-                        <span class="text-foundation text-body-xs font-mono tracking-widest uppercase">
+                        <span class="text-foundation bg-background text-body-sm px-16 py-8 font-mono tracking-widest uppercase">
                           {data.status ? statusLabel[data.status] : "IN PROGRESS"}
                         </span>
                       </div>
@@ -111,18 +108,23 @@ const items = await Promise.all(
 
                   <div class="flex flex-col justify-start pt-4 md:w-2/5">
                     <div class="mt-0 flex flex-col items-start">
-                      <h3 class="text-emphasis font-prompt origin-bottom text-lg font-semibold tracking-wider md:text-2xl">
+                      <h3 class="text-accent font-prompt origin-bottom text-lg font-medium tracking-wider md:text-2xl">
                         {data.title}
                       </h3>
-                      <div class="before:border-faint relative mt-2 flex w-full justify-between pr-2 before:absolute before:top-0 before:left-0 before:h-0 before:w-full before:border-t before:bg-none before:content-['']">
+                      <div class="before:border-subtle relative mt-2 flex w-full justify-between pr-2 before:absolute before:top-0 before:left-0 before:h-0 before:w-full before:border-t before:bg-none before:content-['']">
                         {data.type && (
-                          <span class="text-emphasis border-faint text-body-sm border border-t-0 px-4 py-2 font-mono tracking-widest">
+                          <span class="text-emphasis project__type mb-auto pr-8 pb-2 pl-4 font-mono text-xs leading-none tracking-widest">
                             {data.type}
                           </span>
                         )}
                         {data.tech && data.tech.length > 0 && (
-                          <p class="text-emphasis py-2 font-mono text-sm font-light tracking-wide uppercase">
-                            {data.tech.join(" / ")}
+                          <p class="text-emphasis py-2 font-mono text-xs font-extralight tracking-wide uppercase">
+                            {data.tech.map((t: string, i: number) => (
+                              <>
+                                {i > 0 && <span class="text-accent"> / </span>}
+                                {t}
+                              </>
+                            ))}
                           </p>
                         )}
                       </div>
@@ -136,7 +138,7 @@ const items = await Promise.all(
                           href={data.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          class="text-body-xs border-accent hover:bg-accent text-accent mt-auto mb-0 flex items-center justify-self-end border-y px-4 font-mono tracking-widest uppercase transition-colors hover:text-black"
+                          class="text-body-xs border-highlight hover:bg-highlight text-highlight mt-auto mb-0 flex items-center justify-self-end border-b px-4 font-mono tracking-widest uppercase transition-colors hover:text-black"
                         >
                           View Site <span class="mb-1 ml-2 text-2xl">&rarr;</span>
                         </a>
@@ -179,13 +181,13 @@ const items = await Promise.all(
                   />
                 ) : (
                   <div class="placeholder-cell flex aspect-16/10 flex-1 items-center justify-center">
-                    <span class="text-foundation text-body-2xs font-mono tracking-widest uppercase">
+                    <span class="text-foundation bg-background text-body-2xs px-4 py-4 font-mono tracking-widest uppercase">
                       {data.title}
                     </span>
                   </div>
                 )}
                 <div class="thumb-title bg-emphasis group-hover:bg-accent m-0 mt-auto flex h-12 p-2 transition-colors duration-200">
-                  <p class="text-background text-body-2xs m-auto font-mono font-medium tracking-normal">
+                  <p class="text-background text-body-xs m-auto font-medium tracking-wide">
                     {data.title}
                   </p>
                 </div>
@@ -200,6 +202,34 @@ const items = await Promise.all(
 
 <style lang="scss">
   @reference "../styles/global.css";
+
+  .project {
+    &__type {
+      position: relative;
+      isolation: isolate;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: -1px;
+        bottom: -1px;
+        left: -1px;
+        z-index: -2;
+        background: color-mix(in oklch, var(--color-subtle) 100%, transparent);
+        clip-path: polygon(0 0, 100% 0, 100% calc(100% - 1.3rem), calc(100% - 1rem) 100%, 0 100%);
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background: var(--color-background);
+        clip-path: polygon(0 0, 100% 0, 100% calc(100% - 3rem), calc(100% - 1rem) 100%, 0 100%);
+      }
+    }
+  }
 
   .thumb {
     @apply border-faint/80;
@@ -219,93 +249,91 @@ const items = await Promise.all(
     }
   }
 
-  @keyframes attention-bounce {
-    0% {
-      transform: translateY(0rem);
-    }
-    50% {
-      transform: translateY(-0.2rem) scaleY(1.02);
-    }
-    52% {
-      transform: translateY(0rem) scaleY(0.9994);
-    }
-    57% {
-      transform: translateY(-0.15rem) scaleY(1.015);
-    }
-    59% {
-      transform: translateY(0rem) scaleY(0.9996);
-    }
-    63% {
-      transform: translateY(-0.1rem) scaleY(1.01);
-    }
-    65% {
-      transform: translateY(0rem) scaleY(0.9998);
-    }
-    68% {
-      transform: translateY(-0.05rem) scaleY(1.0005);
-    }
-    70% {
-      transform: translateY(0rem) scaleY(0.9999);
-    }
-  }
-
-  @keyframes wiggle {
-    0% {
-      transform: rotate(0deg);
-    }
-    10% {
-      transform: rotate(0.5deg);
-    }
-    20% {
-      transform: rotate(0deg);
-    }
-    30% {
-      transform: rotate(-0.5deg);
-    }
-    40% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(0deg);
-    }
-  }
-
   .bracket {
     position: absolute;
-    width: 10px;
-    height: 10px;
-    @apply border-accent;
-    border-style: solid;
-    z-index: 2;
-  }
-  .bracket.tl {
-    top: -1px;
-    left: -1px;
-    border-width: 1px 0 0 1px;
-  }
-  .bracket.tr {
-    top: -1px;
-    right: -1px;
-    border-width: 1px 1px 0 0;
-  }
-  .bracket.bl {
-    bottom: -1px;
-    left: -1px;
-    border-width: 0 0 1px 1px;
-  }
-  .bracket.br {
-    bottom: -1px;
-    right: -1px;
-    border-width: 0 1px 1px 0;
+    opacity: 0.3;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      background-color: var(--color-emphasis);
+    }
+
+    &::before {
+      width: 1px;
+      height: 0.6rem;
+    }
+
+    &::after {
+      width: 0.6rem;
+      height: 1px;
+    }
+
+    &.tl {
+      top: 0;
+      left: 0;
+
+      &::before {
+        top: -0.6rem;
+        left: -1px;
+      }
+      &::after {
+        top: -1px;
+        left: -0.6rem;
+      }
+    }
+
+    &.tr {
+      top: 0;
+      right: 0;
+
+      &::before {
+        top: -0.6rem;
+        right: -1px;
+      }
+      &::after {
+        top: -1px;
+        right: -0.6rem;
+      }
+    }
+
+    &.bl {
+      bottom: 0;
+      left: 0;
+
+      &::before {
+        bottom: -0.6rem;
+        left: -1px;
+      }
+      &::after {
+        bottom: -1px;
+        left: -0.6rem;
+      }
+    }
+
+    &.br {
+      bottom: 0;
+      right: 0;
+
+      &::before {
+        bottom: -0.6rem;
+        right: -1px;
+      }
+      &::after {
+        bottom: -1px;
+        right: -0.6rem;
+      }
+    }
   }
 
   .placeholder-cell {
     background: repeating-linear-gradient(
       45deg,
       transparent 0px,
-      transparent 14px,
-      rgba(255, 255, 255, 0.2) 14px,
-      rgba(255, 255, 255, 0.2) 15px
+      transparent 1rem,
+      color-mix(in srgb, var(--color-emphasis) 80%, transparent) 1rem,
+      color-mix(in srgb, var(--color-emphasis) 80%, transparent) 1.1rem
     );
   }
 

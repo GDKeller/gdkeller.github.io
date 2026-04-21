@@ -29,7 +29,7 @@ const {
 
 const alignClasses: Record<Align, string> = {
   left: "text-left",
-  center: "text-center",
+  center: "text-center mx-auto",
 };
 
 const sizeClasses: Record<Size, string> = {
@@ -40,7 +40,7 @@ const sizeClasses: Record<Size, string> = {
 
 const treatmentClasses: Record<Treatment, string> = {
   none: "",
-  scanline: "section-heading w-auto block",
+  scanline: "w-auto block",
   glow: "section-heading__glow",
 };
 ---
@@ -48,6 +48,7 @@ const treatmentClasses: Record<Treatment, string> = {
 <Tag
   id={id}
   class:list={[
+    "section-heading",
     "font-blackletter text-emphasis mb-8",
     alignClasses[align],
     sizeClasses[size],

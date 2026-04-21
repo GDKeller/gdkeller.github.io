@@ -1,45 +1,31 @@
 ---
 import Link from "./Link.astro";
 import Nav from "./Nav.astro";
-import HeadshotMini from "./HeadshotMini.astro";
 ---
 
 <div
   id="header__main"
-  class="animate__header border-box bg-opacity-85 bg-background sticky top-0 left-0 z-40 block w-full justify-between overflow-hidden border-b border-emerald-300/10 px-4 shadow-sm backdrop-blur transition-shadow duration-100 sm:px-2"
+  class="animate__header border-box bg-opacity-100 border-faint/30 sticky top-0 left-0 z-200 block w-full justify-between overflow-hidden border-b bg-black px-4 shadow-sm backdrop-blur transition-shadow duration-100 sm:px-2"
 >
   <div class="relative flex w-full items-center justify-between">
     <div class="box-border flex items-stretch gap-4">
-      <div class="relative my-2 hidden h-8 w-8 shrink-0 md:block">
-        <!-- Placeholder shown when hero is visible -->
+      <div class="my-2 hidden h-8 w-8 shrink-0 items-center justify-center md:flex">
         <div
-          class="header-placeholder absolute inset-0 flex items-center justify-center transition-opacity duration-700"
+          class="oscilloscope bg-background/50 h-7 w-7 overflow-hidden rounded-sm border border-emerald-400/20"
+          aria-hidden="true"
         >
-          <div
-            class="oscilloscope bg-background/50 h-7 w-7 overflow-hidden rounded-sm border border-emerald-400/20"
-            aria-hidden="true"
-          >
-            <svg class="h-full w-full p-0" viewBox="0 0 32 32" preserveAspectRatio="none">
-              <polyline
-                id="oscilloscope-wave"
-                class="oscilloscope-wave"
-                points="0,16 2,16 4,16 6,16 8,16 10,16 12,16 14,16 16,16 18,16 20,16 22,16 24,16 26,16 28,16 30,16 32,16"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.2"
-                stroke-linecap="round"
-                stroke-linejoin="round"></polyline>
-            </svg>
-          </div>
+          <svg class="h-full w-full p-0" viewBox="0 0 32 32" preserveAspectRatio="none">
+            <polyline
+              id="oscilloscope-wave"
+              class="oscilloscope-wave"
+              points="0,16 2,16 4,16 6,16 8,16 10,16 12,16 14,16 16,16 18,16 20,16 22,16 24,16 26,16 28,16 30,16 32,16"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"></polyline>
+          </svg>
         </div>
-        <!-- Headshot shown when scrolled past hero -->
-        <a
-          href="#"
-          class="header-logo absolute inset-0 overflow-hidden rounded-sm opacity-0 transition-opacity duration-700"
-          aria-label="Scroll to top"
-        >
-          <HeadshotMini />
-        </a>
       </div>
       <Nav class="" />
     </div>
@@ -123,37 +109,6 @@ import HeadshotMini from "./HeadshotMini.astro";
     </div>
   </div>
 </div>
-
-<script>
-  const headerLogo = document.querySelector(".header-logo");
-  const headerPlaceholder = document.querySelector(".header-placeholder");
-  const hero = document.querySelector("#hero");
-
-  if (headerLogo && headerPlaceholder && hero) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            // Hero is visible, hide headshot, show placeholder
-            headerLogo.classList.add("opacity-0");
-            headerLogo.classList.remove("opacity-100");
-            headerPlaceholder.classList.remove("opacity-0");
-            headerPlaceholder.classList.add("opacity-100");
-          } else {
-            // Hero is not visible, show headshot, hide placeholder
-            headerLogo.classList.remove("opacity-0");
-            headerLogo.classList.add("opacity-100");
-            headerPlaceholder.classList.add("opacity-0");
-            headerPlaceholder.classList.remove("opacity-100");
-          }
-        });
-      },
-      { threshold: 0.1 },
-    );
-
-    observer.observe(hero);
-  }
-</script>
 
 <style>
   :global(.icon-link) {

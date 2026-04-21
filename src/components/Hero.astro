@@ -10,28 +10,28 @@ import headshotBackground from "../images/elements/headshot_bg_tint2_500_2x.webp
 
 <section
   id="hero"
-  class="relative z-50 flex min-h-[calc(100vh-3rem)] w-full max-w-full flex-col justify-end gap-0 overflow-hidden px-2 pt-0 pb-2 sm:px-8 sm:pt-10 lg:pt-12 lg:pb-16"
+  class="bg-background relative flex min-h-[calc(100vh-3rem)] w-full max-w-full flex-col justify-end gap-0 overflow-hidden px-2 pt-0 pb-2 sm:px-8 sm:pt-10 lg:pt-12 lg:pb-16"
 >
   <HeroBackground />
   <Image
     src={frameUpper}
     alt=""
-    class="pointer-events-none absolute top-0 left-0 z-100 w-full select-none"
+    class="pointer-events-none absolute top-0 left-0 z-90 w-full select-none"
     loading="eager"
   />
   <Image
     src={frameLower}
     alt=""
-    class="pointer-events-none absolute bottom-0 left-0 z-100 w-full select-none"
+    class="pointer-events-none absolute bottom-0 left-0 z-90 w-full select-none"
     loading="eager"
   />
   <div
     id="hero__content"
-    class="relative z-50 mx-auto mt-auto mb-auto flex w-full max-w-full px-6 pt-4 pb-4 sm:mr-0 sm:ml-0 sm:pr-4 sm:pl-4 md:px-0 md:pt-6 md:pr-6 md:pl-6 lg:p-0"
+    class="mx-auto mt-auto mb-auto flex w-full max-w-full px-6 pt-4 pb-4 sm:mr-0 sm:ml-0 sm:pr-4 sm:pl-4 md:px-0 md:pt-6 md:pr-6 md:pl-6 lg:p-0"
   >
     <div id="hero-content-wrapper" class="mx-auto grid grid-cols-[auto_1fr]">
       <div
-        class="shadow-accent/15 relative mt-2 mb-6 flex w-full -rotate-[0.3deg] flex-col items-center justify-center overflow-visible p-0.5 px-0.5 pt-0 shadow-2xl sm:mr-auto sm:mb-auto sm:ml-auto sm:w-auto sm:flex-row sm:justify-start md:flex-col md:items-center"
+        class="shadow-accent/15 relative z-50 mt-2 mb-6 flex w-full -rotate-[0.3deg] flex-col items-center justify-center overflow-visible p-0.5 px-0.5 pt-0 shadow-2xl sm:mr-auto sm:mb-auto sm:ml-auto sm:w-auto sm:flex-row sm:justify-start md:flex-col md:items-center"
       >
         <div class="absolute top-0 left-0 z-10 h-full w-full -translate-y-[1%]">
           <Image
@@ -66,7 +66,7 @@ import headshotBackground from "../images/elements/headshot_bg_tint2_500_2x.webp
           >
         </div>
         <div
-          class="pointer-events-none absolute top-0 left-0 z-10 h-full w-full"
+          class="pointer-events-none absolute top-0 left-0 z-80 h-full w-full"
           aria-hidden="true"
           style={`mask-image: url(${headshotBackground.src}); mask-mode: alpha; mask-size: 105% 105%; mask-position: 50% 70%; mask-repeat: no-repeat; -webkit-mask-image: url(${headshotBackground.src}); -webkit-mask-mode: alpha; -webkit-mask-size: 105% 105%; -webkit-mask-position: 50% 70%; -webkit-mask-repeat: no-repeat;`}
         >
@@ -89,8 +89,8 @@ import headshotBackground from "../images/elements/headshot_bg_tint2_500_2x.webp
         >
         </span>
       </div>
-      <div class="relative z-20 mt-8 ml-34 flex flex-col">
-        <p class="relative flex flex-col items-start sm:text-lg md:mb-8 xl:mb-24">
+      <div class="mt-8 ml-34 flex flex-col">
+        <p class="relative z-80 flex flex-col items-start sm:text-lg md:mb-8 xl:mb-24">
           <span class="hero-headline -ml-[2ch]">Deep space</span>
           <span class="hero-headline mb-1 -ml-[1ch]">deep sea</span>
           <span class="sr-only">&nbsp;</span>
@@ -99,8 +99,8 @@ import headshotBackground from "../images/elements/headshot_bg_tint2_500_2x.webp
             >and everywhere in between</span
           >
         </p>
-        <div class="relative mr-auto ml-0">
-          <p class="text-foundation font-prompt text-shadow-black/30 text-shadow-lg">
+        <div class="mr-auto ml-0">
+          <p class="text-foundation font-prompt relative z-100 text-shadow-black/30 text-shadow-lg">
             <span
               class="text-accent text-shadow-background/70 inline-block leading-tight font-normal tracking-wider text-shadow-lg xl:text-4xl"
               >Frontend architecture&nbsp;
@@ -118,7 +118,7 @@ import headshotBackground from "../images/elements/headshot_bg_tint2_500_2x.webp
             </span>
           </p>
           <div
-            class="absolute bottom-0 left-1/2 -translate-x-[60%] translate-y-1/2 scale-[150%] rotate-15 opacity-50 mix-blend-overlay blur-3xl"
+            class="absolute bottom-0 left-1/2 z-10 -translate-x-[60%] translate-y-1/2 scale-[150%] rotate-15 opacity-30 mix-blend-screen blur-3xl"
           >
             <svg class="h-[80vh]" viewBox="0 0 256 512" aria-hidden="true">
               <defs>

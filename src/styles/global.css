@@ -96,7 +96,8 @@
   /* --color-subtle: var(--color-emerald-700); */
   /* --color-faint: var(--color-emerald-950); */
 
-  --color-background: oklch(0.13 0.0355 150);
+  /* --color-background: oklch(0.13 0.0355 150); #000b02 */
+  --color-background: oklch(0.1 0.025 150); /* #000501 */
   --color-scrim: oklch(0.53 0.05 150);
   --color-foundation: oklch(0.968 0.06 130); /* #e7fdd3 */
   --color-emphasis: oklch(88% 0.1 130); /* #c2e59f */
@@ -220,7 +221,15 @@ strong {
   position: relative;
   width: min-content;
   white-space: pre;
-  /* text-shadow: var(--color-emerald-500) 0px 0px 8px; */
+}
+
+.section-heading__glow {
+  text-shadow: var(--color-emerald-500) 0px 0px 8px;
+}
+
+.section-heading__center {
+  position: relative;
+  display: block;
 
   &::before {
     content: "";
@@ -249,12 +258,12 @@ strong {
   }
 }
 
-.section-heading__glow {
-  text-shadow: var(--color-emerald-500) 0px 0px 8px;
-}
-
-.section-heading__center {
-  position: relative;
-  display: block;
-  /* text-shadow: var(--color-emerald-500) 0px 0px 8px; */
+.hazard-stripe {
+  background: repeating-linear-gradient(
+    45deg,
+    transparent 0px,
+    transparent 1rem,
+    color-mix(in srgb, var(--color-emphasis) 80%, transparent) 1rem,
+    color-mix(in srgb, var(--color-emphasis) 80%, transparent) 1.5rem
+  );
 }

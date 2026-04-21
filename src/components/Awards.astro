@@ -57,7 +57,7 @@ const awards: Award[] = [
   role="region"
   aria-label="Awards and recognition"
 >
-  <HeadingSection text="Awards" align="center" />
+  <HeadingSection text="Awards" align="center" class="mb-16" />
   <div
     class="flex flex-col items-center justify-center gap-12 sm:gap-16 md:flex-row md:flex-wrap md:gap-20 lg:flex-nowrap"
   >
@@ -68,17 +68,17 @@ const awards: Award[] = [
             <Image
               src={award.src}
               alt={award.alt}
-              class={`transition-drop-shadow h-full w-full object-contain ${award.level === "gold" ? "drop-shadow-[0_0_1rem_rgba(250,220,160,0.4)]" : award.level === "silver" ? "drop-shadow-[0_0_1rem_rgba(192,192,192,0.4)]" : "drop-shadow-[0_0_1rem_rgba(205,127,50,0.3)]"}`}
+              class={`transition-drop-shadow h-full w-full object-contain ${award.level === "gold" ? "drop-shadow-[0_0_1rem_rgba(250,220,160,0.2)]" : award.level === "silver" ? "drop-shadow-[0_0_1.5rem_rgba(192,192,192,0.1)]" : "drop-shadow-[0_0_1rem_rgba(205,127,50,0.2)]"}`}
               loading="lazy"
             />
           </div>
           <div class="relative">
-            <h3 class="text-emphasis mb-1 text-lg font-semibold md:text-lg lg:text-lg xl:text-xl">
+            <h3 class="text-foundation mb-1 text-lg font-semibold md:text-lg lg:text-lg xl:text-xl">
               {award.name}
             </h3>
-            <p class="text-emphasis text-sm">{award.subtitle}</p>
+            <p class="text-emphasis font-mono text-xs font-extralight">{award.subtitle}</p>
             {award.count > 1 && (
-              <span class="text-emphasis absolute -top-6 -right-4 flex h-8 w-8 items-center justify-center text-base font-bold md:h-10 md:w-10 md:text-lg">
+              <span class="text-accent absolute -top-6 -right-4 flex h-8 w-8 items-center justify-center text-base font-bold md:h-10 md:w-10 md:text-lg">
                 x{award.count}
               </span>
             )}

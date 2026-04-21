@@ -5,30 +5,30 @@ import heroImg1 from "../images/Texturelabs_LensFX_173L.webp";
 import heroImg2 from "../images/Texturelabs_LensFX_127L.webp";
 ---
 
-<div class="hero-bg absolute inset-0 -z-10 h-full w-full overflow-hidden" id="hero-bg">
+<div class="hero-bg absolute inset-0 h-full w-full overflow-hidden bg-black/80" id="hero-bg">
   <!-- Layer 0a: Background Image -->
   <Image
     src={heroImg1}
     alt=""
-    class="absolute inset-0 h-full w-full object-cover opacity-40 mix-blend-soft-light brightness-30"
+    class="absolute inset-0 h-full w-full object-cover opacity-30 mix-blend-hard-light brightness-50 contrast-100"
     loading="eager"
   />
   <!-- Layer 0b: Background Image -->
   <Image
     src={heroImg2}
     alt=""
-    class="absolute inset-0 h-full w-[150vw] max-w-none -translate-x-1/8 object-cover opacity-20 brightness-80 contrast-150"
+    class="mix-blend-plus-darken absolute inset-0 z-10 h-full w-[150vw] max-w-none -translate-x-1/8 object-cover opacity-30 brightness-100 contrast-110"
     loading="eager"
   />
 </div>
 
 <!-- Noise -->
-<div class="noise pointer-events-none absolute inset-0 z-30 h-full w-full"></div>
+<div class="noise pointer-events-none absolute inset-0 z-50 h-full w-full"></div>
 
 <style>
   /* Noise */
   .noise {
-    opacity: 0.05;
+    opacity: 0.1;
     mix-blend-mode: color-dodge;
   }
 

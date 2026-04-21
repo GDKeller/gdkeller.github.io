@@ -1,5 +1,5 @@
 ---
-title: ChromaCurve
+title: Chroma Curve
 url: https://chromacurve.style/
 type: Web
 description: Parabolic saturation correction for monochromatic color palettes.
