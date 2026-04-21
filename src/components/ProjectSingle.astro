@@ -1,4 +1,5 @@
 ---
+import DateRange from "./DateRange.astro";
 import Link from "./Link.astro";
 import ProjectSingleImage from "./ProjectSingleImage.astro";
 import SkillBadge from "./SkillBadge.astro";
@@ -34,15 +35,13 @@ const { Content } = await project.render();
     }
     <div class="flex flex-col">
       <div class="flex flex-col">
-        <div
-          class="font-display mb-2 flex flex-col justify-start text-2xl sm:flex-row sm:items-center sm:text-xl md:text-2xl lg:text-3xl"
-        >
-          <h3>
-            <span class="text-highlight block font-bold sm:inline-block">{title}</span>
-            <span class="font-blackletter mx-1 hidden sm:inline-block">&nbsp;᠅&nbsp;</span>
+        <div class="mb-2 flex flex-col justify-start sm:flex-row sm:items-center">
+          <h3 class="font-display text-2xl sm:text-xl md:text-2xl lg:text-xl">
+            <span class="text-highlight block sm:inline-block">{title}</span>
+            <span class="mx-1 hidden sm:inline-block">&nbsp;᠅&nbsp;</span>
             {
               clientWebsite ? (
-                <Link href={clientWebsite} target="_blank" class="no-underline">
+                <Link href={clientWebsite} target="_blank" variant="noUnderline" class="lg:text-xl">
                   {client}
                 </Link>
               ) : (
@@ -54,13 +53,16 @@ const { Content } = await project.render();
         <div class="flex flex-col items-start justify-between lg:flex-row lg:items-center">
           {
             projectName && (
-              <p class="font-display text-emphasis mr-4 text-lg sm:text-2xl">{projectName}</p>
+              <p class="font-display text-emphasis mr-4 text-lg font-semibold tracking-wide sm:text-2xl">
+                {projectName}
+              </p>
             )
           }
-          <p class="text-emphasis font-light">
-            {startMonthYear ? startMonthYear : null} -
-            {endMonthYear ? endMonthYear : "Present"}
-          </p>
+          <DateRange
+            start={startMonthYear}
+            end={endMonthYear}
+            class="font-mono font-extralight"
+          />
         </div>
       </div>
     </div>

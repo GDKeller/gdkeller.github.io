@@ -9,7 +9,6 @@ import Jobs from "../components/Jobs.astro";
 import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
 import Nypost from "../components/Nypost.astro";
-import OfflineBgRemover from "../components/OfflineBgRemover.astro";
 import Footer from "../components/Footer.astro";
 import SectionDivider from "../components/SectionDivider.astro";
 import Awards from "../components/Awards.astro";
@@ -19,41 +18,38 @@ import HeadingSection from "../components/HeadingSection.astro";
 ---
 
 <Layout title="Grant Keller - Senior UX Software Engineer">
-  <main class="font-prompt text-foundation relative z-0 block" aria-label="Portfolio content">
-    <div class="bg-background relative block">
-      <!-- <span class="absolute top-0 bottom-0 left-0 right-0 z-50 object-cover w-full h-full min-h-full mix-blend-difference opacity-20 bg-gradient-to-bl from-teal-500 to-indigo-950"></span> -->
-      <!-- <span class="absolute top-0 left-0 z-0 z-50 w-full h-full opacity-50 bg-gradient-to-br from-purple-950 mix-blend-color-dodge to-blue-950"></span> -->
-
+  <main class="font-prompt text-foundation relative z-20 block" aria-label="Portfolio content">
+    <div class="bg-background">
       <Hero />
       <Header />
 
-      <div class="overflow-x-hidden">
+      <div class="relative z-40 overflow-x-hidden">
         <!-- Currently Building -->
         <CurrentlyBuilding />
 
         <!-- Featured Work: NY Post -->
         <section class="relative block py-20 md:py-28">
           <div class="container mx-auto flex max-w-6xl justify-center px-8 pt-20">
-            <HeadingSection
-              text="Featured Work"
-              align="center"
-              id="featured"
-              class="section-heading__center relative block w-auto text-center"
-            />
+            <HeadingSection text="Featured Work" treatment="scanline" />
           </div>
           <Nypost />
-          <OfflineBgRemover />
         </section>
 
         <!-- Skills -->
-        <section id="skills" class="relative mx-auto block max-w-6xl px-2 py-20 md:py-20 lg:pb-64">
+        <section
+          id="skills"
+          class="relative mx-auto block max-w-6xl px-8 py-20 md:py-20 lg:max-w-7xl lg:pb-64"
+        >
           <SkillsGrid />
         </section>
 
         <SectionDivider />
 
         <!-- Experience -->
-        <section id="jobs" class="container mx-auto block max-w-6xl px-8 py-20 md:py-20">
+        <section
+          id="jobs"
+          class="container mx-auto block w-full max-w-5xl px-8 py-20 md:py-20 lg:max-w-6xl"
+        >
           <Jobs />
         </section>
 
@@ -85,25 +81,19 @@ import HeadingSection from "../components/HeadingSection.astro";
 
         <!-- Passion Projects: Anglerfish Exhibit -->
         <section class="relative z-10 block overflow-hidden py-20 md:py-20">
-          <div class="relative z-20 container mx-auto max-w-6xl px-8">
-            <h2
-              id="passion-projects"
-              class="font-blackletter text-emphasis mb-12 text-center text-5xl md:text-6xl"
-            >
-              Beyond the Screen
-            </h2>
-          </div>
           <FishHero />
         </section>
       </div>
     </div>
+
+    <!-- Glitch overlay -->
+    <div
+      class="pointer-events-none fixed top-0 left-0 z-20 block h-full w-full overflow-hidden opacity-30 mix-blend-soft-light"
+    >
+      <Image src={bgImage} alt="" class="h-full w-full object-cover" />
+    </div>
   </main>
-  <!-- Glitch overlay -->
-  <span
-    class="pointer-events-none fixed inset-0 z-40 block overflow-hidden opacity-20 mix-blend-soft-light"
-  >
-    <Image src={bgImage} alt="" class="h-full w-full object-cover" />
-  </span>
+
   <!-- Scan Lines -->
   <div class="scanlines pointer-events-none fixed inset-0 z-200 h-full w-full"></div>
   <!-- Noise -->
@@ -167,7 +157,7 @@ import HeadingSection from "../components/HeadingSection.astro";
           class="group flex items-center gap-4 border border-emerald-400/20 bg-emerald-950/20 p-4 transition-all duration-200 hover:border-emerald-400/40 hover:bg-emerald-950/30"
         >
           <div
-            class="flex h-8 w-8 flex-shrink-0 items-center justify-center bg-emerald-400/10 transition-colors group-hover:bg-emerald-400/20"
+            class="flex h-8 w-8 shrink-0 items-center justify-center bg-emerald-400/10 transition-colors group-hover:bg-emerald-400/20"
           >
             <svg class="text-accent h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
               <path
@@ -193,7 +183,7 @@ import HeadingSection from "../components/HeadingSection.astro";
           class="group flex items-center gap-4 border border-emerald-400/20 bg-emerald-950/20 p-4 transition-all duration-200 hover:border-emerald-400/40 hover:bg-emerald-950/30"
         >
           <div
-            class="flex h-8 w-8 flex-shrink-0 items-center justify-center bg-emerald-400/10 transition-colors group-hover:bg-emerald-400/20"
+            class="flex h-8 w-8 shrink-0 items-center justify-center bg-emerald-400/10 transition-colors group-hover:bg-emerald-400/20"
           >
             <svg class="text-accent h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
               <path
@@ -295,18 +285,18 @@ import HeadingSection from "../components/HeadingSection.astro";
 
     /* Scan Lines */
     .scanlines {
-      filter: blur(1px);
+      filter: blur(0px);
       background: repeating-linear-gradient(
         0deg,
         transparent,
-        transparent 2px,
+        transparent 1px,
+        color-mix(in oklch, var(--color-black) 100%, transparent) 1px,
         color-mix(in oklch, var(--color-black) 100%, transparent) 2px,
-        color-mix(in oklch, var(--color-black) 20%, transparent) 4px
-          /* color-mix(in oklch, var(--color-white) 100%, transparent) 4px,
-        color-mix(in oklch, var(--color-white) 20%, transparent) 5px */
+        color-mix(in oklch, var(--color-white) 100%, transparent) 2px,
+        color-mix(in oklch, var(--color-white) 20%, transparent) 3px
       );
-      mix-blend-mode: hard-light;
-      opacity: 0.15;
+      mix-blend-mode: soft-light;
+      opacity: 0.2;
     }
 
     .noise {

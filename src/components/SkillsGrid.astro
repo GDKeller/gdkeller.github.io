@@ -1,4 +1,5 @@
 ---
+import HeadingSection from "./HeadingSection.astro";
 import SkillsCard from "./SkillsCard.astro";
 
 const primarySkills = [
@@ -83,13 +84,9 @@ const secondaryCategories = [
 ];
 ---
 
-<div class="mx-auto mb-16 flex max-w-3xl flex-col items-center px-8 text-center">
+<div class="mx-auto mb-16 flex max-w-3xl flex-col items-center text-center">
   <h2 class="sr-only">Skills</h2>
-  <p
-    class="section-heading__center text-emphasis font-blackletter relative block text-5xl/[0.8em] md:text-6xl/[0.8em]"
-  >
-    Tools of the Trade
-  </p>
+  <HeadingSection as="p" text="Tools of the Trade" align="center" aria-hidden="true" />
   <p class="mb-8">
     <span
       class="text-emphasis mx-auto flex max-w-xs items-center gap-4 text-xs before:h-px before:flex-1 before:bg-emerald-200/20 after:h-px after:flex-1 after:bg-emerald-200/20"
@@ -115,7 +112,7 @@ const secondaryCategories = [
 </div>
 
 <!-- Secondary Skills — Full Range by Category -->
-<details class="secondary-skills-details group mx-auto max-w-4xl">
+<details class="secondary-skills-details group mx-auto w-full">
   <summary
     class="font-display mb-6 flex cursor-pointer items-center justify-center gap-2 text-center text-sm tracking-widest text-emerald-300/50 uppercase transition-colors select-none hover:text-emerald-300/80"
   >
