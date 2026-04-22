@@ -18,6 +18,10 @@ order: 1
 <p>
   <span class="font-medium">On display at:</span> <a href="https://www.jpl.nasa.gov/thestudio/" target="_blank">The Studio at JPL</a>, <a href="https://www.emporiagazette.com/education/article_3c20493c-2cb1-43db-8ebb-2b56417eab15.html"  target="_blank">Emporia State University's Peterson Planetarium</a>, <a href="https://www.gdscc.nasa.gov/"  target="_blank">Goldstone Deep Space Communications Complex</a>
 </p>
+
+<details>
+<summary>More info</summary>
+
 <div class="md:flex-row mt-8 flex-col flex mb-12 relative">
   <div class="md:w-2/3 md:pr-4 pb-8 flex items-start">
     <ul>
@@ -54,3 +58,4 @@ order: 1
     </div>
   </blockquote>
 </div>
+</details>

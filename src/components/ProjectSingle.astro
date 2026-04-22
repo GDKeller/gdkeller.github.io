@@ -79,7 +79,7 @@ const { Content } = await project.render();
 
       <div
         class:list={[
-          "relative z-110 px-12 pt-12 pr-8 pb-12",
+          "relative z-110 px-12 pt-12 pr-8 pb-4",
           { "flex flex-col": imageAlign !== undefined },
           { "lg:flex-row-reverse": imageAlign === "right" },
           { "lg:flex-row": imageAlign === "left" },
@@ -169,6 +169,50 @@ const { Content } = await project.render();
             @apply content-['—_'];
           }
         }
+      }
+
+      details {
+        @apply mt-8 pt-8;
+        interpolate-size: allow-keywords;
+      }
+
+      details::details-content {
+        block-size: 0;
+        overflow: clip;
+        opacity: 0;
+        transition:
+          block-size 350ms ease,
+          content-visibility 350ms allow-discrete,
+          opacity 250ms ease;
+      }
+
+      details[open]::details-content {
+        block-size: auto;
+        opacity: 1;
+        margin-bottom: 4rem;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        details::details-content {
+          transition: none;
+        }
+      }
+
+      summary {
+        @apply text-accent hover:text-accent-hover mb-8 ml-auto flex w-fit cursor-pointer items-center gap-3 font-mono text-sm tracking-widest uppercase transition-colors select-none;
+        list-style: none;
+      }
+
+      summary::-webkit-details-marker {
+        display: none;
+      }
+
+      summary::after {
+        content: "[+]";
+      }
+
+      details[open] > summary::after {
+        content: "[−]";
       }
     }
 

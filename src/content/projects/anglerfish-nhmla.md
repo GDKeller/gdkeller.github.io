@@ -17,6 +17,10 @@ order: 2
 <p>
   <span class="font-medium">Publications:</span> <a target="_blank" href="https://www.popsci.com/animals/deep-sea-anglerfish-biofluorescence/">Popular Science</a>, <a target="_blank" href="https://www.smithsonianmag.com/smart-news/unusual-deep-sea-fish-washed-ashore-sandy-california-beach-180977721/">Smithsonian</a>, <a target="_blank" href="https://www.theguardian.com/us-news/2021/may/11/deep-sea-anglerfish-california-beach-finding-nemo">The Guardian</a>, <a target="_blank" href="https://www.newsweek.com/rare-deep-sea-fish-washes-california-beach-1590031">Newsweek</a>, <a target="_blank" href="https://www.cnn.com/2021/05/11/us/anglerfish-football-fish-california-trnd-scn/index.html">CNN</a>, <a target="_blank" href="https://www.latimes.com/california/story/2021-05-10/deep-sea-fish-footballfish-anglerfish-washes-up-newport-beach">LA Times</a>, <a target="_blank" href="https://www.atlasobscura.com/articles/deep-sea-footballfish">Atlas Obscura</a>
 </p>
+
+<details>
+<summary>More info</summary>
+
 <div class="md:flex-row mt-12 flex-col flex mb-12 relative">
   <div class="md:w-2/3 pt-8 md:pr-12 pb-8 flex items-start">
     <ul>
@@ -52,3 +56,4 @@ order: 2
     <img class="w-full h-full object-cover" src="/images/projects/nhmla-anglerfish/display-side.jpg" alt="Side angle showing light sensor monitoring equipment" loading="lazy" />
   </div>
 </div>
+</details>
