@@ -12,6 +12,6 @@ const { start, end, class: className } = Astro.props;
 
 <p class:list={["text-emphasis", "tracking-wider", className]}>
   {start && <time>{start}</time>}
-  {" - "}
+  {"-"}
   {end ? <time>{end}</time> : "Present"}
 </p>

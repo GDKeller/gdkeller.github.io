@@ -6,7 +6,7 @@
    for the /styles reference page and for `var(--color-*)` access from custom
    CSS or JS without depending on incidental utility usage. */
 @source inline(
-  "{bg,text,border}-{background,foundation,emphasis,emphasis-hover,accent,accent-hover,highlight,highlight-hover,subtle,faint,reduced,secondary-light,secondary-emphasis,secondary-dark,tertiary-highlight,tertiary-highlight-hover,gradient-deepblue,gradient-alarmred}"
+  "{bg,text,border}-{background,foundation,emphasis,emphasis-hover,accent,accent-hover,highlight,highlight-hover,subtle,faint,reduced,secondary-light,secondary-emphasis,secondary-dark,tertiary-highlight,tertiary-highlight-hover,hidden}"
 );
 @source inline(
   "text-{display-xl,display-lg,display-md,display-sm,h1,h2,h3,h4,body-lg,body,body-sm,body-xs,body-2xs}"
@@ -87,11 +87,11 @@
   --color-background-dark: oklch(0.05 0.0141 150); /* #000100 */
   --color-scrim: oklch(0.53 0.05 150);
   --color-foundation: oklch(0.968 0.06 130); /* #e7fdd3 */
-  --color-emphasis: oklch(88% 0.1 130); /* #c2e59f */
+  --color-emphasis: oklch(89% 0.13 130); /* #beec8f */
   --color-emphasis-hover: oklch(0.88 0.155 130); /* #b5ec79 */
   --color-emphasis-analogous1: oklch(0.85 0.185 143); /* #7dec78 */
   --color-emphasis-analogous2: oklch(0.916 0.136 108); /* #ecea79 */
-  --color-faint: oklch(0.57 0.06 130);
+  --color-faint: oklch(0.5 0.065 130); /* #576b43 */
   --color-fainter: oklch(0.45 0.05 130);
   --color-reduced: oklch(0.57 0.075 110);
 
@@ -164,6 +164,23 @@ button:focus-visible {
   :focus-visible {
     outline-width: 3px;
     outline-offset: 3px;
+  }
+}
+
+.prose {
+  a {
+    text-underline-offset: 0.25em;
+  }
+  p {
+    line-height: 1.75;
+  }
+
+  strong {
+    font-weight: 500;
+  }
+
+  cite {
+    font-weight: 100;
   }
 }
 

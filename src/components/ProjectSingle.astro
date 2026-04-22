@@ -24,158 +24,211 @@ const {
 const { Content } = await project.render();
 ---
 
-<div class="job-card project-card relative mb-24 block pt-8">
-  <div class="flex flex-col items-start md:flex-row md:items-center">
-    {
-      clientLogo && (
-        <div class="image relative mr-2 mb-4 shrink-0 md:mb-auto lg:mr-8 lg:-ml-4">
-          <ProjectSingleImage imagePath={clientLogo.src} altText={clientLogo.alt} />
-        </div>
-      )
-    }
-    <div class="flex flex-col">
-      <div class="flex flex-col">
-        <div class="mb-2 flex flex-col justify-start sm:flex-row sm:items-center">
-          <h3 class="font-display text-2xl sm:text-xl md:text-2xl lg:text-xl">
-            <span class="text-highlight block sm:inline-block">{title}</span>
-            <span class="mx-1 hidden sm:inline-block">&nbsp;᠅&nbsp;</span>
+<div class="job-frame relative mb-24">
+  <div class="job-card flex items-stretch">
+    <span class="job-backdrop" aria-hidden="true"></span>
+    <div class="flex-1">
+      <div class="flex flex-col items-start md:flex-row md:items-start">
+        {
+          clientLogo && (
+            <div class="logo relative z-20 mr-2 shrink-0 -translate-x-4 lg:mr-4 lg:-translate-y-4">
+              <ProjectSingleImage imagePath={clientLogo.src} altText={clientLogo.alt} />
+            </div>
+          )
+        }
+        <div class="flex w-full justify-between pr-4 pb-4">
+          <div class="flex flex-col justify-start pt-12">
+            <h3
+              class="text-accent font-display relative z-110 mb-4 text-2xl leading-none tracking-wider md:text-2xl lg:text-3xl"
+            >
+              {title}
+            </h3>
+
             {
-              clientWebsite ? (
-                <Link href={clientWebsite} target="_blank" variant="noUnderline" class="lg:text-xl">
-                  {client}
-                </Link>
-              ) : (
-                <span class="text-highlight">{client}</span>
+              projectName && (
+                <p class="text-emphasis relative z-110 mb-2 block leading-none font-light tracking-wider lg:text-xl">
+                  {projectName}
+                </p>
               )
             }
-          </h3>
-        </div>
-        <div class="flex flex-col items-start justify-between lg:flex-row lg:items-center">
-          {
-            projectName && (
-              <p class="font-display text-emphasis mr-4 text-lg font-semibold tracking-wide sm:text-2xl">
-                {projectName}
+            <div class="relative z-110 flex flex-wrap items-baseline gap-y-2">
+              <p
+                class="text-emphasis block leading-none font-extralight tracking-wider lg:text-base"
+              >
+                {
+                  clientWebsite ? (
+                    <Link href={clientWebsite} target="_blank" variant="subtle">
+                      {client}
+                    </Link>
+                  ) : (
+                    client
+                  )
+                }
               </p>
-            )
-          }
-          <DateRange
-            start={startMonthYear}
-            end={endMonthYear}
-            class="font-mono font-extralight"
-          />
+              <span class="text-accent mx-4 hidden leading-none sm:inline-block">&nbsp;᠅&nbsp;</span
+              >
+              <DateRange
+                start={startMonthYear}
+                end={endMonthYear}
+                class="font-mono text-sm leading-none font-extralight"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class:list={[
+          "relative z-110 px-12 pt-12 pr-8 pb-12",
+          { "flex flex-col": imageAlign !== undefined },
+          { "lg:flex-row-reverse": imageAlign === "right" },
+          { "lg:flex-row": imageAlign === "left" },
+        ]}
+      >
+        {
+          image && (
+            <div
+              class:list={[
+                "mb-10 shrink-0 lg:w-1/4",
+                { "lg:mr-10": imageAlign === "left" },
+                { "lg:ml-10": imageAlign === "right" },
+              ]}
+            >
+              <ProjectSingleImage imagePath={image} altText={imageAlt || projectName} />
+            </div>
+          )
+        }
+        <div
+          class="job-body list-custom-wrapper prose max-w-[70ch] font-light tracking-wide lg:flex-1"
+        >
+          <Content />
         </div>
       </div>
     </div>
-  </div>
-  {
-    tech && (
-      <div class="mt-8 text-xs">
-        <p class="sr-only">Skills:&nbsp;</p>
-        <ul class="flex flex-wrap gap-2">
-          {tech.map((t: string, i: number) => (
-            <>
-              <SkillBadge tag="li" class="mb-2" key={i}>
-                {t}
-              </SkillBadge>
-              {i !== tech.length - 1 && " "}
-            </>
-          ))}
-        </ul>
-      </div>
-    )
-  }
-  <div
-    class:list={[
-      "relative",
-      { "flex flex-col": imageAlign !== undefined },
-      { "lg:flex-row-reverse": imageAlign === "right" },
-      { "lg:flex-row": imageAlign === "left" },
-    ]}
-  >
+
     {
-      image && (
-        <div
-          class:list={[
-            "mb-10 shrink-0 lg:w-1/4",
-            { "lg:mr-10": imageAlign === "left" },
-            { "lg:ml-10": imageAlign === "right" },
-          ]}
-        >
-          <ProjectSingleImage imagePath={image} altText={imageAlt || projectName} />
+      tech && (
+        <div class="skills-list border-faint relative z-110 mr-0 ml-auto w-full max-w-64 border-l-2 pt-8 pr-4 pb-4 pl-4">
+          <p class="sr-only">Skills:&nbsp;</p>
+          <ul class="flex max-w-40 flex-col text-left font-mono">
+            {tech.map((t: string) => (
+              <li class="mb-4 flex items-start">
+                <span
+                  aria-hidden="true"
+                  class="decorator text-accent mr-4 text-sm leading-none font-extralight"
+                >
+                  :::
+                </span>
+                <SkillBadge
+                  tag="span"
+                  class="text-emphasis font-extralight whitespace-nowrap uppercase"
+                >
+                  {t}
+                </SkillBadge>
+              </li>
+            ))}
+          </ul>
         </div>
       )
     }
-    <div class="job-body list-custom-wrapper prose mt-8 max-w-none lg:flex-1">
-      <Content />
-    </div>
   </div>
-</div>
 
-<style>
-  @reference "../styles/global.css";
-  .job-card {
-    &::before {
-      @apply absolute top-1 -left-8 z-0 h-full max-h-96 w-1 bg-gradient-to-b from-emerald-400/20 via-teal-500/15 to-blue-950/20;
-      content: "";
-    }
-    &::after {
-      @apply absolute -top-0 -left-8 z-0 h-1 w-12 bg-gradient-to-r from-emerald-400/20 via-teal-500/15 to-blue-950/20;
-      content: "";
-    }
-
-    .project-image img {
-      @apply max-h-20 sm:max-h-20 md:max-h-24 lg:max-h-32;
-    }
-  }
-  .job-body {
-    p {
-      @apply mb-5;
-
-      &:last-child {
-        @apply mb-0;
+  <style>
+    @reference "../styles/global.css";
+    .job-card {
+      .project-image img {
+        @apply max-h-20 sm:max-h-20 md:max-h-24 lg:max-h-32;
       }
     }
+    .job-body {
+      p {
+        @apply mb-4;
 
-    li {
-      @apply mb-2 pl-6;
-    }
+        &:last-child {
+          @apply mb-0;
+        }
+      }
 
-    a {
-      @apply hover:text-highlight underline transition-colors;
-    }
+      ul {
+        @apply mt-8;
+      }
+      li {
+        @apply mb-2 pl-6;
+      }
 
-    blockquote {
-      @apply text-emphasis bg-gradient-to-br from-purple-600/15 via-blue-800/25 to-indigo-700/20 px-2 py-2 text-base leading-normal italic md:px-6 md:py-8 md:text-lg lg:px-10 lg:py-12 lg:text-xl lg:leading-loose;
-      position: relative;
-      cite {
-        @apply text-emphasis mt-12 block text-right text-xs font-semibold md:text-base;
+      a {
+        @apply hover:text-highlight underline transition-colors;
+      }
 
-        &::before {
-          @apply content-['—_'];
+      blockquote {
+        @apply text-emphasis relative text-base leading-normal italic md:text-sm lg:text-sm lg:leading-loose;
+        cite {
+          @apply mt-8 block text-right text-xs font-normal not-italic md:text-sm;
+
+          &::before {
+            @apply content-['—_'];
+          }
         }
       }
     }
-  }
 
-  /* When image is aligned, allow content images to span full width */
-  .job-body :global(img) {
-    @apply w-full;
-  }
+    .job-body :global(img) {
+      @apply w-full;
+    }
 
-  .image:before {
-    z-index: 0;
-    background: radial-gradient(
-      circle,
-      rgba(0, 150, 100, 0.4) 0%,
-      rgba(0, 150, 100, 0.15) 25%,
-      transparent 70%
-    );
-    content: "";
-    top: 50%;
-    left: 50%;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    transform: translate3d(-50%, -50%, 0) scale(3);
-  }
-</style>
+    .job-backdrop {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background: var(--color-background-dark);
+      clip-path: polygon(0 0, calc(100% - 10rem) 0, 100% 4rem, 100% 100%, 0 100%);
+    }
+
+    .job-frame::after {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      z-index: 1;
+      pointer-events: none;
+      background: var(--color-faint);
+      clip-path: polygon(0 0, calc(100% - 5rem) 0, 100% 4rem, 100% 100%, 0 100%);
+    }
+
+    .job-frame::before {
+      z-index: 0;
+      filter: blur(2rem);
+      background: radial-gradient(
+        circle,
+        color-mix(in oklch, var(--color-accent) 100%, transparent) 0%,
+        transparent 100%
+      );
+      content: "";
+      top: 0;
+      left: 0;
+      height: 10rem;
+      width: 10rem;
+      position: absolute;
+      opacity: 0.2;
+      transform: translate3d(-25%, -25%, 0);
+    }
+
+    .skills-list {
+      z-index: 110;
+      isolation: isolate;
+
+      .decorator {
+        margin-top: 0.025em;
+        letter-spacing: -0.25em;
+      }
+    }
+
+    @media (prefers-contrast: more) {
+      .job-frame::after {
+        background: var(--color-emphasis);
+      }
+      .job-frame::before {
+        display: none;
+      }
+    }
+  </style>
+</div>

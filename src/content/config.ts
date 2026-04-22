@@ -42,6 +42,7 @@ const projects = defineCollection({
     imageAlign: z.enum(["left", "right"]).optional(),
     imageMaxHeight: z.string().optional(),
     tech: z.array(z.string()).optional(),
+    order: z.number().optional(),
   }),
 });
 

@@ -25,7 +25,7 @@ const { Content } = await job.render();
         <div class="flex w-full justify-between pr-4 pb-4">
           <div class="flex flex-col justify-start">
             <h3
-              class="text-accent font-display relative z-110 mb-1 text-2xl leading-none tracking-wider md:text-2xl lg:text-3xl"
+              class="text-accent font-display relative z-110 mb-2 text-2xl leading-none tracking-wider md:text-2xl lg:text-3xl"
             >
               {position}
             </h3>
@@ -49,14 +49,16 @@ const { Content } = await job.render();
               <DateRange
                 start={startMonthYear}
                 end={endMonthYear}
-                class="font-mono text-xs leading-none font-extralight"
+                class="font-mono text-sm leading-none font-extralight"
               />
             </div>
           </div>
         </div>
       </div>
 
-      <div class="job-body list-custom-wrapper prose relative z-110 px-16 pt-12 pr-8 pb-12">
+      <div
+        class="job-body list-custom-wrapper prose relative z-110 max-w-[80ch] px-12 pt-12 pr-8 pb-12 font-light tracking-wide"
+      >
         <Content />
       </div>
     </div>
@@ -98,8 +100,6 @@ const { Content } = await job.render();
   }
   .job-body {
     p {
-      @apply mb-5;
-
       &:last-child {
         @apply mb-0;
       }
