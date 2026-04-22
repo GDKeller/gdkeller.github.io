@@ -7,7 +7,7 @@ const jobs = await getCollection("jobs");
 const sortedJobs = jobs.sort((a, b) => (a.data.order ?? 0) - (b.data.order ?? 0));
 ---
 
-<HeadingSection text="Experience" as="h2" align="left" treatment="scanline" class="mb-16" />
+<HeadingSection text="Experience" as="h2" align="left" class="mb-16" />
 <ul>
   {
     sortedJobs.map((job) => (

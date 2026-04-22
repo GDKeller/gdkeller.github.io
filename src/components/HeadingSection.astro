@@ -3,7 +3,7 @@ import type { HTMLAttributes } from "astro/types";
 
 type Align = "left" | "center";
 type Size = "sm" | "md" | "lg";
-type Treatment = "none" | "scanline" | "glow";
+type Treatment = "none" | "scanline" | "glow" | "inverted";
 type As = "h2" | "h3" | "p";
 
 interface Props {
@@ -28,7 +28,7 @@ const {
 } = Astro.props as Props;
 
 const alignClasses: Record<Align, string> = {
-  left: "text-left",
+  left: "section-heading__left text-left ml-0 mr-auto",
   center: "text-center mx-auto",
 };
 
@@ -39,9 +39,10 @@ const sizeClasses: Record<Size, string> = {
 };
 
 const treatmentClasses: Record<Treatment, string> = {
-  none: "",
-  scanline: "w-auto block",
-  glow: "section-heading__glow",
+  none: "text-emphasis",
+  scanline: "section-heading__line text-emphasis block",
+  glow: "text-emphasis section-heading__glow",
+  inverted: "section-heading__inverted text-black bg-emphasis py-2 px-4",
 };
 ---
 
@@ -49,11 +50,11 @@ const treatmentClasses: Record<Treatment, string> = {
   id={id}
   class:list={[
     "section-heading",
-    "font-blackletter text-emphasis mb-8",
+    "font-blackletter leading-none",
     alignClasses[align],
     sizeClasses[size],
     treatmentClasses[treatment],
-    treatment !== "none" && align === "center" && "section-heading__center",
+    treatment !== "none" && "section-heading__center",
     className,
   ]}
   {...rest}

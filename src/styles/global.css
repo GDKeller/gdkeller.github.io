@@ -15,14 +15,11 @@
 
 @theme {
   /* Fonts */
-  /* --font-blackletter: "Bokor", serif; */
   --font-prompt: "Prompt", sans-serif;
-  /* --font-display: "Karantina", system-ui; */
   --font-manufacturing_consent: "Manufacturing Consent", system-ui;
 
   --font-display: var(--font-prompt);
   --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Monaco, monospace;
-  /* --font-blackletter: var(--font-blackletter); */
   --font-blackletter: var(--font-manufacturing_consent);
 
   /* Spacing extensions */
@@ -85,32 +82,18 @@
    not as base colors. Roles without a hover variant (foundation, subtle,
    background) are not interactive. */
 @theme {
-  /* --color-background: var(--color-black); */
-  /* --color-foundation: var(--color-emerald-100); */
-  /* --color-emphasis: var(--color-emerald-200); */
-  /* --color-emphasis-hover: var(--color-emerald-100); */
-  /* --color-accent: var(--color-emerald-400); */
-  /* --color-accent-hover: var(--color-emerald-300); */
-  /* --color-highlight: var(--color-fuchsia-500); */
-  /* --color-highlight-hover: var(--color-fuchsia-300); */
-  /* --color-subtle: var(--color-emerald-700); */
-  /* --color-faint: var(--color-emerald-950); */
-
   /* --color-background: oklch(0.13 0.0355 150); #000b02 */
   --color-background: oklch(0.1 0.025 150); /* #000501 */
+  --color-background-dark: oklch(0.05 0.0141 150); /* #000100 */
   --color-scrim: oklch(0.53 0.05 150);
   --color-foundation: oklch(0.968 0.06 130); /* #e7fdd3 */
   --color-emphasis: oklch(88% 0.1 130); /* #c2e59f */
   --color-emphasis-hover: oklch(0.88 0.155 130); /* #b5ec79 */
   --color-emphasis-analogous1: oklch(0.85 0.185 143); /* #7dec78 */
   --color-emphasis-analogous2: oklch(0.916 0.136 108); /* #ecea79 */
-
-  /* Triadic
-  bg: #110024
-  fg: #E1FCD9
-  accent: #03FA76
-  highlight: #FF0389
-  */
+  --color-faint: oklch(0.57 0.06 130);
+  --color-fainter: oklch(0.45 0.05 130);
+  --color-reduced: oklch(0.57 0.075 110);
 
   --color-accent: oklch(0.777 0.17 161);
   --color-accent-hover: oklch(0.8764 0.229 151.94);
@@ -118,8 +101,6 @@
   --color-highlight-hover: oklch(83.3% 0.1322 332);
   --color-subtle: oklch(50.81% 0.1049 160);
   /* --color-faint: oklch(0.295 0.026 200); */
-  --color-faint: oklch(0.57 0.06 130);
-  --color-reduced: oklch(0.57 0.075 110);
 
   --color-secondary-light: oklch(0.9 0.1 190);
   --color-secondary-emphasis: oklch(0.8 0.136 190);
@@ -223,25 +204,34 @@ strong {
   white-space: pre;
 }
 
-.section-heading__glow {
-  text-shadow: var(--color-emerald-500) 0px 0px 8px;
+.section-heading__left {
+  margin-left: -0.1em;
 }
 
 .section-heading__center {
   position: relative;
   display: block;
+}
+
+.section-heading__glow {
+  text-shadow: var(--color-emerald-500) 0px 0px 8px;
+}
+
+.section-heading__line {
+  width: min-content;
+  line-height: 0.65;
+  white-space: pre;
 
   &::before {
     content: "";
     position: absolute;
-    right: 100%;
-    margin-right: 1rem;
+    right: calc(100% + 1rem);
     top: 50%;
     width: 100%;
-    height: 10px;
-    background-color: var(--color-faint);
-    transform: translate3d(0, -50%, 0) scaleY(0.05);
-    filter: blur(0.5rem);
+    height: 1px;
+    background-color: var(--color-accent);
+    transform: translate3d(0, 0.05em, 0);
+    opacity: 100%;
   }
   &::after {
     content: "";
@@ -250,12 +240,21 @@ strong {
     margin-left: 1rem;
     top: 50%;
     width: 100vw;
-    max-width: calc(100vw - 100%);
-    height: 10px;
-    transform: translate3d(0, -50%, 0) scaleY(0.05);
-    background-color: var(--color-faint);
-    filter: blur(0.5rem);
+    height: 1px;
+    transform: translate3d(0, 0.05em, 0);
+    background-color: var(--color-accent);
+    opacity: 100%;
   }
+
+  &.section-heading__center {
+    &:before {
+      width: 100vw;
+    }
+  }
+}
+
+.section-heading__inverted {
+  margin-left: 0;
 }
 
 .hazard-stripe {

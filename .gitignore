@@ -35,3 +35,5 @@ docs/ux-review/
 
 #Ignore vscode AI rules
 .github/instructions/codacy.instructions.md
+
+/docs/scratch-notes.md

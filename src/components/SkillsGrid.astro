@@ -3,12 +3,13 @@ import HeadingSection from "./HeadingSection.astro";
 import SkillsCard from "./SkillsCard.astro";
 
 const primarySkills = [
-  "React",
   "TypeScript",
+  "React",
   "Node.js",
   "Accessibility / WCAG",
+  "SCSS/Tailwind CSS",
   "GSAP",
-  "Tailwind CSS",
+  "Information Architecture",
   "Performance Optimization",
 ];
 
@@ -16,13 +17,13 @@ const secondaryCategories = [
   {
     title: "Javascript",
     items: [
-      "React Native",
-      "Framer Motion",
+      "Typescript",
+      "React 19",
+      "React Native / Expo",
       "Astro / Gatsby",
-      "Next.js",
       "Express / Fastify",
+      "Next.js",
       "ThreeJS",
-      "TUI",
     ],
   },
   {
@@ -84,26 +85,24 @@ const secondaryCategories = [
 ];
 ---
 
-<div class="mx-auto mb-16 flex max-w-3xl flex-col items-center text-center">
+<div class="mb-16 flex flex-col items-center">
   <h2 class="sr-only">Skills</h2>
   <HeadingSection as="p" text="Tools of the Trade" align="center" aria-hidden="true" />
-  <p class="mb-8">
-    <span
-      class="text-emphasis mx-auto flex max-w-xs items-center gap-4 text-xs before:h-px before:flex-1 before:bg-emerald-200/20 after:h-px after:flex-1 after:bg-emerald-200/20"
-      >at home on</span
-    >&nbsp;<span class="font-display text-4xl">Mac, Linux & Windows</span>
-  </p>
 </div>
 
 <!-- Primary Skills — Core Expertise -->
-<div class="primary-skills mx-auto mb-12 max-w-3xl px-4">
-  <p class="font-display mb-5 text-center text-sm tracking-widest text-emerald-400/80 uppercase">
-    Core Expertise
-  </p>
-  <ul class="flex flex-wrap justify-center gap-3">
+<div class="primary-skills mb-12 flex flex-col items-center">
+  <div class="bg-emphasis border-faint border border-b-0 px-4 py-2">
+    <p
+      class="text-background-dark font-regular relative z-100 font-mono text-sm tracking-widest uppercase"
+    >
+      Core Expertise
+    </p>
+  </div>
+  <ul class="bg-background-dark grid w-full grid-cols-[auto_auto_auto_auto]">
     {
       primarySkills.map((skill) => (
-        <li class="primary-skill font-display text-foundation border border-emerald-400/30 bg-emerald-950/40 px-5 py-2.5 text-lg tracking-wide shadow-[0_0_12px_rgba(52,211,153,0.08)]">
+        <li class="text-emphasis border-fainter relative z-110 w-auto border px-8 py-4 font-mono text-base tracking-wide uppercase">
           {skill}
         </li>
       ))
@@ -112,11 +111,12 @@ const secondaryCategories = [
 </div>
 
 <!-- Secondary Skills — Full Range by Category -->
-<details class="secondary-skills-details group mx-auto w-full">
+<details class="secondary-skills-details group">
   <summary
-    class="font-display mb-6 flex cursor-pointer items-center justify-center gap-2 text-center text-sm tracking-widest text-emerald-300/50 uppercase transition-colors select-none hover:text-emerald-300/80"
+    class="font-display text-emphasis mx-auto mb-4 flex w-min cursor-pointer items-center justify-center px-4 py-2 whitespace-pre select-none"
   >
-    <span>Also experienced with</span>
+    <span class="relative z-110 mr-2 font-mono text-sm tracking-widest uppercase">Full Loadout</span
+    >
     <svg
       class="h-4 w-4 transition-transform group-open:rotate-180"
       fill="none"
@@ -127,13 +127,13 @@ const secondaryCategories = [
       <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
     </svg>
   </summary>
-  <div class="skills-grid flex flex-col gap-4 pr-4 pb-4 sm:grid sm:grid-cols-2 lg:grid-cols-3">
+  <div class="skills-grid flex flex-col sm:grid sm:grid-cols-2 lg:grid-cols-3">
     {
       secondaryCategories.map((cat) => (
         <SkillsCard text={cat.title}>
-          <ul class="list flex flex-col gap-1.5">
+          <ul class="list flex flex-col gap-2">
             {cat.items.map((item) => (
-              <li class="text-sm text-emerald-200/60">{item}</li>
+              <li class="relative z-110 px-8 py-1 font-mono text-base">{item}</li>
             ))}
           </ul>
         </SkillsCard>

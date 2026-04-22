@@ -9,6 +9,8 @@ const { tag, class: className } = Astro.props;
 const Element = tag || "div";
 ---
 
-<Element class:list={["text-body-2xs block font-mono tracking-widest sm:inline-block", className]}>
+<Element
+  class:list={["block font-mono text-xs font-bold tracking-widest sm:inline-block", className]}
+>
   <slot />
 </Element>

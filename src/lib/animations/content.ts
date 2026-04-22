@@ -19,6 +19,7 @@ export function initJobAnimations(gsap: GSAPInstance, ScrollTrigger: ScrollTrigg
           duration: 1,
           ease: "power1.out",
           delay: index * 0.15,
+          clearProps: "transform,opacity",
         });
       },
       once: true,
