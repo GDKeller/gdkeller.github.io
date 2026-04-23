@@ -2,26 +2,25 @@
 import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
 
-// Client logos
-import logoAAM from "../images/logos/clients/logo_AAM.webp";
-import logoADDitude from "../images/logos/clients/logo_ADDitude_white.png";
-import logoAlley from "../images/logos/clients/logo_alley_white-transparent.png";
-import logoCoolGreenScience from "../images/logos/clients/logo_CoolGreenScience.svg";
-import logoCPJ from "../images/logos/clients/logo_CPJ.webp";
-import logoDecider from "../images/logos/clients/logo_Decider.webp";
-import logoDunBradstreet from "../images/logos/clients/logo_DunandBradstreet_wordmark.png";
-import logoHealthline from "../images/logos/clients/logo_healthline_white-transparent.png";
-import logoKFF from "../images/logos/clients/logo_KFF-HealthNews.svg";
-import logoLACPH from "../images/logos/clients/logo_LACPH.webp";
-import logoMarinersMuseum from "../images/logos/clients/logo_MarinersMuseum_transparent.webp";
-import logoNASA from "../images/logos/clients/logo_NASA.webp";
-import logoNHMLA from "../images/logos/clients/logo_NHMLA_black.webp";
-import logoNYP from "../images/logos/clients/logo_NYP_horizontal-red.png";
-import logoPageSix from "../images/logos/clients/logo_PageSix_horizontal-white.png";
-import logoRCFP from "../images/logos/clients/logo_RCFP.webp";
-import logoS3Enterprise from "../images/logos/clients/logo_s3enterprise.jpg";
-import logoStudio3 from "../images/logos/clients/logo_studio3.jpg";
-import logoTedx from "../images/logos/clients/logo_tedx.png";
+// Client logos — foundation-tinted variants for visual uniformity
+import logoAAM from "../images/logos/clients/tinted/logo_AAM_tint.webp";
+import logoADDitude from "../images/logos/clients/tinted/logo_ADDitude_tint.webp";
+import logoAlley from "../images/logos/clients/tinted/logo_alley_tint.webp";
+import logoCoolGreenScience from "../images/logos/clients/tinted/logo_CoolGreenScience_tint.webp";
+import logoCPJ from "../images/logos/clients/tinted/logo_CPJ_tint.webp";
+import logoDecider from "../images/logos/clients/tinted/logo_decider_wordmark_tint.webp";
+import logoDunBradstreet from "../images/logos/clients/tinted/logo_DunandBradstreet_wordmark_tint.webp";
+import logoHealthline from "../images/logos/clients/tinted/logo_healthline_tint.webp";
+import logoKFF from "../images/logos/clients/tinted/logo_KFF-HealthNews_tint.webp";
+import logoLADPH from "../images/logos/clients/tinted/logo_LADPH_tint.webp";
+import logoMarinersMuseum from "../images/logos/clients/tinted/logo_MarinersMuseum_tint.webp";
+import logoNASA from "../images/logos/clients/tinted/logo_nasa_wordmark_tint.webp";
+import logoNHMLAC from "../images/logos/clients/tinted/logo_NHMLAC_tint.webp";
+import logoNYP from "../images/logos/clients/tinted/logo_NYP_tint.webp";
+import logoPageSix from "../images/logos/clients/tinted/logo_PageSix_tint.webp";
+import logoRCFP from "../images/logos/clients/tinted/logo_RCFP_tint.webp";
+import logoStudio3 from "../images/logos/clients/tinted/logo_studio3_tint.webp";
+import logoTedx from "../images/logos/clients/tinted/logo_tedx_tint.webp";
 
 interface Logo {
   src: ImageMetadata;
@@ -35,8 +34,8 @@ const logos: Logo[] = [
   { src: logoNASA, alt: "NASA" },
   { src: logoNYP, alt: "New York Post" },
   { src: logoTedx, alt: "TEDx" },
-  { src: logoNHMLA, alt: "Natural History Museum of Los Angeles" },
-  { src: logoLACPH, alt: "LA County Public Health" },
+  { src: logoNHMLAC, alt: "Natural History Museum of Los Angeles County" },
+  { src: logoLADPH, alt: "LA County Department of Public Health" },
   { src: logoPageSix, alt: "Page Six" },
   { src: logoHealthline, alt: "Healthline" },
   { src: logoDunBradstreet, alt: "Dun & Bradstreet" },
@@ -46,7 +45,6 @@ const logos: Logo[] = [
   { src: logoKFF, alt: "KFF Health News" },
   { src: logoMarinersMuseum, alt: "The Mariners' Museum" },
   { src: logoDecider, alt: "Decider" },
-  { src: logoS3Enterprise, alt: "S3 Enterprise" },
   { src: logoCoolGreenScience, alt: "Cool Green Science" },
 ];
 ---
@@ -57,9 +55,7 @@ const logos: Logo[] = [
   aria-label="Organizations I've worked with"
 >
   <div class="carousel-mask relative h-full overflow-hidden">
-    <div
-      class="carousel-track flex h-full items-center gap-10 brightness-125 contrast-200 saturate-0 md:gap-14"
-    >
+    <div class="carousel-track flex h-full items-center gap-10 md:gap-14">
       {/* Primary logos - visible to screen readers */}
       {
         logos.map((logo) => (
