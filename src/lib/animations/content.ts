@@ -44,6 +44,7 @@ export function initFooterAnimations(
           opacity: 1,
           duration: 0.8,
           ease: "power1.out",
+          clearProps: "transform,opacity",
         });
       },
       once: true,

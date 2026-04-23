@@ -38,6 +38,7 @@ export interface GSAPTweenVars extends GSAPVars {
   stagger?: number;
   delay?: number;
   scrollTrigger?: ScrollTriggerVars;
+  clearProps?: string;
 }
 
 export interface ScrollTriggerVars {
