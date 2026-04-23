@@ -11,7 +11,7 @@ const { imagePath, altText } = Astro.props;
 
 const images = import.meta.glob<{ default: ImageMetadata }>([
   "/src/images/projects/*/*.{jpeg,jpg,png,gif,webp}",
-  "/src/images/logos/clients/*.{jpeg,jpg,png,gif,webp}",
+  "/src/images/logos/clients/original/*.{jpeg,jpg,png,gif,webp}",
   "/src/images/logos/jobs/*.{jpeg,jpg,png,gif,webp}",
 ]);
 
