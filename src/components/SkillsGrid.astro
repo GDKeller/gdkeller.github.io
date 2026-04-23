@@ -7,7 +7,7 @@ const primarySkills = [
   "React",
   "Node.js",
   "Accessibility / WCAG",
-  "SCSS/Tailwind CSS",
+  "SCSS / Tailwind",
   "GSAP",
   "Information Architecture",
   "Performance Optimization",
@@ -29,7 +29,7 @@ const secondaryCategories = [
   {
     title: "CSS",
     items: [
-      "Sass/SCSS",
+      "Sass / SCSS",
       "Advanced CSS Animations",
       "Semantic Systems",
       "BEM / Component Systems",
@@ -91,15 +91,15 @@ const secondaryCategories = [
 </div>
 
 <!-- Primary Skills — Core Expertise -->
-<div class="primary-skills mb-12 flex flex-col items-center">
-  <div class="bg-emphasis border-faint border border-b-0 px-4 py-2">
+<div class="primary-skills mb-0 flex flex-col items-start gap-1">
+  <div class="bg-emphasis px-4 py-2">
     <p
       class="text-background-dark font-regular relative z-100 font-mono text-sm tracking-widest uppercase"
     >
       Core Expertise
     </p>
   </div>
-  <ul class="bg-background-dark grid w-full grid-cols-[auto_auto_auto_auto]">
+  <ul class="bg-background-dark grid w-full grid-cols-[auto_auto_auto_auto] gap-1">
     {
       primarySkills.map((skill) => (
         <li class="text-emphasis border-fainter relative z-110 w-auto border px-8 py-8 font-mono text-base tracking-wide uppercase">
@@ -111,23 +111,20 @@ const secondaryCategories = [
 </div>
 
 <!-- Secondary Skills — Full Range by Category -->
-<details class="secondary-skills-details group">
+<details class="secondary-skills-details">
   <summary
-    class="font-display text-emphasis mx-auto mb-4 flex w-min cursor-pointer items-center justify-center px-4 py-2 whitespace-pre select-none"
+    class="font-display text-accent border-faint hover:text-accent-hover mx-auto mr-0 mb-0 ml-auto flex w-full cursor-pointer items-center justify-center gap-2 border-b py-1 text-right whitespace-pre select-none"
   >
-    <span class="relative z-110 mr-2 font-mono text-sm tracking-widest uppercase">Full Loadout</span
+    <span class="hazard-stripe h-8 w-full"></span>
+    <span
+      class="text relative z-110 px-2 py-4 pl-3 font-mono text-sm leading-none tracking-widest uppercase"
+      >Full Loadout</span
     >
-    <svg
-      class="h-4 w-4 transition-transform group-open:rotate-180"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-      stroke-width="2"
-    >
-      <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-    </svg>
+    <span class="hazard-stripe h-8 w-full"></span>
   </summary>
-  <div class="skills-grid flex flex-col sm:grid sm:grid-cols-2 lg:grid-cols-3">
+  <div
+    class="skills-grid border-fainter flex flex-col border-r border-b sm:grid sm:grid-cols-2 lg:grid-cols-3"
+  >
     {
       secondaryCategories.map((cat) => (
         <SkillsCard text={cat.title}>
@@ -141,3 +138,82 @@ const secondaryCategories = [
     }
   </div>
 </details>
+
+<style lang="scss">
+  summary {
+    .text {
+      &::after {
+        letter-spacing: 0.25em;
+        margin-left: 0.5em;
+        content: "[+]";
+      }
+    }
+
+    &:hover {
+      .hazard-stripe {
+        opacity: 1;
+        animation: none;
+      }
+    }
+  }
+
+  details[open] > summary .text::after {
+    content: "[−]";
+  }
+
+  details {
+    interpolate-size: allow-keywords;
+  }
+
+  details[open] > summary .hazard-stripe {
+    animation: none;
+  }
+
+  details::details-content {
+    block-size: 0;
+    overflow: clip;
+    transition:
+      block-size 350ms ease,
+      content-visibility 350ms allow-discrete;
+  }
+
+  details[open]::details-content {
+    block-size: auto;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    details::details-content {
+      transition: none;
+    }
+    .hazard-stripe {
+      animation: none;
+    }
+  }
+
+  .hazard-stripe {
+    transition: opacity 50ms;
+    opacity: 0.7;
+    animation: hazard-breathe 3s infinite ease-in-out;
+    &:first-child {
+      clip-path: polygon(0 0, calc(100% - 0px) 0, 95% 100%, calc(100% - 0px) 100%, 0 100%);
+    }
+    &:last-child {
+      clip-path: polygon(0px 0, 100% 0, 100% 100%, 0px 100%, 5% 0%);
+    }
+  }
+
+  @keyframes hazard-breathe {
+    0% {
+      opacity: 0.5;
+    }
+    25% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 0.5;
+    }
+  }
+</style>

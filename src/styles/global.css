@@ -278,8 +278,18 @@ strong {
   background: repeating-linear-gradient(
     45deg,
     transparent 0px,
-    transparent 1rem,
-    color-mix(in srgb, var(--color-emphasis) 80%, transparent) 1rem,
-    color-mix(in srgb, var(--color-emphasis) 80%, transparent) 1.5rem
+    transparent 0.5rem,
+    var(--color-emphasis) 0.5rem,
+    var(--color-emphasis) 1rem
+  );
+}
+
+.hazard-stripe__faint {
+  background: repeating-linear-gradient(
+    45deg,
+    transparent 0px,
+    transparent 0.5rem,
+    var(--color-faint) 0.5rem,
+    var(--color-faint) 1rem
   );
 }

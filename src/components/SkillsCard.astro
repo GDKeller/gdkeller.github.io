@@ -6,13 +6,15 @@ interface Props {
 const { text } = Astro.props;
 ---
 
-<div class="skill-item border-fainter relative h-full border">
-  <div class="skill-item__inner bg-background-dark h-full pt-4 pb-16">
+<div class="skill-item border-fainter bg-background-dark h-full border-t border-l">
+  <div class="skill-item__inner relative z-110 h-full pt-4 pb-16">
     <h3
       class="text-emphasis border-fainter relative z-110 mb-8 border-b px-8 pb-4 font-mono text-xl font-light tracking-wider uppercase"
     >
       <span class="text-accent -tracking-[0.3em]">:::</span>
-      {text}
+      <span class="relative z-110">
+        {text}
+      </span>
     </h3>
     <slot />
   </div>

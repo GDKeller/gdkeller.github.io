@@ -4,11 +4,12 @@ import Layout from "../layouts/Layout.astro";
 // Pulled directly from src/styles/global.css. Keep in sync when adding tokens.
 const colorTokens = [
   { name: "background", group: "structural" },
+  { name: "background-dark", group: "structural" },
   // Non-interactive singles first so base+hover pairs land on even-column starts.
   { name: "foundation", group: "attention" },
   { name: "subtle", group: "attention" },
   { name: "faint", group: "attention" },
-  { name: "reduced", group: "attention" },
+  { name: "fainter", group: "attention" },
   { name: "emphasis", group: "attention" },
   { name: "emphasis-hover", group: "attention" },
   { name: "accent", group: "attention" },
@@ -23,6 +24,7 @@ const colorTokens = [
 ];
 
 const fontTokens = [
+  { name: "display", label: "Prompt", role: "Display" },
   { name: "blackletter", label: "Manufacturing Consent", role: "Blackletter alias" },
   { name: "prompt", label: "Prompt", role: "Body" },
   { name: "mono", label: "IBM Plex Mono", role: "Monospace" },
@@ -48,14 +50,14 @@ const groupedColors = Object.keys(groupLabels).map((group) => ({
 ---
 
 <Layout title="Style Reference — Grant Keller">
-  <main class="bg-background text-foundation min-h-screen px-6 pt-16 pb-32 md:px-12 lg:px-20">
-    <header class="border-emphasis/30 mx-auto mb-16 flex max-w-6xl items-end border-b pb-6">
+  <main class="bg-background-dark text-foundation min-h-screen px-6 pt-16 pb-32 md:px-12 lg:px-20">
+    <header class="border-faint mx-auto mb-16 flex max-w-6xl items-end border-b pb-6">
       <div class="mr-auto">
-        <p class="text-reduced text-body-2xs font-mono tracking-widest uppercase">
+        <p class="text-faint text-body-2xs font-mono tracking-widest uppercase">
           Style Reference ::: Design Tokens
         </p>
         <h1
-          class="font-blackletter text-emphasis mt-4 scale-y-90 text-6xl leading-none tracking-tight md:text-7xl"
+          class="font-display text-foundation mt-4 text-6xl leading-none tracking-tight md:text-7xl"
         >
           Style Reference
         </h1>
@@ -74,11 +76,11 @@ const groupedColors = Object.keys(groupLabels).map((group) => ({
         <div class="mb-8 flex items-baseline gap-4">
           <h2
             id="colors-heading"
-            class="font-blackletter text-emphasis scale-y-90 text-4xl leading-none tracking-tight md:text-5xl"
+            class="font-display text-emphasis text-4xl leading-none tracking-tight md:text-4xl"
           >
             Color
           </h2>
-          <span class="text-reduced text-body-2xs font-mono tracking-widest uppercase">
+          <span class="text-faint font-mono text-xs tracking-widest uppercase">
             {colorTokens.length} tokens
           </span>
         </div>
@@ -86,22 +88,22 @@ const groupedColors = Object.keys(groupLabels).map((group) => ({
         {
           groupedColors.map((g) => (
             <div class="mb-12">
-              <h3 class="text-reduced text-body-xs mb-4 font-mono tracking-widest uppercase">
+              <h3 class="text-emphasis text-body-xs mb-4 font-mono tracking-widest uppercase">
                 {g.label}
               </h3>
               <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4">
                 {g.tokens.map((t) => (
-                  <div class="border-emphasis/20 group relative flex items-stretch border">
+                  <div class="group relative flex items-stretch">
                     <div
-                      class="h-20 w-20 shrink-0 border-r border-black/40"
+                      class="h-20 w-20 shrink-0"
                       style={`background-color: var(--color-${t.name});`}
                     />
                     <div class="flex flex-col justify-center px-4 py-3">
-                      <code class="text-emphasis text-body-sm font-mono leading-tight">
+                      <code class="text-foundation text-body-sm font-mono leading-tight">
                         --color-{t.name}
                       </code>
                       <code
-                        class="text-reduced text-body-2xs mt-1 font-mono leading-tight"
+                        class="text-foundation text-body-2xs mt-1 font-mono leading-tight"
                         data-color-value={t.name}
                       >
                         …
@@ -120,11 +122,11 @@ const groupedColors = Object.keys(groupLabels).map((group) => ({
         <div class="mb-8 flex items-baseline gap-4">
           <h2
             id="fonts-heading"
-            class="font-blackletter text-emphasis scale-y-90 text-4xl leading-none tracking-tight md:text-5xl"
+            class="font-display text-emphasis text-4xl leading-none tracking-tight md:text-4xl"
           >
             Typography
           </h2>
-          <span class="text-reduced text-body-2xs font-mono tracking-widest uppercase">
+          <span class="text-faint text-body-2xs font-mono tracking-widest uppercase">
             {fontTokens.length} families
           </span>
         </div>
@@ -134,8 +136,8 @@ const groupedColors = Object.keys(groupLabels).map((group) => ({
             fontTokens.map((f) => (
               <div class="border-emphasis/20 border-b pb-6">
                 <div class="mb-3 flex items-baseline gap-4">
-                  <code class="text-emphasis text-body-sm font-mono">--font-{f.name}</code>
-                  <span class="text-reduced text-body-2xs font-mono tracking-widest uppercase">
+                  <code class="text-foundation text-body-sm font-mono">--font-{f.name}</code>
+                  <span class="text-emphasis text-body-2xs font-mono tracking-widest uppercase">
                     {f.label} / {f.role}
                   </span>
                 </div>
@@ -145,7 +147,7 @@ const groupedColors = Object.keys(groupLabels).map((group) => ({
                 >
                   The quick brown fox jumps over the lazy dog.
                 </p>
-                <p class="text-reduced mt-2 text-2xl" style={`font-family: var(--font-${f.name});`}>
+                <p class="text-faint mt-2 text-2xl" style={`font-family: var(--font-${f.name});`}>
                   ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 ᠅
                 </p>
               </div>
@@ -159,7 +161,7 @@ const groupedColors = Object.keys(groupLabels).map((group) => ({
         <div class="mb-8 flex items-baseline gap-4">
           <h2
             id="scale-heading"
-            class="font-blackletter text-emphasis scale-y-90 text-4xl leading-none tracking-tight md:text-5xl"
+            class="font-display text-emphasis text-4xl leading-none tracking-tight md:text-4xl"
           >
             Type Scale
           </h2>
@@ -173,14 +175,17 @@ const groupedColors = Object.keys(groupLabels).map((group) => ({
               { label: "Body", items: bodySizes },
             ].map((col) => (
               <div>
-                <h3 class="text-reduced text-body-xs mb-4 font-mono tracking-widest uppercase">
+                <h3 class="text-emphasis mb-4 font-mono text-base tracking-widest uppercase">
                   {col.label}
                 </h3>
                 <div class="space-y-4">
                   {col.items.map((name) => (
-                    <div class="border-emphasis/20 border-b pb-3">
-                      <div class="text-reduced text-body-2xs mb-1 font-mono">
-                        text-{name} · <span data-text-value={name}>…</span>
+                    <div class="border-faint border-b pb-3">
+                      <div class="text-foundation text-xs mb-1 font-mono">
+                        text-{name} ·{" "}
+                        <span class="text-emphasis" data-text-value={name}>
+                          …
+                        </span>
                       </div>
                       <div
                         class="text-foundation"
@@ -202,7 +207,7 @@ const groupedColors = Object.keys(groupLabels).map((group) => ({
         <div class="mb-8 flex items-baseline gap-4">
           <h2
             id="spacing-heading"
-            class="font-blackletter text-emphasis scale-y-90 text-4xl leading-none tracking-tight md:text-5xl"
+            class="font-display text-emphasis text-4xl leading-none tracking-tight md:text-4xl"
           >
             Spacing Extensions
           </h2>
@@ -212,11 +217,11 @@ const groupedColors = Object.keys(groupLabels).map((group) => ({
           {
             spacingTokens.map((name) => (
               <div class="flex items-center gap-6">
-                <code class="text-emphasis text-body-sm w-32 shrink-0 font-mono">
+                <code class="text-foundation w-32 shrink-0 font-mono text-base">
                   spacing-{name}
                 </code>
                 <code
-                  class="text-reduced text-body-2xs w-16 shrink-0 font-mono"
+                  class="text-emphasis w-16 shrink-0 font-mono text-sm"
                   data-spacing-value={name}
                 >
                   …
