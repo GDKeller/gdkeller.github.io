@@ -10,10 +10,7 @@ import Nav from "./Nav.astro";
   <div class="relative flex w-full items-center justify-between">
     <div class="box-border flex items-stretch gap-4">
       <div class="my-2 hidden h-8 w-8 shrink-0 items-center justify-center md:flex">
-        <div
-          class="oscilloscope bg-background/50 h-7 w-7 overflow-hidden rounded-sm border border-emerald-400/20"
-          aria-hidden="true"
-        >
+        <div class="oscilloscope bg-background-dark h-8 w-8 overflow-hidden" aria-hidden="true">
           <svg class="h-full w-full p-0" viewBox="0 0 32 32" preserveAspectRatio="none">
             <polyline
               id="oscilloscope-wave"
@@ -36,7 +33,7 @@ import Nav from "./Nav.astro";
         class="icon-link group hidden md:block"
       >
         <svg
-          class="bg-background/60 text-emphasis group-hover:text-emphasis-hover group-focus-visible:text-emphasis-hover h-6 w-6 rounded-sm transition-all duration-200 group-hover:drop-shadow-[0_0_6px_rgba(16,185,129,0.5)] group-focus-visible:drop-shadow-[0_0_6px_rgba(16,185,129,0.5)]"
+          class="bg-background/60 text-emphasis group-hover:text-emphasis-hover group-focus-visible:text-emphasis-hover h-6 w-6 transition-all duration-200 group-hover:drop-shadow-[0_0_6px_rgba(16,185,129,0.5)] group-focus-visible:drop-shadow-[0_0_6px_rgba(16,185,129,0.5)]"
           fill="currentColor"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
