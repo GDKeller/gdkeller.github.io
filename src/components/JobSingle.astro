@@ -69,10 +69,10 @@ const { Content } = await job.render();
           <p class="sr-only">Skills:&nbsp;</p>
           <ul class="flex max-w-40 flex-col text-left font-mono">
             {tech.map((t: string) => (
-              <li class="mb-4 flex items-start">
+              <li class="mb-4 flex items-center">
                 <span
                   aria-hidden="true"
-                  class="decorator text-accent mr-4 text-sm leading-none font-extralight"
+                  class="text-accent triplecolon mr-4 text-sm leading-none font-light"
                 >
                   :::
                 </span>
@@ -156,11 +156,6 @@ const { Content } = await job.render();
   .skills-list {
     z-index: 110;
     isolation: isolate;
-
-    .decorator {
-      margin-top: 0.025em;
-      letter-spacing: -0.25em;
-    }
   }
 
   @media (prefers-contrast: more) {
