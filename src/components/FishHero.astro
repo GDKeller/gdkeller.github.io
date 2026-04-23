@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { Picture } from "astro:assets";
 import fishImg from "../images/projects/anglerfish/anglerfish.png";
 import waterImg from "../images/elements/water-reflections.webp";
 import fishBallImg from "../images/projects/anglerfish/fish-ball.png";
@@ -21,9 +21,13 @@ import anglerfishSpecimen from "../images/projects/nhmla-anglerfish/specimen.jpg
     <span
       class="mix-blend-color-difference absolute top-0 left-0 z-0 h-full w-full bg-gradient-to-tr from-green-500 via-purple-700 to-slate-700 opacity-30"
     ></span>
-    <Image
+    <Picture
       src={waterImg}
       alt="Water reflections"
+      widths={[800, 1600, 2400]}
+      sizes="100vw"
+      formats={["avif", "webp"]}
+      fallbackFormat="jpg"
       loading="lazy"
       class="h-full w-full object-cover"
     />
@@ -31,13 +35,26 @@ import anglerfishSpecimen from "../images/projects/nhmla-anglerfish/specimen.jpg
   <!-- <span class="fixed top-0 left-0 z-30 w-full h-full bg-gradient-to-tr from-fuchsia-400 via-purple-800 to-indigo-950 mix-blend-difference"></span> -->
   <div class="fish relative">
     <div class="fishball animation-fishball absolute z-10 w-full max-w-24">
-      <Image src={fishBallImg} alt="Sigil" loading="lazy" class="fish-hero__ball object-contain" />
+      <Picture
+        src={fishBallImg}
+        alt="Sigil"
+        widths={[96, 192, 288]}
+        sizes="96px"
+        formats={["avif", "webp"]}
+        fallbackFormat="webp"
+        loading="lazy"
+        class="fish-hero__ball object-contain"
+      />
     </div>
     <div class="fish-body relative z-40 max-h-none w-auto max-w-none overflow-visible">
       <!-- <div class="absolute top-0 left-0 z-30 w-full h-full bg-black opacity-60 mix-blend-difference"></div> -->
-      <Image
+      <Picture
         src={fishImg}
         alt="Anglerfish"
+        widths={[600, 1200, 1800]}
+        sizes="100vw"
+        formats={["avif", "webp"]}
+        fallbackFormat="webp"
         loading="lazy"
         class="fish-hero__image relative block h-full w-full overflow-visible object-cover object-left"
       />
@@ -46,9 +63,13 @@ import anglerfishSpecimen from "../images/projects/nhmla-anglerfish/specimen.jpg
       <span
         class="nhmla-logo relative -mb-4 inline-block overflow-visible shadow-xl shadow-black/60"
       >
-        <Image
+        <Picture
           src={nhmLogo}
           alt="Natural History Museum of Los Angeles logo"
+          widths={[240, 480]}
+          sizes="240px"
+          formats={["avif", "webp"]}
+          fallbackFormat="webp"
           loading="lazy"
           class="h-60 w-60 object-contain"
         />
@@ -68,9 +89,13 @@ import anglerfishSpecimen from "../images/projects/nhmla-anglerfish/specimen.jpg
       <span
         class="absolute top-0 left-0 z-30 h-full w-full bg-gradient-to-tr from-fuchsia-400 via-purple-800 to-indigo-950 mix-blend-difference"
       ></span>
-      <Image
+      <Picture
         src={waterImg}
         alt="Water reflections"
+        widths={[600, 1200]}
+        sizes="83vw"
+        formats={["avif", "webp"]}
+        fallbackFormat="jpg"
         loading="lazy"
         class="h-full w-full object-cover object-top-right"
       />
@@ -96,9 +121,12 @@ import anglerfishSpecimen from "../images/projects/nhmla-anglerfish/specimen.jpg
 
     <div class="mb-12 flex flex-col items-center justify-center gap-4 md:flex-row">
       <div class="relative z-30 max-w-sm">
-        <Image
+        <Picture
           src={anglerfishDisplayClose}
           alt="Anglerfish display closeup"
+          widths={[384, 768, 1152]}
+          sizes="(min-width: 768px) 384px, 90vw"
+          formats={["avif", "webp"]}
           loading="lazy"
           class="col-start-2 row-span-1 row-start-2"
         />
@@ -150,9 +178,12 @@ import anglerfishSpecimen from "../images/projects/nhmla-anglerfish/specimen.jpg
         </p>
       </div>
       <div class="relative z-30 w-auto max-w-sm">
-        <Image
+        <Picture
           src={anglerfishDisplayFront}
           alt="Anglerfish display front"
+          widths={[384, 768, 1152]}
+          sizes="(min-width: 768px) 384px, 90vw"
+          formats={["avif", "webp"]}
           loading="lazy"
           class="col-start-1 row-span-2 row-start-2"
         />
@@ -160,15 +191,21 @@ import anglerfishSpecimen from "../images/projects/nhmla-anglerfish/specimen.jpg
     </div>
     <div class="relative z-30 mx-auto max-w-4xl">
       <div class="flex w-auto flex-col items-center gap-4">
-        <Image
+        <Picture
           src={anglerfishDisplayFull}
           alt="Anglerfish display closeup"
+          widths={[512, 1024, 1536]}
+          sizes="(min-width: 1024px) 900px, 90vw"
+          formats={["avif", "webp"]}
           loading="lazy"
           class="w-full object-contain"
         />
-        <Image
+        <Picture
           src={anglerfishSpecimen}
           alt="Anglerfish specimen"
+          widths={[512, 1024, 1536]}
+          sizes="(min-width: 1024px) 900px, 90vw"
+          formats={["avif", "webp"]}
           loading="lazy"
           class="w-full object-contain"
         />

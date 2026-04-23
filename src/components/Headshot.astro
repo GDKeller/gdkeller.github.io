@@ -1,8 +1,17 @@
 ---
-import { Image } from "astro:assets";
+import { Picture } from "astro:assets";
 import headshotGrade from "../images/headshots/grant-chinatown_grade-high_800.webp";
 ---
 
 <div class="block h-full w-full">
-  <Image src={headshotGrade} alt="Grant Keller headshot" class="object-cover" />
+  <Picture
+    src={headshotGrade}
+    alt="Grant Keller headshot"
+    widths={[160, 320, 480]}
+    sizes="(min-width: 1024px) 320px, 40vw"
+    formats={["avif", "webp"]}
+    fallbackFormat="jpg"
+    loading="eager"
+    class="object-cover"
+  />
 </div>

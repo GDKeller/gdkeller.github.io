@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { Image } from "astro:assets";
+import { Picture } from "astro:assets";
 import bgImage from "../images/hero/bg_video_glitch.webp";
 import SkillsGrid from "../components/SkillsGrid.astro";
 import Projects from "../components/Projects.astro";
@@ -79,7 +79,16 @@ import HeadingSection from "../components/HeadingSection.astro";
     <div
       class="pointer-events-none fixed top-0 left-0 z-10 block h-full w-full overflow-hidden opacity-10 mix-blend-color"
     >
-      <Image src={bgImage} alt="" class="h-full w-full object-cover" />
+      <Picture
+        src={bgImage}
+        alt=""
+        widths={[800, 1600, 2400]}
+        sizes="100vw"
+        formats={["avif", "webp"]}
+        fallbackFormat="jpg"
+        loading="lazy"
+        class="h-full w-full object-cover"
+      />
     </div>
 
     <!-- Scan Lines -->

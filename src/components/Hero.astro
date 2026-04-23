@@ -1,11 +1,19 @@
 ---
-import { Image } from "astro:assets";
+import { Picture, getImage } from "astro:assets";
 import Headshot from "./Headshot.astro";
 import HeroBackground from "./HeroBackground.astro";
 import LogoCarousel from "./LogoCarousel.astro";
 import frameUpper from "../images/hero/hero_frame-upper.webp";
 import frameLower from "../images/hero/hero_frame-lower.webp";
 import headshotBackground from "../images/elements/headshot_bg_tint2_500_2x.webp";
+
+// Pre-generate AVIF + WebP of the mask texture so the CSS mask-image can
+// negotiate format via image-set(). The source WebP is tiny, but this keeps
+// every asset on the same pipeline and shaves the WebP fallback for AVIF
+// browsers.
+const maskAvif = await getImage({ src: headshotBackground, format: "avif", width: 600 });
+const maskWebp = await getImage({ src: headshotBackground, format: "webp", width: 600 });
+const maskImage = `image-set(url("${maskAvif.src}") type("image/avif"), url("${maskWebp.src}") type("image/webp"))`;
 ---
 
 <section
@@ -13,17 +21,26 @@ import headshotBackground from "../images/elements/headshot_bg_tint2_500_2x.webp
   class="bg-background flex min-h-[calc(100vh-3rem)] w-full max-w-full flex-col justify-end gap-0 overflow-hidden px-2 pt-0 pb-2 sm:px-8 sm:pt-10 lg:pt-12 lg:pb-16"
 >
   <HeroBackground />
-  <Image
+  <Picture
     src={frameUpper}
     alt=""
-    class="pointer-events-none absolute top-0 left-0 z-90 w-full select-none"
+    widths={[800, 1280, 1920]}
+    sizes="100vw"
+    formats={["avif", "webp"]}
+    fallbackFormat="webp"
     loading="eager"
+    fetchpriority="high"
+    class="pointer-events-none absolute top-0 left-0 z-90 w-full select-none"
   />
-  <Image
+  <Picture
     src={frameLower}
     alt=""
-    class="pointer-events-none absolute bottom-4 left-0 z-90 w-full select-none"
+    widths={[800, 1280, 1920]}
+    sizes="100vw"
+    formats={["avif", "webp"]}
+    fallbackFormat="webp"
     loading="eager"
+    class="pointer-events-none absolute bottom-4 left-0 z-90 w-full select-none"
   />
   <div
     id="hero__content"
@@ -34,11 +51,15 @@ import headshotBackground from "../images/elements/headshot_bg_tint2_500_2x.webp
         class="shadow-accent/15 relative z-110 mt-2 mb-6 flex w-full -rotate-[0.3deg] flex-col items-center justify-center overflow-visible p-0.5 px-0.5 pt-0 shadow-2xl sm:mr-auto sm:mb-auto sm:ml-auto sm:w-auto sm:flex-row sm:justify-start md:flex-col md:items-center"
       >
         <div class="absolute top-0 left-0 h-full w-full -translate-y-[1%]">
-          <Image
+          <Picture
             src={headshotBackground}
             alt=""
-            class="h-full scale-105 object-fill object-top"
+            widths={[300, 600, 900]}
+            sizes="(min-width: 768px) 320px, 33vw"
+            formats={["avif", "webp"]}
+            fallbackFormat="webp"
             loading="eager"
+            class="h-full scale-105 object-fill object-top"
           />
         </div>
         <div
@@ -69,7 +90,7 @@ import headshotBackground from "../images/elements/headshot_bg_tint2_500_2x.webp
         <div
           class="pointer-events-none absolute top-0 left-0 z-80 h-full w-full"
           aria-hidden="true"
-          style={`mask-image: url(${headshotBackground.src}); mask-mode: alpha; mask-size: 105% 105%; mask-position: 50% 70%; mask-repeat: no-repeat; -webkit-mask-image: url(${headshotBackground.src}); -webkit-mask-mode: alpha; -webkit-mask-size: 105% 105%; -webkit-mask-position: 50% 70%; -webkit-mask-repeat: no-repeat;`}
+          style={`mask-image: ${maskImage}; mask-mode: alpha; mask-size: 105% 105%; mask-position: 50% 70%; mask-repeat: no-repeat; -webkit-mask-image: ${maskImage}; -webkit-mask-mode: alpha; -webkit-mask-size: 105% 105%; -webkit-mask-position: 50% 70%; -webkit-mask-repeat: no-repeat;`}
         >
           <span
             class="text-fainter absolute right-0 bottom-0 z-100 translate-x-2 translate-y-0 -rotate-2 font-mono text-2xl leading-none font-normal whitespace-pre opacity-30 mix-blend-multiply lg:text-3xl"

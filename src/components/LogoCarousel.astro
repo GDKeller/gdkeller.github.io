@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { Picture } from "astro:assets";
 import type { ImageMetadata } from "astro";
 
 // Client logos — foundation-tinted variants for visual uniformity
@@ -60,11 +60,15 @@ const logos: Logo[] = [
       {
         logos.map((logo) => (
           <div class="carousel-item flex h-full flex-shrink-0 items-center">
-            <Image
+            <Picture
               src={logo.src}
               alt={logo.alt}
+              widths={[160, 320]}
+              sizes="(min-width: 768px) 220px, 160px"
+              formats={["avif", "webp"]}
+              fallbackFormat="webp"
+              loading="lazy"
               class="h-full max-h-full w-auto max-w-[160px] object-contain md:max-w-[220px]"
-              loading="eager"
             />
           </div>
         ))
@@ -76,11 +80,15 @@ const logos: Logo[] = [
             class="carousel-item--duplicate carousel-item flex h-full flex-shrink-0 items-center"
             aria-hidden="true"
           >
-            <Image
+            <Picture
               src={logo.src}
               alt=""
+              widths={[160, 320]}
+              sizes="(min-width: 768px) 220px, 160px"
+              formats={["avif", "webp"]}
+              fallbackFormat="webp"
+              loading="lazy"
               class="h-full max-h-full w-auto max-w-[160px] object-contain md:max-w-[220px]"
-              loading="eager"
             />
           </div>
         ))

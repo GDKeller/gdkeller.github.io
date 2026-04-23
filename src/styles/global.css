@@ -242,6 +242,15 @@ strong {
   margin-left: 0;
 }
 
+/* Astro's <Picture> wraps the <img> in a <picture> for multi-format <source>
+   negotiation. <picture> defaults to `display: inline`, which eats the
+   layout slot the <img> is expected to fill (h-full / object-cover against a
+   sized parent). `display: contents` flattens the <picture> in layout so the
+   <img> inherits the parent slot directly. */
+picture {
+  display: contents;
+}
+
 .laptop-rounded-top {
   border-radius: 3.75% 3.75% 0 0;
 }

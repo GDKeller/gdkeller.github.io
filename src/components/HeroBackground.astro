@@ -1,24 +1,32 @@
 ---
 // Layered cyberpunk background for hero section
-import { Image } from "astro:assets";
+import { Picture } from "astro:assets";
 import heroImg1 from "../images/hero/Texturelabs_LensFX_173L.webp";
 import heroImg2 from "../images/hero/Texturelabs_LensFX_127L.webp";
 ---
 
 <div class="hero-bg absolute inset-0 h-full w-full overflow-hidden bg-black/80" id="hero-bg">
   <!-- Layer 0a: Background Image -->
-  <Image
+  <Picture
     src={heroImg1}
     alt=""
-    class="absolute inset-0 z-2 h-full w-full object-cover opacity-5 mix-blend-hard-light brightness-100 contrast-90 saturate-200"
+    widths={[800, 1600, 2400]}
+    sizes="100vw"
+    formats={["avif", "webp"]}
+    fallbackFormat="jpg"
     loading="eager"
+    class="absolute inset-0 z-2 h-full w-full object-cover opacity-5 mix-blend-hard-light brightness-100 contrast-90 saturate-200"
   />
   <!-- Layer 0b: Background Image -->
-  <Image
+  <Picture
     src={heroImg2}
     alt=""
-    class="absolute inset-0 z-1 h-full w-[150vw] max-w-none -translate-x-1/8 object-cover opacity-5 mix-blend-plus-darker brightness-100 contrast-90 saturate-200"
+    widths={[800, 1600, 2400]}
+    sizes="150vw"
+    formats={["avif", "webp"]}
+    fallbackFormat="jpg"
     loading="eager"
+    class="absolute inset-0 z-1 h-full w-[150vw] max-w-none -translate-x-1/8 object-cover opacity-5 mix-blend-plus-darker brightness-100 contrast-90 saturate-200"
   />
 </div>
 

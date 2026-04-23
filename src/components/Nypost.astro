@@ -1,5 +1,5 @@
 ---
-import Image from "astro/components/Image.astro";
+import { Picture } from "astro:assets";
 import NypSpread from "../images/projects/site-spread.webp";
 import NypostLogo from "../images/logos/clients/original/nypost-logo.svg?raw";
 import Link from "./Link.astro";
@@ -17,7 +17,16 @@ import Link from "./Link.astro";
       <div
         class="nyp browser absolute top-0 right-0 isolate -z-1 w-[40vw] translate-x-4 overflow-visible"
       >
-        <Image src={NypSpread} alt="New York Post" class="h-full w-full object-cover" />
+        <Picture
+          src={NypSpread}
+          alt="New York Post"
+          widths={[400, 800, 1200]}
+          sizes="(min-width: 1024px) 40vw, 90vw"
+          formats={["avif", "webp"]}
+          fallbackFormat="jpg"
+          loading="lazy"
+          class="h-full w-full object-cover"
+        />
       </div>
     </div>
   </div>
@@ -100,9 +109,6 @@ import Link from "./Link.astro";
         </div>
       </div>
 
-      <!-- <div class="hidden w-full image__statueofliberty max-w-1/4 sm:block">
-        <Image src={statueOfLiberty} alt="Statue of Liberty" class="object-cover w-full h-full" />
-      </div> -->
     </div>
 
     <style>
