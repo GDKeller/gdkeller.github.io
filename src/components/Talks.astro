@@ -59,9 +59,9 @@ const getEmbedSrc = (item: Appearance) => {
   return item.embedUrl ?? "";
 };
 
-const getPoster = (item: Appearance) => {
+const getPoster = (item: Appearance, size: "mq" | "hq" = "mq") => {
   if (item.type === "youtube" && item.videoId) {
-    return `https://i.ytimg.com/vi/${item.videoId}/mqdefault.jpg`;
+    return `https://i.ytimg.com/vi/${item.videoId}/${size}default.jpg`;
   }
   return null;
 };
@@ -86,14 +86,42 @@ const initial = sorted[0];
         <span class="bracket bl" aria-hidden="true"></span>
         <span class="bracket br" aria-hidden="true"></span>
         <div class="relative z-110 aspect-video" data-player-slot data-slot-mode={initial.type}>
-          <iframe
-            src={getEmbedSrc(initial)}
-            title={initial.title}
-            class="h-full w-full border-0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-            loading="lazy"
-            scrolling={initial.type === "audio" ? "no" : undefined}></iframe>
+          <button
+            type="button"
+            class="player-facade group bg-background-dark relative block h-full w-full cursor-pointer border-0 p-0"
+            data-player-facade
+            data-src={getEmbedSrc(initial)}
+            data-title={initial.title}
+            data-type={initial.type}
+            aria-label={`Play ${initial.title}`}
+          >
+            {
+              getPoster(initial, "hq") ? (
+                <img
+                  src={getPoster(initial, "hq")!}
+                  alt=""
+                  class="h-full w-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+              ) : (
+                <span class="player-facade__audio flex h-full w-full items-center justify-center">
+                  <span class="text-emphasis text-2xs font-mono tracking-widest uppercase">
+                    Audio
+                  </span>
+                </span>
+              )
+            }
+            <span class="player-facade__icon" aria-hidden="true">
+              <svg viewBox="0 0 68 48" width="68" height="48" focusable="false">
+                <path
+                  class="player-facade__icon-bg"
+                  d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z"
+                ></path>
+                <path class="player-facade__icon-arrow" d="M45 24 27 14v20"></path>
+              </svg>
+            </span>
+          </button>
         </div>
       </div>
 
@@ -216,6 +244,74 @@ const initial = sorted[0];
 
 <style lang="scss">
   @reference "../styles/global.css";
+
+  .player-facade {
+    position: relative;
+    isolation: isolate;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        transparent 40%,
+        color-mix(in oklch, var(--color-background-dark) 60%, transparent)
+      );
+      pointer-events: none;
+      transition: opacity 240ms ease-out;
+    }
+
+    &:hover::after,
+    &:focus-visible::after {
+      opacity: 0.5;
+    }
+  }
+
+  .player-facade__icon {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+
+    svg {
+      transition:
+        transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
+        filter 260ms ease-out;
+      filter: drop-shadow(0 0 18px color-mix(in oklch, var(--color-accent) 40%, transparent));
+    }
+  }
+
+  .player-facade__icon-bg {
+    fill: color-mix(in oklch, var(--color-background-dark) 75%, transparent);
+  }
+
+  .player-facade__icon-arrow {
+    fill: var(--color-accent);
+  }
+
+  .player-facade:hover .player-facade__icon svg,
+  .player-facade:focus-visible .player-facade__icon svg {
+    transform: scale(1.08);
+    filter: drop-shadow(0 0 28px color-mix(in oklch, var(--color-accent) 75%, transparent));
+  }
+
+  .player-facade:hover .player-facade__icon-bg {
+    fill: var(--color-accent);
+  }
+
+  .player-facade:hover .player-facade__icon-arrow {
+    fill: var(--color-background-dark);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .player-facade::after,
+    .player-facade__icon svg {
+      transition-duration: 0ms;
+    }
+  }
 
   .bracket {
     position: absolute;
@@ -447,26 +543,30 @@ const initial = sorted[0];
     const eventEl = root.querySelector<HTMLElement>("[data-player-event]");
     if (!slot || !titleEl || !eventEl) return;
 
-    const setActive = (button: HTMLButtonElement) => {
-      const { src, title, event, type } = button.dataset;
-      if (!src) return;
-
+    const mountIframe = (src: string, title: string, type: string, autoplay = false) => {
       const isAudio = type === "audio";
-      slot.dataset.slotMode = type ?? "youtube";
+      slot.dataset.slotMode = type || "youtube";
 
       const iframe = document.createElement("iframe");
-      iframe.src = src;
-      iframe.title = title ?? "";
+      iframe.src =
+        autoplay && !isAudio ? `${src}${src.includes("?") ? "&" : "?"}autoplay=1` : src;
+      iframe.title = title;
       iframe.className = "h-full w-full border-0";
       iframe.setAttribute(
         "allow",
         "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
       );
       iframe.setAttribute("allowfullscreen", "");
-      iframe.setAttribute("loading", "lazy");
       if (isAudio) iframe.setAttribute("scrolling", "no");
 
       slot.replaceChildren(iframe);
+    };
+
+    const setActive = (button: HTMLButtonElement) => {
+      const { src, title, event, type } = button.dataset;
+      if (!src) return;
+
+      mountIframe(src, title ?? "", type ?? "youtube");
 
       titleEl.textContent = title ?? "";
       eventEl.textContent = event ?? "";
@@ -481,6 +581,19 @@ const initial = sorted[0];
     tracks.forEach((button) => {
       button.addEventListener("click", () => setActive(button));
     });
+
+    const facade = slot.querySelector<HTMLButtonElement>("[data-player-facade]");
+    if (facade) {
+      facade.addEventListener(
+        "click",
+        () => {
+          const { src, title, type } = facade.dataset;
+          if (!src) return;
+          mountIframe(src, title ?? "", type ?? "youtube", true);
+        },
+        { once: true },
+      );
+    }
   }
 
   document.addEventListener("DOMContentLoaded", initTalks);
