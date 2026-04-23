@@ -12,6 +12,14 @@ tech: [C++, Arduino, I2C Sensor Data, Google APIs]
 order: 2
 ---
 
+import { Picture } from "astro:assets";
+import specimen from "/src/images/projects/nhmla-anglerfish/specimen.jpg";
+import exhibitFull from "/src/images/projects/nhmla-anglerfish/exhibit-full.jpg";
+import displayTouch from "/src/images/projects/nhmla-anglerfish/display-touch.jpg";
+import displayFront from "/src/images/projects/nhmla-anglerfish/display-front.jpg";
+import displayClose from "/src/images/projects/nhmla-anglerfish/display-close.jpg";
+import displaySide from "/src/images/projects/nhmla-anglerfish/display-side.jpg";
+
 <p>Built a light sensor system for the exhibit of a rare Pacific footballfish specimen.</p>
 <p>The tissue is highly sensitive to light. The ichthyology collection staff needed to limit and track light exposure.</p>
 <p>
@@ -32,7 +40,15 @@ order: 2
     </ul>
   </div>
   <figure class="md:w-1/3 relative overflow-hidden">
-    <img class="object-cover h-full" src="/images/projects/nhmla-anglerfish/specimen.jpg" alt="Pacific footballfish specimen preserved in jar" loading="lazy" />
+    <Picture
+      src={specimen}
+      alt="Pacific footballfish specimen preserved in jar"
+      widths={[300, 600, 900]}
+      sizes="(min-width: 768px) 33vw, 100vw"
+      formats={["avif", "webp"]}
+      loading="lazy"
+      class="object-cover h-full"
+    />
   </figure>
 </div>
 <div class="flex flex-col gap-4 mb-6 sm:grid sm:grid-cols-6 sm:gap-1">
@@ -41,19 +57,59 @@ order: 2
     <cite>Dr. William Ludt, <a href="https://nhm.org/anglerfish" target="_blank">NHM Assistant Curator of Ichthyology</a></cite>
   </blockquote>
   <div class="sm:row-start-2 sm:col-start-1 sm:col-span-3 overflow-hidden">
-    <img class="w-full h-full object-cover" src="/images/projects/nhmla-anglerfish/exhibit-full.jpg" alt="Wide view of illuminated anglerfish display case with motion-activated lighting" loading="lazy" />
+    <Picture
+      src={exhibitFull}
+      alt="Wide view of illuminated anglerfish display case with motion-activated lighting"
+      widths={[400, 800, 1200]}
+      sizes="(min-width: 640px) 50vw, 100vw"
+      formats={["avif", "webp"]}
+      loading="lazy"
+      class="w-full h-full object-cover"
+    />
   </div>
   <div class="sm:row-start-2 sm:col-start-4 sm:col-span-3 overflow-hidden">
-    <img class="w-full h-full object-cover" src="/images/projects/nhmla-anglerfish/display-touch.jpg" alt="Visitor touching 3D printed tactile model embedded in signage" loading="lazy" />
+    <Picture
+      src={displayTouch}
+      alt="Visitor touching 3D printed tactile model embedded in signage"
+      widths={[400, 800, 1200]}
+      sizes="(min-width: 640px) 50vw, 100vw"
+      formats={["avif", "webp"]}
+      loading="lazy"
+      class="w-full h-full object-cover"
+    />
   </div>
   <div class="sm:row-start-3 sm:col-start-1 sm:col-span-2 overflow-hidden">
-    <img class="w-full h-full object-cover" src="/images/projects/nhmla-anglerfish/display-front.jpg" alt="Front view showing Arduino sensor system and cabinet controls" loading="lazy" />
+    <Picture
+      src={displayFront}
+      alt="Front view showing Arduino sensor system and cabinet controls"
+      widths={[300, 600, 900]}
+      sizes="(min-width: 640px) 33vw, 100vw"
+      formats={["avif", "webp"]}
+      loading="lazy"
+      class="w-full h-full object-cover"
+    />
   </div>
   <div class="sm:row-start-3 sm:col-start-3 sm:col-span-2 overflow-hidden">
-    <img class="w-full h-full object-cover" src="/images/projects/nhmla-anglerfish/display-close.jpg" alt="Close-up of Pacific footballfish specimen in exhibition case" loading="lazy" />
+    <Picture
+      src={displayClose}
+      alt="Close-up of Pacific footballfish specimen in exhibition case"
+      widths={[300, 600, 900]}
+      sizes="(min-width: 640px) 33vw, 100vw"
+      formats={["avif", "webp"]}
+      loading="lazy"
+      class="w-full h-full object-cover"
+    />
   </div>
   <div class="sm:row-start-3 sm:col-start-5 sm:col-span-2 overflow-hidden">
-    <img class="w-full h-full object-cover" src="/images/projects/nhmla-anglerfish/display-side.jpg" alt="Side angle showing light sensor monitoring equipment" loading="lazy" />
+    <Picture
+      src={displaySide}
+      alt="Side angle showing light sensor monitoring equipment"
+      widths={[300, 600, 900]}
+      sizes="(min-width: 640px) 33vw, 100vw"
+      formats={["avif", "webp"]}
+      loading="lazy"
+      class="w-full h-full object-cover"
+    />
   </div>
 </div>
 </details>
