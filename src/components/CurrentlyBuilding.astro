@@ -141,10 +141,9 @@ const items = await Promise.all(
                           href={data.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          class="text-body-xs border-highlight hover:bg-highlight text-highlight hover:text-background-dark mt-auto mb-0 flex items-center justify-self-end border-b px-4 font-mono tracking-widest uppercase transition-colors"
+                          class="button-arrow text-body-xs border-highlight hover:bg-highlight text-highlight hover:text-background-dark mt-auto mb-0 flex items-center justify-self-end overflow-hidden border-b py-2 pr-8 pl-4 font-mono tracking-widest uppercase"
                         >
-                          <span class="relative z-110">View Site </span>
-                          <span class="mb-1 ml-2 text-2xl">&rarr;</span>
+                          <span class="button-arrow__label relative z-110">View Site</span>
                         </a>
                       )}
                     </div>
@@ -206,6 +205,80 @@ const items = await Promise.all(
 
 <style lang="scss">
   @reference "../styles/global.css";
+
+  .button-arrow {
+    position: relative;
+    isolation: isolate;
+    clip-path: polygon(0 0, 100% 0, 100% 50%, 100% 100%, 0 100%);
+    transition:
+      clip-path 340ms cubic-bezier(0.16, 1, 0.3, 1),
+      background-color 200ms ease-out,
+      color 200ms ease-out;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background: linear-gradient(
+        110deg,
+        transparent 5%,
+        var(--color-highlight-hover),
+        transparent 75%
+      );
+      transform: translate3d(-80%, 0, 0);
+      mix-blend-mode: screen;
+    }
+
+    &__label {
+      display: inline-block;
+      transform-origin: left center;
+    }
+
+    &:hover {
+      clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%);
+    }
+
+    &:hover::before {
+      animation: button-arrow-shine 900ms cubic-bezier(0.16, 1, 0.3, 1) 250ms forwards;
+    }
+
+    &:hover &__label {
+      animation: button-arrow-label-skew 480ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+  }
+
+  @keyframes button-arrow-shine {
+    from {
+      transform: translate3d(-80%, 0, 0);
+    }
+    to {
+      transform: translate3d(180%, 0, 0);
+    }
+  }
+
+  @keyframes button-arrow-label-skew {
+    0% {
+      transform: skewX(0deg);
+    }
+    22% {
+      transform: skewX(-8deg);
+    }
+    100% {
+      transform: skewX(0deg);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .button-arrow {
+      transition-duration: 0ms;
+    }
+    .button-arrow:hover::before,
+    .button-arrow:hover .button-arrow__label {
+      animation: none;
+    }
+  }
 
   .decorator-bar {
     position: relative;
