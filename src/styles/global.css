@@ -6,12 +6,12 @@
    for the /styles reference page and for `var(--color-*)` access from custom
    CSS or JS without depending on incidental utility usage. */
 @source inline(
-  "{bg,text,border}-{background,foundation,emphasis,emphasis-hover,accent,accent-hover,highlight,highlight-hover,subtle,faint,reduced,secondary-light,secondary-emphasis,secondary-dark,tertiary-highlight,tertiary-highlight-hover,hidden}"
+  "{bg,text,border}-{background,background-dark,foundation,emphasis,emphasis-hover,accent,accent-hover,highlight,highlight-hover,subtle,faint,reduced,secondary-light,secondary-emphasis,secondary-dark,tertiary-highlight,tertiary-highlight-hover,hidden}"
 );
 @source inline(
-  "text-{display-xl,display-lg,display-md,display-sm,h1,h2,h3,h4,body-lg,body,body-sm,body-xs,body-2xs}"
+  "text-{2xs,xs,sm,base,lg,xl,2xl,3xl,4xl,5xl,6xl,7xl,8xl,9xl}"
 );
-@source inline("p-{18,28,36,40}");
+@source inline("p-{1,2,4,6,8,12,16,24,32,48,64,80}");
 
 @theme {
   /* Fonts */
@@ -28,39 +28,7 @@
   --spacing-36: 9rem;
   --spacing-40: 10rem;
 
-  /* Display sizes (Hero, major statements) */
-  --text-display-sm: 2rem;
-  --text-display-sm--line-height: 2.5rem;
-  --text-display-md: 3rem;
-  --text-display-md--line-height: 3.5rem;
-  --text-display-lg: 4rem;
-  --text-display-lg--line-height: 4.5rem;
-  --text-display-xl: 5rem;
-  --text-display-xl--line-height: 5.5rem;
-
-  /* Headings (Section titles) */
-  --text-h1: 3rem;
-  --text-h1--line-height: 3.5rem;
-  --text-h2: 2.5rem;
-  --text-h2--line-height: 3rem;
-  --text-h3: 2rem;
-  --text-h3--line-height: 2.5rem;
-  --text-h4: 1.5rem;
-  --text-h4--line-height: 2rem;
-
-  /* Body text */
   --text-2xs: 0.625rem;
-  --text-body-lg: 1.25rem;
-  --text-body-lg--line-height: 2rem;
-  --text-body: 1rem;
-  --text-body--line-height: 1.5rem;
-  --text-body-sm: 0.875rem;
-  --text-body-sm--line-height: 1.25rem;
-  --text-body-xs: 0.75rem;
-  --text-body-xs--line-height: 1rem;
-  --text-body-2xs: 0.6875rem;
-  --text-body-2xs--line-height: 1rem;
-
   --tracking-huge: 0.5em;
 }
 

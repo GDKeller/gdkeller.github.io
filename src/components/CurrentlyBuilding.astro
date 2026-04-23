@@ -54,7 +54,7 @@ const items = await Promise.all(
       <div class="border-faint flex-1 border-b-2"></div>
       <div class="decorator-bar relative isolate pt-4 pr-8 pb-2 pl-4">
         <p
-          class="text-faint text-body-2xs flex items-center font-mono leading-none font-extralight tracking-widest uppercase"
+          class="text-faint text-2xs flex items-center font-mono leading-none font-extralight tracking-widest uppercase"
         >
           <span>Active Operations</span>
           <span class="text-subtle triplecolon mr-3 ml-2 font-light" aria-hidden="true">:::</span>
@@ -102,7 +102,7 @@ const items = await Promise.all(
                       />
                     ) : (
                       <div class="placeholder-cell flex h-full items-center justify-center">
-                        <span class="text-foundation bg-background-dark text-body-sm px-16 py-8 font-mono tracking-widest uppercase">
+                        <span class="text-foundation bg-background-dark px-16 py-8 font-mono text-sm tracking-widest uppercase">
                           {data.status ? statusLabel[data.status] : "IN PROGRESS"}
                         </span>
                       </div>
@@ -141,7 +141,7 @@ const items = await Promise.all(
                           href={data.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          class="button-arrow text-body-xs border-highlight hover:bg-highlight text-highlight hover:text-background-dark mt-auto mb-0 flex items-center justify-self-end overflow-hidden border-b py-2 pr-8 pl-4 font-mono tracking-widest uppercase"
+                          class="button-arrow border-highlight hover:bg-highlight text-highlight hover:text-background-dark mt-auto mb-0 flex items-center justify-self-end overflow-hidden border-b py-2 pr-8 pl-4 font-mono text-xs tracking-widest uppercase"
                         >
                           <span class="button-arrow__label relative z-110">View Site</span>
                         </a>
@@ -184,13 +184,13 @@ const items = await Promise.all(
                   />
                 ) : (
                   <div class="placeholder-cell flex aspect-16/10 flex-1 items-center justify-center">
-                    <span class="text-foundation bg-background-dark text-body-2xs relative z-110 px-4 py-4 font-mono tracking-widest uppercase">
+                    <span class="text-foundation bg-background-dark text-2xs relative z-110 px-4 py-4 font-mono tracking-widest uppercase">
                       {data.title}
                     </span>
                   </div>
                 )}
                 <div class="thumb-title bg-emphasis group-hover:bg-accent m-0 mt-auto flex h-12 px-2 transition-colors duration-200">
-                  <p class="text-background-dark text-2xs lg:text-body-xs relative z-110 m-auto leading-none font-medium tracking-wide">
+                  <p class="text-background-dark text-2xs relative z-110 m-auto leading-none font-medium tracking-wide lg:text-xs">
                     {data.title}
                   </p>
                 </div>
