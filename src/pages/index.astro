@@ -17,7 +17,7 @@ import HeadingSection from "../components/HeadingSection.astro";
 ---
 
 <Layout title="Grant Keller | Frontend Software Engineer">
-  <main class="font-prompt text-foundation bg-background z-20 block" aria-label="Portfolio content">
+  <main class="font-prompt text-foundation bg-background block" aria-label="Portfolio content">
     <Hero />
     <Header />
 
@@ -83,7 +83,7 @@ import HeadingSection from "../components/HeadingSection.astro";
     </div>
 
     <!-- Scan Lines -->
-    <div class="scanlines pointer-events-none fixed inset-0 z-100 h-full w-full"></div>
+    <div class="scanlines pointer-events-none fixed inset-0 z-100 overflow-hidden"></div>
     <!-- Noise -->
     <div class="noise pointer-events-none fixed inset-0 z-70 overflow-hidden"></div>
   </main>
@@ -285,6 +285,11 @@ import HeadingSection from "../components/HeadingSection.astro";
         color-mix(in oklch, var(--color-white) 60%, transparent) 2px,
         color-mix(in oklch, var(--color-white) 60%, transparent) 3px
       );
+      top: -6px;
+      bottom: -6px;
+      left: -6px;
+      right: -6px;
+      /* background: black; */
       mix-blend-mode: soft-light;
       opacity: 0.2;
       animation: scanlines-shift 0.2s linear infinite;
