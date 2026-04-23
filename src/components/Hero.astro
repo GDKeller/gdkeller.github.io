@@ -10,7 +10,7 @@ import headshotBackground from "../images/elements/headshot_bg_tint2_500_2x.webp
 
 <section
   id="hero"
-  class="bg-background relative flex min-h-[calc(100vh-3rem)] w-full max-w-full flex-col justify-end gap-0 overflow-hidden px-2 pt-0 pb-2 sm:px-8 sm:pt-10 lg:pt-12 lg:pb-16"
+  class="bg-background flex min-h-[calc(100vh-3rem)] w-full max-w-full flex-col justify-end gap-0 overflow-hidden px-2 pt-0 pb-2 sm:px-8 sm:pt-10 lg:pt-12 lg:pb-16"
 >
   <HeroBackground />
   <Image
@@ -22,46 +22,47 @@ import headshotBackground from "../images/elements/headshot_bg_tint2_500_2x.webp
   <Image
     src={frameLower}
     alt=""
-    class="pointer-events-none absolute bottom-0 left-0 z-90 w-full select-none"
+    class="pointer-events-none absolute bottom-4 left-0 z-90 w-full select-none"
     loading="eager"
   />
   <div
     id="hero__content"
     class="mx-auto mt-auto mb-auto flex w-full max-w-full px-6 pt-4 pb-4 sm:mr-0 sm:ml-0 sm:pr-4 sm:pl-4 md:px-0 md:pt-6 md:pr-6 md:pl-6 lg:p-0"
   >
-    <div id="hero-content-wrapper" class="mx-auto grid grid-cols-[auto_1fr]">
+    <div id="hero-content-wrapper" class="mx-auto mb-8 grid grid-cols-[auto_1fr]">
       <div
-        class="shadow-accent/15 relative z-50 mt-2 mb-6 flex w-full -rotate-[0.3deg] flex-col items-center justify-center overflow-visible p-0.5 px-0.5 pt-0 shadow-2xl sm:mr-auto sm:mb-auto sm:ml-auto sm:w-auto sm:flex-row sm:justify-start md:flex-col md:items-center"
+        class="shadow-accent/15 relative z-110 mt-2 mb-6 flex w-full -rotate-[0.3deg] flex-col items-center justify-center overflow-visible p-0.5 px-0.5 pt-0 shadow-2xl sm:mr-auto sm:mb-auto sm:ml-auto sm:w-auto sm:flex-row sm:justify-start md:flex-col md:items-center"
       >
-        <div class="absolute top-0 left-0 z-10 h-full w-full -translate-y-[1%]">
+        <div class="absolute top-0 left-0 h-full w-full -translate-y-[1%]">
           <Image
             src={headshotBackground}
             alt=""
-            class="relative h-full scale-105 object-fill object-top"
+            class="h-full scale-105 object-fill object-top"
             loading="eager"
           />
         </div>
         <div
-          class="border-background/10 relative z-20 block h-auto w-full max-w-24 overflow-hidden border-2 sm:w-1/3 md:w-full md:max-w-64 lg:max-w-80"
+          class="border-background/20 shadow-background-dark/20 z-40 block h-auto w-full max-w-24 overflow-hidden border-2 shadow-md sm:w-1/3 md:w-full md:max-w-64 lg:max-h-[60vh] lg:max-w-80"
         >
           <Headshot />
         </div>
         <div
-          class="text-md grid-col text-background relative z-20 mb-4 grid w-full grid-cols-[auto_1fr] grid-rows-[auto] items-end border-black/20 pr-2 font-mono leading-none font-light"
+          class="headshot-fields text-md grid-col text-background-dark border-background-dark/20 z-40 mb-4 grid w-full grid-cols-[auto_1fr] grid-rows-[auto] items-end pr-2 font-mono leading-none font-light"
         >
           <span class="headshot-fieldlabel">Operative</span>
           <h1
-            class="border-b border-l border-black/20 py-1 pl-4 text-base leading-none font-normal lg:text-2xl"
+            class="border-background-dark/20 relative z-110 border-b border-l pt-2 pb-1 pl-4 text-base leading-none font-medium lg:text-2xl"
           >
             Grant Keller
           </h1>
           <span class="headshot-fieldlabel">Assignment</span>
           <span
-            class="border-b border-l border-black/20 py-1 pl-4 text-sm leading-none lg:text-base"
+            class="border-background-dark/20 z-110 border-b border-l py-2 pl-4 text-sm leading-none lg:text-base"
             >UX/Design Engineer</span
           >
           <span class="headshot-fieldlabel headshot-fieldlabel__last border-b-0">Territory</span>
-          <span class="border-l border-black/20 pt-1 pb-0 pl-4 text-sm leading-none lg:text-sm"
+          <span
+            class="border-background-dark/20 z-110 border-l pt-2 pl-4 text-sm leading-none lg:text-sm"
             >Los Angeles CA, USA</span
           >
         </div>
@@ -71,7 +72,7 @@ import headshotBackground from "../images/elements/headshot_bg_tint2_500_2x.webp
           style={`mask-image: url(${headshotBackground.src}); mask-mode: alpha; mask-size: 105% 105%; mask-position: 50% 70%; mask-repeat: no-repeat; -webkit-mask-image: url(${headshotBackground.src}); -webkit-mask-mode: alpha; -webkit-mask-size: 105% 105%; -webkit-mask-position: 50% 70%; -webkit-mask-repeat: no-repeat;`}
         >
           <span
-            class="text-reduced absolute right-0 bottom-0 translate-x-2 translate-y-0 -rotate-2 font-mono text-2xl leading-none font-normal whitespace-pre opacity-30 mix-blend-multiply lg:text-3xl"
+            class="text-fainter absolute right-0 bottom-0 z-100 translate-x-2 translate-y-0 -rotate-2 font-mono text-2xl leading-none font-normal whitespace-pre opacity-30 mix-blend-multiply lg:text-3xl"
             role="presentation">34.0549°N,118.2426°W</span
           >
         </div>
@@ -90,19 +91,28 @@ import headshotBackground from "../images/elements/headshot_bg_tint2_500_2x.webp
         </span>
       </div>
       <div class="mt-8 ml-34 flex flex-col">
-        <p class="relative z-80 flex flex-col items-start sm:text-lg md:mb-8 xl:mb-24">
-          <span class="hero-headline -ml-[2ch]">Deep space</span>
-          <span class="hero-headline mb-1 -ml-[1ch]">deep sea</span>
-          <span class="sr-only">&nbsp;</span>
-          <span
-            class="text-emphasis tracking tracking-huge text-shadow-background-dark/60 relative z-110 font-mono leading-none font-light text-shadow-md lg:text-base xl:text-base"
-            >and everywhere in between</span
+        <div class="relative">
+          <p
+            class="pointer-events-none absolute inset-0 flex flex-col items-start sm:text-lg md:mb-8 xl:mb-24"
+            aria-hidden="true"
           >
-        </p>
+            <span class="hero-headline hero-headline--ghost -ml-[2ch]">Deep space</span>
+            <span class="hero-headline hero-headline--ghost mb-1 -ml-[1ch]">deep sea</span>
+          </p>
+          <p class="relative z-110 flex flex-col items-start sm:text-lg md:mb-8 xl:mb-24">
+            <span class="hero-headline -ml-[2ch]">Deep space</span>
+            <span class="hero-headline mb-1 -ml-[1ch]">deep sea</span>
+            <span class="sr-only">&nbsp;</span>
+            <span
+              class="text-emphasis tracking tracking-huge text-shadow-background-dark/60 relative z-110 font-mono leading-none font-light text-shadow-lg lg:text-base xl:text-base"
+              >and everywhere in between</span
+            >
+          </p>
+        </div>
         <div class="mr-auto ml-0">
           <p class="text-foundation font-prompt relative z-110 text-shadow-black/30 text-shadow-lg">
             <span
-              class="text-accent text-shadow-background/70 inline-block leading-tight font-normal tracking-wider text-shadow-lg xl:text-4xl"
+              class="text-accent text-shadow-background/70 inline-block leading-snug font-normal tracking-wider text-shadow-lg xl:text-4xl"
               >Frontend architecture&nbsp;
             </span>
             <span class="block">
@@ -153,13 +163,27 @@ import headshotBackground from "../images/elements/headshot_bg_tint2_500_2x.webp
     }
 
     .hero-headline {
-      @apply font-display text-foundation z-30 leading-[0.8em] font-black tracking-normal break-keep whitespace-nowrap uppercase md:text-6xl lg:text-7xl xl:text-9xl;
+      @apply font-display text-foundation leading-[0.8em] font-black tracking-normal break-keep whitespace-nowrap uppercase md:text-6xl lg:text-7xl xl:text-9xl;
+      text-shadow:
+        0 0 0.01em var(--color-background),
+        0 0 0.012em var(--color-background),
+        0 0 0.013em var(--color-subtle),
+        0 0 0.014em var(--color-accent),
+        0 0 0.015em var(--color-accent);
+    }
+
+    .hero-headline--ghost {
+      color: transparent;
+      pointer-events: none;
+      user-select: none;
+      mix-blend-mode: screen;
       text-shadow:
         0.01em 0.01em 0.01em color-mix(in srgb, var(--color-accent), transparent 0%),
-        0.015em 0.02em 0.125em color-mix(in srgb, var(--color-accent), transparent 95%),
-        0.01em 0.015em 0.3em color-mix(in srgb, var(--color-accent), transparent 95%),
-        0.01em 0.015em 0.6em color-mix(in srgb, var(--color-accent), transparent 50%),
-        -0.02em 0.01em 0.02em color-mix(in srgb, var(--color-accent), transparent 10%);
+        -0.02em 0.01em 0.02em color-mix(in srgb, var(--color-accent), transparent 10%),
+        0.01em 0.015em 0.3em color-mix(in srgb, var(--color-accent), transparent 25%),
+        0.01em 0.015em 0.6em color-mix(in srgb, var(--color-accent), transparent 80%),
+        0.015em 0.02em 0.125em color-mix(in srgb, var(--color-accent), transparent 90%),
+        0.15em 0.2em 2.5em color-mix(in srgb, var(--color-accent), transparent 95%);
     }
   </style>
 </section>

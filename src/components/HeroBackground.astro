@@ -10,20 +10,20 @@ import heroImg2 from "../images/Texturelabs_LensFX_127L.webp";
   <Image
     src={heroImg1}
     alt=""
-    class="absolute inset-0 h-full w-full object-cover opacity-30 mix-blend-hard-light brightness-50 contrast-100"
+    class="absolute inset-0 z-2 h-full w-full object-cover opacity-5 mix-blend-hard-light brightness-100 contrast-90 saturate-200"
     loading="eager"
   />
   <!-- Layer 0b: Background Image -->
   <Image
     src={heroImg2}
     alt=""
-    class="mix-blend-plus-darken absolute inset-0 z-10 h-full w-[150vw] max-w-none -translate-x-1/8 object-cover opacity-30 brightness-100 contrast-110"
+    class="absolute inset-0 z-1 h-full w-[150vw] max-w-none -translate-x-1/8 object-cover opacity-5 mix-blend-plus-darker brightness-100 contrast-90 saturate-200"
     loading="eager"
   />
 </div>
 
 <!-- Noise -->
-<div class="noise pointer-events-none absolute inset-0 z-50 h-full w-full"></div>
+<div class="noise pointer-events-none absolute inset-0 z-20 h-full w-full"></div>
 
 <style>
   /* Noise */
