@@ -5,7 +5,7 @@ type: macOS
 description: On-device AI segmentation models with fine-grain controls. CoreML-optimized ONNX inference pipeline.
 image: obr.webp
 imageAlt: Offline Background Remover macOS app hero
-video: obr-app-preview.mp4
+video: obr-app-preview
 tech:
   - React
   - Rust
