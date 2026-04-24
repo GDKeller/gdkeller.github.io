@@ -1,14 +1,16 @@
-import { z, defineCollection } from "astro:content";
+import { defineCollection } from "astro:content";
+import { glob } from "astro/loaders";
+import { z } from "astro/zod";
 
 const jobs = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/*.md", base: "./src/content/jobs" }),
   schema: z.object({
     company: z.string(),
     position: z.string(),
     startMonthYear: z.string().optional(),
     endMonthYear: z.string().optional(),
     tech: z.array(z.string()).optional(),
-    companyWebsite: z.string().url().optional(),
+    companyWebsite: z.url().optional(),
     companyLogo: z
       .object({
         src: z.string(),
@@ -20,7 +22,7 @@ const jobs = defineCollection({
 });
 
 const projects = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/projects" }),
   schema: z.object({
     title: z.string(),
     projectName: z.string(),
@@ -31,7 +33,7 @@ const projects = defineCollection({
         alt: z.string(),
       })
       .optional(),
-    clientWebsite: z.string().url().optional(),
+    clientWebsite: z.url().optional(),
     subClient: z.string().optional(),
     timeperiod: z.string().optional(),
     startMonthYear: z.string().optional(),
@@ -47,7 +49,7 @@ const projects = defineCollection({
 });
 
 const skills = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/*.md", base: "./src/content/skills" }),
   schema: z.object({
     title: z.string(),
     tags: z.array(z.string()).optional(),
@@ -56,7 +58,7 @@ const skills = defineCollection({
 });
 
 const featured = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/*.md", base: "./src/content/featured" }),
   schema: z.object({
     title: z.string(),
     description: z.string().optional(),
@@ -66,10 +68,10 @@ const featured = defineCollection({
 });
 
 const current = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/*.md", base: "./src/content/current" }),
   schema: z.object({
     title: z.string(),
-    url: z.string().url().optional(),
+    url: z.url().optional(),
     type: z.string().optional(),
     description: z.string(),
     image: z.string().optional(),

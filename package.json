@@ -2,6 +2,9 @@
   "name": "portfolio",
   "type": "module",
   "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -15,9 +18,10 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-    "@astrojs/mdx": "^4.3.14",
-    "astro": "^5.16.4",
-    "astro-favicons": "^3.1.5",
+    "@astrojs/mdx": "^5.0.4",
+    "@astrojs/sitemap": "^3.7.2",
+    "astro": "^6.1.9",
+    "astro-favicons": "^3.1.6",
     "gsap": "^3.13.0",
     "typescript": "^5.6.2"
   },

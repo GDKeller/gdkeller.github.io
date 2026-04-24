@@ -4,11 +4,12 @@ import tailwindcss from '@tailwindcss/vite';
 import favicons from 'astro-favicons';
 import mdx from '@astrojs/mdx';
 
+import sitemap from '@astrojs/sitemap';
+
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://gdkeller.github.io',
-  // base: 'Portfolio',
-  integrations: [mdx(), favicons()],
+  site: 'https://www.grantkeller.dev',
+  integrations: [mdx(), favicons(), sitemap()],
   image: {
     // Emit <img srcset> from <Image widths={...}>. We intentionally do NOT set
     // a default `layout` here — the constrained layout applies CSS like
