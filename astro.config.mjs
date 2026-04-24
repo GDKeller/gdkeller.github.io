@@ -22,7 +22,7 @@ export default defineConfig({
     port: 3111,
   },
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [...tailwindcss()],
     ssr: {
       noExternal: ["react-icons"],
     },
