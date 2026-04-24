@@ -26,7 +26,7 @@ const maskImage = `image-set(url("${maskAvif.src}") type("image/avif"), url("${m
 
 <section
   id="hero"
-  class="bg-background flex min-h-[calc(100vh-3rem)] w-full max-w-full flex-col justify-end gap-0 overflow-hidden px-2 pt-0 pb-2 sm:px-8 sm:pt-10 lg:pt-12 lg:pb-16"
+  class="bg-background relative mb-0 flex w-full max-w-full flex-col justify-end gap-0 overflow-hidden px-2 pt-0 pb-4 sm:px-8 sm:pt-10 sm:pb-4 md:min-h-[calc(100vh-3rem)] md:pb-8 lg:pt-12 lg:pb-8 xl:pb-16 2xl:pb-20 portrait:min-h-auto portrait:max-md:min-h-[calc(100vh-3rem)]"
 >
   <HeroBackground />
   <Picture
@@ -38,7 +38,7 @@ const maskImage = `image-set(url("${maskAvif.src}") type("image/avif"), url("${m
     fallbackFormat="webp"
     loading="eager"
     fetchpriority="high"
-    class="pointer-events-none absolute top-0 left-0 z-90 w-full select-none"
+    class="pointer-events-none absolute top-0 left-0 z-120 w-full select-none md:z-90"
   />
   <Picture
     src={frameLower}
@@ -46,22 +46,25 @@ const maskImage = `image-set(url("${maskAvif.src}") type("image/avif"), url("${m
     widths={[800, 1280, 1920]}
     sizes="100vw"
     formats={["avif", "webp"]}
+    class="pointer-events-none absolute -bottom-2 left-0 z-90 w-full select-none"
     fallbackFormat="webp"
     loading="eager"
-    class="pointer-events-none absolute bottom-4 left-0 z-90 w-full select-none"
   />
+  <span class="frame-left"></span>
+  <span class="frame-right"></span>
   <div
     id="hero__content"
-    class="mx-auto mt-auto mb-auto flex w-full max-w-full px-6 pt-4 pb-4 sm:mr-0 sm:ml-0 sm:pr-4 sm:pl-4 md:px-0 md:pt-6 md:pr-6 md:pl-6 lg:p-0"
+    class="mx-auto mt-0 flex w-full max-w-full px-2 pt-4 pb-4 sm:mr-0 sm:ml-0 sm:pr-4 sm:pl-4 md:mt-auto md:mb-auto md:px-6 md:pt-6 lg:p-0"
   >
     <div
       id="hero-content-wrapper"
-      class="mx-auto mb-8 grid grid-cols-[auto_1fr]"
+      class="mx-auto grid grid-rows-[1fr_1fr_1fr] md:my-8 md:mt-2 md:mb-8 md:grid-cols-[auto_1fr] md:grid-rows-1"
     >
       <div
-        class="shadow-accent/15 relative z-110 mt-2 mb-6 flex w-full -rotate-[0.3deg] flex-col items-center justify-center overflow-visible p-0.5 px-0.5 pt-0 shadow-2xl sm:mr-auto sm:mb-auto sm:ml-auto sm:w-auto sm:flex-row sm:justify-start md:flex-col md:items-center"
+        id="photo"
+        class="shadow-accent/15 relative z-110 row-start-2 mt-0 ml-0 flex w-full rotate-[-0.3deg] flex-row items-start justify-start overflow-visible p-0.5 px-0.5 pt-0 shadow-2xl sm:mr-auto sm:mb-auto sm:ml-auto sm:w-auto sm:justify-start md:row-start-1 md:mt-2 md:w-full md:flex-col md:items-center"
       >
-        <div class="absolute top-0 left-0 h-full w-full -translate-y-[1%]">
+        <div class="absolute top-0 left-0 h-full w-full md:translate-y-[-1%]">
           <Picture
             src={headshotBackground}
             alt=""
@@ -70,33 +73,35 @@ const maskImage = `image-set(url("${maskAvif.src}") type("image/avif"), url("${m
             formats={["avif", "webp"]}
             fallbackFormat="webp"
             loading="eager"
-            class="h-full scale-105 object-fill object-top"
+            priority={true}
+            fetchpriority="high"
+            class="h-full object-fill md:scale-102 md:rotate-0 md:object-top"
           />
         </div>
         <div
-          class="border-background/20 shadow-background-dark/20 z-40 block h-auto w-full max-w-24 overflow-hidden border-2 shadow-md sm:w-1/3 md:w-full md:max-w-64 lg:max-h-[60vh] lg:max-w-80"
+          class="border-background/20 shadow-background-dark/20 z-40 mt-2 mb-1 ml-1 block h-auto w-full max-w-48 overflow-hidden border-2 shadow-md sm:w-1/3 md:mt-0 md:mb-0 md:ml-0 md:w-full md:max-w-48 lg:max-h-[60vh] lg:max-w-56 xl:max-w-80"
         >
           <Headshot />
         </div>
         <div
-          class="headshot-fields text-md grid-col text-background-dark border-background-dark/20 z-40 mb-4 grid w-full grid-cols-[auto_1fr] grid-rows-[auto] items-end pr-2 font-mono leading-none font-light"
+          class="headshot-fields text-md grid-col text-background-dark border-background-dark/20 z-40 mx-auto mb-1 flex w-full grid-rows-[auto] flex-col pt-4 text-left font-mono leading-none font-light md:pt-0 lg:mx-0 lg:mb-2 lg:grid lg:grid-cols-[auto_1fr] lg:grid-rows-[auto] lg:items-end xl:mb-4 xl:pr-2"
         >
           <span class="headshot-fieldlabel">Operative</span>
           <h1
-            class="border-background-dark/20 relative z-110 border-b border-l pt-2 pb-1 pl-4 text-base leading-none font-medium lg:text-2xl"
+            class="border-background-dark/20 relative z-110 ml-1 border-b border-l pt-2 pb-1 pl-2 text-base leading-none font-medium md:ml-0 md:pl-6 md:text-lg lg:pl-2 lg:text-lg xl:pl-4 xl:text-2xl"
           >
             Grant Keller
           </h1>
           <span class="headshot-fieldlabel">Assignment</span>
           <span
-            class="border-background-dark/20 z-110 border-b border-l py-2 pl-4 text-sm leading-none lg:text-base"
+            class="border-background-dark/20 z-110 mb-0 ml-1 border-b border-l pt-1 pb-1 pl-2 text-xs leading-none font-normal tracking-tight md:ml-0 md:pl-6 md:font-light md:tracking-normal lg:mb-0 lg:pt-3 lg:pb-1 lg:pl-2 lg:text-xs lg:font-normal xl:py-2 xl:pl-4 xl:text-base"
             >UX/Design Engineer</span
           >
           <span class="headshot-fieldlabel headshot-fieldlabel__last border-b-0"
             >Territory</span
           >
           <span
-            class="border-background-dark/20 z-110 border-l pt-2 pl-4 text-sm leading-none lg:text-sm"
+            class="border-background-dark/20 text-2xs z-110 ml-1 border-b border-l pt-1 pb-1 pl-2 leading-none font-normal md:ml-0 md:hidden md:border-b-0 md:pb-0 lg:mt-0 lg:block lg:pt-3 lg:pb-2 lg:pl-2 xl:pt-2 xl:pl-4 xl:text-sm"
             >Los Angeles CA, USA</span
           >
         </div>
@@ -106,7 +111,7 @@ const maskImage = `image-set(url("${maskAvif.src}") type("image/avif"), url("${m
           style={`mask-image: ${maskImage}; mask-mode: alpha; mask-size: 105% 105%; mask-position: 50% 70%; mask-repeat: no-repeat; -webkit-mask-image: ${maskImage}; -webkit-mask-mode: alpha; -webkit-mask-size: 105% 105%; -webkit-mask-position: 50% 70%; -webkit-mask-repeat: no-repeat;`}
         >
           <span
-            class="text-fainter absolute right-0 bottom-0 z-100 translate-x-2 translate-y-0 -rotate-2 font-mono text-2xl leading-none font-normal whitespace-pre opacity-30 mix-blend-multiply lg:text-3xl"
+            class="text-fainter absolute right-0 bottom-0 z-100 translate-x-2 translate-y-0 -rotate-2 font-mono text-2xl leading-none font-normal whitespace-pre opacity-50 mix-blend-multiply md:text-sm md:opacity-30 lg:text-3xl xl:text-2xl"
             role="presentation">34.0549°N,118.2426°W</span
           >
         </div>
@@ -115,62 +120,73 @@ const maskImage = `image-set(url("${maskAvif.src}") type("image/avif"), url("${m
           aria-hidden="true"
         >
           <span
-            class="via-subtle from-emphasis absolute top-0 right-0 h-[25%] w-[45%] translate-x-[60%] translate-y-[15%] bg-radial from-0% to-transparent to-100% blur-md"
+            class="via-subtle from-emphasis absolute top-0 right-0 hidden h-[25%] w-[45%] translate-x-[60%] translate-y-[15%] bg-radial from-0% to-transparent to-100% blur-md md:block"
           >
           </span>
         </div>
         <span
-          class="from-background/90 absolute right-0 bottom-0 z-0 h-[130%] w-[200%] translate-x-[30%] translate-y-[12%] bg-radial from-0% to-transparent to-70% opacity-100 blur-3xl"
+          class="from-background/90 absolute right-0 bottom-0 -z-1 h-[130%] w-[200%] translate-x-[30%] translate-y-[12%] bg-radial from-0% to-transparent to-70% opacity-100 blur-3xl"
         >
         </span>
       </div>
-      <div class="mt-8 ml-34 flex flex-col">
-        <div class="relative">
+      <div
+        class="contents md:mt-8 md:ml-20 md:flex md:flex-col lg:ml-26 xl:ml-34"
+      >
+        <div
+          id="headline"
+          class="relative row-start-1 mx-auto my-auto md:row-auto"
+        >
           <p
-            class="pointer-events-none absolute inset-0 flex flex-col items-start sm:text-lg md:mb-8 xl:mb-24"
+            class="pointer-events-none absolute inset-0 flex flex-col items-start text-4xl md:mb-24 md:items-start md:text-lg lg:mb-32"
             aria-hidden="true"
           >
-            <span class="hero-headline hero-headline--ghost -ml-[2ch]"
+            <span class="hero-headline hero-headline--ghost md:ml-[-2ch]"
               >Deep space</span
             >
-            <span class="hero-headline hero-headline--ghost mb-1 -ml-[1ch]"
+            <span
+              class="hero-headline hero-headline--ghost mb-1 ml-[1ch] md:ml-[-1ch]"
               >deep sea</span
             >
           </p>
           <p
-            class="relative z-110 flex flex-col items-start sm:text-lg md:mb-8 xl:mb-24"
+            class="relative z-110 my-auto flex flex-col items-start sm:text-lg md:mb-16 md:items-start lg:mb-16 xl:mb-32"
           >
-            <span class="hero-headline -ml-[2ch]">Deep space</span>
-            <span class="hero-headline mb-1 -ml-[1ch]">deep sea</span>
+            <span class="hero-headline md:ml-[-2ch]">Deep space</span>
+            <span class="hero-headline mb-2 ml-[1ch] md:ml-[-1ch] xl:mb-2"
+              >deep sea</span
+            >
             <span class="sr-only">&nbsp;</span>
             <span
-              class="text-emphasis tracking tracking-huge text-shadow-background-dark/60 relative z-110 font-mono leading-none font-light text-shadow-lg lg:text-base xl:text-base"
+              class="text-emphasis md:tracking-huge text-shadow-background-dark/60 md:text-2xs xl:text-shadow-xl relative z-110 mx-auto text-center font-mono text-sm leading-none font-light tracking-widest text-shadow-lg md:ml-0 md:text-left lg:text-sm xl:text-lg"
               >and everywhere in between</span
             >
           </p>
         </div>
-        <div class="mr-auto ml-0">
+        <div
+          id="subhed"
+          class="z-110 row-start-3 mx-auto mb-auto pt-8 md:row-auto md:my-0 md:ml-0 md:pt-0"
+        >
           <p
-            class="text-foundation font-prompt relative z-110 text-shadow-black/30 text-shadow-lg"
+            class="text-foundation font-prompt z-140 leading-tight text-shadow-black/30 text-shadow-lg md:relative md:translate-0"
           >
             <span
-              class="text-accent text-shadow-background/70 inline-block leading-snug font-normal tracking-wider text-shadow-lg xl:text-4xl"
+              class="text-accent text-shadow-background/70 inline-block text-2xl leading-[0.75em] font-normal tracking-wider text-shadow-lg md:leading-snug lg:text-3xl xl:text-4xl"
               >Frontend architecture&nbsp;
             </span>
             <span class="block">
               <span
-                class="text-foundation text-shadow-background/70 mr-1 ml-[1ch] inline-block leading-none font-extralight tracking-wide text-shadow-lg xl:text-3xl"
+                class="text-foundation text-shadow-background/70 text-lg leading-none font-extralight tracking-wide text-shadow-lg md:mr-1 md:ml-[1ch] md:inline-block md:text-xl lg:text-2xl xl:text-3xl"
                 >for
               </span>
               <span class="sr-only">&nbsp;</span>
               <span
-                class="text-foundation text-shadow-background/70 tracking-wider text-shadow-lg xl:text-4xl"
+                class="text-foundation text-shadow-background/70 text-2xl tracking-wider text-shadow-lg lg:text-3xl xl:text-4xl"
                 >ambitious ideas</span
               >
             </span>
           </p>
           <div
-            class="absolute bottom-0 left-1/2 z-10 -translate-x-[60%] translate-y-1/2 scale-[150%] rotate-15 opacity-30 mix-blend-screen blur-3xl"
+            class="absolute bottom-0 left-1/2 z-10 translate-x-[-60%] translate-y-1/2 scale-[150%] rotate-15 opacity-30 mix-blend-screen blur-3xl"
           >
             <svg class="h-[80vh]" viewBox="0 0 256 512" aria-hidden="true">
               <defs>
@@ -205,27 +221,48 @@ const maskImage = `image-set(url("${maskAvif.src}") type("image/avif"), url("${m
     </div>
   </div>
 
-  <div class="left-0 z-20 mt-auto mb-0 h-8 max-w-full overflow-hidden">
+  <div
+    class="left-0 z-20 mb-0 h-[5vh] w-full max-w-full overflow-hidden md:h-[3vh] xl:h-[5vh] 2xl:h-[5vh]"
+  >
     <LogoCarousel />
   </div>
 
   <style lang="scss">
     @reference "../styles/global.css";
+
+    .frame-left {
+      position: absolute;
+      height: 100%;
+      width: 2.7vw;
+      top: 0;
+      left: 0;
+      background-color: var(--color-background-dark);
+      z-index: 20;
+    }
+    .frame-right {
+      position: absolute;
+      height: 100%;
+      width: 2.7vw;
+      top: 0;
+      right: 0;
+      background-color: var(--color-background-dark);
+      z-index: 20;
+    }
     .headshot-fieldlabel {
-      @apply xl:text-2xs relative border-b border-black/20 px-2 py-1 text-xs leading-none font-medium tracking-wide uppercase;
+      @apply lg:text-2xs text-2xs md:text-2xs relative border-b border-black/20 pt-4 pb-1 pl-3 leading-none font-light tracking-wider uppercase md:hidden md:py-1 md:font-normal md:tracking-wide lg:mt-0 lg:mb-0 lg:block lg:px-1 lg:pt-3 lg:tracking-wide xl:px-2;
     }
     .headshot-fieldlabel__last {
-      @apply border-b-0 pb-0;
+      @apply md:border-b-0 md:pb-0 lg:mb-auto;
     }
 
     .hero-headline {
-      @apply font-display text-foundation leading-[0.8em] font-black tracking-normal break-keep whitespace-nowrap uppercase md:text-6xl lg:text-7xl xl:text-9xl;
+      @apply font-display text-foundation text-5xl leading-[0.8em] font-black tracking-normal break-keep whitespace-nowrap uppercase md:text-7xl lg:text-8xl xl:text-9xl;
       text-shadow:
-        0 0 0.01em var(--color-background),
-        0 0 0.012em var(--color-background),
-        0 0 0.013em var(--color-subtle),
-        0 0 0.014em var(--color-accent),
-        0 0 0.015em var(--color-accent);
+        0 0 0.04em color-mix(in srgb, var(--color-background), transparent 50%),
+        0 0 0.015em var(--color-subtle),
+        0 0 0.02em var(--color-subtle),
+        0 0 0.03em var(--color-accent),
+        0 0 0.05em var(--color-accent);
     }
 
     .hero-headline--ghost {
@@ -234,18 +271,18 @@ const maskImage = `image-set(url("${maskAvif.src}") type("image/avif"), url("${m
       user-select: none;
       mix-blend-mode: screen;
       text-shadow:
-        0.01em 0.01em 0.01em
-          color-mix(in srgb, var(--color-accent), transparent 0%),
-        -0.02em 0.01em 0.02em
+        0.01em 0.01em 0.03em
           color-mix(in srgb, var(--color-accent), transparent 10%),
-        0.01em 0.015em 0.3em
-          color-mix(in srgb, var(--color-accent), transparent 25%),
-        0.01em 0.015em 0.6em
+        -0.02em 0.01em 0.04em
+          color-mix(in srgb, var(--color-accent), transparent 85%),
+        0.01em 0.015em 0.1em
+          color-mix(in srgb, var(--color-accent), transparent 70%),
+        0.01em 0.015em 0.2em
+          color-mix(in srgb, var(--color-accent), transparent 70%),
+        0.01em 0.02em 0.25em
           color-mix(in srgb, var(--color-accent), transparent 80%),
-        0.015em 0.02em 0.125em
-          color-mix(in srgb, var(--color-accent), transparent 90%),
-        0.15em 0.2em 2.5em
-          color-mix(in srgb, var(--color-accent), transparent 95%);
+        0.02em 0.01em 1.5em
+          color-mix(in srgb, var(--color-secondary-dark), transparent 45%);
     }
   </style>
 </section>

@@ -52,7 +52,7 @@
 @theme {
   /* --color-background: oklch(0.13 0.0355 150); #000b02 */
   --color-background: oklch(0.1 0.025 150); /* #000501 */
-  --color-background-dark: oklch(0.05 0.0141 150); /* #000100 */
+  --color-background-dark: oklch(0.05 0.014 150); /* #000100 */
   --color-scrim: oklch(0.53 0.05 150);
   --color-foundation: oklch(0.968 0.06 130); /* #e7fdd3 */
   --color-emphasis: oklch(89% 0.13 130); /* #beec8f */
@@ -80,6 +80,8 @@
   --color-tertiary-highlight: oklch(66.68% 0.2591 332);
   --color-tertiary-highlight-hover: oklch(83.3% 0.1322 332);
 }
+
+@custom-variant portrait (@media (aspect-ratio < 1/1));
 
 /** Default breakpoints reference
 * sm	40rem (640px)	@media (width >= 40rem) { ... }

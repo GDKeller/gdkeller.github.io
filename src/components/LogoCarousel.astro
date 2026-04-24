@@ -54,12 +54,14 @@ const logos: Logo[] = [
   role="region"
   aria-label="Organizations I've worked with"
 >
-  <div class="carousel-mask relative h-full overflow-hidden">
-    <div class="carousel-track flex h-full items-center gap-10 md:gap-14">
+  <div class="carousel-mask relative h-full">
+    <div
+      class="carousel-track flex h-full items-center gap-[7vw] 2xl:gap-[5vw]"
+    >
       {/* Primary logos - visible to screen readers */}
       {
         logos.map((logo) => (
-          <div class="carousel-item flex h-full flex-shrink-0 items-center">
+          <div class="carousel-item flex h-full shrink-0 items-center">
             <Picture
               src={logo.src}
               alt={logo.alt}
@@ -68,7 +70,7 @@ const logos: Logo[] = [
               formats={["avif", "webp"]}
               fallbackFormat="webp"
               loading="lazy"
-              class="h-full max-h-full w-auto max-w-[160px] object-contain md:max-w-[220px]"
+              class="h-full max-h-full w-auto max-w-48 object-contain md:max-w-[12vw] lg:max-w-[12vw] xl:max-w-[15vw]"
             />
           </div>
         ))
@@ -77,7 +79,7 @@ const logos: Logo[] = [
       {
         logos.map((logo) => (
           <div
-            class="carousel-item--duplicate carousel-item flex h-full flex-shrink-0 items-center"
+            class="carousel-item--duplicate carousel-item flex h-full shrink-0 items-center lg:max-w-[12vw]"
             aria-hidden="true"
           >
             <Picture
@@ -88,7 +90,7 @@ const logos: Logo[] = [
               formats={["avif", "webp"]}
               fallbackFormat="webp"
               loading="lazy"
-              class="h-full max-h-full w-auto max-w-[160px] object-contain md:max-w-[220px]"
+              class="h-full max-h-full w-auto max-w-48 object-contain xl:max-w-[15vw]"
             />
           </div>
         ))

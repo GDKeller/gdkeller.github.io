@@ -8,7 +8,7 @@
   "scripts": {
     "astro": "astro",
     "build": "astro check && astro build",
-    "check:colors": "node scripts/check-oklch.mjs",
+    "check:colors": "node scripts/check-oklch.mjs --target=srgb",
     "check:colors:fix": "node scripts/check-oklch.mjs --fix",
     "dev": "astro dev",
     "format": "prettier --check .",

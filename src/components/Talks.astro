@@ -67,7 +67,6 @@ const getPoster = (item: Appearance, size: "mq" | "hq" = "mq") => {
 };
 
 const total = sorted.length;
-const pad2 = (n: number) => String(n).padStart(1, "0");
 const initial = sorted[0];
 ---
 
@@ -166,6 +165,7 @@ const initial = sorted[0];
           class="border-faint flex items-center justify-between border-b px-4 py-3"
         >
           <p
+            aria-hidden="true"
             class="text-faint text-2xs flex items-center font-mono leading-none font-extralight tracking-widest uppercase"
           >
             <span class="text-subtle triplecolon text-light" aria-hidden="true"
@@ -174,9 +174,10 @@ const initial = sorted[0];
             <span class="ml-2">Queue</span>
           </p>
           <p
+            aria-hidden="true"
             class="text-faint text-2xs font-mono leading-none font-extralight tracking-widest uppercase tabular-nums"
           >
-            {pad2(total)}&nbsp;<span class="text-subtle">tracks</span>
+            {total}&nbsp;<span class="text-subtle">tracks</span>
           </p>
         </div>
         <ul role="list" class="flex flex-1 flex-col">
@@ -199,10 +200,10 @@ const initial = sorted[0];
                 >
                   <span class="absolute top-0 left-0 h-full w-32 overflow-hidden">
                     <span
-                      class="track__index text-faint absolute -top-[32%] -left-[0.05em] z-0 shrink-0 pt-1 text-right font-mono text-[8.75rem] leading-none font-extralight -tracking-widest uppercase tabular-nums opacity-50 transition duration-300"
+                      class="track__index text-faint absolute top-[-32%] left-[-0.05em] z-0 shrink-0 pt-1 text-right font-mono text-[8.75rem] leading-none font-extralight -tracking-widest uppercase tabular-nums opacity-50 transition duration-300"
                       aria-hidden="true"
                     >
-                      {pad2(idx + 1)}
+                      {idx + 1}
                     </span>
                   </span>
                   <span class="track__poster border-background-dark bg-background-dark relative ml-12 aspect-video w-24 shrink-0 overflow-hidden border-2">

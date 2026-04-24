@@ -13,12 +13,26 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
-import { parse, displayable, clampChroma } from "culori";
+import { parse, clampChroma, converter } from "culori";
+
+// Below both 8-bit (1/255 ≈ 0.0039) and 10-bit (1/1023 ≈ 0.001) display
+// precision — values within this of the gamut boundary render identically
+// to an in-gamut color, so flagging them is a false positive. Real typos
+// (e.g. chroma 1.9) are orders of magnitude outside this.
+const GAMUT_EPSILON = 0.001;
+const toRgb = converter("rgb");
+const toP3 = converter("p3");
+const inGamut = (color, mode) => {
+  const { r, g, b } = mode === "p3" ? toP3(color) : toRgb(color);
+  const lo = -GAMUT_EPSILON;
+  const hi = 1 + GAMUT_EPSILON;
+  return r >= lo && r <= hi && g >= lo && g <= hi && b >= lo && b <= hi;
+};
 
 const args = process.argv.slice(2);
 const shouldFix = args.includes("--fix");
 const targetArg = args.find((a) => a.startsWith("--target="));
-const target = targetArg ? targetArg.split("=")[1] : "p3";
+const target = targetArg ? targetArg.split("=")[1] : "srgb";
 
 if (!["srgb", "p3"].includes(target)) {
   console.error(`Invalid --target=${target}. Use 'srgb' or 'p3'.`);
@@ -78,8 +92,8 @@ const updated = original.replace(TOKEN_RE, (match, prefix, name, value) => {
     return match;
   }
 
-  const inSrgb = displayable(parsed);
-  const inP3 = displayable({ ...parsed, mode: "p3" });
+  const inSrgb = inGamut(parsed, "rgb");
+  const inP3 = inGamut(parsed, "p3");
 
   if (inSrgb) {
     results.ok.push({ name, value });
