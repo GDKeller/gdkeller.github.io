@@ -9,8 +9,12 @@ interface Props {
   sizes?: string;
 }
 
-const { imagePath, altText, widths = [200, 400, 800], sizes = "(min-width: 768px) 25vw, 60vw" } =
-  Astro.props;
+const {
+  imagePath,
+  altText,
+  widths = [200, 400, 800],
+  sizes = "(min-width: 768px) 25vw, 60vw",
+} = Astro.props;
 
 const images = import.meta.glob<{ default: ImageMetadata }>([
   "/src/images/projects/*/*.{jpeg,jpg,png,gif,webp}",

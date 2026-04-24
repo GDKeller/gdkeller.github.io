@@ -52,11 +52,15 @@ export const flags = defineFlags({
 
 // At app bootstrap:
 flags.syncFromUrl();
-flags.logHelp();  // or gate behind `?help` or conditional
+flags.logHelp(); // or gate behind `?help` or conditional
 
 // In components:
-if (flags.tools.palette) { /* reveal palette picker */ }
-if (flags.mode === "stale") { /* serve from cache */ }
+if (flags.tools.palette) {
+  /* reveal palette picker */
+}
+if (flags.mode === "stale") {
+  /* serve from cache */
+}
 ```
 
 ### Behaviors

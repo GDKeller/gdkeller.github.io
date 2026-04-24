@@ -8,25 +8,26 @@
 
 ## Design health score
 
-| # | Heuristic | Score | Key issue |
-|---|-----------|------:|-----------|
-| 1 | Visibility of system status | 3 | Oscilloscope + hero→headshot swap carry state well |
-| 2 | Match system & real world | 3 | Dossier metaphor consistent in Hero + CurrentlyBuilding; fades mid-page |
-| 3 | User control & freedom | 3 | Modal has ESC/backdrop dismiss; thumbnails reversible |
-| 4 | Consistency & standards | 2 | Four competing heading treatments for the same job |
-| 5 | Error prevention | 2 | Low surface area; no forms to validate |
-| 6 | Recognition over recall | 3 | Sticky header, visible anchors, thumbnail strip |
-| 7 | Flexibility & efficiency | 2 | No skip link; only one path to Contact; mobile Contact is icon-only |
-| 8 | Aesthetic & minimalist | 2 | Hero stacks 3 radial gradients + siren + glitch + noise + scanlines |
-| 9 | Error recovery | 2 | N/A for static portfolio; neutral |
-| 10 | Help & documentation | 3 | `/styles` page exists; content self-explanatory |
-| **Total** | | **25/40** | **Good (lower end)** |
+| #         | Heuristic                   |     Score | Key issue                                                               |
+| --------- | --------------------------- | --------: | ----------------------------------------------------------------------- |
+| 1         | Visibility of system status |         3 | Oscilloscope + hero→headshot swap carry state well                      |
+| 2         | Match system & real world   |         3 | Dossier metaphor consistent in Hero + CurrentlyBuilding; fades mid-page |
+| 3         | User control & freedom      |         3 | Modal has ESC/backdrop dismiss; thumbnails reversible                   |
+| 4         | Consistency & standards     |         2 | Four competing heading treatments for the same job                      |
+| 5         | Error prevention            |         2 | Low surface area; no forms to validate                                  |
+| 6         | Recognition over recall     |         3 | Sticky header, visible anchors, thumbnail strip                         |
+| 7         | Flexibility & efficiency    |         2 | No skip link; only one path to Contact; mobile Contact is icon-only     |
+| 8         | Aesthetic & minimalist      |         2 | Hero stacks 3 radial gradients + siren + glitch + noise + scanlines     |
+| 9         | Error recovery              |         2 | N/A for static portfolio; neutral                                       |
+| 10        | Help & documentation        |         3 | `/styles` page exists; content self-explanatory                         |
+| **Total** |                             | **25/40** | **Good (lower end)**                                                    |
 
 ---
 
 ## Anti-patterns verdict
 
 ### LLM assessment
+
 Not AI slop overall. The site clearly fights template defaults and mostly wins. Distinctive wins:
 
 - **Type stack** — Bayon, Bokor, Karantina, Manufacturing Consent, Permanent Marker, IBM Plex Mono. Zero Inter/Roboto/Outfit/Plus Jakarta tells. (`src/layouts/Layout.astro:26`)
@@ -41,9 +42,10 @@ Not AI slop overall. The site clearly fights template defaults and mostly wins. 
 - **Purple/blue/indigo gradient blockquote** at `src/components/ProjectSingle.astro:146` (`from-purple-600/15 via-blue-800/25 to-indigo-700/20`). Directly violates the emerald+fuchsia thesis. Confirmed by the automated scan.
 - **Generic emerald gradient card bg** on Talks (`src/components/Talks.astro:62`) reads as a safe gradient-card template rather than a dossier object.
 
-**Verdict:** a design director would say *"a person with taste made this,"* but the middle of the page (Featured Work → Jobs → Talks) reverts to portfolio-template shapes. The thesis is a costume the hero wears, not the architecture of the whole page.
+**Verdict:** a design director would say _"a person with taste made this,"_ but the middle of the page (Featured Work → Jobs → Talks) reverts to portfolio-template shapes. The thesis is a costume the hero wears, not the architecture of the whole page.
 
 ### Deterministic scan
+
 `npx impeccable --json src/pages src/components src/layouts` — exit 0, 9 findings.
 
 **True positives worth acting on:**
@@ -81,7 +83,7 @@ Passes: decision density (a), text chunking (b), jargon anchoring (e), progressi
 
 **Peak lands at first scroll.** The hero's Polaroid + Karantina ultracondensed "Deep space / deep sea" + siren pulse is genuinely "whoa." CurrentlyBuilding sustains the dossier identity with thumbnail strip, inverted slab, corner brackets.
 
-**Valley hits at Featured Work.** NY Post section collapses to two huge numbers ("391 million," "65 million"), a screenshot, a prose block, and a "Technologies:" list. The dossier thesis evaporates; it reads as a standard case-study card. The purple pull-quote gradient is the moment a reviewer thinks *"oh, this is just a portfolio after all."*
+**Valley hits at Featured Work.** NY Post section collapses to two huge numbers ("391 million," "65 million"), a screenshot, a prose block, and a "Technologies:" list. The dossier thesis evaporates; it reads as a standard case-study card. The purple pull-quote gradient is the moment a reviewer thinks _"oh, this is just a portfolio after all."_
 
 **Dead-scroll in Jobs** (~800–1200px of similar cards with the same border-left stripe). Awards recovers energy (gold drop-shadows, counters). Talks is flat. The anglerfish finale is undersold by a plain `font-bokor` "Beyond the Screen" heading with no scanline or slab treatment.
 
@@ -100,26 +102,31 @@ Passes: decision density (a), text chunking (b), jargon anchoring (e), progressi
 ## Priority issues
 
 ### [P0] No primary CTA in the hero
+
 - **Why it matters:** a 30-second hiring manager has no visible "next step" after the hero. Contact is buried in a top-right stack of four visually identical controls.
 - **Fix:** add one dominant dossier-styled CTA inside `Hero.astro` below the tagline. "TRANSMIT," "OPEN FILE," "Begin briefing" — something on-thesis. Make it the single clearest action on first viewport.
 - **Suggested commands:** `/clarify` → `/bolder`
 
 ### [P1] Jobs/Projects cards revert to generic portfolio template
+
 - **Why it matters:** the emerald→teal→blue left-border stripe on `JobSingle.astro:77-83` and `ProjectSingle.astro:115-121` is the most recognizable template pattern in AI-generated portfolios. Plus the purple/blue/indigo gradient blockquote at `ProjectSingle.astro:146` literally inverts the thesis.
 - **Fix:** replace the stripe with a dossier gesture — manila-tab corners, redaction bars, a classification stamp, a left-margin typewritten file number. Delete the purple gradient; replace with emerald or fuchsia wash at low opacity.
 - **Suggested commands:** `/shape` (re-design the card) → `/colorize`
 
 ### [P1] Heading system is inconsistent across sections
+
 - **Why it matters:** four treatments (`section-heading`, `section-heading__center`, inverted slab, plain `font-bokor`) fragment the visual language. The strongest and most on-thesis is the inverted emerald slab used in CurrentlyBuilding. Passion Projects and Beyond the Screen look unfinished by comparison.
 - **Fix:** make the inverted slab the primary section header everywhere; demote the scanline `section-heading` to a secondary tier; remove the plain `font-bokor` one-offs.
 - **Suggested commands:** `/typeset` → `/polish`
 
 ### [P2] Hero has atmospheric overload
+
 - **Why it matters:** three radial gradients (`Hero.astro:130-138`) + siren animation + glitch overlay + noise + scanline frames (`index.astro:101-117`) stack into visual noise that competes with the type. On low-end machines this thrashes the compositor.
 - **Fix:** pick one atmospheric device per layer — siren OR glitch, noise OR frame, not both. Let the Karantina type breathe. Check reduced-motion fallbacks.
 - **Suggested commands:** `/quieter` → `/optimize`
 
 ### [P2] Featured Work container dilutes two unrelated pieces
+
 - **Why it matters:** "Featured Work" groups the NY Post traffic-number brag with the OBR Tauri+CoreML macOS product. OBR is the more differentiated work but gets buried second. The container heading flattens both.
 - **Fix:** split into "Featured Case Study" (one piece) and promote OBR either to its own section or to a position adjacent to the hero. A shipping macOS product is a stronger opening move than traffic numbers.
 - **Suggested commands:** `/layout` → `/distill`
@@ -138,7 +145,7 @@ Passes: decision density (a), text chunking (b), jargon anchoring (e), progressi
 
 ## Minor observations
 
-- `src/pages/index.astro:22` — `<Footer>` and fixed bg live *outside* `<main>`. Works, but unusual.
+- `src/pages/index.astro:22` — `<Footer>` and fixed bg live _outside_ `<main>`. Works, but unusual.
 - `src/pages/index.astro:24-25` — delete commented-out gradient overlays.
 - `src/components/Hero.astro:84` — the "to" span is both `sr-only` and styled as a visible pill. Pick one.
 - `src/components/Nypost.astro:116-120` — `<style>` nested inside the JSX content block rather than at component scope. Brittle.

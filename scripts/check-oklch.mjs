@@ -92,12 +92,7 @@ const updated = original.replace(TOKEN_RE, (match, prefix, name, value) => {
 });
 
 const pad = (s, n) => s.padEnd(n);
-const allEntries = [
-  ...results.ok,
-  ...results.outOfSrgb,
-  ...results.outOfP3,
-  ...results.malformed,
-];
+const allEntries = [...results.ok, ...results.outOfSrgb, ...results.outOfP3, ...results.malformed];
 const longestName = Math.max(...allEntries.map((r) => r.name.length), 0);
 
 if (results.ok.length) {
@@ -133,7 +128,9 @@ if (results.malformed.length) {
 
 if (shouldFix && results.fixed.length) {
   writeFileSync(cssPath, updated);
-  console.log(`\n\x1b[36m✎ wrote ${results.fixed.length} fix(es) to ${cssPath} (target: ${target})\x1b[0m`);
+  console.log(
+    `\n\x1b[36m✎ wrote ${results.fixed.length} fix(es) to ${cssPath} (target: ${target})\x1b[0m`,
+  );
 } else if (shouldFix) {
   console.log(`\n\x1b[36m✎ no fixes needed for target=${target}\x1b[0m`);
 }

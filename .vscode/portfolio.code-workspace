@@ -1,12 +1,10 @@
 {
-	"folders": [
-		{
-			"path": ".."
-		}
-	],
-	"settings": {
-		"prettier.documentSelectors": [
-			"**/*.astro"
-		]
-	}
+  "folders": [
+    {
+      "path": "..",
+    },
+  ],
+  "settings": {
+    "prettier.documentSelectors": ["**/*.astro"],
+  },
 }

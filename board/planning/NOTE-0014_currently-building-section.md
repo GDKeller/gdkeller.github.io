@@ -18,13 +18,13 @@ A new top-of-page section that surfaces in-flight personal work so visitors imme
 
 **Branding distinction:** OBR is legally a Davant product from a business standpoint, but it doesn't fit the outward-facing Davant brand and should be presented in this section as a standalone project, not lumped with Davant Studio / Magic Mirror. Davant Studio and Magic Mirror are the two products that carry the Davant brand publicly.
 
-| # | Project | Badge | URL | Description |
-|---|---------|-------|-----|-------------|
-| 1 | Offline Background Remover | — | https://www.davantsystems.com/offline-background-remover/ | Tauri v2 macOS app for fully on-device AI background removal. Launching on the Mac App Store. Keeps its existing Featured Work section as the deep-dive case study; the Currently Building entry is the elevator pitch. Presented standalone — no Davant badge, even though it ships under Davant Systems as a business entity. |
-| 2 | Davant Studio (v2) | Davant | https://www.davantsystems.com/davant-studio/ | "AI image tools for creative professionals" — real-time art & design assistant for Mac and Windows. **v1 is deprecated; v2 is closing in on a release candidate with a substantially nicer UI.** This makes Davant Studio the single most literally "currently building" entry in the section. **Ship with a "v2 launching soon" placeholder tile** — a device frame with a muted/redacted screen and a clear "launching soon" label — then swap in real v2 screenshots once the RC lands. Do NOT use the v1 marketing page screenshot at `davant-studio-source.png`. |
-| 3 | Magic Mirror | Davant | https://www.davantsystems.com/photobooth/ | AI Photo Booth for events — captures a photo every 3 seconds and uses generative AI to transform guests in real-time (paper origami, felt puppets, comic book heroes, etc.). Southern California events + nationwide brand activations. |
-| 4 | ChromaCurve | — | https://chromacurve.style/ | Parabolic saturation correction for monochromatic color palettes. A focused tool for designers working in single-hue systems. |
-| 5 | NASA Picture | — | https://nasapicture.com/ | Static proxy of NASA's Astronomy Picture of the Day — a gallery-style display page plus an API for developers. |
+| #   | Project                    | Badge  | URL                                                       | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| --- | -------------------------- | ------ | --------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | Offline Background Remover | —      | https://www.davantsystems.com/offline-background-remover/ | Tauri v2 macOS app for fully on-device AI background removal. Launching on the Mac App Store. Keeps its existing Featured Work section as the deep-dive case study; the Currently Building entry is the elevator pitch. Presented standalone — no Davant badge, even though it ships under Davant Systems as a business entity.                                                                                                                                                                                                                                       |
+| 2   | Davant Studio (v2)         | Davant | https://www.davantsystems.com/davant-studio/              | "AI image tools for creative professionals" — real-time art & design assistant for Mac and Windows. **v1 is deprecated; v2 is closing in on a release candidate with a substantially nicer UI.** This makes Davant Studio the single most literally "currently building" entry in the section. **Ship with a "v2 launching soon" placeholder tile** — a device frame with a muted/redacted screen and a clear "launching soon" label — then swap in real v2 screenshots once the RC lands. Do NOT use the v1 marketing page screenshot at `davant-studio-source.png`. |
+| 3   | Magic Mirror               | Davant | https://www.davantsystems.com/photobooth/                 | AI Photo Booth for events — captures a photo every 3 seconds and uses generative AI to transform guests in real-time (paper origami, felt puppets, comic book heroes, etc.). Southern California events + nationwide brand activations.                                                                                                                                                                                                                                                                                                                               |
+| 4   | ChromaCurve                | —      | https://chromacurve.style/                                | Parabolic saturation correction for monochromatic color palettes. A focused tool for designers working in single-hue systems.                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| 5   | NASA Picture               | —      | https://nasapicture.com/                                  | Static proxy of NASA's Astronomy Picture of the Day — a gallery-style display page plus an API for developers.                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 
 **Source screenshots captured in `src/images/current/*-source.png`** — these are raw full-page grabs from the live sites and need to be cropped/resized + converted to WebP before shipping. Keep them as the starting point; don't re-fetch.
 
@@ -42,13 +42,13 @@ const current = defineCollection({
   schema: z.object({
     title: z.string(),
     url: z.string().url(),
-    description: z.string(),             // one-line, ≤ 80 chars
-    image: z.string().optional(),        // path under src/images/current/
+    description: z.string(), // one-line, ≤ 80 chars
+    image: z.string().optional(), // path under src/images/current/
     imageAlt: z.string().optional(),
     tech: z.array(z.string()).optional(),
     status: z.enum(["live", "beta", "launching-soon"]).optional(),
     brand: z.enum(["davant"]).optional(), // for the Davant grouping cue
-    order: z.number().optional(),         // manual workbench placement control
+    order: z.number().optional(), // manual workbench placement control
   }),
 });
 ```
@@ -128,4 +128,4 @@ All decisions locked. Ready to build.
 5. Mount in `src/pages/index.astro` between `<Header />` and the Featured Work section.
 6. Verify responsive + reduced-motion + keyboard nav in Chrome.
 7. Decide OBR featured section fate; execute if retiring.
-</invoke>
+   </invoke>

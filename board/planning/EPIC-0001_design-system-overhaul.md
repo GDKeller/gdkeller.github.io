@@ -11,6 +11,7 @@ created: 2026-03-27
 Strip the portfolio's visual system of stock Tailwind tells, DaisyUI dependency, and generic border radius. Replace with a custom hue-shifted palette, semantic tokens, and sharp-edged aesthetic that matches the cyberpunk identity.
 
 ## Goals
+
 - Eliminate recognizable stock Tailwind colors
 - Remove DaisyUI entirely (visual parity, not a redesign)
 - Kill border radius sitewide (with exceptions for intentionally circular elements)
@@ -18,6 +19,7 @@ Strip the portfolio's visual system of stock Tailwind tells, DaisyUI dependency,
 - Normalize OBR section and contact modal into the unified system
 
 ## Sub-tasks
+
 - TASK-0013: Eliminate border radius sitewide
 - TASK-0014: Remove DaisyUI dependency
 - TASK-0015: Create custom hue-shifted color palette
@@ -26,6 +28,7 @@ Strip the portfolio's visual system of stock Tailwind tells, DaisyUI dependency,
 - TASK-0018: Redesign contact modal
 
 ## Sequencing
+
 1. Border radius (independent, no dependencies)
 2. DaisyUI removal (independent, but modal redesign depends on it)
 3. Custom palette + semantic tokens (TASK-0015 then TASK-0016, tightly coupled)

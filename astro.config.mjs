@@ -1,14 +1,14 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
-import tailwindcss from '@tailwindcss/vite';
-import favicons from 'astro-favicons';
-import mdx from '@astrojs/mdx';
+import { defineConfig } from "astro/config";
+import tailwindcss from "@tailwindcss/vite";
+import favicons from "astro-favicons";
+import mdx from "@astrojs/mdx";
 
-import sitemap from '@astrojs/sitemap';
+import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://www.grantkeller.dev',
+  site: "https://www.grantkeller.dev",
   integrations: [mdx(), favicons(), sitemap()],
   image: {
     // Emit <img srcset> from <Image widths={...}>. We intentionally do NOT set

@@ -37,6 +37,7 @@ src/
 ## Common Tasks
 
 ### Adding New Content
+
 - **Jobs:** Create `.md` file in `src/content/jobs/`
 - **Projects:** Create `.md` file in `src/content/projects/`
 - All content uses Zod-validated frontmatter schemas defined in `src/content/config.ts`
@@ -44,17 +45,21 @@ src/
 ## Design Context
 
 ### Users
+
 Hiring managers and potential clients evaluating Grant's technical abilities. They're scanning quickly, comparing against other candidates, and looking for evidence of craft, range, and taste.
 
 ### Brand Personality
+
 **Technical, Bold, Creative** — engineering depth with artistic confidence.
 
 ### Emotional Goals
+
 - "They think differently" — surprise and curiosity through creative technical choices
 - "I want to work with them" — approachability and collaborative energy beneath the polish
 - "Wide breadth of skills, I trust them with any problem" — demonstrated range and reliability
 
 ### Aesthetic Direction
+
 - **Theme:** Dark only — black backdrop with emerald as the dominant color, fuchsia as punctuation
 - **Effects:** Neon glow text-shadows, glass morphism (translucent backgrounds with `backdrop-blur`), radial gradient bursts, blurred emerald scanlines on section headings
 - **Fonts:** Bayon (display), Bokor (decorative), Permanent Marker (handwritten accent), Prompt (body) — loaded via Google Fonts
@@ -64,21 +69,25 @@ Hiring managers and potential clients evaluating Grant's technical abilities. Th
 - **The current site IS the reference** — evolve and refine, don't reinvent
 
 ### Color tokens
+
 Colors are expressed through semantic tokens defined in `src/styles/global.css`, named by role along a single axis — **attention intensity**. See the comment block in that file for the authoritative list; don't reach for raw `emerald-*` or `fuchsia-*` classes in new code.
 
 **Attention hierarchy** (content the user should read/see):
+
 - `foundation` — baseline reading copy
 - `emphasis` (+hover) — gentle lift above foundation (headings, labels, decorators)
 - `accent` (+hover) — clearly prominent (buttons, active states, interactive elements)
 - `highlight` (+hover) — fuchsia, maximum demand; used sparingly
 
 **Structural** (scaffolding, not competing for attention):
+
 - `background` — the page backdrop
 - `subtle` — dividers, borders, decoration; never used on text
 
-Tokens encode *decisions*, not *elements*. If changing a token's value should update every use of it together, it's a valid token. Avoid element-named tokens like `button-bg` or `link-color` — they collapse the moment the same element needs different values in different contexts.
+Tokens encode _decisions_, not _elements_. If changing a token's value should update every use of it together, it's a valid token. Avoid element-named tokens like `button-bg` or `link-color` — they collapse the moment the same element needs different values in different contexts.
 
 ### Design Principles
+
 1. **Craft over convention** — Every interaction should feel intentional and hand-built, not templated
 2. **Atmosphere first** — Use glow, depth, and texture to create a sense of place, not just a page
 3. **Accessible by default** — Full `prefers-reduced-motion` support, WCAG 2.2 focus indicators, `prefers-contrast: high`, semantic HTML, sr-only labels
@@ -114,16 +123,19 @@ npx prettier --write .   # Fix formatting
 ## Component Conventions
 
 ### Naming
+
 - PascalCase for component files
 - Descriptive names (avoid generic like "Card")
 - Group by function when possible
 
 ### Props
+
 - Define TypeScript interfaces
 - Use Zod for runtime validation where needed
 - Document required vs optional props
 
 ### Styling
+
 - Tailwind utilities preferred
 - Component-scoped styles when needed
 - Avoid inline styles
@@ -131,13 +143,16 @@ npx prettier --write .   # Fix formatting
 ## Content Guidelines
 
 ### Frontmatter Requirements
+
 Each content type has specific required fields (see `src/content/config.ts` for full schemas):
+
 - **Jobs:** company, position (+ optional: startMonthYear, endMonthYear, tech, companyLogo, order)
 - **Projects:** title, projectName, client (+ optional: clientLogo, timeperiod, tags, image, tech)
 - **Skills:** title (+ optional: tags, image)
 - **Featured:** title (+ optional: description, tags, image)
 
 ### Image Assets
+
 - Store in `src/images/` with logical subdirectories
 - Use descriptive filenames
 - Optimize before committing (WebP preferred)

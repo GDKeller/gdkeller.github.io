@@ -15,16 +15,19 @@ The Anglerfish project section has a compelling foundation with strong storytell
 ## Key Improvement Opportunities
 
 ### 1. Interactivity Gaps
+
 - Static experience lacks scroll-triggered reveals and animations
 - Missing progressive disclosure of technical details
 - No interactive elements to demonstrate the sensor system
 
 ### 2. Pacing Issues
+
 - Large text blocks without visual breathing room
 - Abrupt transitions between story sections
 - Inconsistent rhythm in content revelation
 
 ### 3. Professional Polish Needs
+
 - Typography hierarchy could be more refined
 - Image presentation lacks sophisticated framing
 - Transitions feel mechanical rather than organic
@@ -34,6 +37,7 @@ The Anglerfish project section has a compelling foundation with strong storytell
 ### Scroll-Triggered Animations (GSAP)
 
 #### 1. Cinematic Intro Sequence
+
 ```typescript
 // Hero section: Dramatic reveal with depth
 ScrollTrigger.create({
@@ -43,32 +47,38 @@ ScrollTrigger.create({
   onUpdate: (self) => {
     gsap.set(".fish-hero__image", {
       y: self.progress * -100,
-      rotationZ: self.progress * 5
+      rotationZ: self.progress * 5,
     });
-  }
+  },
 });
 ```
 
 #### 2. Story Beat Reveals
+
 ```typescript
 // Progressive text reveal with stagger
-gsap.fromTo(".story-paragraph", {
-  y: 60,
-  opacity: 0
-}, {
-  y: 0,
-  opacity: 1,
-  duration: 0.8,
-  stagger: 0.2,
-  scrollTrigger: {
-    trigger: ".story-section",
-    start: "top 80%",
-    toggleActions: "play none none reverse"
-  }
-});
+gsap.fromTo(
+  ".story-paragraph",
+  {
+    y: 60,
+    opacity: 0,
+  },
+  {
+    y: 0,
+    opacity: 1,
+    duration: 0.8,
+    stagger: 0.2,
+    scrollTrigger: {
+      trigger: ".story-section",
+      start: "top 80%",
+      toggleActions: "play none none reverse",
+    },
+  },
+);
 ```
 
 #### 3. Technical Visualization
+
 ```typescript
 // Animated sensor diagram
 const sensorAnimation = () => {
@@ -77,36 +87,37 @@ const sensorAnimation = () => {
       trigger: ".technical-section",
       start: "top center",
       end: "bottom center",
-      scrub: 1
-    }
+      scrub: 1,
+    },
   });
-  
-  tl.fromTo(".light-sensor", {scale: 0}, {scale: 1, duration: 1})
-    .fromTo(".motion-sensor", {x: -50, opacity: 0}, {x: 0, opacity: 1})
-    .fromTo(".data-flow", {pathLength: 0}, {pathLength: 1});
+
+  tl.fromTo(".light-sensor", { scale: 0 }, { scale: 1, duration: 1 })
+    .fromTo(".motion-sensor", { x: -50, opacity: 0 }, { x: 0, opacity: 1 })
+    .fromTo(".data-flow", { pathLength: 0 }, { pathLength: 1 });
 };
 ```
 
 ### Interactive Design Elements
 
 #### 1. Museum Case Interaction
+
 ```scss
 .exhibit-case {
   cursor: pointer;
   transition: all 0.3s ease;
-  
+
   &:hover {
     transform: scale(1.02);
     box-shadow: 0 20px 40px rgba(0, 255, 200, 0.3);
   }
-  
+
   &::before {
     content: "Click to explore";
     position: absolute;
     opacity: 0;
     transition: opacity 0.3s ease;
   }
-  
+
   &:hover::before {
     opacity: 1;
   }
@@ -114,26 +125,28 @@ const sensorAnimation = () => {
 ```
 
 #### 2. Progressive Data Visualization
+
 ```typescript
 // Light exposure meter animation
 const createLightMeter = () => {
-  const meter = document.querySelector('.light-meter');
-  
+  const meter = document.querySelector(".light-meter");
+
   ScrollTrigger.create({
     trigger: meter,
     start: "top center",
     onEnter: () => {
-      gsap.to('.meter-fill', {
-        width: '73%', // Actual light exposure data
+      gsap.to(".meter-fill", {
+        width: "73%", // Actual light exposure data
         duration: 2,
-        ease: "power2.out"
+        ease: "power2.out",
       });
-    }
+    },
   });
 };
 ```
 
 #### 3. Atmospheric Lighting Effects
+
 ```css
 .deep-ocean-ambience {
   background: radial-gradient(
@@ -146,14 +159,20 @@ const createLightMeter = () => {
 }
 
 @keyframes deepWaterPulse {
-  0%, 100% { filter: brightness(1); }
-  50% { filter: brightness(1.1); }
+  0%,
+  100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.1);
+  }
 }
 ```
 
 ### Layout Optimization for Scrollytelling
 
 #### 1. Enhanced Content Pacing
+
 ```astro
 <!-- Improved section structure with breathing room -->
 <section class="story-beat" data-chapter="discovery">
@@ -173,10 +192,11 @@ const createLightMeter = () => {
 ```
 
 #### 2. Professional Typography System
+
 ```scss
 // Refined type hierarchy
 .story-headline {
-  font-family: 'Bokor', display;
+  font-family: "Bokor", display;
   font-size: clamp(2.5rem, 5vw, 4rem);
   line-height: 1.1;
   letter-spacing: -0.02em;
@@ -200,25 +220,22 @@ const createLightMeter = () => {
 ```
 
 #### 3. Visual Hierarchy Improvements
+
 ```scss
 // Better image presentation
 .story-visual {
   position: relative;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 
+  box-shadow:
     0 10px 30px rgba(0, 0, 0, 0.3),
     0 0 0 1px rgba(255, 255, 255, 0.1);
-  
+
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-      135deg,
-      transparent 0%,
-      rgba(0, 255, 200, 0.1) 100%
-    );
+    background: linear-gradient(135deg, transparent 0%, rgba(0, 255, 200, 0.1) 100%);
     pointer-events: none;
   }
 }
@@ -227,6 +244,7 @@ const createLightMeter = () => {
 ## Technical Implementation Roadmap
 
 ### 1. GSAP Integration Setup
+
 ```bash
 npm install gsap
 ```
@@ -246,12 +264,12 @@ if (typeof window !== 'undefined') {
 <script>
   import { gsap } from 'gsap';
   import { ScrollTrigger } from 'gsap/ScrollTrigger';
-  
+
   gsap.registerPlugin(ScrollTrigger);
-  
+
   // Initialize scrollytelling on mount
   document.addEventListener('DOMContentLoaded', initScrollytelling);
-  
+
   function initScrollytelling() {
     // Progressive enhancement check
     if (!window.matchMedia('(prefers-reduced-motion)').matches) {
@@ -262,15 +280,16 @@ if (typeof window !== 'undefined') {
 ```
 
 ### 2. Performance Optimization
+
 ```typescript
 // Intersection Observer for efficient loading
 const observerOptions = {
   threshold: 0.1,
-  rootMargin: '50px'
+  rootMargin: "50px",
 };
 
 const sectionObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
+  entries.forEach((entry) => {
     if (entry.isIntersecting) {
       loadSectionAnimations(entry.target);
     }
@@ -279,6 +298,7 @@ const sectionObserver = new IntersectionObserver((entries) => {
 ```
 
 ### 3. Accessibility Enhancements
+
 ```scss
 // Respect user preferences
 @media (prefers-reduced-motion: reduce) {
@@ -299,18 +319,21 @@ const sectionObserver = new IntersectionObserver((entries) => {
 ## Prioritized Implementation Plan
 
 ### 🎯 Phase 1: Foundation (High Impact)
+
 1. **Install GSAP** & setup ScrollTrigger
 2. **Implement progressive text reveals** with stagger animations
 3. **Add parallax effects** to hero image and key visuals
 4. **Refine typography hierarchy** and spacing
 
 ### 🎯 Phase 2: Interactivity (Medium Impact)
+
 1. **Create hover states** for museum case images
 2. **Add atmospheric lighting effects** for deep ocean feel
 3. **Implement data visualization** for light sensor readings
 4. **Enhanced mobile responsiveness**
 
 ### 🎯 Phase 3: Polish (Professional Touch)
+
 1. **Cinematic transitions** between story sections
 2. **Interactive technical diagrams** showing sensor setup
 3. **Performance optimization** with Intersection Observer

@@ -26,6 +26,7 @@ Implemented in `src/components/ThemeSwitcher.astro`. The component now:
 **Design trade-off:** The overlay markup + styles ship to prod (~1KB) even when disabled, because the runtime override needs something to reveal without a rebuild. This violates the strict "not in the DOM" line of the original criteria but satisfies the practical intent: the element is hidden from visual, accessibility, and interaction layers in prod by default. The alternative — injecting the markup dynamically from a JS template string when the override is set — would duplicate the markup and hurt maintainability for negligible size savings.
 
 **Verified against:**
+
 - `npm run build` passes
 - Built `dist/index.html` contains `<div id="theme-switcher" hidden>` and the runtime override script (URLSearchParams → localStorage → reveal)
 - No new lint errors introduced (one pre-existing unrelated error in `HeroBackground.astro` from the prior hero WIP commit)

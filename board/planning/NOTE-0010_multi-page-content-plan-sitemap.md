@@ -23,7 +23,7 @@ A concrete plan that answers:
 
 1. **Full sitemap** — every page/route on the new multi-page site, with a one-line purpose for each
 2. **Content inventory** — what currently lives on the home page, and for each item: stays on home / moves to sub-page X / gets cut / gets rewritten
-3. **Home page scope** — what the new trimmed-down home page is *for* (hero + teasers + CTAs? landing + filtered highlights?)
+3. **Home page scope** — what the new trimmed-down home page is _for_ (hero + teasers + CTAs? landing + filtered highlights?)
 4. **Navigation model** — how users move between home and sub-pages (primary nav, breadcrumbs, footer links, in-content cross-links)
 5. **URL structure** — clean routes, slug conventions, whether sections get their own directories
 6. **Migration order** — which sub-page to build first (likely the one that unblocks the most home-page cleanup)

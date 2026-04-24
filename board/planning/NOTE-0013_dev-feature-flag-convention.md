@@ -20,10 +20,10 @@ Examples: `palette`, `grid`, `outliner`, `fps`, `bbox`.
 
 ## The Convention
 
-| Purpose | Query param | localStorage key | Shape | Example |
-|---|---|---|---|---|
-| Render mode | `?dev=<name>` | `dev-mode` | single value | `?dev=stale`, `?dev=off` |
-| Helper tools | `?tools=<a,b,c>` | `dev-tools` | comma set | `?tools=palette,grid` |
+| Purpose      | Query param      | localStorage key | Shape        | Example                  |
+| ------------ | ---------------- | ---------------- | ------------ | ------------------------ |
+| Render mode  | `?dev=<name>`    | `dev-mode`       | single value | `?dev=stale`, `?dev=off` |
+| Helper tools | `?tools=<a,b,c>` | `dev-tools`      | comma set    | `?tools=palette,grid`    |
 
 ### Semantics (declarative)
 

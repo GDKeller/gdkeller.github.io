@@ -16,4 +16,5 @@ In `LogoCarousel.astro`, primary logos use `max-h-12 md:max-h-14` but the duplic
 Match the duplicate set to the primary set's sizing classes.
 
 ## Files
+
 - `src/components/LogoCarousel.astro`

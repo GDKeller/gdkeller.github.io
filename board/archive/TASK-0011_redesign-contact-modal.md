@@ -15,6 +15,7 @@ created: 2026-03-27
 The contact modal (in `index.astro`) has four identical cards with rounded icon circles, identical borders, and identical hover states — textbook AI-generated pattern. This is the last thing a hiring manager interacts with; it should feel crafted.
 
 Suggested approach:
+
 - Break the grid symmetry — make email the primary action (larger, different treatment)
 - Stack LinkedIn/GitHub as secondary with less visual weight
 - Resume could be a simple text link instead of a card
@@ -22,4 +23,5 @@ Suggested approach:
 - Consider the emerald corner-accent pattern used in Talks cards
 
 ## Files
+
 - `src/pages/index.astro` (modal at lines 109-261)

@@ -20,6 +20,7 @@ created: 2026-03-27
 4. **SkillBadge.astro:** Add `interface Props { tag?: string; class?: string; }` — props are destructured without type safety.
 
 ## Files
+
 - `src/components/Hero.astro`
 - `src/layouts/Layout.astro`
 - `src/components/Footer.astro`

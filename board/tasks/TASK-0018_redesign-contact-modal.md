@@ -13,6 +13,7 @@ parent: EPIC-0001
 The contact modal has four identical cards — textbook AI-generated pattern. Redesign after DaisyUI removal and border radius elimination are complete.
 
 ## Approach
+
 - Break the grid symmetry — make email the primary action (larger, different treatment)
 - Stack LinkedIn/GitHub as secondary with less visual weight
 - Resume as a simple text link, not a card
@@ -22,4 +23,5 @@ The contact modal has four identical cards — textbook AI-generated pattern. Re
 - No DaisyUI classes (per TASK-0014)
 
 ## Files
+
 - `src/pages/index.astro` (modal section)

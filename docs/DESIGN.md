@@ -16,34 +16,34 @@ The reference is The Expanse, not Blade Runner. Functional, worn, utilitarian. W
 
 Every design element must serve the dossier story. If it doesn't have a role in the intelligence briefing, it doesn't belong on the page.
 
-| Element | Narrative Role |
-|---|---|
-| Hero section | Person-of-interest file. Specimen photo, classification, habitat. |
-| Film frames around content | Surveillance photos, evidence imagery in the case file |
-| Part numbers (PLATE 01, 01.01) | Case file reference numbering system |
-| Substrate grid | The CRT terminal's display pattern |
-| Section inscriptions | Section headers in the intelligence briefing |
-| Stenciled stamps (CLASSIFIED, EYES ONLY) | Operational security markings on the document |
-| Hand-drawn annotations | The analyst's handwritten notes on the file |
-| Ink brush strokes as dividers | Redaction bars or section breaks in a classified document |
-| Emerald-on-black + scanlines + glitch | Properties of the CRT terminal displaying the dossier |
-| Bokor headings | The way the terminal renders classified section headers. Ornamental because the system firmware is old, ritualistic, Soviet-era infrastructure still running future tech |
+| Element                                  | Narrative Role                                                                                                                                                           |
+| ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Hero section                             | Person-of-interest file. Specimen photo, classification, habitat.                                                                                                        |
+| Film frames around content               | Surveillance photos, evidence imagery in the case file                                                                                                                   |
+| Part numbers (PLATE 01, 01.01)           | Case file reference numbering system                                                                                                                                     |
+| Substrate grid                           | The CRT terminal's display pattern                                                                                                                                       |
+| Section inscriptions                     | Section headers in the intelligence briefing                                                                                                                             |
+| Stenciled stamps (CLASSIFIED, EYES ONLY) | Operational security markings on the document                                                                                                                            |
+| Hand-drawn annotations                   | The analyst's handwritten notes on the file                                                                                                                              |
+| Ink brush strokes as dividers            | Redaction bars or section breaks in a classified document                                                                                                                |
+| Emerald-on-black + scanlines + glitch    | Properties of the CRT terminal displaying the dossier                                                                                                                    |
+| Bokor headings                           | The way the terminal renders classified section headers. Ornamental because the system firmware is old, ritualistic, Soviet-era infrastructure still running future tech |
 
 ### Section Names (Dossier Language)
 
 These are working names. The actual heading text can be more natural, but the conceptual framing should inform the design of each section:
 
-| Section | Dossier Framing | Current Heading |
-|---|---|---|
-| Hero | Person of interest file | "Deep Space Deep Sea" |
-| Currently Building | Active operations / current assets | "Currently Building" |
-| Featured Work | Case files | "Featured Work" |
-| Skills | Asset capabilities | (Skills Grid) |
-| Experience | Field assignments / operational history | (Jobs) |
-| Projects | Evidence / field reports | "Projects" |
-| Awards | Commendations / citations | "Awards" |
-| Talks | Intercepted transmissions / field appearances | (Talks) |
-| Anglerfish | Deep cover operation | "Beyond the Screen" |
+| Section            | Dossier Framing                               | Current Heading       |
+| ------------------ | --------------------------------------------- | --------------------- |
+| Hero               | Person of interest file                       | "Deep Space Deep Sea" |
+| Currently Building | Active operations / current assets            | "Currently Building"  |
+| Featured Work      | Case files                                    | "Featured Work"       |
+| Skills             | Asset capabilities                            | (Skills Grid)         |
+| Experience         | Field assignments / operational history       | (Jobs)                |
+| Projects           | Evidence / field reports                      | "Projects"            |
+| Awards             | Commendations / citations                     | "Awards"              |
+| Talks              | Intercepted transmissions / field appearances | (Talks)               |
+| Anglerfish         | Deep cover operation                          | "Beyond the Screen"   |
 
 ---
 
@@ -55,7 +55,7 @@ A hiring design director should feel:
 - **"I want to work with them"**: the craft signals care without pretension. Every detail serves the whole. Nothing is decoration.
 - **"Wide breadth, deep roots"**: the range of projects demonstrates capability. The design system demonstrates the ability to build and maintain a cohesive vision across complexity.
 
-The site should make someone ask *"how was this made?"* Never *"which AI made this?"*
+The site should make someone ask _"how was this made?"_ Never _"which AI made this?"_
 
 ---
 
@@ -64,16 +64,19 @@ The site should make someone ask *"how was this made?"* Never *"which AI made th
 The design operates on a tension between two registers that coexist on every surface:
 
 ### The Terminal Voice (the document, the system)
+
 The CRT display. The filing system. The infrastructure that organizes the dossier. Impersonal, systematic, rigorous.
 
 Thin drafting lines. Registration crosshairs. Case file numbers in monospace. Film rebate with stock names and frame counters. All at low contrast: phosphor traces on a dark screen, not bright chrome. The terminal voice whispers; it never shouts.
 
 ### The Analyst Voice (the human, the author)
+
 The person reviewing the dossier. Grant, claiming authorship. Ornamental display lettering at section headers, rendered by old terminal firmware that treats classified headings as ritualistic inscriptions. Stenciled plate numbers with real ink weight. Hand-drawn annotations in the margins.
 
 The analyst voice appears where Grant is speaking directly: section titles, hero headline, display statistics, handwritten labels. It's the signature on the briefing.
 
 ### The Rule
+
 These two voices must stay distinct. When the terminal starts rendering ornamental headings in monospace, or the analyst starts annotating in the system font, the narrative breaks. The power is in the contrast between the machine and the person using it.
 
 ---
@@ -81,19 +84,23 @@ These two voices must stay distinct. When the terminal starts rendering ornament
 ## Visual Language
 
 ### The Dossier
+
 The site is a single classified document, divided into numbered plates. Each major section is a plate (PLATE 01 through PLATE 08) with a section title and sheet count. The numbering system runs through the entire site as the filing backbone. Every content entry within a section gets a sub-reference (01.01, 01.02).
 
 ### Film Frames as Evidence
+
 Project screenshots and content entries sit inside real film frames. Not CSS borders, not card components. The film frame IS the container. Its rebate, stock name, frame counter, and edge grain are the evidence metadata. Each frame has unique wear, so no two pieces of evidence look stamped from the same template.
 
 The hero already uses a film-holder/specimen-label treatment. The rest of the site extends this: the portfolio is a contact sheet of evidence. Each project is a frame in the roll. The visitor is an analyst reviewing specimens.
 
 ### The Terminal Display
+
 Behind everything, a faint grid: the CRT's pixel structure made visible. Real crosshair marks from engineering graph paper, not CSS gradients. The grid recedes until you notice it, then it reframes the entire page as something displayed on hardware, not rendered in a browser.
 
 The global overlay (scanlines, glitch texture, mix-blend-difference) is the CRT's display characteristics. Every color on the page passes through this filter. Neutral grays pick up a phosphor tint. This is a feature: the terminal processes everything uniformly.
 
 ### Physical Marks on the File
+
 Where the dossier needs dividers, labels, frames, or annotations, it uses real physical marks: ink brush strokes for redaction bars / section breaks, hand-drawn rectangles for evidence frames, stenciled text for operational markings, handwritten words for analyst labels. Real imperfection from real materials. Never simulated in CSS when the actual asset exists.
 
 ---
@@ -101,6 +108,7 @@ Where the dossier needs dividers, labels, frames, or annotations, it uses real p
 ## Color
 
 ### Emerald is the phosphor
+
 The emerald-on-black palette isn't a brand choice. It's the color of the CRT phosphor. Everything displayed on the terminal is tinted by it. This means:
 
 - Text naturally reads in emerald tones (the semantic color tokens: foundation, emphasis, accent)
@@ -109,6 +117,7 @@ The emerald-on-black palette isn't a brand choice. It's the color of the CRT pho
 - Fuchsia is the one color that breaks the phosphor: maximum alert, used once or twice on the entire page
 
 ### The palette is subtractive
+
 Start with everything in the terminal's default phosphor tint. Add explicit color only where removing it would lose information or interactivity. If someone viewed the site in grayscale and it still read as cohesive and well-designed, the color is doing its job correctly.
 
 ---
@@ -130,6 +139,7 @@ Four voices, each with a role in the dossier:
 ## Restraint as Discipline
 
 ### What NOT to do
+
 - Don't use every asset. A handful of film frames, ink strokes, and stamps for the whole site.
 - Don't decorate. Every element must file, label, contain, authenticate, or annotate. If it's just "cool," it goes.
 - Don't simulate in CSS what exists as a real asset. Real film grain beats a gradient.
@@ -137,6 +147,7 @@ Four voices, each with a role in the dossier:
 - Don't overplay the dossier metaphor. It's a structural spine, not a costume. When it stops serving clarity, pull it back. The visitor should feel the narrative without being told it's a narrative.
 
 ### The test for every addition
+
 "Would an analyst reviewing this file expect to see this mark, or did someone tape it on because it looked cool?"
 
 ---

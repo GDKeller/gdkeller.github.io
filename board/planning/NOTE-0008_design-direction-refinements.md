@@ -13,6 +13,7 @@ User feedback captured 2026-03-27.
 Border radius feels like it's working against the cyberpunk/technical vibe. Remove it sitewide.
 
 **Affected locations (~25 instances across 10 files):**
+
 - `Hero.astro` — `rounded-xl` on hero card, headshot container, and inner border overlay
 - `Header.astro` — `rounded-full` on oscilloscope, headshot logo, GitHub icon; `rounded` on LinkedIn icon; `rounded-sm` on Resume and Contact buttons
 - `Footer.astro` — `rounded-lg` on both CTA buttons
@@ -31,12 +32,14 @@ Border radius feels like it's working against the cyberpunk/technical vibe. Remo
 The exhibit photos in FishHero.astro currently float with no visual container. They should feel like they're mounted on a museum wall.
 
 **Suggested treatment:** Wrap each image in a container with:
+
 - Black background
 - Generous padding (like a thick matte frame)
 - Maybe a subtle border or shadow to create depth
 - Think museum gallery — clean, formal, deliberate placement
 
 **Affected images in FishHero.astro:**
+
 - `anglerfishDisplayClose` (line ~94)
 - `anglerfishDisplayFront` (line ~148)
 - `anglerfishDisplayFull` and `anglerfishSpecimen` (lines ~157-161)
@@ -46,6 +49,7 @@ The exhibit photos in FishHero.astro currently float with no visual container. T
 User has moved away from DaisyUI. Replace with Radix primitives.
 
 **Current DaisyUI usage:**
+
 - `modal`, `modal-box`, `modal-backdrop` — contact modal in `index.astro` (the primary DaisyUI dependency)
 - `btn`, `btn-circle`, `btn-ghost`, `btn-sm` — modal close button
 - `stat`, `stat-title` — NYPost stats in `Nypost.astro`
@@ -56,6 +60,7 @@ User has moved away from DaisyUI. Replace with Radix primitives.
 - Listed in `davant-systems-lead-software-engineer.md` job entry tech stack
 
 **Migration plan:**
+
 - Modal → Radix Dialog primitive (or native `<dialog>` since it's already using `<dialog>`)
 - Buttons → replace DaisyUI `btn` classes with Tailwind utilities
 - Stats → replace with plain Tailwind layout
@@ -72,9 +77,11 @@ User has moved away from DaisyUI. Replace with Radix primitives.
 Stock Tailwind colors are recognizable to anyone who's used Tailwind. Two-part fix:
 
 ### Part A: Hue Shift
+
 Shift the emerald, teal, fuchsia, and other palette hues slightly so they don't read as stock Tailwind. This can be done in `tailwind.config.mjs` by overriding the color scales with custom HSL values.
 
 **Current color usage (203 occurrences across 18 files):**
+
 - `emerald-*` — dominant (text, borders, backgrounds, glows, gradients)
 - `teal-*` — secondary (gradients, accents)
 - `fuchsia-*` / `pink-*` / `rose-*` — accent (name, active states, links)
@@ -83,24 +90,26 @@ Shift the emerald, teal, fuchsia, and other palette hues slightly so they don't 
 - `green-500` / `slate-*` — FishHero overlays
 
 ### Part B: Semantic Tokens
+
 Move from raw color references to semantic CSS custom properties:
 
 ```css
 :root {
-  --color-bg: ...;           /* black base */
-  --color-surface: ...;      /* elevated surfaces */
+  --color-bg: ...; /* black base */
+  --color-surface: ...; /* elevated surfaces */
   --color-text-primary: ...; /* emerald-200 equivalent */
-  --color-text-muted: ...;   /* emerald-200/70 equivalent */
-  --color-accent: ...;       /* emerald-400 equivalent */
-  --color-accent-glow: ...;  /* for text-shadow/box-shadow */
-  --color-highlight: ...;    /* fuchsia equivalent */
-  --color-border: ...;       /* emerald-400/20 equivalent */
+  --color-text-muted: ...; /* emerald-200/70 equivalent */
+  --color-accent: ...; /* emerald-400 equivalent */
+  --color-accent-glow: ...; /* for text-shadow/box-shadow */
+  --color-highlight: ...; /* fuchsia equivalent */
+  --color-border: ...; /* emerald-400/20 equivalent */
 }
 ```
 
 Then reference these tokens in Tailwind config via `theme.extend.colors` so classes like `text-accent` and `bg-surface` work throughout.
 
 **This is a large refactor** — 203 color references across 18 files. Consider doing it in phases:
+
 1. Define tokens and shifted palette in `tailwind.config.mjs`
 2. Migrate one section at a time (header → hero → skills → etc.)
 3. Verify each section visually before moving to the next

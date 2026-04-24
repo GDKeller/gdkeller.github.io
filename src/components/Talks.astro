@@ -548,8 +548,7 @@ const initial = sorted[0];
       slot.dataset.slotMode = type || "youtube";
 
       const iframe = document.createElement("iframe");
-      iframe.src =
-        autoplay && !isAudio ? `${src}${src.includes("?") ? "&" : "?"}autoplay=1` : src;
+      iframe.src = autoplay && !isAudio ? `${src}${src.includes("?") ? "&" : "?"}autoplay=1` : src;
       iframe.title = title;
       iframe.className = "h-full w-full border-0";
       iframe.setAttribute(

@@ -16,4 +16,5 @@ In `Layout.astro:92`, `html { font-family: system-ui, sans-serif }` is the base 
 Change to: `html { font-family: 'Prompt', system-ui, sans-serif }` so Prompt is the primary with system-ui as fallback.
 
 ## Files
+
 - `src/layouts/Layout.astro`

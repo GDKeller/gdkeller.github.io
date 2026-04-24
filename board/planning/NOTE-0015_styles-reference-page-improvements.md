@@ -31,7 +31,7 @@ Candidate improvements for [src/pages/styles.astro](../../src/pages/styles.astro
 
 ## Meta
 
-- The `@source inline(…)` force-emission block in global.css (added 2026-04-18) is load-bearing: without it, tokens not consumed elsewhere get tree-shaken and their CSS vars disappear, breaking the /styles page. Add a short comment pointing future-you at *why* it exists so it doesn't get deleted during a cleanup pass.
+- The `@source inline(…)` force-emission block in global.css (added 2026-04-18) is load-bearing: without it, tokens not consumed elsewhere get tree-shaken and their CSS vars disappear, breaking the /styles page. Add a short comment pointing future-you at _why_ it exists so it doesn't get deleted during a cleanup pass.
 - Consider whether /styles should be excluded from production builds or gated behind a dev flag (see NOTE-0013_dev-feature-flag-convention.md). Right now it ships as a public route, which may or may not be intentional.
 
 ## Suggested first slice
