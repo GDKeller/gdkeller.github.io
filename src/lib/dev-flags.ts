@@ -9,6 +9,7 @@
 const MODE_KEY = "dev-mode";
 const TOOLS_KEY = "dev-tools";
 
+/** @knipignore */
 export function getDevMode(): string | null {
   try {
     if (typeof localStorage === "undefined") return null;
@@ -20,6 +21,7 @@ export function getDevMode(): string | null {
   }
 }
 
+/** @knipignore */
 export function getDevTools(): Set<string> {
   try {
     if (typeof localStorage === "undefined") return new Set();

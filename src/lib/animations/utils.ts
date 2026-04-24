@@ -34,6 +34,7 @@ export function showAllElementsImmediately(): void {
 
 /**
  * Subtle fade up animation
+ * @knipignore
  */
 export function fadeUp(
   gsap: GSAPInstance,
@@ -64,6 +65,7 @@ export function fadeUp(
 
 /**
  * Subtle fade in from side animation
+ * @knipignore
  */
 export function fadeInFromSide(
   gsap: GSAPInstance,

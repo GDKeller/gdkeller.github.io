@@ -2,5 +2,6 @@
   "$schema": "./node_modules/knip/schema.json",
   "project": ["src/**/*.{ts,tsx,astro,mdx}"],
   "ignoreDependencies": ["tailwindcss"],
-  "tags": ["-lintignore"]
+  "tags": ["-knipignore"],
+  "ignore": ["src/components/OfflineBgRemover.astro"]
 }
