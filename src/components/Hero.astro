@@ -11,8 +11,16 @@ import headshotBackground from "../images/elements/headshot_bg_w2670_AR-1-606.pn
 // negotiate format via image-set(). The source WebP is tiny, but this keeps
 // every asset on the same pipeline and shaves the WebP fallback for AVIF
 // browsers.
-const maskAvif = await getImage({ src: headshotBackground, format: "avif", width: 600 });
-const maskWebp = await getImage({ src: headshotBackground, format: "webp", width: 600 });
+const maskAvif = await getImage({
+  src: headshotBackground,
+  format: "avif",
+  width: 600,
+});
+const maskWebp = await getImage({
+  src: headshotBackground,
+  format: "webp",
+  width: 600,
+});
 const maskImage = `image-set(url("${maskAvif.src}") type("image/avif"), url("${maskWebp.src}") type("image/webp"))`;
 ---
 
@@ -46,7 +54,10 @@ const maskImage = `image-set(url("${maskAvif.src}") type("image/avif"), url("${m
     id="hero__content"
     class="mx-auto mt-auto mb-auto flex w-full max-w-full px-6 pt-4 pb-4 sm:mr-0 sm:ml-0 sm:pr-4 sm:pl-4 md:px-0 md:pt-6 md:pr-6 md:pl-6 lg:p-0"
   >
-    <div id="hero-content-wrapper" class="mx-auto mb-8 grid grid-cols-[auto_1fr]">
+    <div
+      id="hero-content-wrapper"
+      class="mx-auto mb-8 grid grid-cols-[auto_1fr]"
+    >
       <div
         class="shadow-accent/15 relative z-110 mt-2 mb-6 flex w-full -rotate-[0.3deg] flex-col items-center justify-center overflow-visible p-0.5 px-0.5 pt-0 shadow-2xl sm:mr-auto sm:mb-auto sm:ml-auto sm:w-auto sm:flex-row sm:justify-start md:flex-col md:items-center"
       >
@@ -81,7 +92,9 @@ const maskImage = `image-set(url("${maskAvif.src}") type("image/avif"), url("${m
             class="border-background-dark/20 z-110 border-b border-l py-2 pl-4 text-sm leading-none lg:text-base"
             >UX/Design Engineer</span
           >
-          <span class="headshot-fieldlabel headshot-fieldlabel__last border-b-0">Territory</span>
+          <span class="headshot-fieldlabel headshot-fieldlabel__last border-b-0"
+            >Territory</span
+          >
           <span
             class="border-background-dark/20 z-110 border-l pt-2 pl-4 text-sm leading-none lg:text-sm"
             >Los Angeles CA, USA</span
@@ -117,10 +130,16 @@ const maskImage = `image-set(url("${maskAvif.src}") type("image/avif"), url("${m
             class="pointer-events-none absolute inset-0 flex flex-col items-start sm:text-lg md:mb-8 xl:mb-24"
             aria-hidden="true"
           >
-            <span class="hero-headline hero-headline--ghost -ml-[2ch]">Deep space</span>
-            <span class="hero-headline hero-headline--ghost mb-1 -ml-[1ch]">deep sea</span>
+            <span class="hero-headline hero-headline--ghost -ml-[2ch]"
+              >Deep space</span
+            >
+            <span class="hero-headline hero-headline--ghost mb-1 -ml-[1ch]"
+              >deep sea</span
+            >
           </p>
-          <p class="relative z-110 flex flex-col items-start sm:text-lg md:mb-8 xl:mb-24">
+          <p
+            class="relative z-110 flex flex-col items-start sm:text-lg md:mb-8 xl:mb-24"
+          >
             <span class="hero-headline -ml-[2ch]">Deep space</span>
             <span class="hero-headline mb-1 -ml-[1ch]">deep sea</span>
             <span class="sr-only">&nbsp;</span>
@@ -131,7 +150,9 @@ const maskImage = `image-set(url("${maskAvif.src}") type("image/avif"), url("${m
           </p>
         </div>
         <div class="mr-auto ml-0">
-          <p class="text-foundation font-prompt relative z-110 text-shadow-black/30 text-shadow-lg">
+          <p
+            class="text-foundation font-prompt relative z-110 text-shadow-black/30 text-shadow-lg"
+          >
             <span
               class="text-accent text-shadow-background/70 inline-block leading-snug font-normal tracking-wider text-shadow-lg xl:text-4xl"
               >Frontend architecture&nbsp;
@@ -153,16 +174,30 @@ const maskImage = `image-set(url("${maskAvif.src}") type("image/avif"), url("${m
           >
             <svg class="h-[80vh]" viewBox="0 0 256 512" aria-hidden="true">
               <defs>
-                <linearGradient id="hero-wedge-gradient" x1="0" y1="1" x2="0" y2="0">
-                  <stop offset="0" stop-color="var(--color-secondary-dark)" stop-opacity="0.3"
-                  ></stop>
-                  <stop offset="0.6" stop-color="var(--color-accent)" stop-opacity="0.3"></stop>
-                  <stop offset="0.9" stop-color="var(--color-accent-hover)" stop-opacity="0.2"
-                  ></stop>
+                <linearGradient
+                  id="hero-wedge-gradient"
+                  x1="0"
+                  y1="1"
+                  x2="0"
+                  y2="0"
+                >
+                  <stop
+                    offset="0"
+                    stop-color="var(--color-secondary-dark)"
+                    stop-opacity="0.3"></stop>
+                  <stop
+                    offset="0.6"
+                    stop-color="var(--color-accent)"
+                    stop-opacity="0.3"></stop>
+                  <stop
+                    offset="0.9"
+                    stop-color="var(--color-accent-hover)"
+                    stop-opacity="0.2"></stop>
                 </linearGradient>
               </defs>
-              <path d="M 17 64 A 128 128 0 0 1 239 64 L 128 512 Z" fill="url(#hero-wedge-gradient)"
-              ></path>
+              <path
+                d="M 17 64 A 128 128 0 0 1 239 64 L 128 512 Z"
+                fill="url(#hero-wedge-gradient)"></path>
             </svg>
           </div>
         </div>
@@ -199,12 +234,18 @@ const maskImage = `image-set(url("${maskAvif.src}") type("image/avif"), url("${m
       user-select: none;
       mix-blend-mode: screen;
       text-shadow:
-        0.01em 0.01em 0.01em color-mix(in srgb, var(--color-accent), transparent 0%),
-        -0.02em 0.01em 0.02em color-mix(in srgb, var(--color-accent), transparent 10%),
-        0.01em 0.015em 0.3em color-mix(in srgb, var(--color-accent), transparent 25%),
-        0.01em 0.015em 0.6em color-mix(in srgb, var(--color-accent), transparent 80%),
-        0.015em 0.02em 0.125em color-mix(in srgb, var(--color-accent), transparent 90%),
-        0.15em 0.2em 2.5em color-mix(in srgb, var(--color-accent), transparent 95%);
+        0.01em 0.01em 0.01em
+          color-mix(in srgb, var(--color-accent), transparent 0%),
+        -0.02em 0.01em 0.02em
+          color-mix(in srgb, var(--color-accent), transparent 10%),
+        0.01em 0.015em 0.3em
+          color-mix(in srgb, var(--color-accent), transparent 25%),
+        0.01em 0.015em 0.6em
+          color-mix(in srgb, var(--color-accent), transparent 80%),
+        0.015em 0.02em 0.125em
+          color-mix(in srgb, var(--color-accent), transparent 90%),
+        0.15em 0.2em 2.5em
+          color-mix(in srgb, var(--color-accent), transparent 95%);
     }
   </style>
 </section>

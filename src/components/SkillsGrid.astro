@@ -87,7 +87,12 @@ const secondaryCategories = [
 
 <div class="mb-16 flex flex-col items-center">
   <h2 class="sr-only">Skills</h2>
-  <HeadingSection as="p" text="Tools of the Trade" align="center" aria-hidden="true" />
+  <HeadingSection
+    as="p"
+    text="Tools of the Trade"
+    align="center"
+    aria-hidden="true"
+  />
 </div>
 
 <!-- Primary Skills — Core Expertise -->
@@ -99,7 +104,9 @@ const secondaryCategories = [
       Core Expertise
     </p>
   </div>
-  <ul class="bg-background-dark grid w-full grid-cols-[auto_auto_auto_auto] gap-1">
+  <ul
+    class="bg-background-dark grid w-full grid-cols-[auto_auto_auto_auto] gap-1"
+  >
     {
       primarySkills.map((skill) => (
         <li class="text-emphasis border-fainter relative z-110 w-auto border px-8 py-8 font-mono text-base tracking-wide uppercase">
@@ -130,7 +137,9 @@ const secondaryCategories = [
         <SkillsCard text={cat.title}>
           <ul class="list flex flex-col gap-2">
             {cat.items.map((item) => (
-              <li class="relative z-110 px-8 py-1 font-mono text-base">{item}</li>
+              <li class="relative z-110 px-8 py-1 font-mono text-base">
+                {item}
+              </li>
             ))}
           </ul>
         </SkillsCard>
@@ -195,7 +204,13 @@ const secondaryCategories = [
     opacity: 0.7;
     animation: hazard-breathe 3s infinite ease-in-out;
     &:first-child {
-      clip-path: polygon(0 0, calc(100% - 0px) 0, 95% 100%, calc(100% - 0px) 100%, 0 100%);
+      clip-path: polygon(
+        0 0,
+        calc(100% - 0px) 0,
+        95% 100%,
+        calc(100% - 0px) 100%,
+        0 100%
+      );
     }
     &:last-child {
       clip-path: polygon(0px 0, 100% 0, 100% 100%, 0px 100%, 5% 0%);

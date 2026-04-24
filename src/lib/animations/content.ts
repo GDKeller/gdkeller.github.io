@@ -4,7 +4,10 @@
 
 import type { GSAPInstance, ScrollTriggerInstance } from "./types";
 
-export function initJobAnimations(gsap: GSAPInstance, ScrollTrigger: ScrollTriggerInstance): void {
+export function initJobAnimations(
+  gsap: GSAPInstance,
+  ScrollTrigger: ScrollTriggerInstance,
+): void {
   const jobCards = document.querySelectorAll(".job-frame");
   jobCards.forEach((card, index) => {
     gsap.set(card, { y: 30, opacity: 0 });

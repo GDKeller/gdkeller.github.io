@@ -7,7 +7,15 @@ import SkillBadge from "./SkillBadge.astro";
 
 const { job } = Astro.props;
 const { data } = job;
-const { company, companyLogo, companyWebsite, position, startMonthYear, endMonthYear, tech } = data;
+const {
+  company,
+  companyLogo,
+  companyWebsite,
+  position,
+  startMonthYear,
+  endMonthYear,
+  tech,
+} = data;
 const { Content } = await render(job);
 ---
 
@@ -19,7 +27,10 @@ const { Content } = await render(job);
         {
           companyLogo && (
             <div class="logo relative z-20 mr-2 shrink-0 lg:-mt-4 lg:mr-8 lg:-ml-4">
-              <ProjectSingleImage imagePath={companyLogo.src} altText={companyLogo.alt} />
+              <ProjectSingleImage
+                imagePath={companyLogo.src}
+                altText={companyLogo.alt}
+              />
             </div>
           )
         }
@@ -37,7 +48,11 @@ const { Content } = await render(job);
               >
                 {
                   companyWebsite ? (
-                    <Link href={companyWebsite} target="_blank" variant="subtle">
+                    <Link
+                      href={companyWebsite}
+                      target="_blank"
+                      variant="subtle"
+                    >
                       {company}
                     </Link>
                   ) : (
@@ -45,7 +60,8 @@ const { Content } = await render(job);
                   )
                 }
               </p>
-              <span class="text-accent mx-4 hidden leading-none sm:inline-block">&nbsp;᠅&nbsp;</span
+              <span class="text-accent mx-4 hidden leading-none sm:inline-block"
+                >&nbsp;᠅&nbsp;</span
               >
               <DateRange
                 start={startMonthYear}

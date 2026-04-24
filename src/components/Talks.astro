@@ -85,7 +85,11 @@ const initial = sorted[0];
         <span class="bracket tr" aria-hidden="true"></span>
         <span class="bracket bl" aria-hidden="true"></span>
         <span class="bracket br" aria-hidden="true"></span>
-        <div class="relative z-110 aspect-video" data-player-slot data-slot-mode={initial.type}>
+        <div
+          class="relative z-110 aspect-video"
+          data-player-slot
+          data-slot-mode={initial.type}
+        >
           <button
             type="button"
             class="player-facade group bg-background-dark relative block h-full w-full cursor-pointer border-0 p-0"
@@ -118,7 +122,8 @@ const initial = sorted[0];
                   class="player-facade__icon-bg"
                   d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z"
                 ></path>
-                <path class="player-facade__icon-arrow" d="M45 24 27 14v20"></path>
+                <path class="player-facade__icon-arrow" d="M45 24 27 14v20"
+                ></path>
               </svg>
             </span>
           </button>
@@ -157,11 +162,15 @@ const initial = sorted[0];
       aria-label="Appearance queue"
     >
       <div class="queue flex h-full flex-col">
-        <div class="border-faint flex items-center justify-between border-b px-4 py-3">
+        <div
+          class="border-faint flex items-center justify-between border-b px-4 py-3"
+        >
           <p
             class="text-faint text-2xs flex items-center font-mono leading-none font-extralight tracking-widest uppercase"
           >
-            <span class="text-subtle triplecolon text-light" aria-hidden="true">:::</span>
+            <span class="text-subtle triplecolon text-light" aria-hidden="true"
+              >:::</span
+            >
             <span class="ml-2">Queue</span>
           </p>
           <p
@@ -280,7 +289,9 @@ const initial = sorted[0];
       transition:
         transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
         filter 260ms ease-out;
-      filter: drop-shadow(0 0 18px color-mix(in oklch, var(--color-accent) 40%, transparent));
+      filter: drop-shadow(
+        0 0 18px color-mix(in oklch, var(--color-accent) 40%, transparent)
+      );
     }
   }
 
@@ -295,7 +306,9 @@ const initial = sorted[0];
   .player-facade:hover .player-facade__icon svg,
   .player-facade:focus-visible .player-facade__icon svg {
     transform: scale(1.08);
-    filter: drop-shadow(0 0 28px color-mix(in oklch, var(--color-accent) 75%, transparent));
+    filter: drop-shadow(
+      0 0 28px color-mix(in oklch, var(--color-accent) 75%, transparent)
+    );
   }
 
   .player-facade:hover .player-facade__icon-bg {
@@ -543,12 +556,20 @@ const initial = sorted[0];
     const eventEl = root.querySelector<HTMLElement>("[data-player-event]");
     if (!slot || !titleEl || !eventEl) return;
 
-    const mountIframe = (src: string, title: string, type: string, autoplay = false) => {
+    const mountIframe = (
+      src: string,
+      title: string,
+      type: string,
+      autoplay = false,
+    ) => {
       const isAudio = type === "audio";
       slot.dataset.slotMode = type || "youtube";
 
       const iframe = document.createElement("iframe");
-      iframe.src = autoplay && !isAudio ? `${src}${src.includes("?") ? "&" : "?"}autoplay=1` : src;
+      iframe.src =
+        autoplay && !isAudio
+          ? `${src}${src.includes("?") ? "&" : "?"}autoplay=1`
+          : src;
       iframe.title = title;
       iframe.className = "h-full w-full border-0";
       iframe.setAttribute(
@@ -581,7 +602,9 @@ const initial = sorted[0];
       button.addEventListener("click", () => setActive(button));
     });
 
-    const facade = slot.querySelector<HTMLButtonElement>("[data-player-facade]");
+    const facade = slot.querySelector<HTMLButtonElement>(
+      "[data-player-facade]",
+    );
     if (facade) {
       facade.addEventListener(
         "click",

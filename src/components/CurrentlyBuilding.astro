@@ -36,19 +36,32 @@ const items = await Promise.all(
 // Pre-generate AVIF + WebP variants for the tile background so browsers can
 // negotiate format via CSS image-set(). Width 1200 covers the largest tile
 // (50vw on a 2400px viewport).
-const gridTileAvif = await getImage({ src: gridTile, format: "avif", width: 1200 });
-const gridTileWebp = await getImage({ src: gridTile, format: "webp", width: 1200 });
+const gridTileAvif = await getImage({
+  src: gridTile,
+  format: "avif",
+  width: 1200,
+});
+const gridTileWebp = await getImage({
+  src: gridTile,
+  format: "webp",
+  width: 1200,
+});
 const gridTileBg = `image-set(url("${gridTileAvif.src}") type("image/avif"), url("${gridTileWebp.src}") type("image/webp"))`;
 ---
 
-<section class="relative overflow-hidden py-32" aria-labelledby="currently-building-label">
+<section
+  class="relative overflow-hidden py-32"
+  aria-labelledby="currently-building-label"
+>
   <div
     class="border-emphasis/70 pointer-events-none absolute inset-0 border-b-2 bg-repeat opacity-10 mix-blend-screen blur-[0.02rem] contrast-50"
     style={`background-image: ${gridTileBg}; background-size: 50vw auto;`}
   >
   </div>
 
-  <div class="relative mx-auto max-w-7xl px-6 pt-16 pb-24 md:px-10 md:pt-20 md:pb-28">
+  <div
+    class="relative mx-auto max-w-7xl px-6 pt-16 pb-24 md:px-10 md:pt-20 md:pb-28"
+  >
     <div class="flex items-end">
       <HeadingSection
         text="Currently Building"
@@ -65,13 +78,19 @@ const gridTileBg = `image-set(url("${gridTileAvif.src}") type("image/avif"), url
           class="text-faint text-2xs flex items-center font-mono leading-none font-extralight tracking-widest uppercase"
         >
           <span>Active Operations</span>
-          <span class="text-subtle triplecolon mr-3 ml-2 font-light" aria-hidden="true">:::</span>
+          <span
+            class="text-subtle triplecolon mr-3 ml-2 font-light"
+            aria-hidden="true">:::</span
+          >
           <span>qty 5</span>
         </p>
       </div>
     </div>
 
-    <div class="border-faint bg-background-dark border-2 border-t-0 pt-8" data-builds>
+    <div
+      class="border-faint bg-background-dark border-2 border-t-0 pt-8"
+      data-builds
+    >
       <!-- Active viewer -->
       <div class="relative p-6 md:p-8">
         {
@@ -124,7 +143,9 @@ const gridTileBg = `image-set(url("${gridTileAvif.src}") type("image/avif"), url
                     ) : (
                       <div class="placeholder-cell flex h-full items-center justify-center">
                         <span class="text-foundation bg-background-dark px-16 py-8 font-mono text-sm tracking-widest uppercase">
-                          {data.status ? statusLabel[data.status] : "IN PROGRESS"}
+                          {data.status
+                            ? statusLabel[data.status]
+                            : "IN PROGRESS"}
                         </span>
                       </div>
                     )}
@@ -164,7 +185,9 @@ const gridTileBg = `image-set(url("${gridTileAvif.src}") type("image/avif"), url
                           rel="noopener noreferrer"
                           class="button-arrow border-highlight hover:bg-highlight text-highlight hover:text-background-dark mt-auto mb-0 flex items-center justify-self-end overflow-hidden border-b py-2 pr-8 pl-4 font-mono text-xs tracking-widest uppercase"
                         >
-                          <span class="button-arrow__label relative z-110">View Site</span>
+                          <span class="button-arrow__label relative z-110">
+                            View Site
+                          </span>
                         </a>
                       )}
                     </div>
@@ -260,15 +283,23 @@ const gridTileBg = `image-set(url("${gridTileAvif.src}") type("image/avif"), url
     }
 
     &:hover {
-      clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%);
+      clip-path: polygon(
+        0 0,
+        calc(100% - 14px) 0,
+        100% 50%,
+        calc(100% - 14px) 100%,
+        0 100%
+      );
     }
 
     &:hover::before {
-      animation: button-arrow-shine 900ms cubic-bezier(0.16, 1, 0.3, 1) 250ms forwards;
+      animation: button-arrow-shine 900ms cubic-bezier(0.16, 1, 0.3, 1) 250ms
+        forwards;
     }
 
     &:hover &__label {
-      animation: button-arrow-label-skew 480ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      animation: button-arrow-label-skew 480ms cubic-bezier(0.22, 1, 0.36, 1)
+        forwards;
     }
   }
 
@@ -315,7 +346,13 @@ const gridTileBg = `image-set(url("${gridTileAvif.src}") type("image/avif"), url
       left: -2px;
       z-index: -2;
       background: var(--color-faint);
-      clip-path: polygon(0 0, calc(100% - 1.5rem) 0, 100% 1.25rem, 100% 100%, 0 100%);
+      clip-path: polygon(
+        0 0,
+        calc(100% - 1.5rem) 0,
+        100% 1.25rem,
+        100% 100%,
+        0 100%
+      );
     }
 
     &::after {
@@ -328,7 +365,13 @@ const gridTileBg = `image-set(url("${gridTileAvif.src}") type("image/avif"), url
       bottom: 0px;
       z-index: -1;
       background: var(--color-background-dark);
-      clip-path: polygon(0 0, calc(100% - 2.25rem) 0, 100% 1.25rem, 100% 100%, 0 100%);
+      clip-path: polygon(
+        0 0,
+        calc(100% - 2.25rem) 0,
+        100% 1.25rem,
+        100% 100%,
+        0 100%
+      );
     }
   }
 
@@ -346,7 +389,13 @@ const gridTileBg = `image-set(url("${gridTileAvif.src}") type("image/avif"), url
         left: -1px;
         z-index: -2;
         background: var(--color-accent);
-        clip-path: polygon(0 0, 100% 0, 100% calc(100% - 1.3rem), calc(100% - 1rem) 100%, 0 100%);
+        clip-path: polygon(
+          0 0,
+          100% 0,
+          100% calc(100% - 1.3rem),
+          calc(100% - 1rem) 100%,
+          0 100%
+        );
       }
 
       &::after {
@@ -355,7 +404,13 @@ const gridTileBg = `image-set(url("${gridTileAvif.src}") type("image/avif"), url
         inset: 0;
         z-index: -1;
         background: var(--color-background-dark);
-        clip-path: polygon(0 0, 100% 0, 100% calc(100% - 3rem), calc(100% - 1rem) 100%, 0 100%);
+        clip-path: polygon(
+          0 0,
+          100% 0,
+          100% calc(100% - 3rem),
+          calc(100% - 1rem) 100%,
+          0 100%
+        );
       }
     }
   }
@@ -486,7 +541,9 @@ const gridTileBg = `image-set(url("${gridTileAvif.src}") type("image/avif"), url
     const thumbs = root.querySelectorAll<HTMLButtonElement>("[data-thumb]");
 
     const setActive = (slug: string) => {
-      panels.forEach((p) => p.classList.toggle("hidden", p.dataset.panel !== slug));
+      panels.forEach((p) =>
+        p.classList.toggle("hidden", p.dataset.panel !== slug),
+      );
       thumbs.forEach((t) => {
         const active = t.dataset.thumb === slug;
         t.classList.toggle("is-active", active);
@@ -502,7 +559,9 @@ const gridTileBg = `image-set(url("${gridTileAvif.src}") type("image/avif"), url
     });
 
     const hydrateVideo = (video: HTMLVideoElement) => {
-      const sources = video.querySelectorAll<HTMLSourceElement>("source[data-src-lg]");
+      const sources = video.querySelectorAll<HTMLSourceElement>(
+        "source[data-src-lg]",
+      );
       if (!sources.length) return;
       const isSmall = window.matchMedia("(max-width: 767px)").matches;
       let changed = false;
@@ -518,7 +577,9 @@ const gridTileBg = `image-set(url("${gridTileAvif.src}") type("image/avif"), url
       if (changed) video.load();
     };
 
-    const videos = root.querySelectorAll<HTMLVideoElement>("video[data-lazy-video]");
+    const videos = root.querySelectorAll<HTMLVideoElement>(
+      "video[data-lazy-video]",
+    );
     if (!videos.length) return;
 
     if (typeof IntersectionObserver === "undefined") {

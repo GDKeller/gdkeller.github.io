@@ -32,7 +32,13 @@ const original = readFileSync(cssPath, "utf8");
 const TOKEN_RE = /(--color-([\w-]+):\s*)(oklch\([^)]+\))/g;
 const OKLCH_RE = /oklch\(\s*([\d.]+)%?\s+([\d.]+)\s+([\d.]+)\s*\)/;
 
-const results = { ok: [], outOfSrgb: [], outOfP3: [], malformed: [], fixed: [] };
+const results = {
+  ok: [],
+  outOfSrgb: [],
+  outOfP3: [],
+  malformed: [],
+  fixed: [],
+};
 
 const formatOklch = ({ l, c, h }) => {
   const lStr = `${+(l * 100).toFixed(2)}%`;
@@ -52,7 +58,11 @@ const updated = original.replace(TOKEN_RE, (match, prefix, name, value) => {
 
   const [, l, c, h] = raw.map(Number);
   if (l < 0 || l > 100) {
-    results.malformed.push({ name, value, reason: `lightness ${l}% out of [0, 100]` });
+    results.malformed.push({
+      name,
+      value,
+      reason: `lightness ${l}% out of [0, 100]`,
+    });
     return match;
   }
   if (c < 0 || c > 0.5) {
@@ -77,7 +87,11 @@ const updated = original.replace(TOKEN_RE, (match, prefix, name, value) => {
   }
 
   const needsFix = target === "srgb" ? !inSrgb : !inP3;
-  const clampedColor = clampChroma(parsed, "oklch", target === "srgb" ? "rgb" : "p3");
+  const clampedColor = clampChroma(
+    parsed,
+    "oklch",
+    target === "srgb" ? "rgb" : "p3",
+  );
   const clampedValue = formatOklch(clampedColor);
   const entry = { name, value, clamped: clampedValue };
 
@@ -92,7 +106,12 @@ const updated = original.replace(TOKEN_RE, (match, prefix, name, value) => {
 });
 
 const pad = (s, n) => s.padEnd(n);
-const allEntries = [...results.ok, ...results.outOfSrgb, ...results.outOfP3, ...results.malformed];
+const allEntries = [
+  ...results.ok,
+  ...results.outOfSrgb,
+  ...results.outOfP3,
+  ...results.malformed,
+];
 const longestName = Math.max(...allEntries.map((r) => r.name.length), 0);
 
 if (results.ok.length) {

@@ -80,7 +80,9 @@ const awards: Award[] = [
             <h3 class="text-foundation mb-1 text-lg font-semibold md:text-lg lg:text-lg xl:text-xl">
               {award.name}
             </h3>
-            <p class="text-emphasis font-mono text-xs font-extralight">{award.subtitle}</p>
+            <p class="text-emphasis font-mono text-xs font-extralight">
+              {award.subtitle}
+            </p>
             {award.count > 1 && (
               <span class="text-accent absolute -top-6 -right-4 flex h-8 w-8 items-center justify-center text-base font-bold md:h-10 md:w-10 md:text-lg">
                 x{award.count}

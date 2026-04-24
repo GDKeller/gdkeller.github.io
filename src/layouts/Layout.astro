@@ -32,18 +32,25 @@ const { title } = Astro.props;
     <ThemeSwitcher />
     <script>
       document.addEventListener("click", (e) => {
-        const trigger = (e.target as HTMLElement).closest<HTMLElement>("[data-open-modal]");
+        const trigger = (e.target as HTMLElement).closest<HTMLElement>(
+          "[data-open-modal]",
+        );
         if (!trigger) return;
         const modalId = trigger.dataset.openModal;
         if (modalId) {
-          const modal = document.getElementById(modalId) as HTMLDialogElement | null;
+          const modal = document.getElementById(
+            modalId,
+          ) as HTMLDialogElement | null;
           modal?.showModal();
         }
       });
     </script>
     <script>
       import { initAllAnimations } from "../lib/animations";
-      import type { GSAPInstance, ScrollTriggerInstance } from "../lib/animations";
+      import type {
+        GSAPInstance,
+        ScrollTriggerInstance,
+      } from "../lib/animations";
 
       // Immediate smooth scroll for navigation - no delay
       document.addEventListener("DOMContentLoaded", function () {

@@ -67,7 +67,10 @@ export function syncDevFlagsFromUrl(): void {
       }
     }
   } catch (err) {
-    console.warn("[dev-flags] could not persist URL flags to localStorage:", err);
+    console.warn(
+      "[dev-flags] could not persist URL flags to localStorage:",
+      err,
+    );
   }
 }
 

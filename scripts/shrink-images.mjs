@@ -41,10 +41,17 @@ async function shrinkFile(filepath) {
   const buffer = await sharp(filepath).toBuffer();
   const meta = await sharp(buffer).metadata();
   if (!meta.width || meta.width <= MAX_WIDTH) {
-    return { filepath, skipped: true, reason: `${meta.width ?? "?"}px <= ${MAX_WIDTH}px` };
+    return {
+      filepath,
+      skipped: true,
+      reason: `${meta.width ?? "?"}px <= ${MAX_WIDTH}px`,
+    };
   }
   const ext = extname(filepath).toLowerCase();
-  let pipeline = sharp(buffer).resize({ width: MAX_WIDTH, withoutEnlargement: true });
+  let pipeline = sharp(buffer).resize({
+    width: MAX_WIDTH,
+    withoutEnlargement: true,
+  });
   if (ext === ".jpg" || ext === ".jpeg") {
     pipeline = pipeline.jpeg({ quality: JPEG_QUALITY, mozjpeg: true });
   } else if (ext === ".png") {
@@ -54,7 +61,11 @@ async function shrinkFile(filepath) {
   // Only overwrite when the new file is actually smaller.
   const origSize = (await stat(filepath)).size;
   if (out.length >= origSize) {
-    return { filepath, skipped: true, reason: `re-encode ${out.length} >= original ${origSize}` };
+    return {
+      filepath,
+      skipped: true,
+      reason: `re-encode ${out.length} >= original ${origSize}`,
+    };
   }
   await sharp(out).toFile(filepath);
   return {
@@ -92,7 +103,9 @@ async function main() {
     }
     shrunk++;
     savedKb += r.fromKb - r.toKb;
-    console.log(`done ${r.filepath}  ${r.fromWidth}→${r.toWidth}px  ${r.fromKb}K→${r.toKb}K`);
+    console.log(
+      `done ${r.filepath}  ${r.fromWidth}→${r.toWidth}px  ${r.fromKb}K→${r.toKb}K`,
+    );
   }
   console.log(`\n${shrunk} file(s) shrunk, ~${savedKb}K saved.`);
 }

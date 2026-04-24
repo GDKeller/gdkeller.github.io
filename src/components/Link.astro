@@ -17,7 +17,11 @@ const variantStyles = {
 ---
 
 <a
-  class:list={["inline-block hover:cursor-pointer", variantStyles[variant], className]}
+  class:list={[
+    "inline-block hover:cursor-pointer",
+    variantStyles[variant],
+    className,
+  ]}
   href={href}
   target={target}
   rel={relAttr}><slot /></a

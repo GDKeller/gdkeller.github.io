@@ -2,7 +2,12 @@
  * Shared animation utility functions
  */
 
-import type { GSAPInstance, GSAPTarget, FadeUpOptions, FadeInFromSideOptions } from "./types";
+import type {
+  GSAPInstance,
+  GSAPTarget,
+  FadeUpOptions,
+  FadeInFromSideOptions,
+} from "./types";
 
 /**
  * Check if user prefers reduced motion

@@ -335,7 +335,10 @@ const themes = {
   phosphor: { shift: 8, desc: "Cool shift — CRT greens, violet accents" },
   verdigris: { shift: -10, desc: "Oxidized copper greens, cooler accents" },
   "inv-verdigris": { shift: 10, desc: "Cool minty greens, hot neon accents" },
-  custom: { shift: { greens: -4, accents: 10 }, desc: "Subtle warm greens, hot neon accents" },
+  custom: {
+    shift: { greens: -4, accents: 10 },
+    desc: "Subtle warm greens, hot neon accents",
+  },
 };
 
 const steps = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950];
@@ -351,7 +354,11 @@ for (const [name, { shift, desc }] of Object.entries(themes)) {
   for (const [family, shades] of Object.entries(palette)) {
     // Resolve per-family shift amount
     const amt =
-      typeof shift === "number" ? shift : greenFamilies.has(family) ? shift.greens : shift.accents;
+      typeof shift === "number"
+        ? shift
+        : greenFamilies.has(family)
+          ? shift.greens
+          : shift.accents;
     lines.push(`  /* ${family} */`);
     for (const step of steps) {
       const [L, C, H] = hexToOklch(shades[step]);
@@ -364,7 +371,9 @@ for (const [name, { shift, desc }] of Object.entries(themes)) {
     typeof shift === "number"
       ? `${shift > 0 ? "+" : ""}${shift}°`
       : `greens ${shift.greens > 0 ? "+" : ""}${shift.greens}° / accents ${shift.accents > 0 ? "+" : ""}${shift.accents}°`;
-  blocks.push(`/* ${name} — ${desc} (${shiftLabel}) */\n.theme-${name} {\n${lines.join("\n")}}`);
+  blocks.push(
+    `/* ${name} — ${desc} (${shiftLabel}) */\n.theme-${name} {\n${lines.join("\n")}}`,
+  );
 }
 
 console.log(

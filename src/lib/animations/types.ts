@@ -17,7 +17,12 @@ export interface ScrollTriggerObject {
   kill: () => void;
 }
 
-export type GSAPTarget = string | Element | Element[] | NodeListOf<Element> | null;
+export type GSAPTarget =
+  | string
+  | Element
+  | Element[]
+  | NodeListOf<Element>
+  | null;
 
 export interface GSAPVars {
   y?: number;

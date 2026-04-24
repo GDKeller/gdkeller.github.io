@@ -43,7 +43,8 @@
     text-transform: uppercase;
     color: var(--color-emerald-200);
     background: oklch(0% 0 0 / 0.85);
-    border: 1px solid color-mix(in oklch, var(--color-emerald-400) 30%, transparent);
+    border: 1px solid
+      color-mix(in oklch, var(--color-emerald-400) 30%, transparent);
     padding: 0.4rem 0.75rem;
     cursor: pointer;
     backdrop-filter: blur(8px);
@@ -55,7 +56,11 @@
 
   #theme-select:hover,
   #theme-select:focus {
-    border-color: color-mix(in oklch, var(--color-emerald-400) 60%, transparent);
+    border-color: color-mix(
+      in oklch,
+      var(--color-emerald-400) 60%,
+      transparent
+    );
     background: oklch(0% 0 0 / 0.95);
     outline: none;
   }
@@ -67,8 +72,12 @@
   // Mirror any ?dev= / ?tools= params from the URL into localStorage once per load.
   syncDevFlagsFromUrl();
 
-  const switcher = document.getElementById("theme-switcher") as HTMLElement | null;
-  const select = document.getElementById("theme-select") as HTMLSelectElement | null;
+  const switcher = document.getElementById(
+    "theme-switcher",
+  ) as HTMLElement | null;
+  const select = document.getElementById(
+    "theme-select",
+  ) as HTMLSelectElement | null;
   const html = document.documentElement;
   const themeClasses = [
     "theme-jade",
@@ -83,7 +92,8 @@
   }
 
   if (select) {
-    const activeTheme = themeClasses.find((cls) => html.classList.contains(cls)) ?? "";
+    const activeTheme =
+      themeClasses.find((cls) => html.classList.contains(cls)) ?? "";
     select.value = activeTheme;
 
     select.addEventListener("change", () => {

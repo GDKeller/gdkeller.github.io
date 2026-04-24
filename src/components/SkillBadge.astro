@@ -10,7 +10,10 @@ const Element = tag || "div";
 ---
 
 <Element
-  class:list={["block font-mono text-xs font-bold tracking-widest sm:inline-block", className]}
+  class:list={[
+    "block font-mono text-xs font-bold tracking-widest sm:inline-block",
+    className,
+  ]}
 >
   <slot />
 </Element>

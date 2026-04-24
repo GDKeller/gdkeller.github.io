@@ -17,6 +17,13 @@
       "options": {
         "parser": "astro"
       }
+    },
+    {
+      "files": ["*.md", "board/**/*"],
+      "options": {
+        "printWidth": 120,
+        "embeddedLanguageFormatting": "off"
+      }
     }
   ]
 }

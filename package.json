@@ -6,19 +6,19 @@
     "node": ">=22.12.0"
   },
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro check && astro build",
-    "preview": "astro preview",
     "astro": "astro",
-    "lint": "eslint 'src/**/*.{ts,astro}'",
-    "lint:fix": "eslint 'src/**/*.{ts,astro}' --fix",
+    "build": "astro check && astro build",
+    "check:colors": "node scripts/check-oklch.mjs",
+    "check:colors:fix": "node scripts/check-oklch.mjs --fix",
+    "dev": "astro dev",
     "format": "prettier --check .",
     "format:fix": "prettier --write .",
     "knip": "knip",
     "knip:fix": "knip --fix",
-    "check:colors": "node scripts/check-oklch.mjs",
-    "check:colors:fix": "node scripts/check-oklch.mjs --fix",
+    "lint": "eslint 'src/**/*.{ts,astro}'",
+    "lint:fix": "eslint 'src/**/*.{ts,astro}' --fix",
+    "preview": "astro preview",
+    "start": "astro dev",
     "typecheck": "astro check && tsc --noEmit"
   },
   "dependencies": {

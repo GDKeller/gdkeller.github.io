@@ -20,7 +20,10 @@ import {
  * Initialize all GSAP animations
  * Respects user's motion preferences for accessibility
  */
-export function initAllAnimations(gsap: GSAPInstance, ScrollTrigger: ScrollTriggerInstance): void {
+export function initAllAnimations(
+  gsap: GSAPInstance,
+  ScrollTrigger: ScrollTriggerInstance,
+): void {
   // Respect user's motion preferences (WCAG 2.3.3)
   if (prefersReducedMotion()) {
     showAllElementsImmediately();

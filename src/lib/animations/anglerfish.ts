@@ -50,7 +50,9 @@ export function initAnglerfishAnimations(
 
   // Fish ball rotation (respects reduced motion preference)
   const fishBallImage = fishHero.querySelector(".fish-hero__ball");
-  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
   if (fishBallImage && !prefersReducedMotion) {
     gsap.to(fishBallImage, {
       rotate: 360,
@@ -96,7 +98,9 @@ export function initAnglerfishAnimations(
   }
 
   // Water background subtle movement
-  const waterElements = fishHero.querySelectorAll(".fish-hero__water, .fish-hero__water-blurred");
+  const waterElements = fishHero.querySelectorAll(
+    ".fish-hero__water, .fish-hero__water-blurred",
+  );
   waterElements.forEach((water) => {
     gsap.to(water, {
       yPercent: 5,
@@ -156,7 +160,9 @@ export function initAnglerfishAnimations(
   });
 
   // Final specimen image dramatic reveal
-  const specimenImage = fishHero.querySelector('img[alt="Anglerfish specimen"]');
+  const specimenImage = fishHero.querySelector(
+    'img[alt="Anglerfish specimen"]',
+  );
   if (specimenImage) {
     gsap.set(specimenImage, { y: 40, opacity: 0, scale: 0.9 });
 
@@ -177,7 +183,9 @@ export function initAnglerfishAnimations(
   }
 
   // Content sections fade in as user scrolls
-  const contentSections = fishHero.querySelectorAll(".flex.flex-col.items-center.justify-center");
+  const contentSections = fishHero.querySelectorAll(
+    ".flex.flex-col.items-center.justify-center",
+  );
   contentSections.forEach((section) => {
     gsap.set(section, { y: 20, opacity: 0 });
 

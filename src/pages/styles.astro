@@ -25,7 +25,11 @@ const colorTokens = [
 
 const fontTokens = [
   { name: "display", label: "Prompt", role: "Display" },
-  { name: "blackletter", label: "Manufacturing Consent", role: "Blackletter alias" },
+  {
+    name: "blackletter",
+    label: "Manufacturing Consent",
+    role: "Blackletter alias",
+  },
   { name: "prompt", label: "Prompt", role: "Body" },
   { name: "mono", label: "IBM Plex Mono", role: "Monospace" },
 ];
@@ -67,8 +71,12 @@ const groupedColors = Object.keys(groupLabels).map((group) => ({
 ---
 
 <Layout title="Style Reference — Grant Keller">
-  <main class="bg-background-dark text-foundation min-h-screen px-6 pt-16 pb-32 md:px-12 lg:px-20">
-    <header class="border-faint mx-auto mb-16 flex max-w-6xl items-end border-b pb-6">
+  <main
+    class="bg-background-dark text-foundation min-h-screen px-6 pt-16 pb-32 md:px-12 lg:px-20"
+  >
+    <header
+      class="border-faint mx-auto mb-16 flex max-w-6xl items-end border-b pb-6"
+    >
       <div class="mr-auto">
         <p class="text-faint text-2xs font-mono tracking-widest uppercase">
           Style Reference ::: Design Tokens
@@ -153,7 +161,9 @@ const groupedColors = Object.keys(groupLabels).map((group) => ({
             fontTokens.map((f) => (
               <div class="border-emphasis/20 border-b pb-6">
                 <div class="mb-3 flex items-baseline gap-4">
-                  <code class="text-foundation font-mono text-sm">--font-{f.name}</code>
+                  <code class="text-foundation font-mono text-sm">
+                    --font-{f.name}
+                  </code>
                   <span class="text-emphasis text-2xs font-mono tracking-widest uppercase">
                     {f.label} / {f.role}
                   </span>
@@ -164,8 +174,12 @@ const groupedColors = Object.keys(groupLabels).map((group) => ({
                 >
                   The quick brown fox jumps over the lazy dog.
                 </p>
-                <p class="text-faint mt-2 text-2xl" style={`font-family: var(--font-${f.name});`}>
-                  ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 ᠅
+                <p
+                  class="text-faint mt-2 text-2xl"
+                  style={`font-family: var(--font-${f.name});`}
+                >
+                  ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz
+                  0123456789 ᠅
                 </p>
               </div>
             ))
@@ -192,7 +206,9 @@ const groupedColors = Object.keys(groupLabels).map((group) => ({
             textSizes.map((t) => (
               <div class="border-faint flex items-baseline gap-6 border-b pb-4">
                 <div class="w-40 shrink-0">
-                  <code class="text-foundation font-mono text-sm leading-tight">text-{t.name}</code>
+                  <code class="text-foundation font-mono text-sm leading-tight">
+                    text-{t.name}
+                  </code>
                   {t.custom && (
                     <span class="text-highlight text-2xs ml-2 font-mono tracking-widest uppercase">
                       custom
@@ -272,18 +288,24 @@ const groupedColors = Object.keys(groupLabels).map((group) => ({
       return null;
     };
 
-    for (const node of document.querySelectorAll<HTMLElement>("[data-color-value]")) {
+    for (const node of document.querySelectorAll<HTMLElement>(
+      "[data-color-value]",
+    )) {
       const token = node.dataset.colorValue;
       if (token) node.textContent = resolve("--color-", token);
     }
-    for (const node of document.querySelectorAll<HTMLElement>("[data-text-value]")) {
+    for (const node of document.querySelectorAll<HTMLElement>(
+      "[data-text-value]",
+    )) {
       const token = node.dataset.textValue;
       if (!token) continue;
       const raw = resolve("--text-", token);
       const px = toPx(raw);
       node.textContent = px !== null ? `${raw} · ${px}px` : raw;
     }
-    for (const node of document.querySelectorAll<HTMLElement>("[data-spacing-value]")) {
+    for (const node of document.querySelectorAll<HTMLElement>(
+      "[data-spacing-value]",
+    )) {
       const token = node.dataset.spacingValue;
       if (token) node.textContent = resolve("--spacing-", token);
     }

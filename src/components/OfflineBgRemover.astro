@@ -6,29 +6,35 @@
   class="relative z-0 mx-auto mb-32 grid max-w-full grid-cols-1 items-center overflow-x-hidden border-b-2 border-emerald-950/30 pt-24 md:grid-cols-2"
 >
   <!-- Content Column -->
-  <div class="z-20 flex w-full flex-col justify-center px-8 pt-12 pb-4 md:pt-0 xl:px-12">
+  <div
+    class="z-20 flex w-full flex-col justify-center px-8 pt-12 pb-4 md:pt-0 xl:px-12"
+  >
     <h3
       class="font-display text-emphasis mb-2 text-4xl md:mb-0 md:text-2xl lg:mb-2 lg:text-4xl xl:text-5xl"
     >
       Offline Background Remover
     </h3>
-    <p class="text-emphasis mb-6 text-xl md:text-sm lg:text-lg xl:text-xl">macOS App</p>
+    <p class="text-emphasis mb-6 text-xl md:text-sm lg:text-lg xl:text-xl">
+      macOS App
+    </p>
     <div class="lg:max-w-xl">
       <p class="mtext-sm mb-4 font-bold">
-        Built on Tauri v2 with React and a CoreML-optimized ONNX pipeline that runs AI models
-        entirely on-device.
+        Built on Tauri v2 with React and a CoreML-optimized ONNX pipeline that
+        runs AI models entirely on-device.
       </p>
       <p class="mb-8 text-sm md:mb-0">
-        Designed the full architecture and drag-and-drop UI. Includes 13 on-device segmentation
-        models, a real-time four-view comparison interface, and advanced mask editing controls. Zero
-        user dependencies.
+        Designed the full architecture and drag-and-drop UI. Includes 13
+        on-device segmentation models, a real-time four-view comparison
+        interface, and advanced mask editing controls. Zero user dependencies.
       </p>
     </div>
   </div>
 
   <!-- Video Column -->
   <div class="relative z-20 mt-auto mb-0 w-full px-8 lg:pr-4">
-    <div class="laptop-rounded-top mx-auto max-w-lg overflow-hidden md:max-w-full">
+    <div
+      class="laptop-rounded-top mx-auto max-w-lg overflow-hidden md:max-w-full"
+    >
       <video
         data-obr-video
         autoplay
@@ -48,7 +54,9 @@
     class="z-20 col-span-full flex w-full flex-col items-center justify-between gap-6 border-t-2 border-emerald-950/30 px-4 py-8 sm:flex-row sm:px-6 md:pr-6 md:pl-8 lg:px-8"
   >
     <div class="flex flex-col flex-wrap sm:flex-row sm:items-center">
-      <p class="sm:text-md text-emphasis mb-2 text-xs font-bold sm:mr-4 sm:mb-0 lg:text-base">
+      <p
+        class="sm:text-md text-emphasis mb-2 text-xs font-bold sm:mr-4 sm:mb-0 lg:text-base"
+      >
         Technologies:
       </p>
       <ul
@@ -74,7 +82,9 @@
 </div>
 
 <script>
-  const video = document.querySelector("video[data-obr-video]") as HTMLVideoElement;
+  const video = document.querySelector(
+    "video[data-obr-video]",
+  ) as HTMLVideoElement;
   if (video && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     video.pause();
   }

@@ -75,7 +75,9 @@ export function initNypostAnimations(
   }
 
   // Content text sections
-  const contentSections = nypostSection.querySelectorAll(".content-box p, .content-box ul");
+  const contentSections = nypostSection.querySelectorAll(
+    ".content-box p, .content-box ul",
+  );
   contentSections.forEach((section, index) => {
     gsap.set(section, { y: 20, opacity: 0 });
 
@@ -96,7 +98,9 @@ export function initNypostAnimations(
   });
 
   // Statue of Liberty image
-  const statueImage = nypostSection.querySelector(".image__statueofliberty img");
+  const statueImage = nypostSection.querySelector(
+    ".image__statueofliberty img",
+  );
   if (statueImage) {
     gsap.set(statueImage, { x: 50, opacity: 0 });
 
