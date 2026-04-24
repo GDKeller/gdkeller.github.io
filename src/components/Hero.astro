@@ -5,7 +5,7 @@ import HeroBackground from "./HeroBackground.astro";
 import LogoCarousel from "./LogoCarousel.astro";
 import frameUpper from "../images/hero/hero_frame-upper.webp";
 import frameLower from "../images/hero/hero_frame-lower.webp";
-import headshotBackground from "../images/elements/headshot_bg_tint2_500_2x.webp";
+import headshotBackground from "../images/elements/headshot_bg_w2670_AR-1-606.png";
 
 // Pre-generate AVIF + WebP of the mask texture so the CSS mask-image can
 // negotiate format via image-set(). The source WebP is tiny, but this keeps
@@ -54,8 +54,8 @@ const maskImage = `image-set(url("${maskAvif.src}") type("image/avif"), url("${m
           <Picture
             src={headshotBackground}
             alt=""
-            widths={[300, 600, 900]}
-            sizes="(min-width: 768px) 320px, 33vw"
+            widths={[300, 648, 972]}
+            sizes="(min-width: 768px) 343px, 33vw"
             formats={["avif", "webp"]}
             fallbackFormat="webp"
             loading="eager"

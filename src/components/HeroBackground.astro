@@ -2,7 +2,7 @@
 // Layered cyberpunk background for hero section
 import { Picture } from "astro:assets";
 import heroImg1 from "../images/hero/Texturelabs_LensFX_173L.webp";
-import heroImg2 from "../images/hero/Texturelabs_LensFX_127L.webp";
+import screenImg from "../images/hero/texture-screen_2400.webp";
 ---
 
 <div class="hero-bg absolute inset-0 h-full w-full overflow-hidden bg-black/80" id="hero-bg">
@@ -14,19 +14,21 @@ import heroImg2 from "../images/hero/Texturelabs_LensFX_127L.webp";
     sizes="100vw"
     formats={["avif", "webp"]}
     fallbackFormat="jpg"
+    quality={50}
     loading="eager"
-    class="absolute inset-0 z-2 h-full w-full object-cover opacity-5 mix-blend-hard-light brightness-100 contrast-90 saturate-200"
+    class="absolute inset-0 z-2 h-full w-full object-cover opacity-10 mix-blend-hard-light brightness-60 contrast-50 saturate-200"
   />
   <!-- Layer 0b: Background Image -->
   <Picture
-    src={heroImg2}
+    src={screenImg}
     alt=""
     widths={[800, 1600, 2400]}
     sizes="150vw"
     formats={["avif", "webp"]}
     fallbackFormat="jpg"
+    quality={50}
     loading="eager"
-    class="absolute inset-0 z-1 h-full w-[150vw] max-w-none -translate-x-1/8 object-cover opacity-5 mix-blend-plus-darker brightness-100 contrast-90 saturate-200"
+    class="absolute inset-0 z-3 h-full w-[150vw] max-w-none -translate-x-1/8 object-cover opacity-10 mix-blend-screen brightness-20 contrast-100 hue-rotate-30 saturate-100"
   />
 </div>
 
@@ -36,18 +38,24 @@ import heroImg2 from "../images/hero/Texturelabs_LensFX_127L.webp";
 <style>
   /* Noise */
   .noise {
-    opacity: 0.1;
+    opacity: 0.2;
     mix-blend-mode: color-dodge;
+    overflow: hidden;
   }
 
   .noise::before {
+    /* display: none; */
     animation: noise-shift 0.2s steps(10) infinite;
     content: "";
     position: absolute;
     inset: -50%;
     width: 200%;
     height: 200%;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-image: url("../images/elements/noise-C.webp");
+    background-repeat: repeat;
+    background-size: 20% 20%;
+    image-rendering: pixelated;
+    will-change: transform;
   }
 
   @keyframes noise-shift {
@@ -55,31 +63,31 @@ import heroImg2 from "../images/hero/Texturelabs_LensFX_127L.webp";
       transform: translate(0, 0);
     }
     10% {
-      transform: translate(-5%, -5%);
+      transform: translate(-3%, 3%);
     }
     20% {
       transform: translate(5%, 5%);
     }
     30% {
-      transform: translate(-3%, 3%);
-    }
-    40% {
       transform: translate(3%, -3%);
     }
-    50% {
+    40% {
       transform: translate(-5%, 5%);
+    }
+    50% {
+      transform: translate(-5%, -5%);
     }
     60% {
       transform: translate(5%, -5%);
     }
     70% {
-      transform: translate(-3%, -3%);
+      transform: translate(-5%, 0);
     }
     80% {
       transform: translate(3%, 3%);
     }
     90% {
-      transform: translate(-5%, 0);
+      transform: translate(-3%, -3%);
     }
     100% {
       transform: translate(0, 0);

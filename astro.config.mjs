@@ -27,4 +27,7 @@ export default defineConfig({
       noExternal: ["react-icons"],
     },
   },
+  devToolbar: {
+    enabled: false,
+  }
 });
