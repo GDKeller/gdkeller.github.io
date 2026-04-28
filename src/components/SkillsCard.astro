@@ -1,35 +1,34 @@
 ---
 interface Props {
-  text: string;
+  category: string;
+  skills: Array<string>;
 }
 
-const { text } = Astro.props;
+const { category, skills } = Astro.props;
 ---
 
 <div
   class="skill-item border-fainter bg-background-dark h-full border-t border-l"
 >
-  <div class="skill-item__inner relative z-110 h-full pt-4 pb-16">
+  <div
+    class="skill-item__inner relative z-110 h-full pt-2 pb-8 md:pt-4 md:pb-16"
+  >
     <h3
-      class="text-emphasis border-fainter relative z-110 mb-8 flex items-center border-b px-8 pb-4 font-mono text-xl font-light tracking-wider uppercase"
+      class="border-fainter relative z-110 mb-4 flex items-center border-b px-8 pb-2 font-mono text-xl tracking-wider uppercase md:mb-8 md:pb-4"
     >
       <span class="triplecolon text-accent mr-4 pb-1 font-light">:::</span>
-      <span class="relative z-110">
-        {text}
+      <span class="text-emphasis relative z-110 font-normal">
+        {category}
       </span>
     </h3>
-    <slot />
+    <ul class="list flex flex-col md:gap-2">
+      {
+        skills.map((skill) => (
+          <li class="relative z-110 px-8 font-mono text-base font-light md:py-1">
+            {skill}
+          </li>
+        ))
+      }
+    </ul>
   </div>
 </div>
-
-<style>
-  @reference "tailwindcss";
-  .skill-item {
-    &::before {
-      content: "";
-    }
-    &::after {
-      content: "";
-    }
-  }
-</style>

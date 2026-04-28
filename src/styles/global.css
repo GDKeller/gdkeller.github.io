@@ -6,22 +6,22 @@
    for the /styles reference page and for `var(--color-*)` access from custom
    CSS or JS without depending on incidental utility usage. */
 @source inline(
-  "{bg,text,border}-{background,background-dark,foundation,emphasis,emphasis-hover,accent,accent-hover,highlight,highlight-hover,subtle,faint,reduced,secondary-light,secondary-emphasis,secondary-dark,tertiary-highlight,tertiary-highlight-hover,hidden}"
+  "{bg,text,border}-{background,background-dark,foundation,emphasis,emphasis-hover,accent,accent-hover,highlight,highlight-hover,subtle,faint,reduced,secondary-light,secondary-emphasis,secondary-dark,tertiary-highlight,tertiary-highlight-hover,hidden} var(--font-{display,body,mono,decorative})"
 );
 @source inline(
   "text-{2xs,xs,sm,base,lg,xl,2xl,3xl,4xl,5xl,6xl,7xl,8xl,9xl}"
 );
 @source inline("p-{1,2,4,6,8,12,16,24,32,48,64,80}");
 
-@theme {
-  /* Fonts */
-  --font-prompt: "Prompt", sans-serif;
-  --font-manufacturing_consent: "Manufacturing Consent", system-ui;
-
+@theme inline {
+  /* Font name primitive vars are defined in astro.config.mjs and loaded in Layout.astro */
   --font-display: var(--font-prompt);
-  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Monaco, monospace;
-  --font-blackletter: var(--font-manufacturing_consent);
+  --font-body: var(--font-prompt);
+  --font-mono: var(--font-ibm_plex_mono);
+  --font-decorative: var(--font-manufacturing_consent);
+}
 
+@theme {
   /* Spacing extensions */
   --spacing-18: 4.5rem;
   --spacing-28: 7rem;
@@ -117,17 +117,15 @@
 
 /* Focus Indicators - WCAG 2.2 Compliant */
 :focus-visible {
-  outline: 2px solid var(--color-emerald-400);
+  outline: 2px solid var(--color-accent-hover);
   outline-offset: 4px;
   border-radius: 0;
 }
 
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid var(--color-emerald-400);
+  outline: 2px solid var(--color-accent-hover);
   outline-offset: 2px;
-  box-shadow: 0 0 0 4px
-    color-mix(in oklch, var(--color-emerald-400) 20%, transparent);
 }
 
 /* High contrast mode support */
@@ -147,11 +145,11 @@ button:focus-visible {
   }
 
   strong {
-    font-weight: 500;
+    @apply font-medium;
   }
 
   cite {
-    font-weight: 100;
+    @apply font-light;
   }
 }
 
@@ -161,7 +159,7 @@ button:focus-visible {
 }
 
 strong {
-  font-weight: bold;
+  @apply font-bold;
 }
 
 .color__nyp-red--text {
@@ -180,7 +178,7 @@ strong {
 .list-custom-wrapper ul li::before,
 .list-custom li::before {
   content: "▹";
-  color: var(--color-emerald-500);
+  color: var(--color-accent);
   position: absolute;
   left: 0;
   top: 0.125em;
@@ -202,7 +200,7 @@ strong {
 }
 
 .section-heading__glow {
-  text-shadow: var(--color-emerald-500) 0px 0px 8px;
+  text-shadow: var(--color-accent) 0px 0px 8px;
 }
 
 .section-heading__line {

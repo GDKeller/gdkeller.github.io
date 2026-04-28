@@ -57,7 +57,7 @@ const { Content } = await render(project);
             }
             <div class="relative z-110 flex flex-wrap items-baseline gap-y-2">
               <p
-                class="text-emphasis block leading-none font-extralight tracking-wider lg:text-base"
+                class="text-emphasis block leading-none font-light tracking-wider lg:text-base"
               >
                 {
                   clientWebsite ? (
@@ -171,7 +171,7 @@ const { Content } = await render(project);
       blockquote {
         @apply text-emphasis relative text-base leading-normal italic md:text-sm lg:text-sm lg:leading-loose;
         cite {
-          @apply mt-8 block text-right text-xs font-normal not-italic md:text-sm;
+          @apply mt-8 block text-right font-mono text-xs font-extralight not-italic md:text-xs;
 
           &::before {
             @apply content-['—_'];

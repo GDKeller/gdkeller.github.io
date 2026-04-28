@@ -66,20 +66,19 @@ const getPoster = (item: Appearance, size: "mq" | "hq" = "mq") => {
   return null;
 };
 
-const total = sorted.length;
 const initial = sorted[0];
 ---
 
-<div class="container mx-auto max-w-7xl px-4 sm:px-6 md:px-8" data-talks>
+<div class="container px-4 mx-auto max-w-7xl sm:px-6 md:px-8" data-talks>
   <HeadingSection text="Appearances" as="h2" align="left" class="mb-16" />
 
   <div class="grid gap-8 md:grid-cols-[1fr_auto_1.5fr] md:gap-0">
     <!-- Player stage -->
     <section
-      class="border-faint order-3 border p-8 md:order-3 md:col-span-1"
+      class="order-3 p-8 border border-faint md:order-3 md:col-span-1"
       aria-label="Appearance player"
     >
-      <div class="player-frame bg-background-dark relative">
+      <div class="relative mb-8 player-frame bg-background-dark">
         <span class="bracket tl" aria-hidden="true"></span>
         <span class="bracket tr" aria-hidden="true"></span>
         <span class="bracket bl" aria-hidden="true"></span>
@@ -91,7 +90,7 @@ const initial = sorted[0];
         >
           <button
             type="button"
-            class="player-facade group bg-background-dark relative block h-full w-full cursor-pointer border-0 p-0"
+            class="relative block w-full h-full p-0 border-0 cursor-pointer player-facade group bg-background-dark"
             data-player-facade
             data-src={getEmbedSrc(initial)}
             data-title={initial.title}
@@ -103,13 +102,13 @@ const initial = sorted[0];
                 <img
                   src={getPoster(initial, "hq")!}
                   alt=""
-                  class="h-full w-full object-cover"
+                  class="object-cover w-full h-full"
                   loading="lazy"
                   decoding="async"
                 />
               ) : (
-                <span class="player-facade__audio flex h-full w-full items-center justify-center">
-                  <span class="text-emphasis text-2xs font-mono tracking-widest uppercase">
+                <span class="flex items-center justify-center w-full h-full player-facade__audio">
+                  <span class="font-mono tracking-widest uppercase text-emphasis text-2xs">
                     Audio
                   </span>
                 </span>
@@ -129,16 +128,16 @@ const initial = sorted[0];
         </div>
       </div>
 
-      <div class="mt-8 flex items-stretch gap-4 pl-4">
-        <div class="relative z-110 min-w-0 flex-1">
+      <div class="flex items-stretch gap-4 pl-4">
+        <div class="relative flex-1 min-w-0 z-110">
           <p
-            class="text-accent mb-4 font-mono text-xs leading-none font-extralight tracking-widest uppercase"
+            class="mb-2 font-mono leading-none tracking-widest uppercase text-accent text-2xs font-extralight"
             data-player-event
           >
             {initial.event}
           </p>
           <h3
-            class="text-foundation font-display text-xl leading-tight tracking-wider md:text-2xl"
+            class="text-xl leading-tight tracking-wider text-foundation font-display md:text-2xl"
             data-player-title
           >
             {initial.title}
@@ -147,43 +146,37 @@ const initial = sorted[0];
       </div>
     </section>
 
-    <div class="order-2 flex w-4 flex-col justify-center gap-1">
-      <span class="bg-faint mt-auto block h-2"></span>
-      <div class="border-faint mt-0 mb-0 h-full max-h-64 border-y-2 py-1">
-        <span class="hazard-stripe__faint block h-full w-4"></span>
+    <div class="flex flex-col justify-center order-2 w-4 gap-1">
+      <span class="block h-2 mt-auto bg-faint"></span>
+      <div class="h-full py-1 mt-0 mb-0 border-faint max-h-64 border-y-2">
+        <span class="block w-4 h-full hazard-stripe__faint"></span>
       </div>
-      <span class="bg-faint mb-auto block h-2"></span>
+      <span class="block h-2 mb-auto bg-faint"></span>
     </div>
 
     <!-- Queue -->
     <aside
-      class="border-faint bg-background-dark order-2 border md:order-1 md:col-span-1"
+      class="order-2 border border-faint bg-background-dark md:order-1 md:col-span-1"
       aria-label="Appearance queue"
     >
-      <div class="queue flex h-full flex-col">
+      <div class="flex flex-col h-full queue">
         <div
-          class="border-faint flex items-center justify-between border-b px-4 py-3"
+          class="flex items-center justify-between px-4 py-3 border-b border-faint"
         >
           <p
             aria-hidden="true"
-            class="text-faint text-2xs flex items-center font-mono leading-none font-extralight tracking-widest uppercase"
+            class="flex items-center font-mono leading-none tracking-widest uppercase text-emphasis text-2xs font-extralight"
           >
-            <span class="text-subtle triplecolon text-light" aria-hidden="true"
+            <span class="font-light text-accent triplecolon" aria-hidden="true"
               >:::</span
             >
             <span class="ml-2">Queue</span>
           </p>
-          <p
-            aria-hidden="true"
-            class="text-faint text-2xs font-mono leading-none font-extralight tracking-widest uppercase tabular-nums"
-          >
-            {total}&nbsp;<span class="text-subtle">tracks</span>
-          </p>
         </div>
-        <ul role="list" class="flex flex-1 flex-col">
+        <ul role="list" class="flex flex-col flex-1">
           {
             sorted.map((item, idx) => (
-              <li class="border-faint flex flex-1 border-t first:border-t-0">
+              <li class="flex flex-1 border-t border-faint first:border-t-0">
                 <button
                   type="button"
                   class:list={[
@@ -198,7 +191,7 @@ const initial = sorted[0];
                   data-type={item.type}
                   aria-pressed={idx === 0 ? "true" : "false"}
                 >
-                  <span class="absolute top-0 left-0 h-full w-32 overflow-hidden">
+                  <span class="absolute top-0 left-0 w-32 h-full overflow-hidden">
                     <span
                       class="track__index text-faint absolute top-[-32%] left-[-0.05em] z-0 shrink-0 pt-1 text-right font-mono text-[8.75rem] leading-none font-extralight -tracking-widest uppercase tabular-nums opacity-50 transition duration-300"
                       aria-hidden="true"
@@ -206,17 +199,17 @@ const initial = sorted[0];
                       {idx + 1}
                     </span>
                   </span>
-                  <span class="track__poster border-background-dark bg-background-dark relative ml-12 aspect-video w-24 shrink-0 overflow-hidden border-2">
+                  <span class="relative w-24 ml-12 overflow-hidden border-2 track__poster border-background-dark bg-background-dark aspect-video shrink-0">
                     {getPoster(item) ? (
                       <img
                         src={getPoster(item)!}
                         alt=""
-                        class="h-full w-full object-cover"
+                        class="object-cover w-full h-full"
                         loading="lazy"
                       />
                     ) : (
-                      <span class="track__audio-tile flex h-full w-full items-center justify-center">
-                        <span class="text-emphasis bg-background-dark text-2xs px-2 py-1 font-mono tracking-widest uppercase">
+                      <span class="flex items-center justify-center w-full h-full track__audio-tile">
+                        <span class="px-2 py-1 font-mono tracking-widest uppercase text-emphasis bg-background-dark text-2xs">
                           Audio
                         </span>
                       </span>
@@ -227,16 +220,16 @@ const initial = sorted[0];
                       <span />
                     </span>
                   </span>
-                  <span class="relative z-110 flex min-w-0 flex-1 flex-col">
-                    <span class="track__title text-foundation line-clamp-2 text-sm leading-snug font-light">
+                  <span class="relative flex flex-col flex-1 min-w-0 z-110">
+                    <span class="mb-1 text-sm font-light leading-snug track__title text-foundation line-clamp-2">
                       {item.title}
                     </span>
-                    <span class="track__event text-emphasis text-2xs mt-1 truncate font-mono font-extralight tracking-widest uppercase">
+                    <span class="font-mono tracking-widest uppercase truncate track__event text-emphasis text-2xs font-extralight">
                       {item.event}
                     </span>
-                    <span class="text-faint text-2xs mt-auto font-mono font-extralight tracking-widest uppercase tabular-nums">
+                    <span class="mt-auto font-mono tracking-widest uppercase text-emphasis text-2xs font-extralight tabular-nums">
                       {item.year}
-                      <span class="text-subtle mx-0 hidden leading-none -tracking-widest sm:inline-block">
+                      <span class="hidden mx-0 leading-none text-accent -tracking-widest sm:inline-block">
                         ᠅
                       </span>
                       {item.type === "audio" ? "Audio" : "Video"}

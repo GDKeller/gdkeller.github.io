@@ -50,7 +50,7 @@ const gridTileBg = `image-set(url("${gridTileAvif.src}") type("image/avif"), url
 ---
 
 <section
-  class="relative overflow-hidden py-32"
+  class="relative py-32 overflow-hidden"
   aria-labelledby="currently-building-label"
 >
   <div
@@ -60,7 +60,7 @@ const gridTileBg = `image-set(url("${gridTileAvif.src}") type("image/avif"), url
   </div>
 
   <div
-    class="relative mx-auto max-w-7xl px-6 pt-16 pb-24 md:px-10 md:pt-20 md:pb-28"
+    class="relative px-4 pt-16 pb-24 mx-auto max-w-7xl md:pt-20 md:pb-28 lg:px-10"
   >
     <div class="flex items-end">
       <HeadingSection
@@ -72,41 +72,43 @@ const gridTileBg = `image-set(url("${gridTileAvif.src}") type("image/avif"), url
         class="translate-y-1/2"
       />
 
-      <div class="border-faint flex-1 border-b-2"></div>
-      <div class="decorator-bar relative isolate pt-4 pr-8 pb-2 pl-4">
+      <div class="flex-1 border-b-2 border-faint"></div>
+      <div
+        class="relative hidden pt-4 pb-2 pl-4 pr-8 decorator-bar isolate md:block"
+      >
         <p
-          class="text-faint text-2xs flex items-center font-mono leading-none font-extralight tracking-widest uppercase"
+          class="flex items-center font-mono leading-none tracking-widest uppercase text-faint text-2xs font-extralight"
         >
           <span>Active Operations</span>
           <span
-            class="text-subtle triplecolon mr-3 ml-2 font-light"
+            class="hidden ml-2 mr-3 font-light text-subtle triplecolon lg:block"
             aria-hidden="true">:::</span
           >
-          <span>qty 5</span>
+          <span class="hidden lg:block">qty 5</span>
         </p>
       </div>
     </div>
 
     <div
-      class="border-faint bg-background-dark border-2 border-t-0 pt-8"
+      class="pt-8 border-2 border-t-0 border-faint bg-background-dark"
       data-builds
     >
       <!-- Active viewer -->
-      <div class="relative p-6 md:p-8">
+      <div class="relative p-2 md:p-8">
         {
           items.map(({ entry, image, videoBase }, idx) => {
             const { data } = entry;
             return (
               <div class:list={[idx > 0 && "hidden"]} data-panel={entry.id}>
                 <div class="flex flex-col gap-6 md:flex-row md:items-stretch md:gap-10">
-                  <div class="callout-frame border-faint bg-background-dark relative aspect-video flex-1 border-0">
+                  <div class="relative flex-1 border-0 callout-frame border-faint bg-background-dark aspect-video">
                     <span class="bracket tl" aria-hidden="true" />
                     <span class="bracket tr" aria-hidden="true" />
                     <span class="bracket bl" aria-hidden="true" />
                     <span class="bracket br" aria-hidden="true" />
 
                     {videoBase ? (
-                      <div class="relative z-110 flex h-full items-center p-2">
+                      <div class="relative flex items-center h-full p-2 z-110">
                         <video
                           autoplay
                           loop
@@ -114,7 +116,7 @@ const gridTileBg = `image-set(url("${gridTileAvif.src}") type("image/avif"), url
                           playsinline
                           preload="none"
                           data-lazy-video
-                          class="laptop-rounded-top block h-full w-full object-cover object-top"
+                          class="block object-cover object-top w-full h-full laptop-rounded-top"
                           poster={image?.src}
                         >
                           <source
@@ -133,16 +135,17 @@ const gridTileBg = `image-set(url("${gridTileAvif.src}") type("image/avif"), url
                       <Picture
                         src={image}
                         alt={data.imageAlt ?? data.title}
-                        widths={[400, 800, 1200]}
+                        widths={[400, 800, 1200, 1400, 2400]}
                         sizes="(min-width: 768px) 55vw, 90vw"
+                        quality={75}
                         formats={["avif", "webp"]}
                         fallbackFormat="jpg"
                         loading="lazy"
-                        class="relative z-110 h-full w-full object-cover object-top"
+                        class="relative object-cover object-top w-full h-full z-110"
                       />
                     ) : (
-                      <div class="placeholder-cell flex h-full items-center justify-center">
-                        <span class="text-foundation bg-background-dark px-16 py-8 font-mono text-sm tracking-widest uppercase">
+                      <div class="flex items-center justify-center h-full placeholder-cell">
+                        <span class="px-16 py-8 font-mono text-sm tracking-widest uppercase text-foundation bg-background-dark">
                           {data.status
                             ? statusLabel[data.status]
                             : "IN PROGRESS"}
@@ -151,19 +154,19 @@ const gridTileBg = `image-set(url("${gridTileAvif.src}") type("image/avif"), url
                     )}
                   </div>
 
-                  <div class="flex flex-col justify-start pt-4 md:w-2/5">
-                    <div class="mt-0 flex flex-col items-start">
-                      <h3 class="text-accent font-prompt relative z-110 origin-bottom text-lg font-medium tracking-wider md:text-2xl">
+                  <div class="flex flex-col justify-start px-4 pt-4 pb-4 md:w-2/5 md:px-0 md:pb-0">
+                    <div class="flex flex-col items-start mt-0">
+                      <h3 class="relative text-lg font-medium tracking-wider origin-bottom text-accent font-display z-110 md:text-2xl">
                         {data.title}
                       </h3>
                       <div class="before:border-subtle relative mt-2 flex w-full justify-between pr-2 before:absolute before:top-0 before:left-0 before:h-0 before:w-full before:border-t before:bg-none before:content-['']">
                         {data.type && (
-                          <span class="text-emphasis project__type relative z-110 mb-auto pr-8 pb-2 pl-4 font-mono text-xs leading-none tracking-widest">
+                          <span class="relative pb-2 pl-4 pr-8 mb-auto font-mono text-xs leading-none tracking-widest text-emphasis project__type z-110">
                             {data.type}
                           </span>
                         )}
                         {data.tech && data.tech.length > 0 && (
-                          <p class="text-emphasis relative z-110 py-2 font-mono text-xs font-extralight tracking-wide uppercase">
+                          <p class="relative py-2 font-mono text-xs tracking-wide uppercase text-emphasis z-110 font-extralight">
                             {data.tech.map((t: string, i: number) => (
                               <>
                                 {i > 0 && <span class="text-accent"> / </span>}
@@ -174,18 +177,18 @@ const gridTileBg = `image-set(url("${gridTileAvif.src}") type("image/avif"), url
                         )}
                       </div>
                     </div>
-                    <p class="text-foundation relative z-110 mt-8 max-w-[48ch] text-base leading-normal tracking-normal">
+                    <p class="text-foundation relative z-110 mt-8 mb-4 max-w-[48ch] text-base leading-normal tracking-normal md:mb-0">
                       {data.description}
                     </p>
-                    <div class="mt-auto mr-auto ml-0">
+                    <div class="mt-auto ml-auto md:mr-auto md:ml-0">
                       {data.url && (
                         <a
                           href={data.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          class="button-arrow border-highlight hover:bg-highlight text-highlight hover:text-background-dark mt-auto mb-0 flex items-center justify-self-end overflow-hidden border-b py-2 pr-8 pl-4 font-mono text-xs tracking-widest uppercase"
+                          class="flex items-center py-2 pl-4 pr-8 mt-auto mb-0 overflow-hidden font-mono text-xs tracking-widest uppercase border-b button-arrow border-highlight hover:bg-highlight text-highlight hover:text-background-dark justify-self-end"
                         >
-                          <span class="button-arrow__label relative z-110">
+                          <span class="relative button-arrow__label z-110">
                             View Site
                           </span>
                         </a>
@@ -201,7 +204,7 @@ const gridTileBg = `image-set(url("${gridTileAvif.src}") type("image/avif"), url
 
       <!-- Thumbnail row -->
       <div
-        class="border-faint grid grid-cols-2 gap-4 border-t-2 p-6 sm:grid-cols-3 md:grid-cols-5 md:p-8"
+        class="grid grid-cols-2 gap-2 p-4 border-t-2 border-faint sm:grid-cols-3 md:grid-cols-5 md:gap-4 md:p-8"
       >
         {
           items.map(({ entry, image }, idx) => {
@@ -226,17 +229,17 @@ const gridTileBg = `image-set(url("${gridTileAvif.src}") type("image/avif"), url
                     formats={["avif", "webp"]}
                     fallbackFormat="jpg"
                     loading="lazy"
-                    class="block aspect-16/10 w-full object-cover"
+                    class="block object-cover w-full aspect-16/10"
                   />
                 ) : (
-                  <div class="placeholder-cell flex aspect-16/10 flex-1 items-center justify-center">
-                    <span class="text-foundation bg-background-dark text-2xs relative z-110 px-4 py-4 font-mono tracking-widest uppercase">
+                  <div class="flex items-center justify-center flex-1 placeholder-cell aspect-16/10">
+                    <span class="relative px-4 py-4 font-mono tracking-widest uppercase text-foundation bg-background-dark text-2xs z-110">
                       {data.title}
                     </span>
                   </div>
                 )}
-                <div class="thumb-title bg-emphasis group-hover:bg-accent m-0 mt-auto flex h-12 px-2 transition-colors duration-200">
-                  <p class="text-background-dark text-2xs relative z-110 m-auto leading-none font-medium tracking-wide lg:text-xs">
+                <div class="flex w-full h-12 px-2 m-0 mt-auto transition-colors duration-200 thumb-title bg-emphasis group-hover:bg-accent">
+                  <p class="relative m-auto font-medium leading-none tracking-wide text-background-dark text-2xs z-110 lg:text-xs">
                     {data.title}
                   </p>
                 </div>
@@ -434,14 +437,12 @@ const gridTileBg = `image-set(url("${gridTileAvif.src}") type("image/avif"), url
   }
 
   .bracket {
-    position: absolute;
-    opacity: 0.3;
+    @apply absolute hidden opacity-30 md:block;
 
     &::before,
     &::after {
       content: "";
-      position: absolute;
-      background-color: var(--color-emphasis);
+      @apply bg-emphasis absolute;
     }
 
     &::before {

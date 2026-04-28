@@ -105,11 +105,11 @@ const secondaryCategories = [
     </p>
   </div>
   <ul
-    class="bg-background-dark grid w-full grid-cols-[auto_auto_auto_auto] gap-1"
+    class="bg-background-dark grid w-full md:grid-cols-[auto_auto_auto_auto] md:gap-1"
   >
     {
       primarySkills.map((skill) => (
-        <li class="text-emphasis border-fainter relative z-110 w-auto border px-8 py-8 font-mono text-base tracking-wide uppercase">
+        <li class="text-emphasis border-fainter relative z-110 w-auto border px-4 py-4 font-mono text-base tracking-wide uppercase md:px-8 md:py-8">
           {skill}
         </li>
       ))
@@ -130,19 +130,11 @@ const secondaryCategories = [
     <span class="hazard-stripe h-8 w-full"></span>
   </summary>
   <div
-    class="skills-grid border-fainter -mt-[1px] flex flex-col border-r border-b sm:grid sm:grid-cols-2 lg:grid-cols-3"
+    class="skills-grid border-fainter -mt-px flex flex-col border-r border-b sm:grid sm:grid-cols-2 lg:grid-cols-3"
   >
     {
       secondaryCategories.map((cat) => (
-        <SkillsCard text={cat.title}>
-          <ul class="list flex flex-col gap-2">
-            {cat.items.map((item) => (
-              <li class="relative z-110 px-8 py-1 font-mono text-base">
-                {item}
-              </li>
-            ))}
-          </ul>
-        </SkillsCard>
+        <SkillsCard category={cat.title} skills={cat.items} />
       ))
     }
   </div>
