@@ -8,7 +8,9 @@ export function initSectionHeadingAnimations(
   gsap: GSAPInstance,
   ScrollTrigger: ScrollTriggerInstance,
 ): void {
-  const sectionHeadings = document.querySelectorAll(".section-heading");
+  const sectionHeadings = document.querySelectorAll(
+    ".section-heading__animate",
+  );
   sectionHeadings.forEach((heading) => {
     gsap.set(heading, { y: 20, opacity: 0 });
 

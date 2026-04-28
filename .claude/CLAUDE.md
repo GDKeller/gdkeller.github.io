@@ -6,41 +6,34 @@ This is Grant Keller's professional portfolio website showcasing frontend develo
 
 ## Architecture
 
-**Framework:** Astro 5.16.4 (Static Site Generator)
-**Key Technologies:** TypeScript, Tailwind CSS, DaisyUI, GSAP animations
-**Deployment:** GitHub Pages (https://gdkeller.github.io/portfolio)
+**Framework:** Astro 6.1.9 (static output)
+**Key Technologies:** TypeScript, Tailwind v4 (CSS-config), Sass (sass-embedded), GSAP
+**Deployment:** <https://www.grantkeller.dev> (configured in `astro.config.mjs`)
+**Node:** >=22.12.0
 
-## Key Directories & Files
+## Project Structure
 
-```
-src/
-├── components/          # Astro components (27 total)
-│   ├── Hero.astro      # Main landing section
-│   ├── Projects.astro  # Project showcase grid
-│   ├── Jobs.astro      # Work experience timeline
-│   ├── Header.astro    # Site header with GSAP oscilloscope animation
-│   └── ...             # Nav, Footer, Awards, Talks, LogoCarousel, etc.
-├── content/            # Content collections (Astro's data layer)
-│   ├── config.ts       # Zod schemas for type safety
-│   ├── jobs/           # Professional experience entries
-│   ├── projects/       # Featured project showcases
-│   ├── skills/         # Skill entries
-│   └── featured/       # Special content (anglerfish story, etc.)
-├── lib/
-│   └── animations/     # GSAP animation modules (hero, content, skills, etc.)
-├── pages/
-│   └── index.astro     # Single-page application entry
-└── styles/
-    └── global.css      # Global styles and CSS variables
-```
+This file does not document the directory layout. To see project structure, use `tree`, `fd`, or `ls` directly (e.g. `tree -L 3 -I 'node_modules|dist' src`). Trees go stale; the filesystem is the source of truth.
 
-## Common Tasks
+A few non-obvious anchors:
 
-### Adding New Content
+- `src/content.config.ts` — Zod schemas for all content collections (lives at `src/`, NOT `src/content/`)
+- `src/styles/global.css` — Tailwind v4 `@theme` blocks; this is where theme/tokens live (no `tailwind.config.*` exists)
+- `src/styles/jade-theme.css` — imported by `global.css`; layered theme overrides
+- `src/lib/animations/` — GSAP modules (hero, content, skills, anglerfish, nypost)
+- `src/lib/dev-flags.ts` — build-time feature flags
+- `src/pages/` — multi-page: `index.astro`, `playground.astro`, `styles.astro`, `nhmla-anglerfish.astro`
+- `src/layouts/Layout.astro` — root document shell used by every page
 
-- **Jobs:** Create `.md` file in `src/content/jobs/`
-- **Projects:** Create `.md` file in `src/content/projects/`
-- All content uses Zod-validated frontmatter schemas defined in `src/content/config.ts`
+## Content Collections
+
+Five collections, all validated by Zod in `src/content.config.ts`:
+
+- `jobs/` — `.md` only
+- `projects/` — `.md` or `.mdx`
+- `skills/` — `.md` only
+- `featured/` — `.md` only (anglerfish story, etc.)
+- `current/` — `.md` only ("currently building" cards). Schema includes `status` (live|beta|launching-soon), optional `brand: davant`, and `focal: true` to feature it.
 
 ## Design Context
 
@@ -62,8 +55,8 @@ Hiring managers and potential clients evaluating Grant's technical abilities. Th
 
 - **Theme:** Dark only — black backdrop with emerald as the dominant color, fuchsia as punctuation
 - **Effects:** Neon glow text-shadows, glass morphism (translucent backgrounds with `backdrop-blur`), radial gradient bursts, blurred emerald scanlines on section headings
-- **Fonts:** Bayon (display), Bokor (decorative), Permanent Marker (handwritten accent), Prompt (body) — loaded via Google Fonts
-- **Type scale:** Custom display/heading/body sizes defined in `tailwind.config.mjs`
+- **Fonts:** Prompt (display + body), IBM Plex Mono (mono), Manufacturing Consent (decorative). Loaded via Astro Fonts using Fontsource (see `astro.config.mjs`); CSS vars wired in `global.css`.
+- **Type scale & theme:** Tailwind v4 has no JS config. All theme lives in `src/styles/global.css` inside `@theme` blocks. Add new tokens there, not in a `tailwind.config.*`.
 - **Animation:** GSAP for complex sequences (ScrollTrigger, oscilloscope wave, scroll reveals); CSS transitions for simple hover/focus states
 - **Anti-references:** Generic portfolio templates, cookie-cutter layouts, safe/corporate aesthetics
 - **The current site IS the reference** — evolve and refine, don't reinvent
@@ -96,10 +89,9 @@ Tokens encode _decisions_, not _elements_. If changing a token's value should up
 
 ## Known Issues
 
-- No testing infrastructure exists
-- Background images need WebP conversion
-- CSS bundle needs purging (37KB → ~15KB possible)
-- Font loading needs optimization
+- No testing infrastructure exists (no test runner, no test files)
+- `src/images/` still holds raw `.jpg`/`.png` assets that haven't been converted to WebP/AVIF. Hero backgrounds already pipe through `<Picture>` with AVIF+WebP, but the long tail (job/project/skill imagery) does not.
+- `dist/_astro/Layout.*.css` is ~124KB. Worth investigating before optimizing the smaller per-page bundles.
 
 ## Development Workflow
 
@@ -113,57 +105,45 @@ npm run build        # Type checks + builds to ./dist/
 # Preview Production
 npm run preview      # Test production build locally
 
+# Type-check only (no build)
+npm run typecheck    # astro check && tsc --noEmit
+
 # Code Quality
 npm run lint         # ESLint on src/**/*.{ts,astro}
 npm run lint:fix     # Auto-fix ESLint issues
-npx prettier --check .   # Check formatting
-npx prettier --write .   # Fix formatting
+npm run format       # Prettier check
+npm run format:fix   # Prettier write
+npm run knip         # Detect dead code/exports/deps
+npm run knip:fix     # Apply knip's safe fixes
+
+# Color guard — fails if any oklch() value falls outside sRGB
+npm run check:colors      # see scripts/check-oklch.mjs
+npm run check:colors:fix
+
+# Lighthouse against preview server (port 3112)
+npm run lighthouse
 ```
-
-## Component Conventions
-
-### Naming
-
-- PascalCase for component files
-- Descriptive names (avoid generic like "Card")
-- Group by function when possible
-
-### Props
-
-- Define TypeScript interfaces
-- Use Zod for runtime validation where needed
-- Document required vs optional props
-
-### Styling
-
-- Tailwind utilities preferred
-- Component-scoped styles when needed
-- Avoid inline styles
 
 ## Content Guidelines
 
 ### Frontmatter Requirements
 
-Each content type has specific required fields (see `src/content/config.ts` for full schemas):
+Each content type has specific required fields (see `src/content.config.ts` for full schemas):
 
 - **Jobs:** company, position (+ optional: startMonthYear, endMonthYear, tech, companyLogo, order)
 - **Projects:** title, projectName, client (+ optional: clientLogo, timeperiod, tags, image, tech)
 - **Skills:** title (+ optional: tags, image)
 - **Featured:** title (+ optional: description, tags, image)
-
-### Image Assets
-
-- Store in `src/images/` with logical subdirectories
-- Use descriptive filenames
-- Optimize before committing (WebP preferred)
+- **Current:** title, description (+ optional: url, type, image, video, tech, status, brand, focal, order)
 
 ## AI Assistant Notes
 
-- The site is a single-page application (SPA) - all content loads on index.astro
+- Multi-page: index is the main scrollable page, but `/playground`, `/styles`, and `/nhmla-anglerfish` are real routes — don't assume SPA.
 - Content is managed through Astro's content collections for type safety
 - Performance is a current concern - always consider bundle size impact
 - The design aesthetic is creative/cyberpunk - maintain visual consistency
 - Professional tone required - this showcases to potential employers
+- The `/styles` page renders every semantic token utility; the `@source inline(...)` block at the top of `global.css` exists to force-emit those classes. If you add a token, add it to that inline list too or it will be tree-shaken.
 
 ## Project Board
 

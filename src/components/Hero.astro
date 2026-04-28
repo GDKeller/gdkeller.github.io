@@ -38,7 +38,7 @@ const maskImage = `image-set(url("${maskAvif.src}") type("image/avif"), url("${m
     fallbackFormat="webp"
     loading="eager"
     fetchpriority="high"
-    class="absolute top-0 left-0 w-full pointer-events-none select-none z-130 md:z-90"
+    class="pointer-events-none absolute top-0 left-0 z-130 w-full select-none md:z-90"
   />
   <Picture
     src={frameLower}
@@ -46,7 +46,7 @@ const maskImage = `image-set(url("${maskAvif.src}") type("image/avif"), url("${m
     widths={[800, 1280, 1920]}
     sizes="100vw"
     formats={["avif", "webp"]}
-    class="absolute left-0 w-full pointer-events-none select-none -bottom-2 z-130"
+    class="pointer-events-none absolute -bottom-2 left-0 z-130 w-full select-none"
     fallbackFormat="webp"
     loading="eager"
   />
@@ -54,7 +54,7 @@ const maskImage = `image-set(url("${maskAvif.src}") type("image/avif"), url("${m
   <span class="frame-right"></span>
   <div
     id="hero__content"
-    class="flex w-full max-w-full px-2 pt-4 pb-4 mx-auto mt-0 sm:mr-0 sm:ml-0 sm:pr-4 sm:pl-4 md:mt-auto md:mb-auto md:px-6 md:pt-6 lg:p-0"
+    class="mx-auto mt-0 flex w-full max-w-full px-2 pt-4 pb-4 sm:mr-0 sm:ml-0 sm:pr-4 sm:pl-4 md:mt-auto md:mb-auto md:px-6 md:pt-6 lg:p-0"
   >
     <div
       id="hero-content-wrapper"
@@ -75,7 +75,7 @@ const maskImage = `image-set(url("${maskAvif.src}") type("image/avif"), url("${m
             loading="eager"
             priority={true}
             fetchpriority="high"
-            class="object-fill h-full md:scale-102 md:rotate-0 md:object-top"
+            class="h-full object-fill md:scale-102 md:rotate-0 md:object-top"
           />
         </div>
         <div
@@ -88,36 +88,36 @@ const maskImage = `image-set(url("${maskAvif.src}") type("image/avif"), url("${m
         >
           <span class="headshot-fieldlabel">Operative</span>
           <h1
-            class="relative pt-2 pb-1 pl-2 ml-1 text-base font-medium leading-none border-b border-l border-background-dark/20 z-110 sm:pl-4 sm:text-3xl md:ml-0 md:pl-6 md:text-lg lg:pl-2 lg:text-lg xl:pl-4 xl:text-2xl"
+            class="border-background-dark/20 relative z-110 ml-1 border-b border-l pt-2 pb-1 pl-2 text-base leading-none font-medium sm:pl-4 sm:text-3xl md:ml-0 md:pl-6 md:text-lg lg:pl-2 xl:pl-4 xl:text-2xl"
           >
             Grant Keller
           </h1>
           <span class="headshot-fieldlabel">Assignment</span>
           <span
-            class="pt-1 pb-1 pl-2 mb-0 ml-1 text-xs font-normal leading-none tracking-tight border-b border-l border-background-dark/20 z-110 sm:pl-4 sm:text-xl md:ml-0 md:pl-6 md:text-sm md:font-light md:tracking-normal lg:mb-0 lg:pt-3 lg:pb-1 lg:pl-2 lg:text-xs lg:font-normal xl:py-2 xl:pl-4 xl:text-base"
+            class="border-background-dark/20 z-110 mb-0 ml-1 border-b border-l pt-1 pb-1 pl-2 text-xs leading-none font-normal tracking-tight sm:pl-4 sm:text-xl md:ml-0 md:pl-6 md:text-sm md:font-light md:tracking-normal lg:pt-3 lg:pb-1 lg:pl-2 lg:text-xs lg:font-normal xl:py-2 xl:pl-4 xl:text-base"
             >UX/Design Engineer</span
           >
-          <span class="border-b-0 headshot-fieldlabel headshot-fieldlabel__last"
+          <span class="headshot-fieldlabel headshot-fieldlabel__last border-b-0"
             >Territory</span
           >
           <span
-            class="pt-1 pb-1 pl-2 ml-1 font-normal leading-none border-b border-l border-background-dark/20 text-2xs lg:text-2xs z-110 sm:pl-4 sm:text-lg md:ml-0 md:hidden md:border-b-0 md:pb-0 lg:mt-0 lg:block lg:pt-3 lg:pb-2 lg:pl-2 xl:pt-2 xl:pl-4 xl:text-sm"
+            class="border-background-dark/20 text-2xs z-110 ml-1 border-b border-l pt-1 pb-1 pl-2 leading-none font-normal sm:pl-4 sm:text-lg md:ml-0 md:hidden md:border-b-0 md:pb-0 lg:mt-0 lg:block lg:pt-3 lg:pb-2 lg:pl-2 xl:pt-2 xl:pl-4 xl:text-sm"
             >Los Angeles CA, USA</span
           >
         </div>
         <div
-          class="absolute top-0 left-0 w-full h-full pointer-events-none z-80"
+          class="pointer-events-none absolute top-0 left-0 z-80 h-full w-full"
           aria-hidden="true"
           role="presentation"
           style={`mask-image: ${maskImage}; mask-mode: alpha; mask-size: 105% 105%; mask-position: 50% 70%; mask-repeat: no-repeat; -webkit-mask-image: ${maskImage}; -webkit-mask-mode: alpha; -webkit-mask-size: 105% 105%; -webkit-mask-position: 50% 70%; -webkit-mask-repeat: no-repeat;`}
         >
           <span
-            class="absolute bottom-0 right-0 font-mono text-2xl font-normal leading-none whitespace-pre translate-x-2 translate-y-0 opacity-50 text-fainter z-100 -rotate-2 mix-blend-multiply sm:-translate-x-2 sm:-translate-y-1/4 sm:text-4xl md:translate-x-2 md:translate-y-0 md:text-sm md:opacity-30 lg:text-3xl xl:text-2xl"
+            class="text-fainter absolute right-0 bottom-0 z-100 translate-x-2 translate-y-0 -rotate-2 font-mono text-2xl leading-none font-normal whitespace-pre opacity-50 mix-blend-multiply sm:-translate-x-2 sm:-translate-y-1/4 sm:text-4xl md:translate-x-2 md:translate-y-0 md:text-sm md:opacity-30 lg:text-3xl xl:text-2xl"
             >34.0549°N,118.2426°W</span
           >
         </div>
         <div
-          class="absolute z-30 w-full h-full overflow-hidden opacity-100 pointer-events-none -top-1 left-1 mix-blend-darken"
+          class="pointer-events-none absolute -top-1 left-1 z-30 h-full w-full overflow-hidden opacity-100 mix-blend-darken"
           aria-hidden="true"
         >
           <span
@@ -138,7 +138,7 @@ const maskImage = `image-set(url("${maskAvif.src}") type("image/avif"), url("${m
           class="relative row-start-1 mx-auto mt-[15vw] mb-[12vw] md:row-auto md:mt-0 md:mb-16 lg:mb-16 xl:mb-32"
         >
           <p
-            class="absolute inset-0 flex flex-col items-start text-4xl pointer-events-none md:items-start md:text-lg"
+            class="pointer-events-none absolute inset-0 flex flex-col items-start text-4xl md:items-start md:text-lg"
             aria-hidden="true"
           >
             <span class="hero-headline hero-headline--ghost md:ml-[-2ch]"
@@ -150,7 +150,7 @@ const maskImage = `image-set(url("${maskAvif.src}") type("image/avif"), url("${m
             >
           </p>
           <p
-            class="relative flex flex-col items-start my-auto z-110 md:items-start"
+            class="relative z-110 my-auto flex flex-col items-start md:items-start"
           >
             <span class="hero-headline md:ml-[-2ch]">Deep space</span>
             <span class="hero-headline mb-2 ml-[1ch] md:ml-[-1ch] xl:mb-2"
@@ -168,7 +168,7 @@ const maskImage = `image-set(url("${maskAvif.src}") type("image/avif"), url("${m
           class="z-110 row-start-3 mx-auto mb-[15vw] pt-8 md:row-auto md:my-0 md:ml-0 md:pt-0"
         >
           <p
-            class="leading-tight text-foundation font-body z-140 text-shadow-black/30 text-shadow-lg md:relative md:translate-0"
+            class="text-foundation font-body z-140 leading-tight text-shadow-black/30 text-shadow-lg md:relative md:translate-0"
           >
             <span
               class="text-accent text-shadow-background/70 inline-block text-2xl leading-[0.75em] font-normal tracking-wider text-shadow-lg sm:text-4xl md:text-2xl md:leading-snug lg:text-3xl xl:text-4xl"
@@ -181,7 +181,7 @@ const maskImage = `image-set(url("${maskAvif.src}") type("image/avif"), url("${m
               </span>
               <span class="sr-only">&nbsp;</span>
               <span
-                class="text-2xl tracking-wider text-foundation text-shadow-background/70 text-shadow-lg sm:text-4xl md:text-2xl lg:text-3xl xl:text-4xl"
+                class="text-foundation text-shadow-background/70 text-2xl tracking-wider text-shadow-lg sm:text-4xl md:text-2xl lg:text-3xl xl:text-4xl"
                 >ambitious ideas</span
               >
             </span>
@@ -250,7 +250,7 @@ const maskImage = `image-set(url("${maskAvif.src}") type("image/avif"), url("${m
       z-index: 120;
     }
     .headshot-fieldlabel {
-      @apply lg:text-2xs text-2xs md:text-2xs relative border-b border-black/20 pt-4 pb-1 pl-3 leading-none font-light tracking-wider uppercase sm:pt-6 sm:pb-2 sm:pl-5 sm:text-base sm:font-extralight md:hidden md:py-1 md:font-normal md:tracking-wide lg:mt-0 lg:mb-0 lg:block lg:px-1 lg:pt-3 lg:tracking-wide xl:px-2;
+      @apply text-2xs relative border-b border-black/20 pt-4 pb-1 pl-3 leading-none font-light tracking-wider uppercase sm:pt-6 sm:pb-2 sm:pl-5 sm:text-base sm:font-extralight md:hidden md:py-1 md:font-normal md:tracking-wide lg:mt-0 lg:mb-0 lg:block lg:px-1 lg:pt-3 lg:tracking-wide xl:px-2;
     }
     .headshot-fieldlabel__last {
       @apply md:border-b-0 md:pb-0 lg:mb-auto;

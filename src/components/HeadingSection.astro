@@ -13,6 +13,7 @@ interface Props {
   size?: Size;
   treatment?: Treatment;
   id?: HTMLAttributes<"h2">["id"];
+  animate?: boolean;
   class?: HTMLAttributes<"h2">["class"];
 }
 
@@ -23,6 +24,7 @@ const {
   size = "lg",
   treatment = "none",
   id,
+  animate,
   class: className,
   ...rest
 } = Astro.props as Props;
@@ -34,7 +36,7 @@ const alignClasses: Record<Align, string> = {
 
 const sizeClasses: Record<Size, string> = {
   sm: "text-3xl md:text-4xl",
-  md: "text-5xl md:text-6xl",
+  md: "text-4xl sm:text-5xl md:text-6xl",
   lg: "text-5xl sm:text-7xl md:text-8xl lg:text-8xl xl:text-8xl 2xl:text-9xl",
 };
 
@@ -55,6 +57,7 @@ const treatmentClasses: Record<Treatment, string> = {
     sizeClasses[size],
     treatmentClasses[treatment],
     treatment !== "none" && "section-heading__center",
+    animate && "section-heading__animate",
     className,
   ]}
   {...rest}

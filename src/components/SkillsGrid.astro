@@ -6,9 +6,9 @@ const primarySkills = [
   "TypeScript",
   "React",
   "Node.js",
+  "GSAP",
   "Accessibility / WCAG",
   "SCSS / Tailwind",
-  "GSAP",
   "Information Architecture",
   "Performance Optimization",
 ];
@@ -85,12 +85,13 @@ const secondaryCategories = [
 ];
 ---
 
-<div class="mb-16 flex flex-col items-center">
+<div class="mb-8 flex flex-col items-center md:mb-16">
   <h2 class="sr-only">Skills</h2>
   <HeadingSection
     as="p"
     text="Tools of the Trade"
     align="center"
+    animate={true}
     aria-hidden="true"
   />
 </div>
@@ -105,11 +106,11 @@ const secondaryCategories = [
     </p>
   </div>
   <ul
-    class="bg-background-dark grid w-full md:grid-cols-[auto_auto_auto_auto] md:gap-1"
+    class="bg-background-dark grid w-full sm:grid-cols-2 md:flex md:flex-row md:flex-wrap md:gap-1"
   >
     {
       primarySkills.map((skill) => (
-        <li class="text-emphasis border-fainter relative z-110 w-auto border px-4 py-4 font-mono text-base tracking-wide uppercase md:px-8 md:py-8">
+        <li class="text-emphasis border-fainter relative z-110 w-auto border px-4 py-2 font-mono text-base tracking-wide uppercase md:grow md:px-4 md:py-4 md:text-center lg:px-8 lg:py-8">
           {skill}
         </li>
       ))
