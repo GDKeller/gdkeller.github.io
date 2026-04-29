@@ -158,22 +158,75 @@ button:focus-visible {
   list-style-position: inside;
 }
 
-.job-body {
-  & p {
-    @apply mb-4;
-    &:last-child {
-      @apply mb-0;
-    }
+.entry-body p {
+  @apply mb-4;
+}
+.entry-body p:last-child {
+  @apply mb-0;
+}
+.entry-body ul {
+  @apply mt-8;
+}
+.entry-body li {
+  @apply mb-2;
+}
+.entry-body a {
+  @apply hover:text-highlight underline transition-colors;
+}
+.entry-body img {
+  @apply w-full;
+}
+
+.entry-body blockquote {
+  @apply text-emphasis relative text-base leading-normal italic md:text-sm lg:text-sm lg:leading-loose;
+}
+.entry-body blockquote cite {
+  @apply mt-8 block text-right font-mono text-xs font-extralight not-italic md:text-xs;
+}
+.entry-body blockquote cite::before {
+  @apply content-['—_'];
+}
+
+.entry-body details {
+  @apply mt-8 pt-8;
+  interpolate-size: allow-keywords;
+}
+.entry-body details::details-content {
+  block-size: 0;
+  overflow: clip;
+  opacity: 0;
+  transition:
+    block-size 350ms ease,
+    content-visibility 350ms allow-discrete,
+    opacity 250ms ease;
+}
+.entry-body details[open]::details-content {
+  block-size: auto;
+  opacity: 1;
+  margin-bottom: 4rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .entry-body details::details-content {
+    transition: none;
   }
-  & ul {
-    @apply mt-8;
-  }
-  & li {
-    @apply mb-2;
-  }
-  & a {
-    @apply hover:text-highlight underline;
-  }
+}
+
+.entry-body summary {
+  @apply text-highlight hover:text-highlight-hover ml-auto flex w-fit cursor-pointer items-center gap-3 px-4 py-2 font-mono text-sm tracking-widest uppercase transition-colors select-none;
+  list-style: none;
+}
+.entry-body summary::-webkit-details-marker {
+  display: none;
+}
+.entry-body summary::marker {
+  content: "";
+}
+.entry-body summary::after {
+  content: "[+]";
+}
+.entry-body details[open] > summary::after {
+  content: "[−]";
 }
 
 strong {

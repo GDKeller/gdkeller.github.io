@@ -8,7 +8,7 @@ export function initJobAnimations(
   gsap: GSAPInstance,
   ScrollTrigger: ScrollTriggerInstance,
 ): void {
-  const jobCards = document.querySelectorAll(".job-frame");
+  const jobCards = document.querySelectorAll(".entry-frame");
   jobCards.forEach((card, index) => {
     gsap.set(card, { y: 30, opacity: 0 });
 

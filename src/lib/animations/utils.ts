@@ -22,7 +22,7 @@ export function prefersReducedMotion(): boolean {
 export function showAllElementsImmediately(): void {
   const allAnimatedElements = document.querySelectorAll(
     ".hero__name, .hero__text p, .hero__text li, h2, " +
-      ".skill-item, .project-card, .job-frame, .stat, .browser, .sticky, " +
+      ".skill-item, .project-card, .entry-frame, .stat, .browser, .sticky, " +
       ".fish-hero__image, img, p, footer, .relative.z-0.pt-64",
   );
 

@@ -12,14 +12,14 @@ const sortedProjects = projects.sort(
 <HeadingSection
   text="Projects"
   as="h2"
-  class="mb-8 md:mb-16"
-  animate={true}
   align="left"
+  animate={true}
+  class="mb-16 lg:mb-24 xl:mb-28 2xl:mb-32"
 />
 <ul>
   {
     sortedProjects.map((project) => (
-      <li class="mb-4">
+      <li class="mb-4 w-full">
         <ProjectSingle {project} />
       </li>
     ))
