@@ -171,25 +171,66 @@ button:focus-visible {
   @apply mb-2;
 }
 .entry-body a {
-  @apply hover:text-highlight underline transition-colors;
+  @apply underline transition-colors hover:text-highlight;
 }
 .entry-body img {
   @apply w-full;
 }
 
+/* .entry-body uses display: contents so its slot children become direct grid
+   items of .entry-card. Padding lives on .entry-card itself (a real box), so
+   we don't need per-child padding here — only grid placement and stacking. */
+.entry-body > * {
+  grid-column: 1;
+  position: relative;
+  z-index: 110;
+}
+
+/* <details> spans both grid columns and is pinned to a high explicit row so
+   skills' `grid-row: 1 / 99` can extend through every intro row above it
+   without ever overlapping. Empty rows between intro and row 99 collapse to
+   zero height (no content), so there's no visual gap. */
+.entry-body > details {
+  grid-column: 1 / -1;
+  grid-row: 99;
+}
+
+@media (min-width: 768px) {
+  .skills-list {
+    grid-row: 1 / 99;
+  }
+}
+
+/* Cap line length on direct prose children so reading copy stays comfortable.
+   <details> is a layout-heavy child; it inherits the full body width. */
+.entry-body > p,
+.entry-body > ul,
+.entry-body > ol,
+.entry-body > blockquote {
+  max-width: 80ch;
+}
+
 .entry-body blockquote {
-  @apply text-emphasis relative text-base leading-normal italic md:text-sm lg:text-sm lg:leading-loose;
+  @apply relative text-base italic leading-normal text-emphasis md:text-sm lg:text-sm lg:leading-loose;
 }
 .entry-body blockquote cite {
-  @apply mt-8 block text-right font-mono text-xs font-extralight not-italic md:text-xs;
+  @apply block mt-8 font-mono text-xs not-italic text-right font-extralight md:text-xs;
 }
 .entry-body blockquote cite::before {
   @apply content-['—_'];
 }
 
 .entry-body details {
-  @apply mt-8 pt-8;
+  @apply py-0 mt-0;
   interpolate-size: allow-keywords;
+
+  @media screen and (min-width: 768px) {
+    @apply mr-[-10rem];
+  }
+
+  @media screen and (min-width: 1024px) {
+    @apply mr-[-10rem];
+  }
 }
 .entry-body details::details-content {
   block-size: 0;
@@ -213,7 +254,7 @@ button:focus-visible {
 }
 
 .entry-body summary {
-  @apply text-highlight hover:text-highlight-hover ml-auto flex w-fit cursor-pointer items-center gap-3 px-4 py-2 font-mono text-sm tracking-widest uppercase transition-colors select-none;
+  @apply flex items-center gap-3 px-4 py-4 mt-16 ml-auto mr-auto font-mono text-sm tracking-widest uppercase transition-colors border-b cursor-pointer select-none hover:border-highlight-hover border-highlight text-highlight hover:text-highlight-hover w-fit;
   list-style: none;
 }
 .entry-body summary::-webkit-details-marker {
@@ -244,7 +285,11 @@ strong {
 .list-custom li {
   position: relative;
   list-style-type: none;
-  padding-left: 1.5rem;
+  padding-left: 1.25rem;
+
+  @media screen and (min-width: 768px) {
+    padding-left: 1.5rem;
+  }
 }
 .list-custom-wrapper ul li::before,
 .list-custom li::before {

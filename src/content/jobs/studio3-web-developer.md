@@ -11,7 +11,7 @@ tech: [PHP, CSS/SCSS, GSAP, Performance, Accessibility, Datto CMS]
 order: 2
 ---
 
-Built polished websites for luxury medical and legal clients in a fast-paced agency environment.
+Built websites for luxury medical and legal clients in a fast-paced agency environment.
 
 - Achieved perfect 100s on Google Lighthouse across multiple client sites
 - Built CLI tools to batch-process image galleries with 1,000+ photos
