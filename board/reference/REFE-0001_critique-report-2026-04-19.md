@@ -1,3 +1,10 @@
+---
+type: reference
+created: 2026-04-19
+topic: design-critique
+tags: [critique, design-system, ux]
+---
+
 # Portfolio critique — 2026-04-19
 
 **Target:** main portfolio page (`src/pages/index.astro` + components)
