@@ -137,18 +137,18 @@ button:focus-visible {
 }
 
 .prose {
-  a {
+  & a {
     text-underline-offset: 0.25em;
   }
-  p {
+  & p {
     line-height: 1.75;
   }
 
-  strong {
+  & strong {
     @apply font-medium;
   }
 
-  cite {
+  & cite {
     @apply font-light;
   }
 }
@@ -156,6 +156,24 @@ button:focus-visible {
 .prose li {
   list-style-type: disc;
   list-style-position: inside;
+}
+
+.job-body {
+  & p {
+    @apply mb-4;
+    &:last-child {
+      @apply mb-0;
+    }
+  }
+  & ul {
+    @apply mt-8;
+  }
+  & li {
+    @apply mb-2;
+  }
+  & a {
+    @apply hover:text-highlight underline;
+  }
 }
 
 strong {
@@ -173,7 +191,7 @@ strong {
 .list-custom li {
   position: relative;
   list-style-type: none;
-  padding-left: 1.25rem;
+  padding-left: 1.5rem;
 }
 .list-custom-wrapper ul li::before,
 .list-custom li::before {

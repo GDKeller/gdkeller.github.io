@@ -7,6 +7,7 @@ interface Props {
   altText: string;
   widths?: number[];
   sizes?: string;
+  class?: string;
 }
 
 const {
@@ -14,6 +15,7 @@ const {
   altText,
   widths = [200, 400, 800],
   sizes = "(min-width: 768px) 25vw, 60vw",
+  class: className = "",
 } = Astro.props;
 
 const images = import.meta.glob<{ default: ImageMetadata }>([
@@ -38,7 +40,7 @@ if (!images[imagePath]) {
         formats={["avif", "webp"]}
         fallbackFormat="webp"
         loading="lazy"
-        class="w-auto object-contain"
+        class:list={["w-auto object-contain", className]}
       />
     ) : null
   }

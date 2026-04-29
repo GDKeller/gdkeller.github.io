@@ -57,13 +57,18 @@ const awards: Award[] = [
   role="region"
   aria-label="Awards and recognition"
 >
-  <HeadingSection text="Awards" align="center" class="mb-24" />
+  <HeadingSection
+    text="Awards"
+    align="center"
+    animate={true}
+    class="mb-16 md:mb-24"
+  />
   <div
-    class="relative flex flex-col items-center justify-center gap-12 sm:gap-16 md:flex-row md:flex-wrap md:gap-20 lg:flex-nowrap"
+    class="relative grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-12"
   >
     {
       awards.map((award) => (
-        <div class="award-item group flex w-full flex-col items-center text-center md:max-w-72 lg:w-auto">
+        <div class="award-item group flex w-full flex-col items-center text-center lg:w-auto">
           <div class="relative mb-4 h-28 w-28 md:h-32 md:w-32 lg:h-44 lg:w-44">
             <Picture
               src={award.src}

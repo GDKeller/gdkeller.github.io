@@ -9,7 +9,13 @@ const sortedProjects = projects.sort(
 );
 ---
 
-<HeadingSection text="Projects" as="h2" class="mb-16" align="left" />
+<HeadingSection
+  text="Projects"
+  as="h2"
+  class="mb-8 md:mb-16"
+  animate={true}
+  align="left"
+/>
 <ul>
   {
     sortedProjects.map((project) => (

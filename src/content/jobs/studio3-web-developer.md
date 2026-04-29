@@ -7,7 +7,7 @@ companyLogo:
 position: Frontend Web Developer
 startMonthYear: May 2018
 endMonthYear: July 2020
-tech: [PHP, CSS/SCSS, GSAP, Performance Opt, Accessibility, Datto CMS]
+tech: [PHP, CSS/SCSS, GSAP, Performance, Accessibility, Datto CMS]
 order: 2
 ---
 

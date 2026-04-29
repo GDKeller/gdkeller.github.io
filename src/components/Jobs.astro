@@ -9,7 +9,13 @@ const sortedJobs = jobs.sort(
 );
 ---
 
-<HeadingSection text="Experience" as="h2" align="left" class="mb-16" />
+<HeadingSection
+  text="Experience"
+  as="h2"
+  align="left"
+  animate={true}
+  class="mb-16 lg:mb-24 xl:mb-28 2xl:mb-32"
+/>
 <ul>
   {
     sortedJobs.map((job) => (
