@@ -27,6 +27,8 @@ pnpm-debug.log*
 .serena/
 .cache/
 .specstory
+.claude/*.local.json
+.claude/worktrees/
 
 
 #Ignore vscode AI rules
