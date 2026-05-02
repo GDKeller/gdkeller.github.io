@@ -6,15 +6,7 @@
 import type { GSAPInstance, ScrollTriggerInstance } from "./types";
 import { prefersReducedMotion, showAllElementsImmediately } from "./utils";
 import { initSectionHeadingAnimations } from "./hero";
-import { initSkillsAnimations } from "./skills";
-import { initAnglerfishAnimations } from "./anglerfish";
-import { initNypostAnimations } from "./nypost";
-import {
-  initJobAnimations,
-  initFooterAnimations,
-  initInteractiveAnimations,
-  initBackgroundAnimations,
-} from "./content";
+import { initJobAnimations, initFooterAnimations } from "./content";
 
 /**
  * Initialize all GSAP animations
@@ -32,18 +24,9 @@ export function initAllAnimations(
 
   initSectionHeadingAnimations(gsap, ScrollTrigger);
 
-  // Section-specific animations (scroll-triggered)
-  initSkillsAnimations(gsap, ScrollTrigger);
-  initAnglerfishAnimations(gsap, ScrollTrigger);
-  initNypostAnimations(gsap, ScrollTrigger);
-
   // Content animations
   initJobAnimations(gsap, ScrollTrigger);
   initFooterAnimations(gsap, ScrollTrigger);
-
-  // Interactive and background effects
-  initInteractiveAnimations(gsap);
-  initBackgroundAnimations(gsap);
 }
 
 // Re-export types for convenience
