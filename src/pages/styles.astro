@@ -72,7 +72,8 @@ const groupedColors = Object.keys(groupLabels).map((group) => ({
 
 <Layout title="Style Reference — Grant Keller">
   <main
-    class="bg-background-dark text-foundation min-h-screen px-6 pt-16 pb-32 md:px-12 lg:px-20"
+    class="bg-background-dark text-foundation min-h-screen px-6 pt-16 pb-32
+      md:px-12 lg:px-20"
   >
     <header
       class="border-faint mx-auto mb-16 flex max-w-6xl items-end border-b pb-6"
@@ -82,14 +83,17 @@ const groupedColors = Object.keys(groupLabels).map((group) => ({
           Style Reference ::: Design Tokens
         </p>
         <h1
-          class="font-display text-foundation mt-4 text-6xl leading-none tracking-tight md:text-7xl"
+          class="font-display text-foundation mt-4 text-6xl leading-none
+            tracking-tight md:text-7xl"
         >
           Style Reference
         </h1>
       </div>
       <a
         href="/"
-        class="text-accent border-accent hover:bg-accent border-y px-4 py-2 font-mono text-xs tracking-widest uppercase transition-colors hover:text-black"
+        class="text-accent border-accent hover:bg-accent border-y px-4 py-2
+          font-mono text-xs tracking-widest uppercase transition-colors
+          hover:text-black"
       >
         &larr; Return to Dossier
       </a>
@@ -101,7 +105,8 @@ const groupedColors = Object.keys(groupLabels).map((group) => ({
         <div class="mb-8 flex items-baseline gap-4">
           <h2
             id="colors-heading"
-            class="font-display text-emphasis text-4xl leading-none tracking-tight md:text-4xl"
+            class="font-display text-emphasis text-4xl leading-none
+              tracking-tight md:text-4xl"
           >
             Color
           </h2>
@@ -113,7 +118,10 @@ const groupedColors = Object.keys(groupLabels).map((group) => ({
         {
           groupedColors.map((g) => (
             <div class="mb-12">
-              <h3 class="text-emphasis mb-4 font-mono text-xs tracking-widest uppercase">
+              <h3
+                class="text-emphasis mb-4 font-mono text-xs tracking-widest
+                  uppercase"
+              >
                 {g.label}
               </h3>
               <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4">
@@ -124,11 +132,14 @@ const groupedColors = Object.keys(groupLabels).map((group) => ({
                       style={`background-color: var(--color-${t.name});`}
                     />
                     <div class="flex flex-col justify-center px-4 py-3">
-                      <code class="text-foundation font-mono text-sm leading-tight">
+                      <code
+                        class="text-foundation font-mono text-sm leading-tight"
+                      >
                         --color-{t.name}
                       </code>
                       <code
-                        class="text-foundation text-2xs mt-1 font-mono leading-tight"
+                        class="text-foundation text-2xs mt-1 font-mono
+                          leading-tight"
                         data-color-value={t.name}
                       >
                         …
@@ -147,7 +158,8 @@ const groupedColors = Object.keys(groupLabels).map((group) => ({
         <div class="mb-8 flex items-baseline gap-4">
           <h2
             id="fonts-heading"
-            class="font-display text-emphasis text-4xl leading-none tracking-tight md:text-4xl"
+            class="font-display text-emphasis text-4xl leading-none
+              tracking-tight md:text-4xl"
           >
             Typography
           </h2>
@@ -164,7 +176,10 @@ const groupedColors = Object.keys(groupLabels).map((group) => ({
                   <code class="text-foundation font-mono text-sm">
                     --font-{f.name}
                   </code>
-                  <span class="text-emphasis text-2xs font-mono tracking-widest uppercase">
+                  <span
+                    class="text-emphasis text-2xs font-mono tracking-widest
+                      uppercase"
+                  >
                     {f.label} / {f.role}
                   </span>
                 </div>
@@ -192,7 +207,8 @@ const groupedColors = Object.keys(groupLabels).map((group) => ({
         <div class="mb-8 flex items-baseline gap-4">
           <h2
             id="scale-heading"
-            class="font-display text-emphasis text-4xl leading-none tracking-tight md:text-4xl"
+            class="font-display text-emphasis text-4xl leading-none
+              tracking-tight md:text-4xl"
           >
             Type Scale
           </h2>
@@ -210,12 +226,16 @@ const groupedColors = Object.keys(groupLabels).map((group) => ({
                     text-{t.name}
                   </code>
                   {t.custom && (
-                    <span class="text-highlight text-2xs ml-2 font-mono tracking-widest uppercase">
+                    <span
+                      class="text-highlight text-2xs ml-2 font-mono
+                        tracking-widest uppercase"
+                    >
                       custom
                     </span>
                   )}
                   <code
-                    class="text-faint mt-1 block font-mono text-xs leading-tight"
+                    class="text-faint mt-1 block font-mono text-xs
+                      leading-tight"
                     data-text-value={t.name}
                   >
                     …
@@ -238,7 +258,8 @@ const groupedColors = Object.keys(groupLabels).map((group) => ({
         <div class="mb-8 flex items-baseline gap-4">
           <h2
             id="spacing-heading"
-            class="font-display text-emphasis text-4xl leading-none tracking-tight md:text-4xl"
+            class="font-display text-emphasis text-4xl leading-none
+              tracking-tight md:text-4xl"
           >
             Spacing Extensions
           </h2>

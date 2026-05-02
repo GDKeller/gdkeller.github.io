@@ -29,49 +29,62 @@ const {
 } = Astro.props;
 ---
 
-<div class="relative mb-24 entry-frame xl:mb-32">
+<div class="entry-frame relative mb-24 xl:mb-32">
   <div
-    class="entry-card relative grid grid-cols-1 pb-12 md:grid-cols-[1fr_10rem] lg:grid-cols-[1fr_12rem] xl:grid-cols-[1fr_18rem] xl:pb-20 2xl:pb-24"
+    class="entry-card relative grid grid-cols-1 pb-12 md:grid-cols-[1fr_10rem]
+      lg:grid-cols-[1fr_12rem] xl:grid-cols-[1fr_18rem] xl:pb-20 2xl:pb-24"
   >
     <span class="entry-backdrop" aria-hidden="true"></span>
 
     <div
-      class="flex flex-col items-start md:col-start-1 md:row-start-1 md:flex-row md:items-start"
+      class="flex flex-col items-start md:col-start-1 md:row-start-1 md:flex-row
+        md:items-start"
     >
       {
         logo && (
-          <div class="relative z-20 mr-2 logo shrink-0">
+          <div class="logo relative z-20 mr-2 shrink-0">
             <ProjectSingleImage
               imagePath={logo.src}
               altText={logo.alt}
-              class="-translate-x-2 -translate-y-6 max-h-20 md:max-h-24 md:-translate-x-4 md:-translate-y-4 lg:max-h-32 xl:max-h-40 xl:-translate-x-8 xl:-translate-y-8 2xl:max-h-48"
+              class="max-h-20 -translate-x-2 -translate-y-6 md:max-h-24
+                md:-translate-x-4 md:-translate-y-4 lg:max-h-32 xl:max-h-40
+                xl:-translate-x-8 xl:-translate-y-8 2xl:max-h-48"
             />
           </div>
         )
       }
-      <div class="flex justify-between w-full">
+      <div class="flex w-full justify-between">
         <div
           class="flex flex-col justify-start pb-8 pl-8 md:pt-8 md:pr-4 md:pl-0"
         >
           <h3
-            class="relative mb-4 text-xl leading-snug tracking-wider text-accent font-display z-110 sm:text-2xl md:text-xl lg:text-3xl xl:text-4xl"
+            class="text-accent font-display relative z-110 mb-4 text-xl
+              leading-snug tracking-wider sm:text-2xl md:text-xl lg:text-3xl
+              xl:text-4xl"
           >
             {title}
           </h3>
 
           {
             subtitle && (
-              <p class="relative block mb-4 text-lg font-light leading-none tracking-wider text-emphasis z-110 md:text-base lg:text-xl xl:text-2xl">
+              <p
+                class="text-emphasis relative z-110 mb-4 block text-lg
+                  leading-none font-light tracking-wider md:text-base lg:text-xl
+                  xl:text-2xl"
+              >
                 {subtitle}
               </p>
             )
           }
 
           <div
-            class="relative flex flex-col items-baseline z-110 gap-y-2 sm:flex-row sm:flex-wrap"
+            class="relative z-110 flex flex-col items-baseline gap-y-2
+              sm:flex-row sm:flex-wrap"
           >
             <p
-              class="block text-xl font-light leading-none tracking-wide text-emphasis md:text-base lg:text-xl lg:tracking-wider xl:text-2xl"
+              class="text-emphasis block text-xl leading-none font-light
+                tracking-wide md:text-base lg:text-xl lg:tracking-wider
+                xl:text-2xl"
             >
               {
                 organizationWebsite ? (
@@ -88,13 +101,15 @@ const {
               }
             </p>
             <span
-              class="hidden mx-2 leading-none text-accent sm:inline-block md:mx-0 lg:mx-4"
+              class="text-accent mx-2 hidden leading-none sm:inline-block
+                md:mx-0 lg:mx-4"
               aria-hidden="true">&nbsp;᠅&nbsp;</span
             >
             <DateRange
               start={startMonthYear}
               end={endMonthYear}
-              class="font-mono text-sm leading-none font-extralight whitespace-nowrap lg:text-base xl:text-lg"
+              class="font-mono text-sm leading-none font-extralight
+                whitespace-nowrap lg:text-base xl:text-lg"
             />
           </div>
         </div>
@@ -103,21 +118,34 @@ const {
 
     {
       tech && tech.length > 0 && (
-        <div class="relative w-full skills-list z-110 md:col-start-2 md:row-start-1">
+        <div
+          class="skills-list relative z-110 w-full md:col-start-2
+            md:row-start-1"
+        >
           <p class="sr-only">Skills:&nbsp;</p>
-          <div class="pb-4 pl-8 border-faint md:border-b-2 md:border-l-2 md:pt-24 md:pl-4 lg:pt-32 lg:pl-4 xl:pb-8 xl:pl-8">
-            <ul class="flex flex-wrap w-full font-mono text-left md:max-w-40 md:flex-col lg:max-w-64">
+          <div
+            class="border-faint pb-4 pl-8 md:border-b-2 md:border-l-2 md:pt-24
+              md:pl-4 lg:pt-32 lg:pl-4 xl:pb-8 xl:pl-8"
+          >
+            <ul
+              class="flex w-full flex-wrap text-left font-mono md:max-w-40
+                md:flex-col lg:max-w-64"
+            >
               {tech.map((t) => (
-                <li class="flex items-center mb-2 mr-2 text-2xs md:mr-auto md:mb-4 md:items-start lg:text-sm xl:text-base">
+                <li
+                  class="text-2xs mr-2 mb-2 flex items-center md:mr-auto md:mb-4
+                    md:items-start lg:text-sm xl:text-base"
+                >
                   <span
                     aria-hidden="true"
-                    class="text-accent triplecolon mr-2 leading-[0.75em] font-light md:hidden lg:mr-4 lg:block 2xl:mr-6"
+                    class="text-accent triplecolon mr-2 leading-[0.75em]
+                      font-light md:hidden lg:mr-4 lg:block 2xl:mr-6"
                   >
                     :::
                   </span>
                   <SkillBadge
                     tag="span"
-                    class="uppercase text-emphasis font-extralight"
+                    class="text-emphasis font-extralight uppercase"
                   >
                     {t}
                   </SkillBadge>
@@ -130,10 +158,10 @@ const {
     }
 
     <div
-      class="font-light tracking-wide prose entry-body list-custom-wrapper"
+      class="prose entry-body list-custom-wrapper font-light tracking-wide"
       style="display: contents"
     >
-      <div class="pt-8 pl-8 pr-8 lg:pb-4 lg:pl-12 xl:pl-16">
+      <div class="pt-8 pr-8 pl-8 lg:pb-4 lg:pl-12 xl:pl-16">
         {
           image && (
             <div class="mb-10">

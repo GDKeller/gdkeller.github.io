@@ -80,7 +80,8 @@ const initial = sorted[0];
   <div class="grid gap-1 xl:grid-cols-[1fr_auto_1.5fr]">
     <!-- Player stage -->
     <section
-      class="border-faint order-1 border p-2 sm:p-4 lg:p-8 xl:order-3 xl:col-span-1"
+      class="border-faint order-1 border p-2 sm:p-4 lg:p-8 xl:order-3
+        xl:col-span-1"
       aria-label="Appearance player"
     >
       <div class="player-frame bg-background-dark relative xl:mb-8">
@@ -95,7 +96,8 @@ const initial = sorted[0];
         >
           <button
             type="button"
-            class="player-facade group bg-background-dark relative block h-full w-full cursor-pointer border-0 p-0"
+            class="player-facade group bg-background-dark relative block h-full
+              w-full cursor-pointer border-0 p-0"
             data-player-facade
             data-src={getEmbedSrc(initial)}
             data-title={initial.title}
@@ -112,8 +114,14 @@ const initial = sorted[0];
                   decoding="async"
                 />
               ) : (
-                <span class="player-facade__audio flex h-full w-full items-center justify-center">
-                  <span class="text-emphasis text-2xs font-mono tracking-widest uppercase">
+                <span
+                  class="player-facade__audio flex h-full w-full items-center
+                    justify-center"
+                >
+                  <span
+                    class="text-emphasis text-2xs font-mono tracking-widest
+                      uppercase"
+                  >
                     Audio
                   </span>
                 </span>
@@ -136,13 +144,15 @@ const initial = sorted[0];
       <div class="hidden items-stretch gap-4 pl-4 xl:flex">
         <div class="relative z-110 min-w-0 flex-1">
           <p
-            class="text-accent text-2xs mb-2 font-mono leading-none font-extralight tracking-widest uppercase"
+            class="text-accent text-2xs mb-2 font-mono leading-none
+              font-extralight tracking-widest uppercase"
             data-player-event
           >
             {initial.event}
           </p>
           <h3
-            class="text-foundation font-display text-xl leading-tight tracking-wider xl:text-2xl"
+            class="text-foundation font-display text-xl leading-tight
+              tracking-wider xl:text-2xl"
             data-player-title
           >
             {initial.title}
@@ -154,7 +164,9 @@ const initial = sorted[0];
     <div class="order-2 flex w-full flex-col justify-center xl:w-2 xl:gap-1">
       <span class="bg-faint mt-auto hidden h-2 xl:block"></span>
       <div
-        class="border-faint mx-auto mt-0 mb-0 block h-1 max-h-96 w-full max-w-2/3 flex-1 overflow-hidden xl:mx-0 xl:h-full xl:max-w-full xl:px-0 xl:py-1"
+        class="border-faint mx-auto mt-0 mb-0 block h-1 max-h-96 w-full
+          max-w-2/3 flex-1 overflow-hidden xl:mx-0 xl:h-full xl:max-w-full
+          xl:px-0 xl:py-1"
       >
         <span
           class="hazard-stripe__faint block h-1 w-full flex-1 xl:h-full xl:w-2"
@@ -165,16 +177,19 @@ const initial = sorted[0];
 
     <!-- Queue -->
     <aside
-      class="border-faint bg-background-dark order-3 border xl:order-1 xl:col-span-1"
+      class="border-faint bg-background-dark order-3 border xl:order-1
+        xl:col-span-1"
       aria-label="Appearance queue"
     >
       <div class="queue flex h-full flex-col">
         <div
-          class="border-faint hidden items-center justify-between border-b px-4 py-3 xl:flex"
+          class="border-faint hidden items-center justify-between border-b px-4
+            py-3 xl:flex"
         >
           <p
             aria-hidden="true"
-            class="text-emphasis text-2xs flex items-center font-mono leading-none font-extralight tracking-widest uppercase xl:text-sm"
+            class="text-emphasis text-2xs flex items-center font-mono
+              leading-none font-extralight tracking-widest uppercase xl:text-sm"
           >
             <span class="text-accent triplecolon font-light" aria-hidden="true"
               >:::</span
@@ -189,7 +204,8 @@ const initial = sorted[0];
                 <button
                   type="button"
                   class:list={[
-                    "track group relative flex w-full flex-1 cursor-pointer items-stretch gap-3 px-3 py-3 pl-12 text-left sm:pl-16",
+                    `track group relative flex w-full flex-1 cursor-pointer
+                    items-stretch gap-3 px-3 py-3 pl-12 text-left sm:pl-16`,
                     idx === 0 && "is-active",
                   ]}
                   data-track
@@ -200,15 +216,25 @@ const initial = sorted[0];
                   data-type={item.type}
                   aria-pressed={idx === 0 ? "true" : "false"}
                 >
-                  <span class="absolute top-0 left-0 h-full w-32 overflow-hidden">
+                  <span
+                    class="absolute top-0 left-0 h-full w-32 overflow-hidden"
+                  >
                     <span
-                      class="track__index text-faint absolute top-1/2 z-0 shrink-0 -translate-y-1/2 text-right font-mono text-7xl leading-[0.75em] font-light -tracking-widest uppercase tabular-nums opacity-50 transition duration-300 sm:left-[-0.05em] sm:text-[7rem]"
+                      class="track__index text-faint absolute top-1/2 z-0
+                        shrink-0 -translate-y-1/2 text-right font-mono text-7xl
+                        leading-[0.75em] font-light -tracking-widest uppercase
+                        tabular-nums opacity-50 transition duration-300
+                        sm:left-[-0.05em] sm:text-[7rem]"
                       aria-hidden="true"
                     >
                       {idx + 1}
                     </span>
                   </span>
-                  <span class="track__poster border-background-dark bg-background-dark relative hidden aspect-video w-24 shrink-0 overflow-hidden border-2 sm:block">
+                  <span
+                    class="track__poster border-background-dark
+                      bg-background-dark relative hidden aspect-video w-24
+                      shrink-0 overflow-hidden border-2 sm:block"
+                  >
                     {getPoster(item) ? (
                       <img
                         src={getPoster(item)!}
@@ -217,8 +243,14 @@ const initial = sorted[0];
                         loading="lazy"
                       />
                     ) : (
-                      <span class="track__audio-tile flex h-full w-full items-center justify-center">
-                        <span class="text-emphasis bg-background-dark text-2xs px-2 py-1 font-mono tracking-widest uppercase">
+                      <span
+                        class="track__audio-tile flex h-full w-full items-center
+                          justify-center"
+                      >
+                        <span
+                          class="text-emphasis bg-background-dark text-2xs px-2
+                            py-1 font-mono tracking-widest uppercase"
+                        >
                           Audio
                         </span>
                       </span>
@@ -229,17 +261,33 @@ const initial = sorted[0];
                       <span />
                     </span>
                   </span>
-                  <span class="relative z-110 flex min-w-0 flex-1 flex-col sm:pl-4">
-                    <span class="track__title text-foundation mb-2 line-clamp-2 text-base leading-snug font-light sm:text-xl">
+                  <span
+                    class="relative z-110 flex min-w-0 flex-1 flex-col sm:pl-4"
+                  >
+                    <span
+                      class="track__title text-foundation mb-2 line-clamp-2
+                        text-base leading-snug font-light sm:text-xl"
+                    >
                       {item.title}
                     </span>
                     <span class="flex justify-between xl:flex-col">
-                      <span class="track__event text-emphasis truncate font-mono text-xs font-extralight tracking-widest uppercase sm:text-sm">
+                      <span
+                        class="track__event text-emphasis truncate font-mono
+                          text-xs font-extralight tracking-widest uppercase
+                          sm:text-sm"
+                      >
                         {item.event}
                       </span>
-                      <span class="text-emphasis mt-auto font-mono text-sm font-extralight tracking-widest uppercase tabular-nums">
+                      <span
+                        class="text-emphasis mt-auto font-mono text-sm
+                          font-extralight tracking-widest uppercase
+                          tabular-nums"
+                      >
                         {item.year}
-                        <span class="text-accent mx-0 leading-none -tracking-widest sm:inline-block">
+                        <span
+                          class="text-accent mx-0 leading-none -tracking-widest
+                            sm:inline-block"
+                        >
                           /
                         </span>
                         {item.type === "audio" ? "Audio" : "Video"}

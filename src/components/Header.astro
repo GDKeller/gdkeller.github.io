@@ -5,19 +5,21 @@ import Nav from "./Nav.astro";
 
 <div
   id="header__main"
-  class="sticky top-0 left-0 justify-between block w-full px-4 overflow-hidden duration-100 border-b shadow-sm bg-background-dark animate__header border-box border-faint/30 z-200 backdrop-blur sm:px-2"
+  class="bg-background-dark animate__header border-box border-faint/30 sticky
+    top-0 left-0 z-200 block w-full justify-between overflow-hidden border-b
+    px-4 shadow-sm backdrop-blur duration-100 sm:px-2"
 >
-  <div class="relative flex items-center justify-between w-full">
+  <div class="relative flex w-full items-center justify-between">
     <div class="box-border flex items-stretch gap-4">
       <div
-        class="items-center justify-center hidden w-8 h-8 my-2 shrink-0 md:flex"
+        class="my-2 hidden h-8 w-8 shrink-0 items-center justify-center md:flex"
       >
         <div
-          class="w-8 h-8 overflow-hidden oscilloscope bg-background-dark"
+          class="oscilloscope bg-background-dark h-8 w-8 overflow-hidden"
           aria-hidden="true"
         >
           <svg
-            class="w-full h-full p-0"
+            class="h-full w-full p-0"
             viewBox="0 0 32 32"
             preserveAspectRatio="none"
           >
@@ -39,10 +41,11 @@ import Nav from "./Nav.astro";
       <Link
         href="https://github.com/gdkeller"
         target="_blank"
-        class="hidden icon-link group md:block"
+        class="icon-link group hidden md:block"
       >
         <svg
-          class="w-6 h-6 transition-all duration-200 text-emphasis group-hover:text-accent-hover group-focus-visible:text-accent"
+          class="text-emphasis group-hover:text-accent-hover
+            group-focus-visible:text-accent h-6 w-6 transition-all duration-200"
           fill="currentColor"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
@@ -56,10 +59,11 @@ import Nav from "./Nav.astro";
       <Link
         href="https://www.linkedin.com/in/grantdkeller/"
         target="_blank"
-        class="hidden icon-link group md:block"
+        class="icon-link group hidden md:block"
       >
         <svg
-          class="w-6 h-6 transition-all duration-200 text-emphasis group-hover:text-accent-hover group-focus-visible:text-accent"
+          class="text-emphasis group-hover:text-accent-hover
+            group-focus-visible:text-accent h-6 w-6 transition-all duration-200"
           fill="currentColor"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
@@ -74,11 +78,13 @@ import Nav from "./Nav.astro";
         href="/Grant Keller Senior UX Engineer Resume 2025.pdf"
         target="_blank"
         variant="subtle"
-        class="items-center hidden gap-1 px-2 py-1 leading-none transition-all border bg-background-dark border-subtle hover:border-accent-hover md:flex"
+        class="bg-background-dark border-subtle hover:border-accent-hover hidden
+          items-center gap-1 border px-2 py-1 leading-none transition-all
+          md:flex"
       >
         <span>Resume</span>
         <svg
-          class="w-5 h-5"
+          class="h-5 w-5"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -95,11 +101,13 @@ import Nav from "./Nav.astro";
       <button
         data-open-modal="hire_me_modal"
         aria-label="Contact"
-        class="flex items-center gap-1 px-2 py-1 transition-all duration-200 border text-emphasis border-subtle bg-background-dark hover:border-accent-hover"
+        class="text-emphasis border-subtle bg-background-dark
+          hover:border-accent-hover flex items-center gap-1 border px-2 py-1
+          transition-all duration-200"
       >
         <span class="hidden leading-none sm:inline-block">Contact</span>
         <svg
-          class="inline-block w-5 h-5 text-emphasis"
+          class="text-emphasis inline-block h-5 w-5"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"

@@ -12,7 +12,8 @@ const navLinks = [
 <nav
   id="main-nav"
   class:list={[
-    "md:text-md text-emphasis lg:text-md relative mr-auto flex items-stretch gap-x-2 font-mono text-sm font-light sm:gap-x-4 sm:text-sm",
+    `md:text-md text-emphasis lg:text-md relative mr-auto flex items-stretch
+    gap-x-2 font-mono text-sm font-light sm:gap-x-4 sm:text-sm`,
     className,
   ]}
 >
@@ -21,7 +22,8 @@ const navLinks = [
       <a
         href={href}
         data-section={href.slice(1)}
-        class="nav-link hover:text-emphasis-hover relative flex items-center tracking-wide transition-colors"
+        class="nav-link hover:text-emphasis-hover relative flex items-center
+          tracking-wide transition-colors"
       >
         {label}
       </a>

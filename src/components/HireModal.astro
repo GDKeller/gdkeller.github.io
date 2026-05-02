@@ -8,7 +8,8 @@ const resumeHref = "/Grant Keller Senior UX Engineer Resume 2025.pdf";
 
 <dialog
   id="hire_me_modal"
-  class="hire-modal fixed inset-0 z-100 h-dvh max-h-screen w-dvw max-w-screen items-center justify-center border-none bg-transparent p-4 open:flex"
+  class="hire-modal fixed inset-0 z-100 h-dvh max-h-screen w-dvw max-w-screen
+    items-center justify-center border-none bg-transparent p-4 open:flex"
   aria-labelledby="hire-modal-title"
 >
   <article class="hire-frame relative w-full max-w-lg">
@@ -19,7 +20,10 @@ const resumeHref = "/Grant Keller Senior UX Engineer Resume 2025.pdf";
     <form method="dialog" class="absolute top-0 right-0 z-5">
       <button
         type="submit"
-        class="text-background-dark border-background-dark hover:text-emphasis hover:bg-background-dark focus-visible:bg-background-dark focus-visible:text-emphasis flex h-16 w-16 cursor-pointer items-center justify-center border-0 border-l-2 bg-transparent transition-colors"
+        class="text-background-dark border-background-dark hover:text-emphasis
+          hover:bg-background-dark focus-visible:bg-background-dark
+          focus-visible:text-emphasis flex h-16 w-16 cursor-pointer items-center
+          justify-center border-0 border-l-2 bg-transparent transition-colors"
         aria-label="Close dialog"
       >
         <svg
@@ -42,7 +46,8 @@ const resumeHref = "/Grant Keller Senior UX Engineer Resume 2025.pdf";
       <header class="border-faint bg-emphasis border-b py-2 pl-8">
         <h2
           id="hire-modal-title"
-          class="font-decorative text-background-dark text-5xl leading-none tracking-wide"
+          class="font-decorative text-background-dark text-5xl leading-none
+            tracking-wide"
         >
           Open a channel
         </h2>
@@ -51,7 +56,10 @@ const resumeHref = "/Grant Keller Senior UX Engineer Resume 2025.pdf";
       <div class="flex w-full flex-col">
         <button
           type="button"
-          class="hire-primary__copy group text-highlight hover:text-highlight-hover focus-visible:text-highlight-hover flex w-auto cursor-pointer items-center gap-4 border-0 bg-transparent py-8 pr-4 pl-8 text-left transition-colors"
+          class="hire-primary__copy group text-highlight
+            hover:text-highlight-hover focus-visible:text-highlight-hover flex
+            w-auto cursor-pointer items-center gap-4 border-0 bg-transparent
+            py-8 pr-4 pl-8 text-left transition-colors"
           data-copy-email={email}
           aria-label={`Copy ${email} to clipboard`}
         >
@@ -59,7 +67,9 @@ const resumeHref = "/Grant Keller Senior UX Engineer Resume 2025.pdf";
             >{email}</span
           >
           <span
-            class="hire-primary__state text-accent group-hover:text-accent-hover inline-flex shrink-0 items-center gap-1.5 place-self-end pb-1 font-mono uppercase"
+            class="hire-primary__state text-accent group-hover:text-accent-hover
+              inline-flex shrink-0 items-center gap-1.5 place-self-end pb-1
+              font-mono uppercase"
             aria-hidden="true"
           >
             <svg
@@ -76,14 +86,19 @@ const resumeHref = "/Grant Keller Senior UX Engineer Resume 2025.pdf";
                 stroke-linecap="round"></path>
             </svg>
             <span
-              class="hire-primary__state-label text-accent group-hover:text-accent-hover group-focus-visible:text-emphasis text-2xs mr-1 font-mono tracking-wide transition-colors"
+              class="hire-primary__state-label text-accent
+                group-hover:text-accent-hover group-focus-visible:text-emphasis
+                text-2xs mr-1 font-mono tracking-wide transition-colors"
               >Copy</span
             >
           </span>
         </button>
         <a
           href={`mailto:${email}`}
-          class="hire-primary__send text-foundation hover:text-accent-hover focus-visible:text-accent-hover text-2xs mr-0 ml-auto inline-flex flex-1 items-center justify-end gap-1.5 px-4 pt-5 pb-4 font-mono tracking-wide whitespace-nowrap uppercase transition-colors"
+          class="hire-primary__send text-foundation hover:text-accent-hover
+            focus-visible:text-accent-hover text-2xs mr-0 ml-auto inline-flex
+            flex-1 items-center justify-end gap-1.5 px-4 pt-5 pb-4 font-mono
+            tracking-wide whitespace-nowrap uppercase transition-colors"
         >
           <svg
             class="h-3 w-3"
@@ -103,14 +118,17 @@ const resumeHref = "/Grant Keller Senior UX Engineer Resume 2025.pdf";
       </div>
 
       <ul
-        class="hire-secondary border-faint xs:grid-cols-3 grid list-none grid-cols-1 border-y"
+        class="hire-secondary border-faint xs:grid-cols-3 grid list-none
+          grid-cols-1 border-y"
       >
         <li>
           <a
             href={`https://www.linkedin.com/in/${linkedinHandle}/`}
             target="_blank"
             rel="noopener noreferrer"
-            class="hire-link group text-emphasis hover:text-accent-hover focus-visible:text-accent-hover flex min-w-0 flex-col gap-2 px-8 py-6 transition-colors"
+            class="hire-link group text-emphasis hover:text-accent-hover
+              focus-visible:text-accent-hover flex min-w-0 flex-col gap-2 px-8
+              py-6 transition-colors"
           >
             <span class="inline-flex items-center gap-2">
               <svg
@@ -126,7 +144,9 @@ const resumeHref = "/Grant Keller Senior UX Engineer Resume 2025.pdf";
               <span class="font-display text-sm tracking-wide">LinkedIn</span>
             </span>
             <span
-              class="text-foundation group-hover:text-accent-hover group-focus-visible:text-accent-hover truncate font-mono text-xs transition-colors"
+              class="text-foundation group-hover:text-accent-hover
+                group-focus-visible:text-accent-hover truncate font-mono text-xs
+                transition-colors"
               >@{linkedinHandle}</span
             >
           </a>
@@ -136,7 +156,9 @@ const resumeHref = "/Grant Keller Senior UX Engineer Resume 2025.pdf";
             href={`https://github.com/${githubHandle}`}
             target="_blank"
             rel="noopener noreferrer"
-            class="hire-link group text-emphasis hover:text-accent-hover focus-visible:text-accent-hover flex min-w-0 flex-col gap-2 px-8 py-6 transition-colors"
+            class="hire-link group text-emphasis hover:text-accent-hover
+              focus-visible:text-accent-hover flex min-w-0 flex-col gap-2 px-8
+              py-6 transition-colors"
           >
             <span class="inline-flex items-center gap-2">
               <svg
@@ -152,7 +174,9 @@ const resumeHref = "/Grant Keller Senior UX Engineer Resume 2025.pdf";
               <span class="font-display text-sm tracking-wide">GitHub</span>
             </span>
             <span
-              class="text-foundation group-hover:text-accent-hover group-focus-visible:text-accent-hover truncate font-mono text-xs transition-colors"
+              class="text-foundation group-hover:text-accent-hover
+                group-focus-visible:text-accent-hover truncate font-mono text-xs
+                transition-colors"
               >@{githubHandle}</span
             >
           </a>
@@ -162,7 +186,9 @@ const resumeHref = "/Grant Keller Senior UX Engineer Resume 2025.pdf";
             href={`https://x.com/${xHandle}`}
             target="_blank"
             rel="noopener noreferrer"
-            class="hire-link group text-emphasis hover:text-accent-hover focus-visible:text-accent-hover flex min-w-0 flex-col gap-2 px-8 py-6 transition-colors"
+            class="hire-link group text-emphasis hover:text-accent-hover
+              focus-visible:text-accent-hover flex min-w-0 flex-col gap-2 px-8
+              py-6 transition-colors"
           >
             <span class="inline-flex items-center gap-2">
               <svg
@@ -178,7 +204,9 @@ const resumeHref = "/Grant Keller Senior UX Engineer Resume 2025.pdf";
               <span class="font-display text-sm tracking-wide">X</span>
             </span>
             <span
-              class="text-foundation group-hover:text-accent-hover group-focus-visible:text-accent-hover truncate font-mono text-xs transition-colors"
+              class="text-foundation group-hover:text-accent-hover
+                group-focus-visible:text-accent-hover truncate font-mono text-xs
+                transition-colors"
               >@{xHandle}</span
             >
           </a>
@@ -190,7 +218,9 @@ const resumeHref = "/Grant Keller Senior UX Engineer Resume 2025.pdf";
           href={resumeHref}
           target="_blank"
           rel="noopener noreferrer"
-          class="link-resume group text-foundation hover:bg-emphasis hover:text-background-dark focus-visible:text-accent-hover inline-flex w-full items-baseline gap-2 px-8 py-4 transition-colors"
+          class="link-resume group text-foundation hover:bg-emphasis
+            hover:text-background-dark focus-visible:text-accent-hover
+            inline-flex w-full items-baseline gap-2 px-8 py-4 transition-colors"
         >
           <svg
             class="h-4 w-4 translate-y-0.5"
@@ -207,7 +237,8 @@ const resumeHref = "/Grant Keller Senior UX Engineer Resume 2025.pdf";
           </svg>
           <span class="font-mono leading-3"> Resume </span>
           <span
-            class="text-accent group-hover:text-background-dark text-2xs font-mono leading-3"
+            class="text-accent group-hover:text-background-dark text-2xs
+              font-mono leading-3"
           >
             PDF
           </span>
