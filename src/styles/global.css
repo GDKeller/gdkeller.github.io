@@ -403,3 +403,23 @@ picture {
     var(--color-faint) 1rem
   );
 }
+
+.hazard-stripe--reverse {
+  background: repeating-linear-gradient(
+    135deg,
+    transparent 0px,
+    transparent 0.5rem,
+    var(--color-emphasis) 0.5rem,
+    var(--color-emphasis) 1rem
+  );
+}
+
+.hazard-stripe--reverse__faint {
+  background: repeating-linear-gradient(
+    135deg,
+    transparent 0px,
+    transparent 0.5rem,
+    var(--color-faint) 0.5rem,
+    var(--color-faint) 1rem
+  );
+}
