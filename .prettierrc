@@ -10,7 +10,14 @@
   "singleAttributePerLine": false,
   "arrowParens": "always",
   "endOfLine": "lf",
-  "plugins": ["prettier-plugin-astro", "prettier-plugin-tailwindcss"],
+  "plugins": [
+    "prettier-plugin-astro",
+    "prettier-plugin-tailwindcss",
+    "prettier-plugin-classnames",
+    "prettier-plugin-merge"
+  ],
+  "customAttributes": ["class", "className"],
+  "endingPosition": "absolute",
   "overrides": [
     {
       "files": "*.astro",

@@ -150,7 +150,8 @@ Each content type has specific required fields (see `src/content.config.ts` for 
 This project uses a structured board system for project management.
 
 - **Ask before creating new board files** — don't auto-create tasks, ADRs, etc.
-- Follow the board system spec for all documentation artifacts
+- Follow the board system spec for all documentation artifacts, with one project-level deviation:
+  - **ADRs live in `board/reference/`, not `board/planning/`.** The BoardPM spec puts ADRs in `planning/`, but in this project `planning/` is reserved for actionable items only. ADRs are evergreen reference material once written, so they belong with REFEs. Keep the standard `ADR-NNNN_kebab-title.md` filename and `type: adr` frontmatter; only the directory differs.
 - Use `/board:board-show` to see current board state
 - Use `/board:board-add` to create new items
 - Use `/board:board-update` after completing significant work to reconcile the board
