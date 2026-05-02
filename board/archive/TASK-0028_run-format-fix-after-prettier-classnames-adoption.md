@@ -1,8 +1,9 @@
 ---
 type: task
-status: backlog
+status: done
 priority: 2
 created: 2026-05-02
+archived: 2026-05-02
 ---
 
 # Run `format:fix` after prettier-plugin-classnames adoption
