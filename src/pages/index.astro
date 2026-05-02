@@ -39,7 +39,8 @@ import HireModal from "../components/HireModal.astro";
       <!-- Skills -->
       <section
         id="skills"
-        class="relative mx-auto block max-w-6xl px-4 py-20 md:px-8 md:py-20 lg:max-w-7xl lg:pb-64"
+        class="relative mx-auto max-w-6xl px-2 py-20 sm:px-4 md:px-8 md:py-20
+          lg:max-w-7xl lg:pb-64"
       >
         <SkillsGrid />
       </section>
@@ -49,7 +50,8 @@ import HireModal from "../components/HireModal.astro";
       <!-- Experience -->
       <section
         id="jobs"
-        class="container mx-auto block w-full max-w-6xl px-2 py-20 sm:px-4 md:px-8 md:py-20 lg:max-w-7xl"
+        class="container mx-auto block w-full max-w-6xl px-2 py-20 sm:px-4
+          md:px-8 md:py-20 lg:max-w-7xl"
       >
         <Jobs />
       </section>
@@ -59,7 +61,8 @@ import HireModal from "../components/HireModal.astro";
       <!-- Projects -->
       <section
         id="projects"
-        class="container mx-auto block max-w-6xl px-4 py-20 sm:px-6 md:px-8 md:py-20 lg:max-w-7xl"
+        class="container mx-auto block max-w-6xl px-2 py-20 sm:px-4 md:px-8
+          md:py-20 lg:max-w-7xl"
       >
         <Projects />
       </section>
@@ -67,21 +70,28 @@ import HireModal from "../components/HireModal.astro";
       <SectionDivider />
 
       <!-- Awards -->
-      <section class="relative py-16 md:pt-48 md:pb-24">
+      <section
+        class="relative mx-auto mb-16 max-w-full px-2 py-16 sm:px-4 md:max-w-7xl
+          md:px-8 md:pt-48 md:pb-24"
+      >
         <Awards />
       </section>
 
       <SectionDivider />
 
       <!-- Speaking / Talks -->
-      <section id="speaking" class="relative py-16 md:py-24">
+      <section
+        id="speaking"
+        class="relative mx-auto max-w-7xl px-2 py-16 sm:px-4 md:py-24 xl:px-8"
+      >
         <Talks />
       </section>
     </div>
 
     <!-- Glitch overlay -->
     <div
-      class="pointer-events-none fixed top-0 left-0 z-10 block h-full w-full overflow-hidden opacity-10 mix-blend-color"
+      class="pointer-events-none fixed top-0 left-0 z-10 block h-full w-full
+        overflow-hidden opacity-10 mix-blend-color"
     >
       <Picture
         src={bgImage}
