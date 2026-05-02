@@ -30,6 +30,9 @@
 
   --text-2xs: 0.625rem;
   --tracking-huge: 0.5em;
+
+  /* Custom breakpoints */
+  --breakpoint-xs: 26.25rem; /* 420px */
 }
 
 /* Semantic color tokens — named by role along a single axis: attention
@@ -63,7 +66,7 @@
   --color-fainter: oklch(0.45 0.05 130);
   --color-reduced: oklch(0.57 0.075 110);
 
-  --color-accent: oklch(0.777 0.17 161);
+  --color-accent: oklch(0.777 0.17 161); /* #15d792 */
   --color-accent-hover: oklch(0.8764 0.229 151.94);
   --color-highlight: oklch(66.68% 0.2591 332);
   --color-highlight-hover: oklch(83.3% 0.1322 332);
@@ -83,7 +86,8 @@
 
 @custom-variant portrait (@media (aspect-ratio < 1/1));
 
-/** Default breakpoints reference
+/** Breakpoints reference
+* xs	26.25rem (420px)	@media (width >= 26.25rem) { ... }   ← custom
 * sm	40rem (640px)	@media (width >= 40rem) { ... }
 * md	48rem (768px)	@media (width >= 48rem) { ... }
 * lg	64rem (1024px)	@media (width >= 64rem) { ... }
@@ -171,7 +175,7 @@ button:focus-visible {
   @apply mb-2;
 }
 .entry-body a {
-  @apply underline transition-colors hover:text-highlight;
+  @apply hover:text-highlight underline transition-colors;
 }
 .entry-body img {
   @apply w-full;
@@ -211,17 +215,17 @@ button:focus-visible {
 }
 
 .entry-body blockquote {
-  @apply relative text-base italic leading-normal text-emphasis md:text-sm lg:text-sm lg:leading-loose;
+  @apply text-emphasis relative text-base leading-normal italic md:text-sm lg:text-sm lg:leading-loose;
 }
 .entry-body blockquote cite {
-  @apply block mt-8 font-mono text-xs not-italic text-right font-extralight md:text-xs;
+  @apply mt-8 block text-right font-mono text-xs font-extralight not-italic md:text-xs;
 }
 .entry-body blockquote cite::before {
   @apply content-['—_'];
 }
 
 .entry-body details {
-  @apply py-0 mt-0;
+  @apply mt-0 py-0;
   interpolate-size: allow-keywords;
 
   @media screen and (min-width: 768px) {
@@ -254,7 +258,7 @@ button:focus-visible {
 }
 
 .entry-body summary {
-  @apply flex items-center gap-3 px-4 py-4 mt-16 ml-auto mr-auto font-mono text-sm tracking-widest uppercase transition-colors border-b cursor-pointer select-none hover:border-highlight-hover border-highlight text-highlight hover:text-highlight-hover w-fit;
+  @apply hover:border-highlight-hover border-highlight text-highlight hover:text-highlight-hover mt-16 mr-auto ml-auto flex w-fit cursor-pointer items-center gap-3 border-b px-4 py-4 font-mono text-sm tracking-widest uppercase transition-colors select-none;
   list-style: none;
 }
 .entry-body summary::-webkit-details-marker {

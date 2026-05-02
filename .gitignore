@@ -29,6 +29,7 @@ pnpm-debug.log*
 .specstory
 .claude/*.local.json
 .claude/worktrees/
+.playwright-mcp
 
 
 #Ignore vscode AI rules
