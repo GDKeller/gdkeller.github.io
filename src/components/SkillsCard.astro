@@ -7,24 +7,29 @@ interface Props {
 const { category, skills } = Astro.props;
 ---
 
-<div
-  class="skill-item border-fainter bg-background-dark h-full border-t border-l"
->
+<div class="skill-item bg-background-dark h-full">
   <div
     class="skill-item__inner relative z-110 h-full pt-2 pb-8 md:pt-4 lg:pb-16"
   >
     <h3
-      class="border-fainter relative z-110 mb-4 flex items-center border-b px-8 pb-2 font-mono text-xl tracking-wider uppercase sm:text-lg md:mb-8 md:pb-4 md:text-base lg:text-xl"
+      class="border-fainter relative z-110 flex items-center border-b-2 px-8
+        pb-2 font-mono text-xl tracking-wider uppercase sm:text-lg md:pb-4
+        md:text-base lg:pl-12 lg:text-xl"
     >
       <span class="triplecolon text-accent mr-4 pb-1 font-light">:::</span>
       <span class="text-emphasis relative z-110 font-normal">
         {category}
       </span>
     </h3>
-    <ul class="list flex flex-col md:gap-2">
+    <ul
+      class="list flex flex-col gap-4 px-8 pt-4 sm:pr-4 sm:pl-8 md:px-8 md:pt-6
+        lg:pt-8 lg:pl-12"
+    >
       {
         skills.map((skill) => (
-          <li class="relative z-110 px-8 font-mono text-base font-light md:py-1">
+          <li
+            class="relative z-110 font-mono text-base leading-tight font-light"
+          >
             {skill}
           </li>
         ))

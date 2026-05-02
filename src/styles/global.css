@@ -6,7 +6,7 @@
    for the /styles reference page and for `var(--color-*)` access from custom
    CSS or JS without depending on incidental utility usage. */
 @source inline(
-  "{bg,text,border}-{background,background-dark,foundation,emphasis,emphasis-hover,accent,accent-hover,highlight,highlight-hover,subtle,faint,reduced,secondary-light,secondary-emphasis,secondary-dark,tertiary-highlight,tertiary-highlight-hover,hidden} var(--font-{display,body,mono,decorative})"
+  "{bg,text,border}-{background,background-dark,foundation,emphasis,emphasis-hover,accent,accent-hover,highlight,highlight-hover,subtle,faint,fainter,reduced,secondary-light,secondary-emphasis,secondary-dark,tertiary-highlight,tertiary-highlight-hover,hidden} var(--font-{display,body,mono,decorative})"
 );
 @source inline(
   "text-{2xs,xs,sm,base,lg,xl,2xl,3xl,4xl,5xl,6xl,7xl,8xl,9xl}"
@@ -86,8 +86,7 @@
 
 @custom-variant portrait (@media (aspect-ratio < 1/1));
 
-/** Breakpoints reference
-* xs	26.25rem (420px)	@media (width >= 26.25rem) { ... }   ← custom
+/** Default breakpoints reference
 * sm	40rem (640px)	@media (width >= 40rem) { ... }
 * md	48rem (768px)	@media (width >= 48rem) { ... }
 * lg	64rem (1024px)	@media (width >= 64rem) { ... }
@@ -215,10 +214,12 @@ button:focus-visible {
 }
 
 .entry-body blockquote {
-  @apply text-emphasis relative text-base leading-normal italic md:text-sm lg:text-sm lg:leading-loose;
+  @apply text-emphasis relative text-base leading-normal italic md:text-sm
+    lg:text-sm lg:leading-loose;
 }
 .entry-body blockquote cite {
-  @apply mt-8 block text-right font-mono text-xs font-extralight not-italic md:text-xs;
+  @apply mt-8 block text-right font-mono text-xs font-extralight not-italic
+    md:text-xs;
 }
 .entry-body blockquote cite::before {
   @apply content-['—_'];
@@ -258,7 +259,10 @@ button:focus-visible {
 }
 
 .entry-body summary {
-  @apply hover:border-highlight-hover border-highlight text-highlight hover:text-highlight-hover mt-16 mr-auto ml-auto flex w-fit cursor-pointer items-center gap-3 border-b px-4 py-4 font-mono text-sm tracking-widest uppercase transition-colors select-none;
+  @apply hover:border-highlight-hover border-highlight text-highlight
+    hover:text-highlight-hover mt-16 mr-auto ml-auto flex w-fit cursor-pointer
+    items-center gap-3 border-b px-4 py-4 font-mono text-sm tracking-widest
+    uppercase transition-colors select-none;
   list-style: none;
 }
 .entry-body summary::-webkit-details-marker {
