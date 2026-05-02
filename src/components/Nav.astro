@@ -2,7 +2,7 @@
 const { class: className } = Astro.props;
 
 const navLinks = [
-  { href: "#featured", label: "Work" },
+  { href: "#building", label: "Building" },
   { href: "#skills", label: "Skills" },
   { href: "#jobs", label: "Experience" },
   { href: "#projects", label: "Projects" },
@@ -34,9 +34,7 @@ const navLinks = [
 <style>
   .nav-link {
     position: relative;
-    transition:
-      color 0.2s ease,
-      text-shadow 0.2s ease;
+    transition: color 0.5s ease;
   }
 
   .nav-link::before {
@@ -44,34 +42,35 @@ const navLinks = [
     position: absolute;
     left: 50%;
     top: 100%;
-    transform: translateX(-50%) translateY(50%) scaleY(0%);
+    transform: translateX(-50%) translateY(0%) scaleY(50%);
     width: 40px;
     height: 10px;
     background: radial-gradient(
       circle at top,
-      var(--color-emerald-300) 0%,
-      var(--color-emerald-500) 50%,
+      var(--color-highlight-hover) 0%,
+      var(--color-highlight) 50%,
       transparent 100%
     );
     transform-origin: bottom;
     opacity: 0;
     filter: blur(6px);
     transition:
-      transform 0.3s ease,
-      opacity 0.2s ease;
+      transform 3s ease,
+      opacity 3s ease;
   }
 
   .nav-link:hover,
   .nav-link:focus-visible {
-    color: var(--color-emerald-100);
-    text-shadow: 0 0 8px
-      color-mix(in oklch, var(--color-emerald-500) 40%, transparent);
+    color: var(--color-highlight);
   }
 
   .nav-link:hover::before,
   .nav-link:focus-visible::before {
-    transform: translateX(-50%) translateY(50%) scaleY(80%);
+    transform: translateX(-50%) translateY(-20%) scaleY(80%);
     opacity: 1;
+    transition:
+      transform 0.5s ease,
+      opacity 0.5s ease;
   }
 
   .nav-link.active::before {
@@ -83,31 +82,29 @@ const navLinks = [
     position: absolute;
     left: 50%;
     top: 100%;
-    transform: translateX(-50%) translateY(50%) scaleY(0%);
+    transform: translateX(-50%) translateY(0%) scaleY(50%);
     width: 40px;
     height: 10px;
     background: radial-gradient(
       circle at top,
-      var(--color-fuchsia-300) 0%,
-      var(--color-fuchsia-500) 50%,
+      var(--color-accent-hover) 0%,
+      var(--color-accent) 50%,
       transparent 100%
     );
     transform-origin: bottom;
     opacity: 0;
     filter: blur(6px);
     transition:
-      transform 0.3s ease,
-      opacity 0.2s ease;
+      transform 0.5s ease,
+      opacity 0.5s ease;
   }
 
   .nav-link.active {
-    color: var(--color-fuchsia-400);
-    text-shadow: 0 0 12px
-      color-mix(in oklch, var(--color-fuchsia-500) 50%, transparent);
+    color: var(--color-accent);
   }
 
   .nav-link.active::after {
-    transform: translateX(-50%) translateY(50%) scaleY(80%);
+    transform: translateX(-50%) translateY(-20%) scaleY(80%);
     opacity: 1;
   }
 

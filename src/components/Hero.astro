@@ -41,8 +41,7 @@ const maskImage = `image-set(url("${maskAvif.src}") type("image/avif"), url("${m
     fallbackFormat="webp"
     loading="eager"
     fetchpriority="high"
-    class="pointer-events-none absolute top-0 left-0 z-130 w-full select-none
-      md:z-90"
+    class="pointer-events-none absolute top-0 left-0 z-130 w-full select-none"
   />
   <Picture
     src={frameLower}
@@ -298,7 +297,7 @@ const maskImage = `image-set(url("${maskAvif.src}") type("image/avif"), url("${m
       top: 0;
       left: 0;
       background-color: var(--color-background-dark);
-      z-index: 120;
+      z-index: 110;
     }
     .frame-right {
       position: absolute;
@@ -307,7 +306,7 @@ const maskImage = `image-set(url("${maskAvif.src}") type("image/avif"), url("${m
       top: 0;
       right: 0;
       background-color: var(--color-background-dark);
-      z-index: 120;
+      z-index: 110;
     }
     .headshot-fieldlabel {
       @apply text-2xs relative border-b border-black/20 pt-4 pb-1 pl-3 leading-none font-light tracking-wider uppercase sm:pt-6 sm:pb-2 sm:pl-5 sm:text-base sm:font-extralight md:hidden md:py-1 md:font-normal md:tracking-wide lg:mt-0 lg:mb-0 lg:block lg:px-1 lg:pt-3 lg:tracking-wide xl:px-2;
