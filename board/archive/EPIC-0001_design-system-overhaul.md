@@ -1,7 +1,8 @@
 ---
 type: epic
-status: current
+status: done
 created: 2026-03-27
+completed: 2026-05-02
 ---
 
 # Design System Overhaul
