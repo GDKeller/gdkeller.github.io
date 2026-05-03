@@ -145,11 +145,11 @@ button:focus-visible {
   }
 
   & strong {
-    @apply font-medium;
+    font-weight: 500;
   }
 
   & cite {
-    @apply font-light;
+    font-weight: 300;
   }
 }
 
@@ -159,22 +159,26 @@ button:focus-visible {
 }
 
 .entry-body p {
-  @apply mb-4;
+  margin-bottom: 1rem;
 }
 .entry-body p:last-child {
-  @apply mb-0;
+  margin-bottom: 0;
 }
 .entry-body ul {
-  @apply mt-8;
+  margin-top: 2rem;
 }
 .entry-body li {
-  @apply mb-2;
+  margin-bottom: 0.5rem;
 }
 .entry-body a {
-  @apply hover:text-highlight underline transition-colors;
+  text-decoration-line: underline;
+  transition: color 150ms ease;
+}
+.entry-body a:hover {
+  color: var(--color-highlight);
 }
 .entry-body img {
-  @apply w-full;
+  width: 100%;
 }
 
 /* .entry-body uses display: contents so its slot children become direct grid
@@ -211,27 +215,49 @@ button:focus-visible {
 }
 
 .entry-body blockquote {
-  @apply text-emphasis relative text-base leading-normal italic md:text-sm
-    lg:text-sm lg:leading-loose;
+  position: relative;
+  color: var(--color-emphasis);
+  font-size: 1rem;
+  line-height: 1.5;
+  font-style: italic;
+}
+@media (min-width: 48rem) {
+  .entry-body blockquote {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+}
+@media (min-width: 64rem) {
+  .entry-body blockquote {
+    font-size: 0.875rem;
+    line-height: 2;
+  }
 }
 .entry-body blockquote cite {
-  @apply mt-8 block text-right font-mono text-xs font-extralight not-italic
-    md:text-xs;
+  display: block;
+  margin-top: 2rem;
+  text-align: right;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 200;
+  font-style: normal;
 }
 .entry-body blockquote cite::before {
-  @apply content-['—_'];
+  content: "— ";
 }
 
 .entry-body details {
-  @apply mt-0 py-0;
+  margin-top: 0;
+  padding-top: 0;
+  padding-bottom: 0;
   interpolate-size: allow-keywords;
 
   @media screen and (min-width: 768px) {
-    @apply mr-[-10rem];
+    margin-right: -10rem;
   }
 
   @media screen and (min-width: 1024px) {
-    @apply mr-[-10rem];
+    margin-right: -10rem;
   }
 }
 .entry-body details::details-content {
@@ -256,11 +282,31 @@ button:focus-visible {
 }
 
 .entry-body summary {
-  @apply hover:border-highlight-hover border-highlight text-highlight
-    hover:text-highlight-hover mt-16 mr-auto ml-auto flex w-fit cursor-pointer
-    items-center gap-3 border-b px-4 py-4 font-mono text-sm tracking-widest
-    uppercase transition-colors select-none;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  margin-top: 4rem;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 1rem;
+  gap: 0.75rem;
+  border-bottom: 1px solid var(--color-highlight);
+  color: var(--color-highlight);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  user-select: none;
   list-style: none;
+  transition:
+    color 150ms ease,
+    border-color 150ms ease;
+}
+.entry-body summary:hover {
+  color: var(--color-highlight-hover);
+  border-color: var(--color-highlight-hover);
 }
 .entry-body summary::-webkit-details-marker {
   display: none;
@@ -276,7 +322,7 @@ button:focus-visible {
 }
 
 strong {
-  @apply font-bold;
+  font-weight: 700;
 }
 
 .color__nyp-red--text {
