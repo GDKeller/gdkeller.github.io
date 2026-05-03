@@ -1,7 +1,6 @@
 ---
 import "../styles/global.css";
 import { Font } from "astro:assets";
-import ThemeSwitcher from "../components/ThemeSwitcher.astro";
 interface Props {
   title: string;
 }
@@ -27,7 +26,6 @@ const { title } = Astro.props;
   </head>
   <body class="bg-background text-foundation">
     <slot />
-    <ThemeSwitcher />
     <script>
       document.addEventListener("click", (e) => {
         const trigger = (e.target as HTMLElement).closest<HTMLElement>(

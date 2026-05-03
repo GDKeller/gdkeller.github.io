@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "./jade-theme.css";
 
 /* Force-emit every semantic token's utility so its CSS variable is always
    available at runtime, even for tokens not yet consumed elsewhere. Required
@@ -53,7 +52,6 @@
    not as base colors. Roles without a hover variant (foundation, subtle,
    background) are not interactive. */
 @theme {
-  /* --color-background: oklch(0.13 0.0355 150); #000b02 */
   --color-background: oklch(0.1 0.025 150); /* #000501 */
   --color-background-dark: oklch(0.05 0.014 150); /* #000100 */
   --color-scrim: oklch(0.53 0.05 150);
@@ -71,7 +69,6 @@
   --color-highlight: oklch(66.68% 0.2591 332);
   --color-highlight-hover: oklch(83.3% 0.1322 332);
   --color-subtle: oklch(50.81% 0.1049 160);
-  /* --color-faint: oklch(0.295 0.026 200); */
 
   --color-secondary-light: oklch(0.9 0.1 190);
   --color-secondary-emphasis: oklch(0.8 0.136 190);
