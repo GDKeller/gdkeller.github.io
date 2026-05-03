@@ -4,11 +4,13 @@ const linkedinHandle = "grantdkeller";
 const githubHandle = "gdkeller";
 const xHandle = "GrantDKeller";
 const resumeHref = "/Grant Keller Senior UX Engineer Resume 2025.pdf";
+
+import Overlays from "./Overlays.astro";
 ---
 
 <dialog
   id="hire_me_modal"
-  class="hire-modal fixed inset-0 z-100 h-dvh max-h-screen w-dvw max-w-screen
+  class="hire-modal fixed inset-0 h-dvh max-h-screen w-dvw max-w-screen
     items-center justify-center border-none bg-transparent p-4 open:flex"
   aria-labelledby="hire-modal-title"
 >
@@ -16,18 +18,31 @@ const resumeHref = "/Grant Keller Senior UX Engineer Resume 2025.pdf";
     <span
       class="hire-backdrop bg-background-dark absolute inset-0 z-2"
       aria-hidden="true"></span>
-
-    <form method="dialog" class="absolute top-0 right-0 z-5">
+    <form
+      method="dialog"
+      class="close-button-frame absolute top-0 right-0 z-5 translate-x-2
+        -translate-y-1/2"
+    >
       <button
         type="submit"
-        class="text-background-dark border-background-dark hover:text-emphasis
-          hover:bg-background-dark focus-visible:bg-background-dark
-          focus-visible:text-emphasis flex h-16 w-16 cursor-pointer items-center
-          justify-center border-0 border-l-2 bg-transparent transition-colors"
+        class="text-emphasis close-button bg-background-dark
+          hover:text-background-dark hover:bg-emphasis focus-visible:bg-emphasis
+          focus-visible:text-background-dark hover:border-emphasis relative flex
+          h-14 w-14 cursor-pointer items-center justify-center"
         aria-label="Close dialog"
       >
+        <span class="absolute -inset-0.5">
+          <Overlays
+            position="absolute"
+            blend={false}
+            scanlinesClass="z-2"
+            scanlinesOpacityClass="opacity-5"
+            noiseClass="z-1"
+            noiseOpacityClass="opacity-6"
+          />
+        </span>
         <svg
-          class="h-8 w-8"
+          class="z-10 h-6 w-6"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -42,24 +57,38 @@ const resumeHref = "/Grant Keller Senior UX Engineer Resume 2025.pdf";
       </button>
     </form>
 
-    <div class="relative z-3">
-      <header class="border-faint bg-emphasis border-b py-2 pl-8">
+    <div class="relative">
+      <header class="border-faint flex">
         <h2
           id="hire-modal-title"
-          class="font-decorative text-background-dark text-5xl leading-none
-            tracking-wide"
+          class="text-emphasis bg-background-dark border-faint relative isolate
+            z-8 mr-auto flex -translate-x-0.5 -translate-y-1/2 overflow-hidden
+            border-2 py-4 pr-8 pl-8 font-mono text-base leading-none font-light
+            tracking-wide uppercase"
         >
-          Open a channel
+          <span class="absolute -inset-0.5">
+            <Overlays
+              position="absolute"
+              blend={false}
+              scanlinesClass="z-2"
+              scanlinesOpacityClass="opacity-5"
+              noiseClass="z-1"
+              noiseOpacityClass="opacity-6"
+            />
+          </span>
+          <span class="z-10">Transmission</span>
         </h2>
       </header>
 
-      <div class="flex w-full flex-col">
+      <div class="mx-auto mb-12 flex w-min flex-col">
         <button
           type="button"
-          class="hire-primary__copy group text-highlight
-            hover:text-highlight-hover focus-visible:text-highlight-hover flex
-            w-auto cursor-pointer items-center gap-4 border-0 bg-transparent
-            py-8 pr-4 pl-8 text-left transition-colors"
+          class="hire-primary__copy group border-highlight text-highlight
+            hover:border-highlight-hover focus-visible:border-highlight-hover
+            hover:text-highlight-hover focus-visible:text-highlight-hover
+            relative z-10 mb-4 ml-4 flex cursor-pointer flex-col items-center
+            gap-4 border-0 border-b bg-transparent py-8 pr-20 pb-3 pl-4
+            text-left transition-colors"
           data-copy-email={email}
           aria-label={`Copy ${email} to clipboard`}
         >
@@ -67,9 +96,10 @@ const resumeHref = "/Grant Keller Senior UX Engineer Resume 2025.pdf";
             >{email}</span
           >
           <span
-            class="hire-primary__state text-accent group-hover:text-accent-hover
-              inline-flex shrink-0 items-center gap-1.5 place-self-end pb-1
-              font-mono uppercase"
+            class="hire-primary__state text-highlight
+              group-hover:text-highlight-hover text-2xs absolute right-12
+              bottom-1 z-10 inline-flex shrink-0 -translate-y-1/2 items-center
+              gap-1.5 place-self-end pb-1 font-mono uppercase transition-colors"
             aria-hidden="true"
           >
             <svg
@@ -86,19 +116,23 @@ const resumeHref = "/Grant Keller Senior UX Engineer Resume 2025.pdf";
                 stroke-linecap="round"></path>
             </svg>
             <span
-              class="hire-primary__state-label text-accent
-                group-hover:text-accent-hover group-focus-visible:text-emphasis
-                text-2xs mr-1 font-mono tracking-wide transition-colors"
+              class="hire-primary__state-label text-highlight
+                group-hover:text-highlight-hover
+                group-focus-visible:text-highlight-hover text-2xs absolute
+                bottom-0 left-full mr-1 translate-x-1 -translate-y-1/3 font-mono
+                tracking-wide transition-colors"
               >Copy</span
             >
           </span>
         </button>
         <a
           href={`mailto:${email}`}
-          class="hire-primary__send text-foundation hover:text-accent-hover
-            focus-visible:text-accent-hover text-2xs mr-0 ml-auto inline-flex
-            flex-1 items-center justify-end gap-1.5 px-4 pt-5 pb-4 font-mono
-            tracking-wide whitespace-nowrap uppercase transition-colors"
+          class="hire-primary__send text-foundation hover:border-highlight-hover
+            focus-visible:border-highlight-hover hover:text-highlight-hover
+            focus-visible:text-highlight-hover text-2xs border-faint z-10 mr-0
+            ml-auto inline-flex flex-1 items-center gap-1.5 border border-dashed
+            px-2 py-2 font-mono tracking-wide whitespace-nowrap uppercase
+            transition-colors"
         >
           <svg
             class="h-3 w-3"
@@ -117,9 +151,41 @@ const resumeHref = "/Grant Keller Senior UX Engineer Resume 2025.pdf";
         </a>
       </div>
 
+      <div class="border-faint relative z-10 border-t-2">
+        <a
+          href={resumeHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link-resume group text-emphasis hover:text-highlight-hover
+            focus-visible:text-accent-hover z-10 inline-flex items-center gap-2
+            px-8 py-6"
+        >
+          <svg
+            class="h-4 w-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16"></path>
+          </svg>
+          <span class="font-mono leading-3"> Resume </span>
+          <span
+            class="group-hover:text-highlight-hover text-2xs font-mono leading-3
+              tracking-wider"
+          >
+            [PDF]
+          </span>
+        </a>
+      </div>
+
       <ul
-        class="hire-secondary border-faint xs:grid-cols-3 grid list-none
-          grid-cols-1 border-y"
+        class="hire-secondary border-faint xs:grid-cols-3 relative z-10 grid
+          list-none grid-cols-1 border-t-2"
       >
         <li>
           <a
@@ -127,8 +193,8 @@ const resumeHref = "/Grant Keller Senior UX Engineer Resume 2025.pdf";
             target="_blank"
             rel="noopener noreferrer"
             class="hire-link group text-emphasis hover:text-accent-hover
-              focus-visible:text-accent-hover flex min-w-0 flex-col gap-2 px-8
-              py-6 transition-colors"
+              focus-visible:text-accent-hover relative z-10 flex min-w-0
+              flex-col gap-2 px-8 py-6 transition-colors"
           >
             <span class="inline-flex items-center gap-2">
               <svg
@@ -151,14 +217,14 @@ const resumeHref = "/Grant Keller Senior UX Engineer Resume 2025.pdf";
             >
           </a>
         </li>
-        <li class="border-faint border-l">
+        <li class="border-faint border-l-2">
           <a
             href={`https://github.com/${githubHandle}`}
             target="_blank"
             rel="noopener noreferrer"
             class="hire-link group text-emphasis hover:text-accent-hover
-              focus-visible:text-accent-hover flex min-w-0 flex-col gap-2 px-8
-              py-6 transition-colors"
+              focus-visible:text-accent-hover relative z-10 flex min-w-0
+              flex-col gap-2 px-8 py-6 transition-colors"
           >
             <span class="inline-flex items-center gap-2">
               <svg
@@ -181,14 +247,14 @@ const resumeHref = "/Grant Keller Senior UX Engineer Resume 2025.pdf";
             >
           </a>
         </li>
-        <li class="border-faint border-l">
+        <li class="border-faint border-l-2">
           <a
             href={`https://x.com/${xHandle}`}
             target="_blank"
             rel="noopener noreferrer"
             class="hire-link group text-emphasis hover:text-accent-hover
-              focus-visible:text-accent-hover flex min-w-0 flex-col gap-2 px-8
-              py-6 transition-colors"
+              focus-visible:text-accent-hover relative z-10 flex min-w-0
+              flex-col gap-2 px-8 py-6 transition-colors"
           >
             <span class="inline-flex items-center gap-2">
               <svg
@@ -212,41 +278,20 @@ const resumeHref = "/Grant Keller Senior UX Engineer Resume 2025.pdf";
           </a>
         </li>
       </ul>
-
-      <div>
-        <a
-          href={resumeHref}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="link-resume group text-foundation hover:bg-emphasis
-            hover:text-background-dark focus-visible:text-accent-hover
-            inline-flex w-full items-baseline gap-2 px-8 py-4 transition-colors"
-        >
-          <svg
-            class="h-4 w-4 translate-y-0.5"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16"></path>
-          </svg>
-          <span class="font-mono leading-3"> Resume </span>
-          <span
-            class="text-accent group-hover:text-background-dark text-2xs
-              font-mono leading-3"
-          >
-            PDF
-          </span>
-        </a>
-      </div>
+    </div>
+    <div
+      class="pointer-events-none absolute -inset-0.5 z-4 overflow-hidden"
+      aria-hidden="true"
+    >
+      <Overlays
+        position="absolute"
+        scanlinesClass="z-2"
+        scanlinesOpacityClass="opacity-5"
+        noiseClass="z-1"
+        noiseOpacityClass="opacity-6"
+      />
     </div>
   </article>
-
   <form method="dialog" class="hire-modal__backdrop fixed inset-0 -z-10">
     <button
       class="text-background-dark h-full w-full cursor-default"
@@ -255,23 +300,38 @@ const resumeHref = "/Grant Keller Senior UX Engineer Resume 2025.pdf";
   </form>
 </dialog>
 
-<style>
+<style lang="scss">
   @reference "../styles/global.css";
 
   /* Clip-path with a notched bottom-right corner. Repeated as a CSS
      custom property so backdrop and frame stroke match. */
   .hire-frame {
-    --hire-clip: polygon(
+    --clip-tr: polygon(0 0, calc(100% - 20%) 0, 100% 20%, 100% 100%, 0 100%);
+    --clip-br: polygon(
       0 0,
       100% 0,
-      100% calc(100% - 3rem),
-      calc(100% - 4rem) 100%,
+      100% calc(100% - 2rem),
+      calc(100% - 2rem) 100%,
       0 100%
     );
   }
 
+  .close-button {
+    clip-path: var(--clip-tr);
+  }
+
+  /* Border ring lives on the form wrapper so it paints before the button
+     in tree order. Putting it on .close-button itself doesn't work: the
+     button's clip-path creates a stacking context, which traps a negative
+     z-index ::before above the button's own background. */
+  .close-button-frame::before {
+    @apply bg-faint absolute -top-0.5 -right-0.5 -bottom-0.5 -left-0.5;
+    content: "";
+    clip-path: var(--clip-tr);
+  }
+
   .hire-modal::backdrop {
-    background: color-mix(in oklch, var(--color-background) 80%, transparent);
+    background: color-mix(in oklch, var(--color-background) 90%, transparent);
     backdrop-filter: blur(8px);
   }
 
@@ -279,20 +339,26 @@ const resumeHref = "/Grant Keller Senior UX Engineer Resume 2025.pdf";
   .hire-frame::after {
     @apply bg-faint pointer-events-none absolute -inset-0.5 z-1;
     content: "";
-    clip-path: var(--hire-clip);
-  }
-  .hire-frame .link-resume {
-    clip-path: var(--hire-clip);
+    clip-path: var(--clip-br);
   }
 
   .hire-backdrop {
-    clip-path: var(--hire-clip);
+    clip-path: var(--clip-br);
   }
 
   @media (prefers-contrast: more) {
     .hire-frame::after {
       background: var(--color-emphasis);
     }
+  }
+
+  /* Lock page scroll while the modal is open. `:has()` targets the
+     html element when the dialog has the [open] attribute set by
+     showModal(). `scrollbar-gutter: stable` prevents content shift
+     when the scrollbar disappears. */
+  :global(html:has(dialog#hire_me_modal[open])) {
+    overflow: hidden;
+    scrollbar-gutter: stable;
   }
 </style>
 

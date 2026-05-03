@@ -15,6 +15,7 @@ import Talks from "../components/Talks.astro";
 import CurrentlyBuilding from "../components/CurrentlyBuilding.astro";
 import HeadingSection from "../components/HeadingSection.astro";
 import HireModal from "../components/HireModal.astro";
+import Overlays from "../components/Overlays.astro";
 ---
 
 <Layout title="Grant Keller | Frontend Software Engineer">
@@ -105,114 +106,11 @@ import HireModal from "../components/HireModal.astro";
       />
     </div>
 
-    <!-- Scan Lines -->
-    <div
-      class="scanlines pointer-events-none fixed inset-0 z-100 overflow-hidden"
-    >
-    </div>
-    <!-- Noise -->
-    <div class="noise pointer-events-none fixed inset-0 z-70 overflow-hidden">
-    </div>
+    <Overlays />
   </main>
 
   <Footer />
 
   <HireModal />
 
-  <style>
-    section {
-      /* overflow-x: hidden; */
-    }
-
-    /* Scan Lines */
-    .scanlines {
-      /* filter: blur(1px); */
-      background: repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 1px,
-        color-mix(in oklch, var(--color-background) 100%, transparent) 1px,
-        color-mix(in oklch, var(--color-background) 100%, transparent) 2px,
-        color-mix(in oklch, var(--color-white) 50%, transparent) 2px,
-        color-mix(in oklch, var(--color-white) 50%, transparent) 3px
-      );
-      top: -6px;
-      bottom: -6px;
-      left: -6px;
-      right: -6px;
-      /* background: black; */
-      mix-blend-mode: soft-light;
-      opacity: 0.4;
-      animation: scanlines-shift 0.2s linear infinite;
-    }
-
-    @keyframes scanlines-shift {
-      from {
-        transform: translate3d(0, 0, 0);
-      }
-      to {
-        transform: translate3d(0, 3px, 0);
-      }
-    }
-
-    .noise {
-      opacity: 0.08;
-      mix-blend-mode: hard-light;
-    }
-
-    .noise::before {
-      content: "";
-      position: absolute;
-      inset: -50%;
-      width: 200%;
-      height: 200%;
-      top: -50%;
-      left: -50%;
-      right: -50%;
-      bottom: -50%;
-      background-image: url("../images/elements/noise.webp");
-      background-repeat: repeat;
-      background-size: 100vw 100vw;
-      background-origin: center;
-      image-rendering: pixelated;
-      animation: noise-shift 0.2s steps(10) infinite;
-      will-change: transform;
-    }
-
-    @keyframes noise-shift {
-      0% {
-        transform: translate(0, 0);
-      }
-      10% {
-        transform: translate(-5%, -5%);
-      }
-      20% {
-        transform: translate(5%, 5%);
-      }
-      30% {
-        transform: translate(-3%, 3%);
-      }
-      40% {
-        transform: translate(3%, -3%);
-      }
-      50% {
-        transform: translate(-5%, 5%);
-      }
-      60% {
-        transform: translate(5%, -5%);
-      }
-      70% {
-        transform: translate(-3%, -3%);
-      }
-      80% {
-        transform: translate(3%, 3%);
-      }
-      90% {
-        transform: translate(-5%, 0);
-      }
-      100% {
-        transform: translate(0, 0);
-      }
-    }
-  </style>
 </Layout>

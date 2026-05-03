@@ -1,0 +1,142 @@
+---
+type Props = {
+  position?: "fixed" | "absolute";
+  blend?: boolean;
+  scanlinesClass?: string;
+  scanlinesOpacityClass?: string;
+  noiseClass?: string;
+  noiseOpacityClass?: string;
+};
+
+const {
+  position = "fixed",
+  blend = true,
+  scanlinesClass = "z-100",
+  scanlinesOpacityClass = "opacity-40",
+  noiseClass = "z-70",
+  noiseOpacityClass = "opacity-6",
+} = Astro.props;
+
+const positionClass = position === "absolute" ? "absolute" : "fixed";
+const blendStyle = blend ? undefined : "mix-blend-mode: normal";
+---
+
+<span
+  class:list={[
+    "overlay-scanlines pointer-events-none inset-0 overflow-hidden",
+    positionClass,
+    scanlinesClass,
+    scanlinesOpacityClass,
+  ]}
+  style={blendStyle}
+  aria-hidden="true"
+>
+</span>
+<span
+  class:list={[
+    "overlay-noise pointer-events-none inset-0 overflow-hidden",
+    positionClass,
+    noiseClass,
+    noiseOpacityClass,
+  ]}
+  style={blendStyle}
+  aria-hidden="true"
+>
+</span>
+
+<style is:global>
+  .overlay-scanlines {
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 1px,
+      color-mix(in oklch, var(--color-background) 100%, transparent) 1px,
+      color-mix(in oklch, var(--color-background) 100%, transparent) 2px,
+      color-mix(in oklch, var(--color-white) 50%, transparent) 2px,
+      color-mix(in oklch, var(--color-white) 50%, transparent) 3px
+    );
+    top: -6px;
+    bottom: -6px;
+    left: -6px;
+    right: -6px;
+    mix-blend-mode: soft-light;
+    transform: translate3d(0, 0, 0);
+    animation: overlay-scanlines-shift 0.2s linear infinite;
+  }
+
+  @keyframes overlay-scanlines-shift {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(0, 3px, 0);
+    }
+  }
+
+  .overlay-noise {
+    mix-blend-mode: hard-light;
+  }
+
+  .overlay-noise::before {
+    content: "";
+    position: absolute;
+    inset: -50%;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    right: -50%;
+    bottom: -50%;
+    background-image: url("../images/elements/noise.webp");
+    background-repeat: repeat;
+    background-size: 100vw 100vw;
+    background-origin: center;
+    image-rendering: pixelated;
+    transform: translate3d(0, 0, 0);
+    animation: overlay-noise-shift 0.2s steps(10) infinite;
+    will-change: transform;
+  }
+
+  @keyframes overlay-noise-shift {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    10% {
+      transform: translate3d(-5%, -5%, 0);
+    }
+    20% {
+      transform: translate3d(5%, 5%, 0);
+    }
+    30% {
+      transform: translate3d(-3%, 3%, 0);
+    }
+    40% {
+      transform: translate3d(3%, -3%, 0);
+    }
+    50% {
+      transform: translate3d(-5%, 5%, 0);
+    }
+    60% {
+      transform: translate3d(5%, -5%, 0);
+    }
+    70% {
+      transform: translate3d(-3%, -3%, 0);
+    }
+    80% {
+      transform: translate3d(3%, 3%, 0);
+    }
+    90% {
+      transform: translate3d(-5%, 0, 0);
+    }
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .overlay-scanlines,
+    .overlay-noise::before {
+      animation: none;
+    }
+  }
+</style>
