@@ -1,5 +1,23 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import HeadingSection from "../components/HeadingSection.astro";
+
+const headingTreatments = [
+  "none",
+  "line",
+  "glow",
+  "inverted",
+  "bordered",
+] as const;
+const headingAligns = ["left", "center"] as const;
+const headingSizes = ["sm", "md", "lg"] as const;
+const headingCombos = [
+  ["line", "inverted"],
+  ["line", "bordered"],
+  ["line", "glow"],
+  ["glow", "inverted"],
+  ["line", "glow", "inverted"],
+] as const;
 
 // Pulled directly from src/styles/global.css. Keep in sync when adding tokens.
 const colorTokens = [
@@ -286,6 +304,244 @@ const groupedColors = Object.keys(groupLabels).map((group) => ({
               </div>
             ))
           }
+        </div>
+      </section>
+
+      <!-- SECTION HEADINGS -->
+      <section aria-labelledby="headings-heading">
+        <div class="mb-8 flex items-baseline gap-4">
+          <h2
+            id="headings-heading"
+            class="font-display text-emphasis text-4xl leading-none
+              tracking-tight md:text-4xl"
+          >
+            Section Headings
+          </h2>
+          <span class="text-faint font-mono text-xs tracking-widest uppercase">
+            {headingTreatments.length} treatments · {headingAligns.length} alignments
+            · {headingSizes.length} sizes
+          </span>
+        </div>
+
+        <!-- Treatments × alignments at size: md -->
+        <div class="mb-16">
+          <h3
+            class="text-emphasis mb-6 font-mono text-xs tracking-widest
+              uppercase"
+          >
+            Treatments × Alignments (size: md)
+          </h3>
+          <div class="space-y-12">
+            {
+              headingTreatments.map((treatment) => (
+                <div class="border-faint border-b pb-12">
+                  <code
+                    class="text-faint mb-8 block font-mono text-xs tracking-widest
+                      uppercase"
+                  >
+                    treatment: {treatment}
+                  </code>
+                  <div class="space-y-10">
+                    {headingAligns.map((align) => (
+                      <div>
+                        <code
+                          class="text-fainter text-2xs mb-4 block font-mono
+                            tracking-widest uppercase"
+                        >
+                          align: {align}
+                        </code>
+                        <HeadingSection
+                          text="Section Heading"
+                          as="p"
+                          align={align}
+                          size="md"
+                          treatment={treatment}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+
+        <!-- Sizes at treatment: none, align: center -->
+        <div>
+          <h3
+            class="text-emphasis mb-6 font-mono text-xs tracking-widest
+              uppercase"
+          >
+            Sizes (treatment: none, align: center)
+          </h3>
+          <div class="space-y-12">
+            {
+              headingSizes.map((size) => (
+                <div class="border-faint border-b pb-12">
+                  <code
+                    class="text-faint mb-6 block font-mono text-xs tracking-widest
+                      uppercase"
+                  >
+                    size: {size}
+                  </code>
+                  <HeadingSection
+                    text="Section Heading"
+                    as="p"
+                    size={size}
+                    treatment="none"
+                    align="center"
+                  />
+                </div>
+              ))
+            }
+          </div>
+        </div>
+
+        <!-- Composed treatments at size: md, both alignments -->
+        <div class="mt-16">
+          <h3
+            class="text-emphasis mb-6 font-mono text-xs tracking-widest
+              uppercase"
+          >
+            Composed Treatments (size: md)
+          </h3>
+          <div class="space-y-12">
+            {
+              headingCombos.map((combo) => (
+                <div class="border-faint border-b pb-12">
+                  <code
+                    class="text-faint mb-8 block font-mono text-xs tracking-widest
+                      uppercase"
+                  >
+                    treatment: [{combo.join(", ")}]
+                  </code>
+                  <div class="space-y-10">
+                    {headingAligns.map((align) => (
+                      <div>
+                        <code
+                          class="text-fainter text-2xs mb-4 block font-mono
+                            tracking-widest uppercase"
+                        >
+                          align: {align}
+                        </code>
+                        <HeadingSection
+                          text="Section Heading"
+                          as="p"
+                          align={align}
+                          size="md"
+                          treatment={[...combo]}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+
+        <!-- Line treatment modifiers -->
+        <div class="mt-16">
+          <h3
+            class="text-emphasis mb-6 font-mono text-xs tracking-widest
+              uppercase"
+          >
+            Line Modifiers (size: md, align: center)
+          </h3>
+          <div class="space-y-12">
+            <div class="border-faint border-b pb-12">
+              <code
+                class="text-faint mb-6 block font-mono text-xs tracking-widest
+                  uppercase"
+              >
+                lineColor: "emphasis"
+              </code>
+              <HeadingSection
+                text="Section Heading"
+                as="p"
+                size="md"
+                treatment="line"
+                lineColor="emphasis"
+              />
+            </div>
+            <div class="border-faint border-b pb-12">
+              <code
+                class="text-faint mb-6 block font-mono text-xs tracking-widest
+                  uppercase"
+              >
+                lineFlush: true
+              </code>
+              <HeadingSection
+                text="Section Heading"
+                as="p"
+                size="md"
+                treatment="line"
+                lineFlush={true}
+              />
+            </div>
+            <div class="border-faint border-b pb-12">
+              <code
+                class="text-faint mb-6 block font-mono text-xs tracking-widest
+                  uppercase"
+              >
+                treatment: [line, inverted] · lineFlush: true
+              </code>
+              <HeadingSection
+                text="Section Heading"
+                as="p"
+                size="md"
+                treatment={["line", "inverted"]}
+                lineFlush={true}
+              />
+            </div>
+            <div class="border-faint border-b pb-12">
+              <code
+                class="text-faint mb-6 block font-mono text-xs tracking-widest
+                  uppercase"
+              >
+                treatment: [line, bordered] · lineFlush: true
+              </code>
+              <HeadingSection
+                text="Section Heading"
+                as="p"
+                size="md"
+                treatment={["line", "bordered"]}
+                lineFlush={true}
+              />
+            </div>
+            <div class="border-faint border-b pb-12">
+              <code
+                class="text-faint mb-6 block font-mono text-xs tracking-widest
+                  uppercase"
+              >
+                treatment: [line, bordered] · lineColor: "emphasis" · lineFlush: true
+              </code>
+              <HeadingSection
+                text="Section Heading"
+                as="p"
+                size="md"
+                treatment={["line", "bordered"]}
+                lineColor="emphasis"
+                lineFlush={true}
+              />
+            </div>
+            <div class="border-faint border-b pb-12">
+              <code
+                class="text-faint mb-6 block font-mono text-xs tracking-widest
+                  uppercase"
+              >
+                treatment: [line, inverted] · lineColor: "emphasis" · lineFlush: true
+              </code>
+              <HeadingSection
+                text="Section Heading"
+                as="p"
+                size="md"
+                treatment={["line", "inverted"]}
+                lineColor="emphasis"
+                lineFlush={true}
+              />
+            </div>
+          </div>
         </div>
       </section>
     </div>
