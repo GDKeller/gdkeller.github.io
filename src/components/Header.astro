@@ -7,12 +7,13 @@ import Nav from "./Nav.astro";
   id="header__main"
   class="bg-background-dark animate__header border-box border-fainter/50 sticky
     top-0 left-0 z-200 block w-full justify-between overflow-hidden border-b
-    px-4 shadow-sm backdrop-blur duration-100 sm:px-2"
+    pr-0 pl-2 shadow-sm backdrop-blur duration-100 sm:px-1"
 >
   <div class="relative flex w-full items-center justify-between">
     <div class="box-border flex items-stretch gap-4">
       <div
-        class="my-2 hidden h-8 w-8 shrink-0 items-center justify-center md:flex"
+        class="border-fainter/50 my-1 hidden h-10 w-10 shrink-0 items-center
+          justify-center border md:flex"
       >
         <div
           class="oscilloscope bg-background-dark h-8 w-8 overflow-hidden"
@@ -35,10 +36,10 @@ import Nav from "./Nav.astro";
           </svg>
         </div>
       </div>
-      <Nav class="" />
+      <Nav />
     </div>
-    <div class="flex items-center gap-2 text-sm">
-      <div class="mr-6 flex items-center gap-3">
+    <div class="flex items-center gap-4 text-sm">
+      <div class="hidden items-center gap-3 md:flex">
         <Link
           href="https://github.com/gdkeller"
           target="_blank"
@@ -86,7 +87,8 @@ import Nav from "./Nav.astro";
           variant="hoverAccent"
           class="bg-background-dark hover:text-accent hover:border-accent-hover
             border-faint hidden items-center gap-1.5 border px-4 py-3 font-mono
-            tracking-wide leading-none transition-all duration-200 md:flex"
+            text-sm leading-none tracking-wide transition-all duration-200
+            md:flex md:text-base"
         >
           <span>Resume</span>
         </Link>
@@ -95,9 +97,10 @@ import Nav from "./Nav.astro";
           aria-label="Contact"
           class="text-background-dark border-background-dark bg-emphasis
             hover:bg-accent-hover flex items-center gap-1.5 border border-dotted
-            px-4 py-3 font-mono tracking-wide transition-all duration-200"
+            px-4 py-3 font-mono text-sm tracking-wide transition-all
+            duration-200 md:text-base"
         >
-          <span class="hidden leading-none sm:inline-block">Contact</span>
+          <span class="inline-block leading-none">Contact</span>
         </button>
       </div>
     </div>
