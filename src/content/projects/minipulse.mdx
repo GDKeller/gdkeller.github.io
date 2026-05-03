@@ -1,0 +1,107 @@
+---
+title: Embedded Software Engineer
+tags: [nasa, esp32, c++]
+projectName: MiniPulse Realtime Satellite Data Visualizer
+client: "NASA Jet Propulsion Laboratory"
+endMonthYear: Oct 2022
+startMonthYear: Jan 2022
+subClient: Stratin Engineering
+clientLogo:
+  src: /src/images/projects/jpl-minipulse/logo_NASA.webp
+  alt: NASA Logo
+clientWebsite: "https://www.jpl.nasa.gov/"
+tech: [C++, ESP32, XML APIs, WS2812B LEDs, FastLED, Wifi AP]
+order: 1
+---
+
+import { Picture } from "astro:assets";
+import goldstoneCropped from "/src/images/projects/jpl-minipulse/goldstone-minipulse-cropped.jpg";
+import esuMinipulse1 from "/src/images/projects/jpl-minipulse/ESU_minipulse_1.jpg";
+import esuMinipulse2 from "/src/images/projects/jpl-minipulse/ESU_minipulse_2.jpg";
+import emporiaMinipulse from "/src/images/projects/jpl-minipulse/emporia-gazzette-minipulse-2.jpg";
+import logoESU from "/src/images/projects/jpl-minipulse/logo_ESU.webp";
+
+Worked with <a target="_blank" href="https://www.stratinengineering.com/">Stratin Engineering</a> and JPL's <a target="_blank" href="https://www.directedplay.com/pulse">Dan Goods</a> to build an LED visual installation that displays <a target="_blank" href="https://eyes.nasa.gov/apps/dsn-now/">Deep Space Network</a> spacecraft data in real time.
+
+**On display at:** <a href="https://www.jpl.nasa.gov/thestudio/" target="_blank">The Studio at JPL</a>, <a href="https://www.emporiagazette.com/education/article_3c20493c-2cb1-43db-8ebb-2b56417eab15.html" target="_blank">Emporia State University's Peterson Planetarium</a>, <a href="https://www.gdscc.nasa.gov/" target="_blank">Goldstone Deep Space Communications Complex</a>
+
+<details>
+<summary>More info</summary>
+
+<div class="md:flex-row mt-8 flex-col flex mb-12 relative">
+  <div class="md:w-2/3 md:pr-4 pb-8 flex items-start">
+    <ul>
+      <li>XML parsing for spacecraft names and data rates</li>
+      <li>NASA mission data scraping to map callsigns</li>
+      <li>20000+ LEDs at 30 FPS</li>
+      <li>Hand-crafted alphabet character maps</li>
+      <li>30 animations based on data rate</li>
+      <li>WiFi portal for configuration and OTA updates</li>
+    </ul>
+  </div>
+  <figure class="md:w-1/3 relative">
+    <Picture
+      src={goldstoneCropped}
+      alt="MiniPulse on display at Goldstone Communications Complex"
+      widths={[300, 600, 900]}
+      sizes="(min-width: 768px) 33vw, 100vw"
+      formats={["avif", "webp"]}
+      loading="lazy"
+      class="object-cover h-full"
+    />
+  </figure>
+</div>
+<div class="grid gap-1 mb-6">
+  <div class="block row-start-2 col-start-1 col-span-5 overflow-hidden">
+    <Picture
+      src={esuMinipulse2}
+      alt="MiniPulse installation at Peterson Planetarium"
+      widths={[400, 800, 1200]}
+      sizes="(min-width: 640px) 50vw, 100vw"
+      formats={["avif", "webp"]}
+      loading="lazy"
+      class="w-full h-full object-cover"
+    />
+  </div>
+  <div class="row-start-2 col-start-6 col-span-5 overflow-hidden">
+    <Picture
+      src={emporiaMinipulse}
+      alt="MiniPulse installation at Peterson Planetarium"
+      widths={[400, 800, 1200]}
+      sizes="(min-width: 640px) 50vw, 100vw"
+      formats={["avif", "webp"]}
+      loading="lazy"
+      class="w-full h-full object-cover object-[15%_50%]"
+    />
+  </div>
+  <blockquote class="row-start-1 col-start-1 relative col-span-10 mb-0 flex items-center sm:flex-row flex-col">
+    <div class="relative h-full w-full">
+      <Picture
+        src={esuMinipulse1}
+        alt="MiniPulse installation at Peterson Planetarium"
+        widths={[500, 1000, 1500]}
+        sizes="(min-width: 640px) 50vw, 100vw"
+        formats={["avif", "webp"]}
+        loading="lazy"
+        class="w-full h-full object-cover min-w-52"
+      />
+    </div>
+    <div class="px-8 pt-4 pb-8 text-justify">
+      “With our new PULSE display radiating just outside these doors, we send a message to every student, every visitor, and every dreamer — science lives here, and its heartbeat is at Emporia State University,”
+      <cite>Mark Brown, Director of <a href="https://www.emporiagazette.com/education/article_3c20493c-2cb1-43db-8ebb-2b56417eab15.html">Peterson Planetarium</a></cite>
+      <div class="absolute w-24 h-24 hidden md:w-32 md:h-32 bottom-0 left-0 sm:-translate-x-2/3 sm:translate-y-1/3 md:-translate-x-1/2 md:translate-y-1/4 lg:translate-x-0">
+        <Picture
+          src={logoESU}
+          alt="Emporia State University logo"
+          widths={[96, 128, 192]}
+          sizes="(min-width: 768px) 128px, 96px"
+          formats={["avif", "webp"]}
+          fallbackFormat="webp"
+          loading="lazy"
+          class="object-contain"
+        />
+      </div>
+    </div>
+  </blockquote>
+</div>
+</details>

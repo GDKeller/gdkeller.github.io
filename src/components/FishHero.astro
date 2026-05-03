@@ -1,9 +1,9 @@
 ---
-import { Image } from "astro:assets";
-import fishImg from "../images/anglerfish.png";
-import waterImg from "../images/water-reflections.webp";
-import fishBallImg from "../images/fish-ball.png";
-import nhmLogo from "../images/nhmla-logo.png";
+import { Picture } from "astro:assets";
+import fishImg from "../images/projects/anglerfish/anglerfish.png";
+import waterImg from "../images/elements/water-reflections.webp";
+import fishBallImg from "../images/projects/anglerfish/fish-ball.png";
+import nhmLogo from "../images/logos/clients/original/nhmla-logo.png";
 import Link from "./Link.astro";
 
 import anglerfishDisplayClose from "../images/projects/nhmla-anglerfish/display-close.jpg";
@@ -13,141 +13,198 @@ import anglerfishSpecimen from "../images/projects/nhmla-anglerfish/specimen.jpg
 ---
 
 <section
-  class="fish-hero relative mx-auto flex w-full flex-col justify-center overflow-hidden bg-black px-8 pb-20 pt-32"
+  class="fish-hero bg-background relative mx-auto flex w-full flex-col
+    justify-center overflow-hidden px-8 pt-32 pb-20"
 >
   <div
-    class="water-blurred fish-hero__water-blurred absolute left-0 top-0 z-0 h-full w-full opacity-80 mix-blend-hard-light blur-sm"
+    class="water-blurred fish-hero__water-blurred absolute top-0 left-0 z-0
+      h-full w-full opacity-80 mix-blend-hard-light blur-sm"
   >
     <span
-      class="mix-blend-color-difference absolute left-0 top-0 z-0 h-full w-full bg-gradient-to-tr from-green-500 via-purple-700 to-slate-700 opacity-30"
+      class="mix-blend-color-difference absolute top-0 left-0 z-0 h-full w-full
+        bg-gradient-to-tr from-green-500 via-purple-700 to-slate-700 opacity-30"
     ></span>
-    <Image src={waterImg} alt="Water reflections" loading="lazy" class="h-full w-full object-cover" />
+    <Picture
+      src={waterImg}
+      alt="Water reflections"
+      widths={[800, 1600, 2400]}
+      sizes="100vw"
+      formats={["avif", "webp"]}
+      fallbackFormat="jpg"
+      loading="lazy"
+      class="h-full w-full object-cover"
+    />
   </div>
   <!-- <span class="fixed top-0 left-0 z-30 w-full h-full bg-gradient-to-tr from-fuchsia-400 via-purple-800 to-indigo-950 mix-blend-difference"></span> -->
   <div class="fish relative">
     <div class="fishball animation-fishball absolute z-10 w-full max-w-24">
-      <Image src={fishBallImg} alt="Sigil" loading="lazy" class="fish-hero__ball object-contain" />
+      <Picture
+        src={fishBallImg}
+        alt="Sigil"
+        widths={[96, 192, 288]}
+        sizes="96px"
+        formats={["avif", "webp"]}
+        fallbackFormat="webp"
+        loading="lazy"
+        class="fish-hero__ball object-contain"
+      />
     </div>
-    <div class="fish-body relative z-40 max-h-none w-auto max-w-none overflow-visible">
+    <div
+      class="fish-body relative z-40 max-h-none w-auto max-w-none
+        overflow-visible"
+    >
       <!-- <div class="absolute top-0 left-0 z-30 w-full h-full bg-black opacity-60 mix-blend-difference"></div> -->
-      <Image
+      <Picture
         src={fishImg}
         alt="Anglerfish"
+        widths={[600, 1200, 1800]}
+        sizes="100vw"
+        formats={["avif", "webp"]}
+        fallbackFormat="webp"
         loading="lazy"
-        class="fish-hero__image relative block h-full w-full overflow-visible object-cover object-left"
+        class="fish-hero__image relative block h-full w-full overflow-visible
+          object-cover object-left"
       />
     </div>
     <div class="relative z-50">
       <span
-        class="nhmla-logo relative -mb-4 inline-block overflow-visible shadow-xl shadow-black/60"
+        class="nhmla-logo relative -mb-4 inline-block overflow-visible shadow-xl
+          shadow-black/60"
       >
-        <Image
+        <Picture
           src={nhmLogo}
           alt="Natural History Museum of Los Angeles logo"
+          widths={[240, 480]}
+          sizes="240px"
+          formats={["avif", "webp"]}
+          fallbackFormat="webp"
           loading="lazy"
           class="h-60 w-60 object-contain"
         />
       </span>
       <!-- <span class="absolute top-0 z-40 flex items-end justify-center w-full text-white -translate-x-1/2 left-1/2 mix-blend-difference"></span> -->
-      <!-- <span class="absolute top-0 left-0 text-4xl tracking-normal text-red-500 translate-y-1/2 mix-blend-screen font-bokor monster-text-shadow">the</span> -->
+      <!-- <span class="absolute top-0 left-0 text-4xl tracking-normal text-red-500 translate-y-1/2 mix-blend-screen font-decorative monster-text-shadow">the</span> -->
       <h3>
         <span
           id="fish-monster"
-          class="monster-text-shadow relative z-40 -mb-20 ml-4 block font-bokor leading-none text-fuchsia-400"
+          class="monster-text-shadow font-decorative relative z-40 -mb-20 ml-4
+            block leading-none text-fuchsia-300"
           >Anglerfish Exhibit</span
         >
-        <span class="sr-only">at the Natural History Museum of Los Angeles.</span>
+        <span class="sr-only"
+          >at the Natural History Museum of Los Angeles.</span
+        >
       </h3>
     </div>
     <div class="water fish-hero__water absolute bottom-0 z-0 block w-5/6">
       <span
-        class="absolute left-0 top-0 z-30 h-full w-full bg-gradient-to-tr from-fuchsia-400 via-purple-800 to-indigo-950 mix-blend-difference"
+        class="absolute top-0 left-0 z-30 h-full w-full bg-gradient-to-tr
+          from-fuchsia-400 via-purple-800 to-indigo-950 mix-blend-difference"
       ></span>
-      <Image
+      <Picture
         src={waterImg}
         alt="Water reflections"
+        widths={[600, 1200]}
+        sizes="83vw"
+        formats={["avif", "webp"]}
+        fallbackFormat="jpg"
         loading="lazy"
-        class="object-top-right h-full w-full object-cover"
+        class="h-full w-full object-cover object-top-right"
       />
     </div>
   </div>
   <div
-    class="fish-hero__container prose z-40 flex flex-col bg-gradient-to-b from-[rgb(3,3,20)]/50 via-[rgb(0,2,15)]/90 to-[rgb(0,2,5)] px-4 pb-14 pt-4 text-lg text-emerald-200 backdrop-blur-sm"
+    class="fish-hero__container prose text-foundation z-40 flex flex-col
+      bg-gradient-to-b from-[rgb(3,3,20)]/50 via-[rgb(0,2,15)]/90
+      to-[rgb(0,2,5)] px-4 pt-4 pb-14 text-lg backdrop-blur-sm"
   >
-    <div class="ml-auto mr-auto max-w-full py-24 pl-8">
+    <div class="mr-auto ml-auto max-w-full py-24 pl-8">
       <p class="mb-32 text-2xl">
-        In 2021, an intact and undamaged anglerfish floated it's way onto a Southern California
-        beach.
+        In 2021, an intact and undamaged anglerfish floated it's way onto a
+        Southern California beach.
       </p>
       <p class="mb-32 pl-8 text-2xl">
         It was destined for the National History Museum of Los Angeles.
       </p>
       <p class="text-center text-2xl">
-        For a limited time, it would be a scientific and sightseeing <span class="font-bold"
-          >superstar.</span
+        For a limited time, it would be a scientific and sightseeing <span
+          class="font-bold">superstar.</span
         >
       </p>
     </div>
 
-    <div class="mb-12 flex flex-col items-center justify-center gap-4 md:flex-row">
+    <div
+      class="mb-12 flex flex-col items-center justify-center gap-4 md:flex-row"
+    >
       <div class="relative z-30 max-w-sm">
-        <Image
+        <Picture
           src={anglerfishDisplayClose}
           alt="Anglerfish display closeup"
+          widths={[384, 768, 1152]}
+          sizes="(min-width: 768px) 384px, 90vw"
+          formats={["avif", "webp"]}
           loading="lazy"
           class="col-start-2 row-span-1 row-start-2"
         />
         <!-- <Image src={anglerfishSpecimen} alt="Anglerfish specimen" class="col-start-2 row-start-3" /> -->
       </div>
-      <div class="mb-auto mt-auto max-w-xl pl-8 pt-4 md:pr-4">
-        <!-- <p class="mb-12 text-4xl font-bayon">Protecting a priceless museum specimen</p> -->
+      <div class="mt-auto mb-auto max-w-xl pt-4 pl-8 md:pr-4">
+        <!-- <p class="mb-12 text-4xl font-display">Protecting a priceless museum specimen</p> -->
         <!-- <p class="mb-4">
           In 2021, an intact and undamaged anglerfish floated it's way onto a Southern California
           beach. It was destined for the National History Museum of Los Angeles, where for a limited
           time, it would be scientific and sightseeing superstar.
         </p> -->
         <p class="mb-8">
-          Most specimens are distorted and disfigured due to pressure changes, but this one was in
-          near-perfect condition.
+          Most specimens are distorted and disfigured due to pressure changes,
+          but this one was in near-perfect condition.
         </p>
         <p class="mb-24">
-          One of only 30 retrieved in a condition suitable for study and exhibition.
+          One of only 30 retrieved in a condition suitable for study and
+          exhibition.
         </p>
-        <p class="mb-4 font-bokor text-4xl">The Problem</p>
+        <p class="font-decorative mb-4 text-4xl">The Problem</p>
         <p class="mb-8">
-          The anglerfish lives so deep in the ocean that its tissue begins to break down when
-          exposed to light.
+          The anglerfish lives so deep in the ocean that its tissue begins to
+          break down when exposed to light.
         </p>
         <p class="mb-12">
-          The museum needed a display that limited light exposure and kept track of the amount of
-          light the fish was exposed to.
+          The museum needed a display that limited light exposure and kept track
+          of the amount of light the fish was exposed to.
         </p>
         <p>This is where software came to the rescue.</p>
       </div>
     </div>
-    <div class="mb-32 flex flex-col items-center justify-center md:flex-row md:pl-4">
+    <div
+      class="mb-32 flex flex-col items-center justify-center md:flex-row
+        md:pl-4"
+    >
       <div class="max-w-xl pr-8">
         <p class="mb-12">
-          I was tasked with writing software to run on an Arduino inside the museum exhibit.
+          I was tasked with writing software to run on an Arduino inside the
+          museum exhibit.
         </p>
         <p class="mb-8">
-          The board drove motion and light sensors, and logged the amount of light that struck the
-          fish to an online Google Sheet.
+          The board drove motion and light sensors, and logged the amount of
+          light that struck the fish to an online Google Sheet.
         </p>
         <p class="mb-32">
-          The lights turned on when guests approached, and off after inactivity to minimize light
-          damage to the specimen.
+          The lights turned on when guests approached, and off after inactivity
+          to minimize light damage to the specimen.
         </p>
         <p class="mb-0">
-          With the science team able to monitor the light exposure via real readings, and safeguards
-          in place to protect the specimen, the public was able to get up close and personal with
-          this mythical fish.
+          With the science team able to monitor the light exposure via real
+          readings, and safeguards in place to protect the specimen, the public
+          was able to get up close and personal with this mythical fish.
         </p>
       </div>
       <div class="relative z-30 w-auto max-w-sm">
-        <Image
+        <Picture
           src={anglerfishDisplayFront}
           alt="Anglerfish display front"
+          widths={[384, 768, 1152]}
+          sizes="(min-width: 768px) 384px, 90vw"
+          formats={["avif", "webp"]}
           loading="lazy"
           class="col-start-1 row-span-2 row-start-2"
         />
@@ -155,22 +212,36 @@ import anglerfishSpecimen from "../images/projects/nhmla-anglerfish/specimen.jpg
     </div>
     <div class="relative z-30 mx-auto max-w-4xl">
       <div class="flex w-auto flex-col items-center gap-4">
-        <Image
+        <Picture
           src={anglerfishDisplayFull}
           alt="Anglerfish display closeup"
+          widths={[512, 1024, 1536]}
+          sizes="(min-width: 1024px) 900px, 90vw"
+          formats={["avif", "webp"]}
           loading="lazy"
           class="w-full object-contain"
         />
-        <Image src={anglerfishSpecimen} alt="Anglerfish specimen" loading="lazy" class="w-full object-contain" />
+        <Picture
+          src={anglerfishSpecimen}
+          alt="Anglerfish specimen"
+          widths={[512, 1024, 1536]}
+          sizes="(min-width: 1024px) 900px, 90vw"
+          formats={["avif", "webp"]}
+          loading="lazy"
+          class="w-full object-contain"
+        />
         <div
-          class="w-full rounded-lg border-4 border-blue-950 border-opacity-10 bg-gradient-to-br from-teal-950/20 via-blue-800/10 to-blue-950/5 px-4 py-24 text-center"
+          class="border-opacity-10 w-full border-4 border-blue-950
+            bg-gradient-to-br from-teal-950/20 via-blue-800/10 to-blue-950/5
+            px-4 py-24 text-center"
         >
           <p class="mb-8">
-            The exhibit was open to the public from August 25th to November 29th, 2021.
+            The exhibit was open to the public from August 25th to November
+            29th, 2021.
           </p>
           <p>
-            More information can be found <Link href="https://nhm.org/anglerfish"
-              >on the museum's website.</Link
+            More information can be found <Link
+              href="https://nhm.org/anglerfish">on the museum's website.</Link
             >
           </p>
         </div>

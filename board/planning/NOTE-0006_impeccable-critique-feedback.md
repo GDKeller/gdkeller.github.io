@@ -95,6 +95,7 @@ The site has a **strong identity** — emerald neon on black with deliberate atm
 ### 5. Three typos undermine the "quality" signal
 
 **What:**
+
 - Awards: "multidisiciplinary" → "multidisciplinary"
 - FishHero: "it's tissue" → "its tissue" (possessive, not contraction)
 - FishHero: "the public wa able" → "the public was able"

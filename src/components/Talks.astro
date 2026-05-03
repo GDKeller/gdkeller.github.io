@@ -1,4 +1,6 @@
 ---
+import HeadingSection from "./HeadingSection.astro";
+
 interface Appearance {
   title: string;
   event: string;
@@ -47,84 +49,613 @@ const appearances: Appearance[] = [
     startTime: 807,
   },
 ];
+
+const sorted = [...appearances].sort((a, b) => Number(b.year) - Number(a.year));
+
+const getEmbedSrc = (item: Appearance) => {
+  if (item.type === "youtube" && item.videoId) {
+    return `https://www.youtube.com/embed/${item.videoId}${item.startTime ? `?start=${item.startTime}` : ""}`;
+  }
+  return item.embedUrl ?? "";
+};
+
+const getPoster = (item: Appearance, size: "mq" | "hq" = "mq") => {
+  if (item.type === "youtube" && item.videoId) {
+    return `https://i.ytimg.com/vi/${item.videoId}/${size}default.jpg`;
+  }
+  return null;
+};
+
+const initial = sorted[0];
 ---
 
-<div class="talks container mx-auto max-w-6xl px-4 sm:px-6 md:px-8">
-  <h2
-    class="section-heading__glow section-heading__center mb-4 ml-auto mr-auto w-min text-center font-bokor text-5xl md:text-6xl"
-  >
-    Appearances
-  </h2>
-  <p class="mx-auto mb-12 max-w-2xl text-center text-sm md:mb-16 md:text-base">
-    Conference talks, podcasts, and hardware hacking
-  </p>
+<div class="container" data-talks>
+  <HeadingSection
+    text="Appearances"
+    as="h2"
+    align="left"
+    class="mb-8 xl:mb-16"
+  />
 
-  <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
-    {
-      appearances.map((item) => (
-        <article class="group relative bg-gradient-to-br from-emerald-800/15 via-teal-950/20 to-emerald-950/20 px-4 py-4">
-          <div
-            class={`relative mb-4 overflow-hidden ${item.type === "audio" ? "h-48" : "aspect-video"}`}
+  <div class="grid gap-1 xl:grid-cols-[1fr_auto_1.5fr]">
+    <!-- Player stage -->
+    <section
+      class="border-faint order-1 border p-2 sm:p-4 lg:p-8 xl:order-3
+        xl:col-span-1"
+      aria-label="Appearance player"
+    >
+      <div class="player-frame bg-background-dark relative xl:mb-8">
+        <span class="bracket tl" aria-hidden="true"></span>
+        <span class="bracket tr" aria-hidden="true"></span>
+        <span class="bracket bl" aria-hidden="true"></span>
+        <span class="bracket br" aria-hidden="true"></span>
+        <div
+          class="relative z-110 aspect-video"
+          data-player-slot
+          data-slot-mode={initial.type}
+        >
+          <button
+            type="button"
+            class="player-facade group bg-background-dark relative block h-full
+              w-full cursor-pointer border-0 p-0"
+            data-player-facade
+            data-src={getEmbedSrc(initial)}
+            data-title={initial.title}
+            data-type={initial.type}
+            aria-label={`Play ${initial.title}`}
           >
-            {item.type === "youtube" ? (
-              <iframe
-                src={`https://www.youtube.com/embed/${item.videoId}${item.startTime ? `?start=${item.startTime}` : ""}`}
-                title={item.title}
-                class="h-full w-full border-0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-                loading="lazy"
-              />
-            ) : (
-              <iframe
-                src={item.embedUrl}
-                title={item.title}
-                class="h-full w-full border-0"
-                scrolling="no"
-                loading="lazy"
-              />
-            )}
-          </div>
-          <div class="space-y-1">
-            <h3 class="font-prompt text-base font-medium text-emerald-200">{item.title}</h3>
-            <p class="text-sm text-emerald-200/50">
-              {item.event}, {item.year}
-            </p>
-          </div>
-          <span
-            class="corner corner--tl pointer-events-none absolute left-0 top-0 block h-2/3 w-1/4 opacity-80"
-            role="presentation"
-          />
-          <span
-            class="corner corner--br pointer-events-none absolute bottom-0 right-0 block h-1/3 w-1/3 opacity-30"
-            role="presentation"
-          />
-        </article>
-      ))
-    }
+            {
+              getPoster(initial, "hq") ? (
+                <img
+                  src={getPoster(initial, "hq")!}
+                  alt=""
+                  class="h-full w-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+              ) : (
+                <span
+                  class="player-facade__audio flex h-full w-full items-center
+                    justify-center"
+                >
+                  <span
+                    class="text-emphasis text-2xs font-mono tracking-widest
+                      uppercase"
+                  >
+                    Audio
+                  </span>
+                </span>
+              )
+            }
+            <span class="player-facade__icon" aria-hidden="true">
+              <svg viewBox="0 0 68 48" width="68" height="48" focusable="false">
+                <path
+                  class="player-facade__icon-bg"
+                  d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z"
+                ></path>
+                <path class="player-facade__icon-arrow" d="M45 24 27 14v20"
+                ></path>
+              </svg>
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <div class="hidden items-stretch gap-4 pl-4 xl:flex">
+        <div class="relative z-110 min-w-0 flex-1">
+          <p
+            class="text-accent text-2xs mb-2 font-mono leading-none
+              font-extralight tracking-widest uppercase"
+            data-player-event
+          >
+            {initial.event}
+          </p>
+          <h3
+            class="text-foundation font-display text-xl leading-tight
+              tracking-wider xl:text-2xl"
+            data-player-title
+          >
+            {initial.title}
+          </h3>
+        </div>
+      </div>
+    </section>
+
+    <div class="order-2 flex w-full flex-col justify-center xl:w-2 xl:gap-1">
+      <span class="bg-faint mt-auto hidden h-2 xl:block"></span>
+      <div
+        class="border-faint mx-auto mt-0 mb-0 block h-1 max-h-96 w-full
+          max-w-2/3 flex-1 overflow-hidden xl:mx-0 xl:h-full xl:max-w-full
+          xl:px-0 xl:py-1"
+      >
+        <span
+          class="hazard-stripe__faint block h-1 w-full flex-1 xl:h-full xl:w-2"
+        ></span>
+      </div>
+      <span class="bg-faint mb-auto hidden h-2 xl:block"></span>
+    </div>
+
+    <!-- Queue -->
+    <aside
+      class="border-faint bg-background-dark order-3 border xl:order-1
+        xl:col-span-1"
+      aria-label="Appearance queue"
+    >
+      <div class="queue flex h-full flex-col">
+        <div
+          class="border-faint hidden items-center justify-between border-b px-4
+            py-3 xl:flex"
+        >
+          <p
+            aria-hidden="true"
+            class="text-emphasis text-2xs flex items-center font-mono
+              leading-none font-extralight tracking-widest uppercase xl:text-sm"
+          >
+            <span class="text-accent triplecolon font-light" aria-hidden="true"
+              >:::</span
+            >
+            <span class="ml-2">Queue</span>
+          </p>
+        </div>
+        <ul role="list" class="flex flex-1 flex-col">
+          {
+            sorted.map((item, idx) => (
+              <li class="border-faint flex flex-1 border-t first:border-t-0">
+                <button
+                  type="button"
+                  class:list={[
+                    `track group relative flex w-full flex-1 cursor-pointer
+                    items-stretch gap-3 px-3 py-3 pl-12 text-left sm:pl-16`,
+                    idx === 0 && "is-active",
+                  ]}
+                  data-track
+                  data-src={getEmbedSrc(item)}
+                  data-title={item.title}
+                  data-event={item.event}
+                  data-year={item.year}
+                  data-type={item.type}
+                  aria-pressed={idx === 0 ? "true" : "false"}
+                >
+                  <span
+                    class="absolute top-0 left-0 h-full w-32 overflow-hidden"
+                  >
+                    <span
+                      class="track__index text-faint absolute top-1/2 z-0
+                        shrink-0 -translate-y-1/2 text-right font-mono text-7xl
+                        leading-[0.75em] font-light -tracking-widest uppercase
+                        tabular-nums opacity-50 transition duration-300
+                        sm:left-[-0.05em] sm:text-[7rem]"
+                      aria-hidden="true"
+                    >
+                      {idx + 1}
+                    </span>
+                  </span>
+                  <span
+                    class="track__poster border-background-dark
+                      bg-background-dark relative hidden aspect-video w-24
+                      shrink-0 overflow-hidden border-2 sm:block"
+                  >
+                    {getPoster(item) ? (
+                      <img
+                        src={getPoster(item)!}
+                        alt=""
+                        class="h-full w-full object-cover"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <span
+                        class="track__audio-tile flex h-full w-full items-center
+                          justify-center"
+                      >
+                        <span
+                          class="text-emphasis bg-background-dark text-2xs px-2
+                            py-1 font-mono tracking-widest uppercase"
+                        >
+                          Audio
+                        </span>
+                      </span>
+                    )}
+                    <span class="track__playing" aria-hidden="true">
+                      <span />
+                      <span />
+                      <span />
+                    </span>
+                  </span>
+                  <span
+                    class="relative z-110 flex min-w-0 flex-1 flex-col sm:pl-4"
+                  >
+                    <span
+                      class="track__title text-foundation mb-2 line-clamp-2
+                        text-base leading-snug font-light sm:text-xl"
+                    >
+                      {item.title}
+                    </span>
+                    <span class="flex justify-between xl:flex-col">
+                      <span
+                        class="track__event text-emphasis truncate font-mono
+                          text-xs font-extralight tracking-widest uppercase
+                          sm:text-sm"
+                      >
+                        {item.event}
+                      </span>
+                      <span
+                        class="text-emphasis mt-auto font-mono text-sm
+                          font-extralight tracking-widest uppercase
+                          tabular-nums"
+                      >
+                        {item.year}
+                        <span
+                          class="text-accent mx-0 leading-none -tracking-widest
+                            sm:inline-block"
+                        >
+                          /
+                        </span>
+                        {item.type === "audio" ? "Audio" : "Video"}
+                      </span>
+                    </span>
+                  </span>
+                </button>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </aside>
   </div>
 </div>
 
-<style>
-  .corner--tl {
-    &::before {
-      @apply absolute left-0 top-0 h-full w-0.5 bg-gradient-to-b from-emerald-400/20 via-teal-500/15 to-transparent;
-      content: "";
-    }
+<style lang="scss">
+  @reference "../styles/global.css";
+
+  .player-facade {
+    position: relative;
+    isolation: isolate;
+
     &::after {
-      @apply absolute left-0.5 top-0 h-0.5 w-full bg-gradient-to-r from-emerald-400/20 via-teal-500/15 to-transparent;
       content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        transparent 40%,
+        color-mix(in oklch, var(--color-background-dark) 60%, transparent)
+      );
+      pointer-events: none;
+      transition: opacity 240ms ease-out;
+    }
+
+    &:hover::after,
+    &:focus-visible::after {
+      opacity: 0.5;
     }
   }
 
-  .corner--br {
-    &::before {
-      @apply absolute bottom-0 right-0 h-full w-0.5 bg-gradient-to-t from-emerald-400/20 via-teal-500/15 to-transparent;
+  .player-facade__icon {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+
+    svg {
+      transition:
+        transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
+        filter 260ms ease-out;
+      filter: drop-shadow(
+        0 0 18px color-mix(in oklch, var(--color-accent) 40%, transparent)
+      );
+    }
+  }
+
+  .player-facade__icon-bg {
+    fill: color-mix(in oklch, var(--color-background-dark) 75%, transparent);
+  }
+
+  .player-facade__icon-arrow {
+    fill: var(--color-accent);
+  }
+
+  .player-facade:hover .player-facade__icon svg,
+  .player-facade:focus-visible .player-facade__icon svg {
+    transform: scale(1.08);
+    filter: drop-shadow(
+      0 0 28px color-mix(in oklch, var(--color-accent) 75%, transparent)
+    );
+  }
+
+  .player-facade:hover .player-facade__icon-bg {
+    fill: var(--color-accent);
+  }
+
+  .player-facade:hover .player-facade__icon-arrow {
+    fill: var(--color-background-dark);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .player-facade::after,
+    .player-facade__icon svg {
+      transition-duration: 0ms;
+    }
+  }
+
+  .bracket {
+    @apply absolute hidden opacity-30 sm:block;
+
+    &::before,
+    &::after {
       content: "";
+      position: absolute;
+      background-color: var(--color-emphasis);
+    }
+
+    &::before {
+      @apply h-2 w-px;
+    }
+
+    &::after {
+      @apply h-px w-2;
+    }
+
+    &.tl {
+      top: 0;
+      left: 0;
+
+      &::before {
+        @apply -top-4 -left-px xl:-top-3;
+      }
+      &::after {
+        @apply -top-px -left-4 xl:-left-3;
+      }
+    }
+
+    &.tr {
+      @apply top-0 right-0;
+
+      &::before {
+        @apply -top-4 -right-px xl:-top-3;
+      }
+      &::after {
+        @apply -top-px -right-4 xl:-right-3;
+      }
+    }
+
+    &.bl {
+      @apply bottom-0 left-0;
+
+      &::before {
+        @apply -bottom-3 -left-px xl:-bottom-4;
+      }
+      &::after {
+        @apply -bottom-px -left-4 xl:-left-3;
+      }
+    }
+    &.br {
+      @apply right-0 bottom-0;
+
+      &::before {
+        @apply -right-px -bottom-4 xl:-bottom-3;
+      }
+      &::after {
+        @apply -right-4 -bottom-px xl:-right-3;
+      }
+    }
+  }
+
+  .track {
+    transition: background-color 0.2s ease;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 100%;
+      width: 0px;
+      background: var(--color-emphasis);
+      transition:
+        width 200ms,
+        background 500ms;
+      z-index: 1;
     }
     &::after {
-      @apply absolute bottom-0 right-0.5 h-0.5 w-full bg-gradient-to-l from-emerald-400/20 via-teal-500/15 to-transparent;
       content: "";
+      position: absolute;
+      top: 0;
+      height: 0px;
+      width: 0px;
+      right: 0;
+      background: var(--color-emphasis);
+      transition:
+        width 300ms,
+        height 200ms,
+        background 500ms;
+      z-index: 1;
+      clip-path: polygon(0 0, 100% 0%, 100% 100%);
+    }
+
+    &:hover {
+      background: color-mix(in oklch, var(--color-faint) 10%, transparent);
+    }
+
+    &:hover .track__index {
+      @apply text-emphasis opacity-100;
+    }
+    &:hover .track__title {
+      @apply text-emphasis-hover;
+    }
+
+    &:hover .track__event {
+      @apply text-emphasis-hover;
+    }
+
+    &:hover::before {
+      width: 8px;
+    }
+    &:hover::after {
+      height: 16px;
+      width: 24px;
+    }
+
+    &.is-active .track__title {
+      @apply text-accent;
+    }
+
+    &.is-active .track__index {
+      @apply text-accent opacity-100;
+    }
+
+    &.is-active .track__playing {
+      opacity: 1;
+    }
+
+    &.is-active::before {
+      width: 8px;
+      background: var(--color-accent);
+    }
+    &.is-active::after {
+      height: 16px;
+      width: 24px;
+      background: var(--color-accent);
+    }
+  }
+
+  .track__audio-tile {
+    background: repeating-linear-gradient(
+      45deg,
+      transparent 0,
+      transparent 0.4rem,
+      color-mix(in srgb, var(--color-emphasis) 25%, transparent) 0.4rem,
+      color-mix(in srgb, var(--color-emphasis) 25%, transparent) 0.45rem
+    );
+  }
+
+  .track__playing {
+    position: absolute;
+    right: 0.25rem;
+    bottom: 0.25rem;
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 0.7rem;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+
+    span {
+      display: block;
+      width: 2px;
+      background: var(--color-accent);
+      animation: equalize 0.9s ease-in-out infinite;
+
+      &:nth-child(1) {
+        animation-delay: 0s;
+      }
+      &:nth-child(2) {
+        animation-delay: 0.25s;
+      }
+      &:nth-child(3) {
+        animation-delay: 0.1s;
+      }
+    }
+  }
+
+  @keyframes equalize {
+    0%,
+    100% {
+      height: 25%;
+    }
+    50% {
+      height: 100%;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .track__playing span {
+      animation: none;
+      height: 60%;
+    }
+  }
+
+  @media (prefers-contrast: more) {
+    .bracket {
+      opacity: 0.7;
     }
   }
 </style>
+
+<script>
+  function initTalks() {
+    const root = document.querySelector<HTMLElement>("[data-talks]");
+    if (!root) return;
+
+    const tracks = root.querySelectorAll<HTMLButtonElement>("[data-track]");
+    const slot = root.querySelector<HTMLElement>("[data-player-slot]");
+    const titleEl = root.querySelector<HTMLElement>("[data-player-title]");
+    const eventEl = root.querySelector<HTMLElement>("[data-player-event]");
+    if (!slot || !titleEl || !eventEl) return;
+
+    const mountIframe = (
+      src: string,
+      title: string,
+      type: string,
+      autoplay = false,
+    ) => {
+      const isAudio = type === "audio";
+      slot.dataset.slotMode = type || "youtube";
+
+      const iframe = document.createElement("iframe");
+      iframe.src =
+        autoplay && !isAudio
+          ? `${src}${src.includes("?") ? "&" : "?"}autoplay=1`
+          : src;
+      iframe.title = title;
+      iframe.className = "h-full w-full border-0";
+      iframe.setAttribute(
+        "allow",
+        "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
+      );
+      iframe.setAttribute("allowfullscreen", "");
+      if (isAudio) iframe.setAttribute("scrolling", "no");
+
+      slot.replaceChildren(iframe);
+    };
+
+    const setActive = (button: HTMLButtonElement) => {
+      const { src, title, event, type } = button.dataset;
+      if (!src) return;
+
+      mountIframe(src, title ?? "", type ?? "youtube");
+
+      titleEl.textContent = title ?? "";
+      eventEl.textContent = event ?? "";
+
+      tracks.forEach((t) => {
+        const active = t === button;
+        t.classList.toggle("is-active", active);
+        t.setAttribute("aria-pressed", String(active));
+      });
+    };
+
+    tracks.forEach((button) => {
+      button.addEventListener("click", () => setActive(button));
+    });
+
+    const facade = slot.querySelector<HTMLButtonElement>(
+      "[data-player-facade]",
+    );
+    if (facade) {
+      facade.addEventListener(
+        "click",
+        () => {
+          const { src, title, type } = facade.dataset;
+          if (!src) return;
+          mountIframe(src, title ?? "", type ?? "youtube", true);
+        },
+        { once: true },
+      );
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", initTalks);
+  document.addEventListener("astro:page-load", initTalks);
+</script>

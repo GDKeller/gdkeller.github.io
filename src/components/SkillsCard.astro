@@ -1,36 +1,39 @@
 ---
 interface Props {
-  text: string;
+  category: string;
+  skills: Array<string>;
 }
 
-const { text } = Astro.props;
+const { category, skills } = Astro.props;
 ---
 
-<div class="mb-4">
-  <div class="skill-item relative h-full border-2 border-emerald-500/10">
-    <div class="skill-item__inner shadow-xs relative z-10 h-full bg-black/90 p-6 pl-8 pt-8">
-      <h3 class="mb-6 border-b border-emerald-400/30 pb-2 text-xl font-bold text-emerald-100">
-        {text}
-      </h3>
-      <slot />
-    </div>
-    <span
-      class="skill-item__shadow absolute -bottom-3 -right-3 left-4 top-4 z-0 bg-gradient-to-br from-emerald-700/70 via-teal-700 to-blue-950/40"
+<div class="skill-item bg-background-dark h-full">
+  <div
+    class="skill-item__inner relative z-110 h-full pt-2 pb-8 md:pt-4 lg:pb-16"
+  >
+    <h3
+      class="border-fainter relative z-110 flex items-center border-b-2 px-8
+        pb-2 font-mono text-xl tracking-wider uppercase sm:text-lg md:pb-4
+        md:text-base lg:pl-12 lg:text-xl"
     >
-    </span>
-    <!-- <span class="absolute left-0.5 top-0 z-10 h-0.5 w-3 bg-emerald-500/50"></span> -->
+      <span class="triplecolon text-accent mr-4 pb-1 font-light">:::</span>
+      <span class="text-emphasis relative z-110 font-normal">
+        {category}
+      </span>
+    </h3>
+    <ul
+      class="list flex flex-col gap-4 px-8 pt-4 sm:pr-4 sm:pl-8 md:px-8 md:pt-6
+        lg:pt-8 lg:pl-12"
+    >
+      {
+        skills.map((skill) => (
+          <li
+            class="relative z-110 font-mono text-base leading-tight font-light"
+          >
+            {skill}
+          </li>
+        ))
+      }
+    </ul>
   </div>
 </div>
-
-<style>
-  .skill-item {
-    &::before {
-      @apply absolute left-0 top-0 z-20 h-full w-1 bg-gradient-to-b from-emerald-400/20 via-teal-500/15 to-blue-950/20;
-      content: "";
-    }
-    &::after {
-      @apply absolute left-1 top-0 z-20 h-1 w-24 bg-gradient-to-r from-emerald-400/20 via-teal-500/15 to-blue-950/20;
-      content: "";
-    }
-  }
-</style>

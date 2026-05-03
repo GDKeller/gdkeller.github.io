@@ -1,180 +1,26 @@
 ---
-import Link from "./Link.astro";
-import ProjectSingleImage from "./ProjectSingleImage.astro";
-import SkillBadge from "./SkillBadge.astro";
+import { render } from "astro:content";
+import EntryCard from "./EntryCard.astro";
 
 const { project } = Astro.props;
-
 const { data } = project;
-const {
-  title,
-  projectName,
-  client,
-  clientLogo,
-  startMonthYear,
-  endMonthYear,
-  clientWebsite,
-  image,
-  imageAlt,
-  imageAlign,
-  tech,
-} = data;
+const { Content } = await render(project);
 
-const { Content } = await project.render();
+const image = data.image
+  ? { src: data.image, alt: data.imageAlt ?? data.projectName }
+  : undefined;
 ---
 
-<div class="job-card project-card relative mb-24 block pt-8">
-  <div class="flex flex-col items-start md:flex-row md:items-center">
-    {
-      clientLogo && (
-        <div class="image relative mb-4 mr-2 shrink-0 md:mb-auto lg:-ml-4 lg:mr-8">
-          <ProjectSingleImage
-            imagePath={clientLogo.src}
-            altText={clientLogo.alt}
-          />
-        </div>
-      )
-    }
-    <div class="flex flex-col">
-      <div class="flex flex-col">
-        <div
-          class="mb-2 flex flex-col justify-start font-bayon text-2xl sm:flex-row sm:items-center sm:text-xl md:text-2xl lg:text-3xl"
-        >
-          <h3>
-            <span class="block font-bold text-fuchsia-500 sm:inline-block">{title}</span>
-            <span class="mx-1 hidden font-bokor sm:inline-block">&nbsp;᠅&nbsp;</span>
-            {
-              clientWebsite ? (
-                <Link href={clientWebsite} target="_blank" class="no-underline">
-                  {client}
-                </Link>
-              ) : (
-                <span class="text-fuchsia-500">{client}</span>
-              )
-            }
-          </h3>
-        </div>
-        <div class="flex flex-col items-start justify-between lg:flex-row lg:items-center">
-          {projectName && <p class="mr-4 font-bayon text-lg sm:text-2xl">{projectName}</p>}
-          <p class="italic">
-            {startMonthYear ? startMonthYear : null} -
-            {endMonthYear ? endMonthYear : "Present"}
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-  {
-    tech && (
-      <div class="mt-8 text-xs">
-        <p class="sr-only">Skills:&nbsp;</p>
-        <ul class="flex flex-wrap gap-2">
-          {tech.map((t: string, i: number) => (
-            <>
-              <SkillBadge tag="li" class="mb-2" key={i}>
-                {t}
-              </SkillBadge>
-              {i !== tech.length - 1 && " "}
-            </>
-          ))}
-        </ul>
-      </div>
-    )
-  }
-  <div
-    class:list={[
-      "relative",
-      { "flex flex-col": imageAlign !== undefined },
-      { "lg:flex-row-reverse": imageAlign === "right" },
-      { "lg:flex-row": imageAlign === "left" },
-    ]}
-  >
-    {
-      image && (
-        <div
-          class:list={[
-            "mb-10 shrink-0 lg:w-1/4",
-            { "lg:mr-10": imageAlign === "left" },
-            { "lg:ml-10": imageAlign === "right" },
-          ]}
-        >
-          <ProjectSingleImage
-            imagePath={image}
-            altText={imageAlt || projectName}
-          />
-        </div>
-      )
-    }
-    <div class="job-body list-custom-wrapper prose mt-8 max-w-none lg:flex-1">
-      <Content />
-    </div>
-  </div>
-</div>
-
-<style>
-  .job-card {
-    &::before {
-      @apply absolute -left-8 top-1 z-0 h-full max-h-96 w-1 bg-gradient-to-b from-emerald-400/20 via-teal-500/15 to-blue-950/20;
-      content: "";
-    }
-    &::after {
-      @apply absolute -left-8 -top-0 z-0 h-1 w-12 bg-gradient-to-r from-emerald-400/20 via-teal-500/15 to-blue-950/20;
-      content: "";
-    }
-
-    .project-image img {
-      @apply max-h-20 sm:max-h-20 md:max-h-24 lg:max-h-32;
-    }
-  }
-  .job-body {
-    p {
-      @apply mb-5;
-
-      &:last-child {
-        @apply mb-0;
-      }
-    }
-
-    li {
-      @apply mb-2 pl-6;
-    }
-
-    a {
-      @apply underline transition-colors hover:text-fuchsia-500;
-    }
-
-    blockquote {
-      @apply bg-gradient-to-br from-purple-600/15 via-blue-800/25 to-indigo-700/20 px-2 py-2 text-base italic leading-normal text-emerald-200 md:px-6 md:py-8 md:text-lg lg:px-10 lg:py-12 lg:text-xl lg:leading-loose;
-      position: relative;
-      cite {
-        @apply mt-12 block text-right text-xs font-semibold text-emerald-200 md:text-base;
-
-        &::before {
-          @apply content-['—_'];
-        }
-      }
-    }
-  }
-
-  /* When image is aligned, allow content images to span full width */
-  .job-body :global(img) {
-    @apply w-full;
-  }
-
-  .image:before {
-    z-index: 0;
-    background: radial-gradient(
-      circle,
-      rgba(0, 150, 100, 0.4) 0%,
-      rgba(0, 150, 100, 0.15) 25%,
-      transparent 70%
-    );
-    content: "";
-    top: 50%;
-    left: 50%;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    transform: translate3d(-50%, -50%, 0) scale(3);
-  }
-</style>
+<EntryCard
+  title={data.title}
+  subtitle={data.projectName}
+  organization={data.client}
+  organizationWebsite={data.clientWebsite}
+  logo={data.clientLogo}
+  startMonthYear={data.startMonthYear}
+  endMonthYear={data.endMonthYear}
+  tech={data.tech}
+  image={image}
+>
+  <Content />
+</EntryCard>

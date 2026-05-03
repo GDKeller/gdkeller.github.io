@@ -18,4 +18,5 @@ created: 2026-03-27
 3. **Reduced motion (H1):** Add `@media (prefers-reduced-motion: reduce)` block that sets `animation: none` and `opacity: 0` on all `.animate-headshot-*` classes. The global CSS `animation-duration: 0.01ms` workaround causes rapid flash-through which is worse than the smooth animation.
 
 ## Files
+
 - `src/components/Headshot.astro`

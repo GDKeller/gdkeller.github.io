@@ -7,7 +7,7 @@ created: 2025-06-26
 # Single-Page Portfolio Structure
 
 **STATUS: DRAFT IDEAS - NOT YET APPROVED**
-*These are brainstorming concepts that need review and approval before implementation*
+_These are brainstorming concepts that need review and approval before implementation_
 
 ---
 
@@ -16,6 +16,7 @@ created: 2025-06-26
 **The story arc**: Positioning → Differentiation → Proof → Capabilities → Action
 
 ## 1. Hero Section (Above fold)
+
 **Purpose**: Immediate clarity + key differentiator
 
 ```
@@ -29,6 +30,7 @@ Builds user-facing products across AI, web, and embedded systems
 ```
 
 ## 2. What Makes Me Different (Value Prop)
+
 **Purpose**: Establishes the translation skill as primary differentiator
 
 ```
@@ -41,6 +43,7 @@ I do both.
 ```
 
 ## 3. Experience Snapshot (Context)
+
 **Purpose**: Shows range without overwhelming, explains the diverse background
 
 ```
@@ -50,6 +53,7 @@ Foundation: Embedded systems and hardware integration
 ```
 
 ## 4. Selected Work (Proof - 3 projects max)
+
 **Purpose**: Concrete proof of business-tech translation across different domains
 
 ```
@@ -67,6 +71,7 @@ Business impact | Technical approach | Link/visual
 ```
 
 ## 5. Technical Capabilities (Credibility)
+
 **Purpose**: Technical credibility without overwhelming
 
 ```
@@ -78,6 +83,7 @@ Always: Clean code, performance optimization, user experience
 ```
 
 ## 6. Contact/CTA (Action)
+
 **Purpose**: Clear next step, reinforces positioning
 
 ```

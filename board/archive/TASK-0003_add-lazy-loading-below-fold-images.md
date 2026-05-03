@@ -18,5 +18,6 @@ Set `loading="lazy"` on all images below the hero fold:
 - **LogoCarousel.astro:** Kept as `loading="eager"` — the carousel is above the fold, immediately visible after the hero
 
 ## Files
+
 - `src/components/Awards.astro`
 - `src/components/FishHero.astro`

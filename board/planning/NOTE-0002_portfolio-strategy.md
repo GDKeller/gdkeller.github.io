@@ -7,7 +7,7 @@ created: 2025-06-26
 # Portfolio Strategy & Structure
 
 **STATUS: DRAFT IDEAS - NOT YET APPROVED**
-*These are brainstorming concepts that need review and approval before implementation*
+_These are brainstorming concepts that need review and approval before implementation_
 
 ---
 
@@ -19,6 +19,7 @@ Your frontend experience is your strongest foundation and most employable skill.
 ## Key Positioning Strategy
 
 **Primary Differentiator**: Business-to-technical translation ability
+
 - This is senior IC/tech lead territory
 - Applies across all domains (WordPress agencies, AI startups, general frontend)
 - Most developers struggle with stakeholder communication - you don't
@@ -26,21 +27,25 @@ Your frontend experience is your strongest foundation and most employable skill.
 ## Organizational Approaches
 
 ### Single-Page Focus
+
 Keep it simple with one comprehensive page that tells your complete story without requiring navigation or complex user paths.
 
 ### Content Strategy for Each Audience
 
 **For WordPress/Agency Roles:**
+
 - Emphasize component thinking, maintainable code
 - Show understanding of client needs, project constraints
 - Position AI knowledge as "future-proofing" ability
 
 **For AI Startup Roles:**
+
 - Lead with AI company experience
 - Show frontend skills in context of ML products
 - Embedded background shows technical depth
 
 **Universal Differentiators:**
+
 - "Frontend developer who understands the full stack"
 - "Can bridge technical complexity with user experience"
 - "Builds interfaces for both humans and systems"

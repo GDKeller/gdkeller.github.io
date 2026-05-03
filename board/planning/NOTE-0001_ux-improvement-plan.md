@@ -17,6 +17,7 @@ created: 2025-12-05
 The portfolio demonstrates strong technical skills but suffers from **inverted information architecture**—the most impressive work appears too late, while a passion project (anglerfish exhibit) dominates the scroll journey. This plan restructures content priority, strengthens the value proposition, and optimizes performance to improve employer conversion.
 
 **Target Outcome:** A hiring manager spending 30 seconds on the site should immediately understand:
+
 1. What Grant does (Senior Frontend Engineer)
 2. Proof of impact (300M+ pageviews at NY Post)
 3. How to hire him (prominent CTAs)
@@ -31,6 +32,7 @@ The portfolio demonstrates strong technical skills but suffers from **inverted i
 **Commit:** `a3cec1f`
 
 ### Task 1.1: Restructure Page Layout ✅
+
 - [x] Move anglerfish section to bottom of page
 - [x] Add "Beyond the Screen" header for passion projects
 - [x] Rename "Highlights" → "Featured Work"
@@ -38,10 +40,12 @@ The portfolio demonstrates strong technical skills but suffers from **inverted i
 - [x] Update navigation links (`Work`, `Skills`, `Experience`, `Projects`)
 
 **Files Changed:**
+
 - `src/pages/index.astro`
 - `src/components/Nav.astro`
 
 ### Task 1.2: Strengthen Hero Value Proposition ✅
+
 - [x] Replace vague tagline with specific problem-solving statement
 - [x] Update title: "Senior Frontend Engineer"
 - [x] Add quantified achievement: "300M+ monthly pageviews"
@@ -49,15 +53,19 @@ The portfolio demonstrates strong technical skills but suffers from **inverted i
 - [x] Update pills: `React / TypeScript`, `Accessibility`, `Performance`
 
 **Before:**
+
 > "Software professional dissolving barriers between digital machines and humans"
 
 **After:**
+
 > "I build accessible, high-performance web applications that scale to millions of users."
 
 **Files Changed:**
+
 - `src/components/Hero.astro`
 
 ### Task 1.3: Add Prominent CTAs ✅
+
 - [x] Hero: "View My Work" button (scroll to featured)
 - [x] Hero: "Let's Talk" button (opens contact modal)
 - [x] Footer: "Get in Touch" button
@@ -65,10 +73,12 @@ The portfolio demonstrates strong technical skills but suffers from **inverted i
 - [x] Add availability statement in footer
 
 **Files Changed:**
+
 - `src/components/Hero.astro`
 - `src/components/Footer.astro`
 
 ### Task 1.4: Optimize Performance ✅
+
 - [x] Remove unused fonts (Kings, MedievalSharp)
 - [x] Reduce Prompt font weights (18 → 5)
 - [x] Convert `bg_video_glitch.jpg` to WebP (5.6MB → 756KB)
@@ -85,6 +95,7 @@ The portfolio demonstrates strong technical skills but suffers from **inverted i
 | Font weights | 18 | 5 | 72% fewer |
 
 **Files Changed:**
+
 - `tailwind.config.mjs`
 - `src/layouts/Layout.astro`
 - `src/pages/index.astro`
@@ -100,6 +111,7 @@ The portfolio demonstrates strong technical skills but suffers from **inverted i
 **Status:** Not Started
 
 ### Task 2.1: Add Testimonials Section
+
 - [ ] Create `Testimonials.astro` component
 - [ ] Collect 2-3 quotes from managers/colleagues/clients
 - [ ] Include name, title, company for each
@@ -107,6 +119,7 @@ The portfolio demonstrates strong technical skills but suffers from **inverted i
 - [ ] Style to match site aesthetic
 
 ### Task 2.2: Expand Job Descriptions with STAR Format
+
 - [ ] Review each job entry in `src/content/jobs/`
 - [ ] Add quantified achievements (metrics, percentages, scale)
 - [ ] Use STAR format: Situation → Task → Action → Result
@@ -114,6 +127,7 @@ The portfolio demonstrates strong technical skills but suffers from **inverted i
 - [ ] Consider adding company logos
 
 ### Task 2.3: Write NY Post Case Study
+
 - [ ] Create detailed case study (1-2 paragraphs)
 - [ ] Structure: Challenge → Approach → Implementation → Results
 - [ ] Include technical details (React, performance optimizations)
@@ -121,6 +135,7 @@ The portfolio demonstrates strong technical skills but suffers from **inverted i
 - [ ] Option: Create separate case study page or expand inline
 
 ### Task 2.4: Add Availability Information
+
 - [ ] Add "Currently Seeking" section to footer or about area
 - [ ] Specify: role type (full-time/contract)
 - [ ] Specify: location preference (remote/hybrid/location)
@@ -136,6 +151,7 @@ The portfolio demonstrates strong technical skills but suffers from **inverted i
 **Status:** Not Started
 
 ### Task 3.1: Consider Light Mode / Adaptive Design
+
 - [ ] Evaluate if cyberpunk aesthetic is helping or hurting
 - [ ] Option A: Add light mode toggle (demonstrates UX thinking)
 - [ ] Option B: Create more neutral professional variant
@@ -143,6 +159,7 @@ The portfolio demonstrates strong technical skills but suffers from **inverted i
 - [ ] Test with 5+ people outside tech for feedback
 
 ### Task 3.2: Improve Visual Hierarchy
+
 - [ ] Audit heading sizes and spacing
 - [ ] Implement consistent 8px grid system
 - [ ] Add more breathing room around content
@@ -150,12 +167,14 @@ The portfolio demonstrates strong technical skills but suffers from **inverted i
 - [ ] Review contrast ratios for accessibility
 
 ### Task 3.3: Add Micro-Interactions
+
 - [ ] Subtle hover effects on project cards
 - [ ] Smooth scroll animations (respect `prefers-reduced-motion`)
 - [ ] Loading states if fetching data
 - [ ] Tasteful GSAP enhancements
 
 ### Task 3.4: Add Calendar Booking
+
 - [ ] Set up Calendly or similar
 - [ ] Add "Schedule a 15-minute intro call" link
 - [ ] Integrate into contact modal
@@ -170,17 +189,20 @@ The portfolio demonstrates strong technical skills but suffers from **inverted i
 **Status:** Not Started
 
 ### Task 4.1: Add Blog/Writing Section
+
 - [ ] Create blog post capability (Astro content collection)
 - [ ] Write 2-3 technical articles
 - [ ] Topics: Accessibility, Performance, React patterns
 - [ ] Option: Link to external platforms (Dev.to, Medium)
 
 ### Task 4.2: Document Open Source Contributions
+
 - [ ] List significant OSS contributions
 - [ ] Include GitHub stats if impressive
 - [ ] Highlight any maintained packages
 
 ### Task 4.3: Add Speaking/Presentations
+
 - [ ] List any conference talks
 - [ ] Include meetup presentations
 - [ ] Add links to slides/recordings if available
@@ -241,11 +263,13 @@ The portfolio demonstrates strong technical skills but suffers from **inverted i
 ## Success Metrics
 
 ### Qualitative
+
 - [ ] 5 hiring managers review site and understand role within 30 seconds
 - [ ] Feedback confirms "hireable professional" impression
 - [ ] Anglerfish is seen as "interesting bonus" not "main focus"
 
 ### Quantitative
+
 - [ ] Lighthouse Performance: 95+
 - [ ] Build size: < 10MB ✅ (Currently 9.1MB)
 - [ ] First Contentful Paint: < 1.5s
@@ -256,22 +280,24 @@ The portfolio demonstrates strong technical skills but suffers from **inverted i
 ## Files Reference
 
 ### Modified in Phase 1
-| File | Changes |
-|------|---------|
-| `src/pages/index.astro` | Layout restructure, WebP import |
-| `src/components/Hero.astro` | New copy, CTAs, pills |
-| `src/components/Footer.astro` | CTA section, availability |
-| `src/components/Nav.astro` | Updated link labels |
-| `src/components/FishHero.astro` | WebP import |
-| `src/layouts/Layout.astro` | Font optimization |
-| `tailwind.config.mjs` | Removed unused fonts |
+
+| File                            | Changes                         |
+| ------------------------------- | ------------------------------- |
+| `src/pages/index.astro`         | Layout restructure, WebP import |
+| `src/components/Hero.astro`     | New copy, CTAs, pills           |
+| `src/components/Footer.astro`   | CTA section, availability       |
+| `src/components/Nav.astro`      | Updated link labels             |
+| `src/components/FishHero.astro` | WebP import                     |
+| `src/layouts/Layout.astro`      | Font optimization               |
+| `tailwind.config.mjs`           | Removed unused fonts            |
 
 ### New Assets
-| File | Size | Purpose |
-|------|------|---------|
-| `src/images/bg_video_glitch.webp` | 756KB | Optimized background |
+
+| File                                | Size  | Purpose                |
+| ----------------------------------- | ----- | ---------------------- |
+| `src/images/bg_video_glitch.webp`   | 756KB | Optimized background   |
 | `src/images/water-reflections.webp` | 1.1MB | Optimized water effect |
-| `src/images/texture-ripped1.webp` | 820KB | Optimized texture |
+| `src/images/texture-ripped1.webp`   | 820KB | Optimized texture      |
 
 ---
 

@@ -1,126 +1,20 @@
 ---
-import Link from "./Link.astro";
-import ProjectSingleImage from "./ProjectSingleImage.astro";
-import SkillBadge from "./SkillBadge.astro";
+import { render } from "astro:content";
+import EntryCard from "./EntryCard.astro";
 
 const { job } = Astro.props;
 const { data } = job;
-const { company, companyLogo, companyWebsite, position, startMonthYear, endMonthYear, tech } = data;
-const { Content } = await job.render();
+const { Content } = await render(job);
 ---
 
-<div class="job-card relative z-20 mb-24 pt-8">
-  <div class="mb-6 flex flex-col items-start md:flex-row md:items-center">
-    {
-      companyLogo && (
-        <div class="image relative mb-4 mr-2 shrink-0 lg:-ml-4 lg:mr-8">
-          <ProjectSingleImage imagePath={companyLogo.src} altText={companyLogo.alt} />
-        </div>
-      )
-    }
-    <div class="flex flex-col">
-      <div
-        class="mb-2 flex flex-col justify-start font-bayon text-2xl sm:flex-row md:text-2xl lg:text-3xl"
-      >
-        <h3>
-          <span class="block font-bold text-fuchsia-500 sm:inline-block">{position}</span>
-          <span class="mx-1 hidden font-bokor sm:inline-block">&nbsp;᠅&nbsp;</span>
-          {
-            companyWebsite ? (
-              <Link href={companyWebsite} target="_blank" class="no-underline">
-                {company}
-              </Link>
-            ) : (
-              company
-            )
-          }
-        </h3>
-      </div>
-
-      <p class="italic">
-        {startMonthYear ? startMonthYear : null} -
-        {endMonthYear ? endMonthYear : "Present"}
-      </p>
-    </div>
-  </div>
-
-  {
-    tech && (
-      <div class="mb-10 mt-0 text-xs">
-        <p class="sr-only">Skills:&nbsp;</p>
-        <ul class="flex flex-wrap gap-2">
-          {tech.map((t: string, i: number) => (
-            <>
-              <SkillBadge tag="li" class="mb-1" key={i}>
-                {t}
-              </SkillBadge>
-              {i !== tech.length - 1 && " "}
-            </>
-          ))}
-        </ul>
-      </div>
-    )
-  }
-
-  <div class="job-body list-custom-wrapper prose relative z-20 max-w-none bg-black pb-8 pr-8">
-    <Content />
-  </div>
-  <span
-    class="absolute -bottom-1 -right-1 -z-40 h-24 w-48 bg-gradient-to-br from-blue-900/10 via-teal-800/10 to-emerald-400/20 opacity-40"
-  >
-  </span>
-</div>
-
-<style>
-  .job-card {
-    &::before {
-      @apply absolute -left-8 top-1 z-0 h-full max-h-96 w-1 bg-gradient-to-b from-emerald-400/20 via-teal-500/15 to-blue-950/20;
-      content: "";
-    }
-    &::after {
-      @apply absolute -left-8 -top-0 z-0 h-1 w-12 bg-gradient-to-r from-emerald-400/20 via-teal-500/15 to-blue-950/20;
-      content: "";
-    }
-
-    .project-image img {
-      @apply max-h-20 sm:max-h-20 md:max-h-24 lg:max-h-32;
-    }
-  }
-  .job-body {
-    p {
-      @apply mb-5;
-
-      &:last-child {
-        @apply mb-0;
-      }
-    }
-
-    ul {
-      @apply mt-8;
-    }
-    li {
-      @apply mb-2 pl-6;
-    }
-
-    a {
-      @apply underline hover:text-fuchsia-500;
-    }
-  }
-
-  .image:before {
-    z-index: 0;
-    background: radial-gradient(
-      circle,
-      rgba(0, 150, 100, 0.4) 0%,
-      rgba(0, 150, 100, 0.15) 25%,
-      transparent 70%
-    );
-    content: "";
-    top: 50%;
-    left: 50%;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    transform: translate3d(-50%, -50%, 0) scale(3);
-  }
-</style>
+<EntryCard
+  title={data.position}
+  organization={data.company}
+  organizationWebsite={data.companyWebsite}
+  logo={data.companyLogo}
+  startMonthYear={data.startMonthYear}
+  endMonthYear={data.endMonthYear}
+  tech={data.tech}
+>
+  <Content />
+</EntryCard>

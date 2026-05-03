@@ -2,7 +2,7 @@
 const { class: className } = Astro.props;
 
 const navLinks = [
-  { href: "#featured", label: "Work" },
+  { href: "#building", label: "Building" },
   { href: "#skills", label: "Skills" },
   { href: "#jobs", label: "Experience" },
   { href: "#projects", label: "Projects" },
@@ -12,7 +12,8 @@ const navLinks = [
 <nav
   id="main-nav"
   class:list={[
-    "md:text-md mr-auto flex gap-2 text-sm font-semibold text-emerald-200 sm:gap-4 sm:text-sm lg:text-lg",
+    `md:text-md text-emphasis lg:text-md relative mr-auto flex items-stretch
+    gap-x-2 font-mono text-sm font-light sm:gap-x-4 sm:text-sm`,
     className,
   ]}
 >
@@ -21,7 +22,8 @@ const navLinks = [
       <a
         href={href}
         data-section={href.slice(1)}
-        class="nav-link tracking-wide transition-colors hover:text-emerald-100"
+        class="nav-link hover:text-emphasis-hover relative flex items-center
+          tracking-wide transition-colors"
       >
         {label}
       </a>
@@ -32,9 +34,7 @@ const navLinks = [
 <style>
   .nav-link {
     position: relative;
-    transition:
-      color 0.2s ease,
-      text-shadow 0.2s ease;
+    transition: color 0.5s ease;
   }
 
   .nav-link::before {
@@ -42,33 +42,35 @@ const navLinks = [
     position: absolute;
     left: 50%;
     top: 100%;
-    transform: translateX(-50%) translateY(50%) scaleY(0%);
+    transform: translateX(-50%) translateY(0%) scaleY(50%);
     width: 40px;
     height: 10px;
     background: radial-gradient(
       circle at top,
-      theme("colors.emerald.300") 0%,
-      theme("colors.emerald.500") 50%,
+      var(--color-highlight-hover) 0%,
+      var(--color-highlight) 50%,
       transparent 100%
     );
     transform-origin: bottom;
     opacity: 0;
     filter: blur(6px);
     transition:
-      transform 0.3s ease,
-      opacity 0.2s ease;
+      transform 3s ease,
+      opacity 3s ease;
   }
 
   .nav-link:hover,
   .nav-link:focus-visible {
-    color: theme("colors.emerald.100");
-    text-shadow: 0 0 8px theme("colors.emerald.500" / 40%);
+    color: var(--color-highlight);
   }
 
   .nav-link:hover::before,
   .nav-link:focus-visible::before {
-    transform: translateX(-50%) translateY(50%) scaleY(80%);
+    transform: translateX(-50%) translateY(-20%) scaleY(80%);
     opacity: 1;
+    transition:
+      transform 0.5s ease,
+      opacity 0.5s ease;
   }
 
   .nav-link.active::before {
@@ -80,30 +82,29 @@ const navLinks = [
     position: absolute;
     left: 50%;
     top: 100%;
-    transform: translateX(-50%) translateY(50%) scaleY(0%);
+    transform: translateX(-50%) translateY(0%) scaleY(50%);
     width: 40px;
     height: 10px;
     background: radial-gradient(
       circle at top,
-      theme("colors.fuchsia.300") 0%,
-      theme("colors.fuchsia.500") 50%,
+      var(--color-accent-hover) 0%,
+      var(--color-accent) 50%,
       transparent 100%
     );
     transform-origin: bottom;
     opacity: 0;
     filter: blur(6px);
     transition:
-      transform 0.3s ease,
-      opacity 0.2s ease;
+      transform 0.5s ease,
+      opacity 0.5s ease;
   }
 
   .nav-link.active {
-    color: theme("colors.fuchsia.400");
-    text-shadow: 0 0 12px theme("colors.fuchsia.500" / 50%);
+    color: var(--color-accent);
   }
 
   .nav-link.active::after {
-    transform: translateX(-50%) translateY(50%) scaleY(80%);
+    transform: translateX(-50%) translateY(-20%) scaleY(80%);
     opacity: 1;
   }
 
@@ -117,7 +118,9 @@ const navLinks = [
 </style>
 
 <script>
-  const navLinks = document.querySelectorAll<HTMLAnchorElement>("#main-nav .nav-link");
+  const navLinks = document.querySelectorAll<HTMLAnchorElement>(
+    "#main-nav .nav-link",
+  );
   const sections = Array.from(navLinks)
     .map((link) => document.getElementById(link.dataset.section!))
     .filter(Boolean) as HTMLElement[];
@@ -140,7 +143,9 @@ const navLinks = [
 
     if (activeSection) {
       navLinks.forEach((l) => l.classList.remove("active"));
-      const link = document.querySelector(`[data-section="${activeSection.id}"]`);
+      const link = document.querySelector(
+        `[data-section="${activeSection.id}"]`,
+      );
       link?.classList.add("active");
     }
   }

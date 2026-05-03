@@ -20,12 +20,22 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
-# screenshots
-screenshots/
-
 # jetbrains setting folder
 .idea/
 
 # AI tooling
 .serena/
-.specstory/
+.cache/
+.specstory
+.claude/*.local.json
+.claude/worktrees/
+.playwright-mcp
+
+
+#Ignore vscode AI rules
+.github/instructions/codacy.instructions.md
+
+/docs/scratch-notes.md
+docs/ux-review/
+lighthouse
+screenshots/

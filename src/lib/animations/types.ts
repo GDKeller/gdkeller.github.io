@@ -17,7 +17,12 @@ export interface ScrollTriggerObject {
   kill: () => void;
 }
 
-export type GSAPTarget = string | Element | Element[] | NodeListOf<Element> | null;
+export type GSAPTarget =
+  | string
+  | Element
+  | Element[]
+  | NodeListOf<Element>
+  | null;
 
 export interface GSAPVars {
   y?: number;
@@ -38,6 +43,7 @@ export interface GSAPTweenVars extends GSAPVars {
   stagger?: number;
   delay?: number;
   scrollTrigger?: ScrollTriggerVars;
+  clearProps?: string;
 }
 
 export interface ScrollTriggerVars {

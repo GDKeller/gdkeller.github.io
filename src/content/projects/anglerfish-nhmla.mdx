@@ -1,0 +1,115 @@
+---
+title: Embedded Software Engineer
+projectName: Anglerfish Specimen Exhibit
+client: Natural History Museum of Los Angeles
+clientLogo:
+  src: /src/images/projects/anglerfish/logo_NHMLA_black.jpg
+  alt: Natural History Museum of Los Angeles Logo
+startMonthYear: Jun 2021
+endMonthYear: Aug 2021
+clientWebsite: "https://nhm.org/anglerfish"
+tech: [C++, Arduino, I2C Sensor Data, Google APIs]
+order: 2
+---
+
+import { Picture } from "astro:assets";
+import specimen from "/src/images/projects/nhmla-anglerfish/specimen.jpg";
+import exhibitFull from "/src/images/projects/nhmla-anglerfish/exhibit-full.jpg";
+import displayTouch from "/src/images/projects/nhmla-anglerfish/display-touch.jpg";
+import displayFront from "/src/images/projects/nhmla-anglerfish/display-front.jpg";
+import displayClose from "/src/images/projects/nhmla-anglerfish/display-close.jpg";
+import displaySide from "/src/images/projects/nhmla-anglerfish/display-side.jpg";
+
+Built a light sensor system for the exhibit of a rare Pacific footballfish specimen.
+
+The tissue is highly sensitive to light. The ichthyology collection staff needed to limit and track light exposure.
+
+**Publications:** <a target="_blank" href="https://www.popsci.com/animals/deep-sea-anglerfish-biofluorescence/">Popular Science</a>, <a target="_blank" href="https://www.smithsonianmag.com/smart-news/unusual-deep-sea-fish-washed-ashore-sandy-california-beach-180977721/">Smithsonian</a>, <a target="_blank" href="https://www.theguardian.com/us-news/2021/may/11/deep-sea-anglerfish-california-beach-finding-nemo">The Guardian</a>, <a target="_blank" href="https://www.newsweek.com/rare-deep-sea-fish-washes-california-beach-1590031">Newsweek</a>, <a target="_blank" href="https://www.cnn.com/2021/05/11/us/anglerfish-football-fish-california-trnd-scn/index.html">CNN</a>, <a target="_blank" href="https://www.latimes.com/california/story/2021-05-10/deep-sea-fish-footballfish-anglerfish-washes-up-newport-beach">LA Times</a>, <a target="_blank" href="https://www.atlasobscura.com/articles/deep-sea-footballfish">Atlas Obscura</a>
+
+<details>
+<summary>More info</summary>
+
+<div class="md:flex-row mt-12 flex-col flex mb-12 relative">
+  <div class="md:w-2/3 pt-8 md:pr-12 pb-8 flex items-start">
+    <ul>
+      <li>Motion sensor for visitor-activated illumination</li>
+      <li>Continuous light exposure monitoring</li>
+      <li>Real-time data logged for analysis</li>
+      <li>LiDAR scanning for 3D model creation</li>
+      <li>3D-printed model embedded in signage</li>
+    </ul>
+  </div>
+  <figure class="md:w-1/3 relative overflow-hidden">
+    <Picture
+      src={specimen}
+      alt="Pacific footballfish specimen preserved in jar"
+      widths={[300, 600, 900]}
+      sizes="(min-width: 768px) 33vw, 100vw"
+      formats={["avif", "webp"]}
+      loading="lazy"
+      class="object-cover h-full"
+    />
+  </figure>
+</div>
+<div class="flex flex-col gap-4 mb-6 sm:grid sm:grid-cols-6 sm:gap-1">
+  <blockquote class="sm:row-start-1 sm:col-start-1 sm:col-span-6 mb-16">
+    "It's one of only about 30 adult female specimens of this species, and having one washed up in this condition is extraordinary."
+    <cite>Dr. William Ludt, <a href="https://nhm.org/anglerfish" target="_blank">NHM Assistant Curator of Ichthyology</a></cite>
+  </blockquote>
+  <div class="sm:row-start-2 sm:col-start-1 sm:col-span-3 overflow-hidden">
+    <Picture
+      src={exhibitFull}
+      alt="Wide view of illuminated anglerfish display case with motion-activated lighting"
+      widths={[400, 800, 1200]}
+      sizes="(min-width: 640px) 50vw, 100vw"
+      formats={["avif", "webp"]}
+      loading="lazy"
+      class="w-full h-full object-cover"
+    />
+  </div>
+  <div class="sm:row-start-2 sm:col-start-4 sm:col-span-3 overflow-hidden">
+    <Picture
+      src={displayTouch}
+      alt="Visitor touching 3D printed tactile model embedded in signage"
+      widths={[400, 800, 1200]}
+      sizes="(min-width: 640px) 50vw, 100vw"
+      formats={["avif", "webp"]}
+      loading="lazy"
+      class="w-full h-full object-cover"
+    />
+  </div>
+  <div class="sm:row-start-3 sm:col-start-1 sm:col-span-2 overflow-hidden">
+    <Picture
+      src={displayFront}
+      alt="Front view showing Arduino sensor system and cabinet controls"
+      widths={[300, 600, 900]}
+      sizes="(min-width: 640px) 33vw, 100vw"
+      formats={["avif", "webp"]}
+      loading="lazy"
+      class="w-full h-full object-cover"
+    />
+  </div>
+  <div class="sm:row-start-3 sm:col-start-3 sm:col-span-2 overflow-hidden">
+    <Picture
+      src={displayClose}
+      alt="Close-up of Pacific footballfish specimen in exhibition case"
+      widths={[300, 600, 900]}
+      sizes="(min-width: 640px) 33vw, 100vw"
+      formats={["avif", "webp"]}
+      loading="lazy"
+      class="w-full h-full object-cover"
+    />
+  </div>
+  <div class="sm:row-start-3 sm:col-start-5 sm:col-span-2 overflow-hidden">
+    <Picture
+      src={displaySide}
+      alt="Side angle showing light sensor monitoring equipment"
+      widths={[300, 600, 900]}
+      sizes="(min-width: 640px) 33vw, 100vw"
+      formats={["avif", "webp"]}
+      loading="lazy"
+      class="w-full h-full object-cover"
+    />
+  </div>
+</div>
+</details>

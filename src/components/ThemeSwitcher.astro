@@ -1,0 +1,105 @@
+---
+// Palette picker overlay — dev tool for swapping color themes in real time.
+//
+// Uses the shared dev-flags convention (see `src/lib/dev-flags.ts`).
+// Gated on the `palette` tool flag in BOTH dev and production — so the same
+// toggle works everywhere and there's no bimodal codepath.
+//
+//   - Append `?tools=palette` to any URL to enable. Persisted in localStorage
+//     under the `dev-tools` key, so the picker stays visible on return visits
+//     from the same browser.
+//   - Append `?tools=off` (or `?tools=`) to clear all dev tools.
+//   - Or toggle directly in devtools:
+//       localStorage.setItem("dev-tools", "palette")
+//
+// The overlay is always rendered into the DOM (hidden via the HTML `hidden`
+// attribute) so the runtime flag can reveal it without an app rebuild.
+---
+
+<div id="theme-switcher" hidden>
+  <select id="theme-select" aria-label="Select color theme">
+    <option value="">Stock</option>
+    <option value="theme-jade">Jade</option>
+    <option value="theme-phosphor">Phosphor</option>
+    <option value="theme-verdigris">Verdigris</option>
+    <option value="theme-inv-verdigris">Inv. Verdigris</option>
+    <option value="theme-custom">Custom (G-4/A+10)</option>
+  </select>
+</div>
+
+<style>
+  #theme-switcher {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 9999;
+  }
+
+  #theme-select {
+    font-family: "Prompt", system-ui, sans-serif;
+    font-size: 0.6875rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-emerald-200);
+    background: oklch(0% 0 0 / 0.85);
+    border: 1px solid
+      color-mix(in oklch, var(--color-emerald-400) 30%, transparent);
+    padding: 0.4rem 0.75rem;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition:
+      border-color 0.2s,
+      background 0.2s;
+    appearance: auto;
+  }
+
+  #theme-select:hover,
+  #theme-select:focus {
+    border-color: color-mix(
+      in oklch,
+      var(--color-emerald-400) 60%,
+      transparent
+    );
+    background: oklch(0% 0 0 / 0.95);
+    outline: none;
+  }
+</style>
+
+<script>
+  import { syncDevFlagsFromUrl, hasTool } from "../lib/dev-flags";
+
+  // Mirror any ?dev= / ?tools= params from the URL into localStorage once per load.
+  syncDevFlagsFromUrl();
+
+  const switcher = document.getElementById(
+    "theme-switcher",
+  ) as HTMLElement | null;
+  const select = document.getElementById(
+    "theme-select",
+  ) as HTMLSelectElement | null;
+  const html = document.documentElement;
+  const themeClasses = [
+    "theme-jade",
+    "theme-phosphor",
+    "theme-verdigris",
+    "theme-inv-verdigris",
+    "theme-custom",
+  ];
+
+  if (switcher && hasTool("palette")) {
+    switcher.hidden = false;
+  }
+
+  if (select) {
+    const activeTheme =
+      themeClasses.find((cls) => html.classList.contains(cls)) ?? "";
+    select.value = activeTheme;
+
+    select.addEventListener("change", () => {
+      html.classList.remove(...themeClasses);
+      if (select.value) {
+        html.classList.add(select.value);
+      }
+    });
+  }
+</script>

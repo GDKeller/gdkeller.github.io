@@ -1,0 +1,66 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+type Align = "left" | "center";
+type Size = "sm" | "md" | "lg";
+type Treatment = "none" | "scanline" | "glow" | "inverted";
+type As = "h2" | "h3" | "p";
+
+interface Props {
+  text: string;
+  as?: As;
+  align?: Align;
+  size?: Size;
+  treatment?: Treatment;
+  id?: HTMLAttributes<"h2">["id"];
+  animate?: boolean;
+  class?: HTMLAttributes<"h2">["class"];
+}
+
+const {
+  text,
+  as: Tag = "h2",
+  align = "center",
+  size = "lg",
+  treatment = "none",
+  id,
+  animate,
+  class: className,
+  ...rest
+} = Astro.props as Props;
+
+const alignClasses: Record<Align, string> = {
+  left: "section-heading__left text-left ml-0 mr-auto",
+  center: "text-center mx-auto",
+};
+
+const sizeClasses: Record<Size, string> = {
+  sm: "text-3xl md:text-4xl",
+  md: "text-4xl sm:text-5xl md:text-6xl",
+  lg: "text-5xl sm:text-7xl md:text-8xl lg:text-8xl xl:text-8xl 2xl:text-9xl",
+};
+
+const treatmentClasses: Record<Treatment, string> = {
+  none: "text-emphasis",
+  scanline: "section-heading__line text-emphasis block",
+  glow: "text-emphasis section-heading__glow",
+  inverted: "section-heading__inverted text-black bg-emphasis py-2 px-4",
+};
+---
+
+<Tag
+  id={id}
+  class:list={[
+    "section-heading",
+    "font-decorative leading-none",
+    alignClasses[align],
+    sizeClasses[size],
+    treatmentClasses[treatment],
+    treatment !== "none" && "section-heading__center",
+    animate && "section-heading__animate",
+    className,
+  ]}
+  {...rest}
+>
+  {text}
+</Tag>

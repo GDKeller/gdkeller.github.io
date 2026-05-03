@@ -1,27 +1,26 @@
 ---
-import { Image } from "astro:assets";
+import { Picture } from "astro:assets";
 import type { ImageMetadata } from "astro";
 
-// Client logos
-import logoAAM from "../images/logos/clients/logo_AAM.webp";
-import logoADDitude from "../images/logos/clients/logo_ADDitude_white.png";
-import logoAlley from "../images/logos/clients/logo_alley_white-transparent.png";
-import logoCoolGreenScience from "../images/logos/clients/logo_CoolGreenScience.svg";
-import logoCPJ from "../images/logos/clients/logo_CPJ.webp";
-import logoDecider from "../images/logos/clients/logo_Decider.webp";
-import logoDunBradstreet from "../images/logos/clients/logo_DunandBradstreet_wordmark.png";
-import logoHealthline from "../images/logos/clients/logo_healthline_white-transparent.png";
-import logoKFF from "../images/logos/clients/logo_KFF-HealthNews.svg";
-import logoLACPH from "../images/logos/clients/logo_LACPH.webp";
-import logoMarinersMuseum from "../images/logos/clients/logo_MarinersMuseum_transparent.webp";
-import logoNASA from "../images/logos/clients/logo_NASA.webp";
-import logoNHMLA from "../images/logos/clients/logo_NHMLA_black.webp";
-import logoNYP from "../images/logos/clients/logo_NYP_horizontal-red.png";
-import logoPageSix from "../images/logos/clients/logo_PageSix_horizontal-white.png";
-import logoRCFP from "../images/logos/clients/logo_RCFP.webp";
-import logoS3Enterprise from "../images/logos/clients/logo_s3enterprise.jpg";
-import logoStudio3 from "../images/logos/clients/logo_studio3.jpg";
-import logoTedx from "../images/logos/clients/logo_tedx.png";
+// Client logos — foundation-tinted variants for visual uniformity
+import logoAAM from "../images/logos/clients/tinted/logo_AAM_tint.webp";
+import logoADDitude from "../images/logos/clients/tinted/logo_ADDitude_tint.webp";
+import logoAlley from "../images/logos/clients/tinted/logo_alley_tint.webp";
+import logoCoolGreenScience from "../images/logos/clients/tinted/logo_CoolGreenScience_tint.webp";
+import logoCPJ from "../images/logos/clients/tinted/logo_CPJ_tint.webp";
+import logoDecider from "../images/logos/clients/tinted/logo_decider_wordmark_tint.webp";
+import logoDunBradstreet from "../images/logos/clients/tinted/logo_DunandBradstreet_wordmark_tint.webp";
+import logoHealthline from "../images/logos/clients/tinted/logo_healthline_tint.webp";
+import logoKFF from "../images/logos/clients/tinted/logo_KFF-HealthNews_tint.webp";
+import logoLADPH from "../images/logos/clients/tinted/logo_LADPH_tint.webp";
+import logoMarinersMuseum from "../images/logos/clients/tinted/logo_MarinersMuseum_tint.webp";
+import logoNASA from "../images/logos/clients/tinted/logo_nasa_wordmark_tint.webp";
+import logoNHMLAC from "../images/logos/clients/tinted/logo_NHMLAC_tint.webp";
+import logoNYP from "../images/logos/clients/tinted/logo_NYP_tint.webp";
+import logoPageSix from "../images/logos/clients/tinted/logo_PageSix_tint.webp";
+import logoRCFP from "../images/logos/clients/tinted/logo_RCFP_tint.webp";
+import logoStudio3 from "../images/logos/clients/tinted/logo_studio3_tint.webp";
+import logoTedx from "../images/logos/clients/tinted/logo_tedx_tint.webp";
 
 interface Logo {
   src: ImageMetadata;
@@ -35,8 +34,8 @@ const logos: Logo[] = [
   { src: logoNASA, alt: "NASA" },
   { src: logoNYP, alt: "New York Post" },
   { src: logoTedx, alt: "TEDx" },
-  { src: logoNHMLA, alt: "Natural History Museum of Los Angeles" },
-  { src: logoLACPH, alt: "LA County Public Health" },
+  { src: logoNHMLAC, alt: "Natural History Museum of Los Angeles County" },
+  { src: logoLADPH, alt: "LA County Department of Public Health" },
   { src: logoPageSix, alt: "Page Six" },
   { src: logoHealthline, alt: "Healthline" },
   { src: logoDunBradstreet, alt: "Dun & Bradstreet" },
@@ -46,34 +45,33 @@ const logos: Logo[] = [
   { src: logoKFF, alt: "KFF Health News" },
   { src: logoMarinersMuseum, alt: "The Mariners' Museum" },
   { src: logoDecider, alt: "Decider" },
-  { src: logoS3Enterprise, alt: "S3 Enterprise" },
   { src: logoCoolGreenScience, alt: "Cool Green Science" },
 ];
 ---
 
 <div
-  class="logo-carousel relative mt-12 overflow-hidden md:mt-16"
+  class="logo-carousel relative h-full overflow-hidden"
   role="region"
   aria-label="Organizations I've worked with"
 >
-  <p
-    id="carousel-heading"
-    class="mb-2 text-center font-bayon text-xs uppercase tracking-widest text-emerald-100"
-  >
-    Trusted by
-  </p>
-
-  <div class="carousel-mask relative overflow-hidden" aria-labelledby="carousel-heading">
-    <div class="carousel-track flex items-center gap-10 md:gap-14">
+  <div class="carousel-mask relative h-full">
+    <div
+      class="carousel-track flex h-full items-center gap-[7vw] 2xl:gap-[5vw]"
+    >
       {/* Primary logos - visible to screen readers */}
       {
         logos.map((logo) => (
-          <div class="carousel-item flex-shrink-0">
-            <Image
+          <div class="carousel-item flex h-full shrink-0 items-center">
+            <Picture
               src={logo.src}
               alt={logo.alt}
-              class="max-h-12 w-auto max-w-[160px] object-contain md:max-h-14 md:max-w-[220px]"
-              loading="eager"
+              widths={[160, 320]}
+              sizes="(min-width: 768px) 220px, 160px"
+              formats={["avif", "webp"]}
+              fallbackFormat="webp"
+              loading="lazy"
+              class="h-full max-h-full w-auto max-w-48 object-contain
+                md:max-w-[12vw] lg:max-w-[12vw] xl:max-w-[15vw]"
             />
           </div>
         ))
@@ -81,12 +79,21 @@ const logos: Logo[] = [
       {/* Duplicated logos for seamless scroll - hidden from screen readers */}
       {
         logos.map((logo) => (
-          <div class="carousel-item--duplicate carousel-item flex-shrink-0" aria-hidden="true">
-            <Image
+          <div
+            class="carousel-item--duplicate carousel-item flex h-full shrink-0
+              items-center lg:max-w-[12vw]"
+            aria-hidden="true"
+          >
+            <Picture
               src={logo.src}
               alt=""
-              class="max-h-12 w-auto max-w-[160px] object-contain md:max-h-14 md:max-w-[220px]"
-              loading="eager"
+              widths={[160, 320]}
+              sizes="(min-width: 768px) 220px, 160px"
+              formats={["avif", "webp"]}
+              fallbackFormat="webp"
+              loading="lazy"
+              class="h-full max-h-full w-auto max-w-48 object-contain
+                xl:max-w-[15vw]"
             />
           </div>
         ))
@@ -97,8 +104,20 @@ const logos: Logo[] = [
 
 <style>
   .carousel-mask {
-    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 10%,
+      black 90%,
+      transparent
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 10%,
+      black 90%,
+      transparent
+    );
   }
 
   .carousel-track {
@@ -117,6 +136,11 @@ const logos: Logo[] = [
 
   /* Reduced motion: show static grid instead of scrolling duplicates */
   @media (prefers-reduced-motion: reduce) {
+    .logo-carousel,
+    .carousel-mask {
+      height: auto;
+    }
+
     .carousel-mask {
       mask-image: none;
       -webkit-mask-image: none;
@@ -129,7 +153,17 @@ const logos: Logo[] = [
       justify-content: center;
       gap: 1.5rem 2rem;
       width: 100%;
+      height: auto;
       padding: 0 1rem;
+    }
+
+    .carousel-item {
+      height: auto;
+    }
+
+    .carousel-item :global(img) {
+      height: auto;
+      max-height: 3.5rem;
     }
 
     /* Hide duplicate logos in reduced motion mode */

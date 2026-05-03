@@ -1,23 +1,25 @@
 ---
 interface Props {
   href: string;
-  target?: '_blank' | '_self' | '_parent' | '_top';
+  target?: "_blank" | "_self" | "_parent" | "_top";
   class?: string;
-  variant?: 'default' | 'subtle';
+  variant?: "default" | "noUnderline" | "subtle" | "hoverAccent";
 }
 
-const { href, target, class: className, variant = 'default' } = Astro.props;
-const relAttr = target === '_blank' ? 'noopener noreferrer' : undefined;
+const { href, target, class: className, variant = "default" } = Astro.props;
+const relAttr = target === "_blank" ? "noopener noreferrer" : undefined;
 
 const variantStyles = {
-  default: 'text-fuchsia-500 underline hover:text-fuchsia-300',
-  subtle: 'text-emerald-200 no-underline hover:text-emerald-100',
+  default: "text-highlight underline hover:text-highlight-hover",
+  noUnderline: "text-highlight hover:text-highlight-hover",
+  subtle: "text-emphasis no-underline hover:text-emphasis-hover",
+  hoverAccent: "text-emphasis no-underline hover:text-accent-hover",
 };
 ---
 
 <a
   class:list={[
-    'inline-block hover:cursor-pointer',
+    "inline-block hover:cursor-pointer",
     variantStyles[variant],
     className,
   ]}

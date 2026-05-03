@@ -7,21 +7,7 @@ companyLogo:
   alt: Davant Systems logo
 startMonthYear: Feb 2023
 endMonthYear: Present
-tech:
-  [
-    Python,
-    Stable Diffusion AI,
-    React,
-    Typescript,
-    Node.js,
-    Fastify,
-    CSS,
-    Tailwind,
-    DaisyUI,
-    Shell scripting,
-    AWS,
-    Cloudflare,
-  ]
+tech: [React, Typescript, Node, Stable Diffusion, Claude Code, Python, AWS]
 ---
 
 Building next-generation software for professional visual creatives powered by Stable Diffusion AI.

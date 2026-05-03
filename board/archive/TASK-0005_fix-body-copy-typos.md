@@ -18,5 +18,6 @@ Three typos to fix:
 3. **FishHero.astro:139** — "the public wa able" → "the public was able"
 
 ## Files
+
 - `src/components/Awards.astro`
 - `src/components/FishHero.astro`

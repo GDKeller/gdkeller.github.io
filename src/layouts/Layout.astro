@@ -1,5 +1,7 @@
 ---
 import "../styles/global.css";
+import { Font } from "astro:assets";
+import ThemeSwitcher from "../components/ThemeSwitcher.astro";
 interface Props {
   title: string;
 }
@@ -19,29 +21,34 @@ const { title } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bayon&family=Bokor&family=Permanent+Marker&family=Prompt:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <Font cssVariable="--font-prompt" preload />
+    <Font cssVariable="--font-ibm_plex_mono" preload />
+    <Font cssVariable="--font-manufacturing_consent" />
   </head>
-  <body class="bg-black text-emerald-200">
+  <body class="bg-background text-foundation">
     <slot />
+    <ThemeSwitcher />
     <script>
       document.addEventListener("click", (e) => {
-        const trigger = (e.target as HTMLElement).closest<HTMLElement>("[data-open-modal]");
+        const trigger = (e.target as HTMLElement).closest<HTMLElement>(
+          "[data-open-modal]",
+        );
         if (!trigger) return;
         const modalId = trigger.dataset.openModal;
         if (modalId) {
-          const modal = document.getElementById(modalId) as HTMLDialogElement | null;
+          const modal = document.getElementById(
+            modalId,
+          ) as HTMLDialogElement | null;
           modal?.showModal();
         }
       });
     </script>
     <script>
       import { initAllAnimations } from "../lib/animations";
-      import type { GSAPInstance, ScrollTriggerInstance } from "../lib/animations";
+      import type {
+        GSAPInstance,
+        ScrollTriggerInstance,
+      } from "../lib/animations";
 
       // Immediate smooth scroll for navigation - no delay
       document.addEventListener("DOMContentLoaded", function () {
@@ -91,6 +98,7 @@ const { title } = Astro.props;
   html {
     font-family: "Prompt", system-ui, sans-serif;
     background: #13151a;
+    overflow-x: clip;
   }
   code {
     font-family:

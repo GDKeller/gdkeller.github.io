@@ -1,15 +1,25 @@
 ---
 import { getCollection } from "astro:content";
 import ProjectSingle from "./ProjectSingle.astro";
+import HeadingSection from "./HeadingSection.astro";
 
 const projects = await getCollection("projects");
+const sortedProjects = projects.sort(
+  (a, b) => (a.data.order ?? 0) - (b.data.order ?? 0),
+);
 ---
 
-<h2 class="section-heading relative mb-16 text-left font-bokor text-5xl md:text-6xl">Projects</h2>
+<HeadingSection
+  text="Projects"
+  as="h2"
+  align="left"
+  animate={true}
+  class="mb-16 lg:mb-24 xl:mb-28 2xl:mb-32"
+/>
 <ul>
   {
-    projects.map((project) => (
-      <li class="mb-4">
+    sortedProjects.map((project) => (
+      <li class="mb-4 w-full">
         <ProjectSingle {project} />
       </li>
     ))

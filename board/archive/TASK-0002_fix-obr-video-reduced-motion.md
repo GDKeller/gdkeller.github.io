@@ -16,4 +16,5 @@ The `<script>` at the bottom of `OfflineBgRemover.astro` targeted `.video-frame 
 Fixed by adding `data-obr-video` attribute to the `<video>` element and selecting with `document.querySelector("video[data-obr-video]")`. Scoped and stable.
 
 ## Files
+
 - `src/components/OfflineBgRemover.astro`

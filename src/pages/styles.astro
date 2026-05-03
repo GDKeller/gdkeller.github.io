@@ -1,0 +1,334 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+// Pulled directly from src/styles/global.css. Keep in sync when adding tokens.
+const colorTokens = [
+  { name: "background", group: "structural" },
+  { name: "background-dark", group: "structural" },
+  // Non-interactive singles first so base+hover pairs land on even-column starts.
+  { name: "foundation", group: "attention" },
+  { name: "subtle", group: "attention" },
+  { name: "faint", group: "attention" },
+  { name: "fainter", group: "attention" },
+  { name: "emphasis", group: "attention" },
+  { name: "emphasis-hover", group: "attention" },
+  { name: "accent", group: "attention" },
+  { name: "accent-hover", group: "attention" },
+  { name: "highlight", group: "attention" },
+  { name: "highlight-hover", group: "attention" },
+  { name: "secondary-light", group: "secondary" },
+  { name: "secondary-emphasis", group: "secondary" },
+  { name: "secondary-dark", group: "secondary" },
+  { name: "tertiary-highlight", group: "tertiary" },
+  { name: "tertiary-highlight-hover", group: "tertiary" },
+];
+
+const fontTokens = [
+  { name: "display", label: "Prompt", role: "Display" },
+  {
+    name: "decorative",
+    label: "Manufacturing Consent",
+    role: "Decorative",
+  },
+  { name: "body", label: "Body", role: "Body" },
+  { name: "mono", label: "IBM Plex Mono", role: "Monospace" },
+];
+
+const spacingTokens = ["18", "28", "36", "40"];
+
+// Mirrors the `@source inline("text-{...}")` list in global.css. `custom: true`
+// marks sizes that exist only because of local --text-* overrides; everything
+// else is Tailwind v4's built-in scale.
+const textSizes = [
+  { name: "2xs", custom: true },
+  { name: "xs" },
+  { name: "sm" },
+  { name: "base" },
+  { name: "lg" },
+  { name: "xl" },
+  { name: "2xl" },
+  { name: "3xl" },
+  { name: "4xl" },
+  { name: "5xl" },
+  { name: "6xl" },
+  { name: "7xl" },
+  { name: "8xl" },
+  { name: "9xl" },
+];
+
+const groupLabels: Record<string, string> = {
+  attention: "Attention hierarchy",
+  structural: "Structural",
+  secondary: "Secondary family",
+  tertiary: "Tertiary family",
+};
+
+const groupedColors = Object.keys(groupLabels).map((group) => ({
+  group,
+  label: groupLabels[group],
+  tokens: colorTokens.filter((t) => t.group === group),
+}));
+---
+
+<Layout title="Style Reference — Grant Keller">
+  <main
+    class="bg-background-dark text-foundation min-h-screen px-6 pt-16 pb-32
+      md:px-12 lg:px-20"
+  >
+    <header
+      class="border-faint mx-auto mb-16 flex max-w-6xl items-end border-b pb-6"
+    >
+      <div class="mr-auto">
+        <p class="text-faint text-2xs font-mono tracking-widest uppercase">
+          Style Reference ::: Design Tokens
+        </p>
+        <h1
+          class="font-display text-foundation mt-4 text-6xl leading-none
+            tracking-tight md:text-7xl"
+        >
+          Style Reference
+        </h1>
+      </div>
+      <a
+        href="/"
+        class="text-accent border-accent hover:bg-accent border-y px-4 py-2
+          font-mono text-xs tracking-widest uppercase transition-colors
+          hover:text-black"
+      >
+        &larr; Return to Dossier
+      </a>
+    </header>
+
+    <div class="mx-auto max-w-6xl space-y-24">
+      <!-- COLORS -->
+      <section aria-labelledby="colors-heading">
+        <div class="mb-8 flex items-baseline gap-4">
+          <h2
+            id="colors-heading"
+            class="font-display text-emphasis text-4xl leading-none
+              tracking-tight md:text-4xl"
+          >
+            Color
+          </h2>
+          <span class="text-faint font-mono text-xs tracking-widest uppercase">
+            {colorTokens.length} tokens
+          </span>
+        </div>
+
+        {
+          groupedColors.map((g) => (
+            <div class="mb-12">
+              <h3
+                class="text-emphasis mb-4 font-mono text-xs tracking-widest
+                  uppercase"
+              >
+                {g.label}
+              </h3>
+              <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4">
+                {g.tokens.map((t) => (
+                  <div class="group relative flex items-stretch">
+                    <div
+                      class="h-20 w-20 shrink-0"
+                      style={`background-color: var(--color-${t.name});`}
+                    />
+                    <div class="flex flex-col justify-center px-4 py-3">
+                      <code
+                        class="text-foundation font-mono text-sm leading-tight"
+                      >
+                        --color-{t.name}
+                      </code>
+                      <code
+                        class="text-foundation text-2xs mt-1 font-mono
+                          leading-tight"
+                        data-color-value={t.name}
+                      >
+                        …
+                      </code>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))
+        }
+      </section>
+
+      <!-- FONTS -->
+      <section aria-labelledby="fonts-heading">
+        <div class="mb-8 flex items-baseline gap-4">
+          <h2
+            id="fonts-heading"
+            class="font-display text-emphasis text-4xl leading-none
+              tracking-tight md:text-4xl"
+          >
+            Typography
+          </h2>
+          <span class="text-faint text-2xs font-mono tracking-widest uppercase">
+            {fontTokens.length} families
+          </span>
+        </div>
+
+        <div class="space-y-6">
+          {
+            fontTokens.map((f) => (
+              <div class="border-emphasis/20 border-b pb-6">
+                <div class="mb-3 flex items-baseline gap-4">
+                  <code class="text-foundation font-mono text-sm">
+                    --font-{f.name}
+                  </code>
+                  <span
+                    class="text-emphasis text-2xs font-mono tracking-widest
+                      uppercase"
+                  >
+                    {f.label} / {f.role}
+                  </span>
+                </div>
+                <p
+                  class="text-foundation text-5xl leading-tight md:text-6xl"
+                  style={`font-family: var(--font-${f.name});`}
+                >
+                  The quick brown fox jumps over the lazy dog.
+                </p>
+                <p
+                  class="text-faint mt-2 text-2xl"
+                  style={`font-family: var(--font-${f.name});`}
+                >
+                  ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz
+                  0123456789 ᠅
+                </p>
+              </div>
+            ))
+          }
+        </div>
+      </section>
+
+      <!-- TYPE SCALE -->
+      <section aria-labelledby="scale-heading">
+        <div class="mb-8 flex items-baseline gap-4">
+          <h2
+            id="scale-heading"
+            class="font-display text-emphasis text-4xl leading-none
+              tracking-tight md:text-4xl"
+          >
+            Type Scale
+          </h2>
+          <span class="text-faint font-mono text-xs tracking-widest uppercase">
+            {textSizes.length} sizes
+          </span>
+        </div>
+
+        <div class="space-y-4">
+          {
+            textSizes.map((t) => (
+              <div class="border-faint flex items-baseline gap-6 border-b pb-4">
+                <div class="w-40 shrink-0">
+                  <code class="text-foundation font-mono text-sm leading-tight">
+                    text-{t.name}
+                  </code>
+                  {t.custom && (
+                    <span
+                      class="text-highlight text-2xs ml-2 font-mono
+                        tracking-widest uppercase"
+                    >
+                      custom
+                    </span>
+                  )}
+                  <code
+                    class="text-faint mt-1 block font-mono text-xs
+                      leading-tight"
+                    data-text-value={t.name}
+                  >
+                    …
+                  </code>
+                </div>
+                <div
+                  class="text-foundation font-display leading-none"
+                  style={`font-size: var(--text-${t.name});`}
+                >
+                  Aa
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </section>
+
+      <!-- SPACING -->
+      <section aria-labelledby="spacing-heading">
+        <div class="mb-8 flex items-baseline gap-4">
+          <h2
+            id="spacing-heading"
+            class="font-display text-emphasis text-4xl leading-none
+              tracking-tight md:text-4xl"
+          >
+            Spacing Extensions
+          </h2>
+        </div>
+
+        <div class="space-y-4">
+          {
+            spacingTokens.map((name) => (
+              <div class="flex items-center gap-6">
+                <code class="text-foundation w-32 shrink-0 font-mono text-base">
+                  spacing-{name}
+                </code>
+                <code
+                  class="text-emphasis w-16 shrink-0 font-mono text-sm"
+                  data-spacing-value={name}
+                >
+                  …
+                </code>
+                <div
+                  class="bg-accent h-6"
+                  style={`width: var(--spacing-${name});`}
+                  aria-hidden="true"
+                />
+              </div>
+            ))
+          }
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    // Resolve computed values for each token so cards show the actual defined value.
+    const rootStyle = getComputedStyle(document.documentElement);
+    const rootFontPx = parseFloat(rootStyle.fontSize) || 16;
+    const resolve = (prefix: string, token: string) =>
+      rootStyle.getPropertyValue(`${prefix}${token}`).trim() || "(unset)";
+
+    // Convert a CSS length string (rem/em/px) to a px value when possible.
+    const toPx = (value: string) => {
+      const match = value.match(/^(-?\d*\.?\d+)(rem|em|px)$/);
+      if (!match) return null;
+      const n = parseFloat(match[1]);
+      const unit = match[2];
+      if (unit === "px") return n;
+      if (unit === "rem" || unit === "em") return n * rootFontPx;
+      return null;
+    };
+
+    for (const node of document.querySelectorAll<HTMLElement>(
+      "[data-color-value]",
+    )) {
+      const token = node.dataset.colorValue;
+      if (token) node.textContent = resolve("--color-", token);
+    }
+    for (const node of document.querySelectorAll<HTMLElement>(
+      "[data-text-value]",
+    )) {
+      const token = node.dataset.textValue;
+      if (!token) continue;
+      const raw = resolve("--text-", token);
+      const px = toPx(raw);
+      node.textContent = px !== null ? `${raw} · ${px}px` : raw;
+    }
+    for (const node of document.querySelectorAll<HTMLElement>(
+      "[data-spacing-value]",
+    )) {
+      const token = node.dataset.spacingValue;
+      if (token) node.textContent = resolve("--spacing-", token);
+    }
+  </script>
+</Layout>

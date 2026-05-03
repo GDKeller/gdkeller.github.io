@@ -1,6 +1,7 @@
 ---
 type: task
-status: wontfix
+status: done
+resolution: wontfix
 priority: 3
 created: 2026-03-27
 ---
@@ -16,4 +17,5 @@ created: 2026-03-27
 Add a subtle horizontal emerald scanline gradient matching the `.section-heading` pseudo-elements already used throughout the site. A single blurred emerald line using the existing gradient vocabulary (`from-emerald-400/20 via-teal-500/15 to-transparent` with `filter: blur(20px)`) would create visual punctuation without introducing new design elements.
 
 ## Files
+
 - `src/components/SectionDivider.astro`

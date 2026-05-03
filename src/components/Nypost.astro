@@ -1,86 +1,112 @@
 ---
-import Image from "astro/components/Image.astro";
+import { Picture } from "astro:assets";
 import NypSpread from "../images/projects/site-spread.webp";
-import NypostLogo from "../images/nypost-logo.svg?raw";
-import statueOfLiberty from "../images/statue-of-liberty.jpg";
+import NypostLogo from "../images/logos/clients/original/nypost-logo.svg?raw";
 import Link from "./Link.astro";
 ---
 
 <div
-  class="container relative z-0 mx-auto mb-24 flex max-w-full flex-col items-start justify-center overflow-x-hidden py-24 lg:flex-row"
+  class="relative z-0 container mx-auto mb-24 flex max-w-full flex-col
+    items-start justify-center overflow-x-hidden py-24 font-light lg:flex-row"
 >
-  <span
-    class="absolute left-0 top-0 z-10 h-1/4 w-full bg-gradient-to-b from-black to-transparent opacity-100"
-  ></span>
-  <span
-    class="absolute bottom-0 left-0 z-10 h-1/4 w-full bg-gradient-to-t from-black to-transparent opacity-90"
-  ></span>
-  <span class="color__nyp-red--dark absolute left-0 top-0 z-0 h-full w-full"></span>
-  <div class="lg:max-w-1/2 relative z-20 -mb-24 w-full px-12 md:-mb-36 lg:mb-auto">
+  <div class="relative z-10 w-full px-12 lg:max-w-1/2">
     <h3 class="sr-only">New York Post</h3>
-    <div class="mb-8 flex flex-col items-center sm:flex-row">
-      <div class="max-w-1/2 mx-auto sm:ml-auto">
-        <div class="stat mx-auto w-auto font-bold text-white">
-          <div
-            class="color__nyp-red--text m-0 flex items-end font-bokor text-8xl sm:text-8xl md:text-7xl lg:text-7xl xl:text-9xl"
-          >
-            391 <span class="mb-4 ml-2 text-xl lg:text-3xl xl:text-5xl">million</span>
-          </div>
-          <div
-            class="stat-title -mt-4 ml-2 font-bayon text-2xl text-white md:text-3xl lg:text-xl xl:text-4xl"
-          >
-            monthly pageviews
-          </div>
-        </div>
-      </div>
-      <div class="max-w-1/2 mx-auto sm:mr-auto">
-        <div class="color__nyp-red--text stat mx-auto w-auto bg-opacity-0 font-bold text-white">
-          <span
-            class="color__nyp-red--text m-0 flex items-end font-bokor text-8xl sm:text-8xl md:text-7xl lg:text-7xl xl:text-9xl"
-            >65 <span class="mb-4 ml-2 text-xl lg:text-3xl xl:text-5xl">million</span></span
-          >
-          <div
-            class="stat-title -mt-4 ml-2 font-bayon text-2xl text-white md:text-3xl lg:text-xl xl:text-4xl"
-          >
-            unique visitors
-          </div>
-        </div>
-      </div>
+    <div class="relative mb-4 max-w-92">
+      <Fragment set:html={NypostLogo} />
     </div>
-    <div class="browser relative lg:top-0 lg:scale-110">
-      <div class="nyp">
-        <Image src={NypSpread} alt="New York Post" class="h-full w-full object-cover" />
+    <div class="relative isolate lg:h-[calc(60vw*896/1026)]">
+      <div
+        class="nyp browser absolute top-0 right-0 isolate -z-1 w-[40vw]
+          translate-x-4 overflow-visible"
+      >
+        <Picture
+          src={NypSpread}
+          alt="New York Post"
+          widths={[400, 800, 1200]}
+          sizes="(min-width: 1024px) 40vw, 90vw"
+          formats={["avif", "webp"]}
+          fallbackFormat="jpg"
+          loading="lazy"
+          class="h-full w-full object-cover"
+        />
       </div>
     </div>
   </div>
-  <div class="content-box z-10 flex w-full justify-start">
+  <div class="content-box relative z-20 flex w-full justify-start">
     <div class="flex">
       <div class="">
-        <div class="col color__nyp-red w-full flex-col items-center rounded-tl-md py-8 lg:py-4">
-          <div class="relative mx-auto w-full max-w-72 px-8">
-            <Fragment set:html={NypostLogo} />
+        <div
+          class="text-emphasis mb-8 flex flex-col items-center gap-16
+            sm:flex-row"
+        >
+          <div class="">
+            <div
+              class="font-decorative mb-4 flex items-end text-8xl
+                leading-[0.6em] -tracking-wider sm:text-8xl md:text-7xl
+                lg:text-7xl xl:text-9xl"
+            >
+              <span class="-ml-[0.1em]">3</span>
+              <span class="-tracking-[0.125em]">9</span><span
+                class="-tracking-[0.125em]">1</span
+              ><span class="sr-only">&nbsp;</span>
+              <span
+                class="ml-2 text-xl leading-[0.55em] tracking-normal lg:text-3xl
+                  xl:text-5xl"
+                >million</span
+              >
+            </div>
+            <div
+              class="text-foundation text-2xl leading-none font-medium
+                tracking-wide md:text-3xl lg:text-xl xl:text-3xl"
+            >
+              monthly pageviews
+            </div>
+          </div>
+          <div class="">
+            <div
+              class="font-decorative mb-4 flex items-end text-8xl
+                leading-[0.6em] -tracking-wider sm:text-8xl md:text-7xl
+                lg:text-7xl xl:text-9xl"
+            >
+              <span class="-ml-[0.1em]">65</span><span class="sr-only"
+                >&nbsp;</span
+              >
+              <span
+                class="ml-2 text-xl leading-[0.55em] tracking-normal lg:text-3xl
+                  xl:text-5xl"
+                >million</span
+              >
+            </div>
+            <div
+              class="text-foundation text-2xl leading-none font-medium
+                tracking-wide md:text-3xl lg:text-xl xl:text-3xl"
+            >
+              unique visitors
+            </div>
           </div>
         </div>
-        <div class="w-full bg-black bg-opacity-100 p-8 pt-6">
-          <div class="mb-8 block w-full font-bold text-white">
-            <p class="mb-4 text-lg">
-              Senior User Experience Developer @ <Link
+        <div class="bg-background/80 pr-8">
+          <div class="mb-8 block w-full">
+            <p class="mb-4 text-lg font-bold">
+              Senior User Experience Developer ᠅ <Link
                 href="https://alley.com/"
-                class="color__nyp-red--text"
-                target="_blank">Alley Interactive</Link
+                target="_blank"
+                variant="subtle">Alley Interactive</Link
               >
             </p>
-            <p class="text-md mb-8 font-bold">
-              Primary development team for all NYP digital properties, working directly with
-              editorial stakeholders.
+            <p class="text-md mb-8">
+              Primary development team for all NYP digital properties, working
+              directly with editorial stakeholders.
             </p>
             <p class="mb-4 text-sm">
-              Delivered UX improvements at massive scale on a custom enterprise stack hosted on <span
-                class="color__nyp-red--text inline-block break-keep">WordPress VIP</span
-              >. Built custom Gutenberg blocks, crafted responsive SCSS component styles, and
-              maintained the unified theme system serving NYP, Page Six, and Decider.
+              Delivered UX improvements at massive scale on a custom enterprise
+              stack hosted on <span class="inline-block break-keep"
+                >WordPress VIP</span
+              >. Built custom Gutenberg blocks, crafted responsive SCSS
+              component styles, and maintained the unified theme system serving
+              NYP, Page Six, and Decider.
             </p>
-            <ul class="list list-inside list-disc text-white">
+            <ul class="list-custom">
               <li>Component styling & responsive layouts</li>
               <li>Editorial workflow improvements</li>
               <li>Performance optimization</li>
@@ -88,10 +114,15 @@ import Link from "./Link.astro";
             </ul>
           </div>
           <span class="divider"></span>
-          <div class="flex flex-col flex-wrap text-white sm:flex-row sm:items-center">
-            <p class="text-md sm:text-md font-bold sm:mr-4">Technologies:</p>
+          <div
+            class="text-100 flex flex-col flex-wrap sm:flex-row sm:items-center"
+          >
+            <p class="text-md sm:text-md text-emphasis font-bold sm:mr-4">
+              Technologies:
+            </p>
             <ul
-              class="list sm:text-md flex flex-row gap-2 text-sm italic sm:flex-row sm:flex-wrap sm:gap-4"
+              class="list sm:text-md flex flex-row gap-2 text-sm font-light
+                sm:flex-row sm:flex-wrap sm:gap-4"
             >
               <li>WordPress</li>
               <li>React</li>
@@ -102,24 +133,11 @@ import Link from "./Link.astro";
           </div>
         </div>
       </div>
-
-      <div class="max-w-1/4 image__statueofliberty hidden w-full sm:block">
-        <Image src={statueOfLiberty} alt="Statue of Liberty" class="h-full w-full object-cover" />
-      </div>
     </div>
 
     <style>
       .browser {
         filter: drop-shadow(0.1rem 0.1rem 0.3rem rgba(0, 0, 0, 1));
-      }
-      .color__nyp-red {
-        background-color: #c60800;
-      }
-      .color__nyp-red--text {
-        color: #c60800;
-      }
-      .color__nyp-red--dark {
-        background-color: #1e0b09;
       }
       .content-box {
         box-shadow: 0 0 1.2rem -0.4rem rgba(255, 0, 0, 0.1);
