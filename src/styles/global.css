@@ -308,65 +308,6 @@ strong {
   top: 0.125em;
 }
 
-.section-heading {
-  position: relative;
-  width: min-content;
-  white-space: pre;
-}
-
-.section-heading__left {
-  margin-left: -0.1em;
-}
-
-.section-heading__center {
-  position: relative;
-  display: block;
-}
-
-.section-heading__glow {
-  text-shadow: var(--color-accent) 0px 0px 8px;
-}
-
-.section-heading__line {
-  width: min-content;
-  line-height: 0.65;
-  white-space: pre;
-
-  &::before {
-    content: "";
-    position: absolute;
-    right: calc(100% + 1rem);
-    top: 50%;
-    width: 100%;
-    height: 1px;
-    background-color: var(--color-accent);
-    transform: translate3d(0, 0.05em, 0);
-    opacity: 100%;
-  }
-  &::after {
-    content: "";
-    position: absolute;
-    left: 100%;
-    margin-left: 1rem;
-    top: 50%;
-    width: 100vw;
-    height: 1px;
-    transform: translate3d(0, 0.05em, 0);
-    background-color: var(--color-accent);
-    opacity: 100%;
-  }
-
-  &.section-heading__center {
-    &:before {
-      width: 100vw;
-    }
-  }
-}
-
-.section-heading__inverted {
-  margin-left: 0;
-}
-
 /* Astro's <Picture> wraps the <img> in a <picture> for multi-format <source>
    negotiation. <picture> defaults to `display: inline`, which eats the
    layout slot the <img> is expected to fill (h-full / object-cover against a

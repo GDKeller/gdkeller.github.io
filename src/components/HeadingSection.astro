@@ -3,7 +3,8 @@ import type { HTMLAttributes } from "astro/types";
 
 type Align = "left" | "center";
 type Size = "sm" | "md" | "lg";
-type Treatment = "none" | "scanline" | "glow" | "inverted";
+type Treatment = "none" | "line" | "glow" | "inverted" | "bordered";
+type LineColor = "accent" | "emphasis";
 type As = "h2" | "h3" | "p";
 
 interface Props {
@@ -11,7 +12,11 @@ interface Props {
   as?: As;
   align?: Align;
   size?: Size;
-  treatment?: Treatment;
+  /* Single treatment or an array to compose multiple (e.g. ["line", "inverted"]). */
+  treatment?: Treatment | Treatment[];
+  /* Modifiers for the `line` treatment. Ignored when line isn't present. */
+  lineColor?: LineColor;
+  lineFlush?: boolean;
   id?: HTMLAttributes<"h2">["id"];
   animate?: boolean;
   class?: HTMLAttributes<"h2">["class"];
@@ -23,6 +28,8 @@ const {
   align = "center",
   size = "lg",
   treatment = "none",
+  lineColor = "accent",
+  lineFlush = false,
   id,
   animate,
   class: className,
@@ -30,7 +37,7 @@ const {
 } = Astro.props as Props;
 
 const alignClasses: Record<Align, string> = {
-  left: "section-heading__left text-left ml-0 mr-auto",
+  left: "text-left mr-auto",
   center: "text-center mx-auto",
 };
 
@@ -40,23 +47,35 @@ const sizeClasses: Record<Size, string> = {
   lg: "text-5xl sm:text-7xl md:text-8xl lg:text-8xl xl:text-8xl 2xl:text-9xl",
 };
 
+const lineClass = [
+  "section-heading__line",
+  lineColor === "emphasis" && "section-heading__line--emphasis",
+  lineFlush && "section-heading__line--flush",
+]
+  .filter(Boolean)
+  .join(" ");
+
 const treatmentClasses: Record<Treatment, string> = {
-  none: "text-emphasis",
-  scanline: "section-heading__line text-emphasis block",
-  glow: "text-emphasis section-heading__glow",
-  inverted: "section-heading__inverted text-black bg-emphasis py-2 px-4",
+  none: "",
+  line: lineClass,
+  glow: "section-heading__glow",
+  inverted: "section-heading__inverted bg-emphasis py-2 px-4",
+  bordered: "border border-emphasis py-2 px-4",
 };
+
+const treatmentList: Treatment[] = Array.isArray(treatment)
+  ? treatment
+  : [treatment];
 ---
 
 <Tag
   id={id}
   class:list={[
     "section-heading",
-    "font-decorative leading-none",
+    "font-decorative leading-none text-emphasis",
     alignClasses[align],
     sizeClasses[size],
-    treatmentClasses[treatment],
-    treatment !== "none" && "section-heading__center",
+    treatmentList.map((t) => treatmentClasses[t]),
     animate && "section-heading__animate",
     className,
   ]}
@@ -64,3 +83,61 @@ const treatmentClasses: Record<Treatment, string> = {
 >
   {text}
 </Tag>
+
+<style>
+  .section-heading {
+    width: min-content;
+    white-space: pre;
+  }
+
+  .section-heading__glow {
+    text-shadow: var(--color-accent) 0px 0px 8px;
+  }
+
+  /* Line treatment: a horizontal rule passes through the heading and extends
+     past the viewport on both sides. Self-contained, so the positioning
+     context lives here and the treatment composes with any alignment.
+     `top` is tuned to land near the optical center of font-decorative under
+     the base `leading-none`. Avoid changing line-height here — that would
+     alter the line-box and the inverted treatment's bg height with it. */
+  .section-heading__line {
+    position: relative;
+    display: block;
+  }
+  .section-heading__line::before,
+  .section-heading__line::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 100vw;
+    height: 1px;
+    background-color: var(--color-accent);
+  }
+  .section-heading__line::before {
+    right: calc(100% + 1rem);
+  }
+  .section-heading__line::after {
+    left: calc(100% + 1rem);
+  }
+
+  /* Line modifier: emphasis-colored rule instead of accent. */
+  .section-heading__line--emphasis::before,
+  .section-heading__line--emphasis::after {
+    background-color: var(--color-emphasis);
+  }
+
+  /* Line modifier: rule butts directly against the heading edge with no gap.
+     Useful with the inverted treatment so the rule meets the bg flush. */
+  .section-heading__line--flush::before {
+    right: 100%;
+  }
+  .section-heading__line--flush::after {
+    left: 100%;
+  }
+
+  /* Scoped attribute selector outranks the base text-emphasis utility, so
+     inverted's text color wins reliably when composed with other treatments. */
+  .section-heading__inverted {
+    color: black;
+  }
+</style>
