@@ -11,6 +11,15 @@ const { title } = Astro.props;
 <!doctype html>
 <html lang="en">
   <head>
+    <script is:inline>
+      try {
+        if (localStorage.getItem("portfolio:simple-mode") === "on") {
+          document.documentElement.dataset.simpleMode = "on";
+        }
+      } catch {
+        /* localStorage unavailable (Safari private mode); ignore */
+      }
+    </script>
     <meta charset="UTF-8" />
     <meta
       name="description"
