@@ -36,6 +36,8 @@ pnpm-debug.log*
 .github/instructions/codacy.instructions.md
 
 /docs/scratch-notes.md
+/docs/colors-scratch.md
+/docs/jade-theme.css
 docs/ux-review/
 lighthouse
 screenshots/
