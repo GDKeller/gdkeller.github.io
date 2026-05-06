@@ -18,7 +18,7 @@ import IconSunglasses from "./icons/IconSunglasses.astro";
   type="button"
   data-simple-mode-toggle
   aria-pressed="false"
-  aria-label="Simple mode: simplify typography and hide visual effects"
+  aria-label="Toggle visual effects"
   class="simple-mode-toggle text-emphasis hover:text-accent-hover
     hover:border-accent-hover border-faint bg-background-dark flex shrink-0
     items-center justify-center border p-2.5 font-mono transition-all
@@ -26,7 +26,7 @@ import IconSunglasses from "./icons/IconSunglasses.astro";
 >
   <IconEyeglasses class="icon-eyeglasses h-7 w-7" />
   <IconSunglasses class="icon-sunglasses h-7 w-7" />
-  <span class="sr-only">Simple mode</span>
+  <span class="sr-only">Toggle effects</span>
 </button>
 <span
   class="simple-mode-toggle__tooltip"
@@ -35,8 +35,8 @@ import IconSunglasses from "./icons/IconSunglasses.astro";
   role="tooltip"
   aria-hidden="true"
 >
-  <span data-when="off">Enable simple mode</span>
-  <span data-when="on">Disable simple mode</span>
+  <span data-when="off">Disable Effects</span>
+  <span data-when="on">Enable Effects</span>
 </span>
 
 <style>
