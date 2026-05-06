@@ -21,7 +21,7 @@ A few non-obvious anchors:
 - `src/styles/global.css` — Tailwind v4 `@theme` blocks; this is where theme/tokens live (no `tailwind.config.*` exists)
 - `src/lib/animations/` — GSAP modules (hero, content, skills, anglerfish, nypost)
 - `src/lib/dev-flags.ts` — build-time feature flags
-- `src/pages/` — multi-page: `index.astro`, `playground.astro`, `styles.astro`, `nhmla-anglerfish.astro`
+- `src/pages/` — multi-page: `index.astro`, `styles.astro`, `nhmla-anglerfish.astro`
 - `src/layouts/Layout.astro` — root document shell used by every page
 
 ## Content Collections
@@ -137,7 +137,7 @@ Each content type has specific required fields (see `src/content.config.ts` for 
 
 ## AI Assistant Notes
 
-- Multi-page: index is the main scrollable page, but `/playground`, `/styles`, and `/nhmla-anglerfish` are real routes — don't assume SPA.
+- Multi-page: index is the main scrollable page, but `/styles` and `/nhmla-anglerfish` are real routes — don't assume SPA.
 - Content is managed through Astro's content collections for type safety
 - Performance is a current concern - always consider bundle size impact
 - The design aesthetic is creative/cyberpunk - maintain visual consistency
