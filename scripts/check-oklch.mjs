@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Validate --color-* tokens in src/styles/global.css.
+ * Validate --color-* tokens in src/styles/theme.css.
  * Flags unparseable values and those outside the sRGB / Display P3 gamut
  * (browsers silently clamp out-of-gamut values, hiding typos like chroma 1.9).
  *
@@ -40,7 +40,7 @@ if (!["srgb", "p3"].includes(target)) {
 }
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const cssPath = resolve(__dirname, "../src/styles/global.css");
+const cssPath = resolve(__dirname, "../src/styles/theme.css");
 const original = readFileSync(cssPath, "utf8");
 
 const TOKEN_RE = /(--color-([\w-]+):\s*)(oklch\([^)]+\))/g;

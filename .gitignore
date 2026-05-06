@@ -30,12 +30,18 @@ pnpm-debug.log*
 .claude/*.local.json
 .claude/worktrees/
 .playwright-mcp
+.tmp-screenshots/
 
 
 #Ignore vscode AI rules
 .github/instructions/codacy.instructions.md
 
 /docs/scratch-notes.md
+/docs/colors-scratch.md
+/docs/jade-theme.css
+/docs/scratch-colors.md
+/docs/colors-scratch.md
+/docs/jade-theme.css
 docs/ux-review/
 lighthouse
 screenshots/

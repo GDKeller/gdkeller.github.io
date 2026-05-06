@@ -1,0 +1,86 @@
+strong {
+  font-weight: 700;
+}
+
+/** Astro's <Picture> wraps the <img> in a <picture> for multi-format <source>
+ *  negotiation. <picture> defaults to `display: inline`, which eats the
+ *  layout slot the <img> is expected to fill (h-full / object-cover against a
+ *  sized parent). `display: contents` flattens the <picture> in layout so the
+ *  <img> inherits the parent slot directly.
+ */
+picture {
+  display: contents;
+}
+
+/** On-device product video background intended to be "transparent" */
+.laptop-rounded-top {
+  border-radius: 3.75% 3.75% 0 0;
+}
+
+/** Theme decoration
+ *  triplecolon (:::) used as decorator
+ */
+.triplecolon {
+  letter-spacing: -0.3em;
+}
+
+/** Custom bullet pattern (▹) for unordered lists. Used by EntryCard and Nypost. */
+.list-custom-wrapper ul > li,
+.list-custom li {
+  position: relative;
+  list-style-type: none;
+  padding-left: 1.25rem;
+
+  @variant md {
+    padding-left: 1.5rem;
+  }
+}
+.list-custom-wrapper ul li::before,
+.list-custom li::before {
+  content: "▹";
+  color: var(--color-accent);
+  position: absolute;
+  left: 0;
+  top: 0.125em;
+}
+
+/* Hazard Stripes pattern */
+.hazard-stripe {
+  background: repeating-linear-gradient(
+    45deg,
+    transparent 0px,
+    transparent 0.5rem,
+    var(--color-emphasis) 0.5rem,
+    var(--color-emphasis) 1rem
+  );
+}
+
+.hazard-stripe__faint {
+  background: repeating-linear-gradient(
+    45deg,
+    transparent 0px,
+    transparent 0.5rem,
+    var(--color-faint) 0.5rem,
+    var(--color-faint) 1rem
+  );
+}
+
+.hazard-stripe--reverse {
+  background: repeating-linear-gradient(
+    135deg,
+    transparent 0px,
+    transparent 0.5rem,
+    var(--color-emphasis) 0.5rem,
+    var(--color-emphasis) 1rem
+  );
+}
+
+.hazard-stripe--reverse__faint {
+  background: repeating-linear-gradient(
+    135deg,
+    transparent 0px,
+    transparent 0.5rem,
+    var(--color-faint) 0.5rem,
+    var(--color-faint) 1rem
+  );
+}

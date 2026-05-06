@@ -1,0 +1,164 @@
+/** Styles for content rendered inside <EntryCard>. The selectors target
+ *  MDX-rendered descendants (paragraphs, lists, blockquotes, details), so
+ *  these can't be scoped via Astro's <style> blocks (the slot content
+ *  doesn't carry the component's data-astro-cid attribute).
+ */
+
+.entry-body p {
+  margin-bottom: 1rem;
+}
+.entry-body p:last-child {
+  margin-bottom: 0;
+}
+.entry-body ul {
+  margin-top: 2rem;
+}
+.entry-body li {
+  margin-bottom: 0.5rem;
+}
+.entry-body a {
+  text-decoration-line: underline;
+  transition: color 150ms ease;
+}
+.entry-body a:hover {
+  color: var(--color-highlight);
+}
+.entry-body img {
+  width: 100%;
+}
+
+/** .entry-body uses display: contents so its slot children become direct grid
+ *  items of .entry-card. Padding lives on .entry-card itself (a real box), so
+ *  we don't need per-child padding here — only grid placement and stacking.
+ */
+.entry-body > * {
+  grid-column: 1;
+  position: relative;
+  z-index: 110;
+}
+
+/** <details> spans both grid columns and is pinned to a high explicit row so
+ *  skills' `grid-row: 1 / 99` can extend through every intro row above it
+ *  without ever overlapping. Empty rows between intro and row 99 collapse to
+ *  zero height (no content), so there's no visual gap.
+ */
+.entry-body > details {
+  grid-column: 1 / -1;
+  grid-row: 99;
+}
+
+.skills-list {
+  @variant md {
+    grid-row: 1 / 99;
+  }
+}
+
+/** Cap line length on direct prose children so reading copy stays comfortable.
+ *  <details> is a layout-heavy child; it inherits the full body width.
+ */
+.entry-body > p,
+.entry-body > ul,
+.entry-body > ol,
+.entry-body > blockquote {
+  max-width: 80ch;
+}
+
+.entry-body blockquote {
+  position: relative;
+  color: var(--color-emphasis);
+  font-size: 1rem;
+  line-height: 1.5;
+  font-style: italic;
+
+  @variant md {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+  @variant lg {
+    font-size: 0.875rem;
+    line-height: 2;
+  }
+}
+.entry-body blockquote cite {
+  display: block;
+  margin-top: 2rem;
+  text-align: right;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 200;
+  font-style: normal;
+}
+.entry-body blockquote cite::before {
+  content: "— ";
+}
+
+.entry-body details {
+  margin-top: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  interpolate-size: allow-keywords;
+
+  @variant md {
+    margin-right: -10rem;
+  }
+}
+.entry-body details::details-content {
+  block-size: 0;
+  overflow: clip;
+  opacity: 0;
+  transition:
+    block-size 350ms ease,
+    content-visibility 350ms allow-discrete,
+    opacity 250ms ease;
+}
+.entry-body details[open]::details-content {
+  block-size: auto;
+  opacity: 1;
+  margin-bottom: 4rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .entry-body details::details-content {
+    transition: none;
+  }
+}
+
+.entry-body summary {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  margin-top: 4rem;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 1rem;
+  gap: 0.75rem;
+  border-bottom: 1px solid var(--color-highlight);
+  color: var(--color-highlight);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  transition:
+    color 150ms ease,
+    border-color 150ms ease;
+}
+.entry-body summary:hover {
+  color: var(--color-highlight-hover);
+  border-color: var(--color-highlight-hover);
+}
+.entry-body summary::-webkit-details-marker {
+  display: none;
+}
+.entry-body summary::marker {
+  content: "";
+}
+.entry-body summary::after {
+  content: "[+]";
+}
+.entry-body details[open] > summary::after {
+  content: "[−]";
+}

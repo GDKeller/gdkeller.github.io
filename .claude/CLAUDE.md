@@ -19,7 +19,6 @@ A few non-obvious anchors:
 
 - `src/content.config.ts` — Zod schemas for all content collections (lives at `src/`, NOT `src/content/`)
 - `src/styles/global.css` — Tailwind v4 `@theme` blocks; this is where theme/tokens live (no `tailwind.config.*` exists)
-- `src/styles/jade-theme.css` — imported by `global.css`; layered theme overrides
 - `src/lib/animations/` — GSAP modules (hero, content, skills, anglerfish, nypost)
 - `src/lib/dev-flags.ts` — build-time feature flags
 - `src/pages/` — multi-page: `index.astro`, `playground.astro`, `styles.astro`, `nhmla-anglerfish.astro`

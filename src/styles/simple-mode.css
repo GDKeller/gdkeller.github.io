@@ -1,0 +1,30 @@
+/** Simple Mode
+ *  Accessibility/readability override. Activated by `data-simple-mode="on"`
+ *  on the <html> element (set by the pre-paint script in Layout.astro and
+ *  toggled by SimpleModeToggle.astro).
+ *
+ *  Strips the three pieces of "pizazz" that hurt scanability for hiring
+ *  managers and recruiters:
+ *    1. Decorative blackletter font (Manufacturing Consent) → Prompt
+ *    2. Noise overlays (Hero + global Overlays component)
+ *    3. Scanlines overlay
+ *    4. Header oscilloscope wave
+ *
+ *  Works via the swappable token already declared in theme.css and via
+ *  ancestor selectors against the unhashed class names that the noise/
+ *  scanline/oscilloscope styles already use.
+ */
+
+html[data-simple-mode="on"] {
+  --font-decorative: var(--font-prompt);
+}
+
+html[data-simple-mode="on"] .noise,
+html[data-simple-mode="on"] .overlay-noise,
+html[data-simple-mode="on"] .overlay-scanlines {
+  display: none;
+}
+
+html[data-simple-mode="on"] .oscilloscope-wave {
+  display: none;
+}

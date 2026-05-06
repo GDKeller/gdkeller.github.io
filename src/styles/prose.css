@@ -1,0 +1,18 @@
+.prose {
+  & a {
+    text-underline-offset: var(--spacing);
+  }
+
+  & strong {
+    font-weight: 500;
+  }
+
+  & cite {
+    font-weight: 300;
+  }
+}
+
+.prose li {
+  list-style-type: disc;
+  list-style-position: inside;
+}

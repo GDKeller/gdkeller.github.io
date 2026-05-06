@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+@import "./theme.css";
+@import "./prose.css";
+@import "./entries.css";
+@import "./base.css";
+@import "./accessibility.css"; /* imported last so rules override equal specificity */
+@import "./simple-mode.css";

@@ -1,0 +1,233 @@
+---
+/**
+ * Simple mode toggle.
+ *
+ * Hides decorative noise + scanline overlays and the header oscilloscope wave,
+ * and swaps the blackletter decorative font for the legible body font (Prompt).
+ * State persists in localStorage under "portfolio:simple-mode" and is applied
+ * pre-paint by an is:inline script in Layout.astro to prevent FOUC.
+ *
+ * The actual visual changes live in src/styles/simple-mode.css.
+ */
+
+import IconEyeglasses from "./icons/IconEyeglasses.astro";
+import IconSunglasses from "./icons/IconSunglasses.astro";
+---
+
+<button
+  type="button"
+  data-simple-mode-toggle
+  aria-pressed="false"
+  aria-label="Toggle visual effects"
+  class="simple-mode-toggle text-emphasis hover:text-accent-hover
+    hover:border-accent-hover border-faint bg-background-dark flex shrink-0
+    items-center justify-center border p-2.5 font-mono transition-all
+    duration-200 hover:cursor-pointer"
+>
+  <IconEyeglasses class="icon-eyeglasses h-7 w-7" />
+  <IconSunglasses class="icon-sunglasses h-7 w-7" />
+  <span class="sr-only">Toggle effects</span>
+</button>
+<span
+  class="simple-mode-toggle__tooltip"
+  data-simple-mode-tooltip
+  data-state="off"
+  role="tooltip"
+  aria-hidden="true"
+>
+  <span data-when="off">Disable Effects</span>
+  <span data-when="on">Enable Effects</span>
+</span>
+
+<style>
+  .simple-mode-toggle[aria-pressed="true"] {
+    background: var(--color-emphasis);
+    border-color: var(--color-emphasis);
+    color: var(--color-background-dark);
+  }
+
+  .simple-mode-toggle[aria-pressed="true"]:hover {
+    background: var(--color-accent-hover);
+    border-color: var(--color-accent-hover);
+  }
+
+  .simple-mode-toggle[aria-pressed="false"] :global(.icon-sunglasses),
+  .simple-mode-toggle[aria-pressed="true"] :global(.icon-eyeglasses) {
+    display: none;
+  }
+
+  /* Tooltip — position: fixed so it escapes the header's overflow:hidden.
+     Coordinates set by JS on hover/focus relative to the button.  */
+  .simple-mode-toggle__tooltip {
+    position: fixed;
+    z-index: 300;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    white-space: nowrap;
+    padding: 0.4rem 0.625rem;
+    background: var(--color-background-dark);
+    border: 1px solid var(--color-faint);
+    color: var(--color-foundation);
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition:
+      opacity 150ms ease,
+      transform 150ms ease;
+  }
+
+  .simple-mode-toggle__tooltip[data-placement="above"] {
+    transform: translateY(4px);
+  }
+
+  .simple-mode-toggle__tooltip[data-show="true"] {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .simple-mode-toggle__tooltip[data-state="off"] [data-when="on"],
+  .simple-mode-toggle__tooltip[data-state="on"] [data-when="off"] {
+    display: none;
+  }
+</style>
+
+<script>
+  const STORAGE_KEY = "portfolio:simple-mode";
+
+  function readStored(): boolean {
+    try {
+      return localStorage.getItem(STORAGE_KEY) === "on";
+    } catch {
+      return false;
+    }
+  }
+
+  function writeStored(on: boolean): void {
+    try {
+      if (on) {
+        localStorage.setItem(STORAGE_KEY, "on");
+      } else {
+        localStorage.removeItem(STORAGE_KEY);
+      }
+    } catch {
+      // Safari Private Browsing or storage disabled — silently ignore.
+    }
+  }
+
+  function applyState(on: boolean): void {
+    if (on) {
+      document.documentElement.dataset.simpleMode = "on";
+    } else {
+      delete document.documentElement.dataset.simpleMode;
+    }
+    document
+      .querySelectorAll<HTMLButtonElement>("[data-simple-mode-toggle]")
+      .forEach((btn) => {
+        btn.setAttribute("aria-pressed", on ? "true" : "false");
+      });
+    document
+      .querySelectorAll<HTMLElement>("[data-simple-mode-tooltip]")
+      .forEach((tip) => {
+        tip.dataset.state = on ? "on" : "off";
+      });
+  }
+
+  const buttons = document.querySelectorAll<HTMLButtonElement>(
+    "[data-simple-mode-toggle]",
+  );
+
+  // Initialize aria-pressed from the actual document state (set pre-paint by
+  // Layout.astro's inline script). Do NOT re-read localStorage here — the
+  // dataset is the source of truth post-paint.
+  const initial = document.documentElement.dataset.simpleMode === "on";
+  buttons.forEach((btn) => {
+    btn.setAttribute("aria-pressed", initial ? "true" : "false");
+    btn.addEventListener("click", () => {
+      const next = document.documentElement.dataset.simpleMode !== "on";
+      applyState(next);
+      writeStored(next);
+      document.dispatchEvent(
+        new CustomEvent("simple-mode:change", { detail: { on: next } }),
+      );
+    });
+  });
+
+  // Cross-tab sync: when another tab toggles, mirror the change here.
+  window.addEventListener("storage", (event) => {
+    if (event.key !== STORAGE_KEY) return;
+    applyState(readStored());
+  });
+
+  // Tooltip lives next to the button in the source for clarity, but the
+  // header has backdrop-filter, which makes it the containing block for
+  // position:fixed descendants — combined with the header's overflow:hidden,
+  // that clips the tooltip. Portal it to <body> so it escapes both.
+  const tooltip = document.querySelector<HTMLElement>(
+    "[data-simple-mode-tooltip]",
+  );
+  if (tooltip && tooltip.parentElement !== document.body) {
+    document.body.appendChild(tooltip);
+  }
+
+  // Sync initial tooltip state with the button (set pre-paint).
+  if (tooltip) {
+    tooltip.dataset.state = initial ? "on" : "off";
+  }
+
+  function positionTooltip(btn: HTMLElement): void {
+    if (!tooltip) return;
+    const rect = btn.getBoundingClientRect();
+    // Place above the button while the page is near the top, otherwise below.
+    // Once the user has scrolled in, the sticky header has empty page space
+    // below it; while still near the top, there's more empty atmosphere above.
+    const placeAbove = window.scrollY < 200;
+    if (placeAbove) {
+      tooltip.dataset.placement = "above";
+      tooltip.style.top = `${rect.top - tooltip.offsetHeight}px`;
+    } else {
+      tooltip.dataset.placement = "below";
+      tooltip.style.top = `${rect.bottom}px`;
+    }
+    tooltip.style.left = `${rect.right - tooltip.offsetWidth}px`;
+  }
+
+  let activeButton: HTMLElement | null = null;
+
+  function showTooltip(event: Event): void {
+    if (!tooltip) return;
+    const btn = event.currentTarget as HTMLElement;
+    activeButton = btn;
+    positionTooltip(btn);
+    tooltip.dataset.show = "true";
+  }
+
+  function hideTooltip(): void {
+    if (!tooltip) return;
+    activeButton = null;
+    delete tooltip.dataset.show;
+  }
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("mouseenter", showTooltip);
+    btn.addEventListener("mouseleave", hideTooltip);
+    btn.addEventListener("focus", showTooltip);
+    btn.addEventListener("blur", hideTooltip);
+  });
+
+  // The button rides with the sticky header, so on scroll we have to keep
+  // the fixed-positioned tooltip pinned to it. Also re-evaluates the above/
+  // below placement as scrollY crosses the 200 threshold.
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (activeButton && tooltip?.dataset.show === "true") {
+        positionTooltip(activeButton);
+      }
+    },
+    { passive: true },
+  );
+</script>
