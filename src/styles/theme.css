@@ -1,0 +1,85 @@
+/** Force-emit every semantic token's utility so its CSS variable is always available
+ *  at runtime, even for tokens not yet consumed elsewhere.
+ *  Required for the /styles reference page and for `var(--color-*)` access from
+ *  custom CSS or JS without depending on incidental utility usage.
+ */
+@source inline(
+  "{bg,text,border}-{background,background-dark,foundation,emphasis,emphasis-hover,accent,accent-hover,accent-subtle,highlight,highlight-hover,faint,fainter,undertone} var(--font-{display,body,mono,decorative})"
+);
+@source inline(
+  "text-{2xs,xs,sm,base,lg,xl,2xl,3xl,4xl,5xl,6xl,7xl,8xl,9xl}"
+);
+@source inline("p-{1,2,4,6,8,12,16,24,32,48,64,80}");
+
+/** Typography
+ *
+ *  Font primitives are defined in astro.config.mjs and loaded in Layout.astro.
+ *
+ *  Fixed fonts use `@theme inline` so utilities compile straight to the
+ *  primitive var instead of chaining through --font-display.
+ *
+ *  Swappable tokens use plain `@theme` so they emit `:root` vars and can be
+ *  overridden from a wrapper class (e.g. the accessibility/simple mode)
+ */
+@theme inline {
+  --font-display: var(--font-prompt);
+  --font-body: var(--font-prompt);
+  --font-mono: var(--font-ibm_plex_mono);
+}
+
+@theme {
+  --font-decorative: var(--font-manufacturing_consent);
+  --text-2xs: 0.625rem;
+  --tracking-huge: 0.5em;
+}
+
+/** Semantic color tokens
+ *  Named by role along a single axis: attention intensity.
+ *
+ *  Attention hierarchy (for content the user should read/see):
+ *  foundation    - baseline reading copy
+ *  emphasis      - gentle lift above foundation
+ *  accent        - prominent (decoration, buttons, active states)
+ *  accent-subtle - muted accent (subdued decoration, tonal text-shadows)
+ *  highlight     - most important interactive elements
+ *
+ *  Structural (scaffolding, not competing for attention):
+ *  background      - the page backdrop
+ *  background-dark - functionally "black"
+ *  faint/fainter   - UI box borders, subdued decorations
+ *  undertone       - atmospheric depth (gradient stops, glow shadows)
+ *
+ *  Tokens without hover variants are not intended to be interactive.
+ */
+@theme {
+  --color-background: oklch(0.1 0.025 150); /* #000501 */
+  --color-background-dark: oklch(0.05 0.014 150); /* #000100 */
+  --color-foundation: oklch(0.968 0.06 130); /* #e7fdd3 */
+  --color-emphasis: oklch(89% 0.13 130); /* #beec8f */
+  --color-emphasis-hover: oklch(0.88 0.155 130); /* #b5ec79 */
+  --color-faint: oklch(0.5 0.065 130); /* #576b43 */
+  --color-fainter: oklch(0.45 0.05 130);
+
+  --color-accent: oklch(0.777 0.17 161); /* #15d792 */
+  --color-accent-hover: oklch(0.8764 0.229 151.94);
+  --color-accent-subtle: oklch(50.81% 0.1049 160);
+  --color-highlight: oklch(66.68% 0.2591 332);
+  --color-highlight-hover: oklch(83.3% 0.1322 332);
+
+  /* Decorative one-off used in Hero only */
+  --color-undertone: oklch(0.57 0.0968 195);
+}
+
+/** Breakpoints
+ *  Reference (at 16px root font-size):
+ *  xs    26.25rem  420px     Custom
+ *  sm    40rem     640px     Default
+ *  md    48rem     768px     Default
+ *  lg    64rem     1024px    Default
+ *  xl    80rem     1280px    Default
+ *  2xl   96rem     1536px    Default
+ */
+@theme {
+  --breakpoint-xs: 26.25rem; /* 420px */
+}
+@custom-variant portrait (@media (aspect-ratio < 1/1));

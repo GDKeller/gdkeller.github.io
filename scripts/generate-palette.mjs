@@ -3,7 +3,7 @@
  * Generates a .theme-jade CSS block that shifts all Tailwind v4 default
  * color hues by JADE_SHIFT degrees in OKLCH space.
  *
- * Usage: node scripts/generate-palette.mjs >> src/styles/global.css
+ * Usage: node scripts/generate-palette.mjs >> src/styles/main.css
  *   (or pipe to a separate file and @import it)
  */
 
