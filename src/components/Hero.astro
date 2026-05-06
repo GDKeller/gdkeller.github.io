@@ -154,7 +154,7 @@ const maskImage = `image-set(url("${maskAvif.src}") type("image/avif"), url("${m
           aria-hidden="true"
         >
           <span
-            class="via-subtle from-emphasis absolute top-0 right-0 hidden
+            class="via-accent-subtle from-emphasis absolute top-0 right-0 hidden
               h-[25%] w-[45%] translate-x-[60%] translate-y-[15%] bg-radial
               from-0% to-transparent to-100% blur-md md:block"
           >
@@ -258,7 +258,7 @@ const maskImage = `image-set(url("${maskAvif.src}") type("image/avif"), url("${m
                 >
                   <stop
                     offset="0"
-                    stop-color="var(--color-secondary-dark)"
+                    stop-color="var(--color-undertone)"
                     stop-opacity="0.3"></stop>
                   <stop
                     offset="0.6"
@@ -319,8 +319,8 @@ const maskImage = `image-set(url("${maskAvif.src}") type("image/avif"), url("${m
       @apply font-display text-foundation text-[14vw] leading-[0.8em] font-black tracking-normal break-keep whitespace-nowrap uppercase md:text-7xl lg:text-8xl xl:text-9xl;
       text-shadow:
         0 0 0.04em color-mix(in srgb, var(--color-background), transparent 50%),
-        0 0 0.015em var(--color-subtle),
-        0 0 0.02em var(--color-subtle),
+        0 0 0.015em var(--color-accent-subtle),
+        0 0 0.02em var(--color-accent-subtle),
         0 0 0.03em var(--color-accent),
         0 0 0.05em var(--color-accent);
     }
@@ -342,7 +342,7 @@ const maskImage = `image-set(url("${maskAvif.src}") type("image/avif"), url("${m
         0.01em 0.02em 0.25em
           color-mix(in srgb, var(--color-accent), transparent 80%),
         0.02em 0.01em 1.5em
-          color-mix(in srgb, var(--color-secondary-dark), transparent 45%);
+          color-mix(in srgb, var(--color-undertone), transparent 45%);
     }
   </style>
 </section>

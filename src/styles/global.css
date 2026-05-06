@@ -1,11 +1,12 @@
 @import "tailwindcss";
 
-/* Force-emit every semantic token's utility so its CSS variable is always
-   available at runtime, even for tokens not yet consumed elsewhere. Required
-   for the /styles reference page and for `var(--color-*)` access from custom
-   CSS or JS without depending on incidental utility usage. */
+/** Force-emit every semantic token's utility so its CSS variable is always
+ *  available at runtime, even for tokens not yet consumed elsewhere. Required
+ *  for the /styles reference page and for `var(--color-*)` access from custom
+ *  CSS or JS without depending on incidental utility usage.
+ */
 @source inline(
-  "{bg,text,border}-{background,background-dark,foundation,emphasis,emphasis-hover,accent,accent-hover,highlight,highlight-hover,subtle,faint,fainter,reduced,secondary-light,secondary-emphasis,secondary-dark,tertiary-highlight,tertiary-highlight-hover,hidden} var(--font-{display,body,mono,decorative})"
+  "{bg,text,border}-{background,background-dark,foundation,emphasis,emphasis-hover,accent,accent-hover,accent-subtle,highlight,highlight-hover,faint,fainter,undertone} var(--font-{display,body,mono,decorative})"
 );
 @source inline(
   "text-{2xs,xs,sm,base,lg,xl,2xl,3xl,4xl,5xl,6xl,7xl,8xl,9xl}"
@@ -21,83 +22,68 @@
 }
 
 @theme {
-  /* Spacing extensions */
-  --spacing-18: 4.5rem;
-  --spacing-28: 7rem;
-  --spacing-36: 9rem;
-  --spacing-40: 10rem;
-
   --text-2xs: 0.625rem;
   --tracking-huge: 0.5em;
-
-  /* Custom breakpoints */
-  --breakpoint-xs: 26.25rem; /* 420px */
 }
 
-/* Semantic color tokens — named by role along a single axis: attention
-   intensity. Tailwind v4 strips the `--color-` prefix when generating
-   utilities, so `--color-foundation` becomes `text-foundation`, etc.
-
-   Attention hierarchy (for content the user should read/see):
-     foundation — baseline reading copy
-     emphasis   — gentle lift above foundation
-     accent     — clearly prominent (buttons, active states, etc.)
-     highlight  — maximum demand
-
-   Structural (scaffolding, not competing for attention):
-     background — the page backdrop
-     subtle     — dividers, borders, decoration; never used on text
-
-   `-hover` variants mark state transitions — use in `hover:` modifiers,
-   not as base colors. Roles without a hover variant (foundation, subtle,
-   background) are not interactive. */
+/** Semantic color tokens
+ *  Named by role along a single axis: attention intensity.
+ *
+ *  Attention hierarchy (for content the user should read/see):
+ *  foundation    - baseline reading copy
+ *  emphasis      - gentle lift above foundation
+ *  accent        - prominent (decoration, buttons, active states)
+ *  accent-subtle - muted accent (subdued decoration, tonal text-shadows)
+ *  highlight     - most important interactive elements
+ *
+ *  Structural (scaffolding, not competing for attention):
+ *  background      - the page backdrop
+ *  background-dark - functionally "black"
+ *  faint/fainter   - UI box borders, subdued decorations
+ *  undertone       - cool atmospheric depth (gradient stops, glow shadows)
+ *
+ *  Tokens without hover variant are not intended to be interactive.
+ */
 @theme {
   --color-background: oklch(0.1 0.025 150); /* #000501 */
   --color-background-dark: oklch(0.05 0.014 150); /* #000100 */
-  --color-scrim: oklch(0.53 0.05 150);
   --color-foundation: oklch(0.968 0.06 130); /* #e7fdd3 */
   --color-emphasis: oklch(89% 0.13 130); /* #beec8f */
   --color-emphasis-hover: oklch(0.88 0.155 130); /* #b5ec79 */
-  --color-emphasis-analogous1: oklch(0.85 0.185 143); /* #7dec78 */
-  --color-emphasis-analogous2: oklch(0.916 0.136 108); /* #ecea79 */
   --color-faint: oklch(0.5 0.065 130); /* #576b43 */
   --color-fainter: oklch(0.45 0.05 130);
-  --color-reduced: oklch(0.57 0.075 110);
 
   --color-accent: oklch(0.777 0.17 161); /* #15d792 */
   --color-accent-hover: oklch(0.8764 0.229 151.94);
+  --color-accent-subtle: oklch(50.81% 0.1049 160);
   --color-highlight: oklch(66.68% 0.2591 332);
   --color-highlight-hover: oklch(83.3% 0.1322 332);
-  --color-subtle: oklch(50.81% 0.1049 160);
 
-  --color-secondary-light: oklch(0.9 0.1 190);
-  --color-secondary-emphasis: oklch(0.8 0.136 190);
-  /* --color-secondary-accent: oklch(0.7809 0.1436 177.88); */
-  /* --color-secondary-accent: oklch(0.8 0.136 190); */
-  --color-secondary-dark: oklch(0.57 0.0968 195);
-  /* --color-secondary-faint: oklch(0.565 0.035 190); */
-
-  --color-tertiary-highlight: oklch(66.68% 0.2591 332);
-  --color-tertiary-highlight-hover: oklch(83.3% 0.1322 332);
+  /* Decorative one-off only, not intended to be used in theme */
+  --color-undertone: oklch(0.57 0.0968 195);
 }
 
+/* Breakpoints */
+/** Default breakpoints reference
+  * sm    40rem - 640px
+ *  md    48rem - 768px
+ *  lg    64rem - 1024px
+ *  xl    80rem - 1280px
+ *  2xl   96rem - 1536px
+ */
+@theme {
+  /* Custom breakpoints */
+  --breakpoint-xs: 26.25rem; /* 420px */
+}
 @custom-variant portrait (@media (aspect-ratio < 1/1));
 
-/** Default breakpoints reference
-* sm	40rem (640px)	@media (width >= 40rem) { ... }
-* md	48rem (768px)	@media (width >= 48rem) { ... }
-* lg	64rem (1024px)	@media (width >= 64rem) { ... }
-* xl	80rem (1280px)	@media (width >= 80rem) { ... }
-* 2xl	96rem (1536px)	@media (width >= 96rem) { ... }
-**/
-
-/* Reduced Motion Support */
 @media (prefers-reduced-motion: no-preference) {
   :root {
     scroll-behavior: smooth;
   }
 }
 
+/** Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -115,7 +101,7 @@
   }
 }
 
-/* Focus Indicators - WCAG 2.2 Compliant */
+/* Focus Indicators */
 :focus-visible {
   outline: 2px solid var(--color-accent-hover);
   outline-offset: 4px;
@@ -138,10 +124,7 @@ button:focus-visible {
 
 .prose {
   & a {
-    text-underline-offset: 0.25em;
-  }
-  & p {
-    line-height: 1.75;
+    text-underline-offset: var(--spacing);
   }
 
   & strong {
@@ -181,19 +164,21 @@ button:focus-visible {
   width: 100%;
 }
 
-/* .entry-body uses display: contents so its slot children become direct grid
-   items of .entry-card. Padding lives on .entry-card itself (a real box), so
-   we don't need per-child padding here — only grid placement and stacking. */
+/** .entry-body uses display: contents so its slot children become direct grid
+ *  items of .entry-card. Padding lives on .entry-card itself (a real box), so
+ *  we don't need per-child padding here — only grid placement and stacking.
+ */
 .entry-body > * {
   grid-column: 1;
   position: relative;
   z-index: 110;
 }
 
-/* <details> spans both grid columns and is pinned to a high explicit row so
-   skills' `grid-row: 1 / 99` can extend through every intro row above it
-   without ever overlapping. Empty rows between intro and row 99 collapse to
-   zero height (no content), so there's no visual gap. */
+/** <details> spans both grid columns and is pinned to a high explicit row so
+ *  skills' `grid-row: 1 / 99` can extend through every intro row above it
+ *  without ever overlapping. Empty rows between intro and row 99 collapse to
+ *  zero height (no content), so there's no visual gap.
+ */
 .entry-body > details {
   grid-column: 1 / -1;
   grid-row: 99;
@@ -205,8 +190,9 @@ button:focus-visible {
   }
 }
 
-/* Cap line length on direct prose children so reading copy stays comfortable.
-   <details> is a layout-heavy child; it inherits the full body width. */
+/** Cap line length on direct prose children so reading copy stays comfortable.
+ *  <details> is a layout-heavy child; it inherits the full body width.
+ */
 .entry-body > p,
 .entry-body > ul,
 .entry-body > ol,
@@ -351,23 +337,28 @@ strong {
   top: 0.125em;
 }
 
-/* Astro's <Picture> wraps the <img> in a <picture> for multi-format <source>
-   negotiation. <picture> defaults to `display: inline`, which eats the
-   layout slot the <img> is expected to fill (h-full / object-cover against a
-   sized parent). `display: contents` flattens the <picture> in layout so the
-   <img> inherits the parent slot directly. */
+/** Astro's <Picture> wraps the <img> in a <picture> for multi-format <source>
+ *  negotiation. <picture> defaults to `display: inline`, which eats the
+ *  layout slot the <img> is expected to fill (h-full / object-cover against a
+ *  sized parent). `display: contents` flattens the <picture> in layout so the
+ *  <img> inherits the parent slot directly.
+ */
 picture {
   display: contents;
 }
 
+/** On-device product video background intended to be transparent */
 .laptop-rounded-top {
   border-radius: 3.75% 3.75% 0 0;
 }
 
+/** Theme decoration */
+/* triplecolon (:::) used as decorator */
 .triplecolon {
   letter-spacing: -0.3em;
 }
 
+/* Hazard Stripes pattern */
 .hazard-stripe {
   background: repeating-linear-gradient(
     45deg,

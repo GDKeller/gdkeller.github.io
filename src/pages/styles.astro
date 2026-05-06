@@ -25,7 +25,7 @@ const colorTokens = [
   { name: "background-dark", group: "structural" },
   // Non-interactive singles first so base+hover pairs land on even-column starts.
   { name: "foundation", group: "attention" },
-  { name: "subtle", group: "attention" },
+  { name: "accent-subtle", group: "attention" },
   { name: "faint", group: "attention" },
   { name: "fainter", group: "attention" },
   { name: "emphasis", group: "attention" },
@@ -34,11 +34,7 @@ const colorTokens = [
   { name: "accent-hover", group: "attention" },
   { name: "highlight", group: "attention" },
   { name: "highlight-hover", group: "attention" },
-  { name: "secondary-light", group: "secondary" },
-  { name: "secondary-emphasis", group: "secondary" },
-  { name: "secondary-dark", group: "secondary" },
-  { name: "tertiary-highlight", group: "tertiary" },
-  { name: "tertiary-highlight-hover", group: "tertiary" },
+  { name: "undertone", group: "structural" },
 ];
 
 const fontTokens = [
@@ -51,8 +47,6 @@ const fontTokens = [
   { name: "body", label: "Body", role: "Body" },
   { name: "mono", label: "IBM Plex Mono", role: "Monospace" },
 ];
-
-const spacingTokens = ["18", "28", "36", "40"];
 
 // Mirrors the `@source inline("text-{...}")` list in global.css. `custom: true`
 // marks sizes that exist only because of local --text-* overrides; everything
@@ -77,8 +71,6 @@ const textSizes = [
 const groupLabels: Record<string, string> = {
   attention: "Attention hierarchy",
   structural: "Structural",
-  secondary: "Secondary family",
-  tertiary: "Tertiary family",
 };
 
 const groupedColors = Object.keys(groupLabels).map((group) => ({
@@ -265,42 +257,6 @@ const groupedColors = Object.keys(groupLabels).map((group) => ({
                 >
                   Aa
                 </div>
-              </div>
-            ))
-          }
-        </div>
-      </section>
-
-      <!-- SPACING -->
-      <section aria-labelledby="spacing-heading">
-        <div class="mb-8 flex items-baseline gap-4">
-          <h2
-            id="spacing-heading"
-            class="font-display text-emphasis text-4xl leading-none
-              tracking-tight md:text-4xl"
-          >
-            Spacing Extensions
-          </h2>
-        </div>
-
-        <div class="space-y-4">
-          {
-            spacingTokens.map((name) => (
-              <div class="flex items-center gap-6">
-                <code class="text-foundation w-32 shrink-0 font-mono text-base">
-                  spacing-{name}
-                </code>
-                <code
-                  class="text-emphasis w-16 shrink-0 font-mono text-sm"
-                  data-spacing-value={name}
-                >
-                  …
-                </code>
-                <div
-                  class="bg-accent h-6"
-                  style={`width: var(--spacing-${name});`}
-                  aria-hidden="true"
-                />
               </div>
             ))
           }
@@ -579,12 +535,6 @@ const groupedColors = Object.keys(groupLabels).map((group) => ({
       const raw = resolve("--text-", token);
       const px = toPx(raw);
       node.textContent = px !== null ? `${raw} · ${px}px` : raw;
-    }
-    for (const node of document.querySelectorAll<HTMLElement>(
-      "[data-spacing-value]",
-    )) {
-      const token = node.dataset.spacingValue;
-      if (token) node.textContent = resolve("--spacing-", token);
     }
   </script>
 </Layout>
