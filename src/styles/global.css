@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
-/** Force-emit every semantic token's utility so its CSS variable is always
- *  available at runtime, even for tokens not yet consumed elsewhere. Required
- *  for the /styles reference page and for `var(--color-*)` access from custom
- *  CSS or JS without depending on incidental utility usage.
+/** Force-emit every semantic token's utility so its CSS variable is always available
+ *  at runtime, even for tokens not yet consumed elsewhere.
+ *  Required for the /styles reference page and for `var(--color-*)` access from
+ *  custom CSS or JS without depending on incidental utility usage.
  */
 @source inline(
   "{bg,text,border}-{background,background-dark,foundation,emphasis,emphasis-hover,accent,accent-hover,accent-subtle,highlight,highlight-hover,faint,fainter,undertone} var(--font-{display,body,mono,decorative})"
@@ -13,15 +13,24 @@
 );
 @source inline("p-{1,2,4,6,8,12,16,24,32,48,64,80}");
 
+/** Typography
+ *
+ *  Font primitives are defined in astro.config.mjs and loaded in Layout.astro.
+ *
+ *  Fixed fonts use `@theme inline` so utilities compile straight to the
+ *  primitive var instead of chaining through --font-display.
+ *
+ *  Swappable tokens use plain `@theme` so they emit `:root` vars and can be
+ *  overridden from a wrapper class (e.g. the accessibility/simple mode)
+ */
 @theme inline {
-  /* Font name primitive vars are defined in astro.config.mjs and loaded in Layout.astro */
   --font-display: var(--font-prompt);
   --font-body: var(--font-prompt);
   --font-mono: var(--font-ibm_plex_mono);
-  --font-decorative: var(--font-manufacturing_consent);
 }
 
 @theme {
+  --font-decorative: var(--font-manufacturing_consent);
   --text-2xs: 0.625rem;
   --tracking-huge: 0.5em;
 }
@@ -40,9 +49,9 @@
  *  background      - the page backdrop
  *  background-dark - functionally "black"
  *  faint/fainter   - UI box borders, subdued decorations
- *  undertone       - cool atmospheric depth (gradient stops, glow shadows)
+ *  undertone       - atmospheric depth (gradient stops, glow shadows)
  *
- *  Tokens without hover variant are not intended to be interactive.
+ *  Tokens without hover variants are not intended to be interactive.
  */
 @theme {
   --color-background: oklch(0.1 0.025 150); /* #000501 */
@@ -59,31 +68,31 @@
   --color-highlight: oklch(66.68% 0.2591 332);
   --color-highlight-hover: oklch(83.3% 0.1322 332);
 
-  /* Decorative one-off only, not intended to be used in theme */
+  /* Decorative one-off used in Hero only */
   --color-undertone: oklch(0.57 0.0968 195);
 }
 
-/* Breakpoints */
-/** Default breakpoints reference
-  * sm    40rem - 640px
- *  md    48rem - 768px
- *  lg    64rem - 1024px
- *  xl    80rem - 1280px
- *  2xl   96rem - 1536px
+/** Breakpoints
+ *  Reference (at 16px root font-size):
+ *  xs    26.25rem  420px     Custom
+ *  sm    40rem     640px     Default
+ *  md    48rem     768px     Default
+ *  lg    64rem     1024px    Default
+ *  xl    80rem     1280px    Default
+ *  2xl   96rem     1536px    Default
  */
 @theme {
-  /* Custom breakpoints */
   --breakpoint-xs: 26.25rem; /* 420px */
 }
 @custom-variant portrait (@media (aspect-ratio < 1/1));
 
+/** Reduced Motion Support */
 @media (prefers-reduced-motion: no-preference) {
   :root {
     scroll-behavior: smooth;
   }
 }
 
-/** Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -184,8 +193,8 @@ button:focus-visible {
   grid-row: 99;
 }
 
-@media (min-width: 768px) {
-  .skills-list {
+.skills-list {
+  @variant md {
     grid-row: 1 / 99;
   }
 }
@@ -206,15 +215,12 @@ button:focus-visible {
   font-size: 1rem;
   line-height: 1.5;
   font-style: italic;
-}
-@media (min-width: 48rem) {
-  .entry-body blockquote {
+
+  @variant md {
     font-size: 0.875rem;
     line-height: 1.25rem;
   }
-}
-@media (min-width: 64rem) {
-  .entry-body blockquote {
+  @variant lg {
     font-size: 0.875rem;
     line-height: 2;
   }
@@ -238,11 +244,7 @@ button:focus-visible {
   padding-bottom: 0;
   interpolate-size: allow-keywords;
 
-  @media screen and (min-width: 768px) {
-    margin-right: -10rem;
-  }
-
-  @media screen and (min-width: 1024px) {
+  @variant md {
     margin-right: -10rem;
   }
 }
@@ -324,7 +326,7 @@ strong {
   list-style-type: none;
   padding-left: 1.25rem;
 
-  @media screen and (min-width: 768px) {
+  @variant md {
     padding-left: 1.5rem;
   }
 }
@@ -347,13 +349,14 @@ picture {
   display: contents;
 }
 
-/** On-device product video background intended to be transparent */
+/** On-device product video background intended to be "transparent" */
 .laptop-rounded-top {
   border-radius: 3.75% 3.75% 0 0;
 }
 
-/** Theme decoration */
-/* triplecolon (:::) used as decorator */
+/** Theme decoration
+ *  triplecolon (:::) used as decorator
+ */
 .triplecolon {
   letter-spacing: -0.3em;
 }
