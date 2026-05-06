@@ -19,7 +19,7 @@ const headingCombos = [
   ["line", "glow", "inverted"],
 ] as const;
 
-// Pulled directly from src/styles/global.css. Keep in sync when adding tokens.
+// Pulled directly from src/styles/main.css. Keep in sync when adding tokens.
 const colorTokens = [
   { name: "background", group: "structural" },
   { name: "background-dark", group: "structural" },
@@ -48,7 +48,7 @@ const fontTokens = [
   { name: "mono", label: "IBM Plex Mono", role: "Monospace" },
 ];
 
-// Mirrors the `@source inline("text-{...}")` list in global.css. `custom: true`
+// Mirrors the `@source inline("text-{...}")` list in main.css. `custom: true`
 // marks sizes that exist only because of local --text-* overrides; everything
 // else is Tailwind v4's built-in scale.
 const textSizes = [
