@@ -28,3 +28,9 @@ html[data-simple-mode="on"] .overlay-scanlines {
 html[data-simple-mode="on"] .oscilloscope-wave {
   display: none;
 }
+
+html[data-simple-mode="on"] {
+  .section-heading__glow {
+    text-shadow: none;
+  }
+}
