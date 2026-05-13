@@ -7,13 +7,11 @@ import HeadingSection from "./HeadingSection.astro";
 <footer class="font-body">
   <!-- CTA Section -->
   <div
-    class="hazard-stripe__faint border-faint mx-auto mb-32 max-w-4xl border-2
-      px-8 py-8"
+    class="hazard-stripe__faint border-faint mx-auto mb-32 w-fit border-2 px-8
+      py-8"
   >
-    <div
-      class="bg-background border-background container border-16 text-center"
-    >
-      <div class="bg-emphasis px-12 pt-12 pb-20">
+    <div class="bg-background border-background mx-auto border-16 text-center">
+      <div class="bg-emphasis px-24 pt-12 pb-20">
         <HeadingSection
           treatment="inverted"
           align="center"
@@ -25,30 +23,28 @@ import HeadingSection from "./HeadingSection.astro";
             sm:flex-row"
         >
           <div class="flex gap-2 transition-colors">
-            <button
-              data-open-modal="hire_me_modal"
-              class="hover:text-background-dark border-highlight
-                bg-background-dark text-highlight hover:bg-highlight
-                hover:border-highlight-hover inline-flex items-center
-                justify-center border-4 px-8 py-4 font-mono text-lg font-bold
-                transition-all duration-200 hover:cursor-pointer"
-            >
-              Get in Touch
-              <IconArrowRight class="ml-2 h-5 w-5" />
-            </button>
             <a
               href="/Grant Keller Senior UX Engineer Resume 2025.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              class="text-accent-hover bg-background-dark
-                hover:text-background-dark hover:bg-accent-hover
-                hover:border-accent border-accent-hover inline-flex items-center
-                justify-center border-4 px-8 py-4 font-mono text-lg font-medium
-                transition-all duration-200"
+              class="text-accent-hover bg-background hover:text-background-dark
+                hover:bg-accent-hover border-accent-hover inline-flex
+                items-center justify-center border-4 px-8 py-4 font-mono text-lg
+                font-medium transition-all duration-200"
             >
               <span class="relative z-110">Download Resume</span>
               <IconFileDownload class="ml-2 h-5 w-5" />
             </a>
+            <button
+              data-open-modal="hire_me_modal"
+              class="hover:text-background-dark border-highlight bg-background
+                text-highlight hover:bg-highlight inline-flex items-center
+                justify-center border-4 px-8 py-4 font-mono text-lg font-bold
+                transition-all duration-200 hover:cursor-pointer"
+            >
+              <span>Get in Touch</span>
+              <IconArrowRight class="ml-2 h-5 w-5" />
+            </button>
           </div>
         </div>
       </div>

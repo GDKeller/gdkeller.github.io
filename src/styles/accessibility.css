@@ -25,14 +25,14 @@
 /* Focus Indicators */
 :focus-visible {
   outline: 2px solid var(--color-accent-hover);
-  outline-offset: 4px;
+  outline-offset: 2px;
   border-radius: 0;
 }
 
 a:focus-visible,
 button:focus-visible {
   outline: 2px solid var(--color-accent-hover);
-  outline-offset: 2px;
+  outline-offset: 1px;
 }
 
 /* High contrast mode support */
