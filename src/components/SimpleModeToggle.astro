@@ -19,24 +19,26 @@ import IconSunglasses from "./icons/IconSunglasses.astro";
   data-simple-mode-toggle
   aria-pressed="false"
   aria-label="Toggle visual effects"
-  class="simple-mode-toggle group text-emphasis hover:text-accent-hover
-    aria-pressed:hover:bg-accent-hover hover:border-accent-hover border-faint
-    bg-background-dark aria-pressed:text-background-dark aria-pressed:bg-accent
-    relative flex shrink-0 items-center justify-center p-2 font-mono
-    transition-all duration-200 hover:cursor-pointer"
+  class="simple-mode-toggle group text-emphasis hover:text-background-dark
+    hover:bg-accent-hover aria-pressed:hover:bg-accent-hover
+    focus-visible:bg-accent-hover focus-visible:text-background-dark
+    hover:border-accent-hover border-faint bg-background-dark
+    aria-pressed:text-background-dark aria-pressed:bg-accent relative flex h-8
+    w-8 shrink-0 items-center justify-center font-mono transition-all
+    duration-200 hover:cursor-pointer"
 >
-  <IconEyeglasses class="icon-eyeglasses h-8 w-8" />
-  <IconSunglasses class="icon-sunglasses h-8 w-8" />
+  <IconEyeglasses class="icon-eyeglasses h-6 w-6" />
+  <IconSunglasses class="icon-sunglasses h-6 w-6" />
   <span class="sr-only">Toggle effects</span>
   <span
     class="simple-mode-toggle__tooltip text-foundation bg-background-dark
       border-faint group-aria-pressed:border-emphasis
       group-aria-pressed:group-hover:border-faint pointer-events-none absolute
-      top-full -left-px z-220 w-62 origin-top scale-y-0 border px-4 py-4
-      font-mono text-sm tracking-wider opacity-0 transition duration-200
-      data-[placement=above]:top-auto data-[placement=above]:bottom-full
-      data-[placement=above]:origin-bottom data-[show=true]:scale-y-100
-      data-[show=true]:opacity-100"
+      top-full -left-px -z-1 w-66 origin-top scale-y-0 border px-4 py-4
+      font-mono text-sm tracking-wider opacity-0 shadow-lg shadow-black/40
+      transition duration-200 data-[placement=above]:top-auto
+      data-[placement=above]:bottom-full data-[placement=above]:origin-bottom
+      data-[show=true]:scale-y-100 data-[show=true]:opacity-100"
     data-simple-mode-tooltip
     data-state="off"
     role="tooltip"

@@ -12,8 +12,8 @@ const navLinks = [
 <nav
   id="main-nav"
   class:list={[
-    `md:text-md text-emphasis lg:text-md relative mr-auto flex items-stretch
-    gap-x-2 font-mono text-sm font-light sm:gap-x-4 sm:text-sm`,
+    `md:text-md text-emphasis bg-faint lg:text-md relative mr-auto flex
+    items-stretch gap-x-px px-px font-mono text-sm font-light`,
     className,
   ]}
 >
@@ -22,8 +22,8 @@ const navLinks = [
       <a
         href={href}
         data-section={href.slice(1)}
-        class="nav-link hover:text-emphasis-hover relative flex items-center
-          tracking-wide transition-colors"
+        class="nav-link hover:text-emphasis-hover bg-background-dark relative
+          flex items-center px-2 tracking-wide transition-colors"
       >
         {label}
       </a>
@@ -34,43 +34,54 @@ const navLinks = [
 <style>
   .nav-link {
     position: relative;
-    transition: color 0.5s ease;
+    transition: color 500ms ease;
   }
 
   .nav-link::before {
-    content: "";
+    content: "▲";
     position: absolute;
+    color: var(--color-emphasis);
+    font-size: 0.3rem;
     left: 50%;
-    top: 100%;
-    transform: translateX(-50%) translateY(0%) scaleY(50%);
-    width: 40px;
-    height: 10px;
-    background: radial-gradient(
-      circle at top,
-      var(--color-highlight-hover) 0%,
-      var(--color-highlight) 50%,
-      transparent 100%
-    );
-    transform-origin: bottom;
+    bottom: 0;
+    line-height: 0.75;
+    transform: translateX(-50%) translateY(50%) scale3d(3, 0, 1);
+    transform-origin: center;
     opacity: 0;
-    filter: blur(6px);
     transition:
-      transform 3s ease,
-      opacity 3s ease;
+      transform 500ms ease,
+      opacity 150ms ease;
   }
 
   .nav-link:hover,
   .nav-link:focus-visible {
-    color: var(--color-highlight);
+    color: var(--color-accent-hover);
+  }
+
+  .nav-link:focus-visible {
+    z-index: 2;
   }
 
   .nav-link:hover::before,
   .nav-link:focus-visible::before {
-    transform: translateX(-50%) translateY(-20%) scaleY(80%);
+    transform: translateX(-50%) translateY(100%) scale3d(3, 1, 1);
+    animation: pointerBounce 500ms ease-in-out infinite both;
     opacity: 1;
-    transition:
-      transform 0.5s ease,
-      opacity 0.5s ease;
+  }
+
+  @keyframes pointerBounce {
+    0% {
+      color: var(--color-accent);
+      transform: translateX(-50%) translateY(100%) scale3d(3, 1, 1);
+    }
+    50% {
+      color: var(--color-accent-hover);
+      transform: translateX(-50%) translateY(180%) scale3d(3, 1, 1);
+    }
+    100% {
+      color: var(--color-accent);
+      transform: translateX(-50%) translateY(100%) scale3d(3, 1, 1);
+    }
   }
 
   .nav-link.active::before {
@@ -78,25 +89,19 @@ const navLinks = [
   }
 
   .nav-link::after {
-    content: "";
+    content: "▲";
     position: absolute;
+    color: var(--color-emphasis);
+    font-size: 0.3rem;
     left: 50%;
-    top: 100%;
-    transform: translateX(-50%) translateY(0%) scaleY(50%);
-    width: 40px;
-    height: 10px;
-    background: radial-gradient(
-      circle at top,
-      var(--color-accent-hover) 0%,
-      var(--color-accent) 50%,
-      transparent 100%
-    );
-    transform-origin: bottom;
+    bottom: 0;
+    line-height: 0.75;
+    transform: translateX(-50%) translateY(50%) scale3d(3, 0, 1);
+    transform-origin: center;
     opacity: 0;
-    filter: blur(6px);
     transition:
-      transform 0.5s ease,
-      opacity 0.5s ease;
+      transform 500ms ease,
+      opacity 150ms ease;
   }
 
   .nav-link.active {
@@ -104,7 +109,7 @@ const navLinks = [
   }
 
   .nav-link.active::after {
-    transform: translateX(-50%) translateY(-20%) scaleY(80%);
+    transform: translateX(-50%) translateY(80%) scale3d(3, 1, 1);
     opacity: 1;
   }
 
@@ -112,6 +117,7 @@ const navLinks = [
     .nav-link,
     .nav-link::before,
     .nav-link::after {
+      animation: none;
       transition: none;
     }
   }
