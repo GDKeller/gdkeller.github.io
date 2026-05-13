@@ -5,6 +5,7 @@ import Oscilloscope from "./Oscilloscope.astro";
 import SimpleModeToggle from "./SimpleModeToggle.astro";
 import IconGitHub from "./icons/IconGitHub.astro";
 import IconLinkedIn from "./icons/IconLinkedIn.astro";
+import IconMenu from "./icons/IconMenu.astro";
 ---
 
 <div
@@ -74,11 +75,21 @@ import IconLinkedIn from "./icons/IconLinkedIn.astro";
           data-open-modal="hire_me_modal"
           aria-label="Contact"
           class="text-background-dark bg-emphasis hover:bg-highlight
-            focus-visible:bg-highlight relative flex items-center px-4 py-2
+            focus-visible:bg-highlight relative hidden items-center px-4 py-2
             font-mono text-xs tracking-wide transition-colors duration-150
-            hover:cursor-pointer focus-visible:z-1"
+            hover:cursor-pointer focus-visible:z-1 sm:flex"
         >
           <span>Contact</span>
+        </button>
+        <button
+          data-open-modal="mobile_menu"
+          aria-label="Open menu"
+          class="text-background-dark bg-emphasis hover:bg-highlight
+            focus-visible:bg-highlight relative flex h-10 w-10 items-center
+            justify-center transition-colors duration-150 hover:cursor-pointer
+            focus-visible:z-1 sm:hidden"
+        >
+          <IconMenu class="h-6 w-6" />
         </button>
       </div>
     </div>

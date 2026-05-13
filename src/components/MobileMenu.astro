@@ -1,18 +1,27 @@
 ---
 import ContactCard from "./ContactCard.astro";
 import Overlays from "./Overlays.astro";
+import IconArrowRight from "./icons/IconArrowRight.astro";
 import IconClose from "./icons/IconClose.astro";
+
+const navLinks = [
+  { href: "#building", label: "Building" },
+  { href: "#skills", label: "Skills" },
+  { href: "#jobs", label: "Experience" },
+  { href: "#projects", label: "Projects" },
+];
 ---
 
 <dialog
-  id="hire_me_modal"
-  class="hire-modal fixed inset-0 h-dvh max-h-screen w-dvw max-w-screen
-    items-center justify-center border-none bg-transparent p-4 open:flex"
-  aria-labelledby="hire-modal-title"
+  id="mobile_menu"
+  class="mobile-menu fixed inset-0 h-dvh max-h-screen w-dvw max-w-screen
+    items-start justify-center overflow-y-auto border-none bg-transparent p-4
+    pt-8 open:flex"
+  aria-labelledby="mobile-menu-title"
 >
-  <article class="hire-frame relative w-full max-w-lg">
+  <article class="mobile-menu-frame relative w-full max-w-md">
     <span
-      class="hire-backdrop bg-background-dark absolute inset-0 z-2"
+      class="mobile-menu-backdrop bg-background-dark absolute inset-0 z-2"
       aria-hidden="true"></span>
     <form
       method="dialog"
@@ -25,7 +34,7 @@ import IconClose from "./icons/IconClose.astro";
           hover:text-background-dark hover:bg-emphasis focus-visible:bg-emphasis
           focus-visible:text-background-dark hover:border-emphasis relative flex
           h-14 w-14 cursor-pointer items-center justify-center"
-        aria-label="Close dialog"
+        aria-label="Close menu"
       >
         <span class="absolute -inset-0.5">
           <Overlays
@@ -44,7 +53,7 @@ import IconClose from "./icons/IconClose.astro";
     <div class="relative">
       <header class="border-faint flex">
         <h2
-          id="hire-modal-title"
+          id="mobile-menu-title"
           class="text-emphasis bg-background-dark border-faint relative isolate
             z-8 mr-auto flex -translate-x-0.5 -translate-y-1/2 overflow-hidden
             border-2 py-5 pr-8 pl-8 font-mono text-base leading-none font-light
@@ -60,12 +69,38 @@ import IconClose from "./icons/IconClose.astro";
               noiseOpacityClass="opacity-6"
             />
           </span>
-          <span class="z-10">Transmission</span>
+          <span class="z-10">Directory</span>
         </h2>
       </header>
 
+      <nav aria-label="Primary" class="relative z-10">
+        <ul class="border-faint list-none border-t-2">
+          {
+            navLinks.map(({ href, label }) => (
+              <li class="border-faint border-b-2 last:border-b-0">
+                <a
+                  href={href}
+                  class="mobile-nav-link group text-emphasis
+                    hover:text-highlight-hover focus-visible:text-highlight-hover
+                    flex min-h-12 items-center justify-between gap-4 px-6 py-4
+                    font-mono text-base tracking-wide uppercase transition-colors"
+                >
+                  <span>{label}</span>
+                  <IconArrowRight
+                    class="text-emphasis group-hover:text-highlight-hover
+                      group-focus-visible:text-highlight-hover h-4 w-4
+                      transition-colors"
+                  />
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
       <ContactCard />
     </div>
+
     <div
       class="pointer-events-none absolute -inset-0.5 z-4 overflow-hidden"
       aria-hidden="true"
@@ -79,10 +114,10 @@ import IconClose from "./icons/IconClose.astro";
       />
     </div>
   </article>
-  <form method="dialog" class="hire-modal__backdrop fixed inset-0 -z-10">
+  <form method="dialog" class="mobile-menu__backdrop fixed inset-0 -z-10">
     <button
       class="text-background-dark h-full w-full cursor-default"
-      aria-label="Close dialog">close</button
+      aria-label="Close menu">close</button
     >
   </form>
 </dialog>
@@ -90,9 +125,7 @@ import IconClose from "./icons/IconClose.astro";
 <style lang="scss">
   @reference "../styles/main.css";
 
-  /* Clip-path with a notched bottom-right corner. Repeated as a CSS
-     custom property so backdrop and frame stroke match. */
-  .hire-frame {
+  .mobile-menu-frame {
     --clip-tr: polygon(0 0, calc(100% - 20%) 0, 100% 20%, 100% 100%, 0 100%);
   }
 
@@ -100,39 +133,50 @@ import IconClose from "./icons/IconClose.astro";
     clip-path: var(--clip-tr);
   }
 
-  /* Border ring lives on the form wrapper so it paints before the button
-     in tree order. Putting it on .close-button itself doesn't work: the
-     button's clip-path creates a stacking context, which traps a negative
-     z-index ::before above the button's own background. */
   .close-button-frame::before {
     @apply bg-faint absolute -top-0.5 -right-0.5 -bottom-0.5 -left-0.5;
     content: "";
     clip-path: var(--clip-tr);
   }
 
-  .hire-modal::backdrop {
+  .mobile-menu::backdrop {
     background: color-mix(in oklch, var(--color-background) 90%, transparent);
     backdrop-filter: blur(8px);
   }
 
-  /* Frame stroke: 1px outline behind the backdrop, same clip-path */
-  .hire-frame::after {
+  .mobile-menu-frame::after {
     @apply bg-faint pointer-events-none absolute -inset-0.5 z-1;
     content: "";
   }
 
   @media (prefers-contrast: more) {
-    .hire-frame::after {
+    .mobile-menu-frame::after {
       background: var(--color-emphasis);
     }
   }
 
-  /* Lock page scroll while the modal is open. `:has()` targets the
-     html element when the dialog has the [open] attribute set by
-     showModal(). `scrollbar-gutter: stable` prevents content shift
-     when the scrollbar disappears. */
-  :global(html:has(dialog#hire_me_modal[open])) {
+  :global(html:has(dialog#mobile_menu[open])) {
     overflow: hidden;
     scrollbar-gutter: stable;
   }
 </style>
+
+<script>
+  /* Close the dialog before the smooth-scroll handler in Layout.astro runs,
+     so the scroll lands on an unlocked body. Capture phase fires before the
+     bubble-phase listener attached to each anchor. */
+  const dialog = document.getElementById(
+    "mobile_menu",
+  ) as HTMLDialogElement | null;
+
+  dialog?.addEventListener(
+    "click",
+    (event) => {
+      const target = event.target as HTMLElement | null;
+      const link = target?.closest<HTMLAnchorElement>('a[href^="#"]');
+      if (!link || !dialog.contains(link)) return;
+      dialog.close();
+    },
+    true,
+  );
+</script>
