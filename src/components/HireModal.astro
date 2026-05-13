@@ -78,26 +78,26 @@ import IconX from "./icons/IconX.astro";
       <div class="mx-auto mb-12 flex w-min flex-col">
         <button
           type="button"
-          class="hire-primary__copy group relative z-10 flex flex-col-reverse
-            items-center gap-4 xs:flex-row mb-6 py-8 pb-3 xs:ml-4 xs:px-4
-            xs:pr-16 sm:pr-20 cursor-pointer border-0 border-b border-highlight
-            bg-transparent text-left text-highlight transition-colors
-            hover:border-highlight-hover hover:text-highlight-hover
-            focus-visible:border-highlight-hover
-            focus-visible:text-highlight-hover"
+          class="hire-primary__copy group xs:flex-row xs:ml-4 xs:px-4 xs:pr-16
+            border-highlight text-highlight hover:border-highlight-hover
+            hover:text-highlight-hover focus-visible:border-highlight-hover
+            focus-visible:text-highlight-hover relative z-10 mb-6 flex
+            cursor-pointer flex-col-reverse items-center gap-4 border-0 border-b
+            bg-transparent py-8 pb-3 text-left transition-colors sm:pr-20"
           data-copy-email={email}
           aria-label={`Copy ${email} to clipboard`}
         >
           <span
-            class="hire-primary__email font-mono text-base xs:text-xl
+            class="hire-primary__email xs:text-xl font-mono text-base
               tracking-wide"
             >{email}</span
           >
           <span
-            class="hire-primary__state absolute right-8 sm:right-12 bottom-10
-              xs:bottom-1 xs:-translate-y-1/2 xs:place-self-end z-10 inline-flex
-              shrink-0 items-center gap-1.5 pb-1 font-mono text-2xs uppercase
-              text-highlight group-hover:text-highlight-hover transition-colors"
+            class="hire-primary__state xs:bottom-1 xs:-translate-y-1/2
+              xs:place-self-end text-2xs text-highlight
+              group-hover:text-highlight-hover absolute right-8 bottom-10 z-10
+              inline-flex shrink-0 items-center gap-1.5 pb-1 font-mono uppercase
+              transition-colors sm:right-12"
             aria-hidden="true"
           >
             <IconCopy class="h-4 w-4" />
@@ -159,18 +159,18 @@ import IconX from "./icons/IconX.astro";
               flex-col gap-2 px-4 py-6 transition-colors sm:px-8"
           >
             <span
-              class="inline-flex items-center justify-center xs:justify-start
+              class="xs:justify-start inline-flex items-center justify-center
                 gap-2"
             >
-              <IconLinkedIn class="h-12 w-12 xs:h-5 xs:w-5 shrink-0" />
-              <span class="hidden xs:block font-display text-sm tracking-wide"
+              <IconLinkedIn class="xs:h-5 xs:w-5 h-12 w-12 shrink-0" />
+              <span class="xs:block font-display hidden text-sm tracking-wide"
                 >LinkedIn</span
               >
             </span>
             <span
-              class="hidden xs:block truncate font-mono text-xs text-foundation
-                group-hover:text-accent-hover
-                group-focus-visible:text-accent-hover transition-colors"
+              class="xs:block text-foundation group-hover:text-accent-hover
+                group-focus-visible:text-accent-hover hidden truncate font-mono
+                text-xs transition-colors"
               >@{linkedinHandle}</span
             >
           </a>
@@ -185,18 +185,18 @@ import IconX from "./icons/IconX.astro";
               flex-col gap-2 px-4 py-6 transition-colors sm:px-8"
           >
             <span
-              class="inline-flex items-center justify-center xs:justify-start
+              class="xs:justify-start inline-flex items-center justify-center
                 gap-2"
             >
-              <IconGitHub class="h-12 w-12 xs:h-5 xs:w-5 shrink-0" />
-              <span class="hidden xs:block font-display text-sm tracking-wide"
+              <IconGitHub class="xs:h-5 xs:w-5 h-12 w-12 shrink-0" />
+              <span class="xs:block font-display hidden text-sm tracking-wide"
                 >GitHub</span
               >
             </span>
             <span
-              class="hidden xs:block truncate font-mono text-xs text-foundation
-                group-hover:text-accent-hover
-                group-focus-visible:text-accent-hover transition-colors"
+              class="xs:block text-foundation group-hover:text-accent-hover
+                group-focus-visible:text-accent-hover hidden truncate font-mono
+                text-xs transition-colors"
               >@{githubHandle}</span
             >
           </a>
@@ -211,18 +211,18 @@ import IconX from "./icons/IconX.astro";
               flex-col gap-2 px-4 py-6 transition-colors sm:px-8"
           >
             <span
-              class="inline-flex items-center justify-center xs:justify-start
+              class="xs:justify-start inline-flex items-center justify-center
                 gap-2"
             >
-              <IconX class="h-12 w-12 xs:h-5 xs:w-5 shrink-0" />
-              <span class="hidden xs:block font-display text-sm tracking-wide"
+              <IconX class="xs:h-5 xs:w-5 h-12 w-12 shrink-0" />
+              <span class="xs:block font-display hidden text-sm tracking-wide"
                 >X</span
               >
             </span>
             <span
-              class="hidden xs:block truncate font-mono text-xs text-foundation
-                group-hover:text-accent-hover
-                group-focus-visible:text-accent-hover transition-colors"
+              class="xs:block text-foundation group-hover:text-accent-hover
+                group-focus-visible:text-accent-hover hidden truncate font-mono
+                text-xs transition-colors"
               >@{xHandle}</span
             >
           </a>
