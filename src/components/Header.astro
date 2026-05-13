@@ -13,14 +13,16 @@ import IconLinkedIn from "./icons/IconLinkedIn.astro";
     shadow-sm duration-100"
 >
   <div
-    class="border-box border-fainter bg-background-dark flex w-full items-center
-      justify-between border-y border-l"
+    class="border-box border-fainter bg-background-dark flex w-full
+      items-stretch justify-between border-y md:border-l"
   >
-    <div class="bg-background-dark box-border flex items-stretch gap-px">
+    <div
+      class="bg-background-dark box-border hidden items-stretch gap-px sm:flex"
+    >
       <Oscilloscope />
       <Nav />
     </div>
-    <div class="bg-fainter flex items-center gap-px pl-px text-sm">
+    <div class="bg-fainter ml-auto flex gap-px pl-px text-sm">
       <SimpleModeToggle />
       <div class="hidden items-center gap-px md:flex">
         <Link
@@ -62,9 +64,9 @@ import IconLinkedIn from "./icons/IconLinkedIn.astro";
           variant="hoverAccent"
           class="bg-background-dark hover:bg-accent-hover
             hover:text-background-dark focus-visible:bg-accent-hover
-            focus-visible:text-background-dark hidden h-8 items-center gap-1.5
+            focus-visible:text-background-dark hidden items-center gap-1.5
             border-0 px-4 py-2 font-mono text-xs leading-none tracking-wide
-            transition-colors duration-200 focus-visible:z-1 md:flex"
+            transition-colors duration-200 focus-visible:z-1 sm:flex"
         >
           <span>Resume</span>
         </Link>
@@ -76,7 +78,7 @@ import IconLinkedIn from "./icons/IconLinkedIn.astro";
             font-mono text-xs tracking-wide transition-colors duration-150
             hover:cursor-pointer focus-visible:z-1"
         >
-          <span class="inline-block leading-none">Contact</span>
+          <span>Contact</span>
         </button>
       </div>
     </div>

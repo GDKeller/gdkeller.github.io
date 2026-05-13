@@ -24,8 +24,8 @@ import IconSunglasses from "./icons/IconSunglasses.astro";
     focus-visible:bg-accent-hover focus-visible:text-background-dark
     hover:border-accent-hover border-faint bg-background-dark
     aria-pressed:text-background-dark aria-pressed:bg-accent relative flex h-8
-    w-8 shrink-0 items-center justify-center font-mono transition-all
-    duration-200 hover:cursor-pointer"
+    w-8 shrink-0 items-center justify-center self-center font-mono
+    transition-all duration-200 hover:cursor-pointer"
 >
   <IconEyeglasses class="icon-eyeglasses h-6 w-6" />
   <IconSunglasses class="icon-sunglasses h-6 w-6" />
@@ -34,29 +34,31 @@ import IconSunglasses from "./icons/IconSunglasses.astro";
     class="simple-mode-toggle__tooltip text-foundation bg-background-dark
       border-faint group-aria-pressed:border-emphasis
       group-aria-pressed:group-hover:border-faint pointer-events-none absolute
-      top-full -left-px -z-1 w-66 origin-top scale-y-0 border px-4 py-4
-      font-mono text-sm tracking-wider opacity-0 shadow-lg shadow-black/40
-      transition duration-200 data-[placement=above]:top-auto
+      top-full right-0 -z-1 w-49 origin-top scale-y-0 border px-4 py-4 font-mono
+      text-sm tracking-wider opacity-0 shadow-lg shadow-black/40 transition
+      duration-200 data-[placement=above]:top-auto
       data-[placement=above]:bottom-full data-[placement=above]:origin-bottom
-      data-[show=true]:scale-y-100 data-[show=true]:opacity-100"
+      data-[show=true]:scale-y-100 data-[show=true]:opacity-100 sm:right-auto
+      sm:-left-px md:w-66"
     data-simple-mode-tooltip
     data-state="off"
     role="tooltip"
     aria-hidden="true"
   >
     <span data-when="off" class="bg-background-dark block text-left">
-      <span class="text-emphasis relative mb-2 block uppercase"
+      <span
+        class="text-emphasis relative mb-2 block text-xs uppercase md:text-base"
         >Readable Mode: Off</span
       >
-      <span class="relative block w-[28ch] text-xs"
+      <span class="text-2xs relative block w-[28ch] md:text-xs"
         >Click to disable effects & complex fonts</span
       >
     </span>
     <span data-when="on" class="bg-background-dark block text-left">
-      <span class="text-emphasis mb-2 block uppercase"
+      <span class="text-emphasis mb-2 block text-xs uppercase md:text-base"
         >Readable mode: <span class="text-accent-hover">On</span></span
       >
-      <span class="block w-[26ch] text-xs"
+      <span class="text-2xs block w-[26ch] md:text-xs"
         >Click to enable effects & complex fonts</span
       >
     </span>
