@@ -15,8 +15,8 @@ const navLinks = [
 <dialog
   id="mobile_menu"
   class="mobile-menu fixed inset-0 h-dvh max-h-screen w-dvw max-w-screen
-    items-start justify-center overflow-y-auto border-none bg-transparent p-4
-    pt-8 open:flex"
+    items-start justify-center overflow-y-auto overscroll-contain border-none
+    bg-transparent p-4 pt-8 open:flex"
   aria-labelledby="mobile-menu-title"
 >
   <article class="mobile-menu-frame relative w-full max-w-md">
@@ -157,14 +157,14 @@ const navLinks = [
 
   :global(html:has(dialog#mobile_menu[open])) {
     overflow: hidden;
-    scrollbar-gutter: stable;
   }
 </style>
 
 <script>
-  /* Close the dialog before the smooth-scroll handler in Layout.astro runs,
-     so the scroll lands on an unlocked body. Capture phase fires before the
-     bubble-phase listener attached to each anchor. */
+  /* Close the dialog on in-page anchor clicks. Two reasons: (1) UX, the modal
+     shouldn't stay stranded over the scroll destination; (2) the :has() rule
+     above locks html overflow while the menu is open, so the dialog has to
+     close before the browser's native scroll-to-hash can take effect. */
   const dialog = document.getElementById(
     "mobile_menu",
   ) as HTMLDialogElement | null;

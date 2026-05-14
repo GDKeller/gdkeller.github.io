@@ -127,12 +127,8 @@ import IconClose from "./icons/IconClose.astro";
     }
   }
 
-  /* Lock page scroll while the modal is open. `:has()` targets the
-     html element when the dialog has the [open] attribute set by
-     showModal(). `scrollbar-gutter: stable` prevents content shift
-     when the scrollbar disappears. */
+  /* Lock page scroll while the modal is open. */
   :global(html:has(dialog#hire_me_modal[open])) {
     overflow: hidden;
-    scrollbar-gutter: stable;
   }
 </style>
