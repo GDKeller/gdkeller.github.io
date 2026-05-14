@@ -80,7 +80,7 @@ const awards: Award[] = [
               fallbackFormat="webp"
               loading="lazy"
               class={`h-full w-full object-contain transition-shadow
-                ${award.level === "gold" ? "drop-shadow-[0_0_1rem_rgba(250,220,160,0.2)]" : award.level === "silver" ? "drop-shadow-[0_0_1.5rem_rgba(192,192,192,0.1)]" : "drop-shadow-[0_0_1rem_rgba(205,127,50,0.2)]"}`}
+                ${award.level === "gold" ? "drop-shadow-[0_0_1rem_var(--color-medal-gold)]" : award.level === "silver" ? "drop-shadow-[0_0_1rem_var(--color-medal-silver)]" : "drop-shadow-[0_0_1rem_var(--color-medal-bronze)]"}`}
             />
           </div>
           <div class="relative z-110">

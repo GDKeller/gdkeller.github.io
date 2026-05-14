@@ -9,7 +9,7 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="bg-background font-body overflow-x-clip">
   <head>
     <script is:inline>
       try {
@@ -101,47 +101,3 @@ const { title } = Astro.props;
     </script>
   </body>
 </html>
-<style is:global>
-  html {
-    font-family: "Prompt", system-ui, sans-serif;
-    background: #13151a;
-    overflow-x: clip;
-  }
-  code {
-    font-family:
-      Menlo,
-      Monaco,
-      Lucida Console,
-      Liberation Mono,
-      DejaVu Sans Mono,
-      Bitstream Vera Sans Mono,
-      Courier New,
-      monospace;
-  }
-
-  /* GSAP Animation Styles */
-  .word,
-  .char {
-    display: inline-block;
-  }
-
-  .word {
-    margin-right: 0.2em;
-  }
-
-  .char {
-    line-height: 1;
-  }
-
-  /* Smooth transitions for hover states */
-  .link-card,
-  .skill-badge,
-  .project-card {
-    will-change: transform, opacity;
-  }
-
-  /* Prevent FOUC (Flash of Unstyled Content) */
-  .gsap-loading * {
-    visibility: hidden;
-  }
-</style>
