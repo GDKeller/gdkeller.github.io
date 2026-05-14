@@ -30,7 +30,7 @@
 @theme {
   --font-decorative: var(--font-manufacturing_consent);
   --text-2xs: 0.625rem;
-  --tracking-huge: 0.5em;
+  --tracking-huge: 0.35em;
 }
 
 /** Semantic color tokens
