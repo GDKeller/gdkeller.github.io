@@ -133,6 +133,13 @@ const blendStyle = blend ? undefined : "mix-blend-mode: normal";
     }
   }
 
+  /* Pause scanline animation while a dialog is open. The animating
+     mix-blend-mode layer can briefly composite above the top-layer
+     dialog during repaint cycles, causing a sporadic flicker. */
+  :global(html:has(dialog[open])) .overlay-scanlines {
+    animation-play-state: paused;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .overlay-scanlines,
     .overlay-noise::before {
