@@ -11,7 +11,18 @@ import compressor from "astro-compressor";
 // https://astro.build/config
 export default defineConfig({
   site: "https://www.grantkeller.dev",
-  integrations: [mdx(), favicons(), sitemap(), compressor(), astroCompress()],
+  integrations: [
+    mdx(),
+    favicons({
+      name: "Grant Keller",
+      short_name: "Grant K",
+      input: { favicons: ["public/favicon.png"] },
+      pixel_art: true,
+    }),
+    sitemap(),
+    compressor(),
+    astroCompress(),
+  ],
   image: {
     // Emit <img srcset> from <Image widths={...}>. We intentionally do NOT set
     // a default `layout` here — the constrained layout applies CSS like
