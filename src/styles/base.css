@@ -94,3 +94,13 @@ picture {
     var(--color-faint) 1rem
   );
 }
+
+.pattern-dots {
+  background-color: var(--color-background);
+  background-image: radial-gradient(
+    var(--color-fainter) 0.5px,
+    var(--color-background) 0.5px
+  );
+  background-size: 0.25rem 0.25rem;
+  color: var(--color-background);
+}

@@ -1,31 +1,78 @@
 ---
 import Link from "./Link.astro";
 import Nav from "./Nav.astro";
-import Oscilloscope from "./Oscilloscope.astro";
 import SimpleModeToggle from "./SimpleModeToggle.astro";
 import IconGitHub from "./icons/IconGitHub.astro";
 import IconLinkedIn from "./icons/IconLinkedIn.astro";
 import IconMenu from "./icons/IconMenu.astro";
+import arrowDown from "../images/icons/icon_arrow-down.png";
+import arrowUp from "../images/icons/icon_arrow-up.png";
+import headshotDithered from "../images/headshots/grant-headshot-dithered.png";
 ---
 
 <div
   id="header__main"
-  class="sticky top-0 left-0 z-140 block w-full justify-between py-0 pr-0 pl-0
+  class="sticky top-0 left-0 z-150 block w-full justify-between py-0 pr-0 pl-0
     shadow-sm duration-100"
 >
   <div
-    class="border-box border-fainter bg-background-dark flex w-full
-      items-stretch justify-between border-y md:border-l"
+    class="border-box pattern-dots flex w-full items-stretch justify-between
+      md:border-l"
   >
     <div
-      class="bg-background-dark box-border hidden items-stretch gap-px sm:flex"
+      class="border-fainter box-border hidden items-stretch gap-0.5 py-1 pl-0.5
+        sm:flex"
     >
-      <Oscilloscope />
+      <a
+        id="home-link"
+        href="#building"
+        aria-label="Scroll to next section"
+        data-state="at-hero"
+        class="home-link focus-visible:bg-accent-hover bg-background-dark
+          relative block h-8 w-8 shrink-0 overflow-hidden focus-visible:z-1"
+      >
+        <img
+          src={arrowDown.src}
+          alt=""
+          width="32"
+          height="32"
+          class="home-link__icon home-link__icon--down absolute inset-0"
+        />
+        <img
+          src={headshotDithered.src}
+          alt=""
+          width="32"
+          height="32"
+          class="home-link__icon home-link__icon--face absolute inset-0"
+        />
+        <img
+          src={arrowUp.src}
+          alt=""
+          width="32"
+          height="32"
+          class="home-link__icon home-link__icon--up absolute inset-0"
+        />
+      </a>
       <Nav />
     </div>
-    <div class="bg-fainter ml-auto flex gap-px pl-px text-sm">
+    <div
+      class="relative w-full overflow-hidden"
+      role="presentation"
+      aria-hidden="true"
+    >
+      <div class="absolute top-1/2 -left-2 flex -translate-y-1/2">
+        <p
+          class="text-background-dark mr-4 font-mono text-7xl leading-none
+            font-bold tracking-wide whitespace-nowrap opacity-20
+            text-shadow-[0_0_0.01em_var(--color-faint),0_0_0.02em_var(--color-faint),0_0_0.04em_var(--color-faint)]"
+        >
+          STX \x02 0x47 0x4B
+        </p>
+      </div>
+    </div>
+    <div class="ml-auto flex gap-1 pl-px text-sm">
       <SimpleModeToggle />
-      <div class="hidden items-center gap-px md:flex">
+      <div class="hidden items-center gap-1 md:flex">
         <Link
           href="https://github.com/gdkeller"
           target="_blank"
@@ -58,14 +105,14 @@ import IconMenu from "./icons/IconMenu.astro";
         </Link>
       </div>
 
-      <div class="flex pr-px">
+      <div class="flex gap-0.5">
         <Link
           href="/Grant Keller Senior UX Engineer Resume 2025.pdf"
           target="_blank"
           variant="hoverAccent"
           class="bg-background-dark hover:bg-accent-hover
             hover:text-background-dark focus-visible:bg-accent-hover
-            focus-visible:text-background-dark hidden items-center gap-1.5
+            focus-visible:text-background-dark my-0.5 hidden items-center
             border-0 px-4 py-2 font-mono text-xs leading-none tracking-wide
             transition-colors duration-200 focus-visible:z-1 sm:flex"
         >
@@ -75,8 +122,8 @@ import IconMenu from "./icons/IconMenu.astro";
           data-open-modal="hire_me_modal"
           aria-label="Contact"
           class="text-background-dark bg-emphasis hover:bg-highlight
-            focus-visible:bg-highlight relative hidden items-center px-4 py-2
-            font-mono text-xs tracking-wide transition-colors duration-150
+            focus-visible:bg-highlight relative my-0.5 hidden items-center px-6
+            py-2 font-mono text-xs tracking-wide transition-colors duration-150
             hover:cursor-pointer focus-visible:z-1 sm:flex"
         >
           <span>Contact</span>
@@ -101,4 +148,49 @@ import IconMenu from "./icons/IconMenu.astro";
   #header__main :global(button:focus-visible) {
     outline-offset: 0px;
   }
+
+  .home-link__icon {
+    display: none;
+  }
+  .home-link__icon--down,
+  .home-link__icon--up {
+    image-rendering: pixelated;
+  }
+  .home-link[data-state="at-hero"] .home-link__icon--down {
+    display: block;
+  }
+  .home-link[data-state="past-hero"] .home-link__icon--face {
+    display: block;
+  }
+  .home-link[data-state="past-hero"]:hover .home-link__icon--face,
+  .home-link[data-state="past-hero"]:focus-visible .home-link__icon--face {
+    display: none;
+  }
+  .home-link[data-state="past-hero"]:hover .home-link__icon--up,
+  .home-link[data-state="past-hero"]:focus-visible .home-link__icon--up {
+    display: block;
+  }
 </style>
+
+<script>
+  const homeLink = document.getElementById("home-link");
+  const hero = document.getElementById("hero");
+
+  if (homeLink && hero) {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          homeLink.dataset.state = "at-hero";
+          homeLink.setAttribute("href", "#building");
+          homeLink.setAttribute("aria-label", "Scroll to next section");
+        } else {
+          homeLink.dataset.state = "past-hero";
+          homeLink.setAttribute("href", "#hero");
+          homeLink.setAttribute("aria-label", "Back to top");
+        }
+      },
+      { threshold: 0 },
+    );
+    observer.observe(hero);
+  }
+</script>
