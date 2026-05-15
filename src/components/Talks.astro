@@ -69,23 +69,23 @@ const getPoster = (item: Appearance, size: "mq" | "hq" = "mq") => {
 const initial = sorted[0];
 ---
 
-<div class="mx-auto w-full md:max-xl:container" data-talks>
+<div class="mx-auto w-full md:max-lg:container" data-talks>
   <HeadingSection
     text="Appearances"
     as="h2"
     align="left"
     treatment="glow"
-    class="mb-8 xl:mb-16"
+    class="mb-8 lg:mb-16"
   />
 
-  <div class="grid gap-1 xl:grid-cols-[1fr_auto_1.5fr]">
+  <div class="grid gap-1 lg:grid-cols-[1fr_auto_1.5fr]">
     <!-- Player stage -->
     <section
-      class="border-faint order-1 border p-2 sm:p-4 md:p-8 lg:p-8 xl:order-3
-        xl:col-span-1"
+      class="border-faint order-1 border p-2 sm:p-4 md:p-8 lg:p-8 lg:order-3
+        lg:col-span-1"
       aria-label="Appearance player"
     >
-      <div class="player-frame bg-background-dark relative xl:mb-8">
+      <div class="player-frame bg-background-dark relative lg:mb-8">
         <span class="bracket tl" aria-hidden="true"></span>
         <span class="bracket tr" aria-hidden="true"></span>
         <span class="bracket bl" aria-hidden="true"></span>
@@ -142,7 +142,7 @@ const initial = sorted[0];
         </div>
       </div>
 
-      <div class="hidden items-stretch gap-4 pl-4 xl:flex">
+      <div class="hidden items-stretch gap-4 pl-4 lg:flex">
         <div class="relative z-110 min-w-0 flex-1">
           <p
             class="text-accent text-2xs mb-2 font-mono leading-none
@@ -153,7 +153,7 @@ const initial = sorted[0];
           </p>
           <h3
             class="text-foundation font-display text-xl leading-tight
-              tracking-wider xl:text-2xl"
+              tracking-wider lg:text-2xl"
             data-player-title
           >
             {initial.title}
@@ -162,35 +162,35 @@ const initial = sorted[0];
       </div>
     </section>
 
-    <div class="order-2 flex w-full flex-col justify-center xl:w-2 xl:gap-1">
-      <span class="bg-faint mt-auto hidden h-2 xl:block"></span>
+    <div class="order-2 flex w-full flex-col justify-center lg:w-2 lg:gap-1">
+      <span class="bg-faint mt-auto hidden h-2 lg:block"></span>
       <div
         class="border-faint mx-auto mt-0 mb-0 block h-1 max-h-96 w-full
-          max-w-2/3 flex-1 overflow-hidden xl:mx-0 xl:h-full xl:max-w-full
-          xl:px-0 xl:py-1"
+          max-w-2/3 flex-1 overflow-hidden lg:mx-0 lg:h-full lg:max-w-full
+          lg:px-0 lg:py-1"
       >
         <span
-          class="hazard-stripe__faint block h-1 w-full flex-1 xl:h-full xl:w-2"
+          class="hazard-stripe__faint block h-1 w-full flex-1 lg:h-full lg:w-2"
         ></span>
       </div>
-      <span class="bg-faint mb-auto hidden h-2 xl:block"></span>
+      <span class="bg-faint mb-auto hidden h-2 lg:block"></span>
     </div>
 
     <!-- Queue -->
     <aside
-      class="border-faint bg-background-dark order-3 border xl:order-1
-        xl:col-span-1"
+      class="border-faint bg-background-dark order-3 border lg:order-1
+        lg:col-span-1"
       aria-label="Appearance queue"
     >
       <div class="queue flex h-full flex-col">
         <div
           class="border-faint hidden items-center justify-between border-b px-4
-            py-3 xl:flex"
+            py-3 lg:flex"
         >
           <p
             aria-hidden="true"
             class="text-emphasis text-2xs flex items-center font-mono
-              leading-none font-extralight tracking-widest uppercase xl:text-xs"
+              leading-none font-extralight tracking-widest uppercase lg:text-xs"
           >
             <span
               class="text-accent triplecolon mr-3 font-light"
@@ -272,7 +272,7 @@ const initial = sorted[0];
                     >
                       {item.title}
                     </span>
-                    <span class="flex justify-between xl:flex-col">
+                    <span class="flex justify-between lg:flex-col">
                       <span
                         class="track__event text-emphasis truncate font-mono
                           text-xs font-extralight tracking-widest uppercase
@@ -406,10 +406,10 @@ const initial = sorted[0];
       left: 0;
 
       &::before {
-        @apply -top-4 -left-px xl:-top-3;
+        @apply -top-4 -left-px lg:-top-3;
       }
       &::after {
-        @apply -top-px -left-4 xl:-left-3;
+        @apply -top-px -left-4 lg:-left-3;
       }
     }
 
@@ -417,10 +417,10 @@ const initial = sorted[0];
       @apply top-0 right-0;
 
       &::before {
-        @apply -top-4 -right-px xl:-top-3;
+        @apply -top-4 -right-px lg:-top-3;
       }
       &::after {
-        @apply -top-px -right-4 xl:-right-3;
+        @apply -top-px -right-4 lg:-right-3;
       }
     }
 
@@ -428,20 +428,20 @@ const initial = sorted[0];
       @apply bottom-0 left-0;
 
       &::before {
-        @apply -bottom-3 -left-px xl:-bottom-4;
+        @apply -bottom-3 -left-px lg:-bottom-4;
       }
       &::after {
-        @apply -bottom-px -left-4 xl:-left-3;
+        @apply -bottom-px -left-4 lg:-left-3;
       }
     }
     &.br {
       @apply right-0 bottom-0;
 
       &::before {
-        @apply -right-px -bottom-4 xl:-bottom-3;
+        @apply -right-px -bottom-4 lg:-bottom-3;
       }
       &::after {
-        @apply -right-4 -bottom-px xl:-right-3;
+        @apply -right-4 -bottom-px lg:-right-3;
       }
     }
   }

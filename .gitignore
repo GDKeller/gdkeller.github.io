@@ -31,6 +31,7 @@ pnpm-debug.log*
 .claude/worktrees/
 .playwright-mcp
 .tmp-screenshots/
+.tmp/
 
 
 #Ignore vscode AI rules

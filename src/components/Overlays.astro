@@ -11,9 +11,9 @@ type Props = {
 const {
   position = "fixed",
   blend = true,
-  scanlinesClass = "z-112",
+  scanlinesClass = "z-142",
   scanlinesOpacityClass = "opacity-40",
-  noiseClass = "z-112",
+  noiseClass = "z-141",
   noiseOpacityClass = "opacity-8",
 } = Astro.props;
 
@@ -61,7 +61,7 @@ const blendStyle = blend ? undefined : "mix-blend-mode: normal";
     right: -6px;
     mix-blend-mode: soft-light;
     transform: translate3d(0, 0, 0);
-    animation: overlay-scanlines-shift 0.2s linear infinite;
+    animation: overlay-scanlines-shift 0.07s linear infinite;
   }
 
   @keyframes overlay-scanlines-shift {
@@ -131,6 +131,13 @@ const blendStyle = blend ? undefined : "mix-blend-mode: normal";
     100% {
       transform: translate3d(0, 0, 0);
     }
+  }
+
+  /* Pause scanline animation while a dialog is open. The animating
+     mix-blend-mode layer can briefly composite above the top-layer
+     dialog during repaint cycles, causing a sporadic flicker. */
+  :global(html:has(dialog[open])) .overlay-scanlines {
+    animation-play-state: paused;
   }
 
   @media (prefers-reduced-motion: reduce) {

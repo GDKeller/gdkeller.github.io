@@ -6,45 +6,47 @@ import HeadingSection from "./HeadingSection.astro";
 
 <footer class="font-body">
   <!-- CTA Section -->
-  <div
-    class="hazard-stripe__faint border-faint mx-auto mb-32 w-fit border-2 px-8
-      py-8"
-  >
-    <div class="bg-background border-background mx-auto border-16 text-center">
-      <div class="bg-emphasis px-24 pt-12 pb-20">
-        <HeadingSection
-          treatment="inverted"
-          align="center"
-          text="Send a Wire"
-          class="mb-8"
-        />
-        <div
-          class="bg-background mx-auto flex w-fit flex-col justify-center p-2
-            sm:flex-row"
-        >
-          <div class="flex gap-2 transition-colors">
-            <a
-              href="/Grant Keller Senior UX Engineer Resume 2025.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-accent-hover bg-background hover:text-background-dark
-                hover:bg-accent-hover border-accent-hover inline-flex
-                items-center justify-center border-4 px-8 py-4 font-mono text-lg
-                font-medium transition-all duration-200"
-            >
-              <span class="relative z-110">Download Resume</span>
-              <IconFileDownload class="ml-2 h-5 w-5" />
-            </a>
-            <button
-              data-open-modal="hire_me_modal"
-              class="hover:text-background-dark border-highlight bg-background
-                text-highlight hover:bg-highlight inline-flex items-center
-                justify-center border-4 px-8 py-4 font-mono text-lg font-bold
-                transition-all duration-200 hover:cursor-pointer"
-            >
-              <span>Get in Touch</span>
-              <IconArrowRight class="ml-2 h-5 w-5" />
-            </button>
+  <div class="mx-auto mb-32 w-full max-w-4xl px-8">
+    <div class="hazard-stripe__faint border-faint border-2 px-8 py-8">
+      <div
+        class="bg-background border-background mx-auto border-16 text-center"
+      >
+        <div class="bg-emphasis px-24 pt-12 pb-20">
+          <HeadingSection
+            treatment="inverted"
+            align="center"
+            text="Send a Wire"
+            class="mb-8"
+          />
+          <div
+            class="bg-background mx-auto flex w-fit flex-col justify-center p-2
+              sm:flex-row"
+          >
+            <div class="flex gap-2 transition-colors">
+              <a
+                href="/Grant Keller Senior UX Engineer Resume 2025.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-accent-hover bg-background
+                  hover:text-background-dark hover:bg-accent-hover
+                  border-accent-hover inline-flex items-center justify-center
+                  border-4 px-8 py-4 font-mono text-lg font-medium
+                  transition-all duration-200"
+              >
+                <span class="relative z-110">Download Resume</span>
+                <IconFileDownload class="ml-2 h-5 w-5" />
+              </a>
+              <button
+                data-open-modal="hire_me_modal"
+                class="hover:text-background-dark border-highlight bg-background
+                  text-highlight hover:bg-highlight inline-flex items-center
+                  justify-center border-4 px-8 py-4 font-mono text-lg font-bold
+                  transition-all duration-200 hover:cursor-pointer"
+              >
+                <span>Get in Touch</span>
+                <IconArrowRight class="ml-2 h-5 w-5" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -52,40 +54,127 @@ import HeadingSection from "./HeadingSection.astro";
   </div>
 
   <!-- Site Info -->
-  <div class="border-fainter bg-background-dark border-t px-8 py-8 text-center">
-    <div class="container mx-auto">
-      <p class="font-mono text-sm">
-        <span class="inline-block"
-          >Built with <a
+  <div class="bg-background-dark">
+    <!-- Message -->
+    <span class="pattern-dots block h-2 w-full"></span>
+    <div class="w-full overflow-hidden" role="presentation" aria-hidden="true">
+      <p
+        class="text-fainter flex flex-col gap-0 px-2 font-mono text-xl
+          leading-[0.9em] font-extralight tabular-nums opacity-30"
+      >
+        <span class="hex-message grow"
+          >0x65 0x78 0x63 0x65 0x6c 0x6c 0x65 0x6e 0x63 0x65 0x20 0x6d 0x61 0x74
+          0x74 0x65 0x72 0x73 0x20 0x6d 0x6f 0x73 0x74 0x20</span
+        >
+        <span class="hex-message grow"
+          >0x77 0x68 0x65 0x6e 0x20 0x6e 0x6f 0x20 0x6f 0x6e 0x65 0x20 0x69 0x73
+          0x20 0x6c 0x6f 0x6f 0x6b 0x69 0x6e 0x67</span
+        >
+      </p>
+    </div>
+    <span class="pattern-dots block h-2 w-full"></span>
+
+    <!-- Footer content -->
+    <div
+      class="container mx-auto flex w-full max-w-3xl justify-between px-8 py-16"
+    >
+      <!-- Left -->
+      <div class="leading-tight">
+        <p class="font-decorative mb-1 text-6xl">Grant Keller</p>
+        <p class="mb-6 border-b pb-4 indent-2 font-mono text-base font-bold">
+          Last of the Freelance Hackers
+        </p>
+        <p class="mb-4 indent-2 font-mono text-xs font-extralight italic">
+          Greatest swordfighter east of the 5
+        </p>
+        <p class="mb-4 indent-2 font-mono text-sm">
+          Field Engineer, Frontend Division
+        </p>
+        <p class="indent-2 font-mono text-sm">
+          Specializing in interface intel
+          <span class="mt-1 block text-sm font-extralight"
+            >[ design - systems - code ]</span
+          >
+        </p>
+      </div>
+
+      <!-- Right -->
+      <div class="flex flex-col items-end pt-4">
+        <p
+          class="border-fainter flex max-w-52 flex-wrap border p-4 font-mono
+            text-sm leading-relaxed"
+        >
+          <span
+            class="font-display mb-1 block text-lg tracking-widest
+              whitespace-nowrap"
+            >Site built with&nbsp;</span
+          >
+          <span class="inline-block">TypeScript,&nbsp;</span>
+          <a
             class="text-emphasis hover:text-emphasis-hover hover:underline"
             href="https://astro.build/"
             target="_blank"
-            rel="noopener noreferrer">Astro</a
-          >,
+            rel="noopener noreferrer">Astro 6,</a
+          >
           <a
             class="text-emphasis hover:text-emphasis-hover hover:underline"
             href="https://tailwindcss.com/"
             target="_blank"
-            rel="noopener noreferrer">Tailwind</a
-          > & <a
+            rel="noopener noreferrer">Tailwind v4</a
+          >&nbsp;&&nbsp;<a
             class="text-emphasis hover:text-emphasis-hover hover:underline"
             href="https://gsap.com/"
             target="_blank"
             rel="noopener noreferrer">GSAP</a
-          ></span
+          >
+        </p>
+
+        <a
+          class="text-emphasis border-faint hover:text-accent-hover group mb-8
+            flex w-full items-center gap-2 border border-t-0 px-4 py-2 font-mono
+            text-sm"
+          href="https://github.com/GDKeller/gdkeller.github.io"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-        <span class="text-accent mx-4">᠅</span>
-        <span class="inline-block"
-          ><a
-            class="text-emphasis hover:text-emphasis-hover hover:underline"
-            href="https://github.com/GDKeller/gdkeller.github.io"
-            target="_blank"
-            rel="noopener noreferrer">View site repo</a
-          ></span
+          <span
+            class="text-accent group-hover:text-accent-hover inline-block
+              translate-y-px text-lg"
+            role="presentation"
+            aria-hidden="true">᠅</span
+          >
+          <span class="group-hover:underline">View source repo</span></a
         >
-        <span class="text-accent mx-4">᠅</span>
-        <span class="inline-block">© 0x7EA Grant Keller</span>
+
+        <!-- Copyright -->
+        <p class="mt-auto mb-0 pr-4 text-base">
+          <span class="inline-block">© 12026 HE</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- Footer end decoration -->
+    <div
+      class="relative w-full place-self-end self-end overflow-hidden pt-[25vw]
+        text-center opacity-5"
+      role="presentation"
+      aria-hidden="true"
+    >
+      <p
+        class="text-background absolute bottom-0 left-1/2 z-90
+          translate-x-[calc(-50%-0.05em)] translate-y-1/8 font-mono
+          text-[24.5vw] leading-none font-normal tracking-[-0.08em]
+          whitespace-nowrap select-none
+          text-shadow-[0_0_0.0075em_var(--color-emphasis),0_0_0.01em_var(--color-emphasis),0_0_0.0125em_var(--color-emphasis),0_0_0.08em_color-mix(in_oklab,var(--color-emphasis)20%,transparent)]"
+      >
+        EOT 0x04
       </p>
     </div>
   </div>
 </footer>
+
+<style>
+  .hex-message {
+    text-align-last: justify;
+  }
+</style>

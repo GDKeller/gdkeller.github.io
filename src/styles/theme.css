@@ -30,7 +30,7 @@
 @theme {
   --font-decorative: var(--font-manufacturing_consent);
   --text-2xs: 0.625rem;
-  --tracking-huge: 0.5em;
+  --tracking-huge: 0.35em;
 }
 
 /** Semantic color tokens
@@ -68,6 +68,12 @@
 
   /* Decorative one-off used in Hero only */
   --color-undertone: oklch(0.57 0.0968 195);
+
+  /* Medal materials, used in Awards only. Alpha baked in: each medal's glow
+     intensity is part of the token (silver reads softer, gold/bronze warmer). */
+  --color-medal-gold: rgba(250, 220, 160, 0.2);
+  --color-medal-silver: rgba(192, 192, 192, 0.1);
+  --color-medal-bronze: rgba(205, 127, 50, 0.2);
 }
 
 /** Breakpoints

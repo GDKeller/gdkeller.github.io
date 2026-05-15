@@ -19,6 +19,27 @@ html[data-simple-mode="on"] {
   --font-decorative: var(--font-prompt);
 }
 
+/* Step every `text-*` utility on font-decorative elements down one rung in
+   simple mode. Prompt is much wider than the blackletter face, so one rung
+   smaller keeps the swapped headings from blowing past their original
+   bounding box. Tailwind v4 emits `font-size: var(--text-Nxl)`, so
+   redefining the vars locally cascades through every responsive variant. */
+html[data-simple-mode="on"] .font-decorative {
+  --text-9xl: 6rem;
+  --text-8xl: 4.5rem;
+  --text-7xl: 3.75rem;
+  --text-6xl: 3rem;
+  --text-5xl: 2.25rem;
+  --text-4xl: 1.875rem;
+  --text-3xl: 1.5rem;
+  --text-2xl: 1.25rem;
+  --text-xl: 1.125rem;
+  --text-lg: 1rem;
+  --text-base: 0.875rem;
+  --text-sm: 0.75rem;
+  --text-xs: 0.625rem;
+}
+
 html[data-simple-mode="on"] .noise,
 html[data-simple-mode="on"] .overlay-noise,
 html[data-simple-mode="on"] .overlay-scanlines {

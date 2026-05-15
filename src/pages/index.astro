@@ -15,6 +15,7 @@ import Talks from "../components/Talks.astro";
 import CurrentlyBuilding from "../components/CurrentlyBuilding.astro";
 import HeadingSection from "../components/HeadingSection.astro";
 import HireModal from "../components/HireModal.astro";
+import MobileMenu from "../components/MobileMenu.astro";
 import Overlays from "../components/Overlays.astro";
 ---
 
@@ -83,7 +84,8 @@ import Overlays from "../components/Overlays.astro";
       <!-- Speaking / Talks -->
       <section
         id="speaking"
-        class="relative mx-auto max-w-7xl px-2 py-16 sm:px-4 md:py-24 xl:px-8"
+        class="relative mx-auto mb-32 max-w-7xl px-2 py-16 sm:px-4 md:py-24
+          xl:px-8"
       >
         <Talks />
       </section>
@@ -112,4 +114,5 @@ import Overlays from "../components/Overlays.astro";
   <Footer />
 
   <HireModal />
+  <MobileMenu />
 </Layout>

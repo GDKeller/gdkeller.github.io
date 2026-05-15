@@ -9,7 +9,7 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="bg-background font-body overflow-x-clip">
   <head>
     <script is:inline>
       try {
@@ -26,7 +26,6 @@ const { title } = Astro.props;
       content="Grant Keller is a senior frontend web developer with over a decade of experience building fast, accessible, user-centered interfaces."
     />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <Font cssVariable="--font-prompt" preload />
@@ -57,27 +56,6 @@ const { title } = Astro.props;
         ScrollTriggerInstance,
       } from "../lib/animations";
 
-      // Immediate smooth scroll for navigation - no delay
-      document.addEventListener("DOMContentLoaded", function () {
-        const navLinks = document.querySelectorAll('nav a[href^="#"]');
-        navLinks.forEach((link) => {
-          link.addEventListener("click", (e) => {
-            e.preventDefault();
-            const href = link.getAttribute("href");
-            if (!href) return;
-            const targetId = href.substring(1);
-            const target = document.getElementById(targetId);
-
-            if (target) {
-              target.scrollIntoView({
-                behavior: "smooth",
-                block: "start",
-              });
-            }
-          });
-        });
-      });
-
       // GSAP initialization with modular animations
       window.addEventListener("load", async function () {
         try {
@@ -101,47 +79,3 @@ const { title } = Astro.props;
     </script>
   </body>
 </html>
-<style is:global>
-  html {
-    font-family: "Prompt", system-ui, sans-serif;
-    background: #13151a;
-    overflow-x: clip;
-  }
-  code {
-    font-family:
-      Menlo,
-      Monaco,
-      Lucida Console,
-      Liberation Mono,
-      DejaVu Sans Mono,
-      Bitstream Vera Sans Mono,
-      Courier New,
-      monospace;
-  }
-
-  /* GSAP Animation Styles */
-  .word,
-  .char {
-    display: inline-block;
-  }
-
-  .word {
-    margin-right: 0.2em;
-  }
-
-  .char {
-    line-height: 1;
-  }
-
-  /* Smooth transitions for hover states */
-  .link-card,
-  .skill-badge,
-  .project-card {
-    will-change: transform, opacity;
-  }
-
-  /* Prevent FOUC (Flash of Unstyled Content) */
-  .gsap-loading * {
-    visibility: hidden;
-  }
-</style>

@@ -2,6 +2,16 @@ strong {
   font-weight: 700;
 }
 
+/** Reserve scrollbar gutter so the scrollbar track sits in a permanent strip
+ *  instead of overlaying viewport-edge content. Prevents the sticky header's
+ *  right-edge controls (hamburger button) from being clipped by or misclicked
+ *  through the scrollbar track. Also removes layout shift when modals lock
+ *  body overflow.
+ */
+html {
+  scrollbar-gutter: stable;
+}
+
 /** Astro's <Picture> wraps the <img> in a <picture> for multi-format <source>
  *  negotiation. <picture> defaults to `display: inline`, which eats the
  *  layout slot the <img> is expected to fill (h-full / object-cover against a
@@ -83,4 +93,14 @@ picture {
     var(--color-faint) 0.5rem,
     var(--color-faint) 1rem
   );
+}
+
+.pattern-dots {
+  background-color: var(--color-background);
+  background-image: radial-gradient(
+    var(--color-fainter) 0.5px,
+    var(--color-background) 0.5px
+  );
+  background-size: 0.25rem 0.25rem;
+  color: var(--color-background);
 }
