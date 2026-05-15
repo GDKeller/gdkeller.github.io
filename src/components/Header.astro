@@ -20,8 +20,7 @@ import headshotDithered from "../images/headshots/grant-headshot-dithered.png";
       md:border-l"
   >
     <div
-      class="border-fainter box-border hidden items-stretch gap-0.5 py-1 pl-0.5
-        sm:flex"
+      class="border-fainter box-border flex items-stretch gap-0.5 py-1 pl-0.5"
     >
       <a
         id="home-link"
@@ -29,7 +28,8 @@ import headshotDithered from "../images/headshots/grant-headshot-dithered.png";
         aria-label="Scroll to next section"
         data-state="at-hero"
         class="home-link focus-visible:bg-accent-hover bg-background-dark
-          relative block h-8 w-8 shrink-0 overflow-hidden focus-visible:z-1"
+          relative hidden h-8 w-8 shrink-0 overflow-hidden focus-visible:z-1
+          sm:block"
       >
         <img
           src={arrowDown.src}
@@ -53,7 +53,8 @@ import headshotDithered from "../images/headshots/grant-headshot-dithered.png";
           class="home-link__icon home-link__icon--up absolute inset-0"
         />
       </a>
-      <Nav />
+      <SimpleModeToggle />
+      <Nav class="hidden sm:flex" />
     </div>
     <div
       class="relative w-full overflow-hidden"
@@ -71,7 +72,6 @@ import headshotDithered from "../images/headshots/grant-headshot-dithered.png";
       </div>
     </div>
     <div class="ml-auto flex gap-1 pl-px text-sm">
-      <SimpleModeToggle />
       <div class="hidden items-center gap-1 md:flex">
         <Link
           href="https://github.com/gdkeller"
