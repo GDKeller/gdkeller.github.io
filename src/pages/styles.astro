@@ -79,6 +79,52 @@ const colorTokens = [
   },
   { group: "highlight", tokens: ["highlight", "highlight-hover"] },
   { group: "extra", tokens: ["undertone"] },
+  {
+    group: "materials",
+    tokens: ["medal-gold", "medal-silver", "medal-bronze"],
+  },
+];
+
+const colorGroupNotes: Record<string, string> = {
+  structural:
+    "The screen itself. Background is the page, background-dark is functionally black, foundation is baseline reading copy.",
+  emphasis:
+    "A gentle lift above foundation for subheads and labels. Faint and fainter are trace lines only: borders, rules, dot patterns. Never text.",
+  accent:
+    "The phosphor responding to input. Buttons, active states, bullets. Accent-subtle is the muted version for tonal shadows.",
+  highlight:
+    "Fuchsia breaks the phosphor. Maximum alert, reserved for the most important interactive element on a surface. Use once or twice per page.",
+  extra: "Atmospheric depth in the Hero (gradient stops, glow). Not for UI.",
+  materials:
+    "Award medal glows. Alpha is baked into the token, so each metal's intensity is part of the decision.",
+};
+
+const patterns = [
+  {
+    name: ".hazard-stripe",
+    note: "45° emphasis stripes. Operational warning marks.",
+    class: "hazard-stripe",
+  },
+  {
+    name: ".hazard-stripe--reverse",
+    note: "135° variant for mirrored pairs.",
+    class: "hazard-stripe--reverse",
+  },
+  {
+    name: ".hazard-stripe__faint",
+    note: "Stripes in the faint trace color. Recedes behind content.",
+    class: "hazard-stripe__faint",
+  },
+  {
+    name: ".pattern-dots",
+    note: "0.25rem dot grid in fainter. The CRT's pixel structure.",
+    class: "pattern-dots",
+  },
+  {
+    name: ".pattern-dots__wide",
+    note: "0.5rem dot grid for larger fills.",
+    class: "pattern-dots pattern-dots__wide",
+  },
 ];
 
 const totalColorTokens = colorTokens.reduce(
@@ -87,17 +133,33 @@ const totalColorTokens = colorTokens.reduce(
 );
 
 const fontTokens = [
-  { name: "display", label: "Prompt", role: "Display" },
+  {
+    name: "display",
+    label: "Prompt",
+    role: "Display",
+    note: "Entry titles, utility headings, subheads. Weights 300 to 900.",
+  },
   {
     name: "decorative",
     label: "Manufacturing Consent",
     role: "Decorative",
+    note: "The analyst's voice: section titles, hero headline, display stats. Swaps to Prompt (one size rung down) in simple mode.",
   },
-  { name: "body", label: "Body", role: "Body" },
-  { name: "mono", label: "IBM Plex Mono", role: "Monospace" },
+  {
+    name: "body",
+    label: "Prompt",
+    role: "Body",
+    note: "Report body copy. Neutral, comfortable, serves both voices.",
+  },
+  {
+    name: "mono",
+    label: "IBM Plex Mono",
+    role: "Monospace",
+    note: "The terminal's voice: case numbers, marginalia, film labels, tech stacks. Small, uppercase, letter-spaced. Never headings.",
+  },
 ];
 
-// Mirrors the `@source inline("text-{...}")` list in main.css. `custom: true`
+// Mirrors the `@source inline("text-{...}")` list in theme.css. `custom: true`
 // marks sizes that exist only because of local --text-* overrides; everything
 // else is Tailwind v4's built-in scale.
 const textSizes = [
@@ -140,10 +202,20 @@ const toSentenceCase = (text: string): string => {
           Styles & <span class="inline-block">Design System</span>
         </h1>
 
-        <p class="order-3">
-          Description of the purpose of this page and the overall design system
-          goes here.
-        </p>
+        <div class="order-3 max-w-prose">
+          <p class="mb-4">
+            The site is a classified dossier viewed on a near-future CRT
+            terminal. Every token on this page is a property of that terminal or
+            a mark left by the analyst reading the file.
+          </p>
+          <p>
+            Two voices share every surface: the terminal (thin trace lines,
+            monospace readouts, low contrast) and the analyst (ornamental
+            headings, stamps, handwritten notes). Keep them distinct. Values are
+            read live from <code class="font-mono">theme.css</code>; the full
+            brief lives in <code class="font-mono">docs/DESIGN.md</code>.
+          </p>
+        </div>
         <a
           href="/"
           class="text-accent border-accent hover:bg-accent text-2xs order-1
@@ -175,8 +247,18 @@ const toSentenceCase = (text: string): string => {
             {totalColorTokens} tokens
           </span>
         </div>
-        <div class="mb-8">
-          <p>A description of the color system goes here.</p>
+        <div class="mb-8 max-w-prose">
+          <p class="mb-4">
+            Emerald is the phosphor, not a brand color. Tokens are named by role
+            along one axis, attention intensity: foundation, emphasis, accent,
+            highlight. Tokens without a hover variant are not interactive.
+          </p>
+          <p>
+            The palette is subtractive. Start in the phosphor tint and add color
+            only where removing it would lose information or interactivity.
+            Never write raw hex or Tailwind palette classes; reference these
+            tokens.
+          </p>
         </div>
         <div
           class="border-fainter mb-24 flex h-12 w-full overflow-hidden border
@@ -203,9 +285,10 @@ const toSentenceCase = (text: string): string => {
         {
           colorTokens.map((g) => (
             <div class="mb-12">
-              <h3 class="text-emphasis mb-4 font-mono text-base">
+              <h3 class="text-emphasis mb-2 font-mono text-base">
                 {toSentenceCase(g.group)}
               </h3>
+              <p class="mb-4 max-w-prose text-sm">{colorGroupNotes[g.group]}</p>
               <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
                 {g.tokens.map((name) => (
                   <div class="group relative flex flex-col items-stretch">
@@ -261,8 +344,12 @@ const toSentenceCase = (text: string): string => {
             {fontTokens.length} families
           </span>
         </div>
-        <div class="mb-8">
-          <p>Description of the type system goes here.</p>
+        <div class="mb-8 max-w-prose">
+          <p>
+            Each family is a voice in the dossier. Display and body tokens
+            compile straight to their primitives; decorative is swappable so
+            simple mode can override it from the root.
+          </p>
         </div>
         <div class="mb-24 lg:flex lg:gap-12">
           <p class="mb-2">
@@ -313,6 +400,7 @@ const toSentenceCase = (text: string): string => {
                     <span class="font-mono">--font-{font.name}</span>
                   </p>
                 </div>
+                <p class="mb-8 max-w-prose">{font.note}</p>
                 <p
                   class="text-foundation mb-16 text-2xl sm:text-4xl md:text-6xl"
                   style={`font-family: var(--font-${font.name});`}
@@ -357,8 +445,13 @@ const toSentenceCase = (text: string): string => {
             {textSizes.length} sizes
           </span>
         </div>
-        <div class="mb-24">
-          <p>Description of the type scale goes here.</p>
+        <div class="mb-24 max-w-prose">
+          <p>
+            Tailwind's default scale plus one custom rung, text-2xs, for film
+            rebate labels and marginalia. Use the scale for hierarchy instead of
+            fading text: muted copy is foundation at a smaller size, never a
+            faint token.
+          </p>
         </div>
 
         <div>
@@ -422,8 +515,12 @@ const toSentenceCase = (text: string): string => {
             · {headingSizes.length} sizes
           </span>
         </div>
-        <div class="mb-24">
-          <p>Description of the heading system goes here.</p>
+        <div class="mb-24 max-w-prose">
+          <p>
+            <code class="font-mono">HeadingSection</code> renders the briefing's section
+            inscriptions. Treatments compose as an array, so a heading can be lined,
+            glowing, and inverted at once. Glow is dropped in simple mode.
+          </p>
         </div>
 
         <!-- Treatments × alignments at size: md -->
@@ -628,6 +725,142 @@ const toSentenceCase = (text: string): string => {
             }
           </div>
         </div>
+      </section>
+
+      <!-- PATTERNS -->
+      <section
+        aria-labelledby="patterns-heading"
+        class="border-fainter mb-32 border-b pb-16"
+      >
+        <div class="mb-8 flex items-end gap-8">
+          <h2
+            id="patterns-heading"
+            class="font-display text-emphasis text-4xl leading-[0.7em]
+              md:text-5xl"
+          >
+            Patterns & Marks
+          </h2>
+          <span
+            class="bg-emphasis text-background-dark px-2 py-1 font-mono text-xs
+              tracking-widest"
+          >
+            {patterns.length + 2} utilities
+          </span>
+        </div>
+        <div class="mb-16 max-w-prose">
+          <p>
+            Global utilities from <code class="font-mono">base.css</code>. Each
+            must file, label, contain, authenticate, or annotate. If a real
+            asset exists (film grain, ink stroke, stamp), use it instead of
+            simulating it in CSS.
+          </p>
+        </div>
+        <div class="mb-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {
+            patterns.map((p) => (
+              <div>
+                <div
+                  class:list={["border-fainter mb-3 h-24 border", p.class]}
+                />
+                <var class="text-foundation mb-1 block font-mono text-base">
+                  {p.name}
+                </var>
+                <p class="text-sm">{p.note}</p>
+              </div>
+            ))
+          }
+        </div>
+        <div class="grid grid-cols-1 gap-12 md:grid-cols-2">
+          <div>
+            <p class="text-emphasis mb-4 font-mono text-4xl">
+              <span class="triplecolon text-accent">:::</span> Case 01.01
+            </p>
+            <var class="text-foundation mb-1 block font-mono text-base">
+              .triplecolon
+            </var>
+            <p class="text-sm">
+              Tightened ::: used as a filing-system decorator before labels.
+            </p>
+          </div>
+          <div>
+            <ul class="list-custom mb-4">
+              <li class="mb-2">Field assignment</li>
+              <li>Evidence photo</li>
+            </ul>
+            <var class="text-foundation mb-1 block font-mono text-base">
+              .list-custom / .list-custom-wrapper
+            </var>
+            <p class="text-sm">
+              ▹ bullets in accent. Wrapper form targets MDX-rendered lists.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- MODES -->
+      <section aria-labelledby="modes-heading">
+        <div class="mb-8 flex items-end gap-8">
+          <h2
+            id="modes-heading"
+            class="font-display text-emphasis text-4xl leading-[0.7em]
+              md:text-5xl"
+          >
+            Modes & Access
+          </h2>
+        </div>
+        <dl class="grid max-w-prose grid-cols-1 gap-8">
+          <div>
+            <dt
+              class="text-accent mb-2 font-mono text-sm tracking-widest
+                uppercase"
+            >
+              Simple mode
+            </dt>
+            <dd>
+              <code class="font-mono">html[data-simple-mode="on"]</code> swaps the
+              decorative face for Prompt one size rung down, and removes noise, scanlines,
+              and heading glow. For recruiters who need to scan, not explore.
+            </dd>
+          </div>
+          <div>
+            <dt
+              class="text-accent mb-2 font-mono text-sm tracking-widest
+                uppercase"
+            >
+              Focus
+            </dt>
+            <dd>
+              2px accent-hover outline, square corners. 3px under
+              prefers-contrast: high.
+            </dd>
+          </div>
+          <div>
+            <dt
+              class="text-accent mb-2 font-mono text-sm tracking-widest
+                uppercase"
+            >
+              Motion
+            </dt>
+            <dd>
+              Under prefers-reduced-motion, transitions and keyframes collapse
+              to 0.01ms and GSAP reveals are skipped, so every target renders in
+              its final state.
+            </dd>
+          </div>
+          <div>
+            <dt
+              class="text-accent mb-2 font-mono text-sm tracking-widest
+                uppercase"
+            >
+              Breakpoints
+            </dt>
+            <dd>
+              Tailwind defaults plus <code class="font-mono">xs</code> (420px) and
+              a <code class="font-mono">portrait:</code> variant for aspect ratios
+              under 1:1.
+            </dd>
+          </div>
+        </dl>
       </section>
     </div>
   </main>

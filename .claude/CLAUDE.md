@@ -1,49 +1,13 @@
-# Portfolio
+@../AGENTS.md
 
-Grant Keller's portfolio website (Astro static site).
+## Project board (Claude Code)
 
-## Project structure
+This project uses the Board plugin for project management: tasks, epics, ADRs, notes, references, and resources live as Markdown files under `board/`. The board skills carry the rules they need; the full spec ships with the plugin.
 
-This file does not document the directory layout. Use `tree`, `fd`, or `ls` to see structure (e.g. `tree -L 3 -I 'node_modules|dist' src`); the filesystem is the source of truth.
-
-Non-obvious anchors:
-
-- `src/content.config.ts` — Zod schemas for all content collections (lives at `src/`, NOT `src/content/`)
-- `src/styles/theme.css` — Tailwind v4 `@theme` blocks and `@source inline(...)` force-emit list; theme/tokens live here (no `tailwind.config.*` exists). When you add a token, add it to the `@source inline(...)` list too or it will be tree-shaken.
-
-## Design
-
-The authoritative design brief lives in `docs/DESIGN.md`:
-
-@docs/DESIGN.md
-
-### Coding conventions
-
-Colors are expressed through semantic tokens defined in `src/styles/theme.css`. Don't reach for raw `emerald-*` or `fuchsia-*` classes in new code.
-
-Tokens encode _decisions_, not _elements_. If changing a token's value should update every use of it together, it's a valid token. Avoid element-named tokens like `button-bg` or `link-color` — they collapse the moment the same element needs different values in different contexts.
-
-## Known issues
-
-- No testing infrastructure exists (no test runner, no test files).
-- Image format conversion is in progress; hero backgrounds use `<Picture>` (AVIF + WebP), but the job/project/skill long tail is still mixed `.jpg`/`.png`.
-- `dist/_astro/Layout.*.css` is the largest CSS bundle; worth investigating before optimizing the smaller per-page bundles.
-
-## Project board
-
-- Ask before creating new board files (tasks, ADRs, etc.).
-- ADRs live in `board/reference/`, not `board/planning/` (planning is for actionable items). Standard `ADR-NNNN_kebab-title.md` filename and `type: adr` frontmatter.
-
-## Git workflow
-
-Branching cycle:
-
-1. Cut feature/refactor/fix branches from `main` (NOT from `develop`).
-2. Open PRs targeting `develop` (staging).
-3. Periodically open a promotion PR from `develop` to `main` for release.
-
-The only PRs that target `main` are the periodic `develop` to `main` promotions. All normal feature work targets `develop`.
-
-## Pull requests
-
-PR bodies use a `## Summary` section with bullets only. Do NOT include a "Test plan" or "Testing" checklist; this project has no formal QA process and the boilerplate is noise.
+- Use `/board:board-show` to see current board state
+- Use `/board:board-check` when starting work to find related board context
+- Use `/board:board-add` to create new items and `/board:board-edit` to change them
+- Use `/board:board-update` after completing significant work to reconcile the board
+- Use `/board:board-archive` to move done items to `board/archive/`
+- Use `/board:board-lint` when the session-start lint reports errors
+- Use `/board:board-migrate` to import existing Markdown docs into the board

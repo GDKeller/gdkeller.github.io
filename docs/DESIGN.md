@@ -27,23 +27,23 @@ Every design element must serve the dossier story. If it doesn't have a role in 
 | Hand-drawn annotations                   | The analyst's handwritten notes on the file                                                                                                                              |
 | Ink brush strokes as dividers            | Redaction bars or section breaks in a classified document                                                                                                                |
 | Emerald-on-black + scanlines + glitch    | Properties of the CRT terminal displaying the dossier                                                                                                                    |
-| Bokor headings                           | The way the terminal renders classified section headers. Ornamental because the system firmware is old, ritualistic, Soviet-era infrastructure still running future tech |
+| Blackletter headings                     | The way the terminal renders classified section headers. Ornamental because the system firmware is old, ritualistic, Soviet-era infrastructure still running future tech |
 
 ### Section Names (Dossier Language)
 
 These are working names. The actual heading text can be more natural, but the conceptual framing should inform the design of each section:
 
-| Section            | Dossier Framing                               | Current Heading       |
-| ------------------ | --------------------------------------------- | --------------------- |
-| Hero               | Person of interest file                       | "Deep Space Deep Sea" |
-| Currently Building | Active operations / current assets            | "Currently Building"  |
-| Featured Work      | Case files                                    | "Featured Work"       |
-| Skills             | Asset capabilities                            | (Skills Grid)         |
-| Experience         | Field assignments / operational history       | (Jobs)                |
-| Projects           | Evidence / field reports                      | "Projects"            |
-| Awards             | Commendations / citations                     | "Awards"              |
-| Talks              | Intercepted transmissions / field appearances | (Talks)               |
-| Anglerfish         | Deep cover operation                          | "Beyond the Screen"   |
+| Section            | Dossier Framing                               | Current Heading                                      |
+| ------------------ | --------------------------------------------- | ---------------------------------------------------- |
+| Hero               | Person of interest file                       | "Deep space, deep sea, and everywhere in between"    |
+| Currently Building | Active operations / current assets            | "Currently Building"                                 |
+| Featured Work      | Case files                                    | "Featured Work"                                      |
+| Skills             | Asset capabilities                            | "Tools of the Trade"                                 |
+| Experience         | Field assignments / operational history       | "Experience"                                         |
+| Projects           | Evidence / field reports                      | "Projects"                                           |
+| Awards             | Commendations / citations                     | "Awards"                                             |
+| Talks              | Intercepted transmissions / field appearances | "Appearances"                                        |
+| Anglerfish         | Deep cover operation                          | "Anglerfish Exhibit" (own page, `/nhmla-anglerfish`) |
 
 ---
 
@@ -97,7 +97,7 @@ The hero already uses a film-holder/specimen-label treatment. The rest of the si
 
 Behind everything, a faint grid: the CRT's pixel structure made visible. Real crosshair marks from engineering graph paper, not CSS gradients. The grid recedes until you notice it, then it reframes the entire page as something displayed on hardware, not rendered in a browser.
 
-The global overlay (scanlines, glitch texture, mix-blend-difference) is the CRT's display characteristics. Every color on the page passes through this filter. Neutral grays pick up a phosphor tint. This is a feature: the terminal processes everything uniformly.
+The global overlay (soft-light scanlines, hard-light noise texture) is the CRT's display characteristics. Every color on the page passes through this filter. Neutral grays pick up a phosphor tint. This is a feature: the terminal processes everything uniformly.
 
 ### Physical Marks on the File
 
@@ -112,9 +112,9 @@ Where the dossier needs dividers, labels, frames, or annotations, it uses real p
 The emerald-on-black palette isn't a brand choice. It's the color of the CRT phosphor. Everything displayed on the terminal is tinted by it. This means:
 
 - Text naturally reads in emerald tones (the semantic color tokens: foundation, emphasis, accent)
-- Structural elements (borders, frames, rules, dividers) are white/gray at low opacity: the terminal's trace lines, not colored UI chrome
-- Bright emerald appears only on interactive states (hover, focus): the terminal responding to input
-- Fuchsia is the one color that breaks the phosphor: maximum alert, used once or twice on the entire page
+- Structural elements (borders, frames, rules, dividers) use the low-chroma `faint` / `fainter` tokens: the terminal's trace lines, not colored UI chrome. Never text.
+- Bright emerald (`accent`) marks interactive elements and sparse filing-system decoration (bullets, `:::` decorators); `accent-hover` appears only on interaction, the terminal responding to input
+- Fuchsia (`highlight`) is the one color that breaks the phosphor: maximum alert, reserved for the hire / contact call to action and nothing else
 
 ### The palette is subtractive
 
@@ -124,15 +124,15 @@ Start with everything in the terminal's default phosphor tint. Add explicit colo
 
 ## Typography
 
-Four voices, each with a role in the dossier:
+Four roles across three families, each with a part in the dossier:
 
-**The classified header** (Bokor): ornamental display lettering for section titles, hero headlines, and statistics. Rendered by the terminal's legacy firmware, which treats classified document headers as ritualistic inscriptions. Soviet-era type design running on future hardware. Warm, hand-cut, slightly lumpy.
+**The classified header** (Manufacturing Consent, `--font-decorative`): ornamental blackletter for section titles, hero headlines, and statistics. Rendered by the terminal's legacy firmware, which treats classified document headers as ritualistic inscriptions. Old-world type design running on future hardware. Swaps to Prompt in simple mode.
 
-**The briefing header** (Bayon): angular display lettering for entry titles, utility headings, and subheadings. The modernist bridge between the ornamental headers and the system text. How the terminal renders operational subtitles.
+**The briefing header** (Prompt at heavy weights, `--font-display`): geometric display lettering for entry titles, utility headings, and subheadings. The modernist bridge between the ornamental headers and the system text. How the terminal renders operational subtitles.
 
-**The report body** (Prompt): clean, neutral, comfortable body copy. The default display font for dossier text. Serves both registers without calling attention to itself.
+**The report body** (Prompt, `--font-body`): clean, neutral, comfortable body copy. Shares a family with the briefing header; weight, not typeface, separates them. Serves both registers without calling attention to itself.
 
-**The system readout** (IBM Plex Mono): monospace for case file numbers, marginalia, film stock labels, tech stacks, and everything that belongs to the terminal's filing system. Letter-spaced, small, uppercase. The machine's native voice. Never used for headings.
+**The system readout** (IBM Plex Mono, `--font-mono`): monospace for case file numbers, marginalia, film stock labels, tech stacks, and everything that belongs to the terminal's filing system. Letter-spaced, small, uppercase. The machine's native voice. Never used for headings.
 
 ---
 
