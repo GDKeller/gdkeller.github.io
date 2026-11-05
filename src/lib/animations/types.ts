@@ -58,21 +58,3 @@ export interface ScrollTriggerVars {
 export interface GSAPTween {
   kill: () => void;
 }
-
-export interface FadeUpOptions {
-  duration?: number;
-  ease?: string;
-  y?: number;
-  opacity?: number;
-  stagger?: number;
-  delay?: number;
-}
-
-export interface FadeInFromSideOptions {
-  duration?: number;
-  ease?: string;
-  x?: number;
-  opacity?: number;
-  stagger?: number;
-  delay?: number;
-}

@@ -548,6 +548,7 @@ const initial = sorted[0];
     span {
       display: block;
       width: 2px;
+      height: 60%;
       background: var(--color-accent);
       animation: equalize 0.9s ease-in-out infinite;
 
@@ -573,11 +574,8 @@ const initial = sorted[0];
     }
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .track__playing span {
-      animation: none;
-      height: 60%;
-    }
+  :global(html[data-simple-mode="on"]) .track__playing span {
+    animation: none;
   }
 
   @media (prefers-contrast: more) {

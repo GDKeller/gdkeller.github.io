@@ -12,12 +12,20 @@ const { title } = Astro.props;
 <html lang="en" class="bg-background font-body overflow-x-clip">
   <head>
     <script is:inline>
+      // Tri-state: "on" | "off" | unset. Unset follows prefers-reduced-motion.
+      // Keep in sync with resolve() in SimpleModeToggle.astro.
+      var stored = null;
       try {
-        if (localStorage.getItem("portfolio:simple-mode") === "on") {
-          document.documentElement.dataset.simpleMode = "on";
-        }
+        stored = localStorage.getItem("portfolio:simple-mode");
       } catch {
         /* localStorage unavailable (Safari private mode); ignore */
+      }
+      if (
+        stored === "on" ||
+        (stored !== "off" &&
+          matchMedia("(prefers-reduced-motion: reduce)").matches)
+      ) {
+        document.documentElement.dataset.simpleMode = "on";
       }
     </script>
     <meta charset="UTF-8" />

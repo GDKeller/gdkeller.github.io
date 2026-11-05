@@ -4,8 +4,10 @@
  *
  * Hides decorative noise + scanline overlays and swaps the blackletter
  * decorative font for the legible body font (Prompt).
- * State persists in localStorage under "portfolio:simple-mode" and is applied
- * pre-paint by an is:inline script in Layout.astro to prevent FOUC.
+ * State persists in localStorage under "portfolio:simple-mode" as "on" | "off";
+ * unset follows prefers-reduced-motion, so reduced-motion users get Effects:
+ * Off by default. Applied pre-paint by an is:inline script in Layout.astro to
+ * prevent FOUC.
  *
  * The actual visual changes live in src/styles/simple-mode.css.
  */
@@ -75,21 +77,26 @@ import IconFx from "./icons/IconFx.svg";
 
   <script>
     const STORAGE_KEY = "portfolio:simple-mode";
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-    function readStored(): boolean {
+    // Same rule as the pre-paint script in Layout.astro.
+    function resolve(): boolean {
+      let stored: string | null = null;
       try {
-        return localStorage.getItem(STORAGE_KEY) === "on";
+        stored = localStorage.getItem(STORAGE_KEY);
       } catch {
-        return false;
+        // Storage disabled; fall through to the OS preference.
       }
+      return stored === "on" || (stored !== "off" && reducedMotion.matches);
     }
 
+    // Store only deviations from the OS default, so unset keeps following it.
     function writeStored(on: boolean): void {
       try {
-        if (on) {
-          localStorage.setItem(STORAGE_KEY, "on");
-        } else {
+        if (on === reducedMotion.matches) {
           localStorage.removeItem(STORAGE_KEY);
+        } else {
+          localStorage.setItem(STORAGE_KEY, on ? "on" : "off");
         }
       } catch {
         // Safari Private Browsing or storage disabled — silently ignore.
@@ -127,8 +134,11 @@ import IconFx from "./icons/IconFx.svg";
     // Cross-tab sync: when another tab toggles, mirror the change here.
     window.addEventListener("storage", (event) => {
       if (event.key !== STORAGE_KEY) return;
-      applyState(readStored());
+      applyState(resolve());
     });
+
+    // OS setting changed mid-session: re-resolve (no-op if a choice is stored).
+    reducedMotion.addEventListener("change", () => applyState(resolve()));
 
     // Place above the button while the page is near the top, otherwise below.
     // While near the top there's more empty atmosphere above; once scrolled,

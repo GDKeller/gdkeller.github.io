@@ -1,13 +1,16 @@
 /** Simple Mode
  *  Accessibility/readability override. Activated by `data-simple-mode="on"`
  *  on the <html> element (set by the pre-paint script in Layout.astro and
- *  toggled by SimpleModeToggle.astro).
+ *  toggled by SimpleModeToggle.astro). Defaults on under
+ *  prefers-reduced-motion unless the visitor has chosen otherwise.
  *
  *  Strips the pieces of "pizazz" that hurt scanability for hiring
  *  managers and recruiters:
  *    1. Decorative blackletter font (Manufacturing Consent) → Prompt
  *    2. Noise overlays (Hero + global Overlays component)
  *    3. Scanlines overlay
+ *    4. Keyframe motion: GSAP reveals are skipped (lib/animations), and each
+ *       animated component stops its keyframes under the same selector
  *
  *  Works via the swappable token already declared in theme.css and via
  *  ancestor selectors against the unhashed class names that the noise/
