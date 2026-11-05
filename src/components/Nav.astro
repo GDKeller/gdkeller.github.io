@@ -113,13 +113,11 @@ const navLinks = [
     opacity: 1;
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .nav-link,
-    .nav-link::before,
-    .nav-link::after {
-      animation: none;
-      transition: none;
-    }
+  :global(html[data-simple-mode="on"]) .nav-link,
+  :global(html[data-simple-mode="on"]) .nav-link::before,
+  :global(html[data-simple-mode="on"]) .nav-link::after {
+    animation: none;
+    transition: none;
   }
 </style>
 

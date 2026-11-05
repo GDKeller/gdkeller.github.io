@@ -428,14 +428,14 @@ const gridTileBg = `image-set(url("${gridTileAvif.src}") type("image/avif"), url
     }
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .button-arrow {
-      transition-duration: 0ms;
-    }
-    .button-arrow:hover::before,
-    .button-arrow:hover .button-arrow__label {
-      animation: none;
-    }
+  :global(html[data-simple-mode="on"]) .button-arrow {
+    transition-duration: 0ms;
+  }
+  :global(html[data-simple-mode="on"]) .button-arrow:hover::before,
+  :global(html[data-simple-mode="on"])
+    .button-arrow:hover
+    .button-arrow__label {
+    animation: none;
   }
 
   .decorator-bar {

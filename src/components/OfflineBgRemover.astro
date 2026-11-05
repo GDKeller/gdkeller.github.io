@@ -97,7 +97,8 @@
   const video = document.querySelector(
     "video[data-obr-video]",
   ) as HTMLVideoElement;
-  if (video && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  // Simple mode is also the default under prefers-reduced-motion.
+  if (video && document.documentElement.dataset.simpleMode === "on") {
     video.pause();
   }
 </script>

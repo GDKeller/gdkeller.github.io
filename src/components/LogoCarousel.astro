@@ -134,41 +134,40 @@ const logos: Logo[] = [
     }
   }
 
-  /* Reduced motion: show static grid instead of scrolling duplicates */
-  @media (prefers-reduced-motion: reduce) {
-    .logo-carousel,
-    .carousel-mask {
-      height: auto;
-    }
+  /* Simple mode (default under reduced motion): show static grid instead of
+     scrolling duplicates */
+  :global(html[data-simple-mode="on"]) .logo-carousel,
+  :global(html[data-simple-mode="on"]) .carousel-mask {
+    height: auto;
+  }
 
-    .carousel-mask {
-      mask-image: none;
-      -webkit-mask-image: none;
-    }
+  :global(html[data-simple-mode="on"]) .carousel-mask {
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
 
-    .carousel-track {
-      animation: none;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.5rem 2rem;
-      width: 100%;
-      height: auto;
-      padding: 0 1rem;
-    }
+  :global(html[data-simple-mode="on"]) .carousel-track {
+    animation: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem 2rem;
+    width: 100%;
+    height: auto;
+    padding: 0 1rem;
+  }
 
-    .carousel-item {
-      height: auto;
-    }
+  :global(html[data-simple-mode="on"]) .carousel-item {
+    height: auto;
+  }
 
-    .carousel-item :global(img) {
-      height: auto;
-      max-height: 3.5rem;
-    }
+  :global(html[data-simple-mode="on"]) .carousel-item :global(img) {
+    height: auto;
+    max-height: 3.5rem;
+  }
 
-    /* Hide duplicate logos in reduced motion mode */
-    .carousel-item--duplicate {
-      display: none;
-    }
+  /* Hide duplicate logos in simple mode */
+  :global(html[data-simple-mode="on"]) .carousel-item--duplicate {
+    display: none;
   }
 </style>

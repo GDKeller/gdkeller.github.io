@@ -230,13 +230,11 @@ const secondaryCategories = [
     }
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    details::details-content {
-      transition: none;
-    }
-    summary .hazard-stripe--reverse {
-      animation: none;
-    }
+  :global(html[data-simple-mode="on"]) details::details-content {
+    transition: none;
+  }
+  :global(html[data-simple-mode="on"]) summary .hazard-stripe--reverse {
+    animation: none;
   }
 
   @keyframes hazard-breathe {
